@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Essential plan shows a discounted new customer offer price of $19/mo (marked as \"Save 35%\"), but the list price appears to be $29/mo based on the display. The page indicates \"Billed annually\" at the top. Copilot pricing shows $29 per agent/month billed annually, or $35 per agent/month billed monthly—both prices recorded. All three main plans (Essential, Advanced, Expert) include Fin AI Agent. The page shows Fin pricing is $0.99 per outcome, which is a usage-based charge, not a seat-based plan, but it's listed as a standalone option for existing helpdesk users. Trial is 14 days for all plans and add-ons included in trial.",
+  "extraction_notes": "Advanced and Expert plans show only monthly pricing (\"From $0.99 $85\" and \"From $0.99 $132\" per seat/mo), with no annual pricing displayed. Essential plan shows both monthly ($29) and annual ($19 per month) pricing, with a promotional note of 35% off for new customers. Fin AI Agent is priced at $0.99 per outcome with minimum monthly commitment. All plans include a 14-day free trial. The page lists three main subscription plans (Essential, Advanced, Expert) and three add-ons (Pro, Copilot, Proactive Support Plus). Copilot pricing shows $35/month billed monthly or $29/month billed annually per agent. The page does not provide detailed feature lists for the main plans beyond \"Includes Fin AI Agent\" and references to \"Every [X] feature, plus\" which are marketing phrases and were not recorded.",
   "plans": [
     {
       "name": "Fin AI Agent",
       "key": "finaiagent",
       "monthly_price": 0.99,
-      "annual_price_per_month": 0.99,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -21,12 +21,14 @@
           "unit": "per outcome"
         }
       ],
-      "features": []
+      "features": [
+        "ai chatbot"
+      ]
     },
     {
       "name": "Essential",
       "key": "essential",
-      "monthly_price": 19.0,
+      "monthly_price": 29.0,
       "annual_price_per_month": 19.0,
       "is_free": false,
       "is_custom_pricing": false,
@@ -36,9 +38,7 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "api access",
-        "live chat",
-        "saml"
+        "ai chatbot"
       ]
     },
     {
@@ -51,21 +51,23 @@
       "is_per_seat": true,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
-          "metric": "free conversations",
-          "value": 10.0,
-          "unit": "per agent per month"
+          "metric": "copilot conversations",
+          "value": -1.0,
+          "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "ai assistant"
+      ]
     },
     {
       "name": "Advanced",
       "key": "advanced",
       "monthly_price": 85.0,
-      "annual_price_per_month": 85.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -74,22 +76,20 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "api access",
-        "live chat",
-        "saml"
+        "ai chatbot"
       ]
     },
     {
       "name": "Pro",
       "key": "pro",
       "monthly_price": 99.0,
-      "annual_price_per_month": 99.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
           "metric": "conversations analyzed",
@@ -103,13 +103,13 @@
       "name": "Proactive Support Plus",
       "key": "proactivesupportplus",
       "monthly_price": 99.0,
-      "annual_price_per_month": 99.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
           "metric": "messages sent",
@@ -123,7 +123,7 @@
       "name": "Expert",
       "key": "expert",
       "monthly_price": 132.0,
-      "annual_price_per_month": 132.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -132,9 +132,7 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "api access",
-        "live chat",
-        "saml"
+        "ai chatbot"
       ]
     }
   ]

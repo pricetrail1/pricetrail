@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Annual prices calculated from stated annual billing amounts: Scale $517/year = $43.08/month; Max $1,151/year = $95.92/month. Features mapped to allowed list only. Launch plan includes unlimited email sends but no hard send limit stated. Scale and Max both support 100K subscribers per comparison table. Enterprise details sparse but includes Send API which is restricted on other plans.",
+  "extraction_notes": "Annual pricing: Scale shows $517/year ($43/month effective), Max shows $1,151/year ($96/month effective). The page displays both monthly and annual billing options, but the effective monthly rate is the same as the monthly rate shown. Team members on Scale listed as \"Up to 3\" and \"3 Seats\" - recorded as 3. The page indicates Max has \"Up to 10 Publications\" - recorded as 10. Enterprise shows custom pricing for subscriptions limit. Getty Image Credits listed for Max (3) and Enterprise (10) but not on the features list provided, so not included.",
   "plans": [
     {
       "name": "Launch",
       "key": "launch",
       "monthly_price": 0.0,
-      "annual_price_per_month": 0.0,
+      "annual_price_per_month": null,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -55,7 +55,7 @@
       "name": "Scale",
       "key": "scale",
       "monthly_price": 43.0,
-      "annual_price_per_month": 43.08,
+      "annual_price_per_month": 43.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -95,17 +95,17 @@
         }
       ],
       "features": [
-        "advanced workflows",
         "ai assistant",
         "api access",
-        "integrations"
+        "integrations",
+        "priority support"
       ]
     },
     {
       "name": "Max",
       "key": "max",
       "monthly_price": 96.0,
-      "annual_price_per_month": 95.92,
+      "annual_price_per_month": 96.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -145,11 +145,11 @@
         }
       ],
       "features": [
-        "advanced workflows",
         "ai assistant",
         "api access",
         "custom branding",
-        "integrations"
+        "integrations",
+        "priority support"
       ]
     },
     {
@@ -196,13 +196,12 @@
         }
       ],
       "features": [
-        "advanced workflows",
         "ai assistant",
         "api access",
         "custom branding",
         "dedicated account manager",
         "integrations",
-        "onboarding support",
+        "priority support",
         "sso"
       ]
     }

@@ -1,6 +1,130 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "This pricing page does not show any actual prices. The page contains multiple placeholders where prices should appear (e.g., \"Then, starts at [blank] per month†\"), but no numerical values are filled in. The page displays plan names (Free, Essentials, Standard, Premium) and features, along with contact tier selection, but pricing information is missing throughout. The page routes customers to \"Buy Now,\" \"Contact Sales,\" or \"Start Free Trial\" buttons without displaying rates. The only numerical data shown relates to contact limits and email send limits, not pricing.",
-  "plans": []
+  "pricing_is_public": true,
+  "extraction_notes": "This page shows contact tier-based pricing but does not display specific monthly or annual prices in the extracted HTML. The page indicates prices vary by contact tier (0-500, 501-1500, etc.) and users must select a tier to see pricing. Specific monthly prices are referenced as starting at certain amounts (e.g., \"Then, starts at $20 per month\" for Standard) but exact prices for each tier are not shown in the provided content. The Premium plan text mentions \"Then, starts at per month†\" with the actual price missing from the extraction. Features listed are based on what the comparison table and plan descriptions explicitly state. Trial days are indicated for Standard and Essentials (14 days). SMS is available as an add-on but prices not specified. Email send limits are per the contact tier selected (shown as 12X or 15X contacts, meaning email sends = contacts × multiplier).",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
+          "value": 500.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "integrations",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 10000.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
+          "value": 150000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "ai chatbot",
+        "custom reporting",
+        "dedicated account manager",
+        "integrations",
+        "onboarding support",
+        "phone support",
+        "priority support",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
+          "value": 6000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "ai chatbot",
+        "custom reporting",
+        "integrations",
+        "onboarding support",
+        "role permissions"
+      ]
+    }
+  ]
 }
