@@ -20,7 +20,7 @@ import requests
 # Identify yourself. Put a real page at this URL explaining what the bot does
 # and how to ask you to stop. Site owners who can reach you rarely block you.
 USER_AGENT = (
-    "PriceTrailBot/0.1 (+https://pricetrail1.github.io/pricetrail/bot.html; pricing change tracker)"
+    "PriceTrailBot/0.1 (+https://getpricetrail.com/bot.html; pricing change tracker)"
 )
 
 DEFAULT_TIMEOUT = 20
