@@ -166,6 +166,62 @@ Generative AI for Voice
 Approval workflows
 Sandbox environment
 Custom agent roles
+Email and ticketing support
+Zendesk Ticketing brings email, messaging, phone, social, and more into a single place. With AI automations and simple admin tools, our scalable ticketing tool cuts support costs and drives fast results. No expertise needed.
+Work faster with ticket routing
+Enhance agent efficiency with omnichannel routing that automatically assigns tickets to the most qualified agents. Admins maintain control with less manual effort while delivering faster, better service.
+Action insights with prebuilt reporting dashboards
+Get up and running quickly with out-of-the-box analytics to help you analyze trends in ticket volume and agent performance across channels. Easily customize reports to uncover issues, forecast demand, and boost efficiency.
+Surface the best reply, every time
+Lend a helping hand with pre-written responses that answer common issues, and a centralized knowledge base for faster troubleshooting.
+Conversation history and customer context
+Provide agents with relevant details on the customer and surface a list of recent interactions with the customer so agents have the context they need to provide help.
+Build and customize workflows
+Save time with prebuilt, customizable ticketing workflows and adaptable automations—like alerts for unattended tickets or refund escalations to managers—resulting in greater bandwidth and faster resolutions.
+Resolve complex issues on any channel
+Resolve up to 80%+ of even the most complex service issues across any channel. Powered by agentic AI, our AI agents reason, adapt, take action then learn and self-improve to reach full resolution - all while following your business processes. No training, scripting or complex flows needed.
+AI agent builder
+Flexible APIs and integrations
+Reasoning controls
+Advanced reporting & insights
+Support for 80+ languages
+Power faster resolutions with connected knowledge
+Create, unify, and activate trusted content across AI, agents, and self-service so customers and employees get fast, accurate answers when it matters most.
+Accelerate resolution automation
+Design, integrate, and automate multi-step action flows across Zendesk and third-party systems. Action builder comes with a library of prebuilt connectors, customizable actions, and low-code tools that can be tailored to fit unique workflow needs.
+Route requests to right agent, automatically
+Omnichannel routing automatically directs customer or employee requests across multiple support channels, factoring in agent status, capacity, skill set, and ticket priority. It uses automation to connect individuals with the most suitable agent, regardless of channel.
+Messaging and live chat
+Support customers instantly or over time across your website, app, or social channels to deliver better service and build lasting relationships.
+Offer phone support to your customers
+Provide live phone support to your customers with toll-free and international numbers, voicemail, extensions, and more for the complete phone solution.
+Run your operations with an AI assistant
+Admin copilot proactively surfaces personalized insights and recommends workflows and set up improvements. Admins can ask questions and apply approved changes, optimizing operations without the busywork.
+Turn ideas into apps
+AI-powered App Builder turns ideas into apps using conversational prompts—no technical expertise required. Boost agent productivity with custom apps that streamline workflows, integrate with third party platforms and internal systems, and reduce manual work.
+Enhance your agent responses with AI writing tools
+Enhance your agent responses with AI writing tools. Let your agents expand or shorten replies or match the right tone every time with one click.
+Accelerate service insights with AI-powered reporting
+Create reports in Zendesk analytics instantly by asking questions in plain language, powered by machine learning.
+Reduce repetitive reporting tasks by automatically creating reports using conversational prompts
+Easily unlock powerful insights with trusted AI that selects the right datasets, calculations, and attributes
+Empower your entire team to get the answers they need without advanced reporting skills
+Reduce wait times with smart routing
+Skills-based routing automatically sends tickets to specific team members based on their expertise for faster ticket resolution.
+Reach the right agent every time
+Support customers faster with IVR, group, prioritized, overflow, and after hours routing. Set your maximum queue size and wait time, and allow callers to request a callback instead of holding.
+Power every decision with intelligent classification
+Intelligent triage automatically classifies every ticket, giving agents and admins a clear view of what customers need and why. These insights power routing, automation, and reporting, driving faster and higher quality resolutions.
+Equip every agent with proactive AI assistance
+Auto assist gives agents proactive, AI-powered support right inside their workspace. It suggests next steps, drafts accurate responses, and takes approved actions to ensure every interaction is consistent and high-quality.
+Transcribe and summarize every call automatically
+Transcribe and summarize voice call recordings using generative AI.
+Streamline approvals and track changes
+Designate content editing and publishing permissions across your team, and solicit team input by assigning article updates.
+Test updates safely in sandbox
+Try out features and workflows in a sandbox testing environment.
+Control access with custom permissions
+Specify permissions for agents and control what they have access to in Zendesk.
 Still need help deciding?
 Compare all plan features
 , or

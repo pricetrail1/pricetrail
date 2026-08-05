@@ -10,8 +10,8 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-05",
     "status": "ok",
-    "hash_changes": 1,
-    "hash": "cb8c25589a64a056291d95a151a014c6e158744b6f4011ae7b2dc2714e78794e"
+    "hash_changes": 2,
+    "hash": "a362a6bf74a2f15716790abe6132163484c3759b615d8340ab127e4162891f49"
   },
   "freshdesk": {
     "consecutive_failures": 0,
@@ -73,8 +73,8 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-05",
     "status": "ok",
-    "hash_changes": 3,
-    "hash": "1fc0fe20f353547ec6835a890e363896a20673cd1c8a5482b8f62293b75f8b46"
+    "hash_changes": 4,
+    "hash": "168171595fa79a88241ad879fee9e8dc4b2bfff1dafa1dfcd8298cdaa75e366b"
   },
   "brevo": {
     "consecutive_failures": 0,
@@ -84,7 +84,7 @@
     "hash": "d00c23711ea19cd2058fde94da44680d1907dbce621aa22a0915c09d2011ec07"
   },
   "kit": {
-    "consecutive_failures": 3,
+    "consecutive_failures": 4,
     "last_checked": "2026-08-05",
     "status": "error",
     "hash_changes": 1,

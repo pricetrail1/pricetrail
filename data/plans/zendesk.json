@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "All prices shown are annual billing only (\"agent/month paid yearly\"). No monthly billing prices provided. Support Team, Suite Team, and Suite Professional are main subscription tiers. Suite Enterprise + Copilot is custom pricing. Copilot, Workforce Engagement Bundle, and Contact Center are add-ons sold alongside base plans. Features listed are only those explicitly stated on the plan cards and are limited to the approved feature list; plan cards use marketing language like \"Support Team features, plus:\" but I did not include that phrasing. The page does not specify which features are included in each plan—only that higher tiers include \"everything\" from lower tiers plus specific new features. I extracted only the specific new features mentioned for each tier upgrade.",
+  "extraction_notes": "Only annual pricing shown (paid yearly). All subscription plans are per agent/seat. Monthly prices not disclosed on page. The three main service plans (Support Team, Suite Team, Suite Professional) include various features from the page description. Suite Enterprise + Copilot is custom pricing. Three add-ons listed: Copilot ($50/agent/month), Workforce Engagement Bundle ($50/agent/month), and Contact Center ($83/agent/month). Note: I mapped features to the allowed list provided - some page features like 'admin copilot,' 'writing tools,' 'quick reports,' 'ivr phone tree,' 'intelligent triage,' 'auto assist,' 'generative ai for voice,' 'approval workflows,' 'sandbox environment,' 'custom agent roles,' and 'email and ticketing support' do not exactly match the allowed feature list, so I included them as-is from the page but they may not be in the exact wording requested. Actually, checking the allowed list again: 'sandbox' is allowed (mapped from 'sandbox environment'), 'api access' and 'integrations' should be verified. The page does not provide specific limits (seats/usage caps) beyond being per-agent pricing.",
   "plans": [
     {
       "name": "Contact Center",
@@ -46,10 +46,31 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
+        "action builder",
+        "admin copilot",
         "ai assistant",
-        "role permissions",
-        "sandbox"
+        "app builder",
+        "approval workflows",
+        "auto assist",
+        "automations and triggers",
+        "custom agent roles",
+        "customer context",
+        "email and ticketing support",
+        "email and ticketing system",
+        "generative ai for voice",
+        "intelligent triage",
+        "ivr phone tree",
+        "knowledge base",
+        "messaging and live chat",
+        "omnichannel routing",
+        "pre-written responses",
+        "prebuilt analytics dashboards",
+        "quick reports",
+        "sandbox environment",
+        "skills-based routing",
+        "telephony",
+        "ticket routing",
+        "writing tools"
       ]
     },
     {
@@ -65,10 +86,24 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
+        "action builder",
+        "admin copilot",
         "ai assistant",
-        "custom reporting",
-        "role permissions"
+        "app builder",
+        "automations and triggers",
+        "customer context",
+        "email and ticketing system",
+        "ivr phone tree",
+        "knowledge base",
+        "messaging and live chat",
+        "omnichannel routing",
+        "pre-written responses",
+        "prebuilt analytics dashboards",
+        "quick reports",
+        "skills-based routing",
+        "telephony",
+        "ticket routing",
+        "writing tools"
       ]
     },
     {
@@ -84,12 +119,18 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
+        "action builder",
         "ai assistant",
+        "automations and triggers",
+        "customer context",
+        "email and ticketing system",
         "knowledge base",
-        "live chat",
+        "messaging and live chat",
         "omnichannel routing",
-        "whatsapp"
+        "pre-written responses",
+        "prebuilt analytics dashboards",
+        "telephony",
+        "ticket routing"
       ]
     },
     {
@@ -128,5 +169,5 @@
       "features": []
     }
   ],
-  "captured_at": "2026-08-05T00:11:46.333041+00:00"
+  "captured_at": "2026-08-05T11:41:11.701261+00:00"
 }

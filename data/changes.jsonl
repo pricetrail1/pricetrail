@@ -1,2 +1,3 @@
 {"vendor": "Mailchimp", "change_type": "pricing_hidden", "plan": null, "field": null, "old_value": true, "new_value": false, "confidence": 0.8, "detected_at": "2026-08-05T09:01:28.317870+00:00", "note": "page no longer shows any public prices"}
 {"vendor": "Intercom", "change_type": "price_increase", "plan": "Essential", "field": "annual_price_per_month", "old_value": 19.0, "new_value": 29.0, "confidence": 0.8, "detected_at": "2026-08-05T09:11:46.568713+00:00", "note": "+52.6%"}
+{"vendor": "Mailchimp", "change_type": "pricing_published", "plan": null, "field": null, "old_value": false, "new_value": true, "confidence": 0.8, "detected_at": "2026-08-05T11:41:23.769604+00:00", "note": ""}
