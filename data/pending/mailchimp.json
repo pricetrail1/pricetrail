@@ -1,0 +1,6 @@
+{
+  "currency": "USD",
+  "pricing_is_public": false,
+  "extraction_notes": "This pricing page does not show any actual prices. The page contains multiple placeholders where prices should appear (e.g., \"Then, starts at [blank] per month†\"), but no numerical values are filled in. The page displays plan names (Free, Essentials, Standard, Premium) and features, along with contact tier selection, but pricing information is missing throughout. The page routes customers to \"Buy Now,\" \"Contact Sales,\" or \"Start Free Trial\" buttons without displaying rates. The only numerical data shown relates to contact limits and email send limits, not pricing.",
+  "plans": []
+}

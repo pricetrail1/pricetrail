@@ -1,0 +1,143 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Essential plan shows a promotional new customer offer of $19/mo when billed annually (down from $29/mo standard monthly price). Recorded the standard $29/mo and promotional annual price of $19/mo. Advanced and Expert plans show \"From\" pricing with add-on charges (Fin AI Agent at $0.99 per outcome) but no annual pricing visible. Fin AI Agent is priced at $0.99 per outcome with a minimum monthly commitment. Copilot shows $35/mo monthly ($29/mo annually) per agent. Pro, Copilot, and Proactive Support Plus are add-ons sold alongside main plans. The page indicates a 14-day free trial for all plans.",
+  "plans": [
+    {
+      "name": "Fin AI Agent",
+      "key": "finaiagent",
+      "monthly_price": 0.99,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "outcomes",
+          "value": 1.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Essential",
+      "key": "essential",
+      "monthly_price": 29.0,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "live chat",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": 35.0,
+      "annual_price_per_month": 29.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai auto-translation conversations",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "copilot conversations",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Advanced",
+      "key": "advanced",
+      "monthly_price": 85.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "live chat",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 99.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "conversations analyzed",
+          "value": 1000.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Proactive Support Plus",
+      "key": "proactivesupportplus",
+      "monthly_price": 99.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "messages sent",
+          "value": 500.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Expert",
+      "key": "expert",
+      "monthly_price": 132.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "live chat",
+        "priority support"
+      ]
+    }
+  ]
+}
