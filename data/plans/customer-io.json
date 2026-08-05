@@ -1,0 +1,95 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Essentials and Premium show explicit starting prices. Enterprise is custom pricing (contact sales). Feature table spans all tiers. Limits extracted from the main feature table and plan cards. Add-ons for additional profiles, emails, and AI credits are listed separately. Premium yearly billing shown at $1,000/month (annual), but monthly price not explicitly stated for Premium; extracted what is shown.",
+  "plans": [
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 100.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 1000000.0,
+          "unit": null
+        },
+        {
+          "metric": "object types",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles (people + objects)",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "basic data integrations",
+        "basic workflows",
+        "email and community support"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "audit log",
+        "custom reporting",
+        "dedicated account manager",
+        "hipaa",
+        "integrations",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": 1000.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "object types",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "audit log",
+        "custom reporting",
+        "hipaa",
+        "integrations",
+        "onboarding support",
+        "priority support"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:13:35.302359+00:00"
+}

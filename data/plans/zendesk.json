@@ -1,0 +1,132 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "All prices shown are annual billing only (\"agent/month paid yearly\"). No monthly billing prices provided. Support Team, Suite Team, and Suite Professional are main subscription tiers. Suite Enterprise + Copilot is custom pricing. Copilot, Workforce Engagement Bundle, and Contact Center are add-ons sold alongside base plans. Features listed are only those explicitly stated on the plan cards and are limited to the approved feature list; plan cards use marketing language like \"Support Team features, plus:\" but I did not include that phrasing. The page does not specify which features are included in each plan—only that higher tiers include \"everything\" from lower tiers plus specific new features. I extracted only the specific new features mentioned for each tier upgrade.",
+  "plans": [
+    {
+      "name": "Contact Center",
+      "key": "contactcenter",
+      "monthly_price": null,
+      "annual_price_per_month": 83.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": null,
+      "annual_price_per_month": 50.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Suite Enterprise + Copilot",
+      "key": "suiteenterprisecopilot",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "role permissions",
+        "sandbox"
+      ]
+    },
+    {
+      "name": "Suite Professional",
+      "key": "suiteprofessional",
+      "monthly_price": null,
+      "annual_price_per_month": 115.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Suite Team",
+      "key": "suiteteam",
+      "monthly_price": null,
+      "annual_price_per_month": 55.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "knowledge base",
+        "live chat",
+        "omnichannel routing",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Support Team",
+      "key": "supportteam",
+      "monthly_price": null,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "automations and triggers",
+        "customer context",
+        "email and ticketing system",
+        "pre-written responses",
+        "prebuilt analytics dashboards",
+        "ticket routing"
+      ]
+    },
+    {
+      "name": "Workforce Engagement Bundle",
+      "key": "workforceengagementbundle",
+      "monthly_price": null,
+      "annual_price_per_month": 50.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    }
+  ],
+  "captured_at": "2026-08-05T00:11:46.333041+00:00"
+}

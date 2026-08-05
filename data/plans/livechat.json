@@ -1,0 +1,155 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "ChatBot.com is listed as an add-on integrated with LiveChat. Monthly billing price not shown for ChatBot.com. All core plans (Starter, Team, Business) are per-seat pricing. Enterprise plan pricing is custom/contact sales. Free 14-day trial mentioned at top of page applies to all plans.",
+  "plans": [
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": 25.0,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "chat history",
+          "value": 60.0,
+          "unit": "days"
+        },
+        {
+          "metric": "recurring campaigns",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "visitors tracked",
+          "value": 100.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Team",
+      "key": "team",
+      "monthly_price": 59.0,
+      "annual_price_per_month": 49.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "campaigns",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "chat history",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "visitors tracked",
+          "value": 400.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Business",
+      "key": "business",
+      "monthly_price": 89.0,
+      "annual_price_per_month": 79.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "visitors tracked",
+          "value": 1000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "live chat",
+        "sms",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "ChatBot.com",
+      "key": "chatbotcom",
+      "monthly_price": null,
+      "annual_price_per_month": 52.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai chatbot"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "visitors tracked",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "audit log",
+        "custom branding",
+        "hipaa",
+        "live chat",
+        "single sign-on",
+        "sla policies",
+        "sms",
+        "whatsapp"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:12:36.191285+00:00"
+}

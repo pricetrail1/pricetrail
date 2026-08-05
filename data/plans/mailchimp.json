@@ -1,0 +1,119 @@
+{
+  "currency": "GBP",
+  "pricing_is_public": true,
+  "extraction_notes": "The page shows pricing sliders for different contact tiers (0-500, 501-1,500, etc.) but the actual monthly prices are not filled in for the Essentials, Standard, and Premium plans—they display as blank placeholders on the page. The Free plan shows £0. All paid plans appear to have prices that vary by contact tier, but these specific amounts are not displayed in the HTML. The page indicates a 14-day free trial is available for Standard and Essentials plans. Premium shows a \"15% off for 12 months\" promotion, but the base prices are not shown. Feature sets are derived from the comparison table and plan descriptions. Email send limits are stated per contact tier for each paid plan. Contact limits for Premium are listed as \"unlimited contacts\" in the feature comparison.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": 0.0,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends",
+          "value": 500.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends",
+          "value": 150000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "phone support",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends",
+          "value": 6000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:12:56.930035+00:00"
+}

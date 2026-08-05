@@ -1,0 +1,213 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Annual billing prices shown as $517/year (Scale, $43/month effective) and $1,151/year (Max, $96/month effective). These are identical to monthly prices stated, so annual_price_per_month matches monthly_price for Scale and Max. Scale plan saves $71/year and Max saves $157/year over monthly billing equivalent. API Access on Launch excludes Send API (which is Enterprise-only). Features listed reflect only those from the allowed feature list that are explicitly stated in the plan cards and comparison table.",
+  "plans": [
+    {
+      "name": "Launch",
+      "key": "launch",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai credits per day",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "episodes per month",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "publications",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "shows",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "subscribers",
+          "value": 2500.0,
+          "unit": null
+        },
+        {
+          "metric": "team members",
+          "value": 1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access"
+      ]
+    },
+    {
+      "name": "Scale",
+      "key": "scale",
+      "monthly_price": 43.0,
+      "annual_price_per_month": 43.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai credits per day",
+          "value": 25.0,
+          "unit": null
+        },
+        {
+          "metric": "episodes per month",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "publications",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "shows",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "subscribers",
+          "value": 100000.0,
+          "unit": null
+        },
+        {
+          "metric": "team members",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Max",
+      "key": "max",
+      "monthly_price": 96.0,
+      "annual_price_per_month": 96.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai credits per day",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "episodes per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "publications",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "shows",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "subscribers",
+          "value": 100000.0,
+          "unit": null
+        },
+        {
+          "metric": "team members",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "integrations",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai credits per day",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "episodes per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "publications",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "shows",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "subscribers",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "team members",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "dedicated account manager",
+        "integrations",
+        "onboarding support",
+        "priority support",
+        "sso"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:13:29.625304+00:00"
+}

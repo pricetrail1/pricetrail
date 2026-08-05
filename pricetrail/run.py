@@ -1,0 +1,253 @@
+"""
+The daily job.
+
+    python -m pricetrail.run              # full run
+    python -m pricetrail.run --dry-run    # fetch and hash only, no API spend
+    python -m pricetrail.run --only stripe --only intercom
+    python -m pricetrail.run --budget 0.50
+
+The whole business is this loop:
+
+    fetch -> clean -> hash -> [unchanged? stop] -> extract -> diff -> store
+
+The hash gate is the entire cost model. Roughly 95% of checks stop there and
+cost nothing. Remove it and this goes from about $2/month to about $60/month
+for the same output.
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from datetime import datetime, timezone
+
+import yaml
+from urllib.parse import urlparse
+
+from . import storage
+from .clean import clean_html, content_hash, looks_like_pricing_page
+from .diff import diff_pricing
+from .extract import ExtractionError, estimate_cost_usd, extract_pricing
+from .fetch import Fetcher
+
+VENDORS_FILE = storage.ROOT / "vendors.yaml"
+
+# Hard ceiling per run. A bug that loops over 200 vendors 50 times should cost
+# you pennies and an error message, not your entire budget.
+DEFAULT_BUDGET_USD = 0.50
+
+
+def load_vendors() -> list[dict]:
+    data = yaml.safe_load(VENDORS_FILE.read_text(encoding="utf-8"))
+    vendors = []
+    for v in data["vendors"]:
+        v = dict(v)
+        v.setdefault("slug", storage.slugify(v["name"]))
+        v.setdefault("category", "uncategorised")
+        vendors.append(v)
+    return vendors
+
+
+def _rewrite_vendor_urls(repaired: list[tuple[str, str, str]]) -> None:
+    """Patch vendors.yaml in place, preserving comments and layout."""
+    text = VENDORS_FILE.read_text(encoding="utf-8")
+    for _slug, old, new in repaired:
+        text = text.replace(f"pricing_url: {old}", f"pricing_url: {new}")
+    VENDORS_FILE.write_text(text, encoding="utf-8")
+
+
+def run(dry_run: bool = False, only: list[str] | None = None,
+        budget_usd: float = DEFAULT_BUDGET_USD,
+        fix_urls: bool = False) -> int:
+    vendors = load_vendors()
+    if only:
+        wanted = {s.lower() for s in only}
+        vendors = [v for v in vendors
+                   if v["slug"] in wanted or v["name"].lower() in wanted]
+        if not vendors:
+            print(f"No vendors matched {sorted(wanted)}", file=sys.stderr)
+            return 1
+
+    fetcher = Fetcher()
+    state = storage.load_state()
+    spent = 0.0
+
+    stats = dict(checked=0, unchanged=0, extracted=0, changes=0,
+                 queued=0, failed=0, skipped_robots=0, noisy=0)
+    repaired: list[tuple[str, str, str]] = []
+
+    print(f"Run started {datetime.now(timezone.utc).isoformat()} "
+          f"({len(vendors)} vendors, dry_run={dry_run})\n")
+
+    for vendor in vendors:
+        slug, name, url = vendor["slug"], vendor["name"], vendor["pricing_url"]
+        entry = state.setdefault(slug, {})
+        stats["checked"] += 1
+
+        result = fetcher.get(url)
+
+        # Dead link? Go and find the new one instead of just reporting a
+        # failure and leaving it for you to fix by hand.
+        if not result.ok and fetcher.worth_recovering(result):
+            found = fetcher.find_pricing_url(url)
+            if found:
+                print(f"  MOVED {name}: {url}\n         -> {found}")
+                entry["suggested_url"] = found
+                repaired.append((slug, url, found))
+                result = fetcher.get(found)
+                url = found
+
+        if result.blocked_by_robots:
+            stats["skipped_robots"] += 1
+            entry["status"] = "robots_disallowed"
+            print(f"  SKIP  {name}: robots.txt disallows this path")
+            continue
+
+        if not result.ok:
+            stats["failed"] += 1
+            entry["status"] = "error"
+            entry["last_error"] = result.error
+            entry["consecutive_failures"] = entry.get("consecutive_failures", 0) + 1
+            if result.status in (403, 429):
+                hint = "  (site is blocking the crawler, not a bad URL)"
+            elif entry["consecutive_failures"] >= 3:
+                hint = "  <-- FIX THIS URL"
+            else:
+                hint = ""
+            print(f"  FAIL  {name}: {result.error}{hint}")
+            continue
+
+        entry["consecutive_failures"] = 0
+        cleaned = clean_html(result.html, urlparse(url).netloc)
+
+        if not looks_like_pricing_page(cleaned):
+            stats["failed"] += 1
+            entry["status"] = "not_a_pricing_page"
+            print(f"  FAIL  {name}: fetched OK but does not look like pricing "
+                  f"({len(cleaned)} chars) <-- FIX THIS URL")
+            continue
+
+        new_hash = content_hash(cleaned)
+        entry["last_checked"] = storage.today()
+        entry["status"] = "ok"
+
+        if entry.get("hash") == new_hash:
+            stats["unchanged"] += 1
+            print(f"  same  {name}")
+            continue
+
+        # Hash moved. Track how often, so we can spot pages that churn their
+        # markup daily without ever changing a price.
+        #
+        # The fingerprint is NOT saved yet. It gets committed only once we
+        # have successfully extracted and stored the pricing. Saving it here
+        # would mean a dry run -- or a failed extraction -- convinced the
+        # crawler it had already read a page it never read, and it would skip
+        # that page until the site next changed.
+        entry["hash_changes"] = entry.get("hash_changes", 0) + 1
+        storage.save_snapshot(slug, cleaned)
+
+        if dry_run:
+            print(f"  DIFF  {name}: content changed (dry run, no extraction)")
+            continue
+
+        cost = estimate_cost_usd(cleaned)
+        if spent + cost > budget_usd:
+            print(f"\nBudget ceiling ${budget_usd:.2f} reached. Stopping.")
+            break
+
+        try:
+            extracted = extract_pricing(cleaned, name)
+        except ExtractionError as exc:
+            stats["failed"] += 1
+            entry["status"] = "extraction_error"
+            entry["last_error"] = str(exc)
+            print(f"  FAIL  {name}: extraction failed: {exc}")
+            continue
+
+        spent += cost
+        storage.record_spend(cost)
+        stats["extracted"] += 1
+
+        previous = storage.load_plans(slug)
+        if previous and previous.get("demo"):
+            # Sample data is invented. Comparing a real price against a made-up
+            # one would generate a fake "price change".
+            print(f"  NOTE  {name}: discarding sample data")
+            previous = None
+        changes = diff_pricing(name, previous, extracted)
+        storage.save_plans(slug, extracted)
+
+        # Extraction worked and the result is on disk. Safe to remember this
+        # version of the page now.
+        entry["hash"] = new_hash
+
+        # A pricing page with fewer than two plans is almost always a failed
+        # read, not a company with one plan. Usually an interactive pricing
+        # slider, where the price is calculated in the browser and never
+        # appears in the HTML. Say so loudly rather than quietly archiving
+        # rubbish for months.
+        plan_count = len(extracted["plans"])
+        if plan_count < 2:
+            entry["status"] = "suspicious_extraction"
+            print(f"  CHECK {name}: only {plan_count} plan(s) found "
+                  f"-- verify against the live page")
+            print(f"        If the page uses a pricing slider, remove this "
+                  f"vendor from vendors.yaml.")
+
+        if previous is None:
+            print(f"  NEW   {name}: baseline captured ({plan_count} plans)")
+            continue
+
+        if not changes:
+            # Markup moved but prices did not. Very common.
+            entry["noisy_hits"] = entry.get("noisy_hits", 0) + 1
+            stats["noisy"] += 1
+            print(f"  noise {name}: page changed, pricing did not")
+            continue
+
+        published, queued = storage.append_changes(changes)
+        stats["changes"] += published
+        stats["queued"] += queued
+        print(f"  CHANGE {name}: {published} published, {queued} to review")
+        for c in changes:
+            mark = "*" if c.publishable else "?"
+            print(f"         {mark} {c.headline()}  (conf {c.confidence:.2f})")
+
+    storage.save_state(state)
+
+    if repaired:
+        if fix_urls:
+            _rewrite_vendor_urls(repaired)
+            print(f"\n  Updated {len(repaired)} URL(s) in vendors.yaml.")
+        else:
+            print(f"\n  {len(repaired)} URL(s) have moved. Re-run with "
+                  f"--fix-urls to write the new ones into vendors.yaml.")
+
+    print("\n" + "-" * 60)
+    print(f"checked {stats['checked']} | unchanged {stats['unchanged']} | "
+          f"extracted {stats['extracted']} | noisy {stats['noisy']}")
+    print(f"changes published {stats['changes']} | "
+          f"queued for review {stats['queued']} | failed {stats['failed']}")
+    print(f"this run ${spent:.4f} | month to date "
+          f"${storage.month_to_date_spend():.4f}")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description="Run the pricing crawler.")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="fetch and hash only; never call the paid API")
+    ap.add_argument("--only", action="append",
+                    help="limit to these vendor slugs (repeatable)")
+    ap.add_argument("--budget", type=float, default=DEFAULT_BUDGET_USD,
+                    help="max USD to spend on this run")
+    ap.add_argument("--fix-urls", action="store_true",
+                    help="write recovered URLs back into vendors.yaml")
+    args = ap.parse_args()
+    return run(dry_run=args.dry_run, only=args.only, budget_usd=args.budget,
+               fix_urls=args.fix_urls)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,166 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Comfort plan pricing shows $12/month with 10% annual discount, which is $10.80/month annually. Power plan shows $25/month with the same discount applied, equating to $22.50/month annually. The page states \"Save 10% by paying yearly\" at the top. Enterprise plan is custom pricing for 200K+ subscribers. Trial is 14 days for all paid plans. The page mentions additional features and limits in a comparison table, but core feature and limit data comes from individual plan cards.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "monthly emails",
+          "value": 2500.0,
+          "unit": null
+        },
+        {
+          "metric": "subscribers",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": 2.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Comfort",
+      "key": "comfort",
+      "monthly_price": 12.0,
+      "annual_price_per_month": 10.8,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "active automations",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "digital products and bookings",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "signup forms and pop-ups",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "websites and landing pages",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "basic workflows",
+        "custom branding",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Power",
+      "key": "power",
+      "monthly_price": 25.0,
+      "annual_price_per_month": 22.5,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "active automations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "digital products and bookings",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "signup forms and pop-ups",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "websites and landing pages",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "basic workflows",
+        "custom branding",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "subscribers",
+          "value": 200000.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "dedicated account manager",
+        "onboarding support",
+        "priority support"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:13:16.991933+00:00"
+}

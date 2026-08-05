@@ -1,0 +1,193 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "The page shows a 14-day free trial for all plans. Enterprise plan shows \"Unique pricing\" and requires contact for details. Additional agents can be added for $10/month per seat on Free, Mini, Essentials plans (shown in comparison table), but the exact pricing for additional seats on Plus is not shown. The features listed are based on what the page explicitly states is included in each tier; many features are shared across tiers in the detailed comparison table.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": 0.0,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits",
+          "value": 0.0,
+          "unit": null
+        },
+        {
+          "metric": "customer profiles",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "sub-inboxes",
+          "value": 0.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai chatbot",
+        "api access",
+        "basic workflows",
+        "custom branding",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Mini",
+      "key": "mini",
+      "monthly_price": 45.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "customer profiles",
+          "value": 5000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "sub-inboxes",
+          "value": 2.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai chatbot",
+        "api access",
+        "basic workflows",
+        "custom branding",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 95.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits",
+          "value": 25.0,
+          "unit": null
+        },
+        {
+          "metric": "customer profiles",
+          "value": 50000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "sub-inboxes",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai chatbot",
+        "api access",
+        "basic workflows",
+        "custom branding",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Plus",
+      "key": "plus",
+      "monthly_price": 295.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits",
+          "value": 75.0,
+          "unit": null
+        },
+        {
+          "metric": "customer profiles",
+          "value": 200000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 20.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai chatbot",
+        "api access",
+        "basic workflows",
+        "custom branding",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai chatbot",
+        "api access",
+        "custom branding",
+        "dedicated account manager",
+        "integrations",
+        "priority support",
+        "sla policies"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:12:17.662732+00:00"
+}

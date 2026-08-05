@@ -1,0 +1,123 @@
+# Vendors to track.
+#
+# Two categories deliberately, not twenty. Both are bought by the same person
+# (someone running support or marketing at a software company), which means one
+# set of comparison pages serves one buyer. Scattering across ten unrelated
+# categories gives you ten shallow audiences instead of one useful one.
+#
+# IMPORTANT: these URLs were correct when written but companies rebrand and
+# reorganise constantly. Some WILL be dead. Run:
+#
+#     python -m pricetrail.run --dry-run
+#
+# and fix anything that reports FAIL. That first cleanup pass is normal and
+# takes about twenty minutes.
+#
+# crawl_tier: daily = check every run, weekly = check on Mondays.
+# Put the big names on daily and the long tail on weekly to save money.
+
+vendors:
+  # ---------- customer support / helpdesk ----------
+  - name: Intercom
+    pricing_url: https://www.intercom.com/pricing
+    category: helpdesk
+    crawl_tier: daily
+
+  - name: Zendesk
+    pricing_url: https://www.zendesk.com/pricing/
+    category: helpdesk
+    crawl_tier: daily
+
+  - name: Freshdesk
+    pricing_url: https://www.freshworks.com/freshdesk/pricing/
+    category: helpdesk
+    crawl_tier: daily
+
+  - name: Help Scout
+    pricing_url: https://www.helpscout.com/pricing/
+    category: helpdesk
+    crawl_tier: daily
+
+  - name: Front
+    pricing_url: https://front.com/pricing
+    category: helpdesk
+    crawl_tier: daily
+
+  - name: Crisp
+    pricing_url: https://crisp.chat/en/pricing/
+    category: helpdesk
+    crawl_tier: weekly
+
+  - name: Tidio
+    pricing_url: https://www.tidio.com/pricing/
+    category: helpdesk
+    crawl_tier: weekly
+
+  - name: LiveChat
+    pricing_url: https://www.livechat.com/pricing/
+    category: helpdesk
+    crawl_tier: weekly
+
+  - name: Zoho Desk
+    pricing_url: https://www.zoho.com/desk/pricing.html
+    category: helpdesk
+    crawl_tier: weekly
+
+  - name: Chatwoot
+    pricing_url: https://www.chatwoot.com/pricing
+    category: helpdesk
+    crawl_tier: weekly
+
+  # ---------- email marketing ----------
+  - name: Mailchimp
+    pricing_url: https://mailchimp.com/pricing/
+    category: email-marketing
+    crawl_tier: daily
+
+  
+
+  - name: Brevo
+    pricing_url: https://www.brevo.com/pricing/
+    category: email-marketing
+    crawl_tier: daily
+
+  - name: Kit
+    pricing_url: https://kit.com/pricing
+    category: email-marketing
+    crawl_tier: daily
+
+  - name: MailerLite
+    pricing_url: https://www.mailerlite.com/pricing
+    category: email-marketing
+    crawl_tier: weekly
+
+  - name: beehiiv
+    pricing_url: https://www.beehiiv.com/pricing
+    category: email-marketing
+    crawl_tier: weekly
+
+  - name: Customer.io
+    pricing_url: https://customer.io/pricing
+    category: email-marketing
+    crawl_tier: weekly
+
+  - name: Omnisend
+    pricing_url: https://www.omnisend.com/pricing/
+    category: email-marketing
+    crawl_tier: weekly
+
+# ---------- removed, revisit later ----------
+# These use interactive pricing (a slider where you pick a contact count and
+# the price is calculated in your browser). There is no price in the HTML to
+# read, so extraction returns nothing usable.
+#
+# Removed rather than left broken: one vendor with wrong data is worse than
+# twenty with right data.
+#
+#   Groove   https://www.groovehq.com/pricing
+#   Klaviyo  https://www.klaviyo.com/pricing
+#   Loops    https://loops.so/pricing
+#
+# To handle these later you would need a headless browser to render the page
+# first. That costs money and complexity -- worth it once you have paying
+# customers asking for these specific vendors, not before.

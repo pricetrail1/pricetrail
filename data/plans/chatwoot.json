@@ -1,0 +1,175 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Hacker plan has 15-day free trial mentioned at top of page. Startups, Business, and Enterprise are billed annually (no monthly pricing shown). Prices are per agent/seat. Captain AI is an add-on priced at $20 per 1,000 credits. Dedicated account manager available for subscriptions with 20+ agents (Enterprise minimum). SSO/SAML labeled differently but both included in Enterprise plan.",
+  "plans": [
+    {
+      "name": "Hacker",
+      "key": "hacker",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 15,
+      "limits": [
+        {
+          "metric": "agents",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "conversations",
+          "value": 500.0,
+          "unit": "month"
+        },
+        {
+          "metric": "data retention",
+          "value": 30.0,
+          "unit": "days"
+        }
+      ],
+      "features": [
+        "live chat"
+      ]
+    },
+    {
+      "name": "Business",
+      "key": "business",
+      "monthly_price": null,
+      "annual_price_per_month": 39.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "captain ai credits",
+          "value": 500.0,
+          "unit": "month"
+        },
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 2.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "integrations",
+        "live chat",
+        "sla policies",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Captain AI",
+      "key": "captainai",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "credits",
+          "value": 1000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": 99.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": 20,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "captain ai credits",
+          "value": 800.0,
+          "unit": "month"
+        },
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 3.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "audit log",
+        "custom branding",
+        "integrations",
+        "live chat",
+        "saml",
+        "sla policies",
+        "sso",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Startups",
+      "key": "startups",
+      "monthly_price": null,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "captain ai credits",
+          "value": 300.0,
+          "unit": "month"
+        },
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 1.0,
+          "unit": "year"
+        }
+      ],
+      "features": [
+        "api access",
+        "integrations",
+        "live chat",
+        "whatsapp"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:12:49.860886+00:00"
+}

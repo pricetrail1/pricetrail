@@ -1,0 +1,249 @@
+Aug. 6th webinar
+Show up the moment it matters. See 10+ new features
+RSVP
+Straightforward
+pricing
+that
+grows
+with
+you
+Essentials
+starts at
+$
+100
+per month / billed monthly for
+For teams getting started with data-driven messaging
+Get started
+Features you'll love
+:
+5k
+profiles (people + objects)
+AI Agent with core execution skills
+1
+million
+emails per month
+2
+object types
+Visual workflow builder
+LLM actions with 100K credit sample
+Email and community support
+Basic
+data integrations
+Premium
+starts at
+$
+1,000
+per month / billed yearly
+For teams scaling across channels with custom workflows
+Book a demo
+Everything in Essentials, plus
+:
+Custom
+profile volume & pricing
+Custom
+email volume & pricing
+10
+object types
+Elevated Agent limits + custom skills
+Daily Routines (scheduled tasks)
+Premium chat & email support
+90-day onboarding support
+HIPAA Compliance*
+Premium
+data integrations
+Enterprise
+Let's talk
+For organizations that need dedicated infrastructure and support
+Talk to sales
+Everything in Premium, plus
+:
+Our best pricing on profile & email volume
+Custom Agent limits + execution skills
+Priority technical support
+Migration support*
+Dedicated Customer Success Manager*
+Dedicated hardware
+Audit logging & data governance
+Dedicated Technical Implementation Specialist*
+Shared Slack channel*
+Trusted by 9,000+ brands around the world
+to send data powered communication each day
+Get 12 months of Customer.io free
+Raised under $10M? Early-stage companies get a full year free through our Startup Program.
+See if you qualify
+AI Agent (beta)
+Session limits
+Standard
+Elevated
+Custom
+Persistent Memory
+Core Execution Skills
+Custom Execution Skills
+3
+10
+Custom
+Routines: # of tasks
+1
+5
+Custom
+Routines: frequency
+Weekly
+Daily
+Custom
+Channels
+Monthly email sends
+1M
+Custom
+Transactional emails
+Monthly push and in-app
+Unlimited
+Mobile SDKs
+Monthly SMS sends
+Custom
+WhatsApp (Native)
+LINE
+Webhook (send & receive)
+Unlimited
+Anonymous messages
+—
+Unlimited
+Journeys
+LLM actions (beta)
+Visual workflow builder
+Cross-channel campaign automation
+Send-time optimization
+In-app message suggestions
+API-triggered broadcasts
+Scalable Personalization
+Custom SMTP
+Audiences
+Profiles (people + objects)
+5,000
+Custom
+People attributes
+Unlimited
+Custom objects
+Object types
+2
+10
+Custom
+Segments
+AI-powered segment builder
+Suggested segments
+Nested data
+Ad audience sync
+Custom collections
+—
+Design Studio
+Drag-and-drop visual editor
+Code editor
+AI-generated global styles
+AI translator for messages
+Email content analysis
+Reusable components
+Saved templates & version control
+Data & integrations
+Monthly API calls
+Unlimited
+Integrations
+Basic
+Basic & Premium
+MCP server
+Data index
+Connected forms
+Privacy management
+Reverse ETL
+Data warehouse destinations
+—
+Data replay
+—
+Reporting
+Goals (beta)
+Dashboards
+Campaign reporting
+Workspace performance dashboard
+Survey analysis
+Data export
+A/B & multivariate testing
+Conversion tracking
+Universal search
+Security + Compliance
+SSO & 2-factor authentication
+US / EU data centers
+SOC Tier II Compliance
+Standard role-based permissions
+Custom role-based permissions
+—
+Managed deliverability
+—
+HIPAA Compliance
+—
+Custom
+Audit logging & data governance
+—
+Available by Consultation
+Dedicated hardware
+—
+Support
+Support packages
+available for Premium and Enterprise Plans
+Documentation
+Community support
+Email support
+Chat support
+—
+Onboarding support
+—
+Dedicated Customer Success Manager
+—
+Migration support
+—
+Dedicated Technical Implementation Specialist
+—
+Shared Slack channel
+—
+2-hour first outreach response time
+—
+Usage + Billing
+User seats
+Unlimited
+Workspaces
+2
+Unlimited
+Additional people & object profiles
+$0.009
+Custom
+Additional 1,000 emails
+$0.12
+Additional AI credits
+$10 / 100K
+Negotiated
+Plan term
+Monthly
+Annual
+Session limits
+Standard
+Elevated
+Custom
+Persistent Memory
+Core Execution Skills
+Custom Execution Skills
+3
+10
+Custom
+Routines: # of tasks
+1
+5
+Custom
+Routines: frequency
+Weekly
+Daily
+Custom
+*additional cost
+Frequently asked questions
+As many as you want! In fact, we encourage all team members to use Customer.io for consistent messaging across all of your product and marketing sends.
+GDPR compliant
+AICPA SOC certified
+Users love us
+Security first
+HIPAA compliant

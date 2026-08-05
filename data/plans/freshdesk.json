@@ -1,0 +1,65 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "All prices shown are per-agent, billed annually. The page indicates a 14-day free trial for all plans. Monthly pricing is not explicitly stated for the main plans—only annual billing is shown.",
+  "plans": [
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": 89.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "audit log",
+        "basic workflows",
+        "custom reporting",
+        "role permissions",
+        "sandbox",
+        "sla policies"
+      ]
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": null,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "basic workflows",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": null,
+      "annual_price_per_month": 55.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "basic workflows",
+        "custom reporting",
+        "role permissions",
+        "sla policies"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:11:50.256383+00:00"
+}

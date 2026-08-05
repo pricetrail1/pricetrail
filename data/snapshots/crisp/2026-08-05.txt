@@ -1,0 +1,732 @@
+Try any plan for free for 14 days
+Every new account unlocks full access to all Crisp features, letting you explore and see if we’re the right fit for your needs.
+Free
+For solopreneurs and entrepreneurs. Your first shared inbox.
+Free
+Forever
+Use Crisp for free
+Key features included:
+Website chat widget
+Engage with visitors directly on your website.
+2
+seats included
+No AI credits included
+Destroy silos, centralize conversations, improve internal collaboration and enhance customer satisfaction.
+Shared inbox
+Get everything related to your customer service right in your pocket.
+Mobile applications
+Integrate the chatbox the way you want and implement the behaviours you need to engage with your users.
+Chat SDKs
+Centralize answers from customizable contact forms within your Crisp Inbox.
+Contact form
+Sync each Crisp conversation with your e-commerce platform: Shopify, Adobe, WooCommerce, and Prestashop.
+E-Commerce integrations
+Stay up to date with your opened conversations.
+Push notifications
+Mini
+For early-stage companies who want to improve their customer service.
+$
+45
+Per month, per workspace
+Start my trial for free
+All the free features, plus:
+Shared email inbox
+Manage all customer emails in one collaborative inbox.
+4
+seats included
+Around 90 automated conversations
+$ 5 included AI credits
+Create, manage and use a gallery of pre-existing messages that makes your team more efficient.
+Shortcuts
+Engage chat conversations automatically based on specific behaviors.
+Chat triggers
+Make internal collaboration easy, centralized and personalized for each conversation.
+Private notes
+Setup a custom domain to send your outbound emails and improve deliverability.
+Custom email domain
+Unlimited data retention
+Search for messages, articles, contacts or plugins using advanced filters.
+Internal search
+Essentials
+For small companies requiring a full-featured customer support platform. You get all our flagship features.
+$
+95
+Per month, per workspace
+Start my trial for free
+All the Mini features, plus:
+Customer data management
+Organize and utilize customer information effectively.
+10
+seats included
+Around 450 automated conversations
+$ 25 included AI credits
+Connect your Crisp inbox with WhatsApp Business, Instagram DMs, SMS, Line, Viber, and more.
+Omnichannel inbox
+Create your ideal workflows in seconds using a visual builder powered by artificial intelligence.
+Workflow automation builder
+Build AI-powered omnichannel chatbot, with a super-advanced no-code workflow builder.
+Omnichannel AI Chatbot
+Write, manage and edit a dedicated help center that integrates deeply with Crisp.
+Knowledge base
+Measure conversational activity, customer satisfaction and operator's activity.
+Analytics
+Assign conversations automatically based on pre-defined or custom rules.
+Routing rules & Assignment
+Best value
+Plus
+For medium-sized businesses looking for an AI-powered omnichannel customer support software, plus all our features.
+$
+295
+Per month, per workspace
+Start my trial for free
+All the Essentials features, plus:
+AI-First Support Suite
+Complete AI-first suite of tools for support
+20+
+seats (and more)
+Around 1350 automated conversations
+Best value
+$ 75 included AI credits
+Automate your most repetitive tasks by connecting your AI Agent to 3rd party tool
+Unlimited Task automations
+Offer a dedicated customer portal to your customers where they can open new tickets or follow existing ones.
+Ticketing system
+Connect your Crisp workspace with all the services your company uses.
+100+ integrations
+Get rid of the Crisp watermark 'We run on Crisp'.
+White labelling
+Better control rate limits to make sure each and every features can fit with your intensive use-case.
+Enhanced rate limits
+Build your own custom dashboard and analytics to fit with your company's metrics and objectives.
+Advanced analytics
+See all features
+A flat pricing per workspace
+At Crisp, we offer a straightforward and easy-to-understand pricing model with a flat rate per workspace. This means you pay a single, consistent price regardless of the number of conversations you have each month.
+Our approach ensures that you can scale your customer support operations without overspending. With Crisp, you get all the essential tools and AI-powered features your team needs to provide exceptional customer service, all included in one simple, predictable subscription. Simplify your budgeting and focus on what matters most – growing your business and delighting your customers.
+Enterprise
+Need something more custom?
+Enterprise
+Created for large-scale companies willing to benefit from dedicated features, custom onboarding and personalized SLAs.
+Dedicated onboarding
+Personalized SLA
+Enhanced rate limits
+Custom features
+Unique pricing
+Team training
+Ask for a demo
+What plan is right for you?
+Choosing the right plan for your business can be tedious. This is why we built a suite of simple questions to help you decide which formula is the best for your company!
+Find my plan
+How many team members do you plan to be part of your Crisp Workspace?
+0-2 people
+2-10 people
+10-20 people
+20-50 people
+50+ people
+Compare our plans
+Choose the best plan for your business with our detailed feature comparison. See exactly what's included in each plan to make an informed decision.
+Free
+Mini
+Essentials
+Plus
+Pricing
+The monthly or yearly cost of your Crisp subscription plan.
+Plan Price (per month)
+$ 0
+$ 45
+$ 95
+$ 295
+Number of agent licences included in your plan at no extra cost.
+Agents included
+2
+4
+10
+20+
+Add more seats to your plan and scale your team as needed.
+Additional agents (per month)
+$ 10
+Maximum number of unique customer profiles you can manage in your workspace.
+Customer Profiles
+100
+5000
+50000
+200000
+Dedicated folders in your inbox that help organize conversations and keep your workspace clean.
+Sub-inboxes
+0
+2
+5
+Number of credits included with your plan to run AI support suit
+AI Credits
+$ 0
+Around 90 automated conversations
+$ 5
+Around 450 automated conversations
+$ 25
+Around 1350 automated conversations
+$ 75
+Team Inbox
+Your Crisp data and conversations are securely hosted in the cloud, always accessible and backed up.
+Cloud-based
+Get everything related to your customer service right in your pocket.
+Mobile Apps
+Use Crisp on Windows and Mac for a seamless desktop experience.
+Desktop Apps
+Receive alerts to stay up to date with your opened conversations.
+Real-time notifications
+Access Crisp APIs to build custom integrations and automate workflows.
+Developer APIs
+See all your active website visitors in real time and start conversations.
+Live Geolocation map
+Easily export or view the full transcript of customer conversations.
+Conversation transcript
+Automatically sort and organize incoming conversations for efficient handling.
+Conversation Triage
+Define your business hours to set expectations and automate responses outside those times.
+Working hours settings
+Handle as many customer conversations as you need, with no limits.
+Unlimited conversations
+Setup a custom domain to send your outbound emails and improve deliverability.
+Custom email domain
+Access the full history of your customer conversations for context and insights.
+Full conversations' history
+Make internal collaboration easy, centralized and personalized for each conversation.
+Internal notes
+Block users having disrespectful behavior on any channel.
+Visitor Banning
+Send and receive attachments directly within conversations.
+File Sharing
+Create, manage and use a gallery of pre-existing messages that makes your team more efficient.
+Canned responses
+Send automated surveys that measure customer satisfaction score.
+Conversation ratings
+Schedule pre-defined or custom reminders on each conversation with details attached.
+Follow-up reminders
+Assign conversations automatically to available agents in a fair, rotating manner.
+Round-robin routing
+Offer a dedicated portal to your customers where they can open new tickets or follow existing ones.
+Customer Portal
+Channels
+Engage with people that are browsing your website and get closer to your customers.
+Chat widget
+Centralize answers from customizable contact forms within your Crisp Inbox.
+Contact Form
+Receive and reply to your team's emails straight from your Crisp Inbox.
+Email
+Receive and reply to Telegram messages straight in your Crisp Inbox.
+Telegram
+Receive and reply to Facebook Messenger messages straight in your Crisp Inbox.
+Messenger
+Receive and reply to Twitter DMs straight in your Crisp Inbox.
+X (Twitter)
+Reply to your Instagram Direct Messages and stories from Crisp dashboard.
+Instagram
+Receive and reply to SMS messages straight in your Crisp Inbox.
+SMS
+Receive and reply to Viber messages straight in your Crisp Inbox.
+Viber
+Answer phone calls and trigger outbound calls right from Crisp.
+Phone
+Receive and reply to Line messages straight in your Crisp Inbox.
+Line
+Receive and reply to WhatsApp Business messages in your Crisp inbox.
+WhatsApp Business
+Integrations & Apps
+Easily install the Crisp chat widget on your WordPress website.
+WordPress
+Sync e-commerce data with your Crisp Inbox to benefit from dedicated features.
+Shopify
+Sync WooCommerce orders and customer data with Crisp for better support.
+WooCommerce
+Integrate Crisp with Adobe Commerce to centralize your customer communications.
+Adobe Commerce
+Integrate Crisp with Prestashop to sync orders and customer data.
+Prestashop
+Reply to any of your incoming messages straight from your Slack Workspace.
+Slack
+Synchronize Crisp with your Hubspot account.
+HubSpot
+Synchronize Crisp with your Pipedrive account.
+Pipedrive
+Synchronize Crisp with your Zoho account.
+Zoho CRM
+Connect Crisp as a source and collect customer data from 200 platforms, effortlessly.
+Segment
+Connect Crisp with more than 2000+ other apps without writing a line of code.
+Zapier
+Automate your workflows by connecting Crisp to hundreds of other apps with Make (formerly Integromat).
+Make
+Integrate Crisp with your no-code automation workflows using n8n.
+n8n
+Synchronize revenue details from Stripe straight in your Crisp inbox.
+Stripe
+Synchronize Crisp with your Salesforce account.
+Salesforce
+Chat Widget
+Integrate the chatbox widget and implement the behaviours you need to engage with your customers.
+Chat SDKs
+See what your users are typing before they hit send.
+Live Typing preview
+See when a user or agent is typing a message in real-time.
+Typing status indicator
+Adapt colors, text and live chat position so it fits with your brand identity.
+Widget customization
+Engage chat conversations automatically based on specific behaviors.
+Proactive chat messages
+Start a co-browsing session with people browsing on your website and share your screen if needed.
+MagicBrowse
+Translate instantly your messages in more than 50 different languages.
+LiveTranslate
+Engage with leads or customers through live audio or video message.
+Video & Audio chat
+Add a self-service help widget to your website for instant answers.
+Help widget
+Get rid of the Crisp watermark 'We run on Crisp'.
+White label
+Artificial intelligence
+Deploy a fully autonomous AI agent to handle customer conversations end-to-end.
+AI Agent
+Ingest all your internal data to train a custom AI model.
+AI Knowledge training
+Your support agents can ask questions to an internal AI chat, trained on your internal data.
+Internal AI Copilot
+Get immediate voice-to-text transcription for every audio message or recorded phone calls.
+Voice-to-text
+Translate your messages into over 50 languages on any channel.
+Multilingual AI
+Get AI-powered writing assistant tools for your teams.
+AI Writing Assistant
+Dedicated AI infrastructure for high-performance and privacy.
+MCP Server
+Let artificial intelligence classify your conversations automatically.
+Auto-tagging of conversations
+Let your users use AI-powered search to get an answer before they contact your support.
+AI-powered site search
+Gain access to a custom spam filter powered by AI that gets trained based on your settings.
+AI Inbox Spam filter
+Get access to a conversations' summary every time you need to.
+Conversation summary
+CRM
+Add and manage custom attributes to enrich your customer profiles.
+Custom attributes
+Store and manage detailed information about each of your customers.
+Customer Profile
+Group your users based on behavior, attributes, or custom tags.
+Customer Segmentation
+Search for messages, articles, contacts or plugins using advanced filters.
+Smart filters
+Leave internal notes on customer profiles for better team collaboration.
+Customer-based notes
+Track and analyze the journey of your users from lead to loyal customer.
+Customer lifecycle tracking
+View a chronological history of interactions and events for each customer.
+Customer timeline activity
+Workflow
+Build super-advanced automation flows on any channels connected to Crisp.
+No-code AI chatbot builder
+Provide instant, AI-powered answers to common customer queries.
+AI-generated answers
+Design and test chatbot scenarios before going live.
+Scenario drafts
+Collect structured data from users directly within the chat.
+Custom Input fields
+Create advanced workflows that adapt based on user responses or attributes.
+Conditional flows
+Trigger automated actions based on keywords detected in user messages.
+Keyword-based triggers
+Integrate external services and trigger workflows using APIs.
+Automation via APIs
+Push data to external systems in real time as events happen in Crisp.
+Webhook actions
+Automate actions in workflows based on CRM data or events.
+CRM-based triggers
+Embed external content or tools directly within the chat.
+Iframes
+Use AI-powered blocks to build smarter multi-channel chatbot flows.
+AI-agent blocks
+Build as many chatbot templates as your workflows require.
+Unlimited AI chatbot templates
+Automatically detect user intent using artificial intelligence.
+AI-based triggers
+Help Center
+Write, manage and edit a dedicated help center that integrates deeply with Crisp.
+Articles & Categories
+Adapt colors, text and layout of your help center to fit your brand.
+Customization
+Offer your help center in multiple languages to serve a global audience.
+Multilingual help center
+Integrate your help center anywhere using our SDK.
+Help center SDK
+Search for messages, articles, contacts or plugins using advanced filters.
+Search
+Let users rate and comment on your help articles.
+Article feedback
+Use your own branded domain for your help center.
+Custom domain name
+Optimize your help center for search engines with sitemaps and meta data.
+Sitemap & SEO meta data
+Analytics
+Measure conversational activity, customer satisfaction and operator's activity.
+Prebuilt analytics
+Export your data for reporting, analysis or backup.
+Data export
+Build your own custom dashboard and analytics to fit with your company's metrics and objectives.
+Custom dashboards
+Access, export and analyze your data programmatically via API.
+API Analytics
+Status Page
+Monitor the health of your infrastructure and services in real time.
+Node monitoring
+Customize your status page to match your brand and communication style.
+Customization
+Send alerts and updates to users when incidents or changes occur.
+Notifications
+Publish important updates or news to your users via your status page.
+Announcement
+Data & Security
+Add an extra layer of security to your account login.
+Double-Factor Authentication
+Your data is hosted on European servers for compliance and privacy.
+EU-Hosted
+A legal agreement to ensure your data is handled according to regulations.
+Data Processing Agreement
+All data is encrypted in transit using TLS.
+TLS Encryption
+Your data is backed up and replicated for increased reliability.
+Data replication
+Get started
+Compare our plans
+Free
+Mini
+Essentials
+Plus
+Free
+Mini
+Essentials
+Plus
+Free
+Mini
+Pricing
+The monthly or yearly cost of your Crisp subscription plan.
+Plan Price (per month)
+$ 0
+$ 45
+Number of agent licences included in your plan at no extra cost.
+Agents included
+2
+4
+Add more seats to your plan and scale your team as needed.
+Additional agents (per month)
+Maximum number of unique customer profiles you can manage in your workspace.
+Customer Profiles
+100
+5000
+Dedicated folders in your inbox that help organize conversations and keep your workspace clean.
+Sub-inboxes
+0
+Number of credits included with your plan to run AI support suit
+AI Credits
+$ 0
+Around 90 automated conversations
+$ 5
+Team Inbox
+Your Crisp data and conversations are securely hosted in the cloud, always accessible and backed up.
+Cloud-based
+Get everything related to your customer service right in your pocket.
+Mobile Apps
+Use Crisp on Windows and Mac for a seamless desktop experience.
+Desktop Apps
+Receive alerts to stay up to date with your opened conversations.
+Real-time notifications
+Access Crisp APIs to build custom integrations and automate workflows.
+Developer APIs
+See all your active website visitors in real time and start conversations.
+Live Geolocation map
+Easily export or view the full transcript of customer conversations.
+Conversation transcript
+Automatically sort and organize incoming conversations for efficient handling.
+Conversation Triage
+Define your business hours to set expectations and automate responses outside those times.
+Working hours settings
+Handle as many customer conversations as you need, with no limits.
+Unlimited conversations
+Setup a custom domain to send your outbound emails and improve deliverability.
+Custom email domain
+Access the full history of your customer conversations for context and insights.
+Full conversations' history
+Make internal collaboration easy, centralized and personalized for each conversation.
+Internal notes
+Block users having disrespectful behavior on any channel.
+Visitor Banning
+Send and receive attachments directly within conversations.
+File Sharing
+Create, manage and use a gallery of pre-existing messages that makes your team more efficient.
+Canned responses
+Send automated surveys that measure customer satisfaction score.
+Conversation ratings
+Schedule pre-defined or custom reminders on each conversation with details attached.
+Follow-up reminders
+Assign conversations automatically to available agents in a fair, rotating manner.
+Round-robin routing
+Offer a dedicated portal to your customers where they can open new tickets or follow existing ones.
+Customer Portal
+Channels
+Engage with people that are browsing your website and get closer to your customers.
+Chat widget
+Centralize answers from customizable contact forms within your Crisp Inbox.
+Contact Form
+Receive and reply to your team's emails straight from your Crisp Inbox.
+Email
+Receive and reply to Telegram messages straight in your Crisp Inbox.
+Telegram
+Receive and reply to Facebook Messenger messages straight in your Crisp Inbox.
+Messenger
+Receive and reply to Twitter DMs straight in your Crisp Inbox.
+X (Twitter)
+Reply to your Instagram Direct Messages and stories from Crisp dashboard.
+Instagram
+Receive and reply to SMS messages straight in your Crisp Inbox.
+SMS
+Receive and reply to Viber messages straight in your Crisp Inbox.
+Viber
+Answer phone calls and trigger outbound calls right from Crisp.
+Phone
+Receive and reply to Line messages straight in your Crisp Inbox.
+Line
+Receive and reply to WhatsApp Business messages in your Crisp inbox.
+WhatsApp Business
+Integrations & Apps
+Easily install the Crisp chat widget on your WordPress website.
+WordPress
+Sync e-commerce data with your Crisp Inbox to benefit from dedicated features.
+Shopify
+Sync WooCommerce orders and customer data with Crisp for better support.
+WooCommerce
+Integrate Crisp with Adobe Commerce to centralize your customer communications.
+Adobe Commerce
+Integrate Crisp with Prestashop to sync orders and customer data.
+Prestashop
+Reply to any of your incoming messages straight from your Slack Workspace.
+Slack
+Synchronize Crisp with your Hubspot account.
+HubSpot
+Synchronize Crisp with your Pipedrive account.
+Pipedrive
+Synchronize Crisp with your Zoho account.
+Zoho CRM
+Connect Crisp as a source and collect customer data from 200 platforms, effortlessly.
+Segment
+Connect Crisp with more than 2000+ other apps without writing a line of code.
+Zapier
+Automate your workflows by connecting Crisp to hundreds of other apps with Make (formerly Integromat).
+Make
+Integrate Crisp with your no-code automation workflows using n8n.
+n8n
+Synchronize revenue details from Stripe straight in your Crisp inbox.
+Stripe
+Synchronize Crisp with your Salesforce account.
+Salesforce
+Chat Widget
+Integrate the chatbox widget and implement the behaviours you need to engage with your customers.
+Chat SDKs
+See what your users are typing before they hit send.
+Live Typing preview
+See when a user or agent is typing a message in real-time.
+Typing status indicator
+Adapt colors, text and live chat position so it fits with your brand identity.
+Widget customization
+Engage chat conversations automatically based on specific behaviors.
+Proactive chat messages
+Start a co-browsing session with people browsing on your website and share your screen if needed.
+MagicBrowse
+Translate instantly your messages in more than 50 different languages.
+LiveTranslate
+Engage with leads or customers through live audio or video message.
+Video & Audio chat
+Add a self-service help widget to your website for instant answers.
+Help widget
+Get rid of the Crisp watermark 'We run on Crisp'.
+White label
+Artificial intelligence
+Deploy a fully autonomous AI agent to handle customer conversations end-to-end.
+AI Agent
+Ingest all your internal data to train a custom AI model.
+AI Knowledge training
+Your support agents can ask questions to an internal AI chat, trained on your internal data.
+Internal AI Copilot
+Get immediate voice-to-text transcription for every audio message or recorded phone calls.
+Voice-to-text
+Translate your messages into over 50 languages on any channel.
+Multilingual AI
+Get AI-powered writing assistant tools for your teams.
+AI Writing Assistant
+Dedicated AI infrastructure for high-performance and privacy.
+MCP Server
+Let artificial intelligence classify your conversations automatically.
+Auto-tagging of conversations
+Let your users use AI-powered search to get an answer before they contact your support.
+AI-powered site search
+Gain access to a custom spam filter powered by AI that gets trained based on your settings.
+AI Inbox Spam filter
+Get access to a conversations' summary every time you need to.
+Conversation summary
+CRM
+Add and manage custom attributes to enrich your customer profiles.
+Custom attributes
+Store and manage detailed information about each of your customers.
+Customer Profile
+Group your users based on behavior, attributes, or custom tags.
+Customer Segmentation
+Search for messages, articles, contacts or plugins using advanced filters.
+Smart filters
+Leave internal notes on customer profiles for better team collaboration.
+Customer-based notes
+Track and analyze the journey of your users from lead to loyal customer.
+Customer lifecycle tracking
+View a chronological history of interactions and events for each customer.
+Customer timeline activity
+Workflow
+Build super-advanced automation flows on any channels connected to Crisp.
+No-code AI chatbot builder
+Provide instant, AI-powered answers to common customer queries.
+AI-generated answers
+Design and test chatbot scenarios before going live.
+Scenario drafts
+Collect structured data from users directly within the chat.
+Custom Input fields
+Create advanced workflows that adapt based on user responses or attributes.
+Conditional flows
+Trigger automated actions based on keywords detected in user messages.
+Keyword-based triggers
+Integrate external services and trigger workflows using APIs.
+Automation via APIs
+Push data to external systems in real time as events happen in Crisp.
+Webhook actions
+Automate actions in workflows based on CRM data or events.
+CRM-based triggers
+Embed external content or tools directly within the chat.
+Iframes
+Use AI-powered blocks to build smarter multi-channel chatbot flows.
+AI-agent blocks
+Build as many chatbot templates as your workflows require.
+Unlimited AI chatbot templates
+Automatically detect user intent using artificial intelligence.
+AI-based triggers
+Help Center
+Write, manage and edit a dedicated help center that integrates deeply with Crisp.
+Articles & Categories
+Adapt colors, text and layout of your help center to fit your brand.
+Customization
+Offer your help center in multiple languages to serve a global audience.
+Multilingual help center
+Integrate your help center anywhere using our SDK.
+Help center SDK
+Search for messages, articles, contacts or plugins using advanced filters.
+Search
+Let users rate and comment on your help articles.
+Article feedback
+Use your own branded domain for your help center.
+Custom domain name
+Optimize your help center for search engines with sitemaps and meta data.
+Sitemap & SEO meta data
+Analytics
+Measure conversational activity, customer satisfaction and operator's activity.
+Prebuilt analytics
+Export your data for reporting, analysis or backup.
+Data export
+Build your own custom dashboard and analytics to fit with your company's metrics and objectives.
+Custom dashboards
+Access, export and analyze your data programmatically via API.
+API Analytics
+Status Page
+Monitor the health of your infrastructure and services in real time.
+Node monitoring
+Customize your status page to match your brand and communication style.
+Customization
+Send alerts and updates to users when incidents or changes occur.
+Notifications
+Publish important updates or news to your users via your status page.
+Announcement
+Data & Security
+Add an extra layer of security to your account login.
+Double-Factor Authentication
+Your data is hosted on European servers for compliance and privacy.
+EU-Hosted
+A legal agreement to ensure your data is handled according to regulations.
+Data Processing Agreement
+All data is encrypted in transit using TLS.
+TLS Encryption
+Your data is backed up and replicated for increased reliability.
+Data replication
+Get started
+Frequently asked questions
+Haven’t found what you’re looking for?
+Contact us
+Will I pay more for some features?
+Yes. We may provide some additional features that are not included in your plan, which you can subscribe to, but that's your choice to opt-in for them (eg. paid integrations for specific systems, additional contacts or more than 20 agents in your inbox).
+Is VAT included in plan prices?
+VAT is not included in our plan prices. As most Crisp customers are businesses, they do not owe VAT and thus we charge the advertised flat price. VAT is still due for consumers and may be applied on all plan prices (ie. non-business entities).
+If you are an EU business, make sure you enter your EU VAT number to prove your business status and thus remove VAT from the price. If you are located outside the EU, we won't charge any VAT, regardless of your business or consumer status.
+Do you offer discounts on multiple Crisp Workspaces?
+Yes! We offer discounts if you are subscribing multiple paid Crisp Workspaces (Crisp Plus and Essentials only) under the same account. We offer 20% off for 3 additional Workspaces. Come chat with us to find the best deal!
+What does a Crisp Workspace stand for?
+A Crisp Workspace is the place where you can invite operators to collaborate and answer customer questions.
+A Crisp workspace is tied to a unique identifier. Plans are billed per-Crisp workspace, not per domain and sub-domains.
+As an example, you can have one Crisp workspace which refers to one subscription and connect with the following channels: Instagram, Messenger, or Whatsapp Business, Viber, Line, Telegram, Emails. One and only one of each, except emails, can be centralized in one workspace. You can connect more by subscribing to higher limits.
+I’m running a nonprofit / I am a student. Do you offer discounts?
+We offer a 50% discount for nonprofits and students. Chat with us to get your promo code.
+Is it possible to pay yearly?
+Yes, it is possible! You can enable yearly payment mode on your Plans page in the Crisp app after you subscribed to a plan (click on the Monthly button, which then becomes Yearly once saved).
+Why are there no limits on the number of conversations?
+At Crisp, we believe existing chat platforms are still locked in the past. Why would we bill based on consumption (as all others do), while we are used to unlimited plans everywhere else (mobile carriers, Internet access providers, etc.)? Unlimited is peace of mind at the end of the month; this allows you to allocate more energy to your core business rather than petty subscription policies.
+Ready to build exceptional customer support?
+Get your AI Agent
+Signup
+14 days free trial
+— All Crisp features — No card required
+Book a demo
+The AI Customer Support platform.
+Built for every company.
+Socials
+Facebook
+X (Twitter)
+YouTube
+Instagram
+LinkedIn
+GitHub
+English (United States)
+Product
+Testimonials
+4.5
+Comparisons
+Alternatives
+Integrations
+Developer Hub
+Ask a demo
+Features
+Chat Widget
+AI Agents
+AI Chatbot
+Shared Inbox
+CRM
+Company
+About us
+Contact us
+Careers
+Brand Assets
+Partnerships
+Resources
+Read our blog
+Security
+Terms of use
+Privacy policy
+Cookie policy
+Cookie settings
+Ready to build exceptional customer support?
+Get your AI agent
+Meet Hugo, your brand's most efficient support teammate.
+Discover Hugo
+System status
+© 2026 Crisp IM SAS
+Crisp is built from France 🇫🇷
+Made in Europe

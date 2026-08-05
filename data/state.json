@@ -1,0 +1,121 @@
+{
+  "intercom": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "931b944408bf08bc86523f507cbd1e5bb2673e2d3ba5caf9a1d95e487df543e4"
+  },
+  "zendesk": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "cb8c25589a64a056291d95a151a014c6e158744b6f4011ae7b2dc2714e78794e"
+  },
+  "freshdesk": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "a3a1ade29f1359067e9135b34b4c81448476bf24835fe19eb2d70cdb79aad4c8"
+  },
+  "help-scout": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "4f11dad0526f7df5bd2542ba4af921e11ff23ed733a04e72c2f1c9d347bf4c9a"
+  },
+  "front": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "b38e174233f4eb9992aabc66cf1d432f04403f7555e2e42b344335527501ad51"
+  },
+  "crisp": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "a8abfa5c9c9c12007971bb0f25c0c4e8d91bf68c0e55eaa83a3eea431bb8fc4b"
+  },
+  "tidio": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "5032fbd36eb01b30dbd2e7e7e888c6f29832d3a764b32f1eb2287788c8c8446d"
+  },
+  "livechat": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "094cc4c836b01d2e0e84c1368676c6cf8c1ed78f4e83bc496fb5e138b842a6f2"
+  },
+  "zoho-desk": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "8e73d8b0cb0b4432519b38382759a1b7889a3d1f1cb3283dcd76df32cf47da81"
+  },
+  "chatwoot": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "9901ccf3aa75bb991f47ed415d653e0aed31d31630a2b221b56c9938cf9f9ac3"
+  },
+  "mailchimp": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "b495b63df153aacc0b01adbcb52850c07a4b2a0579ba6ae49fdbbbddd6bbfdf4"
+  },
+  "brevo": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "d00c23711ea19cd2058fde94da44680d1907dbce621aa22a0915c09d2011ec07"
+  },
+  "kit": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "3ec8b67adea7a3adc7882e2b2d2fba9df1b7aa3d6938c9880dbd38eca9f73ae9"
+  },
+  "mailerlite": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "454291c7cadf4e1f35f995d3c9ff051fc1796010ebf5727891382f90c89d14fc"
+  },
+  "beehiiv": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "ee5ee18abed06b56877b9f7f4b545c6a8e60a7e85a2056422fe50a0b7161a1ba"
+  },
+  "customer-io": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "691a829e8eeb7078584c0a9fff05141bf38647fd154148342cf79efa2b9c5d1c"
+  },
+  "omnisend": {
+    "consecutive_failures": 0,
+    "last_checked": "2026-08-05",
+    "status": "ok",
+    "hash_changes": 1,
+    "hash": "223a7c34a608ec05cee65c5c7744b3c8ed5d76f2f6e0d4f0f8553b486c631cda"
+  }
+}

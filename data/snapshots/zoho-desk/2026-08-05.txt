@@ -1,0 +1,247 @@
+Monthly
+Yearly
+save up to 34%
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+Express
+â¹
+420
+/user/month billed annually
+START FREE TRIAL
+Express
+Features List
+Micro business essentials:
+Email
+Support your customers across multiple email channels.
+Social media
+Respond to brand mentions and support tickets received from Instagram, Facebook, and X using Zoho Desk's social media module.
+Web forms
+Allow potentials and customers to log tickets via forms on any web page.
+AI Agents
+Bring your own key or use Zoho's LLM to build and deploy AI agents. Includes access to pre-built agents and up to 30M free tokens/month.
+Generative AI (BYOK)
+Connect your OpenAI (Availability: US, EU, AU, IN, JP, CA, UAE DCs ) or DeepSeek (Availability: CN DC) API key to enable GenAI capabilities such as customer sentiment analysis, contextual ticket summarization, and smart reply suggestions.
+Direct assignment
+Automatically assign tickets to specific agents based on the rules/criteria you set.
+Workflows
+A set of actions that are executed when certain specified conditions are met.
+Custom domain
+Connect your brand's support subdomain to Zoho Desk.
+Multi-level escalations
+Write rules to establish an automatic escalation matrix for your tickets.
+Contact management
+Record customer details as contacts, group them into accounts, add notes, and assign agents.
+Standard
+â¹
+800
+/user/month billed annually
+START FREE TRIAL
+Standard
+Features List
+Everything in
+Express +
+Business Messaging
+Embed a live chat widget on your website or app to engage in real-time conversations with logged-in customers and seamlessly convert chats into support tickets.
+Instant messaging
+Communicate with customers on WhatsApp, Instagram, Facebook Messenger, Telegram, WeChat, and Line from Zoho Desk's Instant Messaging module.
+Answer bot
+AI-powered reply assistant that provides relevant responses to customers based on its intelligence from your knowledge base articles.
+Community forum
+Build and grow your brand's interactive community of customers, prospects, and visitors.
+Work modes
+Intelligent sorting of tickets that lets you view tickets based on due time, priority, status, and CRM information.
+Knowledge base
+Create a repository of help articles, guides, and FAQs so customers can find assistance anytime.
+ASAP self-service widget
+The App Support Across Platforms (ASAP) widget in Zoho Desk can be embedded in any webpage/app, offering self-service, chat with a bot (available in Enterprise) and live chat options.
+Customer happiness ratings
+Automate the process of asking customers to rate the service upon ticket closure or after each response.
+Custom reports and dashboards
+Create custom reports and dashboards using various visualization elements to keep track of metrics that matter to you.
+MOST POPULAR
+Professional
+â¹
+1,400
+/user/month billed annually
+START FREE TRIAL
+Professional
+Features List
+Everything in
+Standard +
+Telephony
+Integrate with leading telephony providers and set up a toll-free number to provide inbound and outbound phone support to your customers.
+Zia AI
+Built in AI-powered generative, predictive, and analytical capabilities.
+Blueprints
+A user-friendly drag-and-drop automation builder helps you create sequences of actions. Once activated, every step is executed in order.
+Multi-department
+Organize your help desk into departments and carry out department-specific or global actions from one screen.
+Round-robin assignment
+Allocate tickets to agents according to their current workload or in a specific order, such as alphabetically or any custom sequence.
+Custom lookup fields
+Establish a one-to-many relationship between data fields across different modules.
+Multilingual help center
+Publish Knowledge Base articles in over 40 languages.
+Parent-child ticketing
+Create multiple sub-tickets (child ticket) for a primary ticket (parent ticket).
+Custom actions
+Access an additional set of pre-defined actions for your workflow rules(along with routine actions such as alerts, tasks, and field updates).
+*Note - actions' availability vary by edition
+Webhooks
+Send automated messages or information to third-party apps every time an event occurs in Zoho Desk.
+Power your business from Zoho's KSA-hosted data centres.
+Learn More
+Enterprise
+â¹
+2,400
+/user/month billed annually
+START FREE TRIAL
+Enterprise
+Features List
+Everything in
+Professional +
+Live chat (Zoho SalesIQ)
+A powerful live chat window that goes beyond real-time engagement.Classify conversations, convert them into tickets, display help articles, automate with bots, and engage high-intent visitorsâall from one place.
+Guided Conversations
+Build predefined conversation trees using a low-code self-service flow builder.
+Skill-based assignment
+Automatically route tickets to agents based on their proficiency and availability.
+Multi-level IVR
+Simplify customer navigation so they can reach the right agents using IVR.
+Multi-brand help center
+Create self-service portals for multiple brands within the same Zoho Desk account.
+Custom modules
+Build modules that reflect your business processes in addition to the existing standard Zoho Desk modules.
+Sandbox
+Try and test new processes in a simulated setup without hindering ongoing customer interactions.
+Power your business from Zoho's KSA-hosted data centres.
+Learn More
+Request a price quote
+Applicable local taxes will be charged.
+Compare Zoho Desk features across all editions
+Zoho Desk Free Edition
+Easy email ticketing, right out of the box! Zoho Desk's free plan offers three user licenses to help you start small and grow your support team.
+â¹
+2,600
+Free Forever
+Get Started
+Switch from other help desks for free
+Support your customers during the switch to Zoho Desk as our experts guide you through the data migration process.
+Make the switch
+Join
+100,000
++ companies delivering
+world-class customer service
+START FREE TRIAL NOW
+Buy Now
+Looking for a unified
+customer support stack?
+All-in-one customer service
+management suite
+Everything you need to deliver end-to-end customer supportâticketing, remote and AR support, visitor tracking, project management, feedback tools, advanced analytics, and more.
+Try Zoho Service Plus
+Delivering value on
+three fronts
+Price
+transparency
+Get the full product for the price you pay. No hidden costs in the long run.
+Faster
+deployments
+Minimize operational disruptions as
+Zoho Desk
+can be implemented 50% faster than competitors.
+Higher
+adoption
+Intuitive UX that lets you leverage
+Zoho Desk
+better and deliver great customer service from the get-go.
+Leading the charge on customer privacy
+Minimal reliance on third parties in our software
+No third-party website trackers or ads
+We don't sell your data
+START FREE TRIAL NOW
+Buy Now
+Pricing FAQs
+Expand All
+Collapse All
+Can I get a demo of
+Zoho Desk?
+Yes, we would be happy to demonstrate
+Zoho Desk
+through a web-conference at your convenience. The demo is a one hour session. To schedule your personal session, please contact
+sales@zohocorp.com.
+Is my data safe?
+Weâre fervent about keeping your data safe and secure. Our facilities feature stringent 24/7/365 security with video monitoring, biometric access, and advanced fire, flood, and theft monitoring systems. Our network security system employs the latest encryption and intrusion detection and prevention technologies.
+Learn more about Zoho's data protection measures.
+Is there a free trial?
+Jump right in and create your
+Zoho Desk
+account today, to activate a 15-day free trial for whichever plan you want to take for a spin. Customize, configure and explore all the powerful features of
+Zoho Desk
+without ever providing a credit card.
+How can I pay?
+We accept payment via Visa, MasterCard, American Express, and PayPal. We also accept payments via bank transfer or check transfer for yearly subscriptions.
+How do you support businesses signing up for Zoho Desk?
+For customers of our paid editions, you automatically have access to our Classic support. You also have the option to opt-in for one of our paid support plans that promises faster responses, round the clock support, dedicated on-boarding and more.
+Explore support plans
+Can I change plans during my trial?
+Yes, we encourage you to change plans to discover the absolute best fit for your organization. Click the Trial Other Editions link to switch from your current plan during the trial period.
+Can I cancel my subscription?
+If at any point you are not satisfied with our product or service, you can get a full refund based on our company
+refund policy.
+What happens when my trial ends?
+Once your 15-day free trial ends, your plan will automatically be downgraded to our free plan. If you wish to continue using our unrestricted features that you have tested during your trial, you can purchase a paid plan of your choice available for a monthly or yearly subscription.
+Am I eligible for any discounts?
+Yes, we offer a discount on up-front annual commitments. Our annual prices on this page reflect this discount. We also have a special pricing if you're a non-profit or an educational institution.
+What happens when I upgrade from Zoho Desk Free edition to a paid edition? How does it affect user limits, billing options, and light users?
+Upgrading from the Free edition to any paid Zoho Desk plan unlocks more support team user profiles, richer features, and flexible billing. Hereâs what changes based on the details shown in the pricing table:
+1. Support rep limit increases
+The Free edition gives you 3 users with limited capabilities.
+When you move to a paid plan (Standard, Professional, Enterprise), those 3 users will no longer be included, but your user limit will increase to 5 users in Standard or unlimited users in all higher plans.
+This is ideal if your team is growing or if you want to add specialized support roles.
+2. Access to light users
+Light users are not available in the Free edition.
+Paid plans (Professional, Enterprise) offer light users at
+â¹
+345
+per light agent/month, and Enterprise edition includes 50 free light users.
+Light users are perfect for users who need to collaborate internally (view tickets, leave comments) without handling full support responsibilities.
+3. Flexible billing options
+Free edition has no billing
+Paid editions allow you to choose between:
+Annual billing (lower per-agent cost)
+Monthly billing (flexibility without commitment)
+4. Overall feature expansion
+Beyond support rep limits and billing, upgrading unlocks advanced capabilities such as automation, multi-department support, SLAs, AI features, custom roles/profiles, and more that the Free edition does not offer (check out our
+full comparison of features across editions).
+Have more questions?
+You can connect with us instantly through live chat (24x5) or by writing to us at
+sales@zohocorp.com.

@@ -1,0 +1,122 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Annual prices calculated from stated yearly billing: Creator $390/year = $32.50/month effective; Pro $790/year = $65.83/month effective. The page shows \"Up to 10,000\" email subscribers for the Newsletter plan in the comparison table, but the plan card states \"For 1,000 email subscribers\" - using 1000 from the plan card as instructed. All plans include 14-day free trial. Supported features extracted from listed features that matched the allowed feature list.",
+  "plans": [
+    {
+      "name": "Newsletter",
+      "key": "newsletter",
+      "monthly_price": 0.0,
+      "annual_price_per_month": 0.0,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "basic visual automations",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "email subscribers",
+          "value": 1000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Creator",
+      "key": "creator",
+      "monthly_price": 33.0,
+      "annual_price_per_month": 32.5,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "email sequences",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "email subscribers",
+          "value": 1000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "visual automations",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "basic workflows",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 66.0,
+      "annual_price_per_month": 65.83,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "email subscribers",
+          "value": 1000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "visual automations",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "basic workflows",
+        "integrations",
+        "live chat",
+        "priority support"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:13:09.692842+00:00"
+}

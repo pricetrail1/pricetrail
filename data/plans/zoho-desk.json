@@ -1,0 +1,112 @@
+{
+  "currency": "INR",
+  "pricing_is_public": true,
+  "extraction_notes": "Only annual per-user pricing shown for paid plans. Page states \"save up to 34%\" for annual billing, suggesting monthly prices are higher but not displayed. Free plan limited to 3 users. Light users available as add-on (₹345/month) in Professional and Enterprise. Monthly pricing toggle visible but prices not shown in the extracted content.",
+  "plans": [
+    {
+      "name": "Zoho Desk Free Edition",
+      "key": "zohodeskfree",
+      "monthly_price": 0.0,
+      "annual_price_per_month": 0.0,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "users",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "audit log",
+        "email"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": 2400.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 15,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "audit log",
+        "custom branding",
+        "custom reporting",
+        "live chat",
+        "phone support",
+        "sandbox"
+      ]
+    },
+    {
+      "name": "Express",
+      "key": "express",
+      "monthly_price": null,
+      "annual_price_per_month": 420.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 15,
+      "limits": [],
+      "features": [
+        "audit log",
+        "email",
+        "sso",
+        "workflows"
+      ]
+    },
+    {
+      "name": "Professional",
+      "key": "professional",
+      "monthly_price": null,
+      "annual_price_per_month": 1400.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 15,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "audit log",
+        "custom branding",
+        "custom reporting",
+        "live chat",
+        "phone support"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": 800.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 15,
+      "limits": [],
+      "features": [
+        "audit log",
+        "custom reporting",
+        "live chat",
+        "whatsapp"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:12:41.813339+00:00"
+}

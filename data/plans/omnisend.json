@@ -1,0 +1,148 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Annual pricing calculated from 30% discount on 3-month upfront payment shown on page (Standard: $11.20 → $33.60 for 3 months = $7.84/mo effective annual; Pro: $41.30 → $123.90 for 3 months = $28.91/mo effective annual). SMS is an add-on charged separately per SMS (starting at $0.007/SMS in US) and not included in core plan pricing. Account expert service available from $400/mo but presented as optional add-on. Custom plan for businesses with 150,001+ contacts shown as \"Let's talk\" / \"Request more info\".",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications",
+          "value": 500.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "onboarding support",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 11.2,
+      "annual_price_per_month": 7.84,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "onboarding support",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 41.3,
+      "annual_price_per_month": 28.91,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 2500.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "onboarding support",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Custom",
+      "key": "custom",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "onboarding support",
+        "priority support"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-05T00:13:43.188378+00:00"
+}
