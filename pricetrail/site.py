@@ -26,7 +26,7 @@ from .theme import CSS, FONT_LINK
 
 SITE_NAME = "PriceTrail"
 # Change this to your real domain before you publish.
-BASE_URL = "https://example.com"
+BASE_URL = "https://pricetrail1.github.io/pricetrail"
 TAGLINE = "A permanent record of what software costs."
 
 SYMBOLS = {"USD": "$", "GBP": "\u00a3", "EUR": "\u20ac", "CAD": "CA$",
