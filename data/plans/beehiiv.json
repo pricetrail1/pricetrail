@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "All four plans extracted. Scale plan shows annual savings of $71/year ($43/month billed annually = $516/year, vs $49/month = $588/year). Max plan shows annual savings of $157/year ($96/month billed annually = $1152/year, vs $120/month = $1440/year). Enterprise has custom pricing with no specific numbers. AI Credit Limits are per day. Teams seats vary by plan.",
+  "extraction_notes": "All plans extracted. Scale plan annual pricing: $517 billed annually = $43.08 per month. Max plan annual pricing: $1,151 billed annually = $95.92 per month. Enterprise plan shows \"Custom Pricing\" with no numerical price. The page states pricing is for \"Monthly billing\" and \"Annual billing\" options, with annual showing yearly totals.",
   "plans": [
     {
       "name": "Launch",
       "key": "launch",
       "monthly_price": 0.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 0.0,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -21,7 +21,7 @@
           "unit": null
         },
         {
-          "metric": "episodes per month",
+          "metric": "podcast episodes per month",
           "value": 1.0,
           "unit": null
         },
@@ -47,7 +47,6 @@
         }
       ],
       "features": [
-        "ai assistant",
         "api access"
       ]
     },
@@ -55,7 +54,7 @@
       "name": "Scale",
       "key": "scale",
       "monthly_price": 43.0,
-      "annual_price_per_month": 43.0,
+      "annual_price_per_month": 43.08,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -69,7 +68,7 @@
           "unit": null
         },
         {
-          "metric": "episodes per month",
+          "metric": "podcast episodes per month",
           "value": 4.0,
           "unit": null
         },
@@ -95,18 +94,15 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
         "api access",
-        "integrations",
-        "priority support"
+        "integrations"
       ]
     },
     {
       "name": "Max",
       "key": "max",
       "monthly_price": 96.0,
-      "annual_price_per_month": 96.0,
+      "annual_price_per_month": 95.92,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -120,7 +116,7 @@
           "unit": null
         },
         {
-          "metric": "episodes per month",
+          "metric": "podcast episodes per month",
           "value": -1.0,
           "unit": null
         },
@@ -146,10 +142,7 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
         "api access",
-        "custom reporting",
         "integrations",
         "priority support"
       ]
@@ -172,7 +165,7 @@
           "unit": null
         },
         {
-          "metric": "episodes per month",
+          "metric": "podcast episodes per month",
           "value": -1.0,
           "unit": null
         },
@@ -198,17 +191,13 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
         "api access",
-        "custom reporting",
         "dedicated account manager",
         "integrations",
-        "onboarding support",
         "priority support",
         "sso"
       ]
     }
   ],
-  "captured_at": "2026-08-05T09:01:38.628362+00:00"
+  "captured_at": "2026-08-05T11:42:27.328925+00:00"
 }

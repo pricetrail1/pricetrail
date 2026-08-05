@@ -1,55 +1,24 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Fin AI Agent is presented as a standalone product option ($0.99 per outcome) alongside the three main subscription tiers (Essential, Advanced, Expert). Page shows usage-based charges for Fin outcomes, messaging channels (SMS, WhatsApp, Phone), and email campaigns separate from seat pricing. Free trial is 14 days. Copilot pricing shows both monthly ($35) and annual ($29 per month) options. Fin AI Agent pricing is per outcome with minimum monthly commitment mentioned in FAQ but no specific minimum stated. All main plans include unlimited live chat, support email, in-app chats, banners, and tooltips as baseline (not listed as differentiating features). Lite seats available on Advanced/Expert are free for internal collaboration, not counted as paid seats.",
+  "extraction_notes": "Essential plan shows a promotional \"New customer offer: Save 35%\" with strikethrough price of $29 and discounted price of $19 when billed annually; recorded the discounted annual price ($19/mo). Advanced and Expert plans only show monthly prices (\"From $0.99\" appears to refer to Fin AI Agent per-outcome pricing, not plan base price). Fin AI Agent is a separate product that can be used with external helpdesks; priced at $0.99 per outcome with minimum monthly commitment. Advanced and Expert do not show annual pricing. Copilot shows $29/month when billed annually, $35/month when billed monthly. Pro and Proactive Support Plus are add-ons. All plans include 14-day free trial.",
   "plans": [
-    {
-      "name": "Fin AI Agent",
-      "key": "finaiagent",
-      "monthly_price": 0.99,
-      "annual_price_per_month": 0.99,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "fin ai agent outcomes",
-          "value": -1.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "ai chatbot"
-      ]
-    },
     {
       "name": "Essential",
       "key": "essential",
       "monthly_price": 29.0,
-      "annual_price_per_month": 29.0,
+      "annual_price_per_month": 19.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
       "trial_days": 14,
-      "limits": [
-        {
-          "metric": "fin ai agent outcomes",
-          "value": -1.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "ai chatbot",
-        "api access",
-        "custom branding",
+        "ai assistant",
         "integrations",
-        "live chat",
-        "role permissions"
+        "live chat"
       ]
     },
     {
@@ -62,17 +31,17 @@
       "is_per_seat": true,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
-          "metric": "ai auto-translation conversations free",
+          "metric": "ai auto-translation conversations",
           "value": 10.0,
-          "unit": "per agent per month"
+          "unit": "free per agent per month"
         },
         {
-          "metric": "copilot conversations free",
+          "metric": "copilot conversations",
           "value": 10.0,
-          "unit": "per agent per month"
+          "unit": "free per agent per month"
         }
       ],
       "features": [
@@ -83,27 +52,18 @@
       "name": "Advanced",
       "key": "advanced",
       "monthly_price": 85.0,
-      "annual_price_per_month": 85.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
       "trial_days": 14,
-      "limits": [
-        {
-          "metric": "fin ai agent outcomes",
-          "value": -1.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "ai chatbot",
-        "api access",
-        "custom branding",
+        "ai assistant",
         "integrations",
-        "live chat",
-        "role permissions"
+        "live chat"
       ]
     },
     {
@@ -116,7 +76,7 @@
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "conversations analyzed",
@@ -124,7 +84,10 @@
           "unit": "per month"
         }
       ],
-      "features": []
+      "features": [
+        "ai assistant",
+        "custom reporting"
+      ]
     },
     {
       "name": "Proactive Support Plus",
@@ -136,7 +99,7 @@
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "messages sent",
@@ -150,29 +113,42 @@
       "name": "Expert",
       "key": "expert",
       "monthly_price": 132.0,
-      "annual_price_per_month": 132.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
       "trial_days": 14,
+      "limits": [],
+      "features": [
+        "ai assistant",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Fin AI Agent",
+      "key": "finaiagent",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
       "limits": [
         {
-          "metric": "fin ai agent outcomes",
-          "value": -1.0,
-          "unit": null
+          "metric": "outcomes",
+          "value": 0.99,
+          "unit": "per outcome"
         }
       ],
       "features": [
-        "ai chatbot",
-        "api access",
-        "custom branding",
-        "integrations",
-        "live chat",
-        "role permissions"
+        "ai assistant"
       ]
     }
   ],
-  "captured_at": "2026-08-05T09:11:46.568808+00:00"
+  "captured_at": "2026-08-05T11:42:13.852834+00:00"
 }
