@@ -73,8 +73,8 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-05",
     "status": "ok",
-    "hash_changes": 2,
-    "hash": "9e73cb0090ad49af4dd1d01f7adf26707acee3d23bdfd635034b28dc85a0c04c"
+    "hash_changes": 3,
+    "hash": "1fc0fe20f353547ec6835a890e363896a20673cd1c8a5482b8f62293b75f8b46"
   },
   "brevo": {
     "consecutive_failures": 0,
@@ -84,7 +84,7 @@
     "hash": "d00c23711ea19cd2058fde94da44680d1907dbce621aa22a0915c09d2011ec07"
   },
   "kit": {
-    "consecutive_failures": 1,
+    "consecutive_failures": 2,
     "last_checked": "2026-08-05",
     "status": "error",
     "hash_changes": 1,
@@ -102,8 +102,8 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-05",
     "status": "ok",
-    "hash_changes": 1,
-    "hash": "ee5ee18abed06b56877b9f7f4b545c6a8e60a7e85a2056422fe50a0b7161a1ba"
+    "hash_changes": 2,
+    "hash": "6515b966e1fe64b694ff6e69ed9d8d694290c47b18fad3384d776af3a852f0bd"
   },
   "customer-io": {
     "consecutive_failures": 0,

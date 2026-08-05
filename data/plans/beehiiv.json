@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Annual billing prices shown as $517/year (Scale, $43/month effective) and $1,151/year (Max, $96/month effective). These are identical to monthly prices stated, so annual_price_per_month matches monthly_price for Scale and Max. Scale plan saves $71/year and Max saves $157/year over monthly billing equivalent. API Access on Launch excludes Send API (which is Enterprise-only). Features listed reflect only those from the allowed feature list that are explicitly stated in the plan cards and comparison table.",
+  "extraction_notes": "All four plans extracted. Scale plan shows annual savings of $71/year ($43/month billed annually = $516/year, vs $49/month = $588/year). Max plan shows annual savings of $157/year ($96/month billed annually = $1152/year, vs $120/month = $1440/year). Enterprise has custom pricing with no specific numbers. AI Credit Limits are per day. Teams seats vary by plan.",
   "plans": [
     {
       "name": "Launch",
@@ -26,13 +26,13 @@
           "unit": null
         },
         {
-          "metric": "publications",
-          "value": 3.0,
+          "metric": "podcast shows",
+          "value": 1.0,
           "unit": null
         },
         {
-          "metric": "shows",
-          "value": 1.0,
+          "metric": "publications",
+          "value": 3.0,
           "unit": null
         },
         {
@@ -74,13 +74,13 @@
           "unit": null
         },
         {
-          "metric": "publications",
-          "value": 3.0,
+          "metric": "podcast shows",
+          "value": 1.0,
           "unit": null
         },
         {
-          "metric": "shows",
-          "value": 1.0,
+          "metric": "publications",
+          "value": 3.0,
           "unit": null
         },
         {
@@ -98,7 +98,8 @@
         "advanced workflows",
         "ai assistant",
         "api access",
-        "integrations"
+        "integrations",
+        "priority support"
       ]
     },
     {
@@ -124,13 +125,13 @@
           "unit": null
         },
         {
-          "metric": "publications",
-          "value": 10.0,
+          "metric": "podcast shows",
+          "value": 3.0,
           "unit": null
         },
         {
-          "metric": "shows",
-          "value": 3.0,
+          "metric": "publications",
+          "value": 10.0,
           "unit": null
         },
         {
@@ -148,7 +149,7 @@
         "advanced workflows",
         "ai assistant",
         "api access",
-        "custom branding",
+        "custom reporting",
         "integrations",
         "priority support"
       ]
@@ -176,12 +177,12 @@
           "unit": null
         },
         {
-          "metric": "publications",
+          "metric": "podcast shows",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "shows",
+          "metric": "publications",
           "value": -1.0,
           "unit": null
         },
@@ -200,7 +201,7 @@
         "advanced workflows",
         "ai assistant",
         "api access",
-        "custom branding",
+        "custom reporting",
         "dedicated account manager",
         "integrations",
         "onboarding support",
@@ -209,5 +210,5 @@
       ]
     }
   ],
-  "captured_at": "2026-08-05T00:13:29.625304+00:00"
+  "captured_at": "2026-08-05T09:01:38.628362+00:00"
 }
