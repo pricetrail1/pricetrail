@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Fin AI Agent is priced at $0.99 per outcome (usage-based). Essential/Advanced/Expert are seat-based plans shown as \"From $0.99\" (referring to Fin AI Agent) + the per-seat price. Page indicates pricing is \"Billed annually\" for the main comparison table. Copilot pricing: $29/agent/month billed annually, $35/agent/month billed monthly. All plans include 14-day free trial. Free features (live chat, support email, in-app chats, banners, tooltips) included but not detailed in feature lists per rules. The page does not specify other detailed feature differences between plans beyond mentioning automation/collaboration/security/multibrand capabilities without specifics matching the required feature list.",
+  "extraction_notes": "Essential plan shows a discounted new customer offer price of $19/mo (marked as \"Save 35%\"), but the list price appears to be $29/mo based on the display. The page indicates \"Billed annually\" at the top. Copilot pricing shows $29 per agent/month billed annually, or $35 per agent/month billed monthly—both prices recorded. All three main plans (Essential, Advanced, Expert) include Fin AI Agent. The page shows Fin pricing is $0.99 per outcome, which is a usage-based charge, not a seat-based plan, but it's listed as a standalone option for existing helpdesk users. Trial is 14 days for all plans and add-ons included in trial.",
   "plans": [
     {
       "name": "Fin AI Agent",
@@ -18,7 +18,7 @@
         {
           "metric": "outcomes",
           "value": 1.0,
-          "unit": null
+          "unit": "per outcome"
         }
       ],
       "features": []
@@ -26,8 +26,8 @@
     {
       "name": "Essential",
       "key": "essential",
-      "monthly_price": 29.0,
-      "annual_price_per_month": 29.0,
+      "monthly_price": 19.0,
+      "annual_price_per_month": 19.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -36,7 +36,9 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "live chat"
+        "api access",
+        "live chat",
+        "saml"
       ]
     },
     {
@@ -50,7 +52,13 @@
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "free conversations",
+          "value": 10.0,
+          "unit": "per agent per month"
+        }
+      ],
       "features": []
     },
     {
@@ -66,7 +74,9 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "live chat"
+        "api access",
+        "live chat",
+        "saml"
       ]
     },
     {
@@ -122,7 +132,9 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "live chat"
+        "api access",
+        "live chat",
+        "saml"
       ]
     }
   ]
