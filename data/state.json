@@ -3,8 +3,8 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-05",
     "status": "ok",
-    "hash_changes": 5,
-    "hash": "931b944408bf08bc86523f507cbd1e5bb2673e2d3ba5caf9a1d95e487df543e4"
+    "hash_changes": 6,
+    "hash": "1dc3b956ea216f9f9addc50566880a5301e38d4b5d86941f98ecc5a7fea238d5"
   },
   "zendesk": {
     "consecutive_failures": 0,
@@ -84,7 +84,7 @@
     "hash": "d00c23711ea19cd2058fde94da44680d1907dbce621aa22a0915c09d2011ec07"
   },
   "kit": {
-    "consecutive_failures": 7,
+    "consecutive_failures": 8,
     "last_checked": "2026-08-05",
     "status": "error",
     "hash_changes": 1,
@@ -102,8 +102,8 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-05",
     "status": "ok",
-    "hash_changes": 4,
-    "hash": "6515b966e1fe64b694ff6e69ed9d8d694290c47b18fad3384d776af3a852f0bd"
+    "hash_changes": 5,
+    "hash": "ee5ee18abed06b56877b9f7f4b545c6a8e60a7e85a2056422fe50a0b7161a1ba"
   },
   "customer-io": {
     "consecutive_failures": 0,

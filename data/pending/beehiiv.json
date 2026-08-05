@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Annual pricing shown as yearly savings but effective monthly price is the same as monthly billing. Scale shows $517 billed annually ($43/month), Max shows $1,151 billed annually ($96/month). Limits extracted from the feature comparison table at the bottom of the page.",
+  "extraction_notes": "Annual prices calculated from stated annual billing amounts: Scale $517/year = $43.08/month; Max $1,151/year = $95.92/month. Features mapped to allowed list only. Launch plan includes unlimited email sends but no hard send limit stated. Scale and Max both support 100K subscribers per comparison table. Enterprise details sparse but includes Send API which is restricted on other plans.",
   "plans": [
     {
       "name": "Launch",
@@ -55,7 +55,7 @@
       "name": "Scale",
       "key": "scale",
       "monthly_price": 43.0,
-      "annual_price_per_month": 43.0,
+      "annual_price_per_month": 43.08,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -95,16 +95,17 @@
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant",
         "api access",
-        "priority support"
+        "integrations"
       ]
     },
     {
       "name": "Max",
       "key": "max",
       "monthly_price": 96.0,
-      "annual_price_per_month": 96.0,
+      "annual_price_per_month": 95.92,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -144,9 +145,11 @@
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant",
         "api access",
-        "priority support"
+        "custom branding",
+        "integrations"
       ]
     },
     {
@@ -193,10 +196,13 @@
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant",
         "api access",
+        "custom branding",
         "dedicated account manager",
-        "priority support",
+        "integrations",
+        "onboarding support",
         "sso"
       ]
     }
