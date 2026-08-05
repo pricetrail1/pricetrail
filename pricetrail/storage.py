@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 SNAPSHOTS = DATA / "snapshots"
 PLANS = DATA / "plans"
+PENDING = DATA / "pending"
 CHANGES = DATA / "changes.jsonl"
 REVIEW = DATA / "review_queue.jsonl"
 STATE = DATA / "state.json"
@@ -34,7 +35,7 @@ def slugify(name: str) -> str:
 
 
 def _ensure() -> None:
-    for d in (DATA, SNAPSHOTS, PLANS):
+    for d in (DATA, SNAPSHOTS, PLANS, PENDING):
         d.mkdir(parents=True, exist_ok=True)
 
 
@@ -77,6 +78,34 @@ def save_plans(slug: str, record: dict) -> None:
     (PLANS / f"{slug}.json").write_text(
         json.dumps(record, indent=2, ensure_ascii=False), encoding="utf-8"
     )
+
+
+# ---------- unconfirmed readings ----------
+#
+# A reading waits here until the next run agrees with it. Only then does it
+# become the published baseline. This is what stops a one-off misreading being
+# emailed to a customer as a price change.
+
+def load_pending(slug: str) -> dict | None:
+    path = PENDING / f"{slug}.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+
+
+def save_pending(slug: str, record: dict) -> None:
+    _ensure()
+    (PENDING / f"{slug}.json").write_text(
+        json.dumps(record, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def clear_pending(slug: str) -> None:
+    path = PENDING / f"{slug}.json"
+    if path.exists():
+        path.unlink()
 
 
 # ---------- change log ----------

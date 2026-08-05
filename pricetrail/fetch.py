@@ -9,6 +9,7 @@ out of trouble and keeps your crawler unblocked.
 
 from __future__ import annotations
 
+import os
 import re
 import time
 import urllib.robotparser
@@ -19,8 +20,25 @@ import requests
 
 # Identify yourself. Put a real page at this URL explaining what the bot does
 # and how to ask you to stop. Site owners who can reach you rarely block you.
+def _default_user_agent() -> str:
+    """Identify the bot honestly, using the real site address when we know it.
+
+    Site owners who can find out who is crawling them and how to complain
+    almost never block you. Ones who can't, sometimes do.
+    """
+    site = os.environ.get("SITE_BASE_URL")
+    if not site:
+        repo = os.environ.get("GITHUB_REPOSITORY", "")
+        if "/" in repo:
+            owner, name = repo.split("/", 1)
+            site = f"https://{owner}.github.io/{name}"
+    contact = f"+{site.rstrip('/')}/bot.html; " if site else ""
+    return f"PriceTrailBot/0.1 ({contact}pricing change tracker)"
+
+
 USER_AGENT = (
-    "PriceTrailBot/0.1 (+https://getpricetrail.com/bot.html; pricing change tracker)"
+    "PriceTrailBot/0.1 (+https://getpricetrail.com/bot.html; "
+    "pricing change tracker)"
 )
 
 DEFAULT_TIMEOUT = 20

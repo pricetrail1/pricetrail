@@ -74,8 +74,6 @@ vendors:
     category: email-marketing
     crawl_tier: daily
 
-  
-
   - name: Brevo
     pricing_url: https://www.brevo.com/pricing/
     category: email-marketing
@@ -117,6 +115,7 @@ vendors:
 #   Groove   https://www.groovehq.com/pricing
 #   Klaviyo  https://www.klaviyo.com/pricing
 #   Loops    https://loops.so/pricing
+#   ActiveCampaign  https://www.activecampaign.com/pricing
 #
 # To handle these later you would need a headless browser to render the page
 # first. That costs money and complexity -- worth it once you have paying

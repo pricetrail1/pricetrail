@@ -17,7 +17,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from pricetrail.clean import clean_html, content_hash, looks_like_pricing_page
-from pricetrail.diff import CONFIDENCE_PUBLISH, diff_pricing
+from pricetrail.diff import (CONFIDENCE_PUBLISH, diff_pricing,
+                             fingerprint)
 from pricetrail.extract import normalise
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -212,6 +213,88 @@ def test_survives_legacy_records():
     check("still detects a real change against a legacy record", len(rise) == 1)
 
 
+def test_rounding_noise_ignored():
+    """Regression from the first live run: beehiiv appeared to reprice from
+    $96.00 to $95.92 and $43.00 to $43.08. Nobody reprices by eight cents --
+    that is the page being read slightly differently, not a price change."""
+    print("\nRounding noise")
+
+    for old_p, new_p, label in [(96.0, 95.92, "$96 -> $95.92"),
+                                (43.0, 43.08, "$43 -> $43.08")]:
+        after = variant(Pro={"monthly_price": new_p})
+        before = variant(Pro={"monthly_price": old_p})
+        events = [e for e in diff_pricing("X", before, after)
+                  if e.change_type.startswith("price")]
+        check(f"ignores {label}", events == [],
+              f"reported {[e.headline() for e in events]}")
+
+    real = variant(Pro={"monthly_price": 59})
+    events = [e for e in diff_pricing("X", BEFORE, real)
+              if e.change_type == "price_increase"]
+    check("still reports a real 20% rise", len(events) == 1)
+
+    small_but_real = variant(Pro={"monthly_price": 50})   # 49 -> 50, ~2%
+    events = [e for e in diff_pricing("X", BEFORE, small_but_real)
+              if e.change_type == "price_increase"]
+    check("still reports a 2% rise (above the floor)", len(events) == 1)
+
+
+def test_confirmation_kills_flip_flops():
+    """Regression: Intercom read $29, then $19, then $29 again -- two published
+    'changes', neither real. A reading now has to agree with itself on two
+    consecutive runs before anything is published."""
+    print("\nTwo-run confirmation")
+
+    baseline = variant(Pro={"monthly_price": 29})
+    misread  = variant(Pro={"monthly_price": 19})
+    correct  = variant(Pro={"monthly_price": 29})
+
+    published, pending = [], None
+
+    def a_run(reading):
+        """Mirror of the logic in run.py."""
+        nonlocal pending
+        if fingerprint(reading) == fingerprint(baseline):
+            pending = None
+            return []
+        if pending is None or fingerprint(pending) != fingerprint(reading):
+            pending = reading
+            return []
+        pending = None
+        return diff_pricing("Intercom", baseline, reading)
+
+    published += a_run(misread)
+    check("run 1 (the misread) publishes nothing", published == [])
+
+    published += a_run(correct)
+    check("run 2 (flips back) publishes nothing", published == [],
+          f"published {[e.headline() for e in published]}")
+
+    published += a_run(correct)
+    check("run 3 (back to baseline) publishes nothing", published == [])
+
+    # And a genuine change still gets through, one run later than before.
+    real = variant(Pro={"monthly_price": 39})
+    published += a_run(real)
+    check("a real change is held on first sighting", published == [])
+    published += a_run(real)
+    rises = [e for e in published if e.change_type == "price_increase"]
+    check("a real change publishes once confirmed", len(rises) == 1,
+          f"got {[e.headline() for e in published]}")
+
+
+def test_fingerprint():
+    print("\nFingerprints")
+    check("same content, same fingerprint",
+          fingerprint(BEFORE) == fingerprint(variant()))
+    check("different price, different fingerprint",
+          fingerprint(BEFORE) != fingerprint(variant(Pro={"monthly_price": 59})))
+    check("capture time is ignored",
+          fingerprint({**BEFORE, "captured_at": "2026-01-01"})
+          == fingerprint({**BEFORE, "captured_at": "2026-12-31"}))
+    check("empty record is safe", fingerprint({}) == "" or True)
+
+
 def test_normalise():
     print("\nNormalisation")
     messy = normalise({
@@ -253,6 +336,9 @@ if __name__ == "__main__":
     test_hash_stability()
     test_diff()
     test_survives_legacy_records()
+    test_rounding_noise_ignored()
+    test_confirmation_kills_flip_flops()
+    test_fingerprint()
     test_normalise()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")

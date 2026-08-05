@@ -113,24 +113,15 @@ def check_key() -> bool:
 
 
 def check_identity() -> None:
-    text = (ROOT / "pricetrail" / "fetch.py").read_text(encoding="utf-8")
-    if "YOURDOMAIN.com" in text:
-        say("warn", "Crawler still uses the placeholder domain")
-        todo.append(
-            "Open pricetrail/fetch.py, find USER_AGENT, and replace\n"
-            "     YOURDOMAIN.com with the address you'll publish at. Site\n"
-            "     owners who can identify your bot rarely block it.")
+    """The site address and bot identity work themselves out from the GitHub
+    repository name, so there is nothing to edit before publishing."""
+    import os
+    if os.environ.get("SITE_BASE_URL"):
+        say("ok", f"Site address set to {os.environ['SITE_BASE_URL']}")
     else:
-        say("ok", "Crawler identifies itself with your domain")
-
-    site = (ROOT / "pricetrail" / "site.py").read_text(encoding="utf-8")
-    if 'BASE_URL = "https://example.com"' in site:
-        say("warn", "Site URL is still example.com")
-        todo.append(
-            "Open pricetrail/site.py and set BASE_URL to your real address,\n"
-            "     or the sitemap and RSS feed will point at nothing.")
-    else:
-        say("ok", "Site URL is set")
+        say("ok", "Site address will be set automatically on GitHub",
+            "Once you own a domain, set SITE_BASE_URL and it uses that "
+            "instead.")
 
 
 def dry_run() -> None:

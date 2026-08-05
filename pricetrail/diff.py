@@ -14,6 +14,7 @@ CEO costs you that customer permanently, so the asymmetry is worth the delay.
 
 from __future__ import annotations
 
+import hashlib
 from dataclasses import dataclass, asdict, field
 from datetime import datetime, timezone
 
@@ -23,6 +24,12 @@ from datetime import datetime, timezone
 IMPLAUSIBLE_MULTIPLE = 4.0
 
 CONFIDENCE_PUBLISH = 0.80  # at or above this, publish automatically
+
+# Real SaaS repricing lands between about 5% and 30%. A move smaller than this
+# is a rounding wobble in how the page was read, not a company changing its
+# mind. Seen live: $96.00 -> $95.92, and $43.00 -> $43.08. Nobody reprices by
+# eight cents.
+MIN_PCT_CHANGE = 1.0
 
 
 @dataclass
@@ -66,6 +73,33 @@ class Change:
             return (f"{self.vendor}{p}: {self.field} limit "
                     f"{self.old_value} \u2192 {self.new_value}")
         return f"{self.vendor}{p}: {self.change_type} {self.field}"
+
+
+def fingerprint(record: dict) -> str:
+    """A hash of everything that matters about a pricing record.
+
+    Ignores when it was captured. Two readings with the same fingerprint mean
+    the page said exactly the same thing twice, which is what lets us tell a
+    real change from a one-off misreading.
+    """
+    if not record:
+        return ""
+    parts = [str(record.get("currency", "")),
+             str(bool(record.get("pricing_is_public", True)))]
+    for plan in sorted(record.get("plans", []), key=lambda p: _key_of(p)):
+        parts.append("|".join([
+            _key_of(plan),
+            str(plan.get("monthly_price")),
+            str(plan.get("annual_price_per_month")),
+            str(bool(plan.get("is_free"))),
+            str(bool(plan.get("is_custom_pricing"))),
+            str(bool(plan.get("is_addon"))),
+            ",".join(f'{l.get("metric")}={l.get("value")}'
+                     for l in sorted(plan.get("limits", []),
+                                     key=lambda l: str(l.get("metric")))),
+            ",".join(sorted(plan.get("features", []))),
+        ]))
+    return hashlib.sha256("||".join(parts).encode()).hexdigest()
 
 
 def _key_of(plan: dict) -> str:
@@ -145,6 +179,9 @@ def _diff_plan(vendor: str, old: dict, new: dict, base: float) -> list[Change]:
             out.append(Change(vendor, "price_availability_changed", name,
                               pfield, o, n, base * 0.7))
             continue
+        if o and abs((n - o) / o) * 100 < MIN_PCT_CHANGE:
+            continue  # rounding noise, not a repricing
+
         kind = "price_increase" if n > o else "price_decrease"
         conf = base
         if o > 0 and (max(o, n) / min(o, n)) > IMPLAUSIBLE_MULTIPLE:

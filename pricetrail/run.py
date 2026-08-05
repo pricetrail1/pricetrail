@@ -26,7 +26,7 @@ from urllib.parse import urlparse
 
 from . import storage
 from .clean import clean_html, content_hash, looks_like_pricing_page
-from .diff import diff_pricing
+from .diff import diff_pricing, fingerprint
 from .extract import ExtractionError, estimate_cost_usd, extract_pricing
 from .fetch import Fetcher
 
@@ -73,7 +73,7 @@ def run(dry_run: bool = False, only: list[str] | None = None,
     spent = 0.0
 
     stats = dict(checked=0, unchanged=0, extracted=0, changes=0,
-                 queued=0, failed=0, skipped_robots=0, noisy=0)
+                 queued=0, failed=0, skipped_robots=0, noisy=0, awaiting=0)
     repaired: list[tuple[str, str, str]] = []
 
     print(f"Run started {datetime.now(timezone.utc).isoformat()} "
@@ -169,25 +169,12 @@ def run(dry_run: bool = False, only: list[str] | None = None,
         storage.record_spend(cost)
         stats["extracted"] += 1
 
-        previous = storage.load_plans(slug)
-        if previous and previous.get("demo"):
-            # Sample data is invented. Comparing a real price against a made-up
-            # one would generate a fake "price change".
-            print(f"  NOTE  {name}: discarding sample data")
-            previous = None
-        changes = diff_pricing(name, previous, extracted)
-        storage.save_plans(slug, extracted)
-
-        # Extraction worked and the result is on disk. Safe to remember this
-        # version of the page now.
-        entry["hash"] = new_hash
+        plan_count = len(extracted["plans"])
 
         # A pricing page with fewer than two plans is almost always a failed
         # read, not a company with one plan. Usually an interactive pricing
         # slider, where the price is calculated in the browser and never
-        # appears in the HTML. Say so loudly rather than quietly archiving
-        # rubbish for months.
-        plan_count = len(extracted["plans"])
+        # appears in the HTML.
         if plan_count < 2:
             entry["status"] = "suspicious_extraction"
             print(f"  CHECK {name}: only {plan_count} plan(s) found "
@@ -195,21 +182,67 @@ def run(dry_run: bool = False, only: list[str] | None = None,
             print(f"        If the page uses a pricing slider, remove this "
                   f"vendor from vendors.yaml.")
 
-        if previous is None:
+        baseline = storage.load_plans(slug)
+        if baseline and baseline.get("demo"):
+            # Sample data is invented. Comparing a real price against a made-up
+            # one would generate a fake "price change".
+            print(f"  NOTE  {name}: discarding sample data")
+            baseline = None
+
+        entry["hash"] = new_hash
+
+        if baseline is None:
+            storage.save_plans(slug, extracted)
+            storage.clear_pending(slug)
             print(f"  NEW   {name}: baseline captured ({plan_count} plans)")
             continue
 
-        if not changes:
-            # Markup moved but prices did not. Very common.
-            entry["noisy_hits"] = entry.get("noisy_hits", 0) + 1
+        # ---- confirmation ----
+        #
+        # A reading is never published on the strength of one look. It has to
+        # appear twice in a row saying the same thing.
+        #
+        # This is what would have killed every false alarm on the first live
+        # run: Intercom read $29, then $19, then $29 again; Mailchimp appeared
+        # to pull its pricing when really the page had half-loaded. None of
+        # those agreed with themselves twice, so none would have been published.
+        #
+        # The cost is that a genuine change takes two runs to show up instead
+        # of one. Worth it -- a wrong price emailed to a customer loses them
+        # for good, while a change arriving a day later loses nothing.
+
+        now_print = fingerprint(extracted)
+
+        if now_print == fingerprint(baseline):
+            storage.clear_pending(slug)
             stats["noisy"] += 1
             print(f"  noise {name}: page changed, pricing did not")
+            continue
+
+        pending = storage.load_pending(slug)
+        if pending is None or fingerprint(pending) != now_print:
+            storage.save_pending(slug, extracted)
+            stats["awaiting"] += 1
+            flip = " (disagrees with the last one)" if pending else ""
+            print(f"  HOLD  {name}: change seen, waiting for a second "
+                  f"reading{flip}")
+            continue
+
+        # Two runs in a row said the same thing. Believe it.
+        changes = diff_pricing(name, baseline, extracted)
+        storage.save_plans(slug, extracted)
+        storage.clear_pending(slug)
+
+        if not changes:
+            stats["noisy"] += 1
+            print(f"  noise {name}: confirmed, but nothing worth reporting")
             continue
 
         published, queued = storage.append_changes(changes)
         stats["changes"] += published
         stats["queued"] += queued
-        print(f"  CHANGE {name}: {published} published, {queued} to review")
+        print(f"  CHANGE {name}: {published} published, {queued} to review "
+              f"(confirmed on two runs)")
         for c in changes:
             mark = "*" if c.publishable else "?"
             print(f"         {mark} {c.headline()}  (conf {c.confidence:.2f})")
@@ -228,6 +261,7 @@ def run(dry_run: bool = False, only: list[str] | None = None,
     print(f"checked {stats['checked']} | unchanged {stats['unchanged']} | "
           f"extracted {stats['extracted']} | noisy {stats['noisy']}")
     print(f"changes published {stats['changes']} | "
+          f"awaiting confirmation {stats['awaiting']} | "
           f"queued for review {stats['queued']} | failed {stats['failed']}")
     print(f"this run ${spent:.4f} | month to date "
           f"${storage.month_to_date_spend():.4f}")

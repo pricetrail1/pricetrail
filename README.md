@@ -141,6 +141,19 @@ Plenty of pages rewrite their HTML daily without touching a price. If you
 alerted on hash changes you would spam your customers into cancelling in
 week one.
 
+**Nothing is published on one reading.** A change has to appear on two
+consecutive runs saying the same thing before it reaches the change log. The
+first live run proved why: Intercom was read as $29, then $19, then $29 again,
+and Mailchimp appeared to pull its pricing when the page had simply half-
+loaded. None of those agreed with themselves twice.
+
+Price moves under 1% are ignored outright. Real repricing is 5-30%; $96.00 to
+$95.92 is the page being read differently, not a company changing its mind.
+
+The cost is that a genuine change appears a day later than it otherwise would.
+That is the right trade: a wrong price emailed to a customer loses them
+permanently, a change arriving a day late loses nothing.
+
 | File | Job |
 |---|---|
 | `clean.py` | Strip page furniture so unchanged pricing gives an unchanged hash. **The hardest and most important file.** |

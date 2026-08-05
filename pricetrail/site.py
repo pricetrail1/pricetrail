@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import re
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -25,7 +26,29 @@ from . import storage
 from .theme import CSS, FONT_LINK
 
 SITE_NAME = "PriceTrail"
-# Change this to your real domain before you publish.
+
+
+def _default_base_url() -> str:
+    """Work out the site address instead of making you type it.
+
+    GitHub sets GITHUB_REPOSITORY to "owner/repo" during a workflow run, which
+    is exactly enough to build the GitHub Pages address. So the sitemap and RSS
+    feed come out correct with nothing to configure.
+
+    Set SITE_BASE_URL yourself once you own a domain.
+    """
+    explicit = os.environ.get("SITE_BASE_URL")
+    if explicit:
+        return explicit.rstrip("/")
+
+    repo = os.environ.get("GITHUB_REPOSITORY", "")
+    if "/" in repo:
+        owner, name = repo.split("/", 1)
+        return f"https://{owner}.github.io/{name}"
+
+    return "https://example.com"
+
+
 BASE_URL = "https://getpricetrail.com"
 TAGLINE = "A permanent record of what software costs."
 
