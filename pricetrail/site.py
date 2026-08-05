@@ -186,6 +186,8 @@ def page(title: str, description: str, body: str, path: str,
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:type" content="website">
+<meta name="google-site-verification"
+content="V6mFcwBlhow8BQpjJL7j_VJJxyXxegiEJ9QvgJoLk2g">
 <link rel="alternate" type="application/rss+xml" title="{SITE_NAME} changes"
       href="{BASE_URL}/feed.xml">
 {FONT_LINK}
