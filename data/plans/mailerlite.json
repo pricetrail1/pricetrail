@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Comfort plan pricing shows $12/month with 10% annual discount, which is $10.80/month annually. Power plan shows $25/month with the same discount applied, equating to $22.50/month annually. The page states \"Save 10% by paying yearly\" at the top. Enterprise plan is custom pricing for 200K+ subscribers. Trial is 14 days for all paid plans. The page mentions additional features and limits in a comparison table, but core feature and limit data comes from individual plan cards.",
+  "extraction_notes": "The page shows \"Save 10% by paying yearly\" but does not display the actual annual prices anywhere. Comfort plan shows starting at $12/month and Power at starting at $25/month. The Free plan explicitly mentions 2,500 monthly emails and 2 user seats. Comfort shows 3 user seats and 50 active automations. Power shows unlimited monthly emails, unlimited user seats, and unlimited automations. Enterprise requires contacting sales with custom pricing for businesses over 200K subscribers. Trial is 14 days for all paid plans.",
   "plans": [
     {
       "name": "Free",
@@ -13,7 +13,7 @@
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "monthly emails",
@@ -39,7 +39,7 @@
       "name": "Comfort",
       "key": "comfort",
       "monthly_price": 12.0,
-      "annual_price_per_month": 10.8,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -53,38 +53,20 @@
           "unit": null
         },
         {
-          "metric": "digital products and bookings",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "signup forms and pop-ups",
-          "value": 10.0,
-          "unit": null
-        },
-        {
           "metric": "user seats",
           "value": 3.0,
-          "unit": null
-        },
-        {
-          "metric": "websites and landing pages",
-          "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
-        "basic workflows",
-        "custom branding",
-        "integrations"
+        "ai assistant"
       ]
     },
     {
       "name": "Power",
       "key": "power",
       "monthly_price": 25.0,
-      "annual_price_per_month": 22.5,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -98,17 +80,7 @@
           "unit": null
         },
         {
-          "metric": "digital products and bookings",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "monthly emails",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "signup forms and pop-ups",
           "value": -1.0,
           "unit": null
         },
@@ -116,19 +88,10 @@
           "metric": "user seats",
           "value": -1.0,
           "unit": null
-        },
-        {
-          "metric": "websites and landing pages",
-          "value": -1.0,
-          "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "basic workflows",
-        "custom branding",
-        "integrations",
+        "api access",
         "live chat"
       ]
     },
@@ -147,20 +110,14 @@
         {
           "metric": "subscribers",
           "value": 200000.0,
-          "unit": null
-        },
-        {
-          "metric": "user seats",
-          "value": -1.0,
-          "unit": null
+          "unit": "minimum"
         }
       ],
       "features": [
         "dedicated account manager",
-        "onboarding support",
         "priority support"
       ]
     }
   ],
-  "captured_at": "2026-08-05T00:13:16.991933+00:00"
+  "captured_at": "2026-08-05T08:43:40.598778+00:00"
 }

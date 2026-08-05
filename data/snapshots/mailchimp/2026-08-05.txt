@@ -102,7 +102,7 @@ Try free for 14 days
 Free
 for 14 days
 Then, starts at
-0
+$20
 per month†
 No Credit Card Required
 Save 15%
@@ -167,7 +167,7 @@ Enhanced marketing automation flows
 Dedicated Personalized Onboarding
 Predictive Segmentation
 Larger contact list? Call
-0800 086 8197
++1 (800) 330-4838
 for custom pricing, annual plans, demos, and more.
 Contact sales
 .
@@ -222,7 +222,7 @@ Save 15%
 Buy Now
 Contact Sales
 Request Demo
-Call 0800 086 8197
+Call +1 (800) 330-4838
 See Overages & Offer Terms
 Terms
 †See
@@ -238,7 +238,7 @@ Overages
 apply if contact or email send limit is exceeded.
 Learn More
 Larger contact list? Call
-0800 086 8197
++1 (800) 330-4838
 for custom pricing, annual plans, demos, and more.
 Contact sales
 .
@@ -289,7 +289,7 @@ Then, starts at
 per month†
 Save 15%
 Request a demo
-0800 086 8197
++1 (800) 330-4838
 Contact Sales
 Request a demo
 Buy Now
@@ -477,7 +477,7 @@ Learn more
 Contact limit exceeded
 You've selected more contacts than this plan allows
 Limit of 250 contacts
-£
+$
 0
 per month†
 per month
@@ -503,12 +503,12 @@ See full plan details
 Custom pricing for large businesses
 Need a large number of seats or contacts? Mailchimp can meet your needs. Explore custom pricing, annual plans, live demos, and more with our expert sales team.
 Contact Sales
-0800 086 8196
++1 (800) 315-5939
 Free
 Have less than 250 contacts? Manage early growth with our basic Free plan—no AI, no optimization tools. Move to a paid plan when you’re ready. Sending will be paused if contact or email send limit is exceeded.
 Learn more
 Limit of 250 contacts
-£
+$
 0
 per month†
 per month
@@ -534,6 +534,7 @@ Essentials
 Free
 Key Plan Features
 SMS Marketing
+SMS and MMS add-on
 SMS add-on
 Not included
 Marketing Automation Flows
@@ -656,37 +657,55 @@ Do you have pricing for high-volume email senders?
 We do indeed. If you have more than 200,000 contacts, we have a high-volume plan that can meet your needs.
 Contact us for pricing
 *Disclaimers
-#1 AI-powered email marketing platform:
-Based on December 2023 publicly available data on number of customers of competitors that also advertise using AI to enhance their email marketing and automation products and services.
-UK’s #1 email marketing and automation platform:
-Based on February 2024 publicly available data on competitors' number of customers.
+#1 email marketing and automation platform:
+Mailchimp is the #1 email marketing and automation platform based on December 2023 publicly available data on competitors' number of customers.
+27X ROI Standard Plan:
+Based on all e-commerce revenue attributable to Standard plan users’ Mailchimp email campaigns from 12/1/24-11/30/25
 SMS Marketing
 : SMS is available as an add-on to paid plans in select countries. Application and agreement to terms is required before purchasing credits. Messages can only be delivered to contacts in the country selected. Australia messaging available only for contacts with +61 country code. SMS credits are added to your account after purchase and approval. Credits are issued monthly and unused credits expire and do not roll over. MMS only available for Standard and Premium plans sending to US and Canada contacts. Pricing varies. Click
 here
 for details.
 Intuit Assist:
 Intuit Assist functionality (beta) is available to certain users with Premium, Standard and Legacy plans in select countries in English only. Access to Intuit Assist is available at no additional cost at this time. Pricing, terms, conditions, special features and service options are subject to change without notice. Availability of features and functionality varies by plan type. Features may be broadly available soon but represents no obligation and should not be relied on in making a purchasing decision. For details, please view Mailchimp’s various plans and pricing.
-Custom Premium pricing:
-For users with more than 250,000 contacts, several plan options are available to align monthly email limits to your marketing needs. Please contact sales for further details and pricing.
-Premium Free Trial:
-For qualified new customers, a 1-month free trial of the Premium plan is available. Please contact sales for further details.
 Personalized onboarding:
 Onboarding services differ per plan and are available for new or upgraded users with a Standard or Premium plan for the first 90 days after account creation or upgrade. Onboarding services are currently offered in English, Spanish and Portuguese for Premium plans, and in English for Standard plans.
 Premium Migration Services:
 Premium Migration Services are available for certain new to Mailchimp Premium plan account holders in select countries that contact Sales to sign up for Mailchimp and discuss migration needs. Services available for the first 30 days after account creation. Eligibility and agreement to terms is required. See
 terms
 for details.
-Availability of features and functionality varies by plan type. For details, view
-plans and pricing
-.
+Customer Success Management:
+Customer Success is included with select custom plans that spend at least $299 per month with Mailchimp, All calls with the Mailchimp customer success team are currently only available in English. Translation into select languages upon request.
 Phone support:
 All calls with the Mailchimp support team are currently only available in English.
+Custom Premium pricing:
+For users with more than 250,000 contacts, several plan options are available to align monthly email limits to your marketing needs. Please contact sales for further details and pricing.
+Premium Free Trial:
+For qualified new customers, a 1-month free trial of the Premium plan is available. Please contact sales for further details.
+Annual Plans
+: For Premium and Standard 10,000+ contact plans, annual plans are available.
+Contact sales
+to learn about pricing and eligibility.
 Up to 7x more orders:
 Up to 7x more orders with marketing automation flows automations generated through users' connected stores versus when they used bulk emails for Jan 1 2022 - Jul 1 2023 period. Features and functionality of Flows varies by plan.
 Up to 141% more revenue:
 Up to 141% more revenue for users' connected stores using predictive segmented emails versus non-predictive segmented emails for Jan 1 2022–Jul 1 2023 period. Standard and Premium plans only.
+58% Higher Click Rate:
+Based on US users who sent both email and SMS campaigns compared to users who sent only email campaigns from 8/1/23 to 5/14/24.
+16x SMS ROI:
+Based on U.S. SMS users’ e-commerce revenue attributable to SMS campaigns within 90 days of launch during September 2023 through April 2024.
 Popup forms (beta):
 Very limited availability to new and existing Mailchimp users and on web browsers only. Features may be more broadly available soon, but represents no obligation and should not be relied on in making a purchasing decision. Availability of features and functionality varies by plan type. For details, view
+plans and pricing
+.
+2x More Revenue with Predictive Segments:
+Standard and Premium users saw 2x more revenue (266%) on average for their connected ecommerce stores using predictive segmented emails versus non-predictive segmented emails for Jan 2023 - Dec 2024 period. Predictive segments available on Standard or Premium plans only.
+#1 AI-powered email marketing platform:
+Based on May 2025 publicly available data on number of customers of competitors that also advertise using AI to enhance their email marketing and automation products and services.
+8x orders:
+Based on orders generated from bulk emails of paid plan users across all available geographics from January 2023 - January 2025. Customer Journey Builder (CJB) was rebranded to Marketing Automation Flows (MAF) effective as of June 2025. Any references to “Automation Flows” refers to the same features previously available under CJB. Features and functionality vary by plan type. For details, view Mailchimp’s various plans and pricing.
+9x revenue:
+Based on total revenue generated from bulk emails by users’ of Marketing Automation Flows from January 2023 - January 2025. Customer Journey Builder (CJB) was rebranded to Marketing Automation Flows (MAF) effective as of June 2025. Any references to “Automation Flows” refers to the same features previously available under CJB. Features and functionality vary by plan type. For details, view Mailchimp’s various plans and pricing.
+Availability of features and functionality varies by plan type. For details, view
 plans and pricing
 .
 *Free Trial Terms:

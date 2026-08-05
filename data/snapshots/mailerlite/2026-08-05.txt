@@ -1,7 +1,4 @@
 Close
-$refs.input.focus())
-" title="Clear the query"
-class="pr-5 absolute inset-y-0 right-0 flex items-center focus:outline-none focus:shadow-outline fill-current text-gray-400 text-opacity-60 hover:text-gray-600">
 No results were found...
 Pricing
 We believe pricing should be straightforward, fair and affordable for all businesses.
@@ -99,7 +96,6 @@ Dedicated IP*
 Account audit and performance improvements
 Deliverability support
 Sign up free
-{ window.location.href = '#compare' })" class="inline-flex items-center gap-x-2 type-black-link size-large">
 Full pricing plan comparison
 Get a free 14-day trial of premium features | No credit card required
 Show full comparison table

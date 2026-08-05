@@ -73,8 +73,8 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-05",
     "status": "ok",
-    "hash_changes": 1,
-    "hash": "b495b63df153aacc0b01adbcb52850c07a4b2a0579ba6ae49fdbbbddd6bbfdf4"
+    "hash_changes": 2,
+    "hash": "9e73cb0090ad49af4dd1d01f7adf26707acee3d23bdfd635034b28dc85a0c04c"
   },
   "brevo": {
     "consecutive_failures": 0,
@@ -84,18 +84,19 @@
     "hash": "d00c23711ea19cd2058fde94da44680d1907dbce621aa22a0915c09d2011ec07"
   },
   "kit": {
-    "consecutive_failures": 0,
+    "consecutive_failures": 1,
     "last_checked": "2026-08-05",
-    "status": "ok",
+    "status": "error",
     "hash_changes": 1,
-    "hash": "3ec8b67adea7a3adc7882e2b2d2fba9df1b7aa3d6938c9880dbd38eca9f73ae9"
+    "hash": "3ec8b67adea7a3adc7882e2b2d2fba9df1b7aa3d6938c9880dbd38eca9f73ae9",
+    "last_error": "HTTP 403"
   },
   "mailerlite": {
     "consecutive_failures": 0,
     "last_checked": "2026-08-05",
     "status": "ok",
-    "hash_changes": 1,
-    "hash": "454291c7cadf4e1f35f995d3c9ff051fc1796010ebf5727891382f90c89d14fc"
+    "hash_changes": 2,
+    "hash": "9d67f68b1bd993ebb99516e96f8526745382e284b37c2944a30b5bfa5f7f36d6"
   },
   "beehiiv": {
     "consecutive_failures": 0,

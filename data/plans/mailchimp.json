@@ -1,7 +1,7 @@
 {
-  "currency": "GBP",
+  "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "The page shows pricing sliders for different contact tiers (0-500, 501-1,500, etc.) but the actual monthly prices are not filled in for the Essentials, Standard, and Premium plans—they display as blank placeholders on the page. The Free plan shows £0. All paid plans appear to have prices that vary by contact tier, but these specific amounts are not displayed in the HTML. The page indicates a 14-day free trial is available for Standard and Essentials plans. Premium shows a \"15% off for 12 months\" promotion, but the base prices are not shown. Feature sets are derived from the comparison table and plan descriptions. Email send limits are stated per contact tier for each paid plan. Contact limits for Premium are listed as \"unlimited contacts\" in the feature comparison.",
+  "extraction_notes": "Page shows dynamic pricing that changes based on contact tier selected. Specific monthly prices for Essentials, Standard, and Premium are not visible in the extracted text - only placeholders like \"Then, starts at $[price] per month†\" appear. The page indicates contact limit slider allows customization from 0-1,000,000+ contacts, with pricing varying by tier. A 15% discount offer is mentioned for 10,000+ contacts for 12 months, but standard prices are not shown. Free plan shows hard limit of 250 contacts and 500 email sends per month (max 500/mo or 250/day). Trial periods confirmed: Standard and Essentials offer 14-day free trial. Premium pricing is not shown on this page - it directs to \"Contact Sales\" for Premium pricing details.",
   "plans": [
     {
       "name": "Free",
@@ -23,10 +23,12 @@
         {
           "metric": "email sends",
           "value": 500.0,
-          "unit": null
+          "unit": "per month"
         }
       ],
-      "features": []
+      "features": [
+        "basic workflows"
+      ]
     },
     {
       "name": "Essentials",
@@ -41,6 +43,11 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 3.0,
+          "unit": null
+        },
+        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
@@ -48,11 +55,17 @@
         {
           "metric": "email sends",
           "value": 5000.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "users",
+          "value": 3.0,
           "unit": null
         }
       ],
       "features": [
-        "basic workflows"
+        "basic workflows",
+        "custom reporting"
       ]
     },
     {
@@ -69,12 +82,17 @@
       "limits": [
         {
           "metric": "contacts",
-          "value": -1.0,
+          "value": 10000.0,
           "unit": null
         },
         {
           "metric": "email sends",
           "value": 150000.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
           "unit": null
         }
       ],
@@ -99,6 +117,11 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
@@ -106,14 +129,20 @@
         {
           "metric": "email sends",
           "value": 6000.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant"
+        "ai assistant",
+        "custom reporting"
       ]
     }
   ],
-  "captured_at": "2026-08-05T00:12:56.930035+00:00"
+  "captured_at": "2026-08-05T08:43:33.705517+00:00"
 }
