@@ -1,0 +1,204 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Annual pricing shown as yearly savings but effective monthly price is the same as monthly billing. Scale shows $517 billed annually ($43/month), Max shows $1,151 billed annually ($96/month). Limits extracted from the feature comparison table at the bottom of the page.",
+  "plans": [
+    {
+      "name": "Launch",
+      "key": "launch",
+      "monthly_price": 0.0,
+      "annual_price_per_month": 0.0,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai credits per day",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "podcast episodes per month",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "podcast shows",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "publications",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "subscribers",
+          "value": 2500.0,
+          "unit": null
+        },
+        {
+          "metric": "team members",
+          "value": 1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access"
+      ]
+    },
+    {
+      "name": "Scale",
+      "key": "scale",
+      "monthly_price": 43.0,
+      "annual_price_per_month": 43.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai credits per day",
+          "value": 25.0,
+          "unit": null
+        },
+        {
+          "metric": "podcast episodes per month",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "podcast shows",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "publications",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "subscribers",
+          "value": 100000.0,
+          "unit": null
+        },
+        {
+          "metric": "team members",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Max",
+      "key": "max",
+      "monthly_price": 96.0,
+      "annual_price_per_month": 96.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai credits per day",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "podcast episodes per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "podcast shows",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "publications",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "subscribers",
+          "value": 100000.0,
+          "unit": null
+        },
+        {
+          "metric": "team members",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai credits per day",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "podcast episodes per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "podcast shows",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "publications",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "subscribers",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "team members",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "dedicated account manager",
+        "priority support",
+        "sso"
+      ]
+    }
+  ]
+}
