@@ -1,0 +1,161 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows dynamic pricing based on contact list size. The displayed prices (Free, Standard $11.20/mo, Pro $41.30/mo) correspond to the smallest tier shown (251-500 contacts). Standard plan shows \"Pay 3 months upfront (save 30%)\" discount: $48.00 total becomes $33.60. Pro plan similarly shows $177.00 becomes $123.90 with 30% discount. The Custom plan has no specific price shown. SMS is add-on pricing starting at $0.007/SMS. Account expert feature becomes free at $400/month spend tier.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications per month",
+          "value": 500.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced reporting",
+        "ai assistant",
+        "audit log",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 11.2,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications per month",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced reporting",
+        "ai assistant",
+        "audit log",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 41.3,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 2500.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications per month",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced reporting",
+        "ai assistant",
+        "audit log",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Custom",
+      "key": "custom",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications per month",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced reporting",
+        "ai assistant",
+        "audit log",
+        "integrations"
+      ]
+    },
+    {
+      "name": "SMS Credits",
+      "key": "smscredits",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    }
+  ]
+}

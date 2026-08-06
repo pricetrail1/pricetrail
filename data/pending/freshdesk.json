@@ -1,0 +1,118 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Day passes are listed as add-ons with variable pricing per plan ($2, $7, $12 per pass depending on plan tier), but they lack a standard unit price structure (listed as per-pass rather than per quantity). Freddy AI Agent includes 500 sessions free on all three main plans; additional sessions cost $49 per 100 sessions across all plans. Additional AI Agent sessions addon has no clear pricing in USD per unit shown—only the $49 per 100 sessions shown. Connector app tasks are $80 per 5000 tasks across all plans. Monthly billing option exists but no monthly prices are shown—only annual prices are provided ($19, $55, $89 per agent/month when billed annually). Trial is 14 days for all main plans. Core features from the allowed list that appear in all three tiers: role permissions (labeled as \"role-based access control\" on page), single sign-on (SAML SSO mentioned), audit log, and sandbox. Day passes pricing structure ($2, $7, $12 per pass per agent per day) varies by plan but is not extracted as a separate standard addon due to the per-pass model being incomplete.",
+  "plans": [
+    {
+      "name": "Additional AI Agent sessions",
+      "key": "additionalaiagentsessions",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "sessions",
+          "value": 100.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Connector app tasks",
+      "key": "connectorapptasks",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "connector tasks",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": 89.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "audit log",
+        "role permissions",
+        "sandbox",
+        "single sign-on"
+      ]
+    },
+    {
+      "name": "Freddy AI Copilot",
+      "key": "freddyaicopilot",
+      "monthly_price": null,
+      "annual_price_per_month": 29.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": null,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "audit log",
+        "role permissions",
+        "sandbox",
+        "single sign-on"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": null,
+      "annual_price_per_month": 55.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "audit log",
+        "role permissions",
+        "sandbox",
+        "single sign-on"
+      ]
+    }
+  ]
+}
