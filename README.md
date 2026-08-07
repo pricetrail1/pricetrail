@@ -218,15 +218,43 @@ compounds whether or not anyone is paying yet.
 
 ---
 
-## What to build next
+## Things that are already handled
 
-1. **Weekly-tier scheduling.** `crawl_tier` is in `vendors.yaml` but `run.py`
-   ignores it. Wire it up and cut your bill roughly in half.
-2. **Email alerts.** Resend's free tier does 3,000 a month. This is the first
-   thing anyone would actually pay for.
-3. **A search box** on the site. Static JSON index, no server needed.
-4. **More vendors**, one category at a time. Don't jump to 1,000 until the
-   review queue for 22 is boring.
+You do not need to build any of these -- they are in:
 
-Do them in that order. Adding vendors before the review queue is quiet just
-multiplies the mess.
+- **Weekly scheduling.** `crawl_tier: weekly` vendors are only checked on
+  Mondays, which cuts the API bill by about 60%. `--all` overrides it.
+- **Loud failure.** If more than half the vendors fail in a run, the run exits
+  non-zero, GitHub marks it red and emails you. A crawler that dies quietly
+  costs you archive days you can never recover.
+- **Snapshot pruning.** Everything from the last two months is kept, then one
+  per month. Without this the repo grows forever.
+- **Structured data.** Every vendor page carries Product/Offer JSON-LD, and
+  the homepage declares the archive as a schema.org Dataset. That is the
+  single biggest SEO lever for a site made of machine-readable facts.
+- **A subscribe block** on every major page. With no setup it offers RSS. Set
+  a `SIGNUP_URL` repository variable to a hosted email form and it switches to
+  a signup button -- no code change.
+- **A weekly page** (`/week.html`) summarising the last seven days. That page
+  is also the body of your newsletter when you start sending one.
+- **A licence** asserting database right over the archive.
+
+## Deliberately not built
+
+- **A search box.** With 25 vendors the category pages are the navigation.
+  Worth adding past ~100 vendors, not before, and it would mean adding
+  JavaScript to a site that deliberately has none.
+- **A headless browser.** Needed for slider-priced vendors (Klaviyo, Loops,
+  ActiveCampaign, Groove). Costs real money and complexity -- worth it when a
+  paying customer asks for those specific vendors.
+
+## The only thing left that needs you
+
+Email. Everything above runs without you; an audience does not build itself.
+
+1. Sign up for a free email service (Buttondown, Beehiiv or Resend)
+2. Add its hosted form URL as a `SIGNUP_URL` repository variable
+3. Paste `python -m pricetrail.report digest --days 7` output in weekly
+
+That is the whole job, and it is the step that turns visitors into people you
+can eventually sell to.

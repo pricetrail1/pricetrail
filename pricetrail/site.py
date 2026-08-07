@@ -52,6 +52,11 @@ def _default_base_url() -> str:
 BASE_URL = "https://getpricetrail.com"
 TAGLINE = "A permanent record of what software costs."
 
+# Paste an email signup form URL here (Buttondown, Beehiiv, Resend, anything
+# that gives you a hosted form) and a signup box appears site-wide. Until then
+# the site offers RSS instead, which needs no account and no backend.
+SIGNUP_URL = os.environ.get("SIGNUP_URL", "")
+
 SYMBOLS = {"USD": "$", "GBP": "\u00a3", "EUR": "\u20ac", "CAD": "CA$",
            "AUD": "A$", "INR": "\u20b9"}
 
@@ -63,11 +68,21 @@ def esc(text) -> str:
 
 
 def money(currency: str, value, dash: str = "\u2014") -> str:
-    if value is None:
+    """Format a price. Never raises.
+
+    An archive accumulated over years will contain records written by older
+    versions of this code and rows repaired by hand. A formatting helper that
+    throws on unexpected input takes the whole site build down with it, so
+    anything unusable falls back to a dash.
+    """
+    if value is None or value == "":
         return dash
-    sym = SYMBOLS.get((currency or "").upper(), "")
-    n = f"{value:,.2f}".rstrip("0").rstrip(".")
-    return f"{sym}{n}" if sym else f"{n} {currency}"
+    try:
+        n = f"{float(value):,.2f}".rstrip("0").rstrip(".")
+    except (TypeError, ValueError):
+        return esc(value)
+    sym = SYMBOLS.get(str(currency or "").upper(), "")
+    return f"{sym}{n}" if sym else f"{n} {currency or ''}".strip()
 
 
 def pretty_date(iso: str | None) -> str:
@@ -79,8 +94,17 @@ def pretty_date(iso: str | None) -> str:
         return iso[:10]
 
 
+# Acronyms that .title() mangles into "Crm", "Seo", "Api".
+ACRONYMS = {"crm": "CRM", "seo": "SEO", "api": "API", "hr": "HR",
+            "erp": "ERP", "crm-tools": "CRM", "bi": "BI", "it": "IT",
+            "saas": "SaaS", "ai": "AI"}
+
+
 def title_case(slug: str) -> str:
-    return slug.replace("-", " ").title()
+    if slug.lower() in ACRONYMS:
+        return ACRONYMS[slug.lower()]
+    return " ".join(ACRONYMS.get(w.lower(), w.title())
+                    for w in slug.replace("-", " ").split())
 
 
 def diff_html(old, new, currency: str = "", pct: str = "") -> str:
@@ -168,6 +192,82 @@ DEMO_BANNER = """
 _IS_DEMO = False
 
 
+def json_ld(data: dict) -> str:
+    """Structured data block.
+
+    The whole site is machine-readable facts -- plans, prices, dates -- so
+    telling search engines that explicitly is the single biggest SEO win
+    available. Without it Google has to guess from the HTML.
+
+    The escaping matters. JSON encoding does not touch "</script>", so a plan
+    name containing one would close this tag early and everything after it
+    would be parsed as HTML. Plan names come from an AI reading third-party
+    pages, so that input is not ours to trust.
+    """
+    payload = json.dumps(data, ensure_ascii=False)
+    payload = (payload.replace("<", "\\u003c")
+                      .replace(">", "\\u003e")
+                      .replace("&", "\\u0026"))
+    return f'<script type="application/ld+json">{payload}</script>'
+
+
+def vendor_schema(name: str, record: dict, url: str) -> str:
+    offers = []
+    for plan in record.get("plans", []):
+        if plan.get("is_addon") or plan.get("monthly_price") is None:
+            continue
+        offers.append({
+            "@type": "Offer",
+            "name": plan["name"],
+            "price": plan["monthly_price"],
+            "priceCurrency": record.get("currency", "USD"),
+            "availability": "https://schema.org/InStock",
+        })
+    return json_ld({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": f"{name} pricing",
+        "description": f"Current and historical pricing for {name}.",
+        "url": url,
+        "brand": {"@type": "Brand", "name": name},
+        **({"offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": record.get("currency", "USD"),
+            "lowPrice": min(o["price"] for o in offers),
+            "highPrice": max(o["price"] for o in offers),
+            "offerCount": len(offers),
+            "offers": offers,
+        }} if offers else {}),
+    })
+
+
+def site_schema() -> str:
+    return json_ld({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": SITE_NAME,
+        "url": BASE_URL,
+        "description": TAGLINE,
+    })
+
+
+def dataset_schema(vendors: int, changes: int, since: str) -> str:
+    """Declares the archive as a Dataset. This is what makes the site
+    discoverable to people looking for pricing data, not just pricing."""
+    return json_ld({
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": f"{SITE_NAME} SaaS pricing archive",
+        "description": (f"Daily structured records of published pricing for "
+                        f"{vendors} B2B software vendors, recorded since "
+                        f"{since}. {changes} changes logged."),
+        "url": BASE_URL,
+        "creator": {"@type": "Organization", "name": SITE_NAME},
+        "temporalCoverage": f"{since}/..",
+        "isAccessibleForFree": True,
+    })
+
+
 def page(title: str, description: str, body: str, path: str,
          extra_head: str = "") -> str:
     canonical = f"{BASE_URL}/{path}".replace("/index.html", "/")
@@ -186,8 +286,6 @@ def page(title: str, description: str, body: str, path: str,
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:type" content="website">
-<meta name="google-site-verification"
-content="V6mFcwBlhow8BQpjJL7j_VJJxyXxegiEJ9QvgJoLk2g">
 <link rel="alternate" type="application/rss+xml" title="{SITE_NAME} changes"
       href="{BASE_URL}/feed.xml">
 {FONT_LINK}
@@ -197,10 +295,11 @@ content="V6mFcwBlhow8BQpjJL7j_VJJxyXxegiEJ9QvgJoLk2g">
 <body>
 {banner}
 <header class="masthead"><div class="wrap">
-  <a class="wordmark" href="{_rel(path)}">Price<span>Trail</span></a>
+  <a class="wordmark" href="{_rel(path)}index.html">Price<span>Trail</span></a>
   <nav>
+    <a href="{_rel(path)}index.html">All prices</a>
+    <a href="{_rel(path)}week.html">This week</a>
     <a href="{_rel(path)}changes.html">Changes</a>
-    <a href="{_rel(path)}#categories">Categories</a>
     <a href="{_rel(path)}about.html">Method</a>
     <a href="{BASE_URL}/feed.xml">RSS</a>
   </nav>
@@ -219,6 +318,45 @@ content="V6mFcwBlhow8BQpjJL7j_VJJxyXxegiEJ9QvgJoLk2g">
 """
 
 
+def subscribe_block(prefix: str = "") -> str:
+    """Somewhere for an interested reader to go.
+
+    Without this, someone finds a page useful and leaves with no way to hear
+    from you again. That is the difference between traffic and an audience,
+    and only one of them ever pays you.
+    """
+    if SIGNUP_URL:
+        return f"""
+<section class="section"><div class="panel">
+  <div class="section-head" style="border-bottom-width:1px">
+    <h2>Get the weekly change report</h2></div>
+  <p style="max-width:52ch;margin-bottom:1rem">One email a week listing every
+    price change we recorded. Free, and you can stop any time.</p>
+  <p><a href="{esc(SIGNUP_URL)}" class="tag" style="font-size:0.85rem;
+    padding:0.5rem 1rem;border-color:var(--ink)">Subscribe &rarr;</a></p>
+</div></section>"""
+    return f"""
+<section class="section"><div class="panel">
+  <div class="section-head" style="border-bottom-width:1px">
+    <h2>Follow the changes</h2></div>
+  <p style="max-width:52ch;margin-bottom:0.75rem">Every recorded change is
+    published to a feed you can subscribe to in any reader.</p>
+  <p><a href="{BASE_URL}/feed.xml">RSS feed</a> &middot;
+     <a href="{prefix}changes.html">Browse all changes</a></p>
+</div></section>"""
+
+
+def back_link(prefix: str = "", label: str = "All prices") -> str:
+    """A visible way home on every inner page.
+
+    The logo in the masthead is a link, but nobody should have to know that
+    convention to escape a page. This is the fix for "I clicked something and
+    couldn't get back".
+    """
+    return (f'<p class="backlink"><a href="{prefix}index.html">'
+            f'\u2190 {esc(label)}</a></p>')
+
+
 def _rel(path: str) -> str:
     """Relative prefix back to site root, so the site works from a file:// URL
     and from a subfolder on GitHub Pages without changes."""
@@ -228,70 +366,124 @@ def _rel(path: str) -> str:
 # ---------------------------------------------------------------- pages
 
 def render_index(ctx: dict) -> str:
-    changes, vendors = ctx["changes"], ctx["vendors"]
-    by_cat = ctx["by_category"]
+    """The homepage.
 
-    tracked = len(ctx["records"])
-    since = ctx["tracking_since"]
-    rises = sum(1 for c in changes if c["change_type"] == "price_increase")
-    cuts = sum(1 for c in changes if c["change_type"] == "price_decrease")
+    Rebuilt around PRICES, not changes. The first version led with a change
+    feed, which on a new archive is empty -- so the main content area said
+    "nothing here" while the actual pricing sat two clicks away. The data that
+    exists should be the first thing you see; the change feed earns its place
+    at the top only once it has something in it.
+    """
+    changes, vendors = ctx["changes"], ctx["vendors"]
+    records, by_cat = ctx["records"], ctx["by_category"]
+    tracked = len(records)
 
     body = [f"""
 <div class="wrap">
   <section class="hero">
-    <h1>A permanent record of what software costs.</h1>
-    <p class="standfirst">Every day we read the public pricing page of
-      {tracked} software companies and write down what changed. Nobody can
-      sell you this history, because the only way to have it is to have been
-      writing it down the whole time.</p>
+    <h1>What software actually costs.</h1>
+    <p class="standfirst">Every published price from {tracked} B2B software
+      companies, read fresh every day and written down permanently. Nobody can
+      sell you this history \u2014 the only way to have it is to have been
+      recording all along.</p>
+    <ul class="whatis">
+      <li><strong>Look up</strong> what any tracked tool charges right now</li>
+      <li><strong>Compare</strong> two of them side by side</li>
+      <li><strong>See what changed</strong>, with both figures and the date</li>
+    </ul>
     <div class="counters">
       <div class="counter"><span class="n">{tracked}</span>
-        <span class="l">Vendors tracked</span></div>
+        <span class="l">Vendors</span></div>
+      <div class="counter"><span class="n">{sum(len(_real_plans(r)) for r in records.values())}</span>
+        <span class="l">Plans priced</span></div>
       <div class="counter"><span class="n">{len(changes)}</span>
-        <span class="l">Changes recorded</span></div>
-      <div class="counter"><span class="n">{rises}</span>
-        <span class="l">Price rises</span></div>
-      <div class="counter"><span class="n">{cuts}</span>
-        <span class="l">Price cuts</span></div>
-      <div class="counter"><span class="n">{esc(since)}</span>
+        <span class="l">Changes logged</span></div>
+      <div class="counter"><span class="n">{esc(ctx['tracking_since'])}</span>
         <span class="l">Recording since</span></div>
     </div>
   </section>
 """]
 
-    body.append('<section class="section"><div class="section-head">'
-                '<h2>Latest changes</h2>'
-                f'<span class="aside">{len(changes)} recorded \u00b7 '
-                f'<a href="changes.html">see all</a></span></div>')
-    body.append(_tape(changes[:14], vendors, prefix=""))
-    body.append("</section>")
+    # ---- the main event: every price, on one screen ----
+    body.append('<section class="section" id="prices">'
+                '<div class="section-head"><h2>Every tracked price</h2>'
+                '<span class="aside">entry price = cheapest paid plan with a '
+                'published figure</span></div>')
 
-    body.append('<section class="section" id="categories">'
-                '<div class="section-head"><h2>By category</h2></div>'
-                '<div class="grid grid-3">')
-    for cat, names in sorted(by_cat.items()):
-        with_data = [n for n in names if storage.slugify(n) in ctx["records"]]
-        if not with_data:
+    for cat in sorted(by_cat):
+        live = sorted(n for n in by_cat[cat] if storage.slugify(n) in records)
+        if not live:
             continue
         bench = ctx["benchmarks"].get(cat, {})
-        median = bench.get("median_entry")
         cur = bench.get("currency", "USD")
+
         body.append(f"""
-      <div class="cell">
-        <h3><a href="c/{esc(storage.slugify(cat))}.html">{esc(title_case(cat))}</a></h3>
-        <span class="stat">{esc(money(cur, median))}</span>
-        <p>Median entry price across {len(with_data)} tracked vendors</p>
-      </div>""")
-    body.append("</div></section></div>")
+  <div class="cat-block">
+    <div class="cat-head">
+      <h3><a href="c/{esc(storage.slugify(cat))}.html">{esc(title_case(cat))}</a></h3>
+      <span class="cat-meta">{len(live)} vendors &middot; median entry
+        <strong>{esc(money(cur, bench.get('median_entry')))}</strong></span>
+    </div>
+    <div class="tbl-scroll"><table class="stack">
+      <thead><tr>
+        <th>Vendor</th><th class="num">Entry</th>
+        <th class="num">Top listed</th><th>Free tier</th><th>Billing</th>
+      </tr></thead><tbody>""")
+
+        for name in live:
+            rec = records[storage.slugify(name)]
+            plans = _real_plans(rec)
+            paid = [p for p in plans
+                    if p["monthly_price"] and not p["is_custom_pricing"]]
+            entry = min((p["monthly_price"] for p in paid), default=None)
+            top = max((p["monthly_price"] for p in paid), default=None)
+            rcur = rec.get("currency", cur)
+            body.append(f"""
+        <tr>
+          <td data-l="Vendor"><a class="vlink"
+            href="v/{esc(storage.slugify(name))}.html">{esc(name)}</a></td>
+          <td class="num big" data-l="Entry">{money(rcur, entry)}</td>
+          <td class="num" data-l="Top listed">{money(rcur, top)}</td>
+          <td data-l="Free tier">{'Yes' if any(p['is_free'] for p in plans) else '\u2014'}</td>
+          <td data-l="Billing">{'Per seat' if any(p['is_per_seat'] for p in plans) else 'Flat'}</td>
+        </tr>""")
+        body.append("</tbody></table></div></div>")
+    body.append("</section>")
+
+    # ---- changes: prominent only when there is something to show ----
+    if changes:
+        body.append('<section class="section"><div class="section-head">'
+                    '<h2>Latest changes</h2>'
+                    f'<span class="aside">{len(changes)} recorded \u00b7 '
+                    f'<a href="changes.html">see all</a></span></div>')
+        body.append(_tape(changes[:12], vendors, prefix=""))
+        body.append("</section>")
+    else:
+        body.append(f"""
+<section class="section"><div class="section-head">
+  <h2>Price changes</h2></div>
+  <p class="note">Nothing has moved since recording began on
+  {esc(ctx['tracking_since'])}. Software pricing changes a few times a year,
+  not weekly, so quiet stretches are normal \u2014 and knowing a category is
+  stable is worth something on its own. Every change from here is logged with
+  both figures and the date it moved.</p>
+</section>""")
+
+    body.append(subscribe_block())
+    body.append("</div>")
     return page(f"{SITE_NAME} \u2014 {TAGLINE}",
-                f"Track pricing changes across {tracked} B2B software vendors. "
-                "Historical pricing, benchmarks and change alerts.",
-                "".join(body), "index.html")
+                f"Current and historical pricing for {tracked} B2B software "
+                "vendors. Entry prices, plan comparisons and every recorded "
+                "change.",
+                "".join(body), "index.html",
+                extra_head=site_schema() + dataset_schema(
+                    tracked, len(changes), ctx["tracking_since"]))
 
 
 def render_changes(ctx: dict) -> str:
     changes, vendors = ctx["changes"], ctx["vendors"]
     body = ['<div class="wrap"><section class="section">'
+            + back_link() +
             '<div class="section-head"><h2>Every recorded change</h2>'
             f'<span class="aside">{len(changes)} entries</span></div>',
             _tape(changes, vendors, prefix=""),
@@ -358,6 +550,7 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
     body = [f"""
 <div class="wrap">
   <section class="section">
+    {back_link("../")}
     <div class="section-head"><h2>{esc(name)} pricing</h2>
       <span class="aside">{esc(title_case(category))}</span></div>
     <div class="tbl-scroll"><table>
@@ -390,6 +583,7 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
         body.append(f'<section class="section"><div class="section-head">'
                     f'<h2>Compare</h2></div><p>{links}</p></section>')
 
+    body.append(subscribe_block(prefix="../"))
     body.append("</div>")
     entry = min((p["monthly_price"] for p in paid), default=None)
     return page(
@@ -397,7 +591,8 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
         f"{name} pricing: current plans, historical prices and every recorded "
         f"change. Entry plan {money(cur, entry)}." if entry else
         f"{name} pricing: current plans and every recorded change.",
-        "".join(body), f"v/{slug}.html")
+        "".join(body), f"v/{slug}.html",
+        extra_head=vendor_schema(name, record, f"{BASE_URL}/v/{slug}.html"))
 
 
 def render_category(cat: str, ctx: dict) -> str:
@@ -430,6 +625,7 @@ def render_category(cat: str, ctx: dict) -> str:
     body = [f"""
 <div class="wrap">
   <section class="section">
+    {back_link("../")}
     <div class="section-head"><h2>{esc(title_case(cat))} pricing compared</h2>
       <span class="aside">{len(names)} vendors</span></div>
     <div class="grid grid-3" style="margin-bottom:1.5rem">
@@ -492,6 +688,7 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
 
     body = f"""
 <div class="wrap"><section class="section">
+  {back_link("../")}
   <div class="section-head"><h2>{esc(a)} vs {esc(b)}</h2>
     <span class="aside">Entry: {esc(money(ra.get('currency','USD'), ea))}
       vs {esc(money(rb.get('currency','USD'), eb))}</span></div>
@@ -519,9 +716,37 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
                 body, f"compare/{_pair_slug(a, b)}.html")
 
 
+def render_digest(ctx: dict) -> str:
+    """This week's changes as a page. Doubles as the body of the email
+    newsletter once you have somewhere to send it."""
+    from datetime import timedelta
+    cutoff = datetime.now(timezone.utc) - timedelta(days=7)
+    recent = [c for c in ctx["changes"]
+              if (c.get("detected_at") or "") >= cutoff.isoformat()]
+
+    body = ['<div class="wrap"><section class="section">'
+            + back_link() +
+            '<div class="section-head"><h2>This week in software pricing</h2>'
+            f'<span class="aside">{len(recent)} changes</span></div>']
+    if recent:
+        body.append(_tape(recent, ctx["vendors"], prefix=""))
+    else:
+        body.append('<p class="empty">Nothing moved this week. That is a real '
+                    'finding, not a gap \u2014 most weeks are quiet, and '
+                    'knowing a category is stable is worth something.</p>')
+    body.append("</section>")
+    body.append(subscribe_block())
+    body.append("</div>")
+    return page(f"This week in software pricing \u2014 {SITE_NAME}",
+                f"{len(recent)} pricing changes recorded across tracked B2B "
+                "software vendors in the last seven days.",
+                "".join(body), "week.html")
+
+
 def render_about(ctx: dict) -> str:
     body = f"""
 <div class="wrap"><section class="section">
+  {back_link()}
   <div class="section-head"><h2>How this is collected</h2></div>
   <div class="panel">
     <p style="max-width:62ch">Once a day an automated reader visits the public
@@ -556,6 +781,7 @@ def render_about(ctx: dict) -> str:
 def render_bot() -> str:
     body = f"""
 <div class="wrap"><section class="section">
+  {back_link()}
   <div class="section-head"><h2>About the crawler</h2></div>
   <div class="panel">
     <p style="max-width:62ch">Pages here are read by an automated crawler
@@ -764,6 +990,7 @@ def build(out_dir: Path | None = None) -> dict:
     write("index.html", render_index(ctx))
     write("changes.html", render_changes(ctx))
     write("about.html", render_about(ctx))
+    write("week.html", render_digest(ctx))
     write("bot.html", render_bot())
 
     slug_to_name = {storage.slugify(n): n for n in vendors}

@@ -59,6 +59,32 @@ def save_snapshot(slug: str, cleaned_text: str) -> Path:
     return path
 
 
+def prune_snapshots(slug: str, keep_recent: int = 60) -> int:
+    """Keep every snapshot from the last ~2 months, then one per month.
+
+    Without this the repo grows forever: 17 vendors x 365 days x 5 years is
+    30,000 files. The recent ones are what you debug against; the old ones
+    only need to prove what a page said in a given month. Returns how many
+    were removed.
+    """
+    folder = SNAPSHOTS / slug
+    if not folder.exists():
+        return 0
+    files = sorted(folder.glob("*.txt"))
+    if len(files) <= keep_recent:
+        return 0
+
+    older, kept_months, removed = files[:-keep_recent], set(), 0
+    for path in older:
+        month = path.stem[:7]          # YYYY-MM
+        if month in kept_months:
+            path.unlink()
+            removed += 1
+        else:
+            kept_months.add(month)     # keep the first of each month
+    return removed
+
+
 # ---------- structured pricing ----------
 
 def load_plans(slug: str) -> dict | None:

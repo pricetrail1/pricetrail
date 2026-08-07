@@ -104,6 +104,49 @@ vendors:
     category: email-marketing
     crawl_tier: weekly
 
+  # ---------- CRM ----------
+  # Third category, added so the site has more comparison pages. Same buyer as
+  # the other two: someone running revenue or support at a software company.
+  - name: Pipedrive
+    pricing_url: https://www.pipedrive.com/en/pricing
+    category: crm
+    crawl_tier: daily
+
+  - name: Close
+    pricing_url: https://www.close.com/pricing
+    category: crm
+    crawl_tier: daily
+
+  - name: Copper
+    pricing_url: https://www.copper.com/pricing
+    category: crm
+    crawl_tier: weekly
+
+  - name: Zoho CRM
+    pricing_url: https://www.zoho.com/crm/zohocrm-pricing.html
+    category: crm
+    crawl_tier: weekly
+
+  - name: Freshsales
+    pricing_url: https://www.freshworks.com/crm/sales/pricing/
+    category: crm
+    crawl_tier: weekly
+
+  - name: Attio
+    pricing_url: https://attio.com/pricing
+    category: crm
+    crawl_tier: weekly
+
+  - name: Capsule
+    pricing_url: https://capsulecrm.com/pricing/
+    category: crm
+    crawl_tier: weekly
+
+  - name: Nutshell
+    pricing_url: https://www.nutshell.com/pricing
+    category: crm
+    crawl_tier: weekly
+
 # ---------- removed, revisit later ----------
 # These use interactive pricing (a slider where you pick a contact count and
 # the price is calculated in your browser). There is no price in the HTML to

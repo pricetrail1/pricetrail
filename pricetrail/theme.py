@@ -24,11 +24,11 @@ percentage is monospace so columns align and digits are comparable at a glance.
 """
 
 TOKENS = {
-    "paper": "#F1F4F6",   # pale cool grey-blue
+    "paper": "#EDF1F4",   # pale cool grey-blue
     "panel": "#FFFFFF",
-    "ink": "#10171F",     # deep navy-charcoal
-    "muted": "#67747F",
-    "rule": "#D8E0E6",
+    "ink": "#0C1218",     # deep navy-charcoal
+    "muted": "#5A6773",
+    "rule": "#CDD8E0",
     "rise": "#B4531A",    # rust  - price increases
     "fall": "#0F7A6B",    # teal  - price decreases
     "link": "#1B4B8F",
@@ -41,11 +41,11 @@ body, h1, h2, h3, h4, p, ul, ol, figure, table { margin: 0; padding: 0; }
 ul, ol { list-style: none; }
 
 :root {
-  --paper: #F1F4F6;
+  --paper: #EDF1F4;
   --panel: #FFFFFF;
-  --ink: #10171F;
-  --muted: #67747F;
-  --rule: #D8E0E6;
+  --ink: #0C1218;
+  --muted: #5A6773;
+  --rule: #CDD8E0;
   --rise: #B4531A;
   --fall: #0F7A6B;
   --link: #1B4B8F;
@@ -127,7 +127,7 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
 }
 
 /* ---- section furniture ---- */
-.section { padding-block: 2.5rem; }
+.section { padding-block: 2.75rem; }
 .section-head {
   display: flex; align-items: baseline; gap: 1rem;
   border-bottom: 2px solid var(--ink); padding-bottom: 0.5rem;
@@ -193,7 +193,7 @@ th {
   border-bottom: 1px solid var(--ink); white-space: nowrap;
 }
 td {
-  padding: 0.6rem 0.9rem 0.6rem 0;
+  padding: 0.7rem 0.9rem 0.7rem 0;
   border-bottom: 1px solid var(--rule); vertical-align: baseline;
 }
 td.num, th.num { font-family: var(--mono); text-align: right; padding-right: 0; }
@@ -249,6 +249,100 @@ footer p, footer a {
   line-height: 1.8;
 }
 footer .disclaimer { max-width: 46ch; }
+
+
+/* ---- "what is this" strip ---- */
+.whatis {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 2rem;
+  margin-top: 1.5rem; padding: 0.9rem 0 0;
+  border-top: 1px solid var(--rule);
+}
+.whatis li { font-size: 0.92rem; color: var(--muted); }
+.whatis strong { color: var(--ink); font-weight: 600; }
+
+/* ---- the way back ---- */
+.backlink { margin-bottom: 1rem; }
+.backlink a {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em;
+  color: var(--muted); text-transform: uppercase;
+}
+.backlink a:hover { color: var(--link); }
+
+/* the logo is a link -- make that visible on hover */
+.wordmark:hover { opacity: 0.75; }
+
+/* ---- category blocks on the homepage ---- */
+.cat-block {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  margin-bottom: 1.25rem;
+}
+.cat-head {
+  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 55%, var(--panel));
+}
+.cat-head h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+.cat-head h3 a { color: var(--ink); }
+.cat-meta {
+  margin-left: auto; font-family: var(--mono); font-size: 0.75rem;
+  color: var(--muted);
+}
+.cat-meta strong { color: var(--ink); font-weight: 600; }
+.cat-block table { margin: 0; }
+.cat-block th { padding-left: 1.25rem; }
+.cat-block th:last-child, .cat-block td:last-child { padding-right: 1.25rem; }
+.cat-block td { padding-left: 1.25rem; }
+.cat-block th.num, .cat-block td.num { padding-left: 0.9rem; }
+
+/* make the price the thing your eye lands on */
+td.big {
+  font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em;
+}
+
+/* links that look like links */
+a.vlink { font-weight: 600; color: var(--ink); }
+a.vlink:hover { color: var(--link); text-decoration: underline; }
+tbody tr:hover { background: color-mix(in srgb, var(--paper) 45%, transparent); }
+
+.note {
+  max-width: 62ch; color: var(--muted); font-size: 0.95rem;
+  background: var(--panel); border: 1px solid var(--rule);
+  border-left: 3px solid var(--rule);
+  padding: 1.1rem 1.25rem;
+}
+
+/* ---- tables become cards on a narrow screen ---- */
+@media (max-width: 46rem) {
+  table.stack thead { display: none; }
+  table.stack, table.stack tbody, table.stack tr, table.stack td {
+    display: block; width: 100%;
+  }
+  table.stack tr {
+    border-bottom: 1px solid var(--rule);
+    padding: 0.85rem 1.25rem;
+  }
+  table.stack tr:last-child { border-bottom: none; }
+  table.stack td {
+    border: none; padding: 0.15rem 0;
+    display: flex; justify-content: space-between; gap: 1rem;
+    text-align: right;
+  }
+  table.stack td::before {
+    content: attr(data-l);
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.07em;
+    text-transform: uppercase; color: var(--muted);
+    text-align: left; flex: 0 0 auto;
+  }
+  table.stack td:first-child {
+    display: block; text-align: left; font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+  table.stack td:first-child::before { content: none; }
+  .cat-head { padding: 0.8rem 1.25rem; }
+  .cat-meta { margin-left: 0; width: 100%; }
+}
 
 /* ---- responsive ---- */
 @media (max-width: 40rem) {

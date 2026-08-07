@@ -20,6 +20,7 @@ from pricetrail.clean import clean_html, content_hash, looks_like_pricing_page
 from pricetrail.diff import (CONFIDENCE_PUBLISH, diff_pricing,
                              fingerprint)
 from pricetrail.extract import normalise
+from pricetrail import site as sitemod
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -295,6 +296,34 @@ def test_fingerprint():
     check("empty record is safe", fingerprint({}) == "" or True)
 
 
+def test_hostile_input():
+    """The archive is fed by an AI reading third-party pages. That input is not
+    ours to trust, so nothing derived from it may break the page or the build."""
+    print("\nHostile input")
+
+    evil = 'Pro </script><script>alert(1)</script>'
+    block = sitemod.json_ld({"name": evil})
+    check("JSON-LD cannot be broken out of",
+          "</script><script>" not in block.replace(
+              '<script type="application/ld+json">', '').replace(
+              '</script>', '', 1) or "\\u003c" in block)
+    check("angle brackets are escaped in JSON-LD", "\\u003c" in block)
+
+    check("money() survives a string value",
+          sitemod.money("USD", "not a number") is not None)
+    check("money() survives None", sitemod.money("USD", None) == "\u2014")
+    check("money() survives zero", sitemod.money("USD", 0) == "$0")
+    check("money() survives a bad currency", sitemod.money(123, 5) is not None)
+
+    from pricetrail.extract import normalise as _n
+    check("normalise survives a numeric currency",
+          _n({"currency": 123, "plans": []})["currency"] == "123")
+    check("normalise survives no plans key", _n({})["plans"] == [])
+
+    check("escaping catches script tags",
+          "&lt;script&gt;" in sitemod.esc("<script>"))
+
+
 def test_normalise():
     print("\nNormalisation")
     messy = normalise({
@@ -339,6 +368,7 @@ if __name__ == "__main__":
     test_rounding_noise_ignored()
     test_confirmation_kills_flip_flops()
     test_fingerprint()
+    test_hostile_input()
     test_normalise()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")

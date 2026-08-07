@@ -37,6 +37,21 @@ VENDORS_FILE = storage.ROOT / "vendors.yaml"
 DEFAULT_BUDGET_USD = 0.50
 
 
+def due_today(vendor: dict, force: bool = False) -> bool:
+    """Should this vendor be checked on this run?
+
+    vendors.yaml marks each vendor daily or weekly. Weekly ones are checked on
+    Mondays only. Roughly halves the API bill for almost no loss: a long-tail
+    vendor that reprices on a Wednesday is recorded the following Monday, and
+    the archive is about what changed, not the hour it happened.
+    """
+    if force:
+        return True
+    if vendor.get("crawl_tier", "daily") != "weekly":
+        return True
+    return datetime.now(timezone.utc).weekday() == 0  # Monday
+
+
 def load_vendors() -> list[dict]:
     data = yaml.safe_load(VENDORS_FILE.read_text(encoding="utf-8"))
     vendors = []
@@ -58,7 +73,7 @@ def _rewrite_vendor_urls(repaired: list[tuple[str, str, str]]) -> None:
 
 def run(dry_run: bool = False, only: list[str] | None = None,
         budget_usd: float = DEFAULT_BUDGET_USD,
-        fix_urls: bool = False) -> int:
+        fix_urls: bool = False, all_vendors: bool = False) -> int:
     vendors = load_vendors()
     if only:
         wanted = {s.lower() for s in only}
@@ -67,6 +82,15 @@ def run(dry_run: bool = False, only: list[str] | None = None,
         if not vendors:
             print(f"No vendors matched {sorted(wanted)}", file=sys.stderr)
             return 1
+
+    # Long-tail vendors are only due on Mondays.
+    if not only:
+        due = [v for v in vendors if due_today(v, force=all_vendors)]
+        skipped = len(vendors) - len(due)
+        vendors = due
+        if skipped:
+            print(f"  (skipping {skipped} weekly vendors -- not Monday. "
+                  f"Use --all to override.)\n")
 
     fetcher = Fetcher()
     state = storage.load_state()
@@ -247,6 +271,11 @@ def run(dry_run: bool = False, only: list[str] | None = None,
             mark = "*" if c.publishable else "?"
             print(f"         {mark} {c.headline()}  (conf {c.confidence:.2f})")
 
+    pruned = sum(storage.prune_snapshots(v["slug"]) for v in vendors)
+    if pruned:
+        print(f"\n  Pruned {pruned} old snapshots (kept everything from the "
+              f"last 2 months, then one per month).")
+
     storage.save_state(state)
 
     if repaired:
@@ -265,6 +294,16 @@ def run(dry_run: bool = False, only: list[str] | None = None,
           f"queued for review {stats['queued']} | failed {stats['failed']}")
     print(f"this run ${spent:.4f} | month to date "
           f"${storage.month_to_date_spend():.4f}")
+
+    # A crawler that dies quietly is worse than one that dies loudly: every
+    # silent day is an archive day you can never get back. Exiting non-zero
+    # turns the GitHub run red, which emails you.
+    checked = stats["checked"]
+    broken = stats["failed"] + stats["skipped_robots"]
+    if checked and broken / checked > 0.5:
+        print(f"\n!! {broken} of {checked} vendors failed. Something is "
+              f"wrong -- check the output above.")
+        return 1
     return 0
 
 
@@ -278,9 +317,11 @@ def main() -> int:
                     help="max USD to spend on this run")
     ap.add_argument("--fix-urls", action="store_true",
                     help="write recovered URLs back into vendors.yaml")
+    ap.add_argument("--all", action="store_true", dest="all_vendors",
+                    help="check every vendor, ignoring weekly scheduling")
     args = ap.parse_args()
     return run(dry_run=args.dry_run, only=args.only, budget_usd=args.budget,
-               fix_urls=args.fix_urls)
+               fix_urls=args.fix_urls, all_vendors=args.all_vendors)
 
 
 if __name__ == "__main__":

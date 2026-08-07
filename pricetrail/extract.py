@@ -221,7 +221,7 @@ def normalise(data: dict) -> dict:
     heading.
     """
     out = {
-        "currency": (data.get("currency") or "").upper()[:3],
+        "currency": str(data.get("currency") or "").upper()[:3],
         "pricing_is_public": bool(data.get("pricing_is_public", True)),
         "extraction_notes": (data.get("extraction_notes") or "").strip(),
         "plans": [],

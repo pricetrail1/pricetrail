@@ -3,7 +3,9 @@ Turn the change log into things people read.
 
     python -m pricetrail.report digest --days 7
     python -m pricetrail.report review
-    python -m pricetrail.report site
+
+The site itself is built by pricetrail.publish, not here -- this module only
+produces text you read or send.
 
 Note that the digest is assembled from your own structured data, not from
 scraped page text. You are publishing facts you recorded (a price was X, now
@@ -22,8 +24,6 @@ from pathlib import Path
 import yaml
 
 from . import storage
-
-SITE = storage.ROOT / "site"
 
 
 def _vendor_categories() -> dict[str, str]:
@@ -118,55 +118,6 @@ def review_queue() -> str:
     return "\n".join(out)
 
 
-def build_site() -> int:
-    """Generate the free public pages.
-
-    Only writes a page where there is real data behind it. Thin auto-generated
-    pages with nothing unique on them are how sites get buried by search
-    engines, so the rule is: no data, no page.
-    """
-    SITE.mkdir(exist_ok=True)
-    cats = _vendor_categories()
-    written = 0
-
-    for path in sorted(storage.PLANS.glob("*.json")):
-        record = json.loads(path.read_text("utf-8"))
-        if not record.get("plans"):
-            continue  # nothing worth publishing
-
-        slug = path.stem
-        vendor = next((n for n in cats if storage.slugify(n) == slug), slug)
-        history = sorted(p.stem for p in
-                         (storage.SNAPSHOTS / slug).glob("*.txt")) \
-            if (storage.SNAPSHOTS / slug).exists() else []
-
-        lines = [
-            f"# {vendor} pricing",
-            "",
-            f"Last checked {record.get('captured_at', 'unknown')[:10]}. "
-            f"Tracked since {history[0] if history else 'today'}.",
-            "",
-            "| Plan | Monthly | Annual (per month) | Per seat |",
-            "|---|---|---|---|",
-        ]
-        for p in record["plans"]:
-            monthly = "Custom" if p["is_custom_pricing"] else (
-                "Free" if p["is_free"] else _money(record["currency"],
-                                                   p["monthly_price"]))
-            annual = _money(record["currency"], p["annual_price_per_month"])
-            lines.append(f"| {p['name']} | {monthly} | {annual} | "
-                         f"{'Yes' if p['is_per_seat'] else 'No'} |")
-
-        lines += ["", f"We have {len(history)} recorded versions of this page.",
-                  "", "*Recorded from the vendor's public pricing page. "
-                      "Verify before making decisions.*"]
-
-        (SITE / f"{slug}.md").write_text("\n".join(lines), encoding="utf-8")
-        written += 1
-
-    return written
-
-
 def _money(currency: str, value) -> str:
     if value is None:
         return "-"
@@ -189,15 +140,12 @@ def main() -> int:
     d = sub.add_parser("digest", help="weekly summary / newsletter")
     d.add_argument("--days", type=int, default=7)
     sub.add_parser("review", help="items needing a human decision")
-    sub.add_parser("site", help="generate public pages into site/")
     args = ap.parse_args()
 
     if args.command == "digest":
         print(digest(args.days))
-    elif args.command == "review":
-        print(review_queue())
     else:
-        print(f"Wrote {build_site()} pages to {SITE}")
+        print(review_queue())
     return 0
 
 
