@@ -1,13 +1,13 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "Pricing page shows contact-tier based pricing. Prices are not explicitly stated in the provided HTML excerpt for Standard, Essentials, and Premium plans - only \"Then, starts at\" language appears without specific dollar amounts. Free plan and Free Trial details are clear. The page indicates 15% discount available for 10,000+ contacts for 12 months, but full pricing breakdown by contact tier is not visible in this excerpt. Page references multiple contact tiers (0-500, 501-1,500, etc.) but actual prices for each tier are not provided in the text. Custom pricing available for high-volume senders (200,000+ contacts). SMS is an add-on. Email credits are available as pay-as-you-go alternative.",
+  "pricing_is_public": false,
+  "extraction_notes": "This pricing page shows contact tier-based pricing with heavy use of promotional offers and discounts. Actual prices are not displayed on the page for Standard, Essentials, or Premium plans - only placeholders like \"per month\" appear. The page routes to sales/contact/demos for pricing details. The Free plan is clearly defined with no cost. Only the Free plan has concrete pricing information (0 USD). All other plans show \"Contact Sales\", \"Buy Now\" buttons, or blank price fields. The page structure suggests dynamic pricing based on contact tier selection, but specific monthly or annual prices are not visible in the provided HTML.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 0.0,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -23,7 +23,7 @@
         {
           "metric": "email sends",
           "value": 500.0,
-          "unit": "per month or 250 per day"
+          "unit": null
         }
       ],
       "features": []
@@ -52,9 +52,7 @@
         }
       ],
       "features": [
-        "basic workflows",
-        "custom branding",
-        "integrations"
+        "basic workflows"
       ]
     },
     {
@@ -71,7 +69,7 @@
       "limits": [
         {
           "metric": "contacts",
-          "value": 10000.0,
+          "value": -1.0,
           "unit": null
         },
         {
@@ -82,14 +80,10 @@
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
-        "custom branding",
         "custom reporting",
-        "dedicated account manager",
-        "integrations",
-        "onboarding support",
         "phone support",
-        "priority support"
+        "priority support",
+        "role permissions"
       ]
     },
     {
@@ -118,10 +112,7 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "custom branding",
-        "custom reporting",
-        "integrations",
-        "onboarding support"
+        "custom reporting"
       ]
     }
   ]

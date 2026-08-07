@@ -1,35 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "New customer offer showing 35% discount on Essential plan monthly price ($29 discounted to $19); recorded the standard price of $29. Essential plan shows annual price of $19/month when billed annually. Advanced and Expert monthly prices shown but no annual pricing displayed on page. Fin AI Agent priced at $0.99 per outcome with minimum monthly commitment; recorded as $0.99. Copilot shows $29/agent/mo billed annually and $35/agent/mo billed monthly. Pro and Proactive Support Plus are optional add-ons. All plans include 14-day free trial. The page states \"From $0.99\" for Fin outcomes, indicating this is the per-outcome charge. All plans include access to live chat, support email, in-app chats, banners, and tooltips for free/unlimited.",
+  "extraction_notes": "Page shows Intercom's AI-first customer service platform with integrated Fin AI Agent. Essential, Advanced, and Expert are the three main subscription plans billed per seat/month. Copilot pricing shows both monthly ($35) and annual ($29/month billed annually) - recorded both. Fin AI Agent can be used standalone with existing helpdesk tools at $0.99 per outcome with minimum monthly commitment. Pro, Copilot, and Proactive Support Plus are add-ons. All plans include 14-day free trial. The pricing calculator and ROI estimation tools are mentioned but not shown on this page.",
   "plans": [
-    {
-      "name": "Fin AI Agent (Standalone)",
-      "key": "finaiagentstandalone",
-      "monthly_price": 0.99,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "fin ai agent outcomes",
-          "value": -1.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "ai chatbot"
-      ]
-    },
     {
       "name": "Essential",
       "key": "essential",
       "monthly_price": 29.0,
-      "annual_price_per_month": 19.0,
+      "annual_price_per_month": 29.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -38,15 +16,14 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "fin ai agent outcomes",
+          "metric": "fin ai agent",
           "value": -1.0,
-          "unit": null
+          "unit": "included"
         }
       ],
       "features": [
-        "ai chatbot",
-        "basic workflows",
-        "live chat"
+        "api access",
+        "basic workflows"
       ]
     },
     {
@@ -62,14 +39,14 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "free ai auto-translation conversations per agent per month",
+          "metric": "free ai auto-translation conversations",
           "value": 10.0,
-          "unit": null
+          "unit": "per agent/month"
         },
         {
-          "metric": "free copilot conversations per agent per month",
+          "metric": "free copilot conversations",
           "value": 10.0,
-          "unit": null
+          "unit": "per agent/month"
         }
       ],
       "features": [
@@ -80,7 +57,7 @@
       "name": "Advanced",
       "key": "advanced",
       "monthly_price": 85.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 85.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -89,23 +66,21 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "fin ai agent outcomes",
+          "metric": "fin ai agent",
           "value": -1.0,
-          "unit": null
+          "unit": "included"
         }
       ],
       "features": [
         "advanced workflows",
-        "ai chatbot",
-        "integrations",
-        "live chat"
+        "api access"
       ]
     },
     {
       "name": "Pro",
       "key": "pro",
       "monthly_price": 99.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 99.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -114,18 +89,17 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "conversations analyzed per month",
+          "metric": "conversations analyzed",
           "value": 1000.0,
-          "unit": null
+          "unit": "per month"
         },
         {
-          "metric": "operator credits per month",
+          "metric": "operator credits",
           "value": 2000.0,
-          "unit": null
+          "unit": "per month"
         }
       ],
       "features": [
-        "advanced workflows",
         "ai assistant"
       ]
     },
@@ -133,7 +107,7 @@
       "name": "Proactive Support Plus",
       "key": "proactivesupportplus",
       "monthly_price": 99.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 99.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -144,18 +118,18 @@
         {
           "metric": "included messages",
           "value": 500.0,
-          "unit": null
+          "unit": "per month"
         }
       ],
       "features": [
-        "basic workflows"
+        "advanced workflows"
       ]
     },
     {
       "name": "Expert",
       "key": "expert",
       "monthly_price": 132.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 132.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -164,18 +138,35 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "fin ai agent outcomes",
+          "metric": "fin ai agent",
           "value": -1.0,
-          "unit": null
+          "unit": "included"
         }
       ],
       "features": [
         "advanced workflows",
-        "ai chatbot",
-        "custom branding",
-        "integrations",
-        "live chat"
+        "api access"
       ]
+    },
+    {
+      "name": "Fin AI Agent",
+      "key": "finaiagent",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "fin ai agent outcomes",
+          "value": 0.99,
+          "unit": "per outcome"
+        }
+      ],
+      "features": []
     }
   ]
 }
