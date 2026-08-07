@@ -80,11 +80,11 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-07",
     "status": "ok",
-    "hash_changes": 2,
-    "hash": "d448d1ceb067a6410f6f3f6eb4922d909371e7793bd6f6d95cc41da8fcc3c235"
+    "hash_changes": 3,
+    "hash": "d00c23711ea19cd2058fde94da44680d1907dbce621aa22a0915c09d2011ec07"
   },
   "kit": {
-    "consecutive_failures": 13,
+    "consecutive_failures": 14,
     "last_checked": "2026-08-05",
     "status": "error",
     "hash_changes": 1,

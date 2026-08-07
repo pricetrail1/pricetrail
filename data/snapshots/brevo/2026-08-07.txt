@@ -2,60 +2,12 @@ Free forever, no credit card needed
 Best for individuals and solopreneurs building an online presence.
 Monthly
 Yearly (-10%)
-Loading content...
 Starter
 Best for single users starting with email and multi-channel marketing.
 ‌
 Sign up
 Features included in Starter:
 From 5,000 emails per month
-No Brevo logo
-per month
-Sales Essentials
-per month
-See all features
-Most Popular
-Standard
-Best for small businesses ready to automate and test campaigns.
-‌
-Sign up
-Everything in Starter, plus:
-Click heatmaps, geography & device reports
-1 page included
-Sales Essentials
-per month
-See all features
-Professional
-Best for teams leveraging data and AI to drive growth across channels.
-‌
-Talk to sales
-Sign up
-Everything in Standard, plus:
-From 150,000 emails per month
-Additional marketing channels
-WhatsApp, Popups, Mobile & Web Push
-Multi-user access
-10 seats included
-Sales Advanced
-per month/user
-See all features
-Enterprise
-Best for companies with 1M+ contacts needing custom solutions & full data control.
-Custom price
-Talk to sales
-Everything in Professional, plus:
-Sales Advanced
-See all features
-Loading content...
-Join <COUNT> customers around the world who trust Brevo
-Awarded for excellence
-Loved by users everywhere
-2500+ reviews
-3300+ reviews
-150+ reviews
-Don’t see your question answered here?
-Contact us and we'll be happy to answer any additional questions you may have.
-Contact us
 Email & SMS
 Send email & transactional messages. SMS credit sold separately.
 Drag & Drop email editor
@@ -72,20 +24,47 @@ Basic reporting & analytics
 Track opens and clicks to measure campaign performance.
 Email support
 Get help via email from our customer care team. Support available in 6 languages.
+No Brevo logo
+per month
+Sales Essentials
+per month
+See all features
+Most Popular
+Standard
+Best for small businesses ready to automate and test campaigns.
+‌
+Sign up
+Everything in Starter, plus:
 Marketing automation
 Create an unlimited number of automated, multi-step workflows to engage users at key moments along their journey.
 A/B testing
 Test subject lines or content variants to improve opens and clicks.
 Advanced email reporting
 See where and how contacts engage to optimize future campaigns.
+Click heatmaps, geography & device reports
 AI send time optimization
 Automatically send emails when each contact is most likely to engage.
 Web & event tracking
 Track on‑site behavior and custom events to trigger messages and segment with precision.
 Landing pages
 Create standalone campaign pages without a developer.
+1 page included
 No Brevo logo
 Remove the “Sent with Brevo” footer to keep emails strictly professional.
+Sales Essentials
+per month
+See all features
+Professional
+Best for teams leveraging data and AI to drive growth across channels.
+‌
+Talk to sales
+Sign up
+Everything in Standard, plus:
+From 150,000 emails per month
+Additional marketing channels
+WhatsApp, Popups, Mobile & Web Push
+Multi-user access
+10 seats included
 Contact scoring
 Get contact scores based on engagement, purchases, and behaviors to trigger automations or create targeted segments. Includes RFM, CLV and more.
 Advanced ecommerce features
@@ -98,6 +77,14 @@ Phone support
 Speak directly with our team when you need faster resolution.
 Deliverability Specialist support
 Work with a specialist to improve email deliverability and inbox placement. 3 hours per year included.
+Sales Advanced
+per month/user
+See all features
+Enterprise
+Best for companies with 1M+ contacts needing custom solutions & full data control.
+Custom price
+Talk to sales
+Everything in Professional, plus:
 Multi-account management
 Manage multiple business units & brands under one master account.
 Custom objects
@@ -116,6 +103,18 @@ Tailored onboarding
 Receive personalized setup support, hands-on training, integration assistance, and strategic guidance to launch faster.
 CSM support
 Recurring strategic support to build campaigns, analyze performance, and reach your goals (limited time).
+Sales Advanced
+See all features
+Loading content...
+Join <COUNT> customers around the world who trust Brevo
+Awarded for excellence
+Loved by users everywhere
+2500+ reviews
+3300+ reviews
+150+ reviews
+Don’t see your question answered here?
+Contact us and we'll be happy to answer any additional questions you may have.
+Contact us
 Frequently asked questions
 Do I have to enter my credit card details to sign up?
 Do I need any prior knowledge or skills?
