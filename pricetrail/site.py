@@ -23,7 +23,7 @@ from pathlib import Path
 import yaml
 
 from . import storage
-from .theme import CSS, FONT_LINK
+from .theme import CSS, FONT_LINK, FONT_LINK_XML
 
 SITE_NAME = "PriceTrail"
 
@@ -857,6 +857,49 @@ def _pair_slug(a: str, b: str) -> str:
 
 # ---------------------------------------------------------------- feeds
 
+FEED_STYLESHEET = """<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="html" encoding="UTF-8" indent="yes"/>
+<xsl:template match="/">
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title><xsl:value-of select="rss/channel/title"/></title>
+LINKS
+</head><body>
+<header class="masthead"><div class="wrap">
+  <a class="wordmark" href="/index.html">Price<span>Trail</span></a>
+  <nav><a href="/index.html">All prices</a>
+       <a href="/changes.html">Changes</a></nav>
+</div></header>
+<main><div class="wrap"><section class="section">
+  <p class="backlink"><a href="/index.html">&#8592; All prices</a></p>
+  <div class="section-head"><h2>Change feed</h2>
+    <span class="aside">RSS</span></div>
+  <div class="note" style="margin-bottom:1.5rem">
+    This page is a feed. Paste its address into any feed reader and every new
+    pricing change appears there automatically \u2014 no signup, no email.
+  </div>
+  <div class="tape">
+  <xsl:for-each select="rss/channel/item">
+    <div class="entry">
+      <span class="when"><xsl:value-of select="substring(pubDate, 1, 10)"/></span>
+      <span class="what">
+        <a class="who"><xsl:attribute name="href">
+          <xsl:value-of select="link"/></xsl:attribute>
+          <xsl:value-of select="title"/></a>
+      </span>
+    </div>
+  </xsl:for-each>
+  </div>
+</section></div></main>
+</body></html>
+</xsl:template>
+</xsl:stylesheet>
+"""
+
+
 def render_feed(ctx: dict) -> str:
     items = []
     for c in ctx["changes"][:50]:
@@ -870,6 +913,7 @@ def render_feed(ctx: dict) -> str:
     <pubDate>{esc(c.get('detected_at', ''))}</pubDate>
   </item>""")
     return f"""<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="{BASE_URL}/feed.xsl"?>
 <rss version="2.0"><channel>
   <title>{SITE_NAME} \u2014 software pricing changes</title>
   <link>{BASE_URL}</link>
@@ -1014,6 +1058,10 @@ def build(out_dir: Path | None = None) -> dict:
         write(f"compare/{_pair_slug(a, b)}.html", render_compare(a, b, ctx))
 
     (out / "feed.xml").write_text(render_feed(ctx), encoding="utf-8")
+    (out / "feed.xsl").write_text(
+        FEED_STYLESHEET.replace("LINKS", FONT_LINK_XML +
+            f'<link rel="stylesheet" href="{BASE_URL}/assets/style.css"/>'),
+        encoding="utf-8")
     (out / "sitemap.xml").write_text(render_sitemap(written), encoding="utf-8")
     (out / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n",

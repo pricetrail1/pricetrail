@@ -371,3 +371,15 @@ FONT_LINK = (
     'family=Archivo:wght@400;600;700;800&'
     'family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">'
 )
+
+# The same font links, but valid XML: tags self-closed, attributes given
+# values, ampersands escaped. Needed inside feed.xsl, which is XML rather
+# than HTML and so is parsed strictly.
+FONT_LINK_XML = (
+    '<link rel="preconnect" href="https://fonts.googleapis.com"/>'
+    '<link rel="preconnect" href="https://fonts.gstatic.com" '
+    'crossorigin="anonymous"/>'
+    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
+    'family=Archivo:wght@400;600;700;800&amp;'
+    'family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"/>'
+)

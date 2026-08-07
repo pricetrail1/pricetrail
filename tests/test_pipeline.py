@@ -324,6 +324,32 @@ def test_hostile_input():
           "&lt;script&gt;" in sitemod.esc("<script>"))
 
 
+def test_feed_renders_for_humans():
+    """Regression: clicking RSS in the nav showed a browser warning and a wall
+    of raw XML. The feed now carries a stylesheet, so readers still parse the
+    XML and people see a page."""
+    print("\nFeed presentation")
+    import xml.etree.ElementTree as ET
+    from pricetrail.theme import FONT_LINK_XML
+    from pricetrail import site as sm
+
+    sheet = sm.FEED_STYLESHEET.replace("LINKS", FONT_LINK_XML)
+    try:
+        ET.fromstring(sheet)
+        check("the stylesheet is valid XML", True)
+    except ET.ParseError as exc:
+        check("the stylesheet is valid XML", False, str(exc))
+
+    try:
+        ET.fromstring(FONT_LINK_XML if FONT_LINK_XML.startswith("<w")
+                      else f"<w>{FONT_LINK_XML}</w>")
+        check("font links are XML-safe (self-closed, & escaped)", True)
+    except ET.ParseError as exc:
+        check("font links are XML-safe (self-closed, & escaped)", False, str(exc))
+
+    check("stylesheet points readers home", "All prices" in sheet)
+
+
 def test_normalise():
     print("\nNormalisation")
     messy = normalise({
@@ -369,6 +395,7 @@ if __name__ == "__main__":
     test_confirmation_kills_flip_flops()
     test_fingerprint()
     test_hostile_input()
+    test_feed_renders_for_humans()
     test_normalise()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")
