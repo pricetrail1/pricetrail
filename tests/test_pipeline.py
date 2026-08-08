@@ -391,6 +391,40 @@ def test_annual_only_pricing():
           plan_price(P(annual_price_per_month=9)) == (9, "annual"))
 
 
+def test_recording_since_does_not_drift():
+    """Regression: the homepage said "Recording since <today>" after every
+    rebuild, because the date came from the earliest change and there were no
+    changes yet. That quietly claimed the archive was minutes old -- the exact
+    opposite of the site's whole argument."""
+    print("\nRecording-since date")
+    import shutil
+    from pricetrail import storage
+
+    shutil.rmtree(storage.DATA, ignore_errors=True)
+    for slug, days in [("a", ["2026-08-04", "2026-08-09"]),
+                       ("b", ["2026-08-06"])]:
+        d = storage.SNAPSHOTS / slug
+        d.mkdir(parents=True, exist_ok=True)
+        for day in days:
+            (d / f"{day}.txt").write_text("x")
+
+    first = storage.recording_since()
+    check("uses the earliest snapshot, not today", first == "2026-08-04", first)
+
+    (storage.SNAPSHOTS / "a" / "2026-12-25.txt").write_text("x")
+    check("does not drift when new snapshots arrive",
+          storage.recording_since() == "2026-08-04")
+
+    storage.SINCE.unlink()
+    check("recomputes to the same answer if the note is lost",
+          storage.recording_since() == "2026-08-04")
+
+    shutil.rmtree(storage.DATA, ignore_errors=True)
+    check("an empty archive reports today", storage.recording_since()
+          == storage.today())
+    shutil.rmtree(storage.DATA, ignore_errors=True)
+
+
 def test_normalise():
     print("\nNormalisation")
     messy = normalise({
@@ -438,6 +472,7 @@ if __name__ == "__main__":
     test_hostile_input()
     test_feed_renders_for_humans()
     test_annual_only_pricing()
+    test_recording_since_does_not_drift()
     test_normalise()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")

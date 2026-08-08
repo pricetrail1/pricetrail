@@ -1041,9 +1041,9 @@ def build(out_dir: Path | None = None) -> dict:
     _IS_DEMO = any(r.get("demo") for r in records.values())
 
     changes = storage.read_changes()
-    dates = [c.get("detected_at", "") for c in changes if c.get("detected_at")]
-    since = pretty_date(min(dates)) if dates else pretty_date(
-        datetime.now(timezone.utc).isoformat())
+    # Not derived from the change log: an archive with no changes yet would
+    # report today, and so reset on every rebuild.
+    since = pretty_date(storage.recording_since())
 
     for name, rec in ((n, records.get(storage.slugify(n))) for n in vendors):
         if rec:

@@ -164,6 +164,39 @@ def read_changes(limit: int | None = None) -> list[dict]:
     return rows[:limit] if limit else rows
 
 
+# ---------- when recording began ----------
+
+SINCE = DATA / "recording-since.txt"
+
+
+def recording_since() -> str:
+    """The date this archive genuinely started, as YYYY-MM-DD.
+
+    This is the single most load-bearing number on the site: the whole claim
+    is "we have been writing this down since X". It used to be derived from
+    the earliest change in the log, which meant an archive with no changes yet
+    reported today's date -- and so reset on every rebuild, permanently
+    claiming the archive was a few minutes old.
+
+    Now it comes from the earliest snapshot on disk, and once established it
+    is written down and never recomputed. Snapshot pruning keeps the first
+    file of each month, so the earliest date survives pruning, but writing it
+    down means it cannot drift even if that ever changes.
+    """
+    if SINCE.exists():
+        stored = SINCE.read_text(encoding="utf-8").strip()
+        if stored:
+            return stored
+
+    dates = sorted(f.stem for folder in SNAPSHOTS.glob("*")
+                   if folder.is_dir() for f in folder.glob("*.txt"))
+    earliest = dates[0] if dates else today()
+
+    _ensure()
+    SINCE.write_text(earliest, encoding="utf-8")
+    return earliest
+
+
 # ---------- crawl state ----------
 
 def load_state() -> dict:
