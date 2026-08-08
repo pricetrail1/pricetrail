@@ -73,7 +73,16 @@ def _rewrite_vendor_urls(repaired: list[tuple[str, str, str]]) -> None:
 
 def run(dry_run: bool = False, only: list[str] | None = None,
         budget_usd: float = DEFAULT_BUDGET_USD,
-        fix_urls: bool = False, all_vendors: bool = False) -> int:
+        fix_urls: bool = False, all_vendors: bool = False,
+        force: bool = False) -> int:
+    """Crawl the vendor list.
+
+    force=True ignores the content hash and re-extracts every page even if it
+    has not changed. You need this whenever the extraction prompt changes:
+    without it, improved extraction only reaches a vendor the next time that
+    vendor happens to edit their page, which could be months. Costs a full
+    extraction run, so it is opt-in.
+    """
     vendors = load_vendors()
     if only:
         wanted = {s.lower() for s in only}
@@ -101,7 +110,8 @@ def run(dry_run: bool = False, only: list[str] | None = None,
     repaired: list[tuple[str, str, str]] = []
 
     print(f"Run started {datetime.now(timezone.utc).isoformat()} "
-          f"({len(vendors)} vendors, dry_run={dry_run})\n")
+          f"({len(vendors)} vendors, dry_run={dry_run}"
+          f"{', FORCED re-extraction' if force else ''})\n")
 
     for vendor in vendors:
         slug, name, url = vendor["slug"], vendor["name"], vendor["pricing_url"]
@@ -155,7 +165,7 @@ def run(dry_run: bool = False, only: list[str] | None = None,
         entry["last_checked"] = storage.today()
         entry["status"] = "ok"
 
-        if entry.get("hash") == new_hash:
+        if entry.get("hash") == new_hash and not force:
             stats["unchanged"] += 1
             print(f"  same  {name}")
             continue
@@ -319,9 +329,13 @@ def main() -> int:
                     help="write recovered URLs back into vendors.yaml")
     ap.add_argument("--all", action="store_true", dest="all_vendors",
                     help="check every vendor, ignoring weekly scheduling")
+    ap.add_argument("--force", action="store_true",
+                    help="re-extract even if the page has not changed. Use "
+                         "after changing the extraction prompt.")
     args = ap.parse_args()
     return run(dry_run=args.dry_run, only=args.only, budget_usd=args.budget,
-               fix_urls=args.fix_urls, all_vendors=args.all_vendors)
+               fix_urls=args.fix_urls, all_vendors=args.all_vendors,
+               force=args.force)
 
 
 if __name__ == "__main__":

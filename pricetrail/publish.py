@@ -71,6 +71,9 @@ def main() -> int:
     ap.add_argument("--serve", action="store_true",
                     help="preview the site locally when finished")
     ap.add_argument("--port", type=int, default=8000)
+    ap.add_argument("--force", action="store_true",
+                    help="re-extract every page even if unchanged (use after "
+                         "an extraction prompt change)")
     ap.add_argument("--budget", type=float, default=0.50,
                     help="max USD to spend on this run's extractions")
     args = ap.parse_args()
@@ -85,7 +88,8 @@ def main() -> int:
         print(f"  Demo data: {stats['vendors']} vendors, "
               f"{stats['changes']} changes")
     elif not args.no_crawl:
-        code = run_crawler(budget_usd=args.budget)
+        code = run_crawler(budget_usd=args.budget, force=args.force,
+                           all_vendors=args.force)
         if code != 0:
             return code
         print()

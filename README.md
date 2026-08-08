@@ -117,9 +117,16 @@ all on GitHub's servers, at no cost.
 python -m pricetrail.publish                # crawl, then rebuild the site
 python -m pricetrail.publish --no-crawl     # rebuild the site only, no spend
 python -m pricetrail.publish --serve        # preview locally
+python -m pricetrail.publish --force        # re-extract everything (see below)
 python -m pricetrail.report review          # things needing your judgement
 python -m pricetrail.report digest --days 7 # your newsletter
 ```
+
+**Run `--force` after any change to the extraction prompt in `extract.py`.**
+The hash gate means an unchanged page is never re-read, so a better prompt
+would otherwise only reach a vendor the next time that vendor edits their
+page -- possibly months away. A forced run costs one full extraction of every
+vendor (about 20p at 24 vendors) and applies the improvement immediately.
 
 The review queue is the only genuine manual job. About ten minutes a morning
 at first, shrinking as you improve the prompts in `extract.py`.
