@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Page shows a pricing structure with contact-tier-based pricing. Actual dollar amounts are not visible in the provided page content—the price fields appear as placeholders or are dynamically loaded. The page displays plan names (Free, Essentials, Standard, Premium) and their features, along with contact tier ranges (0-500, 501-1500, etc.), but specific prices in USD or other currencies are not shown in the extracted text. The page indicates \"Then, starts at $X per month†\" but the actual prices are not populated in the provided HTML. Therefore, pricing_is_public is false because no actual price numbers are displayed; users must select a contact tier to see pricing or contact sales.",
+  "extraction_notes": "Page shows multiple plans but most prices are obscured/hidden. The page displays plan names and features clearly, but actual monthly and annual pricing figures are missing from the extracted text. The pricing appears to be dynamic based on contact tier selection (displayed via dropdown with tiers from 0-500 to 1,000,000+), but the specific prices are not visible in this extraction. Only the Free plan shows a clear $0 price. The page mentions \"Then, starts at\" pricing language multiple times but the actual numbers are not present in the provided text. Free trials are offered for Standard and Essentials (14 days), and a 15% discount is mentioned for 10,000+ contacts for 12 months, but the discounted rates are not shown.",
   "plans": [
     {
       "name": "Free",
@@ -21,12 +21,15 @@
           "unit": null
         },
         {
-          "metric": "email sends per month",
+          "metric": "email sends",
           "value": 500.0,
-          "unit": null
+          "unit": "per month or 250 per day"
         }
       ],
-      "features": []
+      "features": [
+        "basic workflows",
+        "live chat"
+      ]
     },
     {
       "name": "Custom",
@@ -55,20 +58,37 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 3.0,
+          "unit": null
+        },
+        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
         },
         {
-          "metric": "email sends per month",
+          "metric": "email sends",
           "value": 5000.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flow steps",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 3.0,
           "unit": null
         }
       ],
       "features": [
+        "advanced workflows",
         "basic workflows",
         "custom branding",
-        "integrations"
+        "live chat",
+        "role permissions"
       ]
     },
     {
@@ -84,13 +104,28 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "contacts",
+          "metric": "audiences",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "email sends per month",
+          "metric": "contacts",
+          "value": 10000.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends",
           "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
           "unit": null
         }
       ],
@@ -99,9 +134,10 @@
         "ai assistant",
         "custom branding",
         "custom reporting",
-        "integrations",
+        "dedicated account manager",
         "phone support",
-        "priority support"
+        "priority support",
+        "role permissions"
       ]
     },
     {
@@ -117,13 +153,28 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
         },
         {
-          "metric": "email sends per month",
+          "metric": "email sends",
           "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
           "unit": null
         }
       ],
@@ -132,7 +183,9 @@
         "ai assistant",
         "custom branding",
         "custom reporting",
-        "integrations"
+        "live chat",
+        "priority support",
+        "role permissions"
       ]
     }
   ]
