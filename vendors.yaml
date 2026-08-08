@@ -58,11 +58,6 @@ vendors:
     category: helpdesk
     crawl_tier: weekly
 
-  - name: Zoho Desk
-    pricing_url: https://www.zoho.com/desk/pricing.html
-    category: helpdesk
-    crawl_tier: weekly
-
   - name: Chatwoot
     pricing_url: https://www.chatwoot.com/pricing
     category: helpdesk
@@ -159,6 +154,9 @@ vendors:
 #   Klaviyo  https://www.klaviyo.com/pricing
 #   Loops    https://loops.so/pricing
 #   ActiveCampaign  https://www.activecampaign.com/pricing
+#   Zoho Desk       https://www.zoho.com/desk/pricing.html
+#     (diagnosed Aug 2026: 0 prices anywhere in the HTML -- the page
+#      renders currency selectors and loads figures afterwards)
 #
 # To handle these later you would need a headless browser to render the page
 # first. That costs money and complexity -- worth it once you have paying

@@ -301,6 +301,12 @@ td.big {
   font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em;
 }
 
+.basis {
+  display: block; font-family: var(--mono); font-size: 0.62rem;
+  letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted);
+  font-weight: 400; margin-top: 0.1rem;
+}
+
 /* links that look like links */
 a.vlink { font-weight: 600; color: var(--ink); }
 a.vlink:hover { color: var(--link); text-decoration: underline; }

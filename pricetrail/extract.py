@@ -139,6 +139,16 @@ Rules:
 - Prices are numbers only, no currency symbols, no thousands separators.
 - If a page shows both monthly and annual pricing, record both.
 - Ignore promotional or time-limited discount prices; record the standard price.
+- MONTHLY/ANNUAL TOGGLE. Most pricing pages have one, and many default to
+  annual. Read the labels next to each figure carefully:
+    * "$19/month billed annually" or "$19/mo, annual" -> that is the ANNUAL
+      per-month price. Put it in annual_price_per_month and leave
+      monthly_price null unless the monthly figure is also shown.
+    * "$25/month" with no annual wording -> monthly_price.
+  Never put an annual-equivalent figure in monthly_price. Getting these two
+  crossed produces figures nobody advertises, like $24.17 or $11.20.
+- If only one billing period is visible on the page, record only that one and
+  say which in extraction_notes. Do not calculate the other from it.
 - Preserve plan names exactly as written, including capitalisation.
 - If the page is not a pricing page, return an empty plans array and say so in
   extraction_notes.

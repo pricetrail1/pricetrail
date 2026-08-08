@@ -350,6 +350,47 @@ def test_feed_renders_for_humans():
     check("stylesheet points readers home", "All prices" in sheet)
 
 
+def test_annual_only_pricing():
+    """Regression from the live site: a third of the table showed no price.
+
+    Zendesk, Freshdesk and Chatwoot all default their monthly/annual toggle to
+    annual, so the only figure in the HTML is the annual-equivalent. Reading
+    only monthly_price made them look as though they published nothing."""
+    print("\nAnnual-only pricing")
+    from pricetrail.site import headline_prices, plan_price
+
+    P = lambda **kw: {"name":"P","key":"p","monthly_price":None,
+        "annual_price_per_month":None,"is_free":False,"is_custom_pricing":False,
+        "is_per_seat":True,"is_addon":False,"limits":[],"features":[], **kw}
+
+    lo, hi, basis = headline_prices({"plans":[
+        P(name="Growth", annual_price_per_month=19),
+        P(name="Pro", annual_price_per_month=49)]})
+    check("annual-only vendor still shows a price", lo == 19 and hi == 49,
+          f"got {lo}/{hi}")
+    check("and is labelled as annual", basis == "annual")
+
+    lo, _, basis = headline_prices({"plans":[
+        P(name="Standard", monthly_price=25, annual_price_per_month=21)]})
+    check("monthly is preferred when both exist", lo == 25 and basis == "monthly")
+
+    lo, hi, _ = headline_prices({"plans":[
+        P(name="Suite", is_custom_pricing=True)]})
+    check("contact-sales-only gives no figure", lo is None and hi is None)
+
+    lo, _, _ = headline_prices({"plans":[
+        P(name="Free", is_free=True, monthly_price=0),
+        P(name="Pro", monthly_price=30)]})
+    check("a free plan does not become the entry price", lo == 30)
+
+    lo, _, _ = headline_prices({"plans":[
+        P(name="AI", is_addon=True, monthly_price=1)]})
+    check("an add-on does not become the entry price", lo is None)
+
+    check("plan_price reports its basis",
+          plan_price(P(annual_price_per_month=9)) == (9, "annual"))
+
+
 def test_normalise():
     print("\nNormalisation")
     messy = normalise({
@@ -396,6 +437,7 @@ if __name__ == "__main__":
     test_fingerprint()
     test_hostile_input()
     test_feed_renders_for_humans()
+    test_annual_only_pricing()
     test_normalise()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")

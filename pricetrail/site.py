@@ -433,17 +433,24 @@ def render_index(ctx: dict) -> str:
         for name in live:
             rec = records[storage.slugify(name)]
             plans = _real_plans(rec)
-            paid = [p for p in plans
-                    if p["monthly_price"] and not p["is_custom_pricing"]]
-            entry = min((p["monthly_price"] for p in paid), default=None)
-            top = max((p["monthly_price"] for p in paid), default=None)
+            entry, top, basis = headline_prices(rec)
             rcur = rec.get("currency", cur)
+            note = ('<span class="basis">billed annually</span>'
+                    if basis == "annual" else "")
+            if entry is None:
+                enterprise = any(p.get("is_custom_pricing") for p in plans)
+                entry_cell = ('<span class="tag">Enterprise only</span>'
+                              if enterprise else "\u2014")
+                top_cell = "\u2014"
+            else:
+                entry_cell = money(rcur, entry) + note
+                top_cell = money(rcur, top)
             body.append(f"""
         <tr>
           <td data-l="Vendor"><a class="vlink"
             href="v/{esc(storage.slugify(name))}.html">{esc(name)}</a></td>
-          <td class="num big" data-l="Entry">{money(rcur, entry)}</td>
-          <td class="num" data-l="Top listed">{money(rcur, top)}</td>
+          <td class="num big" data-l="Entry">{entry_cell}</td>
+          <td class="num" data-l="Top listed">{top_cell}</td>
           <td data-l="Free tier">{'Yes' if any(p['is_free'] for p in plans) else '\u2014'}</td>
           <td data-l="Billing">{'Per seat' if any(p['is_per_seat'] for p in plans) else 'Flat'}</td>
         </tr>""")
@@ -604,10 +611,7 @@ def render_category(cat: str, ctx: dict) -> str:
     rows = []
     for name in sorted(names):
         rec = ctx["records"][storage.slugify(name)]
-        paid = [p for p in rec["plans"]
-                if p["monthly_price"] and not p["is_custom_pricing"]]
-        entry = min((p["monthly_price"] for p in paid), default=None)
-        top = max((p["monthly_price"] for p in paid), default=None)
+        entry, top, _basis = headline_prices(rec)
         free = any(p["is_free"] for p in rec["plans"])
         custom = any(p["is_custom_pricing"] for p in rec["plans"])
         n_changes = sum(1 for c in ctx["changes"] if c["vendor"] == name)
@@ -674,9 +678,8 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
         return "".join(out)
 
     def entry(rec):
-        paid = [p for p in rec["plans"]
-                if p["monthly_price"] and not p["is_custom_pricing"]]
-        return min((p["monthly_price"] for p in paid), default=None)
+        low, _high, _basis = headline_prices(rec)
+        return low
 
     ea, eb = entry(ra), entry(rb)
     if ea and eb:
@@ -936,6 +939,38 @@ def render_sitemap(paths: list[str]) -> str:
 
 # ---------------------------------------------------------------- build
 
+def plan_price(plan: dict) -> tuple[float | None, str]:
+    """The headline price for a plan, and what it is based on.
+
+    Many pricing pages default their monthly/annual toggle to ANNUAL, so the
+    only figure in the HTML is the annual-equivalent monthly price. Reading
+    only monthly_price made Zendesk, Freshdesk and Chatwoot look as though
+    they published no prices at all, when they were on the page in plain
+    sight. Falling back to the annual figure -- and saying so -- is honest and
+    fills a third of the table that was empty.
+    """
+    if plan.get("monthly_price"):
+        return plan["monthly_price"], "monthly"
+    if plan.get("annual_price_per_month"):
+        return plan["annual_price_per_month"], "annual"
+    return None, ""
+
+
+def headline_prices(record: dict) -> tuple[float | None, float | None, str]:
+    """(cheapest, dearest, basis) across a record's real, published plans."""
+    priced = []
+    for plan in _real_plans(record):
+        if plan.get("is_custom_pricing"):
+            continue
+        value, basis = plan_price(plan)
+        if value:
+            priced.append((value, basis))
+    if not priced:
+        return None, None, ""
+    basis = "annual" if all(b == "annual" for _, b in priced) else "monthly"
+    return min(v for v, _ in priced), max(v for v, _ in priced), basis
+
+
 def _real_plans(record: dict) -> list[dict]:
     """Subscription tiers only. Add-ons are priced per-use and would drag a
     category's median entry price towards zero if counted as plans."""
@@ -951,11 +986,10 @@ def _benchmarks(cat_names: list[str], records: dict) -> dict:
             continue
         counted += 1
         currency = rec.get("currency") or currency
+        low, _high, _basis = headline_prices(rec)
         plans = _real_plans(rec)
-        paid = [p for p in plans
-                if p["monthly_price"] and not p["is_custom_pricing"]]
-        if paid:
-            entries.append(min(p["monthly_price"] for p in paid))
+        if low:
+            entries.append(low)
         if any(p["is_free"] for p in plans):
             free += 1
         if any(p["is_per_seat"] for p in plans):
