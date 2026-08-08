@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing page displays currency selector and multiple contact tier ranges, but no actual monthly or annual prices are shown for any paid plans (Essentials, Standard, Premium). The page indicates \"Then, starts at\" followed by blank spaces where prices should be. Free plan is $0/month. All paid plans mention savings with 15% discount for 12 months on 10,000+ contacts, but base prices are not displayed. Premium plan shows 14-day free trial mentioned for Standard and Essentials but not explicitly for Premium. Contact limits shown are for lowest tier (0-500 contacts) of each plan; higher tiers have different limits. SMS credits are add-ons, not included in base plan pricing. Email sends limits shown are for 0-500 contact tier.",
+  "extraction_notes": "Page shows a pricing structure with contact-tier-based pricing. Actual dollar amounts are not visible in the provided page content—the price fields appear as placeholders or are dynamically loaded. The page displays plan names (Free, Essentials, Standard, Premium) and their features, along with contact tier ranges (0-500, 501-1500, etc.), but specific prices in USD or other currencies are not shown in the extracted text. The page indicates \"Then, starts at $X per month†\" but the actual prices are not populated in the provided HTML. Therefore, pricing_is_public is false because no actual price numbers are displayed; users must select a contact tier to see pricing or contact sales.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": 0.0,
+      "annual_price_per_month": null,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -26,6 +26,20 @@
           "unit": null
         }
       ],
+      "features": []
+    },
+    {
+      "name": "Custom",
+      "key": "custom",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
       "features": []
     },
     {
@@ -52,7 +66,9 @@
         }
       ],
       "features": [
-        "basic workflows"
+        "basic workflows",
+        "custom branding",
+        "integrations"
       ]
     },
     {
@@ -68,33 +84,24 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "audiences",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
-          "value": 10000.0,
+          "value": -1.0,
           "unit": null
         },
         {
           "metric": "email sends per month",
           "value": 150000.0,
           "unit": null
-        },
-        {
-          "metric": "seats",
-          "value": -1.0,
-          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "ai assistant",
+        "custom branding",
         "custom reporting",
+        "integrations",
         "phone support",
-        "priority support",
-        "role permissions"
+        "priority support"
       ]
     },
     {
@@ -110,11 +117,6 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
@@ -123,18 +125,14 @@
           "metric": "email sends per month",
           "value": 6000.0,
           "unit": null
-        },
-        {
-          "metric": "seats",
-          "value": 5.0,
-          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "ai assistant",
+        "custom branding",
         "custom reporting",
-        "role permissions"
+        "integrations"
       ]
     }
   ]
