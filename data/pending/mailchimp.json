@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "This pricing page shows contact tier-based pricing with heavy use of promotional offers and discounts. Actual prices are not displayed on the page for Standard, Essentials, or Premium plans - only placeholders like \"per month\" appear. The page routes to sales/contact/demos for pricing details. The Free plan is clearly defined with no cost. Only the Free plan has concrete pricing information (0 USD). All other plans show \"Contact Sales\", \"Buy Now\" buttons, or blank price fields. The page structure suggests dynamic pricing based on contact tier selection, but specific monthly or annual prices are not visible in the provided HTML.",
+  "extraction_notes": "Pricing page displays currency selector and multiple contact tier ranges, but no actual monthly or annual prices are shown for any paid plans (Essentials, Standard, Premium). The page indicates \"Then, starts at\" followed by blank spaces where prices should be. Free plan is $0/month. All paid plans mention savings with 15% discount for 12 months on 10,000+ contacts, but base prices are not displayed. Premium plan shows 14-day free trial mentioned for Standard and Essentials but not explicitly for Premium. Contact limits shown are for lowest tier (0-500 contacts) of each plan; higher tiers have different limits. SMS credits are add-ons, not included in base plan pricing. Email sends limits shown are for 0-500 contact tier.",
   "plans": [
     {
       "name": "Free",
@@ -21,7 +21,7 @@
           "unit": null
         },
         {
-          "metric": "email sends",
+          "metric": "email sends per month",
           "value": 500.0,
           "unit": null
         }
@@ -46,7 +46,7 @@
           "unit": null
         },
         {
-          "metric": "email sends",
+          "metric": "email sends per month",
           "value": 5000.0,
           "unit": null
         }
@@ -68,18 +68,29 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "contacts",
+          "metric": "audiences",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "email sends",
+          "metric": "contacts",
+          "value": 10000.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
           "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
+        "ai assistant",
         "custom reporting",
         "phone support",
         "priority support",
@@ -99,20 +110,31 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
         },
         {
-          "metric": "email sends",
+          "metric": "email sends per month",
           "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 5.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "ai assistant",
-        "custom reporting"
+        "custom reporting",
+        "role permissions"
       ]
     }
   ]
