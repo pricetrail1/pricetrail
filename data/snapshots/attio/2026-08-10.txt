@@ -1,0 +1,535 @@
+From zero to IPO.
+Designed for every stage of your journey. Start today, no credit card required.
+Annual
+$
+0
+Per user/month, billed
+monthly
+annually
+For individuals to explore Attio on their own.
+Real-time contact syncing
+Automatic data enrichment
+Up to 3 seats
+$
+44
+35
+Save
+20
+%
+Per user/month, billed
+monthly
+annually
+For small teams to get started together.
+Private lists
+Enhanced email sending
+Up to 10 seats
+$
+99
+79
+Save
+20
+%
+Per user/month, billed
+monthly
+annually
+For growing teams to scale revenue with automation.
+Call Intelligence & sequences
+Permission controls
+Advanced reporting
+Custom
+Billed annually
+For organizations needing advanced security and control.
+Unlimited objects
+Unlimited teams
+Security and admin controls
+Select preferred
+billing cycle
+Annual
+Free
+$
+0
+per user/month,
+billed
+monthly
+annually
+Plus
+$
+44
+35
+per user/month,
+billed
+monthly
+annually
+Pro
+Popular
+$
+99
+79
+per user/month,
+billed
+monthly
+annually
+Enterprise
+Get a custom quote,
+billed annually
+Credits
+Seat credits
+100 per user/mo
+500 per user/mo
+1,000 per user/mo
+2,500 per user/mo
+Workspace credits
+250 per workspace/mo
+1,500 per workspace/mo
+10,000 per workspace/mo
+Custom
+Add workspace credits
++ 5,000/month
+$85/mo
+$70/mo
+$85/mo
+$70/mo
+$85/mo
+$70/mo
++ 10,000/month
+$150/mo
+$120/mo
+$150/mo
+$120/mo
+$150/mo
+$120/mo
++ 25,000/month
+$330/mo
+$260/mo
+$330/mo
+$260/mo
+$330/mo
+$260/mo
++ 50,000/month
+$595/mo
+$475/mo
+$595/mo
+$475/mo
+$595/mo
+$475/mo
+Workspace
+Seats
+Up to 3
+Up to 10
+Unlimited
+Objects
+Up to 3
+Up to 5
+Up to 12
+Unlimited
+Manual activity logging
+Custom relationship attributes
+Custom objects
+Records
+50,000
+250,000
+1,000,000
+Custom
+Record and entry templates
+Formula attributes
+Call Intelligence
+Ask Attio
+AI agents
+Integrations
+API and webhook access
+App SDK
+MCP server
+Automations
+Workflows
+Integration blocks
+Sequences
+Email and calendar
+Email and calendar sync
+1 account per user
+2 accounts per user
+3+ accounts per user
+Email sharing
+Manage subject line and metadata visibility.
+Manage visibility of full email content for your workspace.
+Manage visibility of full email content for your entire workspace and individual users.
+Emails on records
+Individual email requests
+Email visibility on records
+Email limits
+200 emails/mo
+1,000 emails/mo
+Unlimited
+Bulk email sending
+10 emails at once
+50 emails at once
+Remove 'Sent with Attio'
+Auto-labeling
+Auto-summaries
+Enrichment
+Communication intelligence
+First interaction
+Last interaction
+Connection strength
+Strongest connection
+First email interaction
+Last email interaction
+First calendar interaction
+Last calendar interaction
+Next calendar interaction
+Company enrichment
+Name
+Description
+Logo
+Category
+Social media
+Location
+Employee count
+ARR
+Funding raised
+People enrichment
+Name
+Description
+Profile picture
+Social media
+Location
+Reporting
+Number of reports
+Up to 3 reports
+Up to 15 reports
+Up to 100 reports
+100+ reports
+Insight reports
+Funnel reports
+Segment by
+Targets
+Historical attributes
+Time comparisons
+Security and admin
+Teams
+Up to 10
+Unlimited
+Access permissions
+None
+Basic
+Advanced
+Manage for workspace
+Manage by teams
+Manage by individuals
+Payment by invoice
+Protected recipients
+Limit CSV exports
+Single sign-on
+SCIM
+Support
+Help center
+Chat and email
+Priority support
+Migration service
+Talk to sales
+Compare plans.
+Everything you need to build the perfect relationship management tool for your team.
+Annual
+Credits
+Seat credits
+Free
+100 per user/mo
+Plus
+500 per user/mo
+Pro
+1,000 per user/mo
+Enterprise
+2,500 per user/mo
+Workspace credits
+Free
+250 per workspace/mo
+Plus
+1,500 per workspace/mo
+Pro
+10,000 per workspace/mo
+Enterprise
+Custom
+Add workspace credits
+Free
+Plus
+Pro
+Enterprise
+Workspace
+Seats
+Free
+Up to 3
+Plus
+Up to 10
+Pro
+Unlimited
+Enterprise
+Unlimited
+Objects
+Free
+Up to 3
+Plus
+Up to 5
+Pro
+Up to 12
+Enterprise
+Unlimited
+Records
+Free
+50,000
+Plus
+250,000
+Pro
+1,000,000
+Enterprise
+Custom
+Record and entry templates
+Free
+Plus
+Pro
+Enterprise
+Formula attributes
+Free
+Plus
+Pro
+Enterprise
+Call Intelligence
+Free
+Plus
+Pro
+Enterprise
+Ask Attio
+Free
+Plus
+Pro
+Enterprise
+AI agents
+Free
+Plus
+Pro
+Enterprise
+Integrations
+Free
+Plus
+Pro
+Enterprise
+API and webhook access
+Free
+Plus
+Pro
+Enterprise
+App SDK
+Free
+Plus
+Pro
+Enterprise
+MCP server
+Free
+Plus
+Pro
+Enterprise
+Automations
+Workflows
+Free
+Plus
+Pro
+Enterprise
+Integration blocks
+Free
+Plus
+Pro
+Enterprise
+Sequences
+Free
+Plus
+Pro
+Enterprise
+Email and calendar
+Email and calendar sync
+Free
+1 account per user
+Plus
+1 account per user
+Pro
+2 accounts per user
+Enterprise
+3+ accounts per user
+Email sharing
+Free
+Manage subject line and metadata visibility.
+Plus
+Manage visibility of full email content for your workspace.
+Pro
+Manage visibility of full email content for your entire workspace and individual users.
+Enterprise
+Manage visibility of full email content for your entire workspace and individual users.
+Emails on records
+Free
+Plus
+Pro
+Enterprise
+Individual email requests
+Free
+Plus
+Pro
+Enterprise
+Email visibility on records
+Free
+Plus
+Pro
+Enterprise
+Email limits
+Free
+200 emails/mo
+Plus
+1,000 emails/mo
+Pro
+Unlimited
+Enterprise
+Unlimited
+Bulk email sending
+Free
+10 emails at once
+Plus
+50 emails at once
+Pro
+50 emails at once
+Enterprise
+50 emails at once
+Remove 'Sent with Attio'
+Free
+Plus
+Pro
+Enterprise
+Auto-labeling
+Free
+Plus
+Pro
+Enterprise
+Auto-summaries
+Free
+Plus
+Pro
+Enterprise
+Enrichment
+Communication intelligence
+Free
+Plus
+Pro
+Enterprise
+Company enrichment
+Free
+Plus
+Pro
+Enterprise
+People enrichment
+Free
+Plus
+Pro
+Enterprise
+Reporting
+Number of reports
+Free
+Up to 3 reports
+Plus
+Up to 15 reports
+Pro
+Up to 100 reports
+Enterprise
+100+ reports
+Insight reports
+Free
+Plus
+Pro
+Enterprise
+Funnel reports
+Free
+Plus
+Pro
+Enterprise
+Segment by
+Free
+Plus
+Pro
+Enterprise
+Targets
+Free
+Plus
+Pro
+Enterprise
+Historical attributes
+Free
+Plus
+Pro
+Enterprise
+Time comparisons
+Free
+Plus
+Pro
+Enterprise
+Security and admin
+Teams
+Free
+Plus
+Pro
+Up to 10
+Enterprise
+Unlimited
+Access permissions
+Free
+None
+Plus
+Basic
+Pro
+Advanced
+Enterprise
+Advanced
+Payment by invoice
+Free
+Plus
+Pro
+Enterprise
+Protected recipients
+Free
+Plus
+Pro
+Enterprise
+Limit CSV exports
+Free
+Plus
+Pro
+Enterprise
+Single sign-on
+Free
+Plus
+Pro
+Enterprise
+SCIM
+Free
+Plus
+Pro
+Enterprise
+Support
+Help center
+Free
+Plus
+Pro
+Enterprise
+Chat and email
+Free
+Plus
+Pro
+Enterprise
+Priority support
+Free
+Plus
+Pro
+Enterprise
+Migration service
+Free
+Plus
+Talk to sales
+Pro
+Talk to sales
+Enterprise
+Talk to sales
+Frequently asked questions.
+Expand all

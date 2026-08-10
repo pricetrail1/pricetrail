@@ -1,0 +1,577 @@
+X
+Team Users: A Quick Overview
+Organization vs. Team levels in
+Zoho CRM
+Data in
+Zoho CRM
+is organized into data modules, and your CRM users are granted access to the modules relevant to them. Modules and users are available at two levels â the
+organization (or org) level
+, and
+team level
+.
+Org modules
+contain data closely tied to your sales processes. The users who work on these modules are
+org users
+, and they have full-scale CRM access. This license is ideal for sales reps, sales managers, presales teams, and central CRM admins.
+Note:
+Any mention of just "users" in
+Zoho CRM
+refers to this type of user.
+Team modules
+contain niche data particular to specific teams that support the sales process at various stages. The users who work on these modules are
+team users
+. Outside of their team modules, they only have partial access to CRM data and functionality. This license is ideal for all non-sales users, like marketing, support, legal, finance, and others.
+The following table provides a short overview of what team users can (and cannot) do in both types of modules
+Organization modules
+What team users
+can do
+What team users
+cannot do
+What team users
+can do
+View and add notes, tags, attachments to records in up to 10 org modules
+Get view-only access to Zoho integration tabs
+View and create public custom views
+Interact with other users in Feeds
+Access Zoho CRM mobile apps
+What team users
+cannot do
+Own records or have any admin-level permissions
+Access or work with Reports and Dashboards
+Initiate calls/meetings
+Create or manage automation
+Access AI/Zia features
+Access Google/Microsoft integrations
+Team modules
+What team users
+can do
+What team users
+cannot do
+What team users
+can do
+Own and perform all operations on team module records
+Customize team modules and manage automations
+Associate webforms
+Send emails, mass emails, and use mail merge
+Manage custom views
+What team users
+cannot do
+Build and access reports and dashboards based on team modules
+Build custom functions, widgets, and access Sandbox
+Note:
+These features are available within team modules, but can only be accessed by fully licensed users
+Want to try team users?
+If you are a new user, you can
+sign up for a free trial of
+Zoho CRM
+and add team users from the Setup page.
+If you are an existing customer, or you're making your first purchase, you can buy team user licenses from the
+Add-ons page
+of the Zoho Store.
+Note:
+Teamspaces, team modules, and team users are available only in the new
+CRM For Everyone UI
+. If you are an existing customer, please ensure you have switched to the new UI before trying team users.
+For a more detailed overview of team users and their permissions,
+check this guide.
+100% free forever
+Monthly
+Annually
+save up to 34%
+CRM
+Bundles
+Free Tools
+Annually
+Save up to
+34
+%
+with yearly plans
+Monthly
+100% free forever
+CRM
+Bundles
+Free Tools
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+Standard
+Beginner-friendly
+â¹
+800
+/user/month
+START FREE TRIAL
+Standard
+Features List
+All the essentials:
+Workflows & assignment rules
+Automate your day-to-day activities with workflows.
+AI agents
+Build and deploy AI agents to automate sales activities.
+Cadences
+Automate multichannel lead follow-up sequences.
+Reports & dashboards
+Build custom reports and dashboards to view your business performance.
+Sales forecasting
+Set your team for long-term success with achievable goals and keep track of business performance.
+Self service kiosks
+A no-code customization tool to create custom screens, record actions, and execute custom functions.
+Professional
+Automation and AI
+â¹
+1,400
+/user/month
+START FREE TRIAL
+Professional
+Features List
+Everything in
+Standard +
+CPQ
+Match products to customer requirements and streamline quote management with built-in price rules.
+Email intelligence
+Get AI insights for emails, like contextual summaries, intent and sentiment analysis, and subject line suggestions.
+Process automation
+Build a step-by-step blueprint to guide your sales reps at every stage.
+Widgets
+Create widgets to perform functions that utilize data from third-party applications.
+Inventory management
+Manage all your invoices, sales and purchase orders, products, and vendors.
+Google Ads integration
+Plan your campaigns by connecting Google Ads with Zoho CRM
+Most Popular
+Enterprise
+Deep customizability
+â¹
+2,400
+/user/month
+START FREE TRIAL
+Enterprise
+Features List
+Everything in
+Professional +
+AI sales assistant
+Gain insights, predictions, and recommendations from Zia.
+Journey orchestration
+Build end-to-end customer journeys and delivering personalized experiences.
+Territory management
+Assign leads, customers, and accounts to sales reps based on product line, geography, and verticals.
+Custom functions
+Build low-code workflows to automate enterprise operations across different apps.
+Wizards
+Replace endless CRM forms with shorter, sequential forms using wizards.
+Customer portals
+Use portals to grant customers, partners, and vendors access to relevant information in your CRM.
+Power your business from Zoho's KSA-hosted data centres.
+Learn More
+Ultimate
+Bespoke solutions
+â¹
+2,600
+/user/month
+START FREE TRIAL
+Ultimate
+Features List
+Everything in
+Enterprise +
+Enhanced feature limits
+Consulting
+Build a bespoke version of Zoho CRM.
+Migration assistance
+Get expert help for data migration.
+Custom AI/ML
+Get daily free calls to our ML platform, QuickML, to build your own ML models.
+Data preparation
+Merge and segregate similar datasets into single tables for easier analysis and reporting.
+Power your business from Zoho's KSA-hosted data centres.
+Learn More
+Starter
+â¹
+420
+/user/month
+START FREE TRIAL
+Starter
+Features List
+Key Features
+Sales forecasting
+Track progress and estimate future sales using your pipeline insights
+Team module
+Manage your team, roles, and collaboration settings
+2500 workflow rules
+Rules that run when records meet specific criteria
+5 CRM Marketplace extensions
+Plug-and-play integrations from the Marketplace
+Ticket management
+View, assign, and resolve support tickets.
+Agent productivity
+Tools that help agents work faster
+5 customer support channels
+Manage customer interactions from different channels
+Unlimited emails
+Handle all customer emails
+1 chatbot
+25K bot sessions
+Your chatbot can handle upto 25K chat sessions per month.
+Visitor insights (50K visitors/month)
+View a real-time list of all your website visitors categorized based on your chosen criteria like location, time spent, traffic source, and more.
+Unlimited projects
+Enterprise
+â¹
+420
+/user/month
+START FREE TRIAL
+Enterprise
+Features List
+Everything in
+Starter Edition +
+10 GB data storage for up to 200 users / 30 GB data storage for 200 users or more
+Store customer data like contacts, leads, deals, and more.
+5 GB (plus 1 GB/user) of license file storage per org
+Store files like documents, images, and other customer-related collateral.
+100 Blueprints per org
+Create visual representations of your business processes and guide team members step by step on how to execute them.
+200k website visitors tracked per month
+Get a real-time list of all your website visitors, categorized according to the criteria you choose. Once you've crossed your tracking limit, you can extend it at an additional charge.
+1 Brand (11 social channels)
+A brand includes a total of 11 social channels: a Twitter Profile, an Instagram Profile, a Facebook Page, Threads, a Mastodon Profile, a LinkedIn Company Page, a LinkedIn Profile, a Google My Business Listing, a YouTube Account, a Pinterest Profile, and a TikTok Profile.
+10 customer service channels
+Accept customer requests through 10 support channels: Email, Help Center, Feedback widget, Webforms, Twitter, Facebook, Instagram, Community Forums, Telephony, Live chat.
+Unlimited projects
+Create an unlimited number of projects with no limits on the total number of tasks, subtasks, and milestones you can create.
+Unlimited emails for up to 100,000 contacts For over 100,000 contacts - 10 * number of contacts
+There's no limit to the number of emails you can send if you have less than 100,000 contacts. If you have more than 100,000 contacts, the total number of emails that you can send is 10 times your total number of contacts. Additional emails can be purchased as add-ons.
+250+ survey templates
+Includes a wide range of customer survey templates for different categories, such as customer satisfaction, marketing, human resources, and more.
+Unlimited reports and dashboards
+There's no limit to the number of reports and dashboards you can create in Analytics.
+75+ built-in visualizations
+Visualize business data the way you want via different types of charts, pivot tables, tabular views, and more.
+Zoho CRM
+Manage leads, track deals, automate follow-ups.
+START FREE
+Zoho Desk
+Close support tickets and boost customer satisfaction.
+START FREE
+Bigin by Zoho CRM
+Simple CRM for businesses moving from spreadsheets.
+START FREE
+Zoho Sign
+Sign, send, and manage documents digitally.
+START FREE
+Zoho Forms
+Build forms, collect data, and automate workflows.
+START FREE
+Zoho Creator
+Build and deploy custom applications faster.
+START FREE
+Zoho Bookings
+Schedule appointments and meetings.
+START FREE
+Zoho Survey
+Create surveys, uncover insights, and drive decisions.
+START FREE
+Zoho LandingPage
+Create landing pages, capture leads, and convert visitors.
+START FREE
+Zoho Campaigns
+Create personalized email campaigns that convert.
+START FREE
+Zoho Thrive
+Build loyalty programs for customer growth.
+START FREE
+Zia Agents
+Build and deploy AI agents for free.
+START FREE
+Zoho FSM
+Manage field service operations.
+START FREE
+Zoho POS
+Accept payments manage all retail operations.
+START FREE
+Zoho PageSense
+Analyze visitor behaviour and drive conversion.
+START FREE
+Local taxes (VAT, GST, etc.) will be charged in addition to the prices mentioned.
+Check your price estimate here
+Local taxes (VAT, GST, etc.) will be charged in addition to the prices mentioned.
+Compare Zoho CRM features
+across all editions
+We have something for everyone
+Zoho CRM Free Edition
+Leads, deals, workflows, reports, and a mobile app â your complete CRM starter kit. Free forever for 3 users.
+Start Free
+Simple CRM for small businesses moving from spreadsheets to manage their sales pipeline.
+Explore
+Create, customize, and deploy AI agents across Zoho apps. Supercharge your productivity with agents that work 24x7.
+Create Agents
+Looking to switch CRMs? We make it easy
+Migrate Now
+Monthly
+Annually
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+Free
+â¹
+0
+3 users
+Start Now
+Free
+Features List
+Forever free
+Contact management
+Manage all contacts important to your business in one place. No more scattered business cards.
+Follow-up reminders
+Stay on track with timely reminders to follow-up on a lead.
+Workflow automation
+Automate repetitive tasks with workflows. From routing leads to the right rep to updating fields when a deal is closed.
+Custom email templates
+Personalize emails to fit the tone of your business. Get up to 10 custom emai templates for free.
+Tasks, meetings & calls
+Track all sales activities in Zoho CRM. Get reminders so don't miss.
+Data import and export
+Import data from spreadsheets for free. Export data from Zoho CRM for up to 10 times for free.
+Standard reports
+View your business performance in one place with powerful reports.
+APIs
+Connect Zoho CRM to any app and perform actions with 5000 API calls/day.
+Mobile apps
+Sell more on the go with Zoho CRM's mobile app.
+Standard
+â¹
+800
+/user/month
+FREE TRIAL
+Standard
+Features List
+Small team, getting started
+Email integration & mass emails
+Send emails via Gmail, Outlook, Zoho Mail, and other popular email services, directly from Zoho CRM.
+Built-in calling
+Make, receive, and log sales calls directly inside Zoho CRM.
+Multiple sales pipelines
+Track multiple sales operations with different stages without any clutter.
+Calendar integration
+Schedule and book meetings from within Zoho CRM.
+Data capture via forms
+Generate leads from anywhere with built-in forms.
+Sales forecasting
+Set your team for long-term success with achievable goals and keep track of business performance.
+Data enrichment
+Enrich your records to get more context about your leads like company size, industry, revenue, and more.
+Custom modules
+Build custom modules to hold data unique to your business.
+HIPAA compliance
+Store and manage patient or health-related data in Zoho CRM without risking regulatory violations.
+Gmail and Outlook integration
+Integrate Gmail, Outlook, Zoho Mail, and other popular email service providers with Zoho CRM.
+Slack, Zoom, Teams integration
+Integrate popular video conferencing and collaboration tools with Zoho CRM.
+Most Popular
+Professional
+â¹
+1,400
+/user/month
+FREE TRIAL
+Professional
+Features List
+Growing team, needs automation
+AI agents
+Build and deploy AI agents that execute tasks on your behalf for any business use case.
+Process management
+Standardize and automate your sales processes.
+Inventory management
+Manage all your invoices, sales and purchase orders, products, and vendors.
+Predictive intelligence
+Predict the likelihood of a lead converting, a deal closing, or a customer churning.
+Unlimited reports
+Stay informed about your business performance with unlimited reports.
+Configure, Price, Quote (CPQ)
+Match products to customer requirements and streamline quote management with built-in price rules.
+Custom portals
+Use portals to grant customers, partners, and vendors access to relevant information in your CRM.
+Customer journeys
+Build end-to-end, dynamic customer journeys that give your customers a memorable experience.
+Web-to-case forms
+Resolve customer issues with web-to-case forms that convert problems into support tickets that your reps can follow.
+Customer portals
+Extend Zoho CRM to your contacts, vendors, or partners with portals.
+Google Ads integration
+Manage Google Ads campaigns from within Zoho CRM.
+Enterprise
+â¹
+2,400
+/user/month
+FREE TRIAL
+Enterprise
+Features List
+Running a mature sales org
+Multi-team management
+Manage multiple sales teams across territories.
+Reporting hierarchy
+Give every manager a real-time view of only their team's pipeline and performance.
+Custom buttons and functions
+Create custom buttons and functions to extend the capabilities of Zoho CRM.
+Extended field types
+Capture the exact data your business needs. Move beyond standard forms. Add file uploads, checkboxes, date ranges, and more.
+Sequential data collection
+Walk your sales team through a structured, step-by-step process so every deal gets worked the same way and nothing falls through the cracks.
+Approval process
+Ensure deals move on only after the right person approves it.
+Account Based Marketing
+Segment your accounts to identify up-sell and cross-sell opportunities.
+Developer sandbox
+Securely test the changes without affecting production data in a sandbox environment.
+Field-level encryption
+Protect sensitive customer data at a field-level.
+Extended AI capabilities
+Gain insights, predictions, and recommendations from Zia.
+QuickBooks integration
+Sync QuickBook records with Zoho CRM and create quotes and invoices easily.
+Local taxes (VAT, GST, etc.) will be charged in addition to the prices mentioned.
+Check your price estimate here
+Local taxes (VAT, GST, etc.) will be charged in addition to the prices mentioned.
+Compare Zoho CRM features
+across all editions
+Bigin Express
+â¹
+2,400
+/user/month
+FREE TRIAL
+EXPLORE BIGIN
+Bigin Express
+Features List
+First-timer, moving from spreadsheets
+Sales pipeline
+Track your sales operations by stages with pipelines in Bigin.
+Email integration
+Connect Gmail, Outlook, Zoho Mail, and other popular email services directly to Bigin.
+Built-in calling
+Make, receive, and record sales calls without leaving Bigin.
+Calendar integration
+Manage your day better by syncing your Google Calendar and Microsoft Calendar with Bigin.
+Appointment scheduling
+Create a no-code online page to capture meeting and appointment bookings.
+Social Ads integration
+Capture and convert leads from Instagram, TikTok, Google, LinkedIn, and Facebook ads.
+Payment collection
+Collect payments easily via Stripe and PayPal integrations.
+Custom fields
+Create custom fields unique to your business.
+Tags
+Segment, filter, and find your leads faster by adding tags.
+QuickBooks integration
+Generate, share, and track invoices and estimates right from Bigin. Keep your sales and finance teams on the same page.
+Zoho CRMPlus
+Sales, marketing, service in one unified package.
+Starts at
+$20
+/user/month
+FREE TRIAL
+Looking to switch CRMs? We make it easy
+Migrate Now
+Join
+250,000+
+other businesses
+START FREE TRIAL NOW
+Buy Now
+Frequently Asked Questions
+Expand All
+Collapse All
+Can I get a demo of
+Zoho CRM?
+Yes, we would be happy to demonstrate
+Zoho CRM
+through a web-conference at your convenience. The demo is a one hour session. To schedule your personal session, please contact
+sales@zohocorp.com.
+Is my data safe?
+Weâre fervent about keeping your data safe and secure. Our facilities feature stringent 24/7/365 security with video monitoring, biometric access, and advanced fire, flood, and theft monitoring systems. Our network security system employs the latest encryption and intrusion detection and prevention technologies.
+Learn more about Zoho's data protection measures.
+What types of payment do you accept?
+We accept payment via Visa, MasterCard, American Express and PayPal. We also accept payment via bank transfer or check transfer for yearly subscriptions. For more details, please contact
+sales@zohocorp.com.
+Does
+Zoho CRM
+support multiple languages?
+Yes, we support 28 languages: Arabic, English (US), English (UK), Bulgarian, Bahasa Indonesian, Chinese (Simplified), Chinese (Traditional), Croatia (Hrvatski), Czech, Dutch (Nederland), Danish, French, German (Deutsch), Hungarian (Magyar), Hindi, Italiano (Italy), Japanese, Polish (Polish), Portuguese (Brazil), Portuguese (Portugal), Russian, Spanish (Espanol), Swedish(Svenska), Thai, Turkish, Vietnamese, Korean, Hebrew.
+How flexible are your contracts?
+You are not bound by any contracts or commitments.
+Zoho CRM
+is a pay-as-you-go service (monthly or yearly), so you can make changes to your plan whenever you need to.
+Can I switch plans?
+Of course you can! Log in to
+Zoho CRM,
+click the Upgrade link on the Home page, and follow the steps on the Subscription page to switch to a new plan.
+How do you support businesses signing up for
+Zoho CRM
+?
+For customers of our paid editions, you automatically have access to our Classic support. You also have the option to opt-in for one of our paid support plans that promises faster responses, round the clock support, dedicated on-boarding and more.
+Explore support plans
+Do you provide any assistance in getting
+Zoho CRM
+set up and running for our business?
+Yes, we do have end-to-end services that cover everything from requirement gathering to setup and onboarding. We have dedicated programs for SMEs and Enterprises, so that the different requirements and needs are addressed effectively.
+Explore Jumpstart
+Explore Zoho EBS
+Are there any other editions in Zoho CRM?
+Yes, Zoho CRM has an Ultimate edition tailored for large-scale, bespoke deployments with highest possible feature limits, consultation with experts, and migration assistance. Check out the feature comparison page to
+learn more
+.
+Does Zoho CRM have a free edition?
+Yes, Zoho CRM does have free edition that supports upto 3 users and comes with the essentials like leads, documents, and mobile apps, itâs a perfect fit for your home business.
+Get started here
+Have more questions?
+You can connect with us instantly through live chat (24x5) or by writing to us at
+sales@zohocorp.com.

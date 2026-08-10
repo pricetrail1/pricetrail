@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Annual pricing shown as $517 annually for Scale (Save $71/year) and $1,151 annually for Max (Save $157/year). Converted to effective monthly rates: Scale $517/12 = $43.08, Max $1,151/12 = $95.92 (rounded to 43 and 96 respectively as shown). Monthly billing rates displayed as $43 and $96. Enterprise is custom pricing with flexible billing noted for 100K+ subscribers. Features extracted from comparison table - only included those from the allowed list that were clearly marked as included in each plan.",
+  "extraction_notes": "Pricing shows monthly billing option; annual pricing is $517/year for Scale ($43/month) and $1,151/year for Max ($96/month). The annual per-month prices are identical to the displayed monthly prices. Launch is free forever with no credit card required. Enterprise shows \"Custom Pricing\" with no numbers disclosed. All plans have unlimited email sends. The subscription limit noted in FAQ (\"paid plans start at $49/month\") appears to refer to an older pricing, but the page now shows Scale at $43/month.",
   "plans": [
     {
       "name": "Launch",
@@ -97,7 +97,7 @@
       "features": [
         "ai assistant",
         "api access",
-        "integrations"
+        "priority support"
       ]
     },
     {
@@ -146,8 +146,8 @@
       "features": [
         "ai assistant",
         "api access",
-        "integrations",
-        "priority support"
+        "priority support",
+        "single sign-on"
       ]
     },
     {
@@ -183,6 +183,11 @@
           "unit": null
         },
         {
+          "metric": "subscribers",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "team members",
           "value": -1.0,
           "unit": null
@@ -192,9 +197,8 @@
         "ai assistant",
         "api access",
         "dedicated account manager",
-        "integrations",
         "priority support",
-        "sso"
+        "single sign-on"
       ]
     }
   ]

@@ -1,0 +1,163 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Prices shown are per agent/month when billed annually. Hacker plan is free for up to 2 agents. Captain AI is an add-on priced at $20 per 1,000 credits. Free plans (Startups for open source/nonprofits) mentioned in FAQ but not as separate pricing tiers. 15-day free trial mentioned in header. Page shows only annual pricing; no monthly-only pricing is displayed.",
+  "plans": [
+    {
+      "name": "Hacker",
+      "key": "hacker",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "agents",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "conversations per month",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 30.0,
+          "unit": "days"
+        }
+      ],
+      "features": [
+        "live chat"
+      ]
+    },
+    {
+      "name": "Business",
+      "key": "business",
+      "monthly_price": null,
+      "annual_price_per_month": 39.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "conversations per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 2.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "custom reporting",
+        "integrations",
+        "live chat",
+        "priority support",
+        "sla policies",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Captain AI",
+      "key": "captainai",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "credits per 1000",
+          "value": 20.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "ai chatbot"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": 99.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "conversations per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 3.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "audit log",
+        "custom branding",
+        "custom reporting",
+        "integrations",
+        "live chat",
+        "priority support",
+        "saml",
+        "sla policies",
+        "sso",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Startups",
+      "key": "startups",
+      "monthly_price": null,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "conversations per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 1.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "custom reporting",
+        "integrations",
+        "live chat",
+        "priority support",
+        "whatsapp"
+      ]
+    }
+  ]
+}

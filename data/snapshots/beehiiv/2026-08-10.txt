@@ -1,0 +1,517 @@
+Build like the best
+How many email
+subscribers do you have?
+1,000
+Monthly billing
+Annual billing
+Launch
+$0
+per month
+Up to 2,500 subscribers
+What's included...
+Newsletters, Website, and Podcast
+Campaign Analytics
+Unlimited Email Sends
+Recommendation Network
+Optimized Deliverability
+Custom Domains
+Link-in-Bio
+AI Website Builder
+API Access (excluding Send API)
+beehiiv MCP (Read Access)
+beehiiv Copilot (Read Access)
+New
+Most popular
+Scale
+Save $
+71
+/year
+$43
+per month
+$517 billed annually
+Everything on Launch +
+Ad Network
+*
+†
+Recommendations
+*
+†
+0% Take Rate on Paid Subscriptions
+*
+Digital Products
+Community
+New
+Email Automations
+Surveys & Polls
+Advanced Website Analytics
+Webhooks
+beehiiv MCP (Write Access)
+beehiiv Copilot (Write Access)
+New
+Teams (3 Seats)
+*
+Slack Community Access
+*
+Human Support
+Best value
+Max
+Save $
+157
+/year
+$96
+per month
+$1,151 billed annually
+Everything on Scale +
+Remove beehiiv Branding
+*
+Sponsorship Storefront
+Audio Newsletters
+Digital Products (Appointments)
+RSS to Send
+Up to 10 Publications
+*
+Teams (Unlimited Seats)
+*
+Priority Human Support
+Getty Image Credits
+Dynamic Content
+AI Bot Control
+Send API
+*
+Group Subscriptions
+Click-Triggered Automations
+Enterprise
+Custom Pricing
+Flexible billing, 100K+ subscribers
+Everything on Max +
+Concierge Onboarding
+Dedicated Account Manager
+Dedicated IP Addresses
+Random Cohort Sends
+Custom Publication Limits
+Invite-Only Webinars with our CEO
+VIP Human Support
+Deliverability Reports (coming soon)
+SSO
+Trusted by thousands of creators and top brands
+Feature comparison
+With beehiiv you'll have the same suite of tools used by the world's largest newsletters.
+Launch
+Scale
+Max
+Enterprise
+Usage
+Team members
+Team members, Launch,
+1
+Team members, Scale,
+Up to 3
+Team members, Max,
+Unlimited
+Team members, Enterprise,
+Unlimited
+Email sends
+Email sends, Launch,
+Unlimited
+Email sends, Scale,
+Unlimited
+Email sends, Max,
+Unlimited
+Email sends, Enterprise,
+Unlimited
+Posts
+Posts, Launch,
+Unlimited
+Posts, Scale,
+Unlimited
+Posts, Max,
+Unlimited
+Posts, Enterprise,
+Unlimited
+Publications Limit
+Publications Limit, Launch,
+3
+Publications Limit, Scale,
+3
+Publications Limit, Max,
+10
+Publications Limit, Enterprise,
+Custom
+Subscribers Limit
+Subscribers Limit, Launch,
+Up to 2,500 subs
+Subscribers Limit, Scale,
+100,000
+Subscribers Limit, Max,
+100,000
+Subscribers Limit, Enterprise,
+Custom
+Website
+Web hosting
+Web hosting, Launch, Yes
+Web hosting, Scale, Yes
+Web hosting, Max, Yes
+Web hosting, Enterprise, Yes
+Subscribe forms
+Subscribe forms, Launch, Yes
+Subscribe forms, Scale, Yes
+Subscribe forms, Max, Yes
+Subscribe forms, Enterprise, Yes
+Advanced email capture
+Advanced email capture, Launch, Yes
+Advanced email capture, Scale, Yes
+Advanced email capture, Max, Yes
+Advanced email capture, Enterprise, Yes
+Custom domains
+Custom domains, Launch, Yes
+Custom domains, Scale, Yes
+Custom domains, Max, Yes
+Custom domains, Enterprise, Yes
+Website templates
+Website templates, Launch, Yes
+Website templates, Scale, Yes
+Website templates, Max, Yes
+Website templates, Enterprise, Yes
+Link-in-Bio
+Link-in-Bio, Launch, Yes
+Link-in-Bio, Scale, Yes
+Link-in-Bio, Max, Yes
+Link-in-Bio, Enterprise, Yes
+Website analytics
+Website analytics, Launch,
+Basic metrics
+Website analytics, Scale,
+All data; filters not supported
+Website analytics, Max,
+All data; filtering available
+Website analytics, Enterprise,
+All data; filtering available
+Surveys
+Surveys, Launch, No
+Surveys, Scale, Yes
+Surveys, Max, Yes
+Surveys, Enterprise, Yes
+Custom webpages
+Custom webpages, Launch, No
+Custom webpages, Scale, Yes
+Custom webpages, Max, Yes
+Custom webpages, Enterprise, Yes
+Custom robots.txt
+Custom robots.txt, Launch, No
+Custom robots.txt, Scale, No
+Custom robots.txt, Max, Yes
+Custom robots.txt, Enterprise, Yes
+AI Bot Control
+AI Bot Control, Launch, No
+AI Bot Control, Scale, No
+AI Bot Control, Max, Yes
+AI Bot Control, Enterprise, Yes
+Newsletter
+Create segments
+Create segments, Launch, Yes
+Create segments, Scale, Yes
+Create segments, Max, Yes
+Create segments, Enterprise, Yes
+Custom builder
+Custom builder, Launch, Yes
+Custom builder, Scale, Yes
+Custom builder, Max, Yes
+Custom builder, Enterprise, Yes
+Optimized deliverability
+Optimized deliverability, Launch, Yes
+Optimized deliverability, Scale, Yes
+Optimized deliverability, Max, Yes
+Optimized deliverability, Enterprise, Yes
+Custom fields
+Custom fields, Launch, Yes
+Custom fields, Scale, Yes
+Custom fields, Max, Yes
+Custom fields, Enterprise, Yes
+Email templates
+Email templates, Launch, Yes
+Email templates, Scale, Yes
+Email templates, Max, Yes
+Email templates, Enterprise, Yes
+AI Credit Limits
+AI Credit Limits, Launch,
+10 per day
+AI Credit Limits, Scale,
+25 per day
+AI Credit Limits, Max,
+50 per day
+AI Credit Limits, Enterprise,
+100 per day
+Automations
+Automations, Launch, No
+Automations, Scale, Yes
+Automations, Max, Yes
+Automations, Enterprise, Yes
+Click-triggered automations
+Click-triggered automations, Launch, No
+Click-triggered automations, Scale, No
+Click-triggered automations, Max, Yes
+Click-triggered automations, Enterprise, Yes
+Random cohort sends
+Random cohort sends, Launch, No
+Random cohort sends, Scale, No
+Random cohort sends, Max, No
+Random cohort sends, Enterprise, Yes
+Custom HTML
+Custom HTML, Launch, No
+Custom HTML, Scale, Yes
+Custom HTML, Max, Yes
+Custom HTML, Enterprise, Yes
+Audience polls
+Audience polls, Launch, No
+Audience polls, Scale, Yes
+Audience polls, Max, Yes
+Audience polls, Enterprise, Yes
+A/B testing
+A/B testing, Launch, No
+A/B testing, Scale, Yes
+A/B testing, Max, Yes
+A/B testing, Enterprise, Yes
+beehiiv AI
+beehiiv AI, Launch, No
+beehiiv AI, Scale, Yes
+beehiiv AI, Max, Yes
+beehiiv AI, Enterprise, Yes
+Publish to segments
+Publish to segments, Launch, No
+Publish to segments, Scale, Yes
+Publish to segments, Max, Yes
+Publish to segments, Enterprise, Yes
+RSS to Send
+RSS to Send, Launch, No
+RSS to Send, Scale, No
+RSS to Send, Max, Yes
+RSS to Send, Enterprise, Yes
+Audio Newsletters
+Audio Newsletters, Launch, No
+Audio Newsletters, Scale, No
+Audio Newsletters, Max, Yes
+Audio Newsletters, Enterprise, Yes
+Dynamic content
+Dynamic content, Launch, No
+Dynamic content, Scale, No
+Dynamic content, Max, Yes
+Dynamic content, Enterprise, Yes
+Podcasts
+Episodes/Month
+Episodes/Month, Launch,
+1
+Episodes/Month, Scale,
+4
+Episodes/Month, Max,
+Unlimited
+Episodes/Month, Enterprise,
+Unlimited
+Shows
+Shows, Launch,
+1
+Shows, Scale,
+1
+Shows, Max,
+3
+Shows, Enterprise,
+Unlimited
+Community
+Discussions (feed & channels)
+Discussions (feed & channels), Launch, No
+Discussions (feed & channels), Scale, Yes
+Discussions (feed & channels), Max, Yes
+Discussions (feed & channels), Enterprise, Yes
+DMs & group chats
+DMs & group chats, Launch, No
+DMs & group chats, Scale, Yes
+DMs & group chats, Max, Yes
+DMs & group chats, Enterprise, Yes
+Newsletter & podcast sync
+Newsletter & podcast sync, Launch, No
+Newsletter & podcast sync, Scale, Yes
+Newsletter & podcast sync, Max, Yes
+Newsletter & podcast sync, Enterprise, Yes
+Growth
+Recommendation network
+Recommendation network, Launch, Yes
+Recommendation network, Scale, Yes
+Recommendation network, Max, Yes
+Recommendation network, Enterprise, Yes
+Magic links
+Magic links, Launch, Yes
+Magic links, Scale, Yes
+Magic links, Max, Yes
+Magic links, Enterprise, Yes
+Referral program
+Referral program, Launch, No
+Referral program, Scale, Yes
+Referral program, Max, Yes
+Referral program, Enterprise, Yes
+Recommendations
+Recommendations, Launch, No
+Recommendations, Scale, Yes
+Recommendations, Max, Yes
+Recommendations, Enterprise, Yes
+Monetization
+Ad network
+Ad network, Launch, No
+Ad network, Scale, Yes
+Ad network, Max, Yes
+Ad network, Enterprise, Yes
+Programmatic Ads
+Programmatic Ads, Launch, No
+Programmatic Ads, Scale, Yes
+Programmatic Ads, Max, Yes
+Programmatic Ads, Enterprise, Yes
+Paid subscriptions
+Paid subscriptions, Launch, No
+Paid subscriptions, Scale, Yes
+Paid subscriptions, Max, Yes
+Paid subscriptions, Enterprise, Yes
+Group subscriptions
+Group subscriptions, Launch, No
+Group subscriptions, Scale, No
+Group subscriptions, Max, Yes
+Group subscriptions, Enterprise, Yes
+Recommendations
+Recommendations, Launch, No
+Recommendations, Scale, Yes
+Recommendations, Max, Yes
+Recommendations, Enterprise, Yes
+Digital Products
+Digital Products, Launch, No
+Digital Products, Scale, Yes
+Digital Products, Max, Yes
+Digital Products, Enterprise, Yes
+Digital Products (Appointments)
+Digital Products (Appointments), Launch, No
+Digital Products (Appointments), Scale, No
+Digital Products (Appointments), Max, Yes
+Digital Products (Appointments), Enterprise, Yes
+Analytics
+Campaign analytics
+Campaign analytics, Launch, Yes
+Campaign analytics, Scale, Yes
+Campaign analytics, Max, Yes
+Campaign analytics, Enterprise, Yes
+Subscriber metrics
+Subscriber metrics, Launch, Yes
+Subscriber metrics, Scale, Yes
+Subscriber metrics, Max, Yes
+Subscriber metrics, Enterprise, Yes
+3D analytics
+3D analytics, Launch, No
+3D analytics, Scale, Yes
+3D analytics, Max, Yes
+3D analytics, Enterprise, Yes
+Integrations
+Giphy
+Giphy, Launch, Yes
+Giphy, Scale, Yes
+Giphy, Max, Yes
+Giphy, Enterprise, Yes
+Unsplash
+Unsplash, Launch, Yes
+Unsplash, Scale, Yes
+Unsplash, Max, Yes
+Unsplash, Enterprise, Yes
+API access
+API access, Launch, Yes
+API access, Scale, Yes
+API access, Max, Yes
+API access, Enterprise, Yes
+Send API
+Send API, Launch, No
+Send API, Scale, No
+Send API, Max, Yes
+Send API, Enterprise, Yes
+Security
+2FA
+2FA, Launch, Yes
+2FA, Scale, Yes
+2FA, Max, Yes
+2FA, Enterprise, Yes
+SSO
+SSO, Launch, No
+SSO, Scale, No
+SSO, Max, No
+SSO, Enterprise, Yes
+Support
+AI Assistant
+AI Assistant, Launch, Yes
+AI Assistant, Scale, Yes
+AI Assistant, Max, Yes
+AI Assistant, Enterprise, Yes
+Premium Support
+Premium Support, Launch, No
+Premium Support, Scale, Yes
+Premium Support, Max, Yes
+Premium Support, Enterprise, Yes
+Priority support
+Priority support, Launch, No
+Priority support, Scale, No
+Priority support, Max, Yes
+Priority support, Enterprise, Yes
+Account manager
+Account manager, Launch, No
+Account manager, Scale, No
+Account manager, Max, No
+Account manager, Enterprise, Yes
+Extras
+beehiiv MCP (Read Access)
+beehiiv MCP (Read Access), Launch, Yes
+beehiiv MCP (Read Access), Scale, Yes
+beehiiv MCP (Read Access), Max, Yes
+beehiiv MCP (Read Access), Enterprise, Yes
+beehiiv MCP (Write Access)
+beehiiv MCP (Write Access), Launch, No
+beehiiv MCP (Write Access), Scale, Yes
+beehiiv MCP (Write Access), Max, Yes
+beehiiv MCP (Write Access), Enterprise, Yes
+beehiiv Copilot (Read Access)
+beehiiv Copilot (Read Access), Launch, Yes
+beehiiv Copilot (Read Access), Scale, Yes
+beehiiv Copilot (Read Access), Max, Yes
+beehiiv Copilot (Read Access), Enterprise, Yes
+beehiiv Copilot (Write Access)
+beehiiv Copilot (Write Access), Launch, No
+beehiiv Copilot (Write Access), Scale, Yes
+beehiiv Copilot (Write Access), Max, Yes
+beehiiv Copilot (Write Access), Enterprise, Yes
+Remove beehiiv Branding
+Remove beehiiv Branding, Launch, No
+Remove beehiiv Branding, Scale, No
+Remove beehiiv Branding, Max, Yes
+Remove beehiiv Branding, Enterprise, Yes
+Getty Image Credits
+Getty Image Credits, Launch, No
+Getty Image Credits, Scale, No
+Getty Image Credits, Max,
+3
+Getty Image Credits, Enterprise,
+10
+NewsletterXP Course
+NewsletterXP Course, Launch, No
+NewsletterXP Course, Scale, No
+NewsletterXP Course, Max, Yes
+NewsletterXP Course, Enterprise, Yes
+Dedicated IP Addresses
+Dedicated IP Addresses, Launch, No
+Dedicated IP Addresses, Scale, No
+Dedicated IP Addresses, Max, No
+Dedicated IP Addresses, Enterprise, Yes
+Grow faster. Earn more. Pay less.
+From newsletters and podcasts to websites and digital products, beehiiv supports every aspect of your business.
+Scale faster with audience growth tools like recommendations and referral programs built directly into the platform.
+Turn attention into revenue with paid subscriptions, paid recommendations, and the industry’s largest native ad network.
+“
+We launched on beehiiv with nothing, scaled to over 250,000 subscribers, and got acquired all in under a year. beehiiv is that powerful.
+”
+Shaan Puri
+Founder of Milk Road
+Frequently Asked Questions
+Yes. beehiiv's Launch plan is free, forever, with no credit card required. You get up to 2,500 subscribers, unlimited email sends, and access to beehiiv's core newsletter, website, and podcast tools. When you're ready to unlock monetization, advanced analytics, AI tools, and more, paid plans start at $49/month.
+Both plans include unlimited email sends, automations, the beehiiv Ad Network, paid subscription tools, digital products, and advanced analytics. Max adds several key upgrades: the ability to remove beehiiv branding from your newsletter and website, dynamic content, priority support, and up to 10 publications per account (vs. 3 on Scale). If a white-label experience, advanced features, and faster support matter to your operation, Max is the step up worth taking.
+No. All beehiiv plans, including the free Launch plan, include unlimited email sends. You're never penalized for sending more frequently or for emailing your full list.
+READY TO Build?
+Own your audience today

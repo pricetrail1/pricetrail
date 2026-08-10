@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Page shows \"Then, starts at\" and placeholder pricing fields but no actual numeric prices are displayed in the HTML. Only currency selector is shown. The page appears to be a pricing page but all specific prices are missing—showing only contact tier ranges and feature comparisons. Trial_days extracted where stated. No monthly_price or annual_price_per_month values found as the page does not display actual amounts. Custom pricing mentioned for 200,000+ contacts. SMS is an add-on available across plans. Pay-as-you-go email credits option also mentioned as alternative but not detailed as a plan tier.",
+  "extraction_notes": "This pricing page shows contact tier dropdowns and discounts for 10,000+ contacts but does not display actual dollar amounts for any plan pricing. All monthly_price and annual_price_per_month values are null because no specific prices are shown. The page indicates \"Save 15% on 10,000+ contacts\" and mentions promotional pricing but does not state the base prices themselves. Currency selector shows USD available. Contact limits shown are representative tier values; actual pricing varies by contact tier (0-500, 501-1,500, etc.) but specific prices are not displayed.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 0.0,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -26,9 +26,7 @@
           "unit": null
         }
       ],
-      "features": [
-        "basic workflows"
-      ]
+      "features": []
     },
     {
       "name": "Essentials",
@@ -43,11 +41,6 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "audiences",
-          "value": 3.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
@@ -56,18 +49,9 @@
           "metric": "email sends per month",
           "value": 5000.0,
           "unit": null
-        },
-        {
-          "metric": "users/seats",
-          "value": 3.0,
-          "unit": null
         }
       ],
-      "features": [
-        "integrations",
-        "live chat",
-        "role permissions"
-      ]
+      "features": []
     },
     {
       "name": "Premium",
@@ -82,11 +66,6 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "audiences",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
           "value": 10000.0,
           "unit": null
@@ -95,24 +74,9 @@
           "metric": "email sends per month",
           "value": 150000.0,
           "unit": null
-        },
-        {
-          "metric": "users/seats",
-          "value": -1.0,
-          "unit": null
         }
       ],
-      "features": [
-        "advanced workflows",
-        "ai assistant",
-        "custom reporting",
-        "integrations",
-        "live chat",
-        "onboarding support",
-        "phone support",
-        "priority support",
-        "role permissions"
-      ]
+      "features": []
     },
     {
       "name": "Standard",
@@ -127,11 +91,6 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
@@ -140,22 +99,9 @@
           "metric": "email sends per month",
           "value": 6000.0,
           "unit": null
-        },
-        {
-          "metric": "users/seats",
-          "value": 5.0,
-          "unit": null
         }
       ],
-      "features": [
-        "advanced workflows",
-        "ai assistant",
-        "custom reporting",
-        "integrations",
-        "live chat",
-        "onboarding support",
-        "role permissions"
-      ]
+      "features": []
     }
   ]
 }

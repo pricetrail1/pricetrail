@@ -1,0 +1,129 @@
+Compare Features
+Basic
+Try free
+Professional
+Try free
+Business
+Try free
+Usage
+Contacts
+Companies
+Tasks
+Projects & processes
+Sales opportunities
+Leads
+Custom fields
+Support
+Live chat
+Ask questions with a real person via our in-app chat
+Help Center
+Office Hours & Webinars
+Drop in to an interactive webinar hosted by a member of our Customer Success Team. Bring your specific questions, or listen in for tips shared with Copper customers
+Personal onboarding
+Work with an onboarding consultant to set up your Copper account. For eligible Business & Professional annual tier accounts
+Premium support
+Work with a customer success manager to develop success plans. For eligible Business & Professional annual tier accounts
+Mobile Apps
+iOS & Android
+Google Workspace integrations
+Google Chrome extension
+Bring Copper natively into Gmail and Google Calendar on desktop
+Gmail email, contact, and file sync
+Send and receive emails wherever you work
+Google Calendar sync
+Create and manage calendar events with Copper
+Google Contact Sync
+Automatically capture contact information from those you're talking to
+Google Drive integration
+Link documents from Google Drive in Copper records
+Google Sheets & Looker Studio integration
+Directly sync your Copper data for complex reporting
+Productivity
+Notes, activities & tasks
+Take detailed notes as you work for added context
+File uploading
+Easily view, manage, and send files
+Team collaboration
+Reminders
+Never forget or miss a todo with helpful nudges
+Contact & teammate suggestions
+Global activity feed
+AI email template generator
+Craft templates in your brand’s voice for any use case. Add dynamic merge fields for instant personalization
+AI email re-writer
+Make emails clearer or more engaging with AI-powered edits
+Task automation
+Automatically create a new task after an action takes place in Copper
+Workflow automation
+Integrations
+Our partnership with
+allows you to connect Copper to
+5,000+ other apps
+for workflow automation
+Zapier
+LinkedIn
+Add contacts from LinkedIn to Copper in 1-click
+MailChimp
+Sync contacts from Copper to MailChimp email campaigns
+DocuSign
+Auto-fill templates that make it easy to send and sign e-documents
+QuickBooks
+See any QuickBooks invoice status and amount on any record
+PandaDocs
+JustCall
+RingCentral
+Slack
+Receive important Copper notifications in any Slack channel
+Zendesk
+View support tickets on related records
+API & Embedded integration SDK
+Communication
+Email templates & merge fields
+Improve consistency when you answer frequent questions, greet new customers or promote your services
+Bulk email
+Send emails with personalized messages to multiple recipients
+Email automation
+Email open tracking
+Email click tracking
+Email series
+Contact Forms
+Forms
+Remove Copper branding
+"Powered by Copper" will not appear on your form
+Sales
+Customizable sales pipelines
+Sales pipeline templates
+Deal management
+Stay on top of hot deals with Copper's recommendations, which suggest next steps based on upcoming meetings, tasks and overdue email responses
+Revenue tracking
+Projects
+Customizable project pipelines
+Project pipeline templates
+Reporting
+Activity report
+Get visibility into your team's day-to-day activities
+Pipeline reports
+Custom reports
+Build insights from scratch across all Copper data
+Admin
+Data import & export
+Migrate or update existing records, or export data for in-depth reporting
+Sign in with Google
+Team permissions
+Restrict access to records and reports
+Single sign-on (Okta)
+Multi-currency
+Report on multiple currencies and get real time currency conversions
+2,500
+25
+15,000
+50
+Unlimited
+Works with the apps & tools you’re already using
+See all integrations
+Top rated in all the right places
+Compare us on G2
+Try Copper free.
+Instant activation, no credit card required. Give Copper a try today.
+Try free
+Demo

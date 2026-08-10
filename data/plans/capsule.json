@@ -1,0 +1,163 @@
+{
+  "currency": "USD",
+  "pricing_is_public": false,
+  "extraction_notes": "Page shows \"Pay Annually\" and \"Pay Monthly\" toggle but no actual prices are displayed for any paid plan. All paid plans (Starter, Growth, Advanced, Ultimate) show \"Try Free\" with 14-day trial but no pricing figures. Ultimate is custom pricing (\"Sales team will be in touch\"). Marketing add-on shows \"$11 per month\" and is listed separately as an add-on available within the account. Currency appears to be USD based on $ symbol. Page states \"Save up to 14%\" for annual vs monthly but specific prices are not provided, making this a contact-sales model for paid tiers.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "custom fields",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "sales pipelines",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 2.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "Marketing add-on",
+      "key": "marketingaddon",
+      "monthly_price": 11.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Advanced",
+      "key": "advanced",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 120000.0,
+          "unit": null
+        },
+        {
+          "metric": "project boards",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "sales pipelines",
+          "value": 50.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 60000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 30000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "basic workflows",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Ultimate",
+      "key": "ultimate",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "dedicated account manager",
+        "integrations"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-10T10:43:27.979994+00:00"
+}

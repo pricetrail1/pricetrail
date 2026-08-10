@@ -1,0 +1,219 @@
+{
+  "currency": "INR",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows pricing in INR (₹). Both monthly and annual billing are mentioned as available options (\"Monthly\" and \"Annually\" tabs visible), but specific annual per-month prices are not displayed on this page - only monthly prices are shown. There are two product tiers shown: Zoho CRM and Bigin by Zoho CRM, with separate plan structures. The \"Free\" tier is also included. Some plans reference \"Everything in Standard +\" or \"Everything in Professional +\" which indicates feature stacking, but specific feature lists are provided for each plan.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "users",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "api access",
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Enterprise (Zoho Desk)",
+      "key": "enterprisezohodesk",
+      "monthly_price": 420.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "blueprints per org",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "brands",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "customer service channels",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "data storage",
+          "value": 10.0,
+          "unit": "GB"
+        },
+        {
+          "metric": "file storage",
+          "value": 5.0,
+          "unit": "GB"
+        },
+        {
+          "metric": "website visitors tracked per month",
+          "value": 200000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai chatbot",
+        "custom reporting",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Starter (Zoho Desk)",
+      "key": "starterzohodesk",
+      "monthly_price": 420.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "chatbot sessions per month",
+          "value": 25000.0,
+          "unit": null
+        },
+        {
+          "metric": "crm marketplace extensions",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "customer support channels",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "website visitors per month",
+          "value": 50000.0,
+          "unit": null
+        },
+        {
+          "metric": "workflow rules",
+          "value": 2500.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai chatbot",
+        "basic workflows",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 800.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai chatbot",
+        "basic workflows",
+        "integrations",
+        "reports"
+      ]
+    },
+    {
+      "name": "Professional",
+      "key": "professional",
+      "monthly_price": 1400.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Bigin Express",
+      "key": "biginexpress",
+      "monthly_price": 2400.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": 2400.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "integrations",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Ultimate",
+      "key": "ultimate",
+      "monthly_price": 2600.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "integrations",
+        "role permissions"
+      ]
+    }
+  ],
+  "captured_at": "2026-08-10T10:43:00.853067+00:00"
+}

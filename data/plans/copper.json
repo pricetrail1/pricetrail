@@ -1,0 +1,7 @@
+{
+  "currency": "USD",
+  "pricing_is_public": false,
+  "extraction_notes": "This page is a feature comparison table, not a pricing page. It shows three tiers (Basic, Professional, Business) with feature matrices and \"Try free\" buttons, but displays no prices, billing terms, or cost information. No numerical pricing data is available to extract.",
+  "plans": [],
+  "captured_at": "2026-08-10T10:42:27.528467+00:00"
+}
