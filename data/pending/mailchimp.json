@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "This pricing page shows contact tier dropdowns and discounts for 10,000+ contacts but does not display actual dollar amounts for any plan pricing. All monthly_price and annual_price_per_month values are null because no specific prices are shown. The page indicates \"Save 15% on 10,000+ contacts\" and mentions promotional pricing but does not state the base prices themselves. Currency selector shows USD available. Contact limits shown are representative tier values; actual pricing varies by contact tier (0-500, 501-1,500, etc.) but specific prices are not displayed.",
+  "extraction_notes": "Page does not display actual pricing numbers for Standard, Essentials, and Premium plans. Pricing amounts are hidden behind contact tier selection, and exact prices are not visible. All plan prices show as blank/empty fields with \"per month\" labels but no values. Free plan is clearly $0. Custom pricing is for large businesses with 200,000+ contacts. SMS and email credits are add-ons (not main plans). Trial periods: Free trial for Standard/Essentials is 14 days; Premium may have 1-month trial for qualified customers (noted separately). Role-based access limits noted in comparison table: Premium has 5 roles, Standard has 4 roles, Essentials has 2 roles, Free has none listed.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": 0.0,
+      "annual_price_per_month": null,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -26,6 +26,28 @@
           "unit": null
         }
       ],
+      "features": [
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Custom",
+      "key": "custom",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
       "features": []
     },
     {
@@ -41,6 +63,11 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 3.0,
+          "unit": null
+        },
+        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
@@ -49,9 +76,18 @@
           "metric": "email sends per month",
           "value": 5000.0,
           "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 3.0,
+          "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "basic workflows",
+        "custom reporting",
+        "role permissions"
+      ]
     },
     {
       "name": "Premium",
@@ -74,9 +110,23 @@
           "metric": "email sends per month",
           "value": 150000.0,
           "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": -1.0,
+          "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "dedicated account manager",
+        "onboarding support",
+        "phone support",
+        "priority support",
+        "role permissions"
+      ]
     },
     {
       "name": "Standard",
@@ -91,6 +141,11 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
@@ -99,9 +154,20 @@
           "metric": "email sends per month",
           "value": 6000.0,
           "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 5.0,
+          "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "onboarding support",
+        "role permissions"
+      ]
     }
   ]
 }
