@@ -1,29 +1,21 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "Page shows plan names and features but actual pricing numbers are not displayed—only placeholder text \"Sales Essentials per month\" and \"Sales Advanced per month/user\" appear without values. Starter, Standard, and Professional plan prices are missing. The Free plan limit of 300 emails is stated on the page (\"From 5,000 emails per month\" for Starter indicates Free is below that). Currency is not explicitly stated; USD is assumed as common for SaaS pricing pages. The page mentions \"-10%\" discount for yearly but no actual prices are shown to calculate the annual_price_per_month.",
+  "pricing_is_public": false,
+  "extraction_notes": "Page shows plan names and feature lists but prices are not displayed (\"Loading content...\" appears where prices should be). Only plan names, tier descriptions, and feature inclusions are visible. Monthly/Yearly toggle is mentioned but no actual prices are shown. Cannot extract specific pricing figures.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": 0.0,
+      "annual_price_per_month": null,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "emails per month",
-          "value": 300.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "email support"
-      ]
+      "limits": [],
+      "features": []
     },
     {
       "name": "Enterprise",
@@ -36,16 +28,11 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "contacts",
-          "value": 1000000.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "saml",
-        "sso"
+        "api access",
+        "custom branding",
+        "phone support"
       ]
     },
     {
@@ -55,7 +42,7 @@
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
@@ -72,6 +59,8 @@
         }
       ],
       "features": [
+        "api access",
+        "custom branding",
         "phone support"
       ]
     },
@@ -86,14 +75,11 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "emails per month",
-          "value": -1.0,
-          "unit": null
-        }
-      ],
-      "features": []
+      "limits": [],
+      "features": [
+        "api access",
+        "custom branding"
+      ]
     },
     {
       "name": "Starter",
@@ -114,7 +100,8 @@
         }
       ],
       "features": [
-        "email support"
+        "api access",
+        "custom branding"
       ]
     }
   ]
