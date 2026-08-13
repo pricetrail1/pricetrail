@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Page shows plan names and feature lists but prices are not displayed (\"Loading content...\" appears where prices should be). Only plan names, tier descriptions, and feature inclusions are visible. Monthly/Yearly toggle is mentioned but no actual prices are shown. Cannot extract specific pricing figures.",
+  "pricing_is_public": true,
+  "extraction_notes": "The page does not display specific pricing numbers for most plans. Starter shows \"per month\" placeholder text but no actual price. Standard shows \"Sales Essentials per month\" placeholder. Professional shows \"Sales Advanced per month/user\". Enterprise shows \"Custom price\". Free plan limit (300 emails/month) inferred from comparison context but not explicitly stated on this extract. Monthly/Yearly toggle is mentioned but no specific amounts are visible. Unable to extract actual dollar amounts for any paid plan.",
   "plans": [
     {
       "name": "Free",
@@ -14,8 +14,18 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
-      "features": []
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 300.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "email",
+        "sms"
+      ]
     },
     {
       "name": "Enterprise",
@@ -30,9 +40,17 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "api access",
+        "advanced workflows",
+        "basic workflows",
         "custom branding",
-        "phone support"
+        "dedicated account manager",
+        "email",
+        "onboarding support",
+        "phone support",
+        "saml",
+        "sms",
+        "sso",
+        "whatsapp"
       ]
     },
     {
@@ -42,7 +60,7 @@
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": false,
+      "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
@@ -59,9 +77,13 @@
         }
       ],
       "features": [
-        "api access",
+        "advanced workflows",
+        "basic workflows",
         "custom branding",
-        "phone support"
+        "email",
+        "phone support",
+        "sms",
+        "whatsapp"
       ]
     },
     {
@@ -77,8 +99,11 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "api access",
-        "custom branding"
+        "advanced workflows",
+        "basic workflows",
+        "custom branding",
+        "email",
+        "sms"
       ]
     },
     {
@@ -100,8 +125,9 @@
         }
       ],
       "features": [
-        "api access",
-        "custom branding"
+        "basic workflows",
+        "email",
+        "sms"
       ]
     }
   ]
