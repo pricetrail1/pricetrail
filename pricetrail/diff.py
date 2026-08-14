@@ -131,6 +131,21 @@ def diff_pricing(vendor: str, old: dict | None, new: dict) -> list[Change]:
         changes.append(Change(vendor, "pricing_published", None, None,
                               False, True, base))
 
+    # A currency flip makes every figure on the page incomparable with the
+    # figure before it. $49 -> £39 is not a 20% price cut; it is the same plan
+    # quoted in a different currency, usually because the page geo-detected a
+    # different visitor. Publishing that as a price decrease is the single
+    # worst thing this system could do -- it is a confident, specific, wrong
+    # claim about a real company.
+    #
+    # So when the currency moves, prices are not compared at all this round.
+    # Everything currency-independent (plans appearing, features, limits) is
+    # still diffed normally.
+    currency_flipped = bool(
+        old.get("currency") and new.get("currency")
+        and old["currency"] != new["currency"]
+    )
+
     if old.get("currency") != new.get("currency") and old.get("currency"):
         # Currency flips are usually geo-detection, not a real change.
         changes.append(Change(vendor, "currency_changed", None, "currency",
@@ -158,12 +173,14 @@ def diff_pricing(vendor: str, old: dict | None, new: dict) -> list[Change]:
     # --- plans that persisted ---------------------------------------------
 
     for key in old_plans.keys() & new_plans.keys():
-        changes.extend(_diff_plan(vendor, old_plans[key], new_plans[key], base))
+        changes.extend(_diff_plan(vendor, old_plans[key], new_plans[key], base,
+                                  compare_prices=not currency_flipped))
 
     return changes
 
 
-def _diff_plan(vendor: str, old: dict, new: dict, base: float) -> list[Change]:
+def _diff_plan(vendor: str, old: dict, new: dict, base: float,
+               compare_prices: bool = True) -> list[Change]:
     out: list[Change] = []
     name = new["name"]
 
@@ -171,7 +188,7 @@ def _diff_plan(vendor: str, old: dict, new: dict, base: float) -> list[Change]:
         out.append(Change(vendor, "plan_renamed", name, "name",
                           old["name"], new["name"], base))
 
-    for pfield in ("monthly_price", "annual_price_per_month"):
+    for pfield in ("monthly_price", "annual_price_per_month") if compare_prices else ():
         o, n = old.get(pfield), new.get(pfield)
         if o == n:
             continue

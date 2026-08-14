@@ -21,6 +21,7 @@ from pricetrail.diff import (CONFIDENCE_PUBLISH, diff_pricing,
                              fingerprint)
 from pricetrail.extract import normalise
 from pricetrail import site as sitemod
+from pricetrail import storage
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -425,6 +426,286 @@ def test_recording_since_does_not_drift():
     shutil.rmtree(storage.DATA, ignore_errors=True)
 
 
+def test_status_page():
+    """The status page is how you find out the crawler is broken without
+    reading GitHub logs, so it has to survive an archive in any state."""
+    print("\nStatus page")
+    import shutil
+    from pricetrail import storage, status
+
+    shutil.rmtree(storage.DATA, ignore_errors=True)
+    try:
+        d = status.gather()
+        check("survives an empty archive", d["vendors_ok"] == 0)
+    except Exception as exc:
+        check("survives an empty archive", False, f"{type(exc).__name__}: {exc}")
+
+    storage.save_state({
+        "a": {"status": "ok", "last_checked": "2026-08-08", "hash_changes": 4},
+        "b": {"status": "extraction_error", "last_checked": "2026-08-08",
+              "last_error": "boom"},
+        "c": {"status": "suspicious_extraction", "last_checked": "2026-08-08"},
+        "d": {"status": "ok", "last_checked": "2020-01-01"},
+    })
+    d = status.gather()
+    failing = dict(d["failing"])
+    check("spots a failed extraction", "b" in failing)
+    check("spots a suspicious extraction", "c" in failing)
+    check("does not flag a healthy vendor", "a" not in failing)
+    check("spots a vendor gone stale", "d" in dict(d["stale"]))
+    check("reports spend", isinstance(d["spend_mtd"], (int, float)))
+
+    storage.save_state({})
+    check("survives empty state", status.gather()["vendors_known"] == 0)
+    shutil.rmtree(storage.DATA, ignore_errors=True)
+
+
+def test_dashboard_health():
+    """The dashboard has to survive the thing it monitors being broken.
+
+    A monitoring tool that crashes when the network dies, or when GitHub
+    returns rubbish, is worse than no monitoring tool -- you would read the
+    silence as 'fine'."""
+    print("\nDashboard health checks")
+    from unittest.mock import patch
+    from pricetrail import health
+
+    class Boom:
+        def __init__(self, *a, **k): raise RuntimeError("network down")
+
+    with patch("pricetrail.health.requests.get", Boom):
+        d = health.collect()
+    check("survives total network failure", isinstance(d, dict))
+    check("reports it rather than pretending", not d["healthy"])
+    check("still returns every field",
+          all(k in d for k in ("vendors_ok", "spend", "changes", "since")))
+
+    class Junk:
+        status_code = 200
+        text = "<<<not json>>>"
+        elapsed = __import__("datetime").timedelta(seconds=0.1)
+        def json(self): raise ValueError("not json")
+
+    with patch("pricetrail.health.requests.get", lambda *a, **k: Junk()):
+        d = health.collect()
+    check("survives GitHub returning rubbish", isinstance(d, dict))
+
+    class Fine:
+        status_code = 200
+        text = ""
+        elapsed = __import__("datetime").timedelta(seconds=0.05)
+        def json(self): return {}
+
+    with patch("pricetrail.health.requests.get", lambda *a, **k: Fine()):
+        d = health.collect()
+    check("handles an empty archive", d["vendors_ok"] == 0)
+    check("spend defaults to zero", d["spend"] == 0.0)
+
+
+def test_console_shows_changes():
+    """The recorded price moves are the point of the project. An earlier
+    version of the console counted them but never showed them, so the first
+    real change would have appeared as 'all systems normal'."""
+    print("\nConsole change feed")
+    from unittest.mock import patch
+    from pricetrail import health
+
+    rows = "\n".join([
+        '{"vendor":"Zendesk","plan":"Suite Team","change_type":"price_increase",'
+        '"field":"monthly_price","old_value":55,"new_value":65,'
+        '"detected_at":"2026-08-20T06:00:00+00:00","note":"+18.2%"}',
+        '{"vendor":"Kit","plan":"Creator","change_type":"price_decrease",'
+        '"field":"monthly_price","old_value":29,"new_value":25,'
+        '"detected_at":"2026-08-18T06:00:00+00:00","note":"-13.8%"}',
+        'not valid json at all',
+    ])
+
+    class R:
+        status_code = 200
+        text = rows
+        elapsed = __import__("datetime").timedelta(seconds=0.1)
+        def json(self): return {}
+
+    with patch("pricetrail.health.requests.get", lambda *a, **k: R()):
+        d = health.collect()
+
+    check("skips the unparseable line", d["changes"] == 2, f"got {d['changes']}")
+    check("returns the changes themselves", len(d["recent"]) == 2)
+    check("newest first", d["recent"][0]["vendor"] == "Zendesk")
+    check("carries both figures",
+          d["recent"][0]["old"] == 55 and d["recent"][0]["new"] == 65)
+    check("carries the date", d["recent"][0]["when"] == "2026-08-20")
+
+    nxt = health.next_check()
+    check("says when the next check is due",
+          isinstance(nxt, str) and ("hour" in nxt or "minute" in nxt), nxt)
+
+
+def test_advice_engine():
+    """The console decides what to do next rather than handing over numbers.
+
+    The rules must fire in the right order -- broken things before growth
+    advice -- and must never suggest email signup before there is any reason
+    to think anyone is visiting."""
+    print("\nAdvice engine")
+    from datetime import date, timedelta
+    from pricetrail.advice import advise, summarise, days_recording
+
+    def day(n):
+        return (date.today() - timedelta(days=n)).isoformat()
+
+    def base(**kw):
+        d = dict(site_up=True, problems=[], changes=0, vendors_ok=24,
+                 since=day(40))
+        d.update(kw)
+        return d
+
+    check("a broken site outranks everything",
+          "GitHub" in advise(base(site_up=False, changes=9))["headline"])
+    check("a stopped crawl outranks growth advice",
+          "Wake" in advise(base(problems=["No crawl for 50 hours"],
+                                changes=9))["headline"])
+    check("a broken vendor outranks growth advice",
+          "problem" in advise(base(problems=["kit: HTTP 403"],
+                                   changes=9))["headline"].lower())
+
+    early = advise(base(since=day(2)))
+    check("week one says do nothing", early["effort"] == "none")
+    check("and says why", "age" in early["detail"])
+
+    check("three quiet weeks suggests more vendors",
+          "Widen" in advise(base(since=day(25)))["headline"])
+    check("a first change suggests telling someone",
+          "Tell" in advise(base(since=day(20), changes=2))["headline"])
+
+    month = advise(base(since=day(45), changes=6))
+    check("a month in, points at Search Console",
+          "found you" in month["headline"])
+    check("email signup is gated behind checking for traffic",
+          "if people are arriving" in month["detail"].lower()
+          or "if people are arriving from google" in month["detail"].lower(),
+          month["detail"][:90])
+
+    for days, changes in [(0, 0), (3, 0), (10, 0), (25, 0), (20, 3), (60, 9)]:
+        a = summarise(base(since=day(days), changes=changes))
+        if not (a.get("headline") and a.get("detail") and a.get("effort")):
+            check(f"day {days} gives complete advice", False)
+            break
+    else:
+        check("every stage gives complete advice", True)
+
+    check("counts days from the start date", days_recording(day(12)) == 12)
+    check("survives a rubbish date", days_recording("not a date") == 0)
+
+
+def test_ask_claude():
+    """The in-app assistant can act, so its limits have to be real.
+
+    The user named three: it must not spend money, send anything, or leak
+    personal information. None of those are enforced by asking the model
+    nicely -- they are enforced by the tool not existing and the executor
+    refusing anything off the list."""
+    print("\nAsk Claude")
+    import os
+    import shutil
+    from unittest.mock import patch
+    from pricetrail import ask as ask_mod
+
+    status = {"vendors_ok": 24, "changes": 3, "spend": 0.31,
+              "since": "2026-08-04", "problems": [], "recent": []}
+
+    # --- the limits ---
+    for forbidden in ("run_crawl", "publish", "send_email", "post_tweet",
+                      "read_file", "shell", "spend"):
+        check(f"'{forbidden}' is refused",
+              "Refused" in ask_mod.run_tool(forbidden, {}))
+
+    names = {t["name"] for t in ask_mod.TOOLS}
+    check("no tool can spend money",
+          not any(w in n for n in names for w in ("crawl", "publish", "run")))
+    check("no tool can send anything",
+          not any(w in n for n in names
+                  for w in ("send", "email", "post", "upload")))
+    check("only four tools exist", len(names) == 4, str(sorted(names)))
+
+    # --- the writes it can do are contained ---
+    check("diagnose refuses an untracked company",
+          "not tracked" in ask_mod.run_tool("diagnose_vendor",
+                                            {"vendor": "TotallyMadeUp"}))
+    check("remove refuses an untracked company",
+          "No company" in ask_mod.run_tool("remove_vendor",
+                                           {"vendor": "TotallyMadeUp"}))
+    check("add refuses a non-URL",
+          "not a URL" in ask_mod.run_tool(
+              "add_vendor", {"name": "X", "pricing_url": "nope",
+                             "category": "crm"}))
+
+    backup = ask_mod.VENDORS.read_text("utf-8")
+    try:
+        out = ask_mod.run_tool("add_vendor", {
+            "name": "ZZTestCo", "pricing_url": "https://zz.test/pricing",
+            "category": "crm"})
+        check("add works and says the change is local",
+              "Added" in out and "local" in out.lower(), out)
+        check("adding twice is refused",
+              "already tracked" in ask_mod.run_tool("add_vendor", {
+                  "name": "ZZTestCo", "pricing_url": "https://zz.test/pricing",
+                  "category": "crm"}))
+        out = ask_mod.run_tool("remove_vendor", {"vendor": "ZZTestCo"})
+        check("remove works", "Removed" in out, out)
+        import yaml as _y
+        check("vendors.yaml is still valid afterwards",
+              isinstance(_y.safe_load(ask_mod.VENDORS.read_text("utf-8")), dict))
+    finally:
+        ask_mod.VENDORS.write_text(backup, encoding="utf-8")
+
+    # --- failure paths cannot take the console down ---
+    with patch.dict(os.environ, {}, clear=True):
+        try:
+            ask_mod.ask("anything?", status)
+            check("no key gives a clear error", False, "raised nothing")
+        except ask_mod.AskError as exc:
+            check("no key gives a clear error", "API key" in str(exc))
+
+    class Resp:
+        def __init__(self, code, body=None):
+            self.status_code = code
+            self._body = body or {}
+        def json(self): return self._body
+
+    for code, expect in [(401, "rejected"), (429, "Rate limited"), (500, "500")]:
+        with patch.dict(os.environ, {"ANTHROPIC_API_KEY": "sk-test"}), \
+             patch("pricetrail.ask.requests.post", lambda *a, **k: Resp(code)):
+            try:
+                ask_mod.ask("q", status)
+                check(f"HTTP {code} is explained", False, "no error raised")
+            except ask_mod.AskError as exc:
+                check(f"HTTP {code} is explained",
+                      expect.lower() in str(exc).lower(), str(exc))
+
+    good = Resp(200, {"stop_reason": "end_turn",
+                      "content": [{"type": "text", "text": "Nothing to do."}]})
+    with patch.dict(os.environ, {"ANTHROPIC_API_KEY": "sk-test"}), \
+         patch("pricetrail.ask.requests.post", lambda *a, **k: good):
+        check("a plain answer comes back",
+              ask_mod.ask("q", status) == "Nothing to do.")
+
+    # a model that only ever asks for tools must stop, not loop forever
+    looping = Resp(200, {"stop_reason": "tool_use", "content": [
+        {"type": "tool_use", "id": "1", "name": "list_vendors", "input": {}}]})
+    with patch.dict(os.environ, {"ANTHROPIC_API_KEY": "sk-test"}), \
+         patch("pricetrail.ask.requests.post", lambda *a, **k: looping):
+        check("a runaway loop is capped",
+              "circles" in ask_mod.ask("q", status).lower())
+    check("the cap is small enough to be cheap", ask_mod.MAX_ROUNDS <= 8)
+
+    check("the brief names the user", ask_mod.USER_NAME in ask_mod.BRIEF)
+    check("the brief states the limits",
+          "cannot spend money" in ask_mod.BRIEF)
+    check("the brief allows 'nothing needs doing'",
+          "nothing needs doing" in ask_mod.BRIEF.lower())
+
+
 def test_normalise():
     print("\nNormalisation")
     messy = normalise({
@@ -457,6 +738,238 @@ def test_normalise():
                   for e in diff_pricing("X", before_pro, renamed)))
 
 
+def test_currency_flip_never_becomes_a_price_change():
+    """The expensive mistake this system could make.
+
+    A page that flips USD -> GBP shows every plan at a different number. If
+    that is reported as a price cut, the site publishes a confident, specific,
+    false claim about a real company -- the exact thing an archive is supposed
+    to be trusted not to do.
+    """
+    print("\nCurrency flips")
+
+    import copy
+    flipped = copy.deepcopy(BEFORE)
+    flipped["currency"] = "GBP"
+    for plan in flipped["plans"]:
+        if plan["monthly_price"]:
+            plan["monthly_price"] = round(plan["monthly_price"] * 0.79, 2)
+        if plan["annual_price_per_month"]:
+            plan["annual_price_per_month"] = round(
+                plan["annual_price_per_month"] * 0.79, 2)
+
+    events = diff_pricing("X", BEFORE, flipped)
+    kinds = {e.change_type for e in events}
+
+    check("a currency flip is recorded as such",
+          "currency_changed" in kinds)
+    check("it does NOT become a price decrease",
+          "price_decrease" not in kinds, f"got {sorted(kinds)}")
+    check("it does NOT become a price increase",
+          "price_increase" not in kinds, f"got {sorted(kinds)}")
+    check("the currency event stays below the publish bar",
+          all(not e.publishable for e in events
+              if e.change_type == "currency_changed"))
+
+    # Non-price facts are currency-independent and must still be caught,
+    # otherwise a currency flip would blind the crawler to everything else.
+    flipped["plans"][1]["features"] = ["automations"]
+    events = diff_pricing("X", BEFORE, flipped)
+    check("features are still diffed during a flip",
+          any(e.change_type == "feature_moved_out" for e in events))
+
+    # And a genuine price move in a steady currency is untouched.
+    after = variant(Pro={"monthly_price": 59})
+    check("a same-currency rise is still detected",
+          any(e.change_type == "price_increase"
+              for e in diff_pricing("X", BEFORE, after)))
+
+
+def test_median_uses_one_currency():
+    print("\nCategory medians")
+
+    def rec(currency, price):
+        return {
+            "currency": currency,
+            "plans": [{"name": "Pro", "monthly_price": price,
+                       "annual_price_per_month": None, "is_free": False,
+                       "is_custom_pricing": False, "is_per_seat": False,
+                       "is_addon": False, "limits": [], "features": []}],
+        }
+
+    records = {
+        "alpha": rec("USD", 20), "bravo": rec("USD", 30),
+        "charlie": rec("USD", 40), "delta": rec("GBP", 900),
+    }
+    bench = sitemod._benchmarks(["Alpha", "Bravo", "Charlie", "Delta"], records)
+
+    check("the dominant currency wins", bench["currency"] == "USD")
+    check("an off-currency vendor cannot drag the median",
+          bench["median_entry"] == 30, f"got {bench['median_entry']}")
+    check("the exclusion is counted, not hidden",
+          bench["excluded_other_currency"] == 1)
+    check("every currency present is listed",
+          bench["currencies"] == ["GBP", "USD"])
+    check("the reader is told in plain words",
+          "GBP" in sitemod.mixed_currency_note(bench))
+
+    single = sitemod._benchmarks(["Alpha", "Bravo"],
+                                 {"alpha": rec("USD", 20),
+                                  "bravo": rec("USD", 30)})
+    check("no note when there is nothing to warn about",
+          sitemod.mixed_currency_note(single) == "")
+
+
+def test_no_cross_currency_verdict():
+    print("\nCross-currency comparisons")
+
+    src = Path(sitemod.__file__).read_text(encoding="utf-8")
+    check("compare pages check both currencies before ranking",
+          "cur_a != cur_b" in src)
+    check("the footer states nothing is converted",
+          "nothing here is converted" in src.lower())
+    check("the crawl locale is pinned, not left to chance",
+          "CRAWL_LOCALE" in
+          Path(sitemod.__file__).with_name("fetch.py").read_text(
+              encoding="utf-8"))
+
+
+def test_only_substantial_comparisons_get_pages():
+    """85 near-identical pages on a new domain got 4 indexed. Fewer, richer."""
+    print("\nComparison page selection")
+
+    def rec(price, changes_ok=True):
+        return {"currency": "USD", "plans": [
+            {"name": "Pro", "monthly_price": price,
+             "annual_price_per_month": None, "is_free": False,
+             "is_custom_pricing": False, "is_per_seat": False,
+             "is_addon": False, "trial_days": 14,
+             "limits": [], "features": ["sso"]}]}
+
+    ctx = {
+        "records": {"big": rec(20), "small": rec(30), "tiny": rec(40),
+                    "quiet": {"currency": "USD", "plans": [
+                        {"name": "Enterprise", "monthly_price": None,
+                         "annual_price_per_month": None, "is_free": False,
+                         "is_custom_pricing": True, "is_per_seat": False,
+                         "is_addon": False, "limits": [], "features": []}]}},
+        "vendors": {"Big": {"crawl_tier": "daily"},
+                    "Small": {"crawl_tier": "weekly"},
+                    "Tiny": {"crawl_tier": "weekly"},
+                    "Quiet": {"crawl_tier": "daily"}},
+        "by_category": {"x": ["Big", "Small", "Tiny", "Quiet"]},
+        "changes": [],
+    }
+
+    check("a big name earns a page",
+          sitemod.comparison_is_worth_a_page("Big", "Small", ctx))
+    check("two long-tail names do not",
+          not sitemod.comparison_is_worth_a_page("Small", "Tiny", ctx))
+    check("an unpriced vendor never earns one",
+          not sitemod.comparison_is_worth_a_page("Big", "Quiet", ctx))
+
+    pairs = sitemod.comparison_pairs(ctx)
+    check("only the earned pairs are built", pairs == [("Big", "Small"),
+                                                       ("Big", "Tiny")],
+          f"got {pairs}")
+
+    # Recorded history rescues an obscure pair -- nobody else has that data.
+    ctx["changes"] = [{"vendor": "Small", "plan": "Pro",
+                       "field": "monthly_price", "old_value": 30,
+                       "new_value": 35, "change_type": "price_increase",
+                       "detected_at": "2026-07-01", "confidence": 0.9}]
+    check("recorded history earns a long-tail pair its page",
+          sitemod.comparison_is_worth_a_page("Small", "Tiny", ctx))
+
+
+def test_comparison_pages_say_something():
+    print("\nComparison page substance")
+
+    def rec(price, free, seat, trial, feats):
+        plans = [{"name": "Pro", "monthly_price": price,
+                  "annual_price_per_month": None, "is_free": False,
+                  "is_custom_pricing": False, "is_per_seat": seat,
+                  "is_addon": False, "trial_days": trial,
+                  "limits": [], "features": feats}]
+        if free:
+            plans.insert(0, {"name": "Free", "monthly_price": 0,
+                             "annual_price_per_month": None, "is_free": True,
+                             "is_custom_pricing": False, "is_per_seat": False,
+                             "is_addon": False, "trial_days": None,
+                             "limits": [], "features": []})
+        return {"currency": "USD", "plans": plans}
+
+    ra = rec(20, True, False, 14, ["sso", "api access"])
+    rb = rec(90, False, True, 30, ["audit log"])
+    ctx = {"records": {"a": ra, "b": rb}, "changes": [],
+           "vendors": {}, "by_category": {}}
+    prose, table = sitemod._differences("Alpha", "Bravo", ra, rb, ctx)
+
+    check("a huge gap is stated as a multiple, never as >100% cheaper",
+          "\u00d7 as much" in prose and "% on the entry plan" not in prose)
+    check("the free-tier difference is called out", "free tier" in prose)
+    check("the per-seat difference is called out", "per seat" in prose)
+    check("the longer trial is named", "longer to evaluate" in prose)
+    check("features only one side lists are surfaced",
+          "audit log" in prose and "sso" in prose)
+    check("the table carries the comparable facts",
+          all(k in table for k in ("Free tier", "Billing", "Free trial",
+                                   "Plans published")))
+
+    # A near-identical pair should say so rather than invent a winner.
+    close = sitemod._differences("Alpha", "Bravo", rec(20, True, False, 14, []),
+                                 rec(21, True, False, 14, []), ctx)[0]
+    check("a close pair is described as close", "within" in close)
+
+
+def test_sitemap_dates_are_truthful():
+    """lastmod was the build date on every page, every day, for months.
+
+    Google's guidance is explicit that lastmod marks the last significant
+    change and must not be the generation time -- and that it stops trusting
+    the value once it looks unreliable. On a site whose whole problem is not
+    being crawled, that was the one prioritisation signal available, set to
+    noise.
+    """
+    print("\nSitemap dates")
+
+    ctx = {
+        "records": {"alpha": {}, "bravo": {}, "charlie": {}},
+        "vendors": {"Alpha": {}, "Bravo": {}, "Charlie": {}},
+        "by_category": {"x": ["Alpha", "Bravo", "Charlie"]},
+        "changes": [
+            {"vendor": "Alpha", "detected_at": "2026-07-22T09:00:00+00:00"},
+            {"vendor": "Alpha", "detected_at": "2026-06-01T09:00:00+00:00"},
+            {"vendor": "Bravo", "detected_at": "2026-08-05T09:00:00+00:00"},
+        ],
+    }
+    since = storage.recording_since()
+    lm = sitemod.page_lastmod(ctx)
+
+    check("a vendor's page is dated by its latest change",
+          lm["v/alpha.html"] == "2026-07-22", f"got {lm.get('v/alpha.html')}")
+    check("an earlier change does not win over a later one",
+          lm["v/alpha.html"] > "2026-06-01")
+    check("a vendor that never moved is dated from recording start",
+          lm["v/charlie.html"] == since)
+    check("the homepage carries the newest change anywhere",
+          lm["index.html"] == "2026-08-05")
+    check("static prose is not restamped daily",
+          lm["about.html"] == since)
+    check("dates actually differ between pages",
+          len({lm["v/alpha.html"], lm["v/bravo.html"],
+               lm["v/charlie.html"]}) == 3)
+    check("no page is stamped with today's build date",
+          all(v <= "2026-08-05" or v == since for v in lm.values()))
+
+    xml = sitemod.render_sitemap(["v/alpha.html", "v/charlie.html"], lm)
+    check("the sitemap emits the real dates",
+          "<lastmod>2026-07-22</lastmod>" in xml)
+    check("a missing entry still gets a valid date",
+          f"<lastmod>{since}</lastmod>" in
+          sitemod.render_sitemap(["unknown.html"], lm))
+
+
 if __name__ == "__main__":
     print("=" * 62)
     print("PriceTrail pipeline tests")
@@ -473,7 +986,18 @@ if __name__ == "__main__":
     test_feed_renders_for_humans()
     test_annual_only_pricing()
     test_recording_since_does_not_drift()
+    test_status_page()
+    test_dashboard_health()
+    test_console_shows_changes()
+    test_advice_engine()
+    test_ask_claude()
     test_normalise()
+    test_currency_flip_never_becomes_a_price_change()
+    test_median_uses_one_currency()
+    test_no_cross_currency_verdict()
+    test_only_substantial_comparisons_get_pages()
+    test_comparison_pages_say_something()
+    test_sitemap_dates_are_truthful()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")
     if FAILED:

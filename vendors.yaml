@@ -74,11 +74,6 @@ vendors:
     category: email-marketing
     crawl_tier: daily
 
-  - name: Kit
-    pricing_url: https://kit.com/pricing
-    category: email-marketing
-    crawl_tier: daily
-
   - name: MailerLite
     pricing_url: https://www.mailerlite.com/pricing
     category: email-marketing
@@ -96,6 +91,16 @@ vendors:
 
   - name: Omnisend
     pricing_url: https://www.omnisend.com/pricing/
+    category: email-marketing
+    crawl_tier: weekly
+
+  # Removed in Aug 2026 after repeated HTTP 403s, then put back: the block was
+  # temporary and Kit recovered on its own. A one-off 403 is a bad afternoon on
+  # someone's CDN, not a vendor that needs deleting. Wait a day before cutting
+  # anything -- a working vendor dropped by mistake is a real loss, a day of
+  # FAIL lines in the log costs nothing.
+  - name: Kit
+    pricing_url: https://kit.com/pricing
     category: email-marketing
     crawl_tier: weekly
 

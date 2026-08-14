@@ -161,6 +161,30 @@ The cost is that a genuine change appears a day later than it otherwise would.
 That is the right trade: a wrong price emailed to a customer loses them
 permanently, a change arriving a day late loses nothing.
 
+**Currencies are never converted.** Every price is stored and shown in the
+currency the vendor's own page displayed. This is not laziness, it is the only
+correct answer:
+
+- Exchange rates move daily. Store prices in £ and a plan sitting untouched at
+  $49 becomes £38.20, then £38.90, then £38.40 — and the crawler reports a
+  price change every single morning. The 1% noise filter cannot save you,
+  because currencies move more than 1% and stay moved. A price tracker that
+  fires on exchange rates is worse than no price tracker.
+- Pricing pages pick their currency from the visitor. `CRAWL_LOCALE` in
+  `fetch.py` pins every request to one locale (`en-US`, matching where the
+  GitHub Actions crawl runs) so today's reading and last month's reading are
+  the same measurement. Change it only if you intend to re-baseline everything.
+- **A currency flip is never reported as a price change.** When a page moves
+  USD → GBP, every figure on it changes, and reporting "Zendesk cut prices 21%"
+  would be a confident, specific, false claim about a real company. `diff.py`
+  logs a low-confidence `currency_changed` event and compares no prices that
+  round. Features, limits and new plans are still diffed normally.
+- Category medians are computed in the **dominant currency only**. A vendor
+  quoting in something else is excluded and the page says so, because a median
+  over mixed currencies is not a price in any currency.
+- Comparison pages refuse to rank two vendors quoted in different currencies.
+  They show both figures and explain why there is no verdict.
+
 | File | Job |
 |---|---|
 | `clean.py` | Strip page furniture so unchanged pricing gives an unchanged hash. **The hardest and most important file.** |

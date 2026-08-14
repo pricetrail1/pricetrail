@@ -44,6 +44,22 @@ USER_AGENT = (
 DEFAULT_TIMEOUT = 20
 DEFAULT_DELAY = 3.0  # seconds between requests to the same host
 
+# Which "visitor" every page is read as.
+#
+# This matters more than it looks. Plenty of pricing pages pick their currency
+# from the visitor's language header and IP, so the SAME page can say $49 to
+# one reader and GBP 39 to another. The daily crawl runs on GitHub's servers in
+# the United States, but this crawler was previously announcing itself as
+# en-GB, which meant some vendors were read in one currency from GitHub and a
+# different one from a laptop in Britain -- and an archive that flips currency
+# depending on where it ran is worth nothing.
+#
+# Pinning it to one locale is what makes yesterday's figure and today's figure
+# the same measurement. en-US is chosen to match where the crawl actually
+# runs. Override with CRAWL_LOCALE only if you intend to re-baseline the whole
+# archive, because changing it changes what the pages say.
+CRAWL_LOCALE = os.environ.get("CRAWL_LOCALE", "en-US,en;q=0.9")
+
 
 @dataclass
 class FetchResult:
@@ -67,7 +83,7 @@ class Fetcher:
         self._session.headers.update({
             "User-Agent": user_agent,
             "Accept": "text/html,application/xhtml+xml",
-            "Accept-Language": "en-GB,en;q=0.9",
+            "Accept-Language": CRAWL_LOCALE,
         })
         self._robots: dict[str, urllib.robotparser.RobotFileParser | None] = {}
         self._last_hit: dict[str, float] = {}

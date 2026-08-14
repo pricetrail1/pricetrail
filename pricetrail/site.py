@@ -85,6 +85,23 @@ def money(currency: str, value, dash: str = "\u2014") -> str:
     return f"{sym}{n}" if sym else f"{n} {currency or ''}".strip()
 
 
+def mixed_currency_note(bench: dict) -> str:
+    """One short line, shown only when a category holds more than one currency.
+
+    Someone scanning a price column assumes the numbers are comparable. When
+    they are not, saying so is the whole job -- silence here is the difference
+    between a reference and a trap.
+    """
+    n = bench.get("excluded_other_currency", 0)
+    if not n:
+        return ""
+    others = [c for c in bench.get("currencies", [])
+              if c != bench.get("currency")]
+    return (f' <span class="basis">median covers the '
+            f'{esc(bench.get("currency", "USD"))} vendors only; '
+            f'{n} priced in {esc(", ".join(others))}</span>')
+
+
 def pretty_date(iso: str | None) -> str:
     if not iso:
         return "\u2014"
@@ -301,14 +318,17 @@ def page(title: str, description: str, body: str, path: str,
     <a href="{_rel(path)}week.html">This week</a>
     <a href="{_rel(path)}changes.html">Changes</a>
     <a href="{_rel(path)}about.html">Method</a>
+    <a href="{_rel(path)}status.html">Status</a>
     <a href="{BASE_URL}/feed.xml">RSS</a>
   </nav>
 </div></header>
 <main>{body}</main>
 <footer><div class="wrap">
   <p class="disclaimer">Figures are recorded from vendors' own public pricing
-    pages and may lag a change by up to 24 hours. Always confirm with the
-    vendor before making a decision.</p>
+    pages and may lag a change by up to 24 hours. Every price is shown in the
+    currency that vendor's own page displayed &mdash; nothing here is converted
+    between currencies. Always confirm with the vendor before making a
+    decision.</p>
   <p>{SITE_NAME}<br>
      <a href="{_rel(path)}about.html">How this is collected</a><br>
      <a href="{_rel(path)}bot.html">About the crawler</a></p>
@@ -422,7 +442,8 @@ def render_index(ctx: dict) -> str:
     <div class="cat-head">
       <h3><a href="c/{esc(storage.slugify(cat))}.html">{esc(title_case(cat))}</a></h3>
       <span class="cat-meta">{len(live)} vendors &middot; median entry
-        <strong>{esc(money(cur, bench.get('median_entry')))}</strong></span>
+        <strong>{esc(money(cur, bench.get('median_entry')))}</strong>
+        {mixed_currency_note(bench)}</span>
     </div>
     <div class="tbl-scroll"><table class="stack">
       <thead><tr>
@@ -581,7 +602,8 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
         body.append("</section>")
 
     siblings = [n for n in ctx["by_category"].get(category, [])
-                if n != name and storage.slugify(n) in ctx["records"]]
+                if n != name and storage.slugify(n) in ctx["records"]
+                and comparison_is_worth_a_page(*sorted((name, n)), ctx)]
     if siblings:
         links = " \u00b7 ".join(
             f'<a href="../compare/{esc(_pair_slug(name, s))}.html">'
@@ -634,7 +656,7 @@ def render_category(cat: str, ctx: dict) -> str:
       <span class="aside">{len(names)} vendors</span></div>
     <div class="grid grid-3" style="margin-bottom:1.5rem">
       <div class="cell"><span class="stat">{esc(money(cur, bench.get('median_entry')))}</span>
-        <p>Median entry price</p></div>
+        <p>Median entry price{mixed_currency_note(bench)}</p></div>
       <div class="cell"><span class="stat">{bench.get('pct_free', 0):.0f}%</span>
         <p>Offer a free tier</p></div>
       <div class="cell"><span class="stat">{bench.get('pct_per_seat', 0):.0f}%</span>
@@ -660,6 +682,122 @@ def render_category(cat: str, ctx: dict) -> str:
         "".join(body), f"c/{storage.slugify(cat)}.html")
 
 
+def _differences(a: str, b: str, ra: dict, rb: dict,
+                 ctx: dict) -> tuple[str, str]:
+    """Prose describing how two vendors actually differ, plus a table.
+
+    extract.py has been capturing free tiers, billing models, trial lengths,
+    usage limits and a controlled feature list all along, and the comparison
+    page displayed none of it -- just plan names and two price columns. That
+    is why these pages read as templated: they were. Everything below comes
+    from data already in the archive; nothing new is collected.
+    """
+    cur_a = (ra.get("currency") or "USD").upper()
+    cur_b = (rb.get("currency") or "USD").upper()
+    ea, ta, _ = headline_prices(ra)
+    eb, tb, _ = headline_prices(rb)
+    free_a = any(p["is_free"] for p in _real_plans(ra))
+    free_b = any(p["is_free"] for p in _real_plans(rb))
+    seat_a = any(p.get("is_per_seat") for p in _real_plans(ra))
+    seat_b = any(p.get("is_per_seat") for p in _real_plans(rb))
+    trial_a, trial_b = _trial_days(ra), _trial_days(rb)
+
+    # ---- prose ----
+    lines = []
+    if ea and eb and cur_a == cur_b:
+        dearer, cheaper = (a, b) if ea > eb else (b, a)
+        hi, lo = max(ea, eb), min(ea, eb)
+        gap = (hi - lo) / lo * 100
+        if gap < 10:
+            lines.append(f"{esc(a)} and {esc(b)} start within {gap:.0f}% of "
+                         f"each other, so entry price is unlikely to be what "
+                         f"decides between them.")
+        elif gap < 100:
+            # Only meaningful below 100%: nothing can be "150% cheaper".
+            lines.append(f"{esc(cheaper)} is the cheaper way in, by about "
+                         f"{gap:.0f}% on the entry plan.")
+        else:
+            lines.append(f"{esc(cheaper)} is the cheaper way in by a wide "
+                         f"margin \u2014 {esc(dearer)} costs about "
+                         f"{hi / lo:.1f}\u00d7 as much to start.")
+
+    if free_a != free_b:
+        has, hasnt = (a, b) if free_a else (b, a)
+        lines.append(f"{esc(has)} publishes a free tier; {esc(hasnt)} does "
+                     f"not, so trying {esc(hasnt)} means either a trial or a "
+                     f"card.")
+    elif free_a and free_b:
+        lines.append("Both publish a free tier.")
+
+    if seat_a != seat_b:
+        per, flat = (a, b) if seat_a else (b, a)
+        lines.append(f"{esc(per)} charges per seat and {esc(flat)} does not "
+                     f"\u2014 the gap between them widens with every person "
+                     f"you add, so team size changes the answer.")
+
+    if trial_a and trial_b and trial_a != trial_b:
+        longer = a if trial_a > trial_b else b
+        lines.append(f"{esc(longer)} gives you longer to evaluate "
+                     f"({max(trial_a, trial_b)} days against "
+                     f"{min(trial_a, trial_b)}).")
+
+    only_a = sorted(_all_features(ra) - _all_features(rb))
+    only_b = sorted(_all_features(rb) - _all_features(ra))
+    if only_a:
+        lines.append(f"Named on {esc(a)}'s pricing page but not "
+                     f"{esc(b)}'s: {esc(', '.join(only_a[:6]))}.")
+    if only_b:
+        lines.append(f"Named on {esc(b)}'s pricing page but not "
+                     f"{esc(a)}'s: {esc(', '.join(only_b[:6]))}.")
+
+    changes_a = sum(1 for c in ctx["changes"] if c["vendor"] == a)
+    changes_b = sum(1 for c in ctx["changes"] if c["vendor"] == b)
+    if changes_a or changes_b:
+        if changes_a and not changes_b:
+            lines.append(f"Since recording began {esc(a)} has moved its "
+                         f"pricing {changes_a} time"
+                         f"{'s' if changes_a != 1 else ''} and {esc(b)} has "
+                         f"not moved at all.")
+        elif changes_b and not changes_a:
+            lines.append(f"Since recording began {esc(b)} has moved its "
+                         f"pricing {changes_b} time"
+                         f"{'s' if changes_b != 1 else ''} and {esc(a)} has "
+                         f"not moved at all.")
+        else:
+            lines.append(f"Both have repriced since recording began "
+                         f"\u2014 {esc(a)} {changes_a} time"
+                         f"{'s' if changes_a != 1 else ''}, {esc(b)} "
+                         f"{changes_b}.")
+
+    prose = "".join(f'<p style="max-width:62ch;margin-bottom:0.6rem">{ln}</p>'
+                    for ln in lines)
+
+    # ---- table ----
+    def row(label, va, vb):
+        return (f'<tr><td class="plan-name">{esc(label)}</td>'
+                f'<td class="num">{va}</td><td class="num">{vb}</td></tr>')
+
+    dash = "\u2014"
+    table = "".join([
+        row("Cheapest paid plan", money(cur_a, ea), money(cur_b, eb)),
+        row("Highest listed plan", money(cur_a, ta), money(cur_b, tb)),
+        row("Free tier", "Yes" if free_a else "No",
+            "Yes" if free_b else "No"),
+        row("Billing", "Per seat" if seat_a else "Flat",
+            "Per seat" if seat_b else "Flat"),
+        row("Free trial",
+            f"{trial_a} days" if trial_a else dash,
+            f"{trial_b} days" if trial_b else dash),
+        row("Plans published", str(len(_real_plans(ra))),
+            str(len(_real_plans(rb)))),
+        row("Enterprise quote only",
+            "Yes" if any(p["is_custom_pricing"] for p in _real_plans(ra)) else "No",
+            "Yes" if any(p["is_custom_pricing"] for p in _real_plans(rb)) else "No"),
+        row("Price changes recorded", str(changes_a), str(changes_b)),
+    ])
+    return prose, table
+
+
 def render_compare(a: str, b: str, ctx: dict) -> str:
     ra, rb = ctx["records"][storage.slugify(a)], ctx["records"][storage.slugify(b)]
 
@@ -682,20 +820,47 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
         return low
 
     ea, eb = entry(ra), entry(rb)
-    if ea and eb:
+    cur_a = (ra.get("currency") or "USD").upper()
+    cur_b = (rb.get("currency") or "USD").upper()
+
+    # "X starts 1.4x cheaper" is a claim about two numbers. If those numbers
+    # are in different currencies it is simply false, and it was being put in
+    # the headline AND the page description AND the search snippet. Nothing is
+    # converted here on purpose, so the honest answer is to decline the
+    # comparison and say why.
+    if ea and eb and cur_a != cur_b:
+        verdict = (f"These two publish in different currencies "
+                   f"({esc(cur_a)} and {esc(cur_b)}), so their entry prices "
+                   f"are not directly comparable. Both figures are shown "
+                   f"below exactly as each vendor lists them.")
+    elif ea and eb:
         cheaper, ratio = (a, eb / ea) if ea < eb else (b, ea / eb)
         verdict = (f"{esc(cheaper)} starts {ratio:.1f}\u00d7 cheaper on its "
                    f"entry plan.")
     else:
         verdict = "One of these does not publish an entry price."
 
+    prose, difftable = _differences(a, b, ra, rb, ctx)
+
     body = f"""
 <div class="wrap"><section class="section">
   {back_link("../")}
   <div class="section-head"><h2>{esc(a)} vs {esc(b)}</h2>
-    <span class="aside">Entry: {esc(money(ra.get('currency','USD'), ea))}
-      vs {esc(money(rb.get('currency','USD'), eb))}</span></div>
+    <span class="aside">Entry: {esc(money(cur_a, ea))}
+      vs {esc(money(cur_b, eb))}</span></div>
   <p class="standfirst" style="margin-bottom:1.5rem">{verdict}</p>
+
+  <div class="panel" style="margin-bottom:1.5rem">
+    <div class="section-head" style="border-bottom-width:1px">
+      <h2>How they differ</h2></div>
+    {prose}
+    <div class="tbl-scroll" style="margin-top:1rem"><table>
+      <thead><tr><th></th><th class="num">{esc(a)}</th>
+        <th class="num">{esc(b)}</th></tr></thead>
+      <tbody>{difftable}</tbody>
+    </table></div>
+  </div>
+
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))">
     <div class="cell">
       <h3><a href="../v/{esc(storage.slugify(a))}.html">{esc(a)}</a></h3>
@@ -764,10 +929,22 @@ def render_about(ctx: dict) -> str:
     limit is different. Anything the reader is not confident about is held back
     for a person to check before it appears here.</p>
 
+    <p style="max-width:62ch;margin-top:1rem"><strong>Currencies are never
+    converted.</strong> Each price appears in the currency that vendor's own
+    page displayed, and pages are always read as the same visitor \u2014 a
+    United States one \u2014 so that today's figure and last month's figure are
+    the same measurement. Converting would be worse than useless here:
+    exchange rates move daily, so a plan sitting untouched at $49 would appear
+    to change price every morning, and this site would report changes that
+    never happened. Where a vendor quotes in something other than the rest of
+    its category, it is left out of that category's median rather than
+    averaged in.</p>
+
     <p style="max-width:62ch;margin-top:1rem"><strong>What this cannot tell
     you.</strong> Plans priced on application are recorded as such, with no
     figure, so enterprise pricing is largely invisible here. Prices can vary by
-    region. And a page read yesterday may have changed this morning.</p>
+    region, and what you are shown in your own country may differ from what is
+    recorded here. And a page read yesterday may have changed this morning.</p>
 
     <p class="provenance" style="margin-top:1.5rem">
       Currently tracking {len(ctx['records'])} vendors \u00b7
@@ -854,6 +1031,72 @@ def _describe(c: dict, vendors: dict) -> str:
     return esc(t.replace("_", " "))
 
 
+def _all_features(record: dict) -> set[str]:
+    """Every feature this vendor names anywhere in its plan list."""
+    out: set[str] = set()
+    for plan in _real_plans(record):
+        out.update(plan.get("features") or [])
+    return out
+
+
+def _trial_days(record: dict) -> int | None:
+    days = [p.get("trial_days") for p in _real_plans(record)
+            if isinstance(p.get("trial_days"), int) and p["trial_days"] > 0]
+    return max(days) if days else None
+
+
+def comparison_is_worth_a_page(a: str, b: str, ctx: dict) -> bool:
+    """Should this pair get its own indexable page?
+
+    Generating every possible pair produced 85 near-identical pages off one
+    template, on a domain three months old. Google indexed four of them. That
+    is the documented outcome for templated comparison pages with nothing
+    unique on them -- and worse, the thin ones spend a crawl budget that the
+    good pages then never get.
+
+    Two conditions, both cheap to reason about:
+
+      1. Both sides must publish an entry price. Without that the page renders
+         "-- vs --" and is worth nothing to anybody.
+      2. Either one of them is a name people actually search for, or the pair
+         has recorded price history. The daily/weekly crawl tier already
+         encodes which vendors are the big names -- reusing it beats inventing
+         a second list to keep in sync.
+
+    Condition 2 loosens on its own as the archive grows: a pair with logged
+    changes qualifies no matter how obscure, because that history exists
+    nowhere else. So the site starts narrow and widens as it earns the right
+    to.
+    """
+    ra = ctx["records"].get(storage.slugify(a))
+    rb = ctx["records"].get(storage.slugify(b))
+    if not ra or not rb:
+        return False
+
+    if headline_prices(ra)[0] is None or headline_prices(rb)[0] is None:
+        return False
+
+    tiers = {ctx["vendors"].get(n, {}).get("crawl_tier", "weekly")
+             for n in (a, b)}
+    if "daily" in tiers:
+        return True
+
+    return any(c["vendor"] in (a, b) for c in ctx["changes"])
+
+
+def comparison_pairs(ctx: dict) -> list[tuple[str, str]]:
+    """Every same-category pair that earns a page, in stable order."""
+    pairs = set()
+    for names in ctx["by_category"].values():
+        live = sorted(n for n in names
+                      if storage.slugify(n) in ctx["records"])
+        for i, a in enumerate(live):
+            for b in live[i + 1:]:
+                if comparison_is_worth_a_page(a, b, ctx):
+                    pairs.add((a, b))
+    return sorted(pairs)
+
+
 def _pair_slug(a: str, b: str) -> str:
     return "-vs-".join(sorted([storage.slugify(a), storage.slugify(b)]))
 
@@ -926,10 +1169,72 @@ def render_feed(ctx: dict) -> str:
 """
 
 
-def render_sitemap(paths: list[str]) -> str:
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+def page_lastmod(ctx: dict) -> dict[str, str]:
+    """When each page's underlying pricing data genuinely last changed.
+
+    The old sitemap stamped EVERY page with today's date on EVERY build. The
+    daily crawl rebuilds the whole site, so all ~90 URLs claimed to have been
+    modified today, every single day, for months -- while almost none of them
+    had actually changed.
+
+    Google's own guidance is that lastmod must mark the last *significant*
+    change and must not be the generation time, and that it ignores the value
+    outright once it finds it unreliable. So the one signal telling Google
+    which pages are worth re-crawling was noise, on a site whose entire
+    problem is not being crawled.
+
+    A page's real modification date is the last time the pricing behind it
+    moved. No change logged for a vendor means its page has said the same
+    thing since recording began, and saying so honestly is what makes the
+    dates worth reading.
+    """
+    since = storage.recording_since()
+
+    def day(value: str | None) -> str:
+        return (value or since)[:10] or since
+
+    latest: dict[str, str] = {}
+    for change in ctx["changes"]:
+        vendor = change.get("vendor")
+        when = day(change.get("detected_at"))
+        if vendor and when > latest.get(vendor, ""):
+            latest[vendor] = when
+
+    def for_vendor(name: str) -> str:
+        return latest.get(name, since)
+
+    newest_overall = max(latest.values(), default=since)
+    out: dict[str, str] = {}
+
+    # Pages that genuinely change whenever anything anywhere changes.
+    for path in ("index.html", "changes.html", "week.html"):
+        out[path] = newest_overall
+    # Near-static pages: prose that only changes when the code does.
+    for path in ("about.html", "bot.html", "status.html"):
+        out[path] = since
+
+    slug_to_name = {storage.slugify(n): n for n in ctx["vendors"]}
+    for slug in ctx["records"]:
+        out[f"v/{slug}.html"] = for_vendor(slug_to_name.get(slug, slug))
+
+    for cat, names in ctx["by_category"].items():
+        live = [n for n in names if storage.slugify(n) in ctx["records"]]
+        if live:
+            out[f"c/{storage.slugify(cat)}.html"] = max(
+                (for_vendor(n) for n in live), default=since)
+
+    for a, b in comparison_pairs(ctx):
+        out[f"compare/{_pair_slug(a, b)}.html"] = max(for_vendor(a),
+                                                      for_vendor(b))
+    return out
+
+
+def render_sitemap(paths: list[str], lastmod: dict[str, str] | None = None) -> str:
+    lastmod = lastmod or {}
+    fallback = storage.recording_since()
     urls = "".join(
-        f"  <url><loc>{BASE_URL}/{p}</loc><lastmod>{today}</lastmod></url>\n"
+        f"  <url><loc>{BASE_URL}/{p}</loc>"
+        f"<lastmod>{lastmod.get(p, fallback)}</lastmod></url>\n"
         for p in paths
     )
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -978,27 +1283,54 @@ def _real_plans(record: dict) -> list[dict]:
 
 
 def _benchmarks(cat_names: list[str], records: dict) -> dict:
-    entries, free, seat, currency = [], 0, 0, "USD"
-    counted = 0
+    """Category averages, computed in ONE currency only.
+
+    The old version pooled every vendor's entry price into one list, took the
+    median, and labelled it with whichever vendor happened to be read last.
+    Mixing $30, £30 and E30 into a single median produces a number that is not
+    a price in any currency, presented with a symbol picked essentially at
+    random. A median is only meaningful over comparable figures.
+
+    So: the dominant currency in the category wins, vendors quoted in anything
+    else are left out of the median, and the count of what was left out is
+    returned so the page can say so instead of quietly hiding it.
+    """
+    free, seat, counted = 0, 0, 0
+    by_currency: dict[str, list[float]] = {}
+    seen_currencies: set[str] = set()
+
     for name in cat_names:
         rec = records.get(storage.slugify(name))
         if not rec or not rec.get("plans"):
             continue
         counted += 1
-        currency = rec.get("currency") or currency
+        cur = (rec.get("currency") or "USD").upper()
+        seen_currencies.add(cur)
         low, _high, _basis = headline_prices(rec)
         plans = _real_plans(rec)
         if low:
-            entries.append(low)
+            by_currency.setdefault(cur, []).append(low)
         if any(p["is_free"] for p in plans):
             free += 1
         if any(p["is_per_seat"] for p in plans):
             seat += 1
-    entries.sort()
-    median = entries[len(entries) // 2] if entries else None
+
+    if by_currency:
+        # Most vendors wins; ties break alphabetically so the build is
+        # deterministic and the page doesn't flip between rebuilds.
+        currency = sorted(by_currency, key=lambda c: (-len(by_currency[c]), c))[0]
+        entries = sorted(by_currency[currency])
+        median = entries[len(entries) // 2]
+        excluded = sum(len(v) for k, v in by_currency.items() if k != currency)
+    else:
+        currency, median, excluded = "USD", None, 0
+
     return {
         "median_entry": median,
         "currency": currency,
+        "priced_in_currency": len(by_currency.get(currency, [])),
+        "excluded_other_currency": excluded,
+        "currencies": sorted(seen_currencies),
         "pct_free": (free / counted * 100) if counted else 0,
         "pct_per_seat": (seat / counted * 100) if counted else 0,
         "n": counted,
@@ -1069,6 +1401,9 @@ def build(out_dir: Path | None = None) -> dict:
     write("changes.html", render_changes(ctx))
     write("about.html", render_about(ctx))
     write("week.html", render_digest(ctx))
+    from . import status as _status
+    write("status.html", _status.render(esc, page, back_link, pretty_date,
+                                        SITE_NAME))
     write("bot.html", render_bot())
 
     slug_to_name = {storage.slugify(n): n for n in vendors}
@@ -1080,15 +1415,11 @@ def build(out_dir: Path | None = None) -> dict:
         if any(storage.slugify(n) in records for n in names):
             write(f"c/{storage.slugify(cat)}.html", render_category(cat, ctx))
 
-    # Comparison pages, but only for same-category pairs where both sides
-    # have real data. No data, no page.
-    pairs = set()
-    for names in by_category.values():
-        live = sorted(n for n in names if storage.slugify(n) in records)
-        for i, a in enumerate(live):
-            for b in live[i + 1:]:
-                pairs.add((a, b))
-    for a, b in sorted(pairs):
+    # Comparison pages, but only for pairs that can actually say something.
+    # See comparison_is_worth_a_page: thin templated pages don't just fail to
+    # rank, they eat the crawl budget the good pages need.
+    pairs = comparison_pairs(ctx)
+    for a, b in pairs:
         write(f"compare/{_pair_slug(a, b)}.html", render_compare(a, b, ctx))
 
     (out / "feed.xml").write_text(render_feed(ctx), encoding="utf-8")
@@ -1096,7 +1427,8 @@ def build(out_dir: Path | None = None) -> dict:
         FEED_STYLESHEET.replace("LINKS", FONT_LINK_XML +
             f'<link rel="stylesheet" href="{BASE_URL}/assets/style.css"/>'),
         encoding="utf-8")
-    (out / "sitemap.xml").write_text(render_sitemap(written), encoding="utf-8")
+    (out / "sitemap.xml").write_text(
+        render_sitemap(written, page_lastmod(ctx)), encoding="utf-8")
     (out / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n",
         encoding="utf-8")
