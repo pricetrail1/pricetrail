@@ -133,7 +133,7 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
   border-bottom: 2px solid var(--ink); padding-bottom: 0.5rem;
   margin-bottom: 1.25rem;
 }
-.section-head h2 {
+.section-head h1, .section-head h2 {
   font-size: 0.78rem; font-weight: 700; letter-spacing: 0.11em;
   text-transform: uppercase;
 }

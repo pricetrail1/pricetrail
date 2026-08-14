@@ -15,7 +15,9 @@ Nothing else in the codebase needs to know.
 from __future__ import annotations
 
 import json
+import os
 import re
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -28,6 +30,40 @@ CHANGES = DATA / "changes.jsonl"
 REVIEW = DATA / "review_queue.jsonl"
 STATE = DATA / "state.json"
 SPEND = DATA / "spend.json"
+
+
+def write_atomic(path: Path, text: str) -> None:
+    """Write a file so it is either the old content or the new one, never half.
+
+    Path.write_text opens the real file and truncates it immediately. If the
+    process dies between that and the last byte -- a GitHub Actions timeout, a
+    cancelled run, a full disk -- what is left on disk is a truncated file, and
+    for this project the JSON files ARE the archive. A half-written vendor
+    record is silently skipped by the build, so the vendor disappears from the
+    site with nothing reported.
+
+    Writing to a temporary file in the same directory and renaming means the
+    rename is atomic on every platform this runs on: readers see the complete
+    old file or the complete new one. fsync before the rename so the content
+    is actually on the disk, not just in the OS buffer, before the name points
+    at it.
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, tmp = tempfile.mkstemp(dir=str(path.parent), prefix=f".{path.name}.",
+                               suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            fh.write(text)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.replace(tmp, path)
+    except BaseException:
+        # Never leave a stray temp file behind to be mistaken for real data.
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
 
 
 def slugify(name: str) -> str:
@@ -55,7 +91,7 @@ def save_snapshot(slug: str, cleaned_text: str) -> Path:
     folder = SNAPSHOTS / slug
     folder.mkdir(parents=True, exist_ok=True)
     path = folder / f"{today()}.txt"
-    path.write_text(cleaned_text, encoding="utf-8")
+    write_atomic(path, cleaned_text)
     return path
 
 
@@ -101,9 +137,8 @@ def save_plans(slug: str, record: dict) -> None:
     _ensure()
     record = dict(record)
     record["captured_at"] = datetime.now(timezone.utc).isoformat()
-    (PLANS / f"{slug}.json").write_text(
-        json.dumps(record, indent=2, ensure_ascii=False), encoding="utf-8"
-    )
+    write_atomic(PLANS / f"{slug}.json",
+                 json.dumps(record, indent=2, ensure_ascii=False))
 
 
 # ---------- unconfirmed readings ----------
@@ -124,8 +159,8 @@ def load_pending(slug: str) -> dict | None:
 
 def save_pending(slug: str, record: dict) -> None:
     _ensure()
-    (PENDING / f"{slug}.json").write_text(
-        json.dumps(record, indent=2, ensure_ascii=False), encoding="utf-8")
+    write_atomic(PENDING / f"{slug}.json",
+                 json.dumps(record, indent=2, ensure_ascii=False))
 
 
 def clear_pending(slug: str) -> None:
@@ -158,8 +193,21 @@ def append_changes(changes) -> tuple[int, int]:
 def read_changes(limit: int | None = None) -> list[dict]:
     if not CHANGES.exists():
         return []
-    rows = [json.loads(ln) for ln in
-            CHANGES.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    # One malformed line must not take the archive down. This log is appended
+    # to for months; a single interrupted append leaves a partial line, and
+    # crashing on it would mean every future build fails forever over one bad
+    # byte. A skipped line loses one change -- crashing loses the whole site.
+    rows = []
+    for ln in CHANGES.read_text(encoding="utf-8", errors="replace").splitlines():
+        ln = ln.strip()
+        if not ln:
+            continue
+        try:
+            row = json.loads(ln)
+        except (json.JSONDecodeError, ValueError):
+            continue
+        if isinstance(row, dict):
+            rows.append(row)
     rows.sort(key=lambda r: r.get("detected_at", ""), reverse=True)
     return rows[:limit] if limit else rows
 
@@ -193,7 +241,7 @@ def recording_since() -> str:
     earliest = dates[0] if dates else today()
 
     _ensure()
-    SINCE.write_text(earliest, encoding="utf-8")
+    write_atomic(SINCE, earliest)
     return earliest
 
 
@@ -210,7 +258,7 @@ def load_state() -> dict:
 
 def save_state(state: dict) -> None:
     _ensure()
-    STATE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+    write_atomic(STATE, json.dumps(state, indent=2))
 
 
 # ---------- spend tracking ----------
@@ -227,7 +275,7 @@ def record_spend(usd: float) -> float:
         except json.JSONDecodeError:
             data = {}
     data[month] = round(data.get(month, 0.0) + usd, 6)
-    SPEND.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    write_atomic(SPEND, json.dumps(data, indent=2))
     return data[month]
 
 

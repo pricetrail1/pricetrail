@@ -217,6 +217,40 @@ month-to-date total.
 
 ---
 
+## Keeping the archive safe
+
+The data folder is the whole business. Everything else is re-runnable code.
+
+**Corruption.** Every write goes through `storage.write_atomic`: content is
+written to a temp file, flushed to disk, then renamed over the target. A
+rename is atomic, so a run killed halfway leaves the previous version intact
+rather than a truncated one. `read_changes` skips malformed lines instead of
+raising, so one interrupted append cannot make every future build fail.
+
+**Losing a day.** If anything is pushed to `main` while the crawl is running,
+the crawl's own push is rejected and that day's reading is gone for good --
+nothing re-reads those pages. The workflow now rebases and retries up to three
+times, and fails loudly rather than silently skipping.
+
+**Untrusted input.** Plan names, limits and currency codes are written by an
+AI reading someone else's web page. Everything is escaped on the way into
+HTML, JSON-LD is unicode-escaped so a name cannot close the script tag, and
+currency is stripped to letters. Tests cover all three.
+
+**Things only you can do**, none of which are code:
+
+- Turn on branch protection: Settings > Branches > Add rule for `main`,
+  tick "Require a pull request before merging" but allow yourself to bypass.
+  This stops an accidental force-push flattening the history.
+- Back the archive up somewhere that is not GitHub. Download the repo as a zip
+  once a month and keep it. Git history is tamper-evident, not a backup: it
+  disappears with the account.
+- Never paste your `ANTHROPIC_API_KEY` into a file. It belongs only in
+  Settings > Secrets and variables > Actions. Anything committed to a public
+  repo is public forever, even if deleted afterwards.
+- Turn on two-factor authentication on the GitHub account. Everything above
+  is pointless if someone else can log in.
+
 ## Playing fair
 
 This crawler identifies itself honestly, obeys robots.txt, waits three seconds

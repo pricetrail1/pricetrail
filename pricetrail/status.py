@@ -132,7 +132,7 @@ def render(esc, page, back_link, pretty_date, SITE_NAME) -> str:
 <div class="wrap">
   <section class="section">
     {back_link()}
-    <div class="section-head"><h2>System status</h2>
+    <div class="section-head"><h1>System status</h1>
       <span class="aside">{esc(health)}</span></div>
     <p class="note" style="margin-bottom:1.5rem">{esc(note)}</p>
 

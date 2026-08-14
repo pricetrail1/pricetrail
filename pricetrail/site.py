@@ -82,7 +82,17 @@ def money(currency: str, value, dash: str = "\u2014") -> str:
     except (TypeError, ValueError):
         return esc(value)
     sym = SYMBOLS.get(str(currency or "").upper(), "")
-    return f"{sym}{n}" if sym else f"{n} {currency or ''}".strip()
+    if sym:
+        return f"{sym}{n}"
+    # An unrecognised currency is printed beside the number, and it came from
+    # an AI reading a third-party pricing page -- untrusted input that lands
+    # next to every price on the site. extract.normalise already caps it at
+    # three characters, but this function is also called on records repaired
+    # by hand and written by older versions of the code, so it cannot assume
+    # that ran. ISO 4217 codes are three letters, so anything else is bad data
+    # regardless of intent.
+    code = re.sub(r"[^A-Za-z]", "", str(currency or ""))[:3].upper()
+    return f"{n} {esc(code)}" if code else n
 
 
 def mixed_currency_note(bench: dict) -> str:
@@ -303,6 +313,8 @@ def page(title: str, description: str, body: str, path: str,
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:type" content="website">
+<meta property="og:url" content="{esc(canonical)}">
+<meta property="og:site_name" content="{SITE_NAME}">
 <link rel="alternate" type="application/rss+xml" title="{SITE_NAME} changes"
       href="{BASE_URL}/feed.xml">
 {FONT_LINK}
@@ -512,7 +524,7 @@ def render_changes(ctx: dict) -> str:
     changes, vendors = ctx["changes"], ctx["vendors"]
     body = ['<div class="wrap"><section class="section">'
             + back_link() +
-            '<div class="section-head"><h2>Every recorded change</h2>'
+            '<div class="section-head"><h1>Every recorded change</h1>'
             f'<span class="aside">{len(changes)} entries</span></div>',
             _tape(changes, vendors, prefix=""),
             "</section></div>"]
@@ -529,6 +541,8 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
     versions = ctx["versions"].get(slug, 0)
 
     rows = []
+    addon_rows = []
+    addon_names: list[str] = []
     for p in record["plans"]:
         if p["is_custom_pricing"]:
             monthly = '<span class="tag">Contact sales</span>'
@@ -541,14 +555,30 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
             f'{esc(l["metric"])}'.strip()
             for l in p.get("limits", [])[:3]
         ) or "\u2014"
-        rows.append(f"""
+        row = f"""
       <tr>
         <td class="plan-name">{esc(p['name'])}</td>
         <td class="num">{monthly}</td>
         <td class="num">{money(cur, p['annual_price_per_month'])}</td>
         <td>{'Per seat' if p['is_per_seat'] else 'Flat'}</td>
         <td>{limits}</td>
-      </tr>""")
+      </tr>"""
+        # Add-ons are sold on top of a plan, not instead of one. Listing them
+        # in the same table made "Surveys" look like a tier sitting between
+        # Pro and Enterprise -- which misreads the vendor's own pricing, and
+        # buries the answer for anyone who came looking specifically for what
+        # an add-on costs.
+        #
+        # Names are kept as raw data here rather than read back out of the
+        # rendered row. Doing the latter escaped them twice ("A & B" became
+        # "A &amp;amp; B") and crashed outright on a plan with an empty name,
+        # because the regex needed at least one character to match.
+        if p.get("is_addon"):
+            addon_rows.append(row)
+            if str(p.get("name") or "").strip():
+                addon_names.append(p["name"].strip())
+        else:
+            rows.append(row)
 
     # Sparkline for whichever paid plan has the most recorded history. Falls
     # back to the cheapest, which is the number people compare on.
@@ -575,11 +605,31 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
       {sparkline(series)}
     </div>"""
 
+    addon_block = ""
+    if addon_rows:
+        listed = (f" {esc(name)} lists {esc(', '.join(addon_names[:6]))}."
+                  if addon_names else "")
+        addon_block = f"""
+    <div class="panel" style="margin-top:1.5rem">
+      <div class="section-head" style="border-bottom-width:1px">
+        <h2>{esc(name)} add-ons</h2>
+        <span class="aside">sold on top of a plan</span></div>
+      <p style="max-width:62ch;margin-bottom:1rem">These are priced separately
+        from the plans above, so they are an extra cost rather than an
+        alternative to them.{listed}</p>
+      <div class="tbl-scroll"><table>
+        <thead><tr><th>Add-on</th><th class="num">Monthly</th>
+          <th class="num">Annual, per month</th><th>Billing</th>
+          <th>Stated limits</th></tr></thead>
+        <tbody>{''.join(addon_rows)}</tbody>
+      </table></div>
+    </div>"""
+
     body = [f"""
 <div class="wrap">
   <section class="section">
     {back_link("../")}
-    <div class="section-head"><h2>{esc(name)} pricing</h2>
+    <div class="section-head"><h1>{esc(name)} pricing</h1>
       <span class="aside">{esc(title_case(category))}</span></div>
     <div class="tbl-scroll"><table>
       <thead><tr><th>Plan</th><th class="num">Monthly</th>
@@ -587,6 +637,7 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
         <th>Stated limits</th></tr></thead>
       <tbody>{''.join(rows)}</tbody>
     </table></div>
+    {addon_block}
     {spark_block}
     <p class="provenance" style="margin-top:1.5rem">
       Last read {esc(pretty_date(record.get('captured_at')))}.<br>
@@ -615,11 +666,30 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
     body.append(subscribe_block(prefix="../"))
     body.append("</div>")
     entry = min((p["monthly_price"] for p in paid), default=None)
+
+    # "intercom surveys pricing" and "intercom product tour pricing" were
+    # bringing up this page in search, and neither the title nor the snippet
+    # gave any sign the add-on was covered -- so the result did not look like
+    # the answer even when it was. Naming the add-ons is what makes it look
+    # like one.
+    if addon_rows:
+        title = f"{name} pricing \u2014 plans, add-ons and price history"
+        named = ", ".join(addon_names[:3])
+        description = (
+            f"{name} pricing: every plan, what the add-ons cost ({named}), "
+            f"and every change recorded since {ctx['tracking_since']}."
+            if named else
+            f"{name} pricing: every plan, what the add-ons cost, and every "
+            f"change recorded since {ctx['tracking_since']}.")
+    else:
+        title = f"{name} pricing \u2014 current plans and history"
+        description = (
+            f"{name} pricing: current plans, historical prices and every "
+            f"recorded change. Entry plan {money(cur, entry)}." if entry else
+            f"{name} pricing: current plans and every recorded change.")
+
     return page(
-        f"{name} pricing \u2014 current plans and history",
-        f"{name} pricing: current plans, historical prices and every recorded "
-        f"change. Entry plan {money(cur, entry)}." if entry else
-        f"{name} pricing: current plans and every recorded change.",
+        title, description,
         "".join(body), f"v/{slug}.html",
         extra_head=vendor_schema(name, record, f"{BASE_URL}/v/{slug}.html"))
 
@@ -652,7 +722,7 @@ def render_category(cat: str, ctx: dict) -> str:
 <div class="wrap">
   <section class="section">
     {back_link("../")}
-    <div class="section-head"><h2>{esc(title_case(cat))} pricing compared</h2>
+    <div class="section-head"><h1>{esc(title_case(cat))} pricing compared</h1>
       <span class="aside">{len(names)} vendors</span></div>
     <div class="grid grid-3" style="margin-bottom:1.5rem">
       <div class="cell"><span class="stat">{esc(money(cur, bench.get('median_entry')))}</span>
@@ -845,7 +915,7 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
     body = f"""
 <div class="wrap"><section class="section">
   {back_link("../")}
-  <div class="section-head"><h2>{esc(a)} vs {esc(b)}</h2>
+  <div class="section-head"><h1>{esc(a)} vs {esc(b)}</h1>
     <span class="aside">Entry: {esc(money(cur_a, ea))}
       vs {esc(money(cur_b, eb))}</span></div>
   <p class="standfirst" style="margin-bottom:1.5rem">{verdict}</p>
@@ -894,7 +964,7 @@ def render_digest(ctx: dict) -> str:
 
     body = ['<div class="wrap"><section class="section">'
             + back_link() +
-            '<div class="section-head"><h2>This week in software pricing</h2>'
+            '<div class="section-head"><h1>This week in software pricing</h1>'
             f'<span class="aside">{len(recent)} changes</span></div>']
     if recent:
         body.append(_tape(recent, ctx["vendors"], prefix=""))
@@ -915,7 +985,7 @@ def render_about(ctx: dict) -> str:
     body = f"""
 <div class="wrap"><section class="section">
   {back_link()}
-  <div class="section-head"><h2>How this is collected</h2></div>
+  <div class="section-head"><h1>How this is collected</h1></div>
   <div class="panel">
     <p style="max-width:62ch">Once a day an automated reader visits the public
     pricing page of every vendor listed here. It strips away navigation,
@@ -962,7 +1032,7 @@ def render_bot() -> str:
     body = f"""
 <div class="wrap"><section class="section">
   {back_link()}
-  <div class="section-head"><h2>About the crawler</h2></div>
+  <div class="section-head"><h1>About the crawler</h1></div>
   <div class="panel">
     <p style="max-width:62ch">Pages here are read by an automated crawler
     identifying itself as <code>PriceTrailBot</code>.</p>

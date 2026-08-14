@@ -11,7 +11,14 @@ If test_noise_only_page_has_identical_hash fails, the whole cost model
 collapses -- you would be paying for an extraction on every page every day.
 """
 
+import atexit
+import json
+import re
+import shutil
 import sys
+import tempfile
+
+import yaml
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -22,6 +29,35 @@ from pricetrail.diff import (CONFIDENCE_PUBLISH, diff_pricing,
 from pricetrail.extract import normalise
 from pricetrail import site as sitemod
 from pricetrail import storage
+
+# ---------------------------------------------------------------- isolation
+#
+# Several tests below call shutil.rmtree(storage.DATA) and then write their
+# own fixtures into it. Pointed at the real directory, running this suite
+# DELETES the archive -- the one thing in this project that cannot be
+# regenerated, and the thing the README tells you to run after every update.
+#
+# Others reach it more quietly: recording_since() and build() both WRITE
+# data/recording-since.txt when it is missing, so merely running the tests
+# planted a file claiming the archive started today. That file went out in a
+# release zip once, one upload away from resetting the number the whole site's
+# credibility rests on.
+#
+# So every storage path is redirected to a throwaway directory here, at import
+# time, before a single test runs. Nothing below can reach the real archive
+# even if it tries.
+_REAL_DATA = Path(storage.__file__).resolve().parent.parent / "data"
+_SANDBOX = Path(tempfile.mkdtemp(prefix="pricetrail-tests-"))
+storage.DATA = _SANDBOX
+storage.SNAPSHOTS = _SANDBOX / "snapshots"
+storage.PLANS = _SANDBOX / "plans"
+storage.PENDING = _SANDBOX / "pending"
+storage.CHANGES = _SANDBOX / "changes.jsonl"
+storage.REVIEW = _SANDBOX / "review_queue.jsonl"
+storage.STATE = _SANDBOX / "state.json"
+storage.SPEND = _SANDBOX / "spend.json"
+storage.SINCE = _SANDBOX / "recording-since.txt"
+atexit.register(lambda: shutil.rmtree(_SANDBOX, ignore_errors=True))
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -970,6 +1006,255 @@ def test_sitemap_dates_are_truthful():
           sitemod.render_sitemap(["unknown.html"], lm))
 
 
+def test_addons_are_not_shown_as_plans():
+    """Three of the site's top ten search queries asked what an add-on costs.
+
+    The crawler had been capturing add-ons all along and the vendor page
+    listed them in the plans table, so "Surveys" appeared to be a tier sitting
+    between Pro and Enterprise. The page held the answer and looked like it
+    did not.
+    """
+    print("\nAdd-ons")
+
+    def plan(name, price, addon=False):
+        return {"name": name, "key": name.lower(), "monthly_price": price,
+                "annual_price_per_month": None, "is_free": False,
+                "is_custom_pricing": False, "is_per_seat": False,
+                "is_addon": addon, "trial_days": 14,
+                "limits": [], "features": []}
+
+    rec = {"currency": "USD", "captured_at": "2026-08-10T00:00:00+00:00",
+           "plans": [plan("Essential", 39), plan("Advanced", 99),
+                     plan("Surveys", 49, addon=True),
+                     plan("Product Tours", 199, addon=True)]}
+    ctx = {"records": {"intercom": rec}, "changes": [],
+           "vendors": {"Intercom": {}}, "vendor_category": {"Intercom": "x"},
+           "by_category": {"x": ["Intercom"]}, "versions": {"intercom": 3},
+           "tracking_since": "12 May 2026", "benchmarks": {}}
+
+    html = sitemod.render_vendor("intercom", "Intercom", ctx)
+    flat = re.sub(r"\s+", " ", html)
+    # The plans table only -- not the page head, whose snippet legitimately
+    # names the add-ons.
+    plans_table = re.search(r"<h1[^>]*>Intercom pricing</h1>.*?</table>",
+                            html, re.S).group(0)
+
+    check("add-ons are lifted out of the plans table",
+          "Surveys" not in plans_table and "Product Tours" not in plans_table)
+    check("add-ons still appear on the page",
+          "Surveys" in html and "Product Tours" in html)
+    check("the section says they cost extra",
+          "extra cost rather than an alternative" in flat)
+    check("the title says add-ons are covered",
+          "add-ons" in re.search(r"<title>(.*?)</title>", html, re.S).group(1))
+    check("the search snippet names them",
+          "Surveys" in re.search(r'name="description" content="([^"]+)"',
+                                 html).group(1))
+    check("real tiers stay in the plans table",
+          "Essential" in plans_table and "Advanced" in plans_table)
+
+    # A vendor with no add-ons must be completely unaffected.
+    rec2 = {"currency": "USD", "captured_at": "2026-08-10T00:00:00+00:00",
+            "plans": [plan("Standard", 25), plan("Plus", 50)]}
+    ctx2 = dict(ctx, records={"help-scout": rec2},
+                vendors={"Help Scout": {}},
+                vendor_category={"Help Scout": "x"},
+                by_category={"x": ["Help Scout"]},
+                versions={"help-scout": 3})
+    plain = sitemod.render_vendor("help-scout", "Help Scout", ctx2)
+    check("no add-ons means no add-on section", "add-ons" not in plain)
+    check("and the original title is kept",
+          "current plans and history" in plain)
+
+
+def test_every_page_has_exactly_one_h1():
+    """23 of 24 vendor pages shipped with no h1 at all.
+
+    Only the homepage had one; every vendor, category and comparison page
+    started at h2, throwing away the strongest on-page signal of what the page
+    is about on a site fighting to be considered relevant at all.
+
+    This test builds against its OWN temporary data directory. An earlier
+    version called build() against the real one, and build() -> recording_since()
+    WRITES data/recording-since.txt when it is missing -- so merely running the
+    tests planted a file claiming the archive started today. That file then
+    went out in a release zip, one upload away from resetting the single number
+    the whole site's credibility rests on. A test must not be able to touch the
+    archive.
+    """
+    print("\nHeading structure")
+
+    import tempfile as _tf, shutil as _sh
+    from pricetrail import storage as _st
+
+    tmp = Path(_tf.mkdtemp())
+    saved = (_st.DATA, _st.SNAPSHOTS, _st.PLANS, _st.PENDING,
+             _st.CHANGES, _st.SINCE, _st.STATE, _st.SPEND)
+    try:
+        _st.DATA = tmp
+        _st.SNAPSHOTS = tmp / "snapshots"
+        _st.PLANS = tmp / "plans"
+        _st.PENDING = tmp / "pending"
+        _st.CHANGES = tmp / "changes.jsonl"
+        _st.SINCE = tmp / "recording-since.txt"
+        _st.STATE = tmp / "state.json"
+        _st.SPEND = tmp / "spend.json"
+        _st.SINCE.parent.mkdir(parents=True, exist_ok=True)
+        _st.write_atomic(_st.SINCE, "2026-05-12")
+
+        def rec(price):
+            return {"currency": "USD", "pricing_is_public": True,
+                    "extraction_notes": "",
+                    "plans": [{"name": "Pro", "key": "pro",
+                               "monthly_price": price,
+                               "annual_price_per_month": None,
+                               "is_free": False, "is_custom_pricing": False,
+                               "is_per_seat": False, "is_addon": False,
+                               "trial_days": 14, "limits": [],
+                               "features": ["sso"]}]}
+
+        cfg = yaml.safe_load(
+            (Path(sitemod.__file__).parent.parent / "vendors.yaml")
+            .read_text(encoding="utf-8"))
+        for v in cfg["vendors"][:4]:
+            _st.save_plans(_st.slugify(v["name"]), rec(20))
+
+        out = tmp / "site"
+        summary = sitemod.build(out)
+        pages = sorted(out.rglob("*.html"))
+        check("the build produced vendor and comparison pages",
+              len(pages) > 6, f"got {summary}")
+
+        bad = [f"{p.relative_to(out)}={p.read_text(encoding='utf-8').count('<h1')}"
+               for p in pages
+               if p.read_text(encoding="utf-8").count("<h1") != 1]
+        check("every page has exactly one h1", not bad, "; ".join(bad[:6]))
+        check("no h1 is empty",
+              all(re.search(r"<h1[^>]*>(.*?)</h1>",
+                            p.read_text(encoding="utf-8"), re.S).group(1).strip()
+                  for p in pages))
+        check("canonical and og:url agree",
+              all('property="og:url"' in p.read_text(encoding="utf-8")
+                  for p in pages))
+    finally:
+        (_st.DATA, _st.SNAPSHOTS, _st.PLANS, _st.PENDING,
+         _st.CHANGES, _st.SINCE, _st.STATE, _st.SPEND) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
+def test_tests_do_not_touch_the_archive():
+    """A test suite that writes into data/ can ship its own droppings."""
+    print("\nTest isolation")
+
+    # Deliberately checks the REAL data directory, not the sandbox.
+    before = ({p.name for p in _REAL_DATA.glob("*")}
+              if _REAL_DATA.exists() else set())
+    test_every_page_has_exactly_one_h1()
+    after = ({p.name for p in _REAL_DATA.glob("*")}
+             if _REAL_DATA.exists() else set())
+    check("running the suite leaves the real archive untouched",
+          before == after, f"appeared: {sorted(after - before)}")
+    check("storage is pointed at a sandbox, not the repo",
+          storage.DATA != _REAL_DATA)
+
+
+def test_untrusted_data_cannot_reach_the_page():
+    """Plan names and currency codes are written by an AI reading someone
+    else's web page. That is untrusted input rendered into HTML."""
+    print("\nUntrusted input")
+
+    X = '<img src=x onerror=alert(1)>'
+
+    def plan(nm, price, addon=False):
+        return {"name": nm, "key": "k", "monthly_price": price,
+                "annual_price_per_month": price, "is_free": False,
+                "is_custom_pricing": False, "is_per_seat": True,
+                "is_addon": addon, "trial_days": 14,
+                "limits": [{"metric": X, "value": 5}], "features": [X]}
+
+    rec = {"currency": X, "captured_at": "2026-08-10T00:00:00+00:00",
+           "plans": [plan("Pro " + X, 20), plan("Surveys " + X, 9, True)]}
+    ctx = {"records": {"v": rec}, "changes": [], "vendors": {"V": {}},
+           "vendor_category": {"V": "x"}, "by_category": {"x": ["V"]},
+           "versions": {"v": 1}, "tracking_since": "12 May 2026",
+           "benchmarks": {}}
+
+    html = sitemod.render_vendor("v", "V", ctx)
+    check("no payload survives into the page", X not in html)
+    check("the plan name is still shown, escaped",
+          "&lt;img" in html)
+    check("a junk currency is stripped to letters",
+          "20 IMG" in html, "currency not sanitised")
+
+    # The JSON-LD block is the other place vendor text lands.
+    schema = sitemod.vendor_schema("Acme</script><script>x</script>", rec,
+                                   "https://x/y")
+    check("a name cannot close the JSON-LD script tag",
+          "</script><script>" not in schema)
+
+    # money() must never raise and never emit a tag.
+    for junk in (X, "<a ", None, "", "usd", 12345, "€$"):
+        out = sitemod.money(junk, 10)
+        check(f"money() is safe for {junk!r}", "<" not in out)
+
+    # Bugs found in this session's own add-on code.
+    amp = {"currency": "USD", "captured_at": "2026-08-10T00:00:00+00:00",
+           "plans": [plan("Pro", 50), plan("Surveys & Tours", 20, True)]}
+    h = sitemod.render_vendor("v", "V", dict(ctx, records={"v": amp}))
+    check("add-on names are escaped once, not twice",
+          "&amp;amp;" not in h and "Surveys &amp; Tours" in h)
+
+    empty = {"currency": "USD", "captured_at": "2026-08-10T00:00:00+00:00",
+             "plans": [plan("Pro", 50), plan("", 20, True)]}
+    try:
+        sitemod.render_vendor("v", "V", dict(ctx, records={"v": empty}))
+        check("an unnamed add-on does not crash the build", True)
+    except Exception as exc:
+        check("an unnamed add-on does not crash the build", False, repr(exc))
+
+
+def test_the_archive_survives_damage():
+    """The JSON files ARE the business. Losing them is unrecoverable."""
+    print("\nData integrity")
+
+    import tempfile as _tf, shutil as _sh
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.CHANGES)
+    try:
+        storage.CHANGES = tmp / "changes.jsonl"
+        storage.CHANGES.write_text(
+            json.dumps({"vendor": "A", "detected_at": "2026-07-01"}) + "\n"
+            + '{"vendor":"B","detected_at":"2026-07-0' + "\n"
+            + "not json at all\n"
+            + json.dumps(["a", "list"]) + "\n"
+            + json.dumps({"vendor": "C", "detected_at": "2026-08-01"}) + "\n",
+            encoding="utf-8")
+        rows = storage.read_changes()
+        check("a truncated line does not take the build down",
+              [r["vendor"] for r in rows] == ["C", "A"],
+              f"got {[r.get('vendor') for r in rows]}")
+
+        target = tmp / "rec.json"
+        storage.write_atomic(target, '{"v":1}')
+        check("an atomic write lands", target.read_text() == '{"v":1}')
+
+        try:
+            storage.write_atomic(tmp / "never.json", None)
+        except Exception:
+            pass
+        check("a failed write creates no file",
+              not (tmp / "never.json").exists())
+        check("a failed write leaves no temp litter",
+              not [p for p in tmp.iterdir() if p.name.endswith(".tmp")])
+
+        storage.write_atomic(target, '{"v":2}')
+        check("a rewrite replaces cleanly, never half",
+              target.read_text() == '{"v":2}')
+    finally:
+        storage.DATA, storage.CHANGES = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
 if __name__ == "__main__":
     print("=" * 62)
     print("PriceTrail pipeline tests")
@@ -998,6 +1283,10 @@ if __name__ == "__main__":
     test_only_substantial_comparisons_get_pages()
     test_comparison_pages_say_something()
     test_sitemap_dates_are_truthful()
+    test_addons_are_not_shown_as_plans()
+    test_tests_do_not_touch_the_archive()
+    test_untrusted_data_cannot_reach_the_page()
+    test_the_archive_survives_damage()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")
     if FAILED:
