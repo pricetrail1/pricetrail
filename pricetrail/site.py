@@ -23,6 +23,7 @@ from pathlib import Path
 import yaml
 
 from . import storage
+from .interact import FILTER_CSS, FILTER_JS
 from .theme import CSS, FONT_LINK, FONT_LINK_XML
 
 SITE_NAME = "PriceTrail"
@@ -318,7 +319,7 @@ def page(title: str, description: str, body: str, path: str,
 <link rel="alternate" type="application/rss+xml" title="{SITE_NAME} changes"
       href="{BASE_URL}/feed.xml">
 {FONT_LINK}
-<link rel="stylesheet" href="{_rel(path)}assets/style.css">
+<link rel="stylesheet" href="{_rel(path)}assets/style.css">{f'<script defer src="{_rel(path)}assets/find.js"></script>' if path == "index.html" else ""}
 {extra_head}
 </head>
 <body>
@@ -350,24 +351,32 @@ def page(title: str, description: str, body: str, path: str,
 """
 
 
-def subscribe_block(prefix: str = "") -> str:
-    """Somewhere for an interested reader to go.
+def subscribe_block(prefix: str = "", compact: bool = False) -> str:
+    """The one place a reader can turn into an audience.
 
-    Without this, someone finds a page useful and leaves with no way to hear
-    from you again. That is the difference between traffic and an audience,
-    and only one of them ever pays you.
+    Until this existed, someone could find a page useful and leave with no way
+    to hear from you again -- and traffic that cannot be reached again is not
+    worth anything. A link that says "Subscribe" is not a conversion point
+    either: it is one more click between wanting the thing and having it, on a
+    page where most people never scroll at all.
+
+    So this is a real form with one field. Conversion research is consistent
+    that fewer fields win and that one to three is the range where they still
+    perform; an email address alone is the floor.
+
+    SIGNUP_URL is the form's action -- whatever mailing service you use gives
+    you one. Until it is set, there is no form, because a form that silently
+    throws addresses away is worse than none: people would believe they had
+    subscribed. In that case the RSS feed is offered honestly instead.
     """
-    if SIGNUP_URL:
+    if not SIGNUP_URL:
+        # The compact strip exists to put a signup high on the page. With no
+        # mailing service there is nothing to sign up to, and falling back to
+        # the full panel here printed "Follow the changes" twice on the same
+        # homepage -- once near the top and again at the bottom.
+        if compact:
+            return ""
         return f"""
-<section class="section"><div class="panel">
-  <div class="section-head" style="border-bottom-width:1px">
-    <h2>Get the weekly change report</h2></div>
-  <p style="max-width:52ch;margin-bottom:1rem">One email a week listing every
-    price change we recorded. Free, and you can stop any time.</p>
-  <p><a href="{esc(SIGNUP_URL)}" class="tag" style="font-size:0.85rem;
-    padding:0.5rem 1rem;border-color:var(--ink)">Subscribe &rarr;</a></p>
-</div></section>"""
-    return f"""
 <section class="section"><div class="panel">
   <div class="section-head" style="border-bottom-width:1px">
     <h2>Follow the changes</h2></div>
@@ -375,6 +384,39 @@ def subscribe_block(prefix: str = "") -> str:
     published to a feed you can subscribe to in any reader.</p>
   <p><a href="{BASE_URL}/feed.xml">RSS feed</a> &middot;
      <a href="{prefix}changes.html">Browse all changes</a></p>
+</div></section>"""
+
+    # target="_blank" so the reader is never navigated away from the page they
+    # came to read -- the mailing service confirms in its own tab.
+    form = f"""
+  <form class="signup" action="{esc(SIGNUP_URL)}" method="post"
+        target="_blank" rel="noopener">
+    <label class="vh" for="su-email{'-c' if compact else ''}">Email address</label>
+    <input id="su-email{'-c' if compact else ''}" type="email" name="email"
+           required autocomplete="email" placeholder="you@company.com">
+    <button type="submit">Email me price changes</button>
+  </form>
+  <p class="signup-note">One email a week, only when something actually
+    changed. Unsubscribe in one click. Your address is never sold or shared.</p>"""
+
+    if compact:
+        return f"""
+<section class="section" style="padding-top:0">
+  <div class="cta-strip">
+    <div><strong>Get told when a price moves.</strong>
+      <span>24 tools, checked daily. We email only when something changed.</span>
+    </div>{form}
+  </div>
+</section>"""
+
+    return f"""
+<section class="section"><div class="panel cta-panel">
+  <div class="section-head" style="border-bottom-width:1px">
+    <h2>Never be surprised by a price rise</h2></div>
+  <p style="max-width:54ch;margin-bottom:1.1rem">We read all 24 pricing pages
+    every day. When one of them changes, you get an email the same week
+    &mdash; with the old figure, the new one, and the date.</p>
+  {form}
 </div></section>"""
 
 
@@ -436,8 +478,39 @@ def render_index(ctx: dict) -> str:
   </section>
 """]
 
+    # 57% of desktop visitors and 64% on mobile never scroll past the first
+    # screen. An offer that only appears at the bottom of the page is an offer
+    # most people never see, so the compact strip goes directly under the hero
+    # -- close enough to the proof figures to borrow their credibility.
+    body.append(subscribe_block(compact=True))
+
     # ---- the main event: every price, on one screen ----
+    if changes:
+        body.append('<section class="section"><div class="section-head">'
+                    '<h2>Latest changes</h2>'
+                    f'<span class="aside">{len(changes)} recorded \u00b7 '
+                    f'<a href="changes.html">see all</a></span></div>')
+        body.append(_tape(changes[:12], vendors, prefix=""))
+        body.append("</section>")
+    else:
+        body.append(f"""
+<section class="section"><div class="section-head">
+  <h2>Price changes</h2></div>
+  <p class="note">Nothing has moved since recording began on
+  {esc(ctx['tracking_since'])}. Software pricing changes a few times a year,
+  not weekly, so quiet stretches are normal \u2014 and knowing a category is
+  stable is worth something on its own. Every change from here is logged with
+  both figures and the date it moved.</p>
+</section>""")
+
     body.append('<section class="section" id="prices">'
+                '<div class="findbar">'
+                '<input id="find" type="search" hidden '
+                'placeholder="Find a tool \u2014 type a name" '
+                'aria-label="Find a tool by name">'
+                '<span class="find-count" id="find-count"></span>'
+                '</div>'
+                '<p class="find-empty" id="find-empty" hidden></p>'
                 '<div class="section-head"><h2>Every tracked price</h2>'
                 '<span class="aside">entry price = cheapest paid plan with a '
                 'published figure</span></div>')
@@ -450,7 +523,7 @@ def render_index(ctx: dict) -> str:
         cur = bench.get("currency", "USD")
 
         body.append(f"""
-  <div class="cat-block">
+  <div class="cat-block" data-block>
     <div class="cat-head">
       <h3><a href="c/{esc(storage.slugify(cat))}.html">{esc(title_case(cat))}</a></h3>
       <span class="cat-meta">{len(live)} vendors &middot; median entry
@@ -459,8 +532,9 @@ def render_index(ctx: dict) -> str:
     </div>
     <div class="tbl-scroll"><table class="stack">
       <thead><tr>
-        <th>Vendor</th><th class="num">Entry</th>
-        <th class="num">Top listed</th><th>Free tier</th><th>Billing</th>
+        <th data-sort="text">Vendor</th><th class="num">Entry</th>
+        <th class="num">Top listed</th><th data-sort="off">Free tier</th>
+        <th data-sort="off">Billing</th>
       </tr></thead><tbody>""")
 
         for name in live:
@@ -484,31 +558,13 @@ def render_index(ctx: dict) -> str:
             href="v/{esc(storage.slugify(name))}.html">{esc(name)}</a></td>
           <td class="num big" data-l="Entry">{entry_cell}</td>
           <td class="num" data-l="Top listed">{top_cell}</td>
-          <td data-l="Free tier">{'Yes' if any(p['is_free'] for p in plans) else '\u2014'}</td>
+          <td data-l="Free tier">{'Yes' if any(p['is_free'] for p in plans) else 'No'}</td>
           <td data-l="Billing">{'Per seat' if any(p['is_per_seat'] for p in plans) else 'Flat'}</td>
         </tr>""")
         body.append("</tbody></table></div></div>")
     body.append("</section>")
 
     # ---- changes: prominent only when there is something to show ----
-    if changes:
-        body.append('<section class="section"><div class="section-head">'
-                    '<h2>Latest changes</h2>'
-                    f'<span class="aside">{len(changes)} recorded \u00b7 '
-                    f'<a href="changes.html">see all</a></span></div>')
-        body.append(_tape(changes[:12], vendors, prefix=""))
-        body.append("</section>")
-    else:
-        body.append(f"""
-<section class="section"><div class="section-head">
-  <h2>Price changes</h2></div>
-  <p class="note">Nothing has moved since recording began on
-  {esc(ctx['tracking_since'])}. Software pricing changes a few times a year,
-  not weekly, so quiet stretches are normal \u2014 and knowing a category is
-  stable is worth something on its own. Every change from here is logged with
-  both figures and the date it moved.</p>
-</section>""")
-
     body.append(subscribe_block())
     body.append("</div>")
     return page(f"{SITE_NAME} \u2014 {TAGLINE}",
@@ -558,10 +614,10 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
         row = f"""
       <tr>
         <td class="plan-name">{esc(p['name'])}</td>
-        <td class="num">{monthly}</td>
-        <td class="num">{money(cur, p['annual_price_per_month'])}</td>
-        <td>{'Per seat' if p['is_per_seat'] else 'Flat'}</td>
-        <td>{limits}</td>
+        <td class="num" data-l="Monthly">{monthly}</td>
+        <td class="num" data-l="Annual, per month">{money(cur, p['annual_price_per_month'])}</td>
+        <td data-l="Billing">{'Per seat' if p['is_per_seat'] else 'Flat'}</td>
+        <td data-l="Stated limits">{limits}</td>
       </tr>"""
         # Add-ons are sold on top of a plan, not instead of one. Listing them
         # in the same table made "Surveys" look like a tier sitting between
@@ -617,7 +673,7 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
       <p style="max-width:62ch;margin-bottom:1rem">These are priced separately
         from the plans above, so they are an extra cost rather than an
         alternative to them.{listed}</p>
-      <div class="tbl-scroll"><table>
+      <div class="tbl-scroll"><table class="stack">
         <thead><tr><th>Add-on</th><th class="num">Monthly</th>
           <th class="num">Annual, per month</th><th>Billing</th>
           <th>Stated limits</th></tr></thead>
@@ -631,7 +687,7 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
     {back_link("../")}
     <div class="section-head"><h1>{esc(name)} pricing</h1>
       <span class="aside">{esc(title_case(category))}</span></div>
-    <div class="tbl-scroll"><table>
+    <div class="tbl-scroll"><table class="stack">
       <thead><tr><th>Plan</th><th class="num">Monthly</th>
         <th class="num">Annual, per month</th><th>Billing</th>
         <th>Stated limits</th></tr></thead>
@@ -711,11 +767,11 @@ def render_category(cat: str, ctx: dict) -> str:
       <tr>
         <td class="plan-name"><a href="../v/{esc(storage.slugify(name))}.html">
           {esc(name)}</a></td>
-        <td class="num">{money(rec.get('currency', cur), entry)}</td>
-        <td class="num">{money(rec.get('currency', cur), top)}</td>
-        <td>{'Yes' if free else 'No'}</td>
-        <td>{'Yes' if custom else 'No'}</td>
-        <td class="num">{n_changes}</td>
+        <td class="num" data-l="Entry">{money(rec.get('currency', cur), entry)}</td>
+        <td class="num" data-l="Highest listed">{money(rec.get('currency', cur), top)}</td>
+        <td data-l="Free tier">{'Yes' if free else 'No'}</td>
+        <td data-l="Enterprise quote">{'Yes' if custom else 'No'}</td>
+        <td class="num" data-l="Changes">{n_changes}</td>
       </tr>""")
 
     body = [f"""
@@ -732,7 +788,7 @@ def render_category(cat: str, ctx: dict) -> str:
       <div class="cell"><span class="stat">{bench.get('pct_per_seat', 0):.0f}%</span>
         <p>Charge per seat</p></div>
     </div>
-    <div class="tbl-scroll"><table>
+    <div class="tbl-scroll"><table class="stack">
       <thead><tr><th>Vendor</th><th class="num">Entry</th>
         <th class="num">Highest listed</th><th>Free tier</th>
         <th>Enterprise quote</th><th class="num">Changes</th></tr></thead>
@@ -844,8 +900,12 @@ def _differences(a: str, b: str, ra: dict, rb: dict,
 
     # ---- table ----
     def row(label, va, vb):
+        # data-l is what the stacked mobile layout prints as each value's
+        # label. Without it these collapse into an unlabelled column of bare
+        # numbers on a phone.
         return (f'<tr><td class="plan-name">{esc(label)}</td>'
-                f'<td class="num">{va}</td><td class="num">{vb}</td></tr>')
+                f'<td class="num" data-l="{esc(a)}">{va}</td>'
+                f'<td class="num" data-l="{esc(b)}">{vb}</td></tr>')
 
     dash = "\u2014"
     table = "".join([
@@ -880,8 +940,9 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
                      '<span class="tag">Free</span>' if p["is_free"] else
                      money(cur, p["monthly_price"]))
             out.append(f'<tr><td class="plan-name">{esc(p["name"])}</td>'
-                       f'<td class="num">{price}</td>'
-                       f'<td class="num">{money(cur, p["annual_price_per_month"])}</td>'
+                       f'<td class="num" data-l="Monthly">{price}</td>'
+                       f'<td class="num" data-l="Annual">'
+                       f'{money(cur, p["annual_price_per_month"])}</td>'
                        f'</tr>')
         return "".join(out)
 
@@ -924,7 +985,7 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
     <div class="section-head" style="border-bottom-width:1px">
       <h2>How they differ</h2></div>
     {prose}
-    <div class="tbl-scroll" style="margin-top:1rem"><table>
+    <div class="tbl-scroll" style="margin-top:1rem"><table class="stack">
       <thead><tr><th></th><th class="num">{esc(a)}</th>
         <th class="num">{esc(b)}</th></tr></thead>
       <tbody>{difftable}</tbody>
@@ -934,13 +995,13 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))">
     <div class="cell">
       <h3><a href="../v/{esc(storage.slugify(a))}.html">{esc(a)}</a></h3>
-      <table style="margin-top:0.75rem"><thead><tr><th>Plan</th>
+      <table class="stack" style="margin-top:0.75rem"><thead><tr><th>Plan</th>
         <th class="num">Monthly</th><th class="num">Annual</th></tr></thead>
         <tbody>{col(ra)}</tbody></table>
     </div>
     <div class="cell">
       <h3><a href="../v/{esc(storage.slugify(b))}.html">{esc(b)}</a></h3>
-      <table style="margin-top:0.75rem"><thead><tr><th>Plan</th>
+      <table class="stack" style="margin-top:0.75rem"><thead><tr><th>Plan</th>
         <th class="num">Monthly</th><th class="num">Annual</th></tr></thead>
         <tbody>{col(rb)}</tbody></table>
     </div>
@@ -1465,7 +1526,9 @@ def build(out_dir: Path | None = None) -> dict:
         (out / path).write_text(content, encoding="utf-8")
         written.append(path)
 
-    (out / "assets" / "style.css").write_text(CSS, encoding="utf-8")
+    (out / "assets" / "style.css").write_text(CSS + FILTER_CSS,
+                                              encoding="utf-8")
+    (out / "assets" / "find.js").write_text(FILTER_JS, encoding="utf-8")
 
     write("index.html", render_index(ctx))
     write("changes.html", render_changes(ctx))

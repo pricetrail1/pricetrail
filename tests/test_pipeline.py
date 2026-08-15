@@ -29,6 +29,7 @@ from pricetrail.diff import (CONFIDENCE_PUBLISH, diff_pricing,
 from pricetrail.extract import normalise
 from pricetrail import site as sitemod
 from pricetrail import storage
+from pricetrail import theme
 
 # ---------------------------------------------------------------- isolation
 #
@@ -1255,6 +1256,255 @@ def test_the_archive_survives_damage():
         _sh.rmtree(tmp, ignore_errors=True)
 
 
+def test_tables_are_readable_on_a_phone():
+    """Only the homepage's tables collapsed for narrow screens.
+
+    Vendor, category and comparison pages rendered five- and six-column tables
+    into a 380px viewport, so on a phone they were either crushed or scrolling
+    sideways. The stacked layout was already written and working -- those pages
+    just never opted into it, and it needs both the .stack class and a data-l
+    label on every cell after the first, because data-l is what it prints as
+    each value's label once the header row is hidden.
+    """
+    print("\nMobile tables")
+
+    import tempfile as _tf, shutil as _sh, yaml as _yaml
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"
+        storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"
+        storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"
+        storage.SPEND = tmp / "spend.json"
+        storage.SINCE.parent.mkdir(parents=True, exist_ok=True)
+        storage.write_atomic(storage.SINCE, "2026-05-12")
+
+        cfg = _yaml.safe_load(
+            (Path(sitemod.__file__).parent.parent / "vendors.yaml")
+            .read_text(encoding="utf-8"))
+        for i, v in enumerate(cfg["vendors"][:5]):
+            plans = [{"name": "Pro", "key": "pro", "monthly_price": 20 + i,
+                      "annual_price_per_month": 16, "is_free": False,
+                      "is_custom_pricing": False, "is_per_seat": True,
+                      "is_addon": False, "trial_days": 14, "limits": [],
+                      "features": ["sso"]},
+                     {"name": "Surveys", "key": "sv", "monthly_price": 9,
+                      "annual_price_per_month": None, "is_free": False,
+                      "is_custom_pricing": False, "is_per_seat": False,
+                      "is_addon": True, "trial_days": None, "limits": [],
+                      "features": []}]
+            storage.save_plans(storage.slugify(v["name"]),
+                               {"currency": "USD", "pricing_is_public": True,
+                                "extraction_notes": "", "plans": plans})
+
+        out = tmp / "site"
+        sitemod.build(out)
+        pages = list(out.rglob("*.html"))
+
+        unstacked, unlabelled = [], []
+        for f in pages:
+            h = f.read_text(encoding="utf-8")
+            for attrs in re.findall(r"<table([^>]*)>", h):
+                if "stack" not in attrs:
+                    unstacked.append(f.relative_to(out).as_posix())
+            for tr in re.findall(r"<tr>(.*?)</tr>", h, re.S):
+                tds = re.findall(r"<td[^>]*>", tr)
+                if len(tds) > 1 and not all("data-l" in td for td in tds[1:]):
+                    unlabelled.append(f.relative_to(out).as_posix())
+
+        check("every table collapses on a narrow screen",
+              not unstacked, "; ".join(sorted(set(unstacked))[:5]))
+        check("every stacked cell carries its own label",
+              not unlabelled, "; ".join(sorted(set(unlabelled))[:5]))
+        check("the tables tested were real, not an empty build",
+              sum(h.count("<table") for h in
+                  (f.read_text(encoding="utf-8") for f in pages)) >= 8)
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE,
+         storage.SPEND) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
+def test_visitors_can_find_a_price():
+    """24 vendors in three tables, and no way to look one up.
+
+    Search UX research treats this as a credibility problem rather than a
+    convenience one: a visitor who cannot find the thing concludes the site
+    cannot help, in seconds, and does not revise it. On a site whose whole
+    pitch is being the reliable record, that is the worst possible first
+    impression.
+    """
+    print("\nFind and sort")
+
+    from pricetrail.interact import FILTER_JS, FILTER_CSS
+
+    check("the script never calls out to anything",
+          not re.search(r"fetch\(|XMLHttpRequest|import\s|require\(", FILTER_JS))
+    check("no eval anywhere", "eval(" not in FILTER_JS)
+    check("the styles ship with the stylesheet",
+          ".findbar" in FILTER_CSS and "th.sortable" in FILTER_CSS)
+    check("an empty result explains itself rather than going blank",
+          "find-empty" in FILTER_JS and "clear the box" in FILTER_JS)
+    check("a missing price sorts last, never first",
+          "blanks last" in FILTER_JS)
+    check("the box is keyboard-clearable",
+          "Escape" in FILTER_JS)
+    check("headings are reachable by keyboard",
+          "tabIndex" in FILTER_JS and "aria-sort" in FILTER_JS)
+
+    import tempfile as _tf, shutil as _sh, yaml as _yaml
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"
+        storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"
+        storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"
+        storage.SPEND = tmp / "spend.json"
+        storage.SINCE.parent.mkdir(parents=True, exist_ok=True)
+        storage.write_atomic(storage.SINCE, "2026-05-12")
+
+        cfg = _yaml.safe_load(
+            (Path(sitemod.__file__).parent.parent / "vendors.yaml")
+            .read_text(encoding="utf-8"))
+        for i, v in enumerate(cfg["vendors"][:6]):
+            storage.save_plans(storage.slugify(v["name"]), {
+                "currency": "USD", "pricing_is_public": True,
+                "extraction_notes": "",
+                "plans": [{"name": "Pro", "key": "pro",
+                           "monthly_price": 20 + i * 7,
+                           "annual_price_per_month": 16, "is_free": False,
+                           "is_custom_pricing": False, "is_per_seat": True,
+                           "is_addon": False, "trial_days": 14,
+                           "limits": [], "features": ["sso"]}]})
+
+        out = tmp / "site"
+        sitemod.build(out)
+        index = (out / "index.html").read_text(encoding="utf-8")
+
+        check("the box sits with the tables it controls",
+              'id="find"' in index and 'id="prices"' in index)
+        check("the script is served and linked",
+              (out / "assets" / "find.js").exists() and "find.js" in index)
+        check("only the page with the tables loads it",
+              "find.js" not in (out / "about.html").read_text(encoding="utf-8"))
+        check("category blocks can be hidden when filtered out",
+              index.count("data-block") >= 1)
+        check("the box is hidden until the script enables it",
+              re.search(r'<input id="find"[^>]*hidden', index) is not None,
+              "a dead box is worse than no box when JS fails")
+        check("the name column sorts alphabetically",
+              'data-sort="text"' in index)
+        check("yes/no columns are not offered as sortable",
+              'data-sort="off"' in index)
+
+        # The tables must be complete without the script.
+        rows = re.findall(r"<tbody>(.*?)</tbody>", index, re.S)
+        check("prices are in the HTML, not built by the script",
+              sum(r.count("<tr") for r in rows) >= 6)
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE,
+         storage.SPEND) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
+def test_there_is_somewhere_to_convert():
+    """The site had no conversion point at all -- only an RSS link.
+
+    And the accent is measured, not chosen. Contrast research is consistent
+    that what wins is the button standing out from its background, not any
+    particular hue: reviews of thousands of tests put colour-alone lifts at
+    ~2.4%, while raising contrast into the 6:1-8:1 band moves real numbers.
+    Orange, the colour this site used to carry, scores 2.6:1 on white -- white
+    text on it is illegible.
+    """
+    print("\nConversion point")
+
+    def ratio(a, b):
+        def lum(h):
+            h = h.lstrip("#")
+            ch = [int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)]
+            f = lambda c: c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+            r, g, bl = [f(c) for c in ch]
+            return 0.2126 * r + 0.7152 * g + 0.0722 * bl
+        la, lb = lum(a), lum(b)
+        hi, lo = max(la, lb), min(la, lb)
+        return (hi + 0.05) / (lo + 0.05)
+
+    act = theme.TOKENS["act"]
+    check("the action colour clears the 6:1 contrast target",
+          ratio(act, "#FFFFFF") >= 6.0, f"{ratio(act, '#FFFFFF'):.1f}:1")
+    check("white label on it is readable",
+          ratio(act, "#FFFFFF") >= 4.5)
+    check("it is not the old orange that failed at 2.6:1",
+          act.upper() not in ("#E8874B", "#B4531A"))
+
+    saved = sitemod.SIGNUP_URL
+    try:
+        sitemod.SIGNUP_URL = ""
+        no_url = sitemod.subscribe_block()
+        check("no form at all until a mailing service is configured",
+              "<form" not in no_url,
+              "a form that discards addresses is worse than none")
+        check("an honest alternative is offered instead", "feed.xml" in no_url)
+
+        sitemod.SIGNUP_URL = "https://example.com/subscribe"
+        block = sitemod.subscribe_block()
+        check("a real form, not a link", "<form" in block and "method=\"post\"" in block)
+        check("exactly one field to fill in", block.count("<input") == 1)
+        check("it asks for an email and nothing else",
+              'type="email"' in block and 'name="email"' in block)
+        check("the field is labelled for screen readers",
+              'class="vh"' in block and "<label" in block)
+        check("the reader is not navigated off the page",
+              'target="_blank"' in block and 'rel="noopener"' in block)
+        check("what they are agreeing to is stated",
+              "Unsubscribe" in block and "never sold" in block)
+        check("the button says what happens, not 'submit'",
+              "Email me price changes" in block)
+
+        compact = sitemod.subscribe_block(compact=True)
+        check("a short version exists for above the fold",
+              "cta-strip" in compact and "<form" in compact)
+    finally:
+        sitemod.SIGNUP_URL = saved
+
+
+def test_no_section_appears_twice():
+    """With no mailing service the compact strip fell back to the full panel,
+    so the homepage printed "Follow the changes" at the top AND the bottom."""
+    print("\nPage structure")
+
+    saved = sitemod.SIGNUP_URL
+    try:
+        sitemod.SIGNUP_URL = ""
+        check("no compact strip when there is nothing to sign up to",
+              sitemod.subscribe_block(compact=True) == "")
+        check("the full fallback is still offered once",
+              "Follow the changes" in sitemod.subscribe_block())
+
+        sitemod.SIGNUP_URL = "https://example.com/subscribe"
+        compact = sitemod.subscribe_block(compact=True)
+        full = sitemod.subscribe_block()
+        check("configured, the two blocks are different",
+              compact != full and "cta-strip" in compact)
+        check("and they do not share a heading",
+              "Follow the changes" not in compact)
+    finally:
+        sitemod.SIGNUP_URL = saved
+
+
 if __name__ == "__main__":
     print("=" * 62)
     print("PriceTrail pipeline tests")
@@ -1287,6 +1537,10 @@ if __name__ == "__main__":
     test_tests_do_not_touch_the_archive()
     test_untrusted_data_cannot_reach_the_page()
     test_the_archive_survives_damage()
+    test_tables_are_readable_on_a_phone()
+    test_visitors_can_find_a_price()
+    test_there_is_somewhere_to_convert()
+    test_no_section_appears_twice()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")
     if FAILED:

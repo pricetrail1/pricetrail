@@ -24,31 +24,35 @@ percentage is monospace so columns align and digits are comparable at a glance.
 """
 
 TOKENS = {
-    "paper": "#EDF1F4",   # pale cool grey-blue
+    "paper": "#FFFFFF",   # white. the page is a document, not a dashboard
     "panel": "#FFFFFF",
-    "ink": "#0C1218",     # deep navy-charcoal
-    "muted": "#5A6773",
-    "rule": "#CDD8E0",
-    "rise": "#B4531A",    # rust  - price increases
-    "fall": "#0F7A6B",    # teal  - price decreases
-    "link": "#1B4B8F",
+    "ink": "#0A0A0A",     # neutral near-black, no blue cast
+    "muted": "#737373",
+    "rule": "#E4E4E4",
+    "rise": "#C2261B",    # a price went up
+    "fall": "#12693F",    # a price came down
+    "link": "#0A0A0A",    # links are ink; weight and underline carry them
+    "act": "#1B4B8F",     # 8.6:1 on white. used ONLY on the signup button
 }
 
 CSS = """
 /* ---- reset ---- */
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body, h1, h2, h3, h4, p, ul, ol, figure, table { margin: 0; padding: 0; }
 ul, ol { list-style: none; }
 
 :root {
-  --paper: #EDF1F4;
+  --paper: #FFFFFF;
   --panel: #FFFFFF;
-  --ink: #0C1218;
-  --muted: #5A6773;
-  --rule: #CDD8E0;
-  --rise: #B4531A;
-  --fall: #0F7A6B;
-  --link: #1B4B8F;
+  --ink: #0A0A0A;
+  --muted: #737373;
+  --rule: #E4E4E4;
+  --rule-soft: #EFEFEF;
+  --rise: #C2261B;
+  --fall: #12693F;
+  --link: #0A0A0A;
+  --act: #1B4B8F;
 
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -69,6 +73,7 @@ body {
 }
 
 a { color: var(--link); text-decoration: none; }
+td a, .cat-head a { font-weight: 500; }
 a:hover { text-decoration: underline; text-underline-offset: 2px; }
 
 :focus-visible {
@@ -80,8 +85,8 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---- masthead ---- */
 .masthead {
-  border-bottom: 1px solid var(--rule);
-  background: var(--panel);
+  border-bottom: 1px solid var(--ink);
+  background: #0A0A0A;
   position: sticky; top: 0; z-index: 10;
 }
 .masthead .wrap {
@@ -90,19 +95,20 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
 }
 .wordmark {
   font-weight: 800; font-size: 1.05rem; letter-spacing: -0.03em;
-  color: var(--ink); text-transform: uppercase;
+  color: #FFFFFF; text-transform: uppercase;
 }
 .wordmark:hover { text-decoration: none; }
-.wordmark span { color: var(--rise); }
+.wordmark span { color: inherit; }
 .masthead nav { display: flex; gap: 1.1rem; margin-left: auto; }
 .masthead nav a {
   font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--muted);
+  text-transform: uppercase; color: #8A8A8A;
 }
-.masthead nav a:hover { color: var(--ink); }
+.masthead nav a:hover { color: #FFFFFF; }
+.masthead .wordmark span { color: #FFFFFF; }
 
 /* ---- hero ---- */
-.hero { padding-block: clamp(2.5rem, 7vw, 4.5rem) 2rem; }
+.hero { padding-block: clamp(2.25rem, 6vw, 3.75rem) 2rem; }
 .hero h1 {
   font-size: clamp(2rem, 5.5vw, 3.4rem);
   font-weight: 800; letter-spacing: -0.035em; line-height: 1.05;
@@ -114,12 +120,15 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
 
 /* counters strip */
 .counters {
-  display: flex; flex-wrap: wrap; gap: 2.25rem;
-  margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; gap: 0;
+  margin-top: 2.25rem;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
 }
+.counter { flex: 1 1 9rem; padding: 0.9rem 1.25rem 0.9rem 0; }
 .counter .n {
-  font-family: var(--mono); font-size: 1.75rem; font-weight: 600;
-  letter-spacing: -0.02em; display: block;
+  font-family: var(--mono); font-size: 2rem; font-weight: 600;
+  letter-spacing: -0.03em; display: block; line-height: 1.1;
 }
 .counter .l {
   font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em;
@@ -193,9 +202,11 @@ th {
   border-bottom: 1px solid var(--ink); white-space: nowrap;
 }
 td {
-  padding: 0.7rem 0.9rem 0.7rem 0;
-  border-bottom: 1px solid var(--rule); vertical-align: baseline;
+  padding: 0.75rem 0.9rem 0.75rem 0;
+  border-bottom: 1px solid var(--rule-soft); vertical-align: baseline;
 }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: #FAFAFA; }
 td.num, th.num { font-family: var(--mono); text-align: right; padding-right: 0; }
 tr:last-child td { border-bottom: none; }
 .plan-name { font-weight: 600; }
@@ -274,14 +285,13 @@ footer .disclaimer { max-width: 46ch; }
 /* ---- category blocks on the homepage ---- */
 .cat-block {
   background: var(--panel);
-  border: 1px solid var(--rule);
-  margin-bottom: 1.25rem;
+  margin-bottom: 2.25rem;
 }
 .cat-head {
   display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
-  padding: 0.9rem 1.25rem;
-  border-bottom: 1px solid var(--rule);
-  background: color-mix(in srgb, var(--paper) 55%, var(--panel));
+  padding: 0 0 0.5rem;
+  border-bottom: 2px solid var(--ink);
+  background: var(--panel);
 }
 .cat-head h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
 .cat-head h3 a { color: var(--ink); }
@@ -346,14 +356,16 @@ tbody tr:hover { background: color-mix(in srgb, var(--paper) 45%, transparent); 
     margin-bottom: 0.35rem;
   }
   table.stack td:first-child::before { content: none; }
-  .cat-head { padding: 0.8rem 1.25rem; }
+  .cat-head { padding: 0 0 0.5rem; }
   .cat-meta { margin-left: 0; width: 100%; }
 }
 
 /* ---- responsive ---- */
 @media (max-width: 40rem) {
   .entry { grid-template-columns: 1fr; gap: 0.2rem; }
-  .counters { gap: 1.25rem 2rem; }
+  .counter { flex: 1 1 100%; border-right: none;
+             border-bottom: 1px solid var(--rule-soft); }
+  .counter:last-child { border-bottom: none; }
   .hero { padding-block: 2rem 1.5rem; }
 }
 
@@ -389,3 +401,50 @@ FONT_LINK_XML = (
     'family=Archivo:wght@400;600;700;800&amp;'
     'family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"/>'
 )
+
+
+CSS += """
+/* ---- the one conversion point ---- */
+.vh {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.signup { display: flex; gap: 0.6rem; flex-wrap: wrap; max-width: 34rem; }
+.signup input {
+  flex: 1 1 15rem; min-width: 0;
+  font-family: var(--sans); font-size: 1rem;
+  padding: 0.8rem 0.9rem;
+  background: var(--panel); border: 1px solid var(--ink); color: var(--ink);
+}
+.signup input:focus-visible { outline: 2px solid var(--act); outline-offset: 1px; }
+.signup button {
+  flex: 0 0 auto; cursor: pointer;
+  font-family: var(--sans); font-size: 0.95rem; font-weight: 600;
+  padding: 0.8rem 1.4rem;
+  background: var(--act); color: #FFFFFF; border: 1px solid var(--act);
+}
+.signup button:hover { background: #16386B; border-color: #16386B; }
+.signup button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.signup-note {
+  margin-top: 0.7rem; max-width: 44ch;
+  font-family: var(--mono); font-size: 0.72rem; line-height: 1.6;
+  color: var(--muted);
+}
+.cta-panel { border-top: 2px solid var(--ink); }
+.cta-strip {
+  display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem;
+  background: var(--panel); border: 1px solid var(--rule);
+  border-left: 3px solid var(--act);
+}
+.cta-strip strong { display: block; font-size: 1.02rem; letter-spacing: -0.01em; }
+.cta-strip span {
+  display: block; margin-top: 0.15rem;
+  font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+}
+.cta-strip .signup-note { display: none; }
+@media (max-width: 40rem) {
+  .signup button { flex: 1 1 100%; }
+}
+"""
