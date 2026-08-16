@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Pricing page shows plan names and features but actual prices are not visible in the provided HTML. The page contains dropdown menus for contact tiers (0-500, 501-1,500, etc.) and currency selection, but the actual monthly/annual price figures are not displayed in the text. The page references \"Then, starts at per month†\" and \"per month for 12 months\" without showing the actual numbers. Features and limits are clearly listed for each plan tier.",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows Standard and Premium pricing fields but the actual dollar amounts are not visible in the provided HTML content. Free plan is confirmed at $0. Essentials shows $20/month then (discounted pricing is mentioned but exact amount not clearly visible for promotional period). Trial days are 14 for Standard and Essentials based on page text. Premium pricing and trial information not clearly shown in the content. SMS add-on is available but documented as a separate add-on purchase, not included in base plan pricing. Page indicates monthly billing is displayed; annual plans are mentioned as available but require contacting sales. Pricing is contact-tier based (varies by number of contacts), but only base tier pricing shown here. The page contains multiple CTA buttons and promotional messaging that obscured exact pricing figures for Standard and Premium plans in the provided content.",
   "plans": [
     {
       "name": "Free",
@@ -31,7 +31,7 @@
     {
       "name": "Essentials",
       "key": "essentials",
-      "monthly_price": null,
+      "monthly_price": 20.0,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
@@ -78,8 +78,13 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "audiences",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "contacts",
-          "value": 10000.0,
+          "value": -1.0,
           "unit": null
         },
         {
