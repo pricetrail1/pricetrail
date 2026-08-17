@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "The page does not display specific pricing numbers for most plans. Starter shows \"per month\" placeholder text but no actual price. Standard shows \"Sales Essentials per month\" placeholder. Professional shows \"Sales Advanced per month/user\". Enterprise shows \"Custom price\". Free plan limit (300 emails/month) inferred from comparison context but not explicitly stated on this extract. Monthly/Yearly toggle is mentioned but no specific amounts are visible. Unable to extract actual dollar amounts for any paid plan.",
+  "pricing_is_public": false,
+  "extraction_notes": "Page shows Monthly/Yearly toggle but pricing figures are not displayed ('Loading content...'). No actual prices are visible on the page. Prices appear to be hidden behind a loading placeholder. Currency assumed USD based on context but not explicitly shown. Free plan limit of 300 emails inferred from standard Brevo offering but not stated on this page. Features extracted from the feature lists shown for each tier. Only clear features from the allowed list are included.",
   "plans": [
     {
       "name": "Free",
@@ -22,9 +22,7 @@
         }
       ],
       "features": [
-        "basic workflows",
-        "email",
-        "sms"
+        "email support"
       ]
     },
     {
@@ -40,17 +38,9 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "basic workflows",
-        "custom branding",
-        "dedicated account manager",
-        "email",
-        "onboarding support",
         "phone support",
         "saml",
-        "sms",
-        "sso",
-        "whatsapp"
+        "sso"
       ]
     },
     {
@@ -77,13 +67,8 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "basic workflows",
         "custom branding",
-        "email",
-        "phone support",
-        "sms",
-        "whatsapp"
+        "phone support"
       ]
     },
     {
@@ -99,11 +84,7 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "basic workflows",
-        "custom branding",
-        "email",
-        "sms"
+        "custom branding"
       ]
     },
     {
@@ -125,9 +106,7 @@
         }
       ],
       "features": [
-        "basic workflows",
-        "email",
-        "sms"
+        "custom branding"
       ]
     }
   ]

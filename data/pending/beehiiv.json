@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Pricing shows monthly billing option; annual pricing is $517/year for Scale ($43/month) and $1,151/year for Max ($96/month). The annual per-month prices are identical to the displayed monthly prices. Launch is free forever with no credit card required. Enterprise shows \"Custom Pricing\" with no numbers disclosed. All plans have unlimited email sends. The subscription limit noted in FAQ (\"paid plans start at $49/month\") appears to refer to an older pricing, but the page now shows Scale at $43/month.",
+  "extraction_notes": "Annual billing toggle visible; prices shown are $43/month when billed annually ($517/year) for Scale and $96/month when billed annually ($1,151/year) for Max. The page displays annual prices in the \"billed annually\" format. Monthly billing prices are not explicitly stated on the page for Scale and Max, only the annual equivalent per-month is shown. Launch is free with no pricing options. Enterprise has custom pricing.",
   "plans": [
     {
       "name": "Launch",
@@ -146,8 +146,7 @@
       "features": [
         "ai assistant",
         "api access",
-        "priority support",
-        "single sign-on"
+        "priority support"
       ]
     },
     {
@@ -198,7 +197,7 @@
         "api access",
         "dedicated account manager",
         "priority support",
-        "single sign-on"
+        "sso"
       ]
     }
   ]

@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "Page shows Standard and Premium pricing fields but the actual dollar amounts are not visible in the provided HTML content. Free plan is confirmed at $0. Essentials shows $20/month then (discounted pricing is mentioned but exact amount not clearly visible for promotional period). Trial days are 14 for Standard and Essentials based on page text. Premium pricing and trial information not clearly shown in the content. SMS add-on is available but documented as a separate add-on purchase, not included in base plan pricing. Page indicates monthly billing is displayed; annual plans are mentioned as available but require contacting sales. Pricing is contact-tier based (varies by number of contacts), but only base tier pricing shown here. The page contains multiple CTA buttons and promotional messaging that obscured exact pricing figures for Standard and Premium plans in the provided content.",
+  "pricing_is_public": false,
+  "extraction_notes": "The page contains pricing tiers but the actual monthly and annual prices are not displayed as numbers in the provided HTML. The page shows contact tier selectors (0-500, 501-1500, etc.) and references to pricing that changes based on contact volume, but specific dollar amounts are not visible in the extracted content. The page indicates prices start at certain amounts but the exact figures are not provided in the text. Trial information for Standard and Essentials is 14 days; Premium appears to have custom trial terms. Features extracted are those mentioned in the \"Compare plan features\" section that match the standardized feature list.",
   "plans": [
     {
       "name": "Free",
@@ -31,7 +31,7 @@
     {
       "name": "Essentials",
       "key": "essentials",
-      "monthly_price": 20.0,
+      "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
@@ -41,11 +41,6 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "audiences",
-          "value": 3.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
@@ -54,15 +49,10 @@
           "metric": "email sends per month",
           "value": 5000.0,
           "unit": null
-        },
-        {
-          "metric": "seats",
-          "value": 3.0,
-          "unit": null
         }
       ],
       "features": [
-        "basic workflows"
+        "custom reporting"
       ]
     },
     {
@@ -78,30 +68,21 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "audiences",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
-          "value": -1.0,
+          "value": 10000.0,
           "unit": null
         },
         {
           "metric": "email sends per month",
           "value": 150000.0,
           "unit": null
-        },
-        {
-          "metric": "seats",
-          "value": -1.0,
-          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
+        "api access",
         "custom reporting",
+        "dedicated account manager",
         "phone support",
         "priority support"
       ]
@@ -119,11 +100,6 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
           "value": 500.0,
           "unit": null
@@ -132,16 +108,11 @@
           "metric": "email sends per month",
           "value": 6000.0,
           "unit": null
-        },
-        {
-          "metric": "seats",
-          "value": 5.0,
-          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
+        "api access",
         "custom reporting"
       ]
     }
