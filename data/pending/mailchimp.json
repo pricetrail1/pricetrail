@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "The page contains pricing tiers but the actual monthly and annual prices are not displayed as numbers in the provided HTML. The page shows contact tier selectors (0-500, 501-1500, etc.) and references to pricing that changes based on contact volume, but specific dollar amounts are not visible in the extracted content. The page indicates prices start at certain amounts but the exact figures are not provided in the text. Trial information for Standard and Essentials is 14 days; Premium appears to have custom trial terms. Features extracted are those mentioned in the \"Compare plan features\" section that match the standardized feature list.",
+  "pricing_is_public": true,
+  "extraction_notes": "Page contains pricing tiers based on contact count. Only one billing period is clearly visible (monthly pricing). Annual plans are mentioned as available through sales contact, but specific prices are not shown. Trial period of 14 days offered for Standard and Essentials plans. Free plan limit is 250 contacts max, with 500 email sends per month or 250 per day. Contact tiers are 0-500, 501-1,500, 1,501-2,500, 2,501-5,000, 5,001-10,000, 10,001-15,000, 15,001-20,000, 20,001-25,000, 25,001-30,000, 30,001-40,000, 40,001-50,000, 50,001-75,000, 75,001-100,000, 100,001-130,000, 130,001-150,000, 150,001-200,000, 200,001-250,000, 250,001-500,000, 500,001-1,000,000, 1,000,000+. Page shows \"$20 per month\" starting price for Standard but exact prices for other tiers based on contact count are not fully displayed in the extracted text. SMS credits are add-on. Overage charges apply. Page mentions 15% discount for 10,000+ contacts for 12 months. Custom pricing available for 200,000+ contacts.",
   "plans": [
     {
       "name": "Free",
@@ -26,12 +26,14 @@
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "integrations"
+      ]
     },
     {
       "name": "Essentials",
       "key": "essentials",
-      "monthly_price": null,
+      "monthly_price": 20.0,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
@@ -52,45 +54,13 @@
         }
       ],
       "features": [
-        "custom reporting"
-      ]
-    },
-    {
-      "name": "Premium",
-      "key": "premium",
-      "monthly_price": null,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "contacts",
-          "value": 10000.0,
-          "unit": null
-        },
-        {
-          "metric": "email sends per month",
-          "value": 150000.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "advanced workflows",
-        "api access",
-        "custom reporting",
-        "dedicated account manager",
-        "phone support",
-        "priority support"
+        "integrations"
       ]
     },
     {
       "name": "Standard",
       "key": "standard",
-      "monthly_price": null,
+      "monthly_price": 20.0,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
@@ -112,8 +82,37 @@
       ],
       "features": [
         "advanced workflows",
-        "api access",
-        "custom reporting"
+        "integrations"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 10000.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
+          "value": 150000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "integrations",
+        "phone support",
+        "priority support"
       ]
     }
   ]
