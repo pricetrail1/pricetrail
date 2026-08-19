@@ -1,29 +1,22 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing page shows no actual prices visible - all numeric prices are hidden or marked \"Sales Essentials per month\" / \"Sales Advanced per month\" without actual figures. Only the Free plan shows a complete tier. Starter, Standard, and Professional all display \"per month\" labels but no prices visible on this page. Professional is noted as per-user pricing. Enterprise is custom pricing requiring sales contact. Currency assumed USD based on typical US market presentation. Monthly/Yearly toggle visible but prices not shown for either period.",
+  "extraction_notes": "Page shows plan names and features but prices are not visible in the provided HTML content. The page appears to have loading placeholders (\"Loading content...\") where prices should be displayed. Monthly/Yearly toggle is mentioned but no actual price figures are shown. Professional plan shows \"per month/user\" and Enterprise shows \"Custom price\" but no numbers are provided.",
   "plans": [
     {
-      "name": "Free",
-      "key": "free",
+      "name": "Free forever",
+      "key": "freeforever",
       "monthly_price": 0.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 0.0,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "emails per month",
-          "value": 5000.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "email",
-        "sms"
+        "email support"
       ]
     },
     {
@@ -39,12 +32,14 @@
       "trial_days": null,
       "limits": [],
       "features": [
+        "api access",
         "custom branding",
-        "dedicated account manager",
-        "onboarding support",
+        "email support",
         "phone support",
+        "priority support",
         "saml",
-        "sso"
+        "sso",
+        "whatsapp"
       ]
     },
     {
@@ -56,7 +51,7 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": null,
+      "min_seats": 10,
       "trial_days": null,
       "limits": [
         {
@@ -65,17 +60,20 @@
           "unit": null
         },
         {
-          "metric": "seats included",
+          "metric": "seats",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "basic workflows",
+        "api access",
         "custom branding",
-        "phone support"
+        "email support",
+        "phone support",
+        "priority support",
+        "saml",
+        "sso",
+        "whatsapp"
       ]
     },
     {
@@ -89,11 +87,18 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "landing pages",
+          "value": 1.0,
+          "unit": null
+        }
+      ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "basic workflows"
+        "api access",
+        "custom branding",
+        "email support",
+        "priority support"
       ]
     },
     {
@@ -115,8 +120,8 @@
         }
       ],
       "features": [
-        "ai assistant",
-        "basic workflows"
+        "custom branding",
+        "email support"
       ]
     }
   ]
