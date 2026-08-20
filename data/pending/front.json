@@ -1,0 +1,223 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows \"Billed Annually\" at the top with \"Save 24%\" text, indicating the displayed per-seat prices are annual rates. Only annual per-month pricing is shown for the three main plans (Starter, Professional, Enterprise). Add-ons have various pricing structures: Autopilot is per-conversation at $0.05; Copilot, Smart QA, and Smart CSAT are per-seat monthly; API Rate Limit Increase is per month for each 100 request/min increase. Trial is 14 days for Starter and Professional (stated in FAQ). Native WhatsApp Channel is custom pricing (Meta-billed + 20% admin fee). Professional plan limits show \"up to\" notation, Starter explicitly caps at 10 seats with \"up to 10 automation rules\", Enterprise has unlimited rules and macros.",
+  "plans": [
+    {
+      "name": "Smart CSAT",
+      "key": "smartcsat",
+      "monthly_price": 10.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Smart QA",
+      "key": "smartqa",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Smart QA + Smart CSAT bundle",
+      "key": "smartqasmartcsatbundle",
+      "monthly_price": 25.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "custom reporting"
+      ]
+    },
+    {
+      "name": "API Rate Limit Increase",
+      "key": "apiratelimitincrease",
+      "monthly_price": 200.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "api requests per minute",
+          "value": 100.0,
+          "unit": "per 100 increase"
+        }
+      ],
+      "features": [
+        "api access"
+      ]
+    },
+    {
+      "name": "Autopilot",
+      "key": "autopilot",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai chatbot"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": 105.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "automation rules",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "ai chatbot",
+        "custom reporting",
+        "role permissions",
+        "sso"
+      ]
+    },
+    {
+      "name": "Native WhatsApp Channel",
+      "key": "nativewhatsappchannel",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "Professional",
+      "key": "professional",
+      "monthly_price": null,
+      "annual_price_per_month": 65.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "automation rules",
+          "value": 20.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "sso"
+      ]
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": null,
+      "annual_price_per_month": 25.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "automation rules",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "channel types",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": 1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows"
+      ]
+    }
+  ]
+}
