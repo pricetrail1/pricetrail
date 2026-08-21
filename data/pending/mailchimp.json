@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Page shows contact-tier-based pricing with multiple contact ranges (0-500, 501-1,500, etc.) but no actual price figures are visible in the HTML. Prices appear to be dynamically generated or hidden behind the contact tier selector. The page repeatedly shows placeholders like \"Then, starts at [blank] per month†\" and \"Save 15% for 12 months\" without displaying numerical values. Four main plans identified: Free, Essentials, Standard, and Premium. All paid plans include a 14-day free trial. Trial_days=14 for Essentials and Standard based on \"Free for 14 days\" text. Free plan has no trial period. Features extracted from the comparison table and plan descriptions. Limits are based on stated maximums per plan (email sends and contacts). Unable to extract actual monthly or annual prices due to dynamic pricing based on contact tier.",
+  "extraction_notes": "Page shows currency selector but no actual prices displayed - only placeholder text like \"Then, starts at [blank] per month†\" and \"per month for 12 months [blank]\". The pricing is entirely missing or obscured. All four plans (Free, Essentials, Standard, Premium) are identified from the comparison table and plan descriptions, but specific monthly and annual prices cannot be extracted. Free trial information is shown for Standard and Essentials (14 days). Monthly email send limits taken from plan cards and feature table. Users/audiences/roles limits from the comparison table under \"Admin\" section.",
   "plans": [
     {
       "name": "Free",
@@ -21,7 +21,7 @@
           "unit": null
         },
         {
-          "metric": "email sends per month",
+          "metric": "monthly email sends",
           "value": 500.0,
           "unit": null
         }
@@ -41,13 +41,23 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "contacts",
-          "value": 500.0,
+          "metric": "audiences",
+          "value": 3.0,
           "unit": null
         },
         {
-          "metric": "email sends per month",
-          "value": 5000.0,
+          "metric": "monthly email sends",
+          "value": null,
+          "unit": null
+        },
+        {
+          "metric": "role permissions",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 3.0,
           "unit": null
         }
       ],
@@ -68,20 +78,30 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "contacts",
-          "value": 10000.0,
+          "metric": "audiences",
+          "value": -1.0,
           "unit": null
         },
         {
-          "metric": "email sends per month",
+          "metric": "monthly email sends",
           "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "role permissions",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
-        "custom reporting",
+        "custom branding",
+        "onboarding support",
         "phone support",
         "priority support"
       ]
@@ -99,19 +119,30 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "contacts",
-          "value": 500.0,
+          "metric": "audiences",
+          "value": 5.0,
           "unit": null
         },
         {
-          "metric": "email sends per month",
+          "metric": "monthly email sends",
           "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "role permissions",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant"
+        "custom branding",
+        "onboarding support"
       ]
     }
   ]
