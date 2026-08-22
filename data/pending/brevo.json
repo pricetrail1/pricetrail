@@ -1,20 +1,26 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Page shows plan names and features but prices are not visible in the provided HTML content. The page appears to have loading placeholders (\"Loading content...\") where prices should be displayed. Monthly/Yearly toggle is mentioned but no actual price figures are shown. Professional plan shows \"per month/user\" and Enterprise shows \"Custom price\" but no numbers are provided.",
+  "pricing_is_public": true,
+  "extraction_notes": "Pricing page has a Monthly/Yearly toggle showing annual is 10% discounted. Only yearly prices are shown numerically on this page. Monthly prices are not visible. Free plan has no credit card required. Professional plan shows \"per month/user\" but specific seat pricing not stated. Enterprise is custom pricing.",
   "plans": [
     {
-      "name": "Free forever",
-      "key": "freeforever",
+      "name": "Free",
+      "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": 0.0,
+      "annual_price_per_month": null,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
       "features": [
         "email support"
       ]
@@ -32,14 +38,10 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "api access",
-        "custom branding",
-        "email support",
-        "phone support",
-        "priority support",
+        "dedicated account manager",
+        "onboarding support",
         "saml",
-        "sso",
-        "whatsapp"
+        "sso"
       ]
     },
     {
@@ -51,7 +53,7 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": 10,
+      "min_seats": null,
       "trial_days": null,
       "limits": [
         {
@@ -66,14 +68,9 @@
         }
       ],
       "features": [
-        "api access",
-        "custom branding",
-        "email support",
+        "advanced workflows",
         "phone support",
-        "priority support",
-        "saml",
-        "sso",
-        "whatsapp"
+        "priority support"
       ]
     },
     {
@@ -87,18 +84,10 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "landing pages",
-          "value": 1.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "api access",
-        "custom branding",
-        "email support",
-        "priority support"
+        "basic workflows",
+        "email support"
       ]
     },
     {
@@ -120,7 +109,6 @@
         }
       ],
       "features": [
-        "custom branding",
         "email support"
       ]
     }

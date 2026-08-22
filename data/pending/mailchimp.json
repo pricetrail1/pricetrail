@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Page shows currency selector but no actual prices displayed - only placeholder text like \"Then, starts at [blank] per month†\" and \"per month for 12 months [blank]\". The pricing is entirely missing or obscured. All four plans (Free, Essentials, Standard, Premium) are identified from the comparison table and plan descriptions, but specific monthly and annual prices cannot be extracted. Free trial information is shown for Standard and Essentials (14 days). Monthly email send limits taken from plan cards and feature table. Users/audiences/roles limits from the comparison table under \"Admin\" section.",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows a multi-tier pricing structure with contact-based pricing. Prices vary by contact tier and are not fully displayed as specific numbers on this page excerpt - the pricing table structure is present but actual price figures are missing/cut off in the provided HTML. The Free plan shows $0. Standard and Premium plans show \"Then, starts at\" pricing language but the actual amounts are not visible. Essentials plan similarly lacks visible pricing figures. A 14-day free trial is offered for Standard and Essentials. A 15% discount is mentioned for 10,000+ contacts for 12 months. Monthly pricing appears to be the default shown, but no annual pricing figures are clearly visible in the excerpt. The page mentions both monthly and annual plans are available but actual annual pricing is not shown in this extract.",
   "plans": [
     {
       "name": "Free",
@@ -22,7 +22,7 @@
         },
         {
           "metric": "monthly email sends",
-          "value": 500.0,
+          "value": 2500.0,
           "unit": null
         }
       ],
@@ -46,12 +46,17 @@
           "unit": null
         },
         {
-          "metric": "monthly email sends",
-          "value": null,
+          "metric": "contacts",
+          "value": -1.0,
           "unit": null
         },
         {
-          "metric": "role permissions",
+          "metric": "monthly email sends",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "role-based access roles",
           "value": 2.0,
           "unit": null
         },
@@ -62,7 +67,8 @@
         }
       ],
       "features": [
-        "basic workflows"
+        "basic workflows",
+        "integrations"
       ]
     },
     {
@@ -83,12 +89,22 @@
           "unit": null
         },
         {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "monthly email sends",
           "value": 150000.0,
           "unit": null
         },
         {
-          "metric": "role permissions",
+          "metric": "role-based access roles",
           "value": 5.0,
           "unit": null
         },
@@ -101,6 +117,9 @@
       "features": [
         "advanced workflows",
         "custom branding",
+        "custom reporting",
+        "dedicated account manager",
+        "integrations",
         "onboarding support",
         "phone support",
         "priority support"
@@ -124,13 +143,23 @@
           "unit": null
         },
         {
-          "metric": "monthly email sends",
-          "value": 6000.0,
+          "metric": "contacts",
+          "value": -1.0,
           "unit": null
         },
         {
-          "metric": "role permissions",
-          "value": 4.0,
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "role-based access roles",
+          "value": 5.0,
           "unit": null
         },
         {
@@ -142,7 +171,11 @@
       "features": [
         "advanced workflows",
         "custom branding",
-        "onboarding support"
+        "custom reporting",
+        "integrations",
+        "onboarding support",
+        "phone support",
+        "priority support"
       ]
     }
   ]
