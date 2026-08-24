@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Essentials shows \"$100 per month / billed monthly\" - recorded as monthly_price. Premium shows \"$1,000 per month / billed yearly\" - recorded as annual_price_per_month. Enterprise has \"Let's talk\" and \"Talk to sales\" with no pricing shown. The page also contains a comparison table for AI Agent features (Standard, Elevated, Custom) but these appear to be feature tiers within the plans rather than separate subscription plans. The comparison table lists many features but the plan cards contain the authoritative information for limits and features per the extraction rules.",
+  "extraction_notes": "Premium plan shows \"$1,000 per month / billed yearly\", which is the annual per-month price. Essentials shows \"$100 per month / billed monthly\" indicating monthly billing. Enterprise is contact-sales with no pricing shown. Add-ons for additional profiles and emails are not included as separate plans but are listed in Usage + Billing section. Support packages are mentioned as available for Premium and Enterprise but specific tiers are not detailed on this page.",
   "plans": [
     {
       "name": "Essentials",
@@ -26,7 +26,7 @@
           "unit": null
         },
         {
-          "metric": "profiles",
+          "metric": "profiles (people + objects)",
           "value": 5000.0,
           "unit": null
         }
@@ -34,7 +34,9 @@
       "features": [
         "ai assistant",
         "basic data integrations",
-        "basic workflows"
+        "basic workflows",
+        "email support",
+        "live chat"
       ]
     },
     {
@@ -53,9 +55,10 @@
         "advanced workflows",
         "ai assistant",
         "audit log",
+        "custom branding",
         "dedicated account manager",
         "hipaa",
-        "integrations",
+        "onboarding support",
         "priority support"
       ]
     },
@@ -72,18 +75,30 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "object types",
           "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles (people + objects)",
+          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "ai assistant",
+        "custom branding",
+        "email support",
         "hipaa",
-        "integrations",
+        "live chat",
         "onboarding support",
-        "priority support"
+        "premium data integrations"
       ]
     }
   ]

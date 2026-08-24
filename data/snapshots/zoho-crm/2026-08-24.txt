@@ -1,0 +1,243 @@
+Monthly
+Annually
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+Free
+â¹
+0
+3 users
+Start Now
+Free
+Features List
+Forever free
+Contact management
+Manage all contacts important to your business in one place. No more scattered business cards.
+Follow-up reminders
+Stay on track with timely reminders to follow-up on a lead.
+Workflow automation
+Automate repetitive tasks with workflows. From routing leads to the right rep to updating fields when a deal is closed.
+Custom email templates
+Personalize emails to fit the tone of your business. Get up to 10 custom emai templates for free.
+Tasks, meetings & calls
+Track all sales activities in Zoho CRM. Get reminders so don't miss.
+Data import and export
+Import data from spreadsheets for free. Export data from Zoho CRM for up to 10 times for free.
+Standard reports
+View your business performance in one place with powerful reports.
+APIs
+Connect Zoho CRM to any app and perform actions with 5000 API calls/day.
+Mobile apps
+Sell more on the go with Zoho CRM's mobile app.
+Standard
+â¹
+800
+/user/month
+FREE TRIAL
+Standard
+Features List
+Small team, getting started
+Email integration & mass emails
+Send emails via Gmail, Outlook, Zoho Mail, and other popular email services, directly from Zoho CRM.
+Built-in calling
+Make, receive, and log sales calls directly inside Zoho CRM.
+Multiple sales pipelines
+Track multiple sales operations with different stages without any clutter.
+Calendar integration
+Schedule and book meetings from within Zoho CRM.
+Data capture via forms
+Generate leads from anywhere with built-in forms.
+Sales forecasting
+Set your team for long-term success with achievable goals and keep track of business performance.
+Data enrichment
+Enrich your records to get more context about your leads like company size, industry, revenue, and more.
+Custom modules
+Build custom modules to hold data unique to your business.
+HIPAA compliance
+Store and manage patient or health-related data in Zoho CRM without risking regulatory violations.
+Gmail and Outlook integration
+Integrate Gmail, Outlook, Zoho Mail, and other popular email service providers with Zoho CRM.
+Slack, Zoom, Teams integration
+Integrate popular video conferencing and collaboration tools with Zoho CRM.
+Most Popular
+Professional
+â¹
+1,400
+/user/month
+FREE TRIAL
+Professional
+Features List
+Growing team, needs automation
+AI agents
+Build and deploy AI agents that execute tasks on your behalf for any business use case.
+Process management
+Standardize and automate your sales processes.
+Inventory management
+Manage all your invoices, sales and purchase orders, products, and vendors.
+Predictive intelligence
+Predict the likelihood of a lead converting, a deal closing, or a customer churning.
+Unlimited reports
+Stay informed about your business performance with unlimited reports.
+Configure, Price, Quote (CPQ)
+Match products to customer requirements and streamline quote management with built-in price rules.
+Custom portals
+Use portals to grant customers, partners, and vendors access to relevant information in your CRM.
+Customer journeys
+Build end-to-end, dynamic customer journeys that give your customers a memorable experience.
+Web-to-case forms
+Resolve customer issues with web-to-case forms that convert problems into support tickets that your reps can follow.
+Customer portals
+Extend Zoho CRM to your contacts, vendors, or partners with portals.
+Google Ads integration
+Manage Google Ads campaigns from within Zoho CRM.
+Enterprise
+â¹
+2,400
+/user/month
+FREE TRIAL
+Enterprise
+Features List
+Running a mature sales org
+Multi-team management
+Manage multiple sales teams across territories.
+Reporting hierarchy
+Give every manager a real-time view of only their team's pipeline and performance.
+Custom buttons and functions
+Create custom buttons and functions to extend the capabilities of Zoho CRM.
+Extended field types
+Capture the exact data your business needs. Move beyond standard forms. Add file uploads, checkboxes, date ranges, and more.
+Sequential data collection
+Walk your sales team through a structured, step-by-step process so every deal gets worked the same way and nothing falls through the cracks.
+Approval process
+Ensure deals move on only after the right person approves it.
+Account Based Marketing
+Segment your accounts to identify up-sell and cross-sell opportunities.
+Developer sandbox
+Securely test the changes without affecting production data in a sandbox environment.
+Field-level encryption
+Protect sensitive customer data at a field-level.
+Extended AI capabilities
+Gain insights, predictions, and recommendations from Zia.
+QuickBooks integration
+Sync QuickBook records with Zoho CRM and create quotes and invoices easily.
+Local taxes may apply.
+Check your price estimate here
+Local taxes (VAT, GST, etc.) will be charged in addition to the prices mentioned.
+Compare Zoho CRM features
+across all editions
+Bigin Express
+â¹
+2,400
+/user/month
+FREE TRIAL
+EXPLORE BIGIN
+Bigin Express
+Features List
+First-timer, moving from spreadsheets
+Sales pipeline
+Track your sales operations by stages with pipelines in Bigin.
+Email integration
+Connect Gmail, Outlook, Zoho Mail, and other popular email services directly to Bigin.
+Built-in calling
+Make, receive, and record sales calls without leaving Bigin.
+Calendar integration
+Manage your day better by syncing your Google Calendar and Microsoft Calendar with Bigin.
+Appointment scheduling
+Create a no-code online page to capture meeting and appointment bookings.
+Social Ads integration
+Capture and convert leads from Instagram, TikTok, Google, LinkedIn, and Facebook ads.
+Payment collection
+Collect payments easily via Stripe and PayPal integrations.
+Custom fields
+Create custom fields unique to your business.
+Tags
+Segment, filter, and find your leads faster by adding tags.
+QuickBooks integration
+Generate, share, and track invoices and estimates right from Bigin. Keep your sales and finance teams on the same page.
+Zoho CRM Plus
+Sales, marketing, service in one unified package.
+Starts at
+$20
+/user/month
+FREE TRIAL
+Looking to switch CRMs? We make it easy
+Migrate Now
+Join
+250,000+
+other businesses
+START FREE TRIAL NOW
+Buy Now
+Frequently Asked Questions
+Expand All
+Collapse All
+Can I get a demo of
+Zoho CRM?
+Yes, we would be happy to demonstrate
+Zoho CRM
+through a web-conference at your convenience. The demo is a one hour session. To schedule your personal session, please contact
+sales@zohocorp.com.
+Is my data safe?
+Weâre fervent about keeping your data safe and secure. Our facilities feature stringent 24/7/365 security with video monitoring, biometric access, and advanced fire, flood, and theft monitoring systems. Our network security system employs the latest encryption and intrusion detection and prevention technologies.
+Learn more about Zoho's data protection measures.
+What types of payment do you accept?
+We accept payment via Visa, MasterCard, American Express and PayPal. We also accept payment via bank transfer or check transfer for yearly subscriptions. For more details, please contact
+sales@zohocorp.com.
+Does
+Zoho CRM
+support multiple languages?
+Yes, we support 28 languages: Arabic, English (US), English (UK), Bulgarian, Bahasa Indonesian, Chinese (Simplified), Chinese (Traditional), Croatia (Hrvatski), Czech, Dutch (Nederland), Danish, French, German (Deutsch), Hungarian (Magyar), Hindi, Italiano (Italy), Japanese, Polish (Polish), Portuguese (Brazil), Portuguese (Portugal), Russian, Spanish (Espanol), Swedish(Svenska), Thai, Turkish, Vietnamese, Korean, Hebrew.
+How flexible are your contracts?
+You are not bound by any contracts or commitments.
+Zoho CRM
+is a pay-as-you-go service (monthly or yearly), so you can make changes to your plan whenever you need to.
+Can I switch plans?
+Of course you can! Log in to
+Zoho CRM,
+click the Upgrade link on the Home page, and follow the steps on the Subscription page to switch to a new plan.
+How do you support businesses signing up for
+Zoho CRM
+?
+For customers of our paid editions, you automatically have access to our Classic support. You also have the option to opt-in for one of our paid support plans that promises faster responses, round the clock support, dedicated on-boarding and more.
+Explore support plans
+Do you provide any assistance in getting
+Zoho CRM
+set up and running for our business?
+Yes, we do have end-to-end services that cover everything from requirement gathering to setup and onboarding. We have dedicated programs for SMEs and Enterprises, so that the different requirements and needs are addressed effectively.
+Explore Jumpstart
+Explore Zoho EBS
+Are there any other editions in Zoho CRM?
+Yes, Zoho CRM has an Ultimate edition tailored for large-scale, bespoke deployments with highest possible feature limits, consultation with experts, and migration assistance. Check out the feature comparison page to
+learn more.
+Does Zoho CRM have a free edition?
+Yes, Zoho CRM does have free edition that supports upto 3 users and comes with the essentials like leads, documents, and mobile apps, itâs a perfect fit for your home business.
+Get started here
+Have more questions?
+You can connect with us instantly through live chat (24x5) or by writing to us at
+sales@zohocorp.com.

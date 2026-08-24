@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "Pricing page has a Monthly/Yearly toggle showing annual is 10% discounted. Only yearly prices are shown numerically on this page. Monthly prices are not visible. Free plan has no credit card required. Professional plan shows \"per month/user\" but specific seat pricing not stated. Enterprise is custom pricing.",
+  "pricing_is_public": false,
+  "extraction_notes": "Prices are not displayed on the page—all tiers except Free show \"Loading content...\" or \"per month\" without numeric values. The page states \"Yearly (-10%)\" suggesting annual pricing is available with a 10% discount, but no actual prices are visible. Currency is assumed USD based on context. Free plan limit of 300 emails/month is mentioned elsewhere on Brevo's site but not shown on this specific extract.",
   "plans": [
     {
       "name": "Free",
@@ -17,13 +17,11 @@
       "limits": [
         {
           "metric": "emails per month",
-          "value": 5000.0,
+          "value": 300.0,
           "unit": null
         }
       ],
-      "features": [
-        "email support"
-      ]
+      "features": []
     },
     {
       "name": "Enterprise",
@@ -37,12 +35,7 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": [
-        "dedicated account manager",
-        "onboarding support",
-        "saml",
-        "sso"
-      ]
+      "features": []
     },
     {
       "name": "Professional",
@@ -62,15 +55,14 @@
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "included seats",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
-        "phone support",
-        "priority support"
+        "basic workflows",
+        "custom branding"
       ]
     },
     {
@@ -87,7 +79,7 @@
       "limits": [],
       "features": [
         "basic workflows",
-        "email support"
+        "custom branding"
       ]
     },
     {
@@ -109,7 +101,8 @@
         }
       ],
       "features": [
-        "email support"
+        "basic workflows",
+        "custom branding"
       ]
     }
   ]
