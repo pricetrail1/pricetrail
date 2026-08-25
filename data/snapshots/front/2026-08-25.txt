@@ -1,0 +1,242 @@
+Four ways customer ops breaks. Which one is yours?
+Join the webinar.
+Pricing plans
+Build the best CX
+Plans for startups, enterprises, and everything in between.
+Billed Annually
+Save 24%
+Starter
+$25
+/seat/mo, up to 10 seats
+Essential capabilities to get started with single-channel support
+Key features include
+Shared inbox and ticketing
+AI Topics and up to 10 automation rules
+Basic analytics
+No-code public knowledge base
+AI add-ons available
+Try for Free
+Professional
+$65
+/seat/mo, up to 50 seats
+Enhanced automation and reporting for omnichannel support
+EVERYTHING IN STARTER, PLUS
+Omnichannel (email, SMS, social, etc.)
+Macros and up to 20 automation rules
+Advanced analytics
+Multiple workspaces, SSO, and SCIM
+AI add-ons available
+Request a Demo
+Enterprise
+most popular
+$105
+/seat/mo
+Advanced AI tools to accelerate resolution and elevate CX
+EVERYTHING IN PROFESSIONAL, PLUS
+Smart rules
+Unlimited rules and macros
+Multi-language knowledge base
+Custom roles and permissions
+AI Copilot, QA, and CSAT included
+Request a Demo
+Trusted by
+<COUNT> companies
+Key Features
+Starter
+Professional
+Enterprise
+Unify email, chat, SMS, and more
+Single channel type
+Omnichannel (email, SMS, social, WhatsApp, etc.)
+Manage conversations from a collaborative inbox
+Track, organize, and resolve requests
+Triage and resolve chat inquiries
+Yes, if single channel type
+Understand your most common customer contact reasons
+Get answers, decide next steps, and draft replies
+add-on
+Automate QA with AI-powered scorecards and reporting for your review
+add-on
+Infer and track customer satisfaction scores without surveys
+add-on
+Automate complex customer work with our omnichannel AI agent
+add-on
+Tag, route, and more automatically
+Up to 10 rules
+Macros and up to 20 rules
+Unlimited macros and rules
+Divide inboxes into separate spaces
+1
+Up to 5
+Unlimited
+Host a help center or internal docs
+Basic
+Customizable
+Customizable and multi-language
+Report on team performance, CSAT, and SLAs
+Basic
+Advanced
+Custom reports
+Control access, identity, and roles
+Basic
+SSO, SCIM
+SSO, SCIM, and custom roles
+Try for Free
+Request a Demo
+Front AI Add-ons
+Power up your plan with Front AI
+Meet Front AI: human-in-control AI that powers
+exceptional service on even your toughest tickets.
+Autopilot
+Run complex customer work with our omnichannel AI agent
+Starting at
+$0.05
+/conversation
+Talk to Sales
+Copilot
+Boost agent productivity with a real-time AI assistant
+$20
+/ seat / month as an add-on, or included in Enterprise
+Talk to Sales
+Smart QA
+Get a complete view of agent performance with automated, AI-powered QA
+$20
+/ seat / month as an add-on, or included in Enterprise
+Talk to Sales
+Smart CSAT
+Infer customer satisfaction ratings with AI auto-review for complete, objective feedback
+$10
+/ seat / month as an add-on, or included in Enterprise
+Talk to Sales
+Boundless saves 10k hours quarterly with Front AI
+Essentialist maintains 97% CSAT with Front AI
+Mixam replies 60% faster with Front AI
+Smart QA + Smart CSAT bundle
+Complete performance insights for $25 / seat / mo
+Talk to Sales
+add-ons
+More ways to extend the power of Front
+Get even more value out of Front with add-ons that help you deliver exceptional support at scale
+Native WhatsApp Channel
+popular
+Connect your WhatsApp Business numbers directly to Front
+Meta-billed WhatsApp costs + 20% admin fee
+Available on Professional and Enterprise
+Talk to Sales
+API Rate Limit Increase
+Increase your API rate limit to support the most complex workflows
+$200
+per 100 API requests/min per month
+Available on all plans
+Talk to Sales
+Services to help you scale
+Get set up for long-term success by partnering with our team of experts. Request a consultation to learn more about our service add-ons for Professional and Enterprise plans.
+Talk to Sales
+Compare plans
+Starter
+Try for Free
+Professional
+Try for Free
+Enterprise
+Request a Demo
+Workspaces are a way to divide up your inboxes into separate spaces with their own workflows, analytics and resources such as tags or message templates.
+1
+Up to 5
+Unlimited
+Track and manage important conversations, customized across specific inboxes, tags, and assignees
+Create real-time views to track important conversations in certain inboxes, tags, or assignees
+Gain clear ownership over messages by assigning messages directly to individual teammates
+Categorize, organize, and prioritize messages with tags like "product bug" or "upsell opportunity" — as an individual or a team
+Collaborate behind the scenes with teammates using comments and drafts
+Scheduling and snoozing messages
+Message templates
+Invite colleagues to comment on a conversation in Front without needing a license
+Bring your individual email into Front and manage it alongside conversations in shared inboxes
+Yes, if email is single channel type
+Calendar
+Yes, if email is single channel type
+Quickly add suggested meeting times to your messages, and allow recipients to book with a click
+Yes, if email is single channel type
+Let your team know when you’re available and ensure conversations are only assigned when you can respond
+Analyze your conversation history to understand why your customers reach out
+Quickly polish and refine drafts with AI. Up to 200 total Compose actions per teammate per day
+Get immediate translations to your preferred language. Up to 200 total requests per teammate per day
+Keep teams in sync with AI-generated conversation summaries. Up to 200 total manually-triggered summaries per teammate per day
+Automate complex customer work with our omnichannel AI agent
+add-on
+Boost agent productivity with a real-time AI assistant
+add-on
+Get a complete understanding of agent performance with automated, AI-powered QA
+add-on
+Infer and track customer satisfaction with AI — no surveys required
+add-on
+Channel Type
+Single Channel
+Omnichannel
+e.g. Office 365, Gmail, Custom
+Yes, if single channel type
+Front's native live chat solution for your website or app
+Yes, if single channel type
+via third-party integrations (e.g. Twilio, Dialpad)
+Yes, if single channel type
+Respond and react to Slack messages from public and private channels
+Yes, if single channel type
+e.g. Facebook, Instagram, X
+Manage calls and voicemails with integrations like Aircall and Dialpad
+Offer a customer portal with dynamic ticket forms to initiate support requests
+Native WhatsApp integration available as paid add-on
+add-on
+via Twilio or Number AI
+e.g. Drift, Intercom, Google Play
+Connect any messaging platform via API
+Trusted by <COUNT> businesses
+428%
+average ROI using Front
+97%
+customer satisfaction
+40%
+productivity increase
+7x
+faster response time
+Frequently asked questions
+What are your Success Services packages and how much do they cost?
+Front offers 3 Success Services packages: Professional Onboarding, Enterprise Onboarding, and Success Services project hours.
+You can view pricing and what's included in each package here.
+To ensure you're set up for success, we require an onboarding package be purchased for contracts over $25k.
+How does Front’s free trial work? Do I need a credit card?
+Our free 14-day trial offers all the features available in our Professional plan. You can get started without a credit card and can upgrade at any time during your trial. You do not need a credit card to start, continue, or complete your Front trial.
+What is a seat?
+A seat is a paid Front license that can be granted to a unique user in your organization.
+What is a channel?
+A channel is the communication medium that people use to get in touch with you like email, SMS, Front Chat, WhatsApp, and more.
+Can I connect multiple channel types with the Starter plan?
+No, the Starter plan only supports a single channel type of Email, Front Chat, or SMS. The Professional and Enterprise plan support multiple channel types.
+What is the maximum number of channels per plan?
+Your channel maximum depends on both your plan and number of licenses. On Starter, you can connect up to 10 channels per license, with Professional up to 30 per license, and with Enterprise up to 50 per license. For example, a team of 5 users on Professional would have a maximum of 150 channels.
+Please see our help article for more details
+.
+Which providers power Front AI features?
+We’re using OpenAI, Azure OpenAI, and Amazon AWS, which are industry-leading AI providers. Specifically, we use the text generation API.
+How is my data processed? Is my data protected?
+While we may use your data to further train your model, your data will never be cross-contaminated with other companies’ data. We also have extensive agreements in place with our AI providers to ensure that they’re not training their foundational models on any data that we send to them.
+How can I learn more about Front’s security and compliance best practices?
+Ensuring your data’s confidentiality, integrity, and availability is core to our mission and platform.
+Read more here
+about Front’s security, privacy and compliance practices. You also may request access to our security documentation by reaching out to your sales representative.
+Can I combine seats across multiple plans?
+No, plans are assigned at the organization level. You can add or remove seats as needed within a single plan.
+Can I pay with my bank instead of my credit card?
+You can pay by wire transfer or ACH if you purchase annually and the total contract value is over $12K. Reach out to
+[email protected]
+to have your payment method updated.
+Resources
+Discover best practices
+See more resources
+Blog
+4 major customer pain points (and how to solve them)
+Blog
+How to achieve 100% CSAT and build a world-class support function
+Blog
+Ticket handling best practices: 11 tips to elevate your support
+Blog
+Building a better queue: how to set up a support ticket system that grows with you

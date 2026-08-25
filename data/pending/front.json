@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows \"Billed Annually\" at the top with \"Save 24%\" text, indicating the displayed per-seat prices are annual rates. Only annual per-month pricing is shown for the three main plans (Starter, Professional, Enterprise). Add-ons have various pricing structures: Autopilot is per-conversation at $0.05; Copilot, Smart QA, and Smart CSAT are per-seat monthly; API Rate Limit Increase is per month for each 100 request/min increase. Trial is 14 days for Starter and Professional (stated in FAQ). Native WhatsApp Channel is custom pricing (Meta-billed + 20% admin fee). Professional plan limits show \"up to\" notation, Starter explicitly caps at 10 seats with \"up to 10 automation rules\", Enterprise has unlimited rules and macros.",
+  "extraction_notes": "Page shows \"Billed Annually\" with annual-only pricing and 24% savings messaging. Only annual per-month prices are displayed for main plans (Starter $25, Professional $65, Enterprise $105). All are per-seat with seat limits noted on plan cards. Trial is 14 days for all main plans. Add-ons include Autopilot (starting at $0.05/conversation with sales contact), Copilot ($20/seat/mo or included in Enterprise), Smart QA ($20/seat/mo or included in Enterprise), Smart CSAT ($10/seat/mo or included in Enterprise), Smart QA + Smart CSAT bundle ($25/seat/mo), Native WhatsApp Channel (Meta-billed costs + 20% admin fee, available on Professional and Enterprise), and API Rate Limit Increase ($200 per 100 API requests/min per month). Services packages mentioned but no specific pricing shown on this page.",
   "plans": [
     {
       "name": "Smart CSAT",
@@ -59,9 +59,7 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": [
-        "custom reporting"
-      ]
+      "features": []
     },
     {
       "name": "API Rate Limit Increase",
@@ -78,7 +76,7 @@
         {
           "metric": "api requests per minute",
           "value": 100.0,
-          "unit": "per 100 increase"
+          "unit": "per 100 requests"
         }
       ],
       "features": [
@@ -97,9 +95,7 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": [
-        "ai chatbot"
-      ]
+      "features": []
     },
     {
       "name": "Enterprise",
@@ -119,6 +115,11 @@
           "unit": null
         },
         {
+          "metric": "role permissions",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "workspaces",
           "value": -1.0,
           "unit": null
@@ -128,8 +129,11 @@
         "advanced workflows",
         "ai assistant",
         "ai chatbot",
+        "api access",
+        "basic workflows",
         "custom reporting",
         "role permissions",
+        "scim",
         "sso"
       ]
     },
@@ -139,15 +143,13 @@
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
-      "is_custom_pricing": true,
+      "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": [
-        "integrations"
-      ]
+      "features": []
     },
     {
       "name": "Professional",
@@ -179,6 +181,9 @@
       ],
       "features": [
         "advanced workflows",
+        "api access",
+        "basic workflows",
+        "scim",
         "sso"
       ]
     },
@@ -216,6 +221,7 @@
         }
       ],
       "features": [
+        "api access",
         "basic workflows"
       ]
     }

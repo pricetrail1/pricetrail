@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Prices are not displayed on the page—all tiers except Free show \"Loading content...\" or \"per month\" without numeric values. The page states \"Yearly (-10%)\" suggesting annual pricing is available with a 10% discount, but no actual prices are visible. Currency is assumed USD based on context. Free plan limit of 300 emails/month is mentioned elsewhere on Brevo's site but not shown on this specific extract.",
+  "extraction_notes": "The page shows pricing toggle for Monthly/Yearly (-10%) but no actual numeric prices are visible in the provided HTML. All plan prices appear to be missing from this extract. Starter, Standard, and Professional show placeholder text \"per month\" without numbers. Professional is noted as \"per month/user\" indicating per-seat pricing. Enterprise shows \"Custom price\" and routes to sales. The Free plan shows \"Free forever, no credit card needed\". Unable to record actual pricing figures as they are not present in the page content provided.",
   "plans": [
     {
       "name": "Free",
@@ -35,7 +35,13 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": []
+      "features": [
+        "dedicated account manager",
+        "onboarding support",
+        "phone support",
+        "saml",
+        "sso"
+      ]
     },
     {
       "name": "Professional",
@@ -55,14 +61,14 @@
           "unit": null
         },
         {
-          "metric": "included seats",
+          "metric": "seats",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "basic workflows",
-        "custom branding"
+        "advanced workflows",
+        "phone support"
       ]
     },
     {
@@ -78,8 +84,8 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "basic workflows",
-        "custom branding"
+        "advanced workflows",
+        "basic workflows"
       ]
     },
     {
@@ -100,10 +106,7 @@
           "unit": null
         }
       ],
-      "features": [
-        "basic workflows",
-        "custom branding"
-      ]
+      "features": []
     }
   ]
 }
