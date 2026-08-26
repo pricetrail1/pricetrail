@@ -473,3 +473,104 @@ CSS += """
   margin-bottom: 0.6rem;
 }
 """
+
+CSS += """
+/* ---- stale data warning ---- */
+.stale-warning {
+  background: var(--panel);
+  border: 1px solid var(--rise);
+  border-left: 4px solid var(--rise);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.25rem;
+  max-width: 62ch;
+  font-size: 0.95rem;
+}
+.stale-warning strong { display: block; margin-bottom: 0.2rem; }
+"""
+
+CSS += """
+/* ================= masthead: wordmark, short nav, account menu ============ */
+.masthead .wrap {
+  display: flex; align-items: center; gap: 1.5rem;
+}
+.masthead nav.primary { display: flex; gap: 1.4rem; margin-left: 0.5rem; }
+.masthead nav.primary a {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #8A8A8A;
+}
+.masthead nav.primary a:hover { color: #FFFFFF; }
+
+.acct { margin-left: auto; position: relative; }
+.acct summary {
+  list-style: none; cursor: pointer; display: block; line-height: 0;
+  border-radius: 50%; outline-offset: 3px;
+}
+.acct summary::-webkit-details-marker { display: none; }
+.acct .avatar {
+  display: grid; place-items: center;
+  width: 2rem; height: 2rem; border-radius: 50%;
+  background: #22262B; color: #9AA3AC;
+  border: 1px solid #33383E;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.acct .avatar svg { width: 1.05rem; height: 1.05rem; display: block; }
+.acct summary:hover .avatar { background: #2C3138; color: #FFFFFF; }
+.acct[open] .avatar { background: #FFFFFF; color: #0A0A0A; }
+.acct summary:focus-visible { outline: 2px solid #FFFFFF; }
+
+.acct-menu {
+  position: absolute; right: 0; top: calc(100% + 0.65rem); z-index: 40;
+  min-width: 15.5rem; padding: 0.5rem 0;
+  background: var(--panel);
+  border: 1px solid var(--ink);
+  box-shadow: 0 18px 40px -18px rgba(10,10,10,0.45);
+}
+.acct-menu a {
+  display: block; padding: 0.44rem 1rem;
+  font-size: 0.92rem; color: var(--ink);
+}
+.acct-menu a:hover { background: #F4F4F4; }
+.acct-head {
+  padding: 0.55rem 1rem 0.3rem;
+  font-family: var(--mono); font-size: 0.63rem; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted);
+}
+.acct-head:not(:first-child) {
+  margin-top: 0.3rem; border-top: 1px solid var(--rule); padding-top: 0.7rem;
+}
+.acct-soon {
+  padding: 0 1rem 0.55rem; max-width: 22ch;
+  font-size: 0.76rem; line-height: 1.45; color: var(--muted);
+}
+@media (max-width: 34rem) {
+  .masthead nav.primary a:nth-child(n+3) { display: none; }
+  .acct-menu { min-width: 13.5rem; }
+}
+"""
+
+CSS += """
+/* ---- the proof block: real recorded data, above the fold ---- */
+.proof {
+  margin: 1.6rem 0 0; padding: 1.1rem 0 1.2rem;
+  border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule);
+  max-width: 44rem;
+}
+.proof figcaption {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--muted);
+}
+.proof figcaption:last-child {
+  text-transform: none; letter-spacing: 0; font-size: 0.78rem;
+  margin-top: 0.55rem; max-width: 46ch; line-height: 1.5;
+}
+.proof-line {
+  font-family: var(--mono); font-size: clamp(1.35rem, 3.4vw, 2rem);
+  font-weight: 500; letter-spacing: -0.03em; line-height: 1.2;
+  margin: 0.5rem 0 0; font-variant-numeric: tabular-nums;
+}
+.proof-line strong { font-family: var(--sans); font-weight: 700; }
+.proof-line .was { text-decoration: line-through; color: var(--muted); }
+.proof-line .arrow { color: var(--muted); padding: 0 0.15em; }
+.proof-line .up { color: var(--rise); font-weight: 600; }
+.proof-line .down { color: var(--fall); font-weight: 600; }
+"""

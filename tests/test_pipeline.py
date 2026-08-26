@@ -2074,6 +2074,320 @@ def test_signup_setup_is_one_word():
     check("blank still means no form at all", f("") == "" and f(None) == "")
 
 
+def test_a_crossed_price_pair_is_never_published():
+    """The real bug, found by checking the live site against the vendor.
+
+    Intercom's Essential, Advanced and Expert were recorded at 29, 85 and 132
+    as MONTHLY prices. Those are the ANNUAL rates -- the real monthly figures
+    are 39, 99 and 139. Anyone budgeting from the page was 34% under. The
+    cause is a pricing page whose billing toggle defaults to annual: the AI
+    reads "$29/month", sees no "billed annually" beside it, and files it as
+    monthly.
+
+    Annual billing is a discount, so monthly must be the higher number. When
+    it is not, the pair is crossed and neither figure can be trusted.
+    """
+    print("\nCrossed price pairs")
+
+    from pricetrail.extract import normalise
+
+    def one(name, monthly, annual, free=False):
+        return normalise({"currency": "USD", "pricing_is_public": True,
+                          "extraction_notes": "",
+                          "plans": [{"name": name, "monthly_price": monthly,
+                                     "annual_price_per_month": annual,
+                                     "is_free": free}]})
+
+    bad = one("Essential", 29, 39)          # annual 34% above monthly
+    q = bad["plans"][0]
+    check("a crossed pair publishes nothing rather than something false",
+          q["monthly_price"] is None and q["annual_price_per_month"] is None)
+    check("and the reason is written down, not swallowed",
+          "backwards" in (bad.get("extraction_notes") or ""))
+
+    # beehiiv really does publish $43.00 monthly and $43.08 annually. That is
+    # an annual total divided by twelve, not an error, and throwing away a
+    # real plan's pricing over eight cents would be worse than the bug.
+    round_off = one("Scale", 43.00, 43.08)["plans"][0]
+    check("a rounding difference is not treated as an error",
+          round_off["monthly_price"] == 43.00
+          and round_off["annual_price_per_month"] == 43.08)
+    small = one("X", 100, 104)["plans"][0]
+    check("a few percent is tolerated", small["monthly_price"] == 100)
+    big = one("X", 100, 106)["plans"][0]
+    check("a real gap is still caught", big["monthly_price"] is None)
+
+    good = one("Essential", 39, 29)["plans"][0]
+    check("the correct order is left alone",
+          good["monthly_price"] == 39 and good["annual_price_per_month"] == 29)
+
+    equal = one("Flat", 50, 50)["plans"][0]
+    check("no annual discount is not an error",
+          equal["monthly_price"] == 50 and equal["annual_price_per_month"] == 50)
+
+    for label, m, a in (("monthly only", 49, None), ("annual only", None, 55)):
+        r = one("X", m, a)["plans"][0]
+        check(f"{label} is untouched",
+              r["monthly_price"] == m and r["annual_price_per_month"] == a)
+
+    free = one("Free", None, None, True)["plans"][0]
+    check("a free plan is unaffected", free["monthly_price"] == 0.0)
+
+    src = (Path(sitemod.__file__).with_name("extract.py")).read_text(encoding="utf-8")
+    check("the prompt warns that most toggles default to annual",
+          "MOST DEFAULT TO" in src)
+    check("the prompt says to null both when the toggle cannot be read",
+          "leave BOTH" in src)
+    check("the prompt refuses promotional prices as the standard price",
+          "PROMOTIONAL PRICES" in src and "fake price rise" in src)
+
+
+def test_stale_prices_are_declared():
+    """Kit returned HTTP 403 every day for three weeks.
+
+    Its page kept showing the prices from the last good read on 5 August, with
+    the line "Last read 05 Aug 2026" and nothing else. On a site that promises
+    every price is checked daily, a bare date is not disclosure -- a reader
+    takes it as when the price last CHANGED, not as three weeks of silent
+    failure. This is the same class of problem as a wrong figure: the page is
+    confidently not what the reader thinks it is.
+    """
+    print("\nStale price disclosure")
+
+    from datetime import datetime as _dt, timedelta as _td, timezone as _tz
+    today = _dt.now(_tz.utc).date()
+
+    def aged(days):
+        return {"captured_at": (today - _td(days=days)).isoformat()}
+
+    daily = {"vendors": {"Kit": {"crawl_tier": "daily"}}}
+    weekly = {"vendors": {"Kit": {"crawl_tier": "weekly"}}}
+
+    check("fresh data says nothing",
+          sitemod.staleness_warning(aged(0), "Kit", daily) == "")
+    check("a daily vendor is fine for a couple of days",
+          sitemod.staleness_warning(aged(2), "Kit", daily) == "")
+    check("a daily vendor unread for four days warns",
+          "4 days old" in sitemod.staleness_warning(aged(4), "Kit", daily))
+    check("a weekly vendor gets more rope",
+          sitemod.staleness_warning(aged(4), "Kit", weekly) == "")
+    check("but not indefinitely",
+          "11 days old" in sitemod.staleness_warning(aged(11), "Kit", weekly))
+
+    real = sitemod.staleness_warning(aged(21), "Kit", weekly)
+    check("the real Kit case warns", "21 days old" in real)
+    check("it names the last good date", "Aug" in real or "aug" in real)
+    check("it tells the reader what to do instead",
+          "own page" in real)
+
+    check("a record with no date is silent, not crashing",
+          sitemod.staleness_warning({}, "Kit", weekly) == "")
+    check("an unparseable date is silent too",
+          sitemod.staleness_warning({"captured_at": "not-a-date"}, "Kit",
+                                    weekly) == "")
+
+    src = (Path(sitemod.__file__).with_name("status.py")).read_text(encoding="utf-8")
+    check("the status page skips vendors no longer tracked",
+          "not pruned" in src or "never pruned" in src)
+    check("but not when it cannot match the vendor list at all",
+          "tracked & set(state)" in src)
+
+
+def test_a_vendor_with_no_readable_prices_says_so():
+    """The state Intercom lands in once the crossed-pair guard nulls its
+    figures: plans on record, no prices at all.
+
+    The summary carried on regardless and said "not one of these 3 figures has
+    changed since May", which reads as a tracked, stable price when nothing
+    could be read. Implying knowledge we do not have is the one thing this
+    site cannot afford.
+    """
+    print("\nVendors with no readable prices")
+
+    def pl(n, m=None, a=None, **kw):
+        d = dict(name=n, key=n.lower(), monthly_price=m,
+                 annual_price_per_month=a, is_free=False,
+                 is_custom_pricing=False, is_per_seat=True, is_addon=False,
+                 trial_days=14, limits=[], features=[])
+        d.update(kw); return d
+
+    ctx = {"changes": [], "tracking_since": "12 May 2026", "benchmarks": {}}
+    blank = {"currency": "USD",
+             "plans": [pl("Essential"), pl("Advanced"), pl("Expert")]}
+    out = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ",
+                 sitemod._vendor_summary("Intercom", blank, ctx, "helpdesk")))
+
+    check("it does not claim the price has been stable",
+          "has changed since" not in out and "has held" not in out, out[:120])
+    check("it says the prices could not be established",
+          "could not establish" in out)
+    check("it still names the plans, which are known",
+          "Essential" in out and "Expert" in out)
+    check("it explains why nothing is shown",
+          "billing toggle" in out)
+
+    # A quote-only vendor is a different thing and must not be mislabelled.
+    quoted = {"currency": "USD",
+              "plans": [pl("Enterprise", is_custom_pricing=True)]}
+    q = re.sub(r"<[^>]+>", " ",
+               sitemod._vendor_summary("Acme", quoted, ctx, "helpdesk"))
+    check("quote-only pricing is not reported as unreadable",
+          "could not establish" not in q)
+
+    # And a normal vendor is untouched.
+    ok = {"currency": "USD", "plans": [pl("Pro", 49, 39), pl("Team", 99, 79)]}
+    o = re.sub(r"<[^>]+>", " ",
+               sitemod._vendor_summary("Acme", ok, ctx, "helpdesk"))
+    check("a priced vendor still gets its normal summary",
+          "$49" in o and "could not establish" not in o)
+
+
+def test_the_account_menu_and_legal_pages():
+    """A profile menu whose items all work, and the two pages a site that
+    collects email addresses is legally required to have."""
+    print("\nAccount menu and legal pages")
+
+    import tempfile as _tf, shutil as _sh, yaml as _yaml
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"; storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"; storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"; storage.SPEND = tmp / "spend.json"
+        storage.SINCE.parent.mkdir(parents=True, exist_ok=True)
+        storage.write_atomic(storage.SINCE, "2026-05-12")
+        cfg = _yaml.safe_load(
+            (Path(sitemod.__file__).parent.parent / "vendors.yaml")
+            .read_text(encoding="utf-8"))
+        for i, v in enumerate(cfg["vendors"][:5]):
+            storage.save_plans(storage.slugify(v["name"]), {
+                "currency": "USD", "pricing_is_public": True,
+                "extraction_notes": "",
+                "plans": [{"name": "Pro", "key": "pro", "monthly_price": 20 + i,
+                           "annual_price_per_month": 16, "is_free": False,
+                           "is_custom_pricing": False, "is_per_seat": True,
+                           "is_addon": False, "trial_days": 14, "limits": [],
+                           "features": ["sso"]}]})
+        out = tmp / "site"
+        sitemod.build(out)
+        pages = list(out.rglob("*.html"))
+        idx = (out / "index.html").read_text(encoding="utf-8")
+
+        check("the avatar menu is on the page", 'class="avatar"' in idx)
+        check("it works without JavaScript",
+              "<details" in idx and "acct-menu" in idx)
+        check("it is labelled for screen readers", "aria-label" in idx)
+        check("no dead sign-in button is shipped",
+              "Sign in" not in idx and "Log in" not in idx,
+              "a button that goes nowhere makes the site look unfinished")
+        check("it says plainly that accounts are not open",
+              "not open yet" in idx)
+
+        check("the privacy page exists", (out / "privacy.html").exists())
+        check("the terms page exists", (out / "terms.html").exists())
+        priv = (out / "privacy.html").read_text(encoding="utf-8")
+        check("privacy states what happens to a subscriber address",
+              "never sold" in priv and "unsubscribe" in priv.lower())
+        check("privacy states there is no tracking",
+              "no analytics" in priv or "runs no analytics" in priv)
+        terms = (out / "terms.html").read_text(encoding="utf-8")
+        check("terms state the site is independent and unsponsored",
+              "not affiliated" in terms and "sponsored" in terms)
+
+        # Every menu link must resolve, on every page, at every depth.
+        dead = []
+        for f in pages:
+            src = f.read_text(encoding="utf-8")
+            menu = re.search(r'<div class="acct-menu".*?</div>', src, re.S)
+            if not menu:
+                dead.append((f.name, "no menu")); continue
+            for href in re.findall(r'href="([^"]+)"', menu.group(0)):
+                if href.startswith(("http", "mailto")):
+                    continue
+                target = (f.parent / href.split("#")[0]).resolve()
+                if not target.exists():
+                    dead.append((f.relative_to(out).as_posix(), href))
+        check("every menu link resolves from every page",
+              not dead, str(dead[:4]))
+        check("the menu is on all pages, not just the homepage",
+              all("acct-menu" in f.read_text(encoding="utf-8") for f in pages))
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
+def test_the_hero_leads_with_real_data():
+    """Teardowns of the highest-converting pages find that real product above
+    the fold beats a description of it, near-universally, and that the biggest
+    lifts come from structure rather than styling.
+
+    The hero carried three bullets explaining that you can "look up a price" --
+    a description of the product, sitting where the product should be.
+    """
+    print("\nHero proof block")
+
+    import tempfile as _tf, shutil as _sh, json as _json, yaml as _yaml
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"; storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"; storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"; storage.SPEND = tmp / "spend.json"
+        storage.SINCE.parent.mkdir(parents=True, exist_ok=True)
+        storage.write_atomic(storage.SINCE, "2026-05-12")
+        cfg = _yaml.safe_load(
+            (Path(sitemod.__file__).parent.parent / "vendors.yaml")
+            .read_text(encoding="utf-8"))
+        for i, v in enumerate(cfg["vendors"][:4]):
+            storage.save_plans(storage.slugify(v["name"]), {
+                "currency": "USD", "pricing_is_public": True,
+                "extraction_notes": "",
+                "plans": [{"name": "Pro", "key": "pro", "monthly_price": 20 + i,
+                           "annual_price_per_month": 16, "is_free": False,
+                           "is_custom_pricing": False, "is_per_seat": True,
+                           "is_addon": False, "trial_days": 14, "limits": [],
+                           "features": ["sso"]}]})
+
+        def build():
+            out = tmp / "site"
+            if out.exists(): _sh.rmtree(out)
+            sitemod.build(out)
+            return (out / "index.html").read_text(encoding="utf-8")
+
+        # No changes yet -- the state this site is actually in today.
+        empty = build()
+        check("with no changes it still shows something real",
+              'class="proof"' in empty)
+        check("and does not pretend a change happened",
+              "\u2192" not in re.search(r'<figure class="proof">.*?</figure>',
+                                        empty, re.S).group(0))
+        check("the feature bullets are gone", "whatis" not in empty)
+
+        with open(storage.CHANGES, "w", encoding="utf-8") as fh:
+            fh.write(_json.dumps({
+                "vendor": cfg["vendors"][0]["name"], "plan": "Pro",
+                "field": "monthly_price", "old_value": 20, "new_value": 25,
+                "change_type": "price_increase", "confidence": 0.95,
+                "detected_at": "2026-08-12T09:00:00+00:00", "note": ""}) + "\n")
+        withc = build()
+        fig = re.search(r'<figure class="proof">.*?</figure>', withc, re.S).group(0)
+        check("with a change it shows both figures and the date",
+              "$20" in fig and "$25" in fig and "Aug 2026" in fig, fig[:140])
+        check("a rise is marked as a rise", 'class="up"' in fig)
+        check("nothing leaks a raw None", "None" not in re.sub(r"<[^>]+>", "", fig))
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
 if __name__ == "__main__":
     print("=" * 62)
     print("PriceTrail pipeline tests")
@@ -2120,6 +2434,11 @@ if __name__ == "__main__":
     test_the_whole_crawl_cycle()
     test_the_build_is_deterministic()
     test_signup_setup_is_one_word()
+    test_a_crossed_price_pair_is_never_published()
+    test_a_vendor_with_no_readable_prices_says_so()
+    test_the_account_menu_and_legal_pages()
+    test_the_hero_leads_with_real_data()
+    test_stale_prices_are_declared()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")
     if FAILED:

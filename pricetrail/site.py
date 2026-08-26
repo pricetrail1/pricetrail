@@ -347,14 +347,37 @@ def page(title: str, description: str, body: str, path: str,
 {banner}
 <header class="masthead"><div class="wrap">
   <a class="wordmark" href="{_rel(path)}index.html">Price<span>Trail</span></a>
-  <nav>
-    <a href="{_rel(path)}index.html">All prices</a>
-    <a href="{_rel(path)}week.html">This week</a>
+  <nav class="primary">
+    <a href="{_rel(path)}index.html">Prices</a>
     <a href="{_rel(path)}changes.html">Changes</a>
-    <a href="{_rel(path)}about.html">Method</a>
-    <a href="{_rel(path)}status.html">Status</a>
-    <a href="{BASE_URL}/feed.xml">RSS</a>
+    <a href="{_rel(path)}week.html">This week</a>
   </nav>
+  <details class="acct">
+    <summary aria-label="Account and site menu" title="Menu">
+      <span class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="32" height="32">
+          <circle cx="16" cy="12" r="5.2" fill="currentColor"/>
+          <path d="M4.6 30a11.4 11.4 0 0 1 22.8 0Z" fill="currentColor"/>
+        </svg>
+      </span>
+    </summary>
+    <div class="acct-menu" role="menu">
+      <p class="acct-head">Your account</p>
+      <p class="acct-soon">Accounts and billing are not open yet. Everything on
+        this site is free to read, with no sign-up.</p>
+      <a role="menuitem" href="{_rel(path)}index.html#prices">Track a tool</a>
+      <a role="menuitem" href="{_rel(path)}week.html">Weekly digest</a>
+      <p class="acct-head">The site</p>
+      <a role="menuitem" href="{_rel(path)}all.html">Every page</a>
+      <a role="menuitem" href="{_rel(path)}about.html">How this is collected</a>
+      <a role="menuitem" href="{_rel(path)}bot.html">About the crawler</a>
+      <a role="menuitem" href="{_rel(path)}status.html">System status</a>
+      <a role="menuitem" href="{BASE_URL}/feed.xml">RSS feed</a>
+      <p class="acct-head">Legal</p>
+      <a role="menuitem" href="{_rel(path)}privacy.html">Privacy</a>
+      <a role="menuitem" href="{_rel(path)}terms.html">Terms of use</a>
+    </div>
+  </details>
 </div></header>
 <main>{body}</main>
 <footer><div class="wrap">
@@ -508,6 +531,44 @@ def render_index(ctx: dict) -> str:
     records, by_cat = ctx["records"], ctx["by_category"]
     tracked = len(records)
 
+    # Real product above the fold, not a description of it.
+    #
+    # Teardowns of the highest-converting pages find the shift from
+    # illustration to actual product UI is near-universal, and that the
+    # biggest lifts come from structure rather than styling. Three bullets
+    # explaining that you can "look up a price" were a description of the
+    # product sitting where the product should be. A recorded change -- two
+    # figures and a date nobody else holds -- proves the whole claim in one
+    # glance and needs no adjectives.
+    latest = changes[0] if changes else None
+    if latest and latest.get("old_value") not in (None, "") \
+            and latest.get("new_value") not in (None, ""):
+        vend = latest.get("vendor", "")
+        vcur = (records.get(storage.slugify(vend), {}).get("currency") or "USD")
+        rose = latest.get("change_type") == "price_increase"
+        proof = (
+            f'<figure class="proof">'
+            f'<figcaption>Recorded {esc(pretty_date(latest.get("detected_at","")))}'
+            f'</figcaption>'
+            f'<p class="proof-line"><strong>{esc(vend)}</strong>'
+            f'{" " + esc(latest["plan"]) if latest.get("plan") else ""} '
+            f'<span class="was">{esc(money(vcur, latest["old_value"]))}</span>'
+            f' <span class="arrow">\u2192</span> '
+            f'<span class="{"up" if rose else "down"}">'
+            f'{esc(money(vcur, latest["new_value"]))}</span></p>'
+            f'<figcaption>Nobody else has this. The only way to hold it is to '
+            f'have been recording all along.</figcaption></figure>')
+    else:
+        priced = sum(len(_real_plans(r)) for r in records.values())
+        proof = (
+            f'<figure class="proof">'
+            f'<figcaption>Reading every day since '
+            f'{esc(ctx["tracking_since"])}</figcaption>'
+            f'<p class="proof-line"><strong>{priced}</strong> prices on file, '
+            f'<strong>{tracked}</strong> vendors, nothing changed yet</p>'
+            f'<figcaption>A price that holds is worth knowing before you '
+            f'commit to a year of it.</figcaption></figure>')
+
     body = [f"""
 <div class="wrap">
   <section class="hero">
@@ -516,11 +577,7 @@ def render_index(ctx: dict) -> str:
       companies, read fresh every day and written down permanently. Nobody can
       sell you this history \u2014 the only way to have it is to have been
       recording all along.</p>
-    <ul class="whatis">
-      <li><strong>Look up</strong> what any tracked tool charges right now</li>
-      <li><strong>Compare</strong> two of them side by side</li>
-      <li><strong>See what changed</strong>, with both figures and the date</li>
-    </ul>
+    {proof}
     <div class="counters">
       <div class="counter"><span class="n">{tracked}</span>
         <span class="l">Vendors</span></div>
@@ -645,6 +702,40 @@ def render_changes(ctx: dict) -> str:
                 "".join(body), "changes.html")
 
 
+def staleness_warning(record: dict, name: str, ctx: dict) -> str:
+    """Say so when the figures on a page have stopped being re-read.
+
+    The site promises every price is read fresh every day, so a reader who
+    sees "Last read 5 August" on a page assumes that is simply when it last
+    changed -- not that the crawler has been failing for three weeks. Kit sat
+    like that: HTTP 403 every day since 5 August, its page still showing the
+    prices from the last successful read, with a date and no warning.
+
+    A date alone is not disclosure when the reader has been told to expect
+    daily. Nothing else on this site matters if the numbers are quietly out
+    of date.
+    """
+    captured = (record.get("captured_at") or "")[:10]
+    if not captured:
+        return ""
+    try:
+        when = datetime.strptime(captured, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return ""
+    days = (datetime.now(timezone.utc) - when).days
+    # Weekly-tier vendors are only meant to be read every 7 days, so they get
+    # more rope before anything is wrong.
+    tier = (ctx.get("vendors", {}).get(name, {}) or {}).get("crawl_tier", "weekly")
+    limit = 3 if tier == "daily" else 10
+    if days <= limit:
+        return ""
+    return (f'<p class="stale-warning"><strong>These figures are '
+            f'{days} days old.</strong> {esc(name)}\u2019s pricing page has '
+            f'not been readable since {esc(pretty_date(captured))}, so what '
+            f'is below is the last good reading rather than today\u2019s. '
+            f'Check {esc(name)}\u2019s own page before relying on it.</p>')
+
+
 def _vendor_summary(name: str, record: dict, ctx: dict, category: str) -> str:
     """What this vendor charges, written out.
 
@@ -666,6 +757,28 @@ def _vendor_summary(name: str, record: dict, ctx: dict, category: str) -> str:
     trials = [p.get("trial_days") for p in plans
               if isinstance(p.get("trial_days"), int) and p["trial_days"] > 0]
     changes = [c for c in ctx["changes"] if c["vendor"] == name]
+
+    # A vendor can have plans on record and no usable figures: the crossed
+    # monthly/annual guard nulls both when a billing toggle was misread. The
+    # summary used to carry straight on and say "not one of these 3 figures
+    # has changed", which reads as a tracked, stable price when in truth
+    # nothing could be read. On a site whose whole claim is accuracy, implying
+    # knowledge we do not have is worse than admitting the gap.
+    priced = [p for p in plans if p["monthly_price"] is not None
+              or p["annual_price_per_month"] is not None]
+    if not priced and not custom:
+        listed = ", ".join(esc(p["name"]) for p in plans[:6])
+        return (f'<div class="panel" style="margin-bottom:1.5rem">'
+                f'<div class="section-head" style="border-bottom-width:1px">'
+                f'<h2>What {esc(name)} costs</h2>'
+                f'<span class="aside">figures unavailable</span></div>'
+                f'<p style="max-width:60ch;margin-bottom:0.7rem">'
+                f'{esc(name)} publishes {len(plans)} plans ({listed}), but the '
+                f'last reading could not establish their prices reliably '
+                f'\u2014 usually a billing toggle whose state could not be '
+                f'determined. Rather than print a figure that might be the '
+                f'annual rate wearing a monthly label, nothing is shown until '
+                f'the next clean reading.</p></div>')
 
     out = []
     paid = len(plans) - len(free)
@@ -833,6 +946,7 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
       {sparkline(series)}
     </div>"""
 
+    stale = staleness_warning(record, name, ctx)
     summary = _vendor_summary(name, record, ctx, category)
     addon_block = ""
     if addon_rows:
@@ -862,6 +976,7 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
                         (name, None)])}
     <div class="section-head"><h1>{esc(name)} pricing</h1>
       <span class="aside">{esc(title_case(category))}</span></div>
+    {stale}
     {summary}
     <div class="tbl-scroll"><table class="stack">
       <thead><tr><th>Plan</th><th class="num">Monthly</th>
@@ -1341,6 +1456,93 @@ def render_all_pages(ctx: dict, pairs: list[tuple[str, str]]) -> str:
                 f"A full index of all {len(ctx['records'])} tracked vendors, "
                 f"every category and every price comparison on {SITE_NAME}.",
                 body, "all.html")
+
+
+def render_privacy() -> str:
+    """Required before a single address is collected, not optional.
+
+    UK GDPR gives people a right to know what is held about them and how to
+    get rid of it. Writing this after the first subscriber would be too late,
+    and it costs nothing to have it ready.
+    """
+    body = f"""
+<div class="wrap"><section class="section">
+  {breadcrumb("", [("All prices", "index.html"), ("Privacy", None)])}
+  <div class="section-head"><h1>Privacy</h1>
+    <span class="aside">plain English, no lawyers</span></div>
+
+  <p style="max-width:62ch;margin-bottom:1rem"><strong>Reading this site is
+    anonymous.</strong> There is no sign-up, no login and no advertising.
+    {SITE_NAME} sets no cookies of its own and runs no analytics or tracking
+    scripts. Nothing you do here is recorded against you.</p>
+
+  <p style="max-width:62ch;margin-bottom:1rem">The site is served by GitHub
+    Pages, and web fonts are loaded from Google Fonts. Like any web host,
+    those services see the request your browser makes, including your IP
+    address. That is outside our control and applies to any site hosted the
+    same way.</p>
+
+  <p style="max-width:62ch;margin-bottom:1rem"><strong>If you subscribe to
+    price-change emails</strong>, the only thing stored is the email address
+    you typed. It is held by the mailing service that sends the emails, used
+    for nothing except sending them, and never sold, rented or shared. Every
+    email carries a one-click unsubscribe link, and using it deletes the
+    address.</p>
+
+  <p style="max-width:62ch;margin-bottom:1rem">You can ask what is held about
+    you and ask for it to be deleted at any time, and unsubscribing already
+    does the second thing on its own.</p>
+
+  <p style="max-width:62ch"><strong>The pricing data itself is not personal
+    information.</strong> It is published prices from companies' own public
+    pages, recorded as read. Nothing about the people who read this site is
+    ever mixed into it.</p>
+</section></div>"""
+    return page(f"Privacy \u2014 {SITE_NAME}",
+                f"What {SITE_NAME} does and does not collect. No tracking, no "
+                f"cookies, no advertising, and one email address only if you "
+                f"ask for price alerts.",
+                body, "privacy.html")
+
+
+def render_terms() -> str:
+    body = f"""
+<div class="wrap"><section class="section">
+  {breadcrumb("", [("All prices", "index.html"), ("Terms of use", None)])}
+  <div class="section-head"><h1>Terms of use</h1>
+    <span class="aside">what this is and is not</span></div>
+
+  <p style="max-width:62ch;margin-bottom:1rem"><strong>This is a record, not
+    advice.</strong> Every figure is what a vendor published on its own page
+    on the day it was read. Prices change, vendors run offers, and regional
+    pricing differs. Always confirm with the vendor before you commit money.
+    {SITE_NAME} is not responsible for decisions made on the strength of a
+    figure here.</p>
+
+  <p style="max-width:62ch;margin-bottom:1rem"><strong>Mistakes.</strong> The
+    readings are automated and can be wrong. Where a page cannot be read
+    reliably, nothing is shown rather than a guess. If you spot an error,
+    saying so is welcome and it gets fixed.</p>
+
+  <p style="max-width:62ch;margin-bottom:1rem"><strong>Using what is here.</strong>
+    Read it, quote it, link to it. If you use figures in something you publish,
+    a link back is the polite thing. Re-publishing the archive wholesale as a
+    competing product is not on.</p>
+
+  <p style="max-width:62ch;margin-bottom:1rem"><strong>Company names</strong>
+    and trademarks belong to their owners. {SITE_NAME} is independent and is
+    not affiliated with, endorsed by, or paid by any vendor listed. Nothing
+    here is sponsored, and no vendor can pay to change what is recorded.</p>
+
+  <p style="max-width:62ch"><strong>The crawler</strong> reads public pricing
+    pages slowly, identifies itself honestly and obeys robots.txt. If you run
+    one of these sites and would rather not be read, the
+    <a href="bot.html">crawler page</a> explains how to say so.</p>
+</section></div>"""
+    return page(f"Terms of use \u2014 {SITE_NAME}",
+                f"How to use {SITE_NAME}: a record of published prices, not "
+                f"advice. Independent, unsponsored, and corrected when wrong.",
+                body, "terms.html")
 
 
 def render_bot() -> str:
@@ -1823,6 +2025,8 @@ def build(out_dir: Path | None = None) -> dict:
     write("status.html", _status.render(esc, page, back_link, pretty_date,
                                         SITE_NAME))
     write("bot.html", render_bot())
+    write("privacy.html", render_privacy())
+    write("terms.html", render_terms())
 
     slug_to_name = {storage.slugify(n): n for n in vendors}
     for slug in sorted(records):

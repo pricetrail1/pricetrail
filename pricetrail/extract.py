@@ -138,15 +138,30 @@ Rules:
 - If a value is not shown, use null. Do not guess.
 - Prices are numbers only, no currency symbols, no thousands separators.
 - If a page shows both monthly and annual pricing, record both.
-- Ignore promotional or time-limited discount prices; record the standard price.
-- MONTHLY/ANNUAL TOGGLE. Most pricing pages have one, and many default to
-  annual. Read the labels next to each figure carefully:
-    * "$19/month billed annually" or "$19/mo, annual" -> that is the ANNUAL
-      per-month price. Put it in annual_price_per_month and leave
-      monthly_price null unless the monthly figure is also shown.
-    * "$25/month" with no annual wording -> monthly_price.
+- PROMOTIONAL PRICES. If a figure is struck through, or sits next to wording
+  like "Save 35%", "new customer offer", "limited time", "was X now Y", the
+  discounted number is NOT the price. Record the standard, undiscounted
+  figure and mention the offer in extraction_notes. A promotion recorded as
+  the standard price becomes a fake price rise the day it expires.
+- MONTHLY/ANNUAL TOGGLE. Most pricing pages have one, and MOST DEFAULT TO
+  ANNUAL because it shows the lower number. This is the single easiest thing
+  to get wrong, so work it out explicitly before recording anything:
+    * "$19/month billed annually", "$19/mo, annual", "$19 per seat/month paid
+      yearly" -> ANNUAL. Put it in annual_price_per_month.
+    * "$25/month" on a page with NO billing toggle anywhere -> monthly_price.
+    * "$29/month" on a page that HAS a toggle -> look at which side the toggle
+      is set to. If it reads annual/yearly, that figure is the ANNUAL
+      per-month price, even though it says "/month" beside it.
+  If a toggle exists and you cannot tell which side it is on, leave BOTH
+  fields null and say so in extraction_notes. A null is honest and can be
+  fixed later; a number in the wrong field is a false claim about a real
+  company, and everyone reading it budgets wrongly.
   Never put an annual-equivalent figure in monthly_price. Getting these two
   crossed produces figures nobody advertises, like $24.17 or $11.20.
+- SANITY CHECK before you answer. Annual billing is always a discount, so for
+  any plan where you recorded both, monthly_price MUST be higher than
+  annual_price_per_month. If it is not, you have them the wrong way round or
+  you have mixed a promotion in. Fix it or null both.
 - If only one billing period is visible on the page, record only that one and
   say which in extraction_notes. Do not calculate the other from it.
 - Preserve plan names exactly as written, including capitalisation.
@@ -242,14 +257,41 @@ def normalise(data: dict) -> dict:
         if not name:
             continue
         monthly = _num(plan.get("monthly_price"))
+        annual = _num(plan.get("annual_price_per_month"))
         if plan.get("is_free") and monthly is None:
             monthly = 0.0
+
+        # Annual billing is a discount, so the monthly figure should be the
+        # higher of the two. When annual comes out MEANINGFULLY higher, the
+        # pair has been crossed.
+        #
+        # The tolerance matters. beehiiv publishes $43.00 monthly and $43.08
+        # annually -- eight cents apart, which is an annual total divided by
+        # twelve and rounded, not an error. Discarding a real plan's pricing
+        # over that would be worse than the bug. A genuine crossing looks
+        # nothing like it: Intercom's monthly and annual differ by 34%.
+        #
+        # Be clear about what this does NOT catch. Intercom's actual error was
+        # recorded as monthly 29 / annual 19 -- the ORDER is plausible, so no
+        # ordering check can see it. Both figures were simply the wrong
+        # numbers ($29 is the annual rate; the real monthly is $39). Only the
+        # extraction prompt can prevent that. This check is a second net for a
+        # different, cruder mistake, not a fix for the Intercom shape.
+        if (monthly is not None and annual is not None
+                and monthly > 0 and annual > 0
+                and annual > monthly * 1.05):
+            notes = out.get("extraction_notes") or ""
+            out["extraction_notes"] = (
+                f"{notes} [{name}: annual ({annual}) came out well above "
+                f"monthly ({monthly}), which is backwards -- both discarded. "
+                f"The billing toggle was probably misread.]").strip()
+            monthly = annual = None
 
         out["plans"].append({
             "name": name,
             "key": _plan_key(name),
             "monthly_price": monthly,
-            "annual_price_per_month": _num(plan.get("annual_price_per_month")),
+            "annual_price_per_month": annual,
             "is_free": bool(plan.get("is_free")),
             "is_custom_pricing": bool(plan.get("is_custom_pricing")),
             "is_per_seat": bool(plan.get("is_per_seat")),

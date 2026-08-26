@@ -15,7 +15,11 @@ from __future__ import annotations
 import json
 from datetime import datetime, timedelta, timezone
 
+import yaml
+
 from . import storage
+
+VENDORS = storage.ROOT / "vendors.yaml"
 
 
 def gather() -> dict:
@@ -44,7 +48,26 @@ def gather() -> dict:
         "extraction_lost_all_plans":
             "read no plans at all -- old figures kept, check the live page",
     }
+    # state.json is appended to and never pruned, so a vendor removed from
+    # vendors.yaml leaves its entry behind forever. zoho-desk was sitting in
+    # there weeks after it stopped being tracked, showing on the status page
+    # as a live vendor. Only report on things actually being crawled.
+    try:
+        tracked = {storage.slugify(v["name"]) for v in
+                   (yaml.safe_load(VENDORS.read_text(encoding="utf-8")) or {})
+                   .get("vendors", [])} if VENDORS.exists() else set()
+    except Exception:
+        tracked = set()
+    # Only hide orphans when the vendor list plainly belongs to this archive.
+    # If nothing in state matches it -- an unreadable file, a different
+    # project, a test fixture -- filtering would blank the whole status page
+    # and hide real failures. Showing one stale row is a far smaller problem
+    # than showing none of the broken ones.
+    if not tracked & set(state):
+        tracked = set()
     for slug, entry in state.items():
+        if tracked and slug not in tracked:
+            continue
         status = entry.get("status", "")
         if not status or status == "ok":
             continue
@@ -76,6 +99,7 @@ def gather() -> dict:
         "vendors_known": len(state),
         "failing": sorted(failing),
         "stale": sorted(stale),
+        "tracked": tracked,
         "changes": len(changes),
         "pending": pending,
         "review": review,
@@ -107,6 +131,8 @@ def render(esc, page, back_link, pretty_date, SITE_NAME) -> str:
 
     rows = []
     for slug, entry in sorted(d["state"].items()):
+        if d.get("tracked") and slug not in d["tracked"]:
+            continue
         status = entry.get("status", "unknown")
         # Unknown statuses fall back to their own name with underscores
         # removed, so a new one reads as English rather than as code.
