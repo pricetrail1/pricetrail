@@ -29,14 +29,27 @@ def gather() -> dict:
         except json.JSONDecodeError:
             failing.append((path.stem, "stored record is unreadable"))
 
+    # Anything that is not "ok" needs a human. This used to be a whitelist of
+    # known bad statuses, which meant every new status added to run.py was
+    # silently dropped from this page -- the flag got set and nobody was ever
+    # told. Inverting it means a status invented tomorrow still surfaces, with
+    # its raw name if nobody has written a friendly label yet. An ugly label
+    # is a far smaller problem than a vendor quietly failing for weeks.
+    WHY = {
+        "error": None,                      # use last_error, it is specific
+        "extraction_error": None,
+        "not_a_pricing_page": None,
+        "robots_disallowed": "blocked by robots.txt",
+        "suspicious_extraction": "fewer than 2 plans found",
+        "extraction_lost_all_plans":
+            "read no plans at all -- old figures kept, check the live page",
+    }
     for slug, entry in state.items():
         status = entry.get("status", "")
-        if status in ("error", "extraction_error", "not_a_pricing_page"):
-            failing.append((slug, entry.get("last_error", status)))
-        elif status == "robots_disallowed":
-            failing.append((slug, "blocked by robots.txt"))
-        elif status == "suspicious_extraction":
-            failing.append((slug, "fewer than 2 plans found"))
+        if not status or status == "ok":
+            continue
+        why = WHY.get(status, status.replace("_", " "))
+        failing.append((slug, why or entry.get("last_error", status)))
 
     # A vendor nobody has read in a fortnight is quietly broken.
     cutoff = (datetime.now(timezone.utc) - timedelta(days=14)).strftime("%Y-%m-%d")
@@ -95,11 +108,15 @@ def render(esc, page, back_link, pretty_date, SITE_NAME) -> str:
     rows = []
     for slug, entry in sorted(d["state"].items()):
         status = entry.get("status", "unknown")
+        # Unknown statuses fall back to their own name with underscores
+        # removed, so a new one reads as English rather than as code.
         label = {"ok": "OK", "error": "Fetch failed",
                  "extraction_error": "Extraction failed",
                  "not_a_pricing_page": "Not a pricing page",
                  "robots_disallowed": "Blocked by robots.txt",
-                 "suspicious_extraction": "Too few plans"}.get(status, status)
+                 "suspicious_extraction": "Too few plans",
+                 "extraction_lost_all_plans": "No plans read \u2014 old figures kept",
+                 }.get(status, status.replace("_", " ").capitalize())
         good = status == "ok"
         rows.append(f"""
       <tr>

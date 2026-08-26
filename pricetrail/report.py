@@ -88,7 +88,30 @@ def _line(c: dict) -> str:
         return f"**{vendor}**{where} now lists '{new}'"
     if t == "limit_changed":
         return f"**{vendor}**{where} changed its {c['field']} limit: {old} to {new}"
-    return f"**{vendor}**{where} {t}: {old} to {new}"
+    if t == "plan_renamed":
+        return f"**{vendor}** renamed the '{old}' plan to '{new}'"
+    if t == "currency_changed":
+        return (f"**{vendor}** now shows prices in {new} instead of {old} "
+                f"-- the amounts are not directly comparable")
+    if t == "billing_model_changed":
+        return f"**{vendor}**{where} changed billing from {old} to {new}"
+    if t == "custom_pricing_changed":
+        hidden = str(new).lower() in ("true", "1")
+        return (f"**{vendor}**{where} replaced its price with 'contact sales'"
+                if hidden else
+                f"**{vendor}**{where} now publishes a price")
+    if t == "price_availability_changed":
+        gone = new in (None, "", "None")
+        return (f"**{vendor}**{where} stopped publishing a {c['field']}" if gone
+                else f"**{vendor}**{where} started publishing a {c['field']}: {new}")
+    if t == "pricing_published":
+        return f"**{vendor}** put pricing back on its public page"
+    # This is the THIRD place a change is turned into words -- the other two
+    # are Change.headline() and site._describe(). All three had different
+    # coverage, so the same event could read properly on the website and as a
+    # raw code name in the digest email. Anything new must at least be
+    # readable here.
+    return f"**{vendor}**{where} {t.replace('_', ' ')}: {old} to {new}"
 
 
 def review_queue() -> str:

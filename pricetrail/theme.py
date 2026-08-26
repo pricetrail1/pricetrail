@@ -448,3 +448,28 @@ CSS += """
   .signup button { flex: 1 1 100%; }
 }
 """
+
+CSS += """
+/* ---- breadcrumbs and the full index ---- */
+.crumbs {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
+  margin-bottom: 1.1rem; color: var(--muted);
+}
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--ink); text-decoration: underline; }
+.crumbs [aria-current] { color: var(--ink); }
+.crumb-sep { opacity: 0.5; padding: 0 0.2em; }
+.all-group { margin-bottom: 1.75rem; }
+.all-group h2 {
+  font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.11em; text-transform: uppercase;
+  padding-bottom: 0.4rem; border-bottom: 2px solid var(--ink);
+  margin-bottom: 0.7rem;
+}
+.all-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; }
+.all-links a { font-size: 0.95rem; }
+.footer-links {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
+}
+"""

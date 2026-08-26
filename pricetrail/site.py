@@ -56,7 +56,28 @@ TAGLINE = "A permanent record of what software costs."
 # Paste an email signup form URL here (Buttondown, Beehiiv, Resend, anything
 # that gives you a hosted form) and a signup box appears site-wide. Until then
 # the site offers RSS instead, which needs no account and no backend.
-SIGNUP_URL = os.environ.get("SIGNUP_URL", "")
+def _signup_action(raw: str) -> str:
+    """Accept a bare Buttondown username as well as a full form address.
+
+    Setting this up meant finding the right endpoint, getting the path exactly
+    right, and pasting a long URL into a settings box -- three chances to make
+    a silent typo that shows up as a form which appears to work and quietly
+    loses every address. A username is one word, and one word is hard to get
+    wrong.
+
+    Anything containing "/" is treated as a full address, so MailerLite, Kit
+    and EmailOctopus all still work unchanged.
+    """
+    raw = (raw or "").strip()
+    if not raw:
+        return ""
+    if raw.startswith(("http://", "https://")) or "/" in raw:
+        return raw
+    # Bare word -> Buttondown, the service the README walks through.
+    return f"https://buttondown.com/api/emails/embed-subscribe/{raw}"
+
+
+SIGNUP_URL = _signup_action(os.environ.get("SIGNUP_URL", ""))
 
 SYMBOLS = {"USD": "$", "GBP": "\u00a3", "EUR": "\u20ac", "CAD": "CA$",
            "AUD": "A$", "INR": "\u20b9"}
@@ -337,6 +358,7 @@ def page(title: str, description: str, body: str, path: str,
 </div></header>
 <main>{body}</main>
 <footer><div class="wrap">
+  <p class="footer-links"><a href="{_rel(path)}all.html">Every page</a> &middot; <a href="{_rel(path)}about.html">Method</a> &middot; <a href="{_rel(path)}bot.html">About the crawler</a></p>
   <p class="disclaimer">Figures are recorded from vendors' own public pricing
     pages and may lag a change by up to 24 hours. Every price is shown in the
     currency that vendor's own page displayed &mdash; nothing here is converted
@@ -429,6 +451,40 @@ def back_link(prefix: str = "", label: str = "All prices") -> str:
     """
     return (f'<p class="backlink"><a href="{prefix}index.html">'
             f'\u2190 {esc(label)}</a></p>')
+
+
+def breadcrumb(prefix: str, trail: list[tuple[str, str | None]]) -> str:
+    """A real trail home, plus the schema that tells Google the hierarchy.
+
+    Every inner page used to carry a single flat link back to the homepage,
+    which left the category pages -- the hubs the whole site is organised
+    around -- with exactly ONE inbound link each. Google's crawl priority
+    follows links, so the pages meant to be most important were being treated
+    as the least. Routing every vendor and comparison page through its
+    category turns that one link into a dozen.
+
+    The JSON-LD is the same trail in the form Google reads for the breadcrumb
+    line under a search result, which also makes the listing wider and more
+    obviously relevant.
+    """
+    items, links = [], []
+    for i, (label, href) in enumerate(trail, start=1):
+        if href:
+            links.append(f'<a href="{prefix}{href}">{esc(label)}</a>')
+            url = f"{BASE_URL}/{href}".replace("/index.html", "/")
+            items.append({"@type": "ListItem", "position": i,
+                          "name": label, "item": url})
+        else:
+            links.append(f'<span aria-current="page">{esc(label)}</span>')
+            items.append({"@type": "ListItem", "position": i, "name": label})
+
+    schema = json.dumps({"@context": "https://schema.org",
+                         "@type": "BreadcrumbList",
+                         "itemListElement": items},
+                        ensure_ascii=False).replace("<", "\\u003c")
+    sep = ' <span class="crumb-sep">/</span> '
+    return (f'<nav class="crumbs" aria-label="Breadcrumb">{sep.join(links)}</nav>'
+            f'<script type="application/ld+json">{schema}</script>')
 
 
 def _rel(path: str) -> str:
@@ -589,6 +645,122 @@ def render_changes(ctx: dict) -> str:
                 "".join(body), "changes.html")
 
 
+def _vendor_summary(name: str, record: dict, ctx: dict, category: str) -> str:
+    """What this vendor charges, written out.
+
+    A vendor page was a price table and little else -- around 80 words of
+    actual text, thinner than the comparison pages, on the pages that carry
+    the queries this site actually gets ("intercom pricing"). A table is data;
+    Google reads text. Every sentence below is arithmetic on figures already
+    in the archive, so nothing new is collected and nothing is invented.
+    """
+    cur = (record.get("currency") or "USD").upper()
+    plans = _real_plans(record)
+    if not plans:
+        return ""
+    entry, top, _ = headline_prices(record)
+    free = [p for p in plans if p["is_free"]]
+    custom = [p for p in plans if p["is_custom_pricing"]]
+    seat = [p for p in plans if p.get("is_per_seat")]
+    addons = [p for p in record["plans"] if p.get("is_addon")]
+    trials = [p.get("trial_days") for p in plans
+              if isinstance(p.get("trial_days"), int) and p["trial_days"] > 0]
+    changes = [c for c in ctx["changes"] if c["vendor"] == name]
+
+    out = []
+    paid = len(plans) - len(free)
+    if entry:
+        line = (f"{esc(name)} starts at {esc(money(cur, entry))} a month on its "
+                f"cheapest paid plan")
+        if seat:
+            line += ", per seat"
+        if top and top != entry:
+            line += f", rising to {esc(money(cur, top))} on the highest plan it publishes"
+        out.append(line + ".")
+
+    # Where it sits in its own category -- the comparison a buyer is making
+    # anyway, and something no single vendor's own page can tell them.
+    bench = ctx.get("benchmarks", {}).get(category) or {}
+    med = bench.get("median_entry")
+    if entry and med and bench.get("currency") == cur and bench.get("n", 0) > 2:
+        if entry < med * 0.85:
+            out.append(f"That is below the {esc(title_case(category))} median of "
+                       f"{esc(money(cur, med))}, so it is one of the cheaper ways "
+                       f"into this category.")
+        elif entry > med * 1.15:
+            out.append(f"That is above the {esc(title_case(category))} median of "
+                       f"{esc(money(cur, med))} \u2014 it is priced at the "
+                       f"expensive end of its category.")
+        else:
+            out.append(f"That is close to the {esc(title_case(category))} median "
+                       f"of {esc(money(cur, med))}.")
+
+    # Plan names are the single most vendor-specific thing on the page: no two
+    # companies name their tiers the same way. Naming them lowers how much
+    # this paragraph reads like every other one, and it is also what somebody
+    # comparing quotes actually needs to match up.
+    tiers = [pl["name"] for pl in plans if str(pl.get("name") or "").strip()]
+    if len(tiers) > 1:
+        listed = ", ".join(esc(t) for t in tiers[:-1]) + f" and {esc(tiers[-1])}"
+        out.append(f"The plans are called {listed}.")
+    elif tiers:
+        out.append(f"There is one published plan, {esc(tiers[0])}.")
+
+    # A plan literally named "Free" while nothing is flagged as free means the
+    # two facts disagree. Rather than pick one and risk printing a confident
+    # contradiction two lines below the plan list, say nothing about free
+    # tiers at all. Silence is recoverable; being visibly wrong is not.
+    named_free = any("free" in str(pl.get("name") or "").lower() for pl in plans)
+    bits = []
+    if free:
+        bits.append("there is a free tier")
+    elif named_free:
+        if trials:
+            bits.append(f"there is a {max(trials)}-day trial")
+    elif trials:
+        bits.append(f"there is no free tier, but a {max(trials)}-day trial")
+    else:
+        bits.append("no free tier and no trial length is published")
+    if custom:
+        bits.append("the top tier is quote-only, so enterprise pricing is not public")
+    if addons:
+        names = [a["name"] for a in addons if str(a.get("name") or "").strip()]
+        bits.append("some features are sold as paid add-ons on top of a plan"
+                    + (f" ({esc(', '.join(names[:3]))})" if names else ""))
+    if bits:
+        out.append(bits[0][0].upper() + bits[0][1:] + "." if len(bits) == 1
+                   else bits[0][0].upper() + bits[0][1:] + ", and " +
+                   ", ".join(bits[1:]) + ".")
+
+    # The bit nobody else can tell them.
+    since = ctx.get("tracking_since", "")
+    if changes:
+        ups = sum(1 for c in changes if c["change_type"] == "price_increase")
+        downs = sum(1 for c in changes if c["change_type"] == "price_decrease")
+        parts = []
+        if ups:
+            parts.append(f"{ups} rise{'s' if ups != 1 else ''}")
+        if downs:
+            parts.append(f"{downs} cut{'s' if downs != 1 else ''}")
+        latest = max(c.get("detected_at", "") for c in changes)[:10]
+        out.append(f"Since {esc(since)} we have recorded "
+                   f"{esc(' and '.join(parts) or str(len(changes)) + ' changes')}"
+                   f" here, the most recent on {esc(pretty_date(latest))}.")
+    else:
+        out.append(f"Not one of these {len(plans)} figures has changed since "
+                   f"{esc(since)}, when {esc(name)} was first read. A price "
+                   f"that has held is worth knowing before you commit to a "
+                   f"year of it.")
+
+    body = "".join(f'<p style="max-width:60ch;margin-bottom:0.7rem">{ln}</p>'
+                   for ln in out)
+    return (f'<div class="panel" style="margin-bottom:1.5rem">'
+            f'<div class="section-head" style="border-bottom-width:1px">'
+            f'<h2>What {esc(name)} costs</h2>'
+            f'<span class="aside">{paid} paid plan'
+            f'{"s" if paid != 1 else ""}</span></div>{body}</div>')
+
+
 def render_vendor(slug: str, name: str, ctx: dict) -> str:
     record = ctx["records"][slug]
     cur = record.get("currency", "USD")
@@ -661,6 +833,7 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
       {sparkline(series)}
     </div>"""
 
+    summary = _vendor_summary(name, record, ctx, category)
     addon_block = ""
     if addon_rows:
         listed = (f" {esc(name)} lists {esc(', '.join(addon_names[:6]))}."
@@ -684,9 +857,12 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
     body = [f"""
 <div class="wrap">
   <section class="section">
-    {back_link("../")}
+    {breadcrumb("../", [("All prices", "index.html"),
+                        (title_case(category), f"c/{storage.slugify(category)}.html"),
+                        (name, None)])}
     <div class="section-head"><h1>{esc(name)} pricing</h1>
       <span class="aside">{esc(title_case(category))}</span></div>
+    {summary}
     <div class="tbl-scroll"><table class="stack">
       <thead><tr><th>Plan</th><th class="num">Monthly</th>
         <th class="num">Annual, per month</th><th>Billing</th>
@@ -777,7 +953,8 @@ def render_category(cat: str, ctx: dict) -> str:
     body = [f"""
 <div class="wrap">
   <section class="section">
-    {back_link("../")}
+    {breadcrumb("../", [("All prices", "index.html"),
+                        (title_case(cat), None)])}
     <div class="section-head"><h1>{esc(title_case(cat))} pricing compared</h1>
       <span class="aside">{len(names)} vendors</span></div>
     <div class="grid grid-3" style="margin-bottom:1.5rem">
@@ -930,6 +1107,7 @@ def _differences(a: str, b: str, ra: dict, rb: dict,
 
 def render_compare(a: str, b: str, ctx: dict) -> str:
     ra, rb = ctx["records"][storage.slugify(a)], ctx["records"][storage.slugify(b)]
+    cat_name = ctx["vendor_category"].get(a) or ctx["vendor_category"].get(b) or ""
 
     def col(rec):
         cur = rec.get("currency", "USD")
@@ -973,9 +1151,31 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
 
     prose, difftable = _differences(a, b, ra, rb, ctx)
 
+    # Comparison pages had two inbound links each -- the two vendor pages --
+    # and they are 54 of the 87 pages on the site. Crawl priority follows
+    # links, so the largest group of pages was also the least reachable, which
+    # is exactly the group Google never got round to. Linking each comparison
+    # to the others that share a vendor is both the fix and the thing a reader
+    # actually wants: someone weighing A against B usually wants A against C
+    # too.
+    related = [(x, y) for (x, y) in comparison_pairs(ctx)
+               if (x, y) != (a, b) and (a in (x, y) or b in (x, y))]
+    related_block = ""
+    if related:
+        links = " ".join(
+            f'<a href="{_pair_slug(x, y)}.html">{esc(x)} vs {esc(y)}</a>'
+            for x, y in related[:12])
+        related_block = f"""
+  <div class="all-group" style="margin-top:2rem">
+    <h2>Other comparisons with {esc(a)} or {esc(b)}</h2>
+    <p class="all-links">{links}</p>
+  </div>"""
+
     body = f"""
 <div class="wrap"><section class="section">
-  {back_link("../")}
+  {breadcrumb("../", [("All prices", "index.html"),
+                      (title_case(cat_name), f"c/{storage.slugify(cat_name)}.html"),
+                      (f"{a} vs {b}", None)])}
   <div class="section-head"><h1>{esc(a)} vs {esc(b)}</h1>
     <span class="aside">Entry: {esc(money(cur_a, ea))}
       vs {esc(money(cur_b, eb))}</span></div>
@@ -1009,6 +1209,7 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
   <p class="provenance" style="margin-top:1.5rem">
     Both figures read from each vendor's public pricing page. Feature sets
     differ, so compare the plans, not only the numbers.</p>
+  {related_block}
 </section></div>"""
     return page(f"{a} vs {b} pricing compared \u2014 {SITE_NAME}",
                 f"Side-by-side pricing for {a} and {b}. {verdict}",
@@ -1089,6 +1290,59 @@ def render_about(ctx: dict) -> str:
                 body, "about.html")
 
 
+def render_all_pages(ctx: dict, pairs: list[tuple[str, str]]) -> str:
+    """One page linking to every other page on the site.
+
+    Google's crawl priority follows links, and 54 comparison pages were
+    sitting on two inbound links each -- which is exactly the set that never
+    got crawled. A single index gives every page another route in and gives
+    the crawler one place to discover the whole site from, instead of walking
+    it category by category.
+
+    It is also the page a person wants when the search box has failed them and
+    they just want to see everything there is.
+    """
+    cats = []
+    for cat, names in sorted(ctx["by_category"].items()):
+        live = sorted(n for n in names if storage.slugify(n) in ctx["records"])
+        if not live:
+            continue
+        vend = " ".join(
+            f'<a href="v/{storage.slugify(n)}.html">{esc(n)}</a>' for n in live)
+        cats.append(
+            f'<div class="all-group"><h2>'
+            f'<a href="c/{storage.slugify(cat)}.html">{esc(title_case(cat))}</a>'
+            f'</h2><p class="all-links">{vend}</p></div>')
+
+    comp = " ".join(
+        f'<a href="compare/{_pair_slug(a, b)}.html">{esc(a)} vs {esc(b)}</a>'
+        for a, b in pairs)
+
+    body = f"""
+<div class="wrap"><section class="section">
+  {breadcrumb("", [("All prices", "index.html"), ("Everything", None)])}
+  <div class="section-head"><h1>Every page on this site</h1>
+    <span class="aside">{len(ctx['records'])} vendors &middot;
+      {len(pairs)} comparisons</span></div>
+  <p style="max-width:58ch;margin-bottom:1.5rem">Every tracked vendor, every
+    category and every side-by-side comparison, in one list.</p>
+  {''.join(cats)}
+  <div class="all-group"><h2>Side-by-side comparisons</h2>
+    <p class="all-links">{comp}</p></div>
+  <div class="all-group"><h2>About this site</h2>
+    <p class="all-links">
+      <a href="about.html">How this is collected</a>
+      <a href="changes.html">Every recorded change</a>
+      <a href="week.html">This week in software pricing</a>
+      <a href="bot.html">About the crawler</a>
+      <a href="status.html">System status</a></p></div>
+</section></div>"""
+    return page("Every page \u2014 " + SITE_NAME,
+                f"A full index of all {len(ctx['records'])} tracked vendors, "
+                f"every category and every price comparison on {SITE_NAME}.",
+                body, "all.html")
+
+
 def render_bot() -> str:
     body = f"""
 <div class="wrap"><section class="section">
@@ -1159,6 +1413,27 @@ def _describe(c: dict, vendors: dict) -> str:
         return f"no longer includes \u201c{esc(old)}\u201d"
     if t == "plan_renamed":
         return f"renamed from \u201c{esc(old)}\u201d"
+    if t == "currency_changed":
+        # The type that exists specifically so a currency flip is never
+        # reported as a price cut. Printing it as a bare "currency changed"
+        # with no values gave a reader nothing to judge, which defeats the
+        # point of recording it separately.
+        return (f"now shows prices in {esc(new)} instead of {esc(old)} "
+                f"\u2014 the amounts are not comparable")
+    if t == "billing_model_changed":
+        return f"billing changed from {esc(old)} to {esc(new)}"
+    if t == "custom_pricing_changed":
+        hidden = str(new).lower() in ("true", "1")
+        return ("replaced its price with \u201ccontact sales\u201d" if hidden
+                else "published a price where it previously said contact sales")
+    if t == "price_availability_changed":
+        gone = new in (None, "", "None")
+        field = esc(c.get("field") or "price")
+        return (f"stopped publishing a {field}" if gone
+                else f"started publishing a {field} at {money(cur, new)}")
+    if t == "pricing_published":
+        return "put pricing back on its public page"
+    # Anything added later still reads as English rather than a code name.
     return esc(t.replace("_", " "))
 
 
@@ -1363,8 +1638,18 @@ def page_lastmod(ctx: dict) -> dict[str, str]:
 def render_sitemap(paths: list[str], lastmod: dict[str, str] | None = None) -> str:
     lastmod = lastmod or {}
     fallback = storage.recording_since()
+
+    def canonical(p: str) -> str:
+        # Must match the canonical tag the page itself carries, or Google
+        # crawls the URL listed here, reads the tag, finds it points somewhere
+        # else, and files the page under "Alternative page with proper
+        # canonical tag" -- a crawl spent on a page that was never going to be
+        # indexed. Harmless on a big site; not on one that cannot get crawled
+        # enough in the first place.
+        return f"{BASE_URL}/{p}".replace("/index.html", "/")
+
     urls = "".join(
-        f"  <url><loc>{BASE_URL}/{p}</loc>"
+        f"  <url><loc>{canonical(p)}</loc>"
         f"<lastmod>{lastmod.get(p, fallback)}</lastmod></url>\n"
         for p in paths
     )
@@ -1554,6 +1839,8 @@ def build(out_dir: Path | None = None) -> dict:
     pairs = comparison_pairs(ctx)
     for a, b in pairs:
         write(f"compare/{_pair_slug(a, b)}.html", render_compare(a, b, ctx))
+
+    write("all.html", render_all_pages(ctx, pairs))
 
     (out / "feed.xml").write_text(render_feed(ctx), encoding="utf-8")
     (out / "feed.xsl").write_text(

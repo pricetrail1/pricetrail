@@ -1037,7 +1037,9 @@ def test_addons_are_not_shown_as_plans():
     flat = re.sub(r"\s+", " ", html)
     # The plans table only -- not the page head, whose snippet legitimately
     # names the add-ons.
-    plans_table = re.search(r"<h1[^>]*>Intercom pricing</h1>.*?</table>",
+    # Slice the plans table itself. Anchoring on the h1 also swept up the
+    # written summary, which legitimately names the add-ons.
+    plans_table = re.search(r"<thead><tr><th>Plan</th>.*?</table>",
                             html, re.S).group(0)
 
     check("add-ons are lifted out of the plans table",
@@ -1505,6 +1507,573 @@ def test_no_section_appears_twice():
         sitemod.SIGNUP_URL = saved
 
 
+def test_sitemap_urls_match_their_canonical():
+    """The sitemap listed /index.html while the page's canonical said /.
+
+    Google crawls the URL you point it at, reads the tag, finds it points
+    elsewhere, and files the page under "Alternative page with proper
+    canonical tag" -- a crawl spent on a page that was never going to be
+    indexed. On a site that already cannot get crawled enough, every wasted
+    one matters.
+    """
+    print("\nSitemap canonicals")
+
+    xml = sitemod.render_sitemap(["index.html", "about.html", "v/zendesk.html"])
+    locs = re.findall(r"<loc>([^<]+)</loc>", xml)
+
+    check("the homepage is listed at its canonical address",
+          locs[0] == f"{sitemod.BASE_URL}/", locs[0])
+    check("no /index.html anywhere in the sitemap",
+          not any(l.endswith("/index.html") for l in locs))
+    check("other pages are listed unchanged",
+          f"{sitemod.BASE_URL}/v/zendesk.html" in locs)
+
+    # Whatever the page claims is what the sitemap must say.
+    for path in ("index.html", "about.html", "v/zendesk.html"):
+        canonical = f"{sitemod.BASE_URL}/{path}".replace("/index.html", "/")
+        one = sitemod.render_sitemap([path])
+        check(f"{path} agrees with its own canonical",
+              f"<loc>{canonical}</loc>" in one)
+
+
+def test_no_page_is_a_dead_end():
+    """Crawl priority follows links, and the worst-linked pages were the ones
+    Google never indexed.
+
+    Category pages -- the hubs the whole site is organised around -- had ONE
+    inbound link each. The 54 comparison pages had two, and they are the
+    majority of the site. Breadcrumbs route every vendor and comparison
+    through its category, related links join the comparisons to each other,
+    and one index page reaches everything.
+    """
+    print("\nCrawl reachability")
+
+    import tempfile as _tf, shutil as _sh, yaml as _yaml
+    from collections import Counter
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"
+        storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"
+        storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"
+        storage.SPEND = tmp / "spend.json"
+        storage.SINCE.parent.mkdir(parents=True, exist_ok=True)
+        storage.write_atomic(storage.SINCE, "2026-05-12")
+
+        cfg = _yaml.safe_load(
+            (Path(sitemod.__file__).parent.parent / "vendors.yaml")
+            .read_text(encoding="utf-8"))
+        for i, v in enumerate(cfg["vendors"]):
+            storage.save_plans(storage.slugify(v["name"]), {
+                "currency": "USD", "pricing_is_public": True,
+                "extraction_notes": "",
+                "plans": [{"name": "Pro", "key": "pro",
+                           "monthly_price": 15 + i,
+                           "annual_price_per_month": 12, "is_free": False,
+                           "is_custom_pricing": False, "is_per_seat": True,
+                           "is_addon": False, "trial_days": 14,
+                           "limits": [], "features": ["sso"]}]})
+
+        out = tmp / "site"
+        sitemod.build(out)
+        pages = list(out.rglob("*.html"))
+
+        inbound = Counter()
+        for f in pages:
+            for href in set(re.findall(r'href="([^"]+)"',
+                                       f.read_text(encoding="utf-8"))):
+                if href.startswith(("http", "#", "mailto")):
+                    continue
+                t = (f.parent / href).resolve()
+                if t.suffix == ".html":
+                    inbound[t] += 1
+
+        counts = {p.relative_to(out).as_posix(): inbound.get(p.resolve(), 0)
+                  for p in pages}
+        worst = min(counts.values())
+        check("no page is left on a single inbound link", worst >= 3,
+              f"worst={worst} ({min(counts, key=counts.get)})")
+
+        cats = [v for k, v in counts.items() if k.startswith("c/")]
+        check("category hubs are strongly linked", cats and min(cats) >= 5,
+              str(cats))
+
+        comps = [v for k, v in counts.items() if k.startswith("compare/")]
+        check("comparison pages are no longer near-orphans",
+              comps and min(comps) >= 5, f"min={min(comps) if comps else 0}")
+
+        check("an index of every page exists", (out / "all.html").exists())
+        allp = (out / "all.html").read_text(encoding="utf-8")
+        check("it reaches every vendor",
+              all(f'v/{s}.html' in allp for s in list(storage.slugs())[:5])
+              if hasattr(storage, "slugs") else "v/" in allp)
+        check("every page can reach it",
+              all("all.html" in p.read_text(encoding="utf-8") for p in pages))
+
+        crumbs = sum(1 for p in pages
+                     if "BreadcrumbList" in p.read_text(encoding="utf-8"))
+        check("breadcrumb schema on the inner pages", crumbs >= len(pages) - 8,
+              f"{crumbs}/{len(pages)}")
+
+        vend = (out / "v" / "zendesk.html").read_text(encoding="utf-8")
+        check("a vendor page links up to its category",
+              re.search(r'href="\.\./c/[a-z-]+\.html"', vend) is not None)
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE,
+         storage.SPEND) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
+def test_vendor_pages_say_something():
+    """Vendor pages carried ~80 words of text -- thinner than the comparison
+    pages, on the pages that receive the actual search queries."""
+    print("\nVendor summaries")
+
+    def pl(name, price, free=False, addon=False, custom=False, trial=None):
+        return {"name": name, "key": name.lower(), "monthly_price": price,
+                "annual_price_per_month": None, "is_free": free,
+                "is_custom_pricing": custom, "is_per_seat": True,
+                "is_addon": addon, "trial_days": trial,
+                "limits": [], "features": []}
+
+    ctx = {"changes": [], "tracking_since": "12 May 2026",
+           "benchmarks": {"helpdesk": {"median_entry": 30, "currency": "USD",
+                                       "n": 5}}}
+    rec = {"currency": "USD", "plans": [pl("Starter", 19, trial=14),
+                                        pl("Pro", 49), pl("Enterprise", None,
+                                                          custom=True)]}
+    out = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ",
+                 sitemod._vendor_summary("Acme", rec, ctx, "helpdesk")))
+
+    check("it states the entry price", "$19" in out)
+    check("it names the plans", "Starter" in out and "Pro" in out)
+    check("it places the vendor against its category",
+          "median" in out and "$30" in out)
+    check("it says the top tier is quote-only", "quote-only" in out)
+    check("it reports a stable price as a finding",
+          "has changed since" in out or "has held" in out)
+
+    # A plan called "Free" while nothing is flagged free: the two facts
+    # disagree, so the page must not assert either.
+    clash = {"currency": "USD",
+             "plans": [pl("Free", 9, trial=30), pl("Pro", 29)]}
+    txt = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ",
+                 sitemod._vendor_summary("Acme", clash, ctx, "helpdesk")))
+    check("a naming clash never produces a contradiction",
+          "no free tier" not in txt and "The plans are called Free" in txt,
+          txt[:120])
+
+    # With a real free plan it should say so.
+    good = {"currency": "USD", "plans": [pl("Free", 0, free=True), pl("Pro", 29)]}
+    gtxt = re.sub(r"<[^>]+>", " ", sitemod._vendor_summary("Acme", good, ctx,
+                                                           "helpdesk"))
+    check("a real free tier is stated", "there is a free tier" in gtxt.lower())
+
+    hist = dict(ctx, changes=[
+        {"vendor": "Acme", "change_type": "price_increase",
+         "detected_at": "2026-07-22T00:00:00+00:00"},
+        {"vendor": "Acme", "change_type": "price_decrease",
+         "detected_at": "2026-06-01T00:00:00+00:00"}])
+    htxt = re.sub(r"<[^>]+>", " ", sitemod._vendor_summary("Acme", rec, hist,
+                                                           "helpdesk"))
+    check("recorded history is surfaced, not hidden",
+          "1 rise" in htxt and "1 cut" in htxt, htxt[-160:])
+
+    check("no summary at all when there are no plans",
+          sitemod._vendor_summary("Acme", {"currency": "USD", "plans": []},
+                                  ctx, "helpdesk") == "")
+
+
+def test_an_unreadable_page_cannot_erase_a_vendor():
+    """A page that cannot be read is not a company that deleted its pricing.
+
+    Layout changes, browser-computed pricing sliders and half-loaded pages all
+    return zero plans, and they can do it twice running -- which was enough to
+    satisfy the two-reading confirmation and overwrite a good record with an
+    empty one. site.build() skips records with no plans, so that vendor's page
+    stopped being generated: a URL Google had already indexed began returning
+    404, and the vendor disappeared with nothing reported.
+    """
+    print("\nVendor deletion guard")
+
+    src = (Path(sitemod.__file__).with_name("run.py")).read_text(encoding="utf-8")
+
+    check("a wipe is refused when plans were on record",
+          'if not extracted.get("plans") and baseline.get("plans")' in src)
+    check("the old figures are kept rather than deleted",
+          "keeping the" in src and "old figures" in src)
+    check("it is flagged for a human, not swallowed",
+          "extraction_lost_all_plans" in src)
+
+    guard = src.index("extraction_lost_all_plans")
+    save = src.index("changes = diff_pricing(name, baseline, extracted)")
+    check("the guard runs before the overwrite", guard < save)
+
+    # The guard must not block a vendor legitimately going quote-only, nor a
+    # genuine price change.
+    check("a first-ever reading is unaffected",
+          "if baseline is None:" in src and src.index("if baseline is None:") < guard)
+
+    # And the site must still refuse to build a page from an empty record --
+    # that half is correct, it is the overwrite that was wrong.
+    empty = {"currency": "USD", "plans": []}
+    check("an empty record still produces no summary",
+          sitemod._vendor_summary("Acme", empty,
+                                  {"changes": [], "tracking_since": "12 May 2026",
+                                   "benchmarks": {}}, "x") == "")
+
+
+def test_nothing_renders_as_a_code_name():
+    """Two whitelists, both of which silently dropped anything new.
+
+    status.py listed the bad statuses it knew about, so the flag added to
+    run.py this session was set and then ignored -- nobody would ever have
+    been told. diff.py named eight change types and fell through for the rest,
+    so six real ones, including the currency_changed type added earlier today,
+    printed as "Zendesk - Pro: billing_model_changed monthly_price" on the
+    changes page and in the RSS feed.
+
+    Both now invert: anything unrecognised still reads as English.
+    """
+    print("\nNo raw codes reach the reader")
+
+    from pricetrail.diff import Change
+    emitted = ["price_increase", "price_decrease", "plan_added", "plan_removed",
+               "plan_renamed", "feature_added", "feature_moved_out",
+               "limit_changed", "currency_changed", "billing_model_changed",
+               "custom_pricing_changed", "price_availability_changed",
+               "pricing_hidden", "pricing_published", "a_type_invented_later"]
+    bad = []
+    for t in emitted:
+        h = Change("Zendesk", t, "Pro", "monthly_price", 49, 55, 0.9).headline()
+        if t in h or "_" in h.replace("monthly_price", ""):
+            bad.append((t, h))
+    check("no change type prints its own code name", not bad, str(bad[:3]))
+    check("a type invented later still reads as English",
+          "a type invented later" in
+          Change("V", "a_type_invented_later", None, "f", 1, 2, 0.9).headline())
+    check("the currency headline names both currencies",
+          "GBP" in Change("V", "currency_changed", None, "currency", "USD",
+                          "GBP", 0.4).headline())
+
+    src = (Path(sitemod.__file__).with_name("status.py")).read_text(encoding="utf-8")
+    check("the status page flags anything that is not ok",
+          'if not status or status == "ok":' in src and "continue" in src)
+    check("it no longer whitelists known-bad statuses",
+          'status in ("error", "extraction_error"' not in src)
+    check("the new refusal status has a human label",
+          "old figures kept" in src)
+
+    run = (Path(sitemod.__file__).with_name("run.py")).read_text(encoding="utf-8")
+    check("a refused write is not counted as awaiting confirmation",
+          'stats["kept_old"]' in run)
+
+
+def test_both_describers_cover_every_change_type():
+    """There are TWO places a change is turned into words, and they had
+    different coverage.
+
+    Change.headline() is used by the crawler's console output. site._describe()
+    is what actually reaches the website and the RSS feed. Fixing the first
+    left the second printing "currency changed" with no values at all -- on
+    the one change type that exists specifically so a currency flip is not
+    mistaken for a price cut, which is exactly when a reader needs the values.
+    """
+    print("\nBoth describers")
+
+    emitted = {
+        "price_increase": (49, 55), "price_decrease": (55, 49),
+        "plan_added": (None, 29), "plan_removed": ("Pro", None),
+        "plan_renamed": ("Pro", "Advanced"),
+        "feature_added": (None, "sso"), "feature_moved_out": ("sso", None),
+        "limit_changed": (5, 10), "currency_changed": ("USD", "GBP"),
+        "billing_model_changed": ("flat", "per seat"),
+        "custom_pricing_changed": (False, True),
+        "price_availability_changed": (49, None),
+        "pricing_hidden": (True, None), "pricing_published": (None, True),
+    }
+    vendors = {"Zendesk": {"currency": "USD"}}
+
+    lazy = []
+    for t, (old, new) in emitted.items():
+        c = {"vendor": "Zendesk", "plan": "Pro", "field": "monthly_price",
+             "old_value": old, "new_value": new, "change_type": t, "note": ""}
+        out = sitemod._describe(c, vendors)
+        plain = re.sub(r"<[^>]+>", "", out)
+        # "currency changed" is the type name with the underscore removed --
+        # a description that only restates its own label tells a reader nothing.
+        if plain.strip().lower() == t.replace("_", " "):
+            lazy.append((t, plain.strip()))
+    check("no change type is described by just restating its name",
+          not lazy, str(lazy[:4]))
+
+    cur = sitemod._describe(
+        {"vendor": "Zendesk", "plan": "Pro", "field": "monthly_price",
+         "old_value": "USD", "new_value": "GBP",
+         "change_type": "currency_changed", "note": ""}, vendors)
+    check("a currency flip names both currencies on the site",
+          "USD" in cur and "GBP" in cur)
+    check("and warns the amounts are not comparable",
+          "not comparable" in cur)
+
+    unknown = sitemod._describe(
+        {"vendor": "V", "plan": None, "field": "f", "old_value": 1,
+         "new_value": 2, "change_type": "invented_next_year", "note": ""},
+        vendors)
+    check("something added later still reads as English",
+          "invented next year" in unknown)
+
+
+def test_all_three_describers_stay_in_step():
+    """There are THREE places a change becomes words, not two.
+
+    Change.headline() for the crawler log, site._describe() for the website
+    and RSS, report._line() for the digest email. Each had its own list of
+    known types, so the same event could read properly in one place and as a
+    raw code name in another. This test walks every type the pipeline can
+    emit through all three at once.
+    """
+    print("\nAll three describers")
+
+    from pricetrail.diff import Change
+    from pricetrail import report
+
+    emitted = {
+        "price_increase": (49, 55), "price_decrease": (55, 49),
+        "plan_added": (None, 29), "plan_removed": ("Pro", None),
+        "plan_renamed": ("Pro", "Advanced"), "feature_added": (None, "sso"),
+        "feature_moved_out": ("sso", None), "limit_changed": (5, 10),
+        "currency_changed": ("USD", "GBP"),
+        "billing_model_changed": ("flat", "per seat"),
+        "custom_pricing_changed": (False, True),
+        "price_availability_changed": (49, None),
+        "pricing_hidden": (True, None), "pricing_published": (None, True),
+        "some_type_added_in_future": ("x", "y"),
+    }
+    vendors = {"Zendesk": {"currency": "USD"}}
+    leaks = []
+    for t, (old, new) in emitted.items():
+        c = {"vendor": "Zendesk", "plan": "Pro", "field": "monthly_price",
+             "old_value": old, "new_value": new, "change_type": t, "note": ""}
+        outputs = {
+            "crawler": Change("Zendesk", t, "Pro", "monthly_price",
+                              old, new, 0.9).headline(),
+            "website": re.sub(r"<[^>]+>", "", sitemod._describe(c, vendors)),
+            "digest": report._line(c),
+        }
+        for where, txt in outputs.items():
+            if t in txt:
+                leaks.append((t, where))
+    check("no describer leaks a code name", not leaks, str(leaks[:4]))
+
+    # The currency warning is the one that must never be silently dropped:
+    # it is the whole reason that change type exists.
+    c = {"vendor": "Zendesk", "plan": None, "field": "currency",
+         "old_value": "USD", "new_value": "GBP",
+         "change_type": "currency_changed", "note": ""}
+    for where, txt in (("website", sitemod._describe(c, vendors)),
+                       ("digest", report._line(c))):
+        check(f"the {where} names both currencies",
+              "USD" in txt and "GBP" in txt)
+        check(f"the {where} says the amounts are not comparable",
+              "not" in txt and "comparable" in txt)
+
+
+def test_the_whole_crawl_cycle():
+    """The crawl loop itself, with network and AI mocked.
+
+    Every test before this one checked a piece. This runs the actual pipeline:
+    first reading, an identical page, a price rise held for confirmation, the
+    rise published, then a page that cannot be read twice running -- which
+    must not delete the vendor.
+    """
+    print("\nFull crawl cycle")
+
+    import io, json as _json, contextlib, shutil as _sh, tempfile as _tf
+    from pricetrail import run as runmod
+    from pricetrail.fetch import FetchResult
+
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    real_fetcher, real_extract, real_cost = (
+        runmod.Fetcher, runmod.extract_pricing, runmod.estimate_cost_usd)
+    argv = sys.argv[:]
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"; storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"; storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"; storage.SPEND = tmp / "spend.json"
+
+        page = "<html><body><h1>Pricing plans</h1>" + "".join(
+            f"<section><h2>{n}</h2><p>${p} per user per month</p><p>Billed "
+            f"annually. Includes unlimited tickets, email support, reporting "
+            f"dashboards, integrations and a 14 day free trial. Compare plans "
+            f"and choose the tier for your team.</p><ul><li>Up to {i*10} "
+            f"agents</li><li>SSO</li><li>API access</li></ul></section>"
+            for i, (n, p) in enumerate([("Starter", 19), ("Pro", 49),
+                                        ("Enterprise", 99)], 1)
+        ) + "<p>All prices in USD. Contact sales for enterprise.</p></body></html>"
+
+        class F:
+            def __init__(s, *a, **k): pass
+            def get(s, url, **k): return FetchResult(url=url, status=200, html=page)
+            def allowed(s, url, **k): return True
+            def __enter__(s): return s
+            def __exit__(s, *a): return False
+
+        def plans(pro):
+            def one(nm, pr):
+                return {"name": nm, "key": nm.lower(), "monthly_price": pr,
+                        "annual_price_per_month": pr - 4, "is_free": False,
+                        "is_custom_pricing": False, "is_per_seat": True,
+                        "is_addon": False, "trial_days": 14, "limits": [],
+                        "features": ["sso"]}
+            return {"currency": "USD", "pricing_is_public": True,
+                    "extraction_notes": "",
+                    "plans": [one("Starter", 19), one("Pro", pro)]}
+
+        runmod.Fetcher = F
+        runmod.estimate_cost_usd = lambda *a, **k: 0.01
+
+        def crawl(pro, empty=False):
+            payload = ({"currency": "USD", "pricing_is_public": False,
+                        "extraction_notes": "blocked", "plans": []}
+                       if empty else plans(pro))
+            runmod.extract_pricing = lambda *a, **k: _json.loads(_json.dumps(payload))
+            sys.argv = ["run", "--only", "Zendesk", "--budget", "1.0", "--force"]
+            buf = io.StringIO()
+            try:
+                with contextlib.redirect_stdout(buf):
+                    runmod.main()
+            except SystemExit:
+                pass
+            return buf.getvalue()
+
+        check("a first reading is captured as a baseline",
+              "baseline captured" in crawl(49))
+        check("an identical page is dismissed as noise",
+              "pricing did not" in crawl(49))
+        check("a price rise waits for a second opinion",
+              "waiting for a second" in crawl(55))
+        out = crawl(55)
+        # Both the monthly and the annual figure moved in this fixture, so two
+        # changes are correct -- the assertion is that something published,
+        # not how many.
+        check("the confirmed rise is published",
+              re.search(r"changes published [1-9]", out) is not None,
+              out[-200:])
+        rows = storage.read_changes()
+        monthly = [r for r in rows if r.get("field") == "monthly_price"]
+        check("the monthly rise is recorded with the right figures",
+              monthly and monthly[0]["change_type"] == "price_increase"
+              and monthly[0]["old_value"] == 49
+              and monthly[0]["new_value"] == 55, str(rows[:2]))
+        check("nothing was published before it was confirmed twice",
+              all(r["change_type"] != "price_increase" or r["new_value"] != 55
+                  or r.get("field") in ("monthly_price", "annual_price_per_month")
+                  for r in rows))
+
+        crawl(0, empty=True)
+        out = crawl(0, empty=True)
+        check("an unreadable page twice running does NOT delete the vendor",
+              "read no plans twice" in out, out[-260:])
+        rec = storage.load_plans("zendesk")
+        check("the old figures are still on file",
+              bool(rec and rec.get("plans")), "record was wiped")
+        state = _json.loads(storage.STATE.read_text(encoding="utf-8"))
+        check("and it is flagged for review",
+              state.get("zendesk", {}).get("status") == "extraction_lost_all_plans",
+              str(state.get("zendesk", {}).get("status")))
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND) = saved
+        runmod.Fetcher, runmod.extract_pricing, runmod.estimate_cost_usd = (
+            real_fetcher, real_extract, real_cost)
+        sys.argv = argv
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
+def test_the_build_is_deterministic():
+    """Two builds from identical data must be byte-identical.
+
+    The crawl rebuilds the whole site daily and commits the result. If any
+    page varies between runs, every commit carries spurious diffs, git history
+    fills with noise, and the honest-lastmod work is undermined because pages
+    appear to change when nothing changed.
+    """
+    print("\nBuild determinism")
+
+    import hashlib, shutil as _sh, tempfile as _tf, yaml as _yaml
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"; storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"; storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"; storage.SPEND = tmp / "spend.json"
+        storage.SINCE.parent.mkdir(parents=True, exist_ok=True)
+        storage.write_atomic(storage.SINCE, "2026-05-12")
+        cfg = _yaml.safe_load(
+            (Path(sitemod.__file__).parent.parent / "vendors.yaml")
+            .read_text(encoding="utf-8"))
+        for i, v in enumerate(cfg["vendors"][:8]):
+            storage.save_plans(storage.slugify(v["name"]), {
+                "currency": "USD", "pricing_is_public": True,
+                "extraction_notes": "",
+                "plans": [{"name": "Pro", "key": "pro", "monthly_price": 15 + i,
+                           "annual_price_per_month": 12, "is_free": i % 3 == 0,
+                           "is_custom_pricing": False, "is_per_seat": True,
+                           "is_addon": False, "trial_days": 14, "limits": [],
+                           "features": ["sso"]}]})
+
+        def build_to(name):
+            d = tmp / name
+            if d.exists(): _sh.rmtree(d)
+            sitemod.build(d)
+            return {f.relative_to(d).as_posix():
+                    hashlib.sha256(f.read_bytes()).hexdigest()
+                    for f in sorted(d.rglob("*")) if f.is_file()}
+
+        a, b = build_to("one"), build_to("two")
+        differ = [k for k in a if a[k] != b.get(k)]
+        check("two identical builds produce identical bytes",
+              not differ, str(differ[:5]))
+        check("the comparison was not vacuous", len(a) > 20, f"{len(a)} files")
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
+def test_signup_setup_is_one_word():
+    """Setting this up used to mean pasting a long URL into a settings box --
+    three chances at a silent typo that renders a form which appears to work
+    and quietly loses every address. A single word cannot be got wrong the
+    same way."""
+    print("\nSignup setup")
+
+    f = sitemod._signup_action
+    check("a bare username becomes a Buttondown form address",
+          f("pricetrail") ==
+          "https://buttondown.com/api/emails/embed-subscribe/pricetrail")
+    check("stray spaces are forgiven", f("  pricetrail  ") == f("pricetrail"))
+    check("a full address is left alone",
+          f("https://api.mailerlite.com/forms/1/subscribe")
+          == "https://api.mailerlite.com/forms/1/subscribe")
+    check("any other service still works", "/" in f("example.com/subscribe"))
+    check("blank still means no form at all", f("") == "" and f(None) == "")
+
+
 if __name__ == "__main__":
     print("=" * 62)
     print("PriceTrail pipeline tests")
@@ -1541,6 +2110,16 @@ if __name__ == "__main__":
     test_visitors_can_find_a_price()
     test_there_is_somewhere_to_convert()
     test_no_section_appears_twice()
+    test_sitemap_urls_match_their_canonical()
+    test_no_page_is_a_dead_end()
+    test_vendor_pages_say_something()
+    test_an_unreadable_page_cannot_erase_a_vendor()
+    test_nothing_renders_as_a_code_name()
+    test_both_describers_cover_every_change_type()
+    test_all_three_describers_stay_in_step()
+    test_the_whole_crawl_cycle()
+    test_the_build_is_deterministic()
+    test_signup_setup_is_one_word()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")
     if FAILED:

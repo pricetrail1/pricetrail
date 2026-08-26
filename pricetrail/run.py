@@ -262,7 +262,35 @@ def run(dry_run: bool = False, only: list[str] | None = None,
                   f"reading{flip}")
             continue
 
-        # Two runs in a row said the same thing. Believe it.
+        # Two runs in a row said the same thing. Believe it -- unless what
+        # they agree on is that the page has no prices at all.
+        #
+        # A page that cannot be read is not a company that deleted its
+        # pricing. Layout changes, pricing sliders that compute in the browser,
+        # and half-loaded pages all produce zero plans, and they can easily do
+        # it twice running. Accepting that would overwrite a good record with
+        # an empty one, and an empty record means no vendor page is built at
+        # all: the URL starts returning 404 to a search engine that had
+        # already indexed it, and the vendor vanishes from the site with
+        # nothing reported anywhere.
+        #
+        # So a reading that removes every plan is never published. The old
+        # figures stay up, marked stale rather than deleted, and the vendor is
+        # queued for a human to look at.
+        if not extracted.get("plans") and baseline.get("plans"):
+            entry["status"] = "extraction_lost_all_plans"
+            storage.clear_pending(slug)
+            # Its own counter. Filing this under "awaiting confirmation" made
+            # the run summary claim a change was pending when in fact a write
+            # had been refused -- two opposite things reported as one number.
+            stats["kept_old"] = stats.get("kept_old", 0) + 1
+            print(f"  KEEP  {name}: read no plans twice, but "
+                  f"{len(baseline['plans'])} were on record -- keeping the "
+                  f"old figures and flagging for review")
+            print(f"        Check the live page: a pricing slider or a "
+                  f"layout change usually causes this.")
+            continue
+
         changes = diff_pricing(name, baseline, extracted)
         storage.save_plans(slug, extracted)
         storage.clear_pending(slug)
@@ -302,6 +330,9 @@ def run(dry_run: bool = False, only: list[str] | None = None,
     print(f"changes published {stats['changes']} | "
           f"awaiting confirmation {stats['awaiting']} | "
           f"queued for review {stats['queued']} | failed {stats['failed']}")
+    if stats.get("kept_old"):
+        print(f"kept old figures for {stats['kept_old']} vendor(s) whose page "
+              f"could not be read -- see the status page")
     print(f"this run ${spent:.4f} | month to date "
           f"${storage.month_to_date_spend():.4f}")
 

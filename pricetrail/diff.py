@@ -72,7 +72,31 @@ class Change:
         if self.change_type == "limit_changed":
             return (f"{self.vendor}{p}: {self.field} limit "
                     f"{self.old_value} \u2192 {self.new_value}")
-        return f"{self.vendor}{p}: {self.change_type} {self.field}"
+        if self.change_type == "plan_renamed":
+            return (f"{self.vendor}: renamed '{self.old_value}' to "
+                    f"'{self.new_value}'")
+        if self.change_type == "currency_changed":
+            return (f"{self.vendor}: prices now shown in {self.new_value} "
+                    f"instead of {self.old_value}")
+        if self.change_type == "billing_model_changed":
+            return (f"{self.vendor}{p}: billing changed from "
+                    f"{self.old_value} to {self.new_value}")
+        if self.change_type == "custom_pricing_changed":
+            gone = str(self.new_value).lower() in ("true", "1")
+            return (f"{self.vendor}{p}: price replaced by 'contact sales'"
+                    if gone else
+                    f"{self.vendor}{p}: now publishes a price")
+        if self.change_type == "price_availability_changed":
+            return (f"{self.vendor}{p}: {self.field} "
+                    f"{'withdrawn' if self.new_value in (None, '') else 'published'}")
+        if self.change_type == "pricing_published":
+            return f"{self.vendor}: started publishing prices again"
+        # Anything new still reads as English rather than as a code name. Six
+        # change types reached this fallback and rendered as things like
+        # "Zendesk - Pro: billing_model_changed monthly_price" on the changes
+        # page and in the RSS feed.
+        return (f"{self.vendor}{p}: "
+                f"{self.change_type.replace('_', ' ')} ({self.field})")
 
 
 def fingerprint(record: dict) -> str:

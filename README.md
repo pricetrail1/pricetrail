@@ -217,6 +217,35 @@ month-to-date total.
 
 ---
 
+## Turning the email signup on
+
+No form appears until you say where to send addresses. That is deliberate: a
+form that silently discards them is worse than none, because people believe
+they subscribed. Until then the RSS feed is offered instead.
+
+Four steps, about five minutes:
+
+1. Go to **buttondown.com** and make an account. Read their terms first -- they
+   set a minimum age. Pick a username; that is the only thing you need from
+   this step.
+2. On GitHub, open your repo and go to
+   **Settings > Secrets and variables > Actions**, then the **Variables** tab.
+3. Click **New repository variable**. Name it exactly `SIGNUP_URL`. For the
+   value, type **just your Buttondown username** -- one word, nothing else.
+4. Go to the **Actions** tab, open the crawl workflow, click **Run workflow**.
+
+The form then appears on the homepage and at the foot of every vendor and
+category page. No code change and no new download.
+
+Using something other than Buttondown? Paste that service's full form address
+instead of a username. Anything containing a "/" is used exactly as given, so
+MailerLite, Kit and EmailOctopus all work.
+
+**Before you collect a single address.** UK law requires a working unsubscribe
+link in every email and a plain statement of what you do with the address. The
+form already promises both, so make sure your service delivers them -- all the
+ones above do.
+
 ## Keeping the archive safe
 
 The data folder is the whole business. Everything else is re-runnable code.
