@@ -73,8 +73,8 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-26",
     "status": "ok",
-    "hash_changes": 28,
-    "hash": "ad0e7abb03923e93a3a7cfd64acd2eb75684c8fe57466e8da45523375f69ba7b"
+    "hash_changes": 29,
+    "hash": "156adf55619ddbd83204d1259a03c1c670dac38e2e1818e47b6cce98bc3c62c2"
   },
   "brevo": {
     "consecutive_failures": 0,
