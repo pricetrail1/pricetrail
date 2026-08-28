@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing is not publicly displayed on this page. All actual numerical prices are hidden behind contact forms or prompts to add a payment method. The page shows placeholder text like \"per month for 12 months\" and \"Then, starts at per month†\" but no actual figures. There is a 15% promotional discount mentioned for 10,000+ contacts for 12 months, but the base price it applies to is not shown. A 14-day free trial is available for Standard and Essentials plans. The page also mentions 1-month free trial for Premium plan for qualified customers. Monthly email sends are expressed as multiples of contacts (e.g., \"15X contacts\" for Premium) based on the contact tier. The page shows many different contact tier brackets (0-500, 501-1,500, etc.) but does not display actual prices for any tier. All tiers for paid plans allow unlimited contacts in terms of ceiling, with pricing varying by contact bracket rather than being capped. Only the Free plan has a hard 250-contact limit.",
+  "extraction_notes": "No specific prices visible on page. All contact tier pricing appears to be dynamic and shown via an interactive table that displays prices based on selected contact count. The page displays \"per month\" placeholders but no actual dollar amounts are rendered in this HTML. A 15% discount promotion is mentioned for 10,000+ contacts on first 12 months (not recorded as standard price per promotional pricing rules). Free trial periods: 14 days for Standard and Essentials; Premium trial mentioned as \"1-month free trial...for qualified new customers\" but routed to sales. Currency selector shows USD is available. Features extracted from the comparison table (Key Plan Features section) and plan descriptions. SMS is an add-on, not included in main plans.",
   "plans": [
     {
       "name": "Free",
@@ -22,7 +22,7 @@
         },
         {
           "metric": "monthly email sends",
-          "value": 2500.0,
+          "value": 500.0,
           "unit": null
         }
       ],
@@ -46,8 +46,8 @@
           "unit": null
         },
         {
-          "metric": "monthly email sends multiplier",
-          "value": 10.0,
+          "metric": "monthly email sends",
+          "value": -1.0,
           "unit": null
         }
       ],
@@ -74,16 +74,18 @@
           "unit": null
         },
         {
-          "metric": "monthly email sends multiplier",
-          "value": 15.0,
+          "metric": "monthly email sends",
+          "value": 150000.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
+        "ai assistant",
         "custom reporting",
         "dedicated account manager",
         "integrations",
+        "onboarding support",
         "phone support",
         "priority support",
         "role permissions"
@@ -107,14 +109,17 @@
           "unit": null
         },
         {
-          "metric": "monthly email sends multiplier",
-          "value": 12.0,
+          "metric": "monthly email sends",
+          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
+        "ai assistant",
+        "custom reporting",
         "integrations",
+        "onboarding support",
         "role permissions"
       ]
     }

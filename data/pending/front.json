@@ -1,71 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows \"Billed Annually\" with annual-only pricing and 24% savings messaging. Only annual per-month prices are displayed for main plans (Starter $25, Professional $65, Enterprise $105). All are per-seat with seat limits noted on plan cards. Trial is 14 days for all main plans. Add-ons include Autopilot (starting at $0.05/conversation with sales contact), Copilot ($20/seat/mo or included in Enterprise), Smart QA ($20/seat/mo or included in Enterprise), Smart CSAT ($10/seat/mo or included in Enterprise), Smart QA + Smart CSAT bundle ($25/seat/mo), Native WhatsApp Channel (Meta-billed costs + 20% admin fee, available on Professional and Enterprise), and API Rate Limit Increase ($200 per 100 API requests/min per month). Services packages mentioned but no specific pricing shown on this page.",
+  "extraction_notes": "Page shows \"Billed Annually\" with \"Save 24%\" badge, indicating all prices shown are annual billing. Only annual_price_per_month is recorded; monthly_price is null. All main plans (Starter, Professional, Enterprise) are per-seat with seat limits. Trial is 14 days for Starter and Professional based on FAQ. Add-ons are tracked separately with is_addon true. Copilot and Smart QA are $20/seat/month as add-ons but included in Enterprise. Smart CSAT is $10/seat/month as add-on. Autopilot is $0.05/conversation. Native WhatsApp Channel pricing is \"Meta-billed WhatsApp costs + 20% admin fee\" (custom). API Rate Limit Increase is $200 per 100 API requests/min per month. Features extracted only from the allowed list; plan names preserved exactly.",
   "plans": [
-    {
-      "name": "Smart CSAT",
-      "key": "smartcsat",
-      "monthly_price": 10.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
-    },
-    {
-      "name": "Copilot",
-      "key": "copilot",
-      "monthly_price": 20.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "ai assistant"
-      ]
-    },
-    {
-      "name": "Smart QA",
-      "key": "smartqa",
-      "monthly_price": 20.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
-    },
-    {
-      "name": "Smart QA + Smart CSAT bundle",
-      "key": "smartqasmartcsatbundle",
-      "monthly_price": 25.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
-    },
     {
       "name": "API Rate Limit Increase",
       "key": "apiratelimitincrease",
-      "monthly_price": 200.0,
-      "annual_price_per_month": null,
+      "monthly_price": null,
+      "annual_price_per_month": 200.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -74,9 +16,9 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "api requests per minute",
+          "metric": "api rate limit",
           "value": 100.0,
-          "unit": "per 100 requests"
+          "unit": "requests/min"
         }
       ],
       "features": [
@@ -94,8 +36,32 @@
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
+      "limits": [
+        {
+          "metric": "price per conversation",
+          "value": 0.05,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai chatbot"
+      ]
+    },
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": null,
+      "annual_price_per_month": 20.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
       "limits": [],
-      "features": []
+      "features": [
+        "ai assistant"
+      ]
     },
     {
       "name": "Enterprise",
@@ -115,7 +81,7 @@
           "unit": null
         },
         {
-          "metric": "role permissions",
+          "metric": "channel types",
           "value": -1.0,
           "unit": null
         },
@@ -128,12 +94,9 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "ai chatbot",
-        "api access",
-        "basic workflows",
+        "ai copilot",
         "custom reporting",
         "role permissions",
-        "scim",
         "sso"
       ]
     },
@@ -149,7 +112,9 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": []
+      "features": [
+        "integrations"
+      ]
     },
     {
       "name": "Professional",
@@ -169,6 +134,11 @@
           "unit": null
         },
         {
+          "metric": "channel types",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "seats",
           "value": 50.0,
           "unit": null
@@ -181,10 +151,51 @@
       ],
       "features": [
         "advanced workflows",
-        "api access",
-        "basic workflows",
-        "scim",
         "sso"
+      ]
+    },
+    {
+      "name": "Smart CSAT",
+      "key": "smartcsat",
+      "monthly_price": null,
+      "annual_price_per_month": 10.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Smart QA",
+      "key": "smartqa",
+      "monthly_price": null,
+      "annual_price_per_month": 20.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Smart QA + Smart CSAT bundle",
+      "key": "smartqasmartcsatbundle",
+      "monthly_price": null,
+      "annual_price_per_month": 25.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "custom reporting"
       ]
     },
     {
@@ -221,7 +232,6 @@
         }
       ],
       "features": [
-        "api access",
         "basic workflows"
       ]
     }
