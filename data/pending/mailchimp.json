@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "No specific prices visible on page. All contact tier pricing appears to be dynamic and shown via an interactive table that displays prices based on selected contact count. The page displays \"per month\" placeholders but no actual dollar amounts are rendered in this HTML. A 15% discount promotion is mentioned for 10,000+ contacts on first 12 months (not recorded as standard price per promotional pricing rules). Free trial periods: 14 days for Standard and Essentials; Premium trial mentioned as \"1-month free trial...for qualified new customers\" but routed to sales. Currency selector shows USD is available. Features extracted from the comparison table (Key Plan Features section) and plan descriptions. SMS is an add-on, not included in main plans.",
+  "pricing_is_public": true,
+  "extraction_notes": "Page displays pricing in multiple currencies via dropdown selector. Extracted in USD. Prices shown are tiered by contact count (0-500 through 1,000,000+). Only base prices shown on page without specific tier amounts visible - users must select contact tier to see exact pricing. Trial periods: Standard and Essentials offer 14-day free trial (mentioned as \"risk-free\" in some sections). Free plan is truly free, 0 cost. A \"Save 15%\" promotion is prominently displayed for 10,000+ contacts on first 12 months for Standard and Premium plans - this is a promotional discount, so standard undiscounted prices are recorded. Annual plans mentioned as available but pricing only available via \"Contact sales\". Pay-as-you-go email credits plan mentioned but no pricing shown. SMS credits are add-on, priced separately, not included in base plans.",
   "plans": [
     {
       "name": "Free",
@@ -21,12 +21,68 @@
           "unit": null
         },
         {
-          "metric": "monthly email sends",
+          "metric": "emails per month",
           "value": 500.0,
+          "unit": "max of 500/mo or 250/day"
+        }
+      ],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "emails per month",
+          "value": 6000.0,
+          "unit": "up to 6,000 emails each month"
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "role-based access roles",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "users/seats",
+          "value": 5.0,
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "api access",
+        "basic workflows",
+        "custom branding",
+        "custom reporting",
+        "dynamic content",
+        "email scheduling",
+        "integrations",
+        "onboarding support"
+      ]
     },
     {
       "name": "Essentials",
@@ -41,20 +97,50 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 3.0,
+          "unit": null
+        },
+        {
           "metric": "contacts",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "monthly email sends",
-          "value": -1.0,
+          "metric": "marketing automation flows",
+          "value": 4.0,
+          "unit": "up to 4 flow steps"
+        },
+        {
+          "metric": "users/seats",
+          "value": 3.0,
           "unit": null
         }
       ],
       "features": [
-        "basic workflows",
-        "role permissions"
+        "email scheduling",
+        "integrations"
       ]
+    },
+    {
+      "name": "Pay As You Go",
+      "key": "payasyougo",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "email credits",
+          "value": -1.0,
+          "unit": "Pay per email credit as needed"
+        }
+      ],
+      "features": []
     },
     {
       "name": "Premium",
@@ -62,7 +148,7 @@
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
-      "is_custom_pricing": false,
+      "is_custom_pricing": true,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
@@ -74,54 +160,55 @@
           "unit": null
         },
         {
-          "metric": "monthly email sends",
+          "metric": "emails per month",
           "value": 150000.0,
+          "unit": "up to 150,000 emails each month"
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users/seats",
+          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
+        "api access",
+        "custom branding",
         "custom reporting",
+        "custom-coded templates",
         "dedicated account manager",
+        "dynamic content",
+        "email scheduling",
         "integrations",
         "onboarding support",
         "phone support",
-        "priority support",
-        "role permissions"
+        "priority support"
       ]
     },
     {
-      "name": "Standard",
-      "key": "standard",
+      "name": "SMS and MMS add-on",
+      "key": "smsandmmsaddon",
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
-      "is_addon": false,
+      "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
-          "metric": "contacts",
+          "metric": "sms messaging",
           "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends",
-          "value": -1.0,
-          "unit": null
+          "unit": "Purchased as credits, pricing varies"
         }
       ],
-      "features": [
-        "advanced workflows",
-        "ai assistant",
-        "custom reporting",
-        "integrations",
-        "onboarding support",
-        "role permissions"
-      ]
+      "features": []
     }
   ]
 }
