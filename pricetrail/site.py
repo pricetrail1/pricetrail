@@ -56,6 +56,27 @@ TAGLINE = "A permanent record of what software costs."
 # Paste an email signup form URL here (Buttondown, Beehiiv, Resend, anything
 # that gives you a hosted form) and a signup box appears site-wide. Until then
 # the site offers RSS instead, which needs no account and no backend.
+def signup_fields(url: str) -> tuple[str, bool]:
+    """Which field names this mailing service expects.
+
+    Services disagree, and the disagreement fails silently. Buttondown reads
+    an input called "email"; Kit reads "email_address". Post the wrong one and
+    the service accepts the request, finds no address, and stores nothing --
+    the reader sees a success page and is never subscribed. Nothing errors,
+    nothing logs, and you find out months later when the list is empty.
+
+    Returns the email field name, and whether a hidden "tag" input works.
+    Buttondown auto-creates tags from that input. Kit needs the tag defined in
+    its own UI first as a checkbox custom field, so a hidden input would be
+    ignored -- and an ignored tag is better than a broken form, which is why
+    it is dropped rather than guessed at.
+    """
+    host = (url or "").lower()
+    if "kit.com/forms" in host or "convertkit.com/forms" in host:
+        return "email_address", False
+    return "email", True
+
+
 def _signup_action(raw: str) -> str:
     """Accept a bare Buttondown username as well as a full form address.
 
@@ -433,11 +454,13 @@ def subscribe_block(prefix: str = "", compact: bool = False) -> str:
 
     # target="_blank" so the reader is never navigated away from the page they
     # came to read -- the mailing service confirms in its own tab.
+    email_field, _ = signup_fields(SIGNUP_URL)
     form = f"""
   <form class="signup" action="{esc(SIGNUP_URL)}" method="post"
         target="_blank" rel="noopener">
     <label class="vh" for="su-email{'-c' if compact else ''}">Email address</label>
-    <input id="su-email{'-c' if compact else ''}" type="email" name="email"
+    <input id="su-email{'-c' if compact else ''}" type="email"
+           name="{email_field}"
            required autocomplete="email" placeholder="you@company.com">
     <button type="submit">Email me price changes</button>
   </form>
@@ -625,8 +648,8 @@ def render_index(ctx: dict) -> str:
                 '</div>'
                 '<p class="find-empty" id="find-empty" hidden></p>'
                 '<div class="section-head"><h2>Every tracked price</h2>'
-                '<span class="aside">entry price = cheapest paid plan with a '
-                'published figure</span></div>')
+                '<span class="aside">prices are per month, as the vendor '
+                'publishes them</span></div>')
 
     for cat in sorted(by_cat):
         live = sorted(n for n in by_cat[cat] if storage.slugify(n) in records)
@@ -639,15 +662,15 @@ def render_index(ctx: dict) -> str:
   <div class="cat-block" data-block>
     <div class="cat-head">
       <h3><a href="c/{esc(storage.slugify(cat))}.html">{esc(title_case(cat))}</a></h3>
-      <span class="cat-meta">{len(live)} vendors &middot; median entry
+      <span class="cat-meta">{len(live)} vendors &middot; typical starting price
         <strong>{esc(money(cur, bench.get('median_entry')))}</strong>
         {mixed_currency_note(bench)}</span>
     </div>
     <div class="tbl-scroll"><table class="stack">
       <thead><tr>
-        <th data-sort="text">Vendor</th><th class="num">Entry</th>
-        <th class="num">Top listed</th><th data-sort="off">Free tier</th>
-        <th data-sort="off">Billing</th>
+        <th data-sort="text">Vendor</th><th class="num">Cheapest paid</th>
+        <th class="num">Dearest published</th>
+        <th data-sort="off">Free plan</th>
       </tr></thead><tbody>""")
 
         for name in live:
@@ -668,16 +691,36 @@ def render_index(ctx: dict) -> str:
             body.append(f"""
         <tr>
           <td data-l="Vendor"><a class="vlink"
-            href="v/{esc(storage.slugify(name))}.html">{esc(name)}</a></td>
-          <td class="num big" data-l="Entry">{entry_cell}</td>
-          <td class="num" data-l="Top listed">{top_cell}</td>
-          <td data-l="Free tier">{'Yes' if any(p['is_free'] for p in plans) else 'No'}</td>
-          <td data-l="Billing">{'Per seat' if any(p['is_per_seat'] for p in plans) else 'Flat'}</td>
+            href="v/{esc(storage.slugify(name))}.html">{esc(name)}</a>
+            <span class="how">{'per person' if any(p['is_per_seat'] for p in plans) else 'one price'}</span></td>
+          <td class="num big" data-l="Cheapest paid">{entry_cell}</td>
+          <td class="num" data-l="Dearest published">{top_cell}</td>
+          <td data-l="Free plan">{'Yes' if any(p['is_free'] for p in plans) else 'No'}</td>
         </tr>""")
         body.append("</tbody></table></div></div>")
     body.append("</section>")
 
-    # ---- changes: prominent only when there is something to show ----
+    # Every comparison page sat two clicks from the homepage, and Google was
+    # crawling depth 0-1 and stopping. 36 pages were linked from here, none of
+    # them comparisons -- and those 36 are almost exactly the set that got
+    # indexed while 56 waited.
+    #
+    # A crawler follows links from the page it visits most, which is this one.
+    # Listing the comparisons here moves all of them from two clicks to one.
+    # A dense link list rather than a table, because that is what it is -- and
+    # it is genuinely what a reader wants when they already know the two names
+    # they are weighing up.
+    pairs_here = comparison_pairs(ctx)
+    if pairs_here:
+        cmp_links = " ".join(
+            f'<a href="compare/{_pair_slug(a, b)}.html">{esc(a)} vs {esc(b)}</a>'
+            for a, b in pairs_here)
+        body.append(
+            f'<section class="section"><div class="section-head">'
+            f'<h2>Compare any two</h2>'
+            f'<span class="aside">{len(pairs_here)} side-by-side pages</span>'
+            f'</div><p class="all-links">{cmp_links}</p></section>')
+
     body.append(subscribe_block())
     body.append("</div>")
     return page(f"{SITE_NAME} \u2014 {TAGLINE}",
@@ -786,7 +829,7 @@ def _vendor_summary(name: str, record: dict, ctx: dict, category: str) -> str:
         line = (f"{esc(name)} starts at {esc(money(cur, entry))} a month on its "
                 f"cheapest paid plan")
         if seat:
-            line += ", per seat"
+            line += ", per person"
         if top and top != entry:
             line += f", rising to {esc(money(cur, top))} on the highest plan it publishes"
         out.append(line + ".")
@@ -874,6 +917,51 @@ def _vendor_summary(name: str, record: dict, ctx: dict, category: str) -> str:
             f'{"s" if paid != 1 else ""}</span></div>{body}</div>')
 
 
+def track_block(vendor: str, prefix: str = "") -> str:
+    """Track one tool, from that tool's own page.
+
+    Asking for an email on the homepage means asking a stranger to commit
+    before they know what the site is. Asking on a vendor page means asking
+    someone who has already found what they came for -- they searched
+    "intercom pricing", they are reading it, and the offer is about the exact
+    thing in front of them.
+
+    Buttondown reads hidden inputs named "tag" on an embedded form, and when a
+    returning subscriber submits again it APPENDS the new tag rather than
+    replacing what they already have. So a second tool later adds to the list
+    instead of wiping it.
+
+    One honest limitation, stated in the copy rather than hidden: a static
+    site cannot enforce a cap. Nothing here can tell whether the same person
+    has already tracked something else. The one-tool line sets the
+    expectation; enforcing it needs accounts, which need a server.
+    """
+    if not SIGNUP_URL:
+        return ""
+    tag = storage.slugify(vendor)
+    email_field, tags_work = signup_fields(SIGNUP_URL)
+    tag_input = (f'<input type="hidden" name="tag" value="{tag}">'
+                 f'<input type="hidden" name="embed" value="1">'
+                 if tags_work else "")
+    return f"""
+<div class="track">
+  <h2>Get told when {esc(vendor)} changes its prices</h2>
+  <p>We read {esc(vendor)}'s pricing page every day. Put your email in and
+    you'll hear the same week it moves \u2014 with the old figure, the new one
+    and the date. One tool is free.</p>
+  <form class="signup" action="{esc(SIGNUP_URL)}" method="post"
+        target="_blank" rel="noopener">
+    <label class="vh" for="track-{tag}">Email address</label>
+    <input id="track-{tag}" type="email" name="{email_field}" required
+           autocomplete="email" placeholder="you@company.com">
+    {tag_input}
+    <button type="submit">Track {esc(vendor)}</button>
+  </form>
+  <p class="signup-note">Only about {esc(vendor)}. Unsubscribe in one click.
+    Your address is never sold or shared.</p>
+</div>"""
+
+
 def render_vendor(slug: str, name: str, ctx: dict) -> str:
     record = ctx["records"][slug]
     cur = record.get("currency", "USD")
@@ -898,11 +986,11 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
         ) or "\u2014"
         row = f"""
       <tr>
-        <td class="plan-name">{esc(p['name'])}</td>
+        <td class="plan-name">{esc(p['name'])}
+          <span class="how">{'per person' if p['is_per_seat'] else 'one price'}</span></td>
         <td class="num" data-l="Monthly">{monthly}</td>
         <td class="num" data-l="Annual, per month">{money(cur, p['annual_price_per_month'])}</td>
-        <td data-l="Billing">{'Per seat' if p['is_per_seat'] else 'Flat'}</td>
-        <td data-l="Stated limits">{limits}</td>
+        <td data-l="What you get">{limits}</td>
       </tr>"""
         # Add-ons are sold on top of a plan, not instead of one. Listing them
         # in the same table made "Surveys" look like a tier sitting between
@@ -962,8 +1050,8 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
         alternative to them.{listed}</p>
       <div class="tbl-scroll"><table class="stack">
         <thead><tr><th>Add-on</th><th class="num">Monthly</th>
-          <th class="num">Annual, per month</th><th>Billing</th>
-          <th>Stated limits</th></tr></thead>
+          <th class="num">Annual, per month</th>
+          <th>What you get</th></tr></thead>
         <tbody>{''.join(addon_rows)}</tbody>
       </table></div>
     </div>"""
@@ -978,10 +1066,11 @@ def render_vendor(slug: str, name: str, ctx: dict) -> str:
       <span class="aside">{esc(title_case(category))}</span></div>
     {stale}
     {summary}
+    {track_block(name, '../')}
     <div class="tbl-scroll"><table class="stack">
       <thead><tr><th>Plan</th><th class="num">Monthly</th>
-        <th class="num">Annual, per month</th><th>Billing</th>
-        <th>Stated limits</th></tr></thead>
+        <th class="num">Annual, per month</th>
+        <th>What you get</th></tr></thead>
       <tbody>{''.join(rows)}</tbody>
     </table></div>
     {addon_block}
@@ -1058,10 +1147,10 @@ def render_category(cat: str, ctx: dict) -> str:
       <tr>
         <td class="plan-name"><a href="../v/{esc(storage.slugify(name))}.html">
           {esc(name)}</a></td>
-        <td class="num" data-l="Entry">{money(rec.get('currency', cur), entry)}</td>
-        <td class="num" data-l="Highest listed">{money(rec.get('currency', cur), top)}</td>
-        <td data-l="Free tier">{'Yes' if free else 'No'}</td>
-        <td data-l="Enterprise quote">{'Yes' if custom else 'No'}</td>
+        <td class="num" data-l="Cheapest paid">{money(rec.get('currency', cur), entry)}</td>
+        <td class="num" data-l="Dearest published">{money(rec.get('currency', cur), top)}</td>
+        <td data-l="Free plan">{'Yes' if free else 'No'}</td>
+        <td data-l="Price on request">{'Yes' if custom else 'No'}</td>
         <td class="num" data-l="Changes">{n_changes}</td>
       </tr>""")
 
@@ -1074,20 +1163,20 @@ def render_category(cat: str, ctx: dict) -> str:
       <span class="aside">{len(names)} vendors</span></div>
     <div class="grid grid-3" style="margin-bottom:1.5rem">
       <div class="cell"><span class="stat">{esc(money(cur, bench.get('median_entry')))}</span>
-        <p>Median entry price{mixed_currency_note(bench)}</p></div>
+        <p>Typical starting price{mixed_currency_note(bench)}</p></div>
       <div class="cell"><span class="stat">{bench.get('pct_free', 0):.0f}%</span>
         <p>Offer a free tier</p></div>
       <div class="cell"><span class="stat">{bench.get('pct_per_seat', 0):.0f}%</span>
         <p>Charge per seat</p></div>
     </div>
     <div class="tbl-scroll"><table class="stack">
-      <thead><tr><th>Vendor</th><th class="num">Entry</th>
-        <th class="num">Highest listed</th><th>Free tier</th>
-        <th>Enterprise quote</th><th class="num">Changes</th></tr></thead>
+      <thead><tr><th>Vendor</th><th class="num">Cheapest paid</th>
+        <th class="num">Dearest published</th><th>Free plan</th>
+        <th>Price on request</th><th class="num">Changes</th></tr></thead>
       <tbody>{''.join(rows)}</tbody>
     </table></div>
     <p class="provenance" style="margin-top:1.5rem">
-      Entry price is the cheapest paid plan with a published figure. Plans
+      The cheapest paid figure ignores free plans and anything sold on request. Plans
       priced only on application are excluded from the median, which is why
       these figures sit below what enterprise buyers actually pay.
     </p>
@@ -1096,7 +1185,7 @@ def render_category(cat: str, ctx: dict) -> str:
     return page(
         f"{title_case(cat)} software pricing compared \u2014 {SITE_NAME}",
         f"Compare pricing across {len(names)} {title_case(cat).lower()} tools. "
-        f"Median entry price {money(cur, bench.get('median_entry'))}.",
+        f"Typical starting price {money(cur, bench.get('median_entry'))}.",
         "".join(body), f"c/{storage.slugify(cat)}.html")
 
 
@@ -1149,7 +1238,7 @@ def _differences(a: str, b: str, ra: dict, rb: dict,
 
     if seat_a != seat_b:
         per, flat = (a, b) if seat_a else (b, a)
-        lines.append(f"{esc(per)} charges per seat and {esc(flat)} does not "
+        lines.append(f"{esc(per)} charges per person and {esc(flat)} does not "
                      f"\u2014 the gap between them widens with every person "
                      f"you add, so team size changes the answer.")
 
@@ -1202,17 +1291,17 @@ def _differences(a: str, b: str, ra: dict, rb: dict,
     dash = "\u2014"
     table = "".join([
         row("Cheapest paid plan", money(cur_a, ea), money(cur_b, eb)),
-        row("Highest listed plan", money(cur_a, ta), money(cur_b, tb)),
-        row("Free tier", "Yes" if free_a else "No",
+        row("Dearest published plan", money(cur_a, ta), money(cur_b, tb)),
+        row("Free plan", "Yes" if free_a else "No",
             "Yes" if free_b else "No"),
-        row("Billing", "Per seat" if seat_a else "Flat",
-            "Per seat" if seat_b else "Flat"),
+        row("Charged", "Per person" if seat_a else "One price",
+            "Per person" if seat_b else "One price"),
         row("Free trial",
             f"{trial_a} days" if trial_a else dash,
             f"{trial_b} days" if trial_b else dash),
         row("Plans published", str(len(_real_plans(ra))),
             str(len(_real_plans(rb)))),
-        row("Enterprise quote only",
+        row("Top plan is price-on-request",
             "Yes" if any(p["is_custom_pricing"] for p in _real_plans(ra)) else "No",
             "Yes" if any(p["is_custom_pricing"] for p in _real_plans(rb)) else "No"),
         row("Price changes recorded", str(changes_a), str(changes_b)),
@@ -1292,7 +1381,7 @@ def render_compare(a: str, b: str, ctx: dict) -> str:
                       (title_case(cat_name), f"c/{storage.slugify(cat_name)}.html"),
                       (f"{a} vs {b}", None)])}
   <div class="section-head"><h1>{esc(a)} vs {esc(b)}</h1>
-    <span class="aside">Entry: {esc(money(cur_a, ea))}
+    <span class="aside">Cheapest paid: {esc(money(cur_a, ea))}
       vs {esc(money(cur_b, eb))}</span></div>
   <p class="standfirst" style="margin-bottom:1.5rem">{verdict}</p>
 

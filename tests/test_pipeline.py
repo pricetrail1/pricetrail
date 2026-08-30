@@ -945,12 +945,12 @@ def test_comparison_pages_say_something():
     check("a huge gap is stated as a multiple, never as >100% cheaper",
           "\u00d7 as much" in prose and "% on the entry plan" not in prose)
     check("the free-tier difference is called out", "free tier" in prose)
-    check("the per-seat difference is called out", "per seat" in prose)
+    check("the per-person difference is called out", "per person" in prose)
     check("the longer trial is named", "longer to evaluate" in prose)
     check("features only one side lists are surfaced",
           "audit log" in prose and "sso" in prose)
     check("the table carries the comparable facts",
-          all(k in table for k in ("Free tier", "Billing", "Free trial",
+          all(k in table for k in ("Free plan", "Charged", "Free trial",
                                    "Plans published")))
 
     # A near-identical pair should say so rather than invent a winner.
@@ -2388,6 +2388,236 @@ def test_the_hero_leads_with_real_data():
         _sh.rmtree(tmp, ignore_errors=True)
 
 
+def test_the_site_avoids_jargon():
+    """A visitor arriving from a Google search has never seen this site and
+    should not need a glossary. "Median", "entry price", "top listed",
+    "per seat" and "stated limits" are all terms that mean something precise
+    to the person who wrote them and nothing to a first-time reader."""
+    print("\nPlain English")
+
+    import tempfile as _tf, shutil as _sh, yaml as _yaml
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"; storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"; storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"; storage.SPEND = tmp / "spend.json"
+        storage.SINCE.parent.mkdir(parents=True, exist_ok=True)
+        storage.write_atomic(storage.SINCE, "2026-05-12")
+        cfg = _yaml.safe_load(
+            (Path(sitemod.__file__).parent.parent / "vendors.yaml")
+            .read_text(encoding="utf-8"))
+        for i, v in enumerate(cfg["vendors"][:5]):
+            storage.save_plans(storage.slugify(v["name"]), {
+                "currency": "USD", "pricing_is_public": True,
+                "extraction_notes": "",
+                "plans": [{"name": "Pro", "key": "pro", "monthly_price": 20 + i,
+                           "annual_price_per_month": 16, "is_free": False,
+                           "is_custom_pricing": False, "is_per_seat": True,
+                           "is_addon": False, "trial_days": 14, "limits": [],
+                           "features": ["sso"]}]})
+        out = tmp / "site"
+        sitemod.build(out)
+        pages = list(out.rglob("*.html"))
+        blob = "\n".join(f.read_text(encoding="utf-8") for f in pages)
+
+        banned = {
+            "Top listed": "reads like a ranking; it means the dearest plan",
+            "Stated limits": "nobody says this out loud",
+            "Enterprise quote": "means price on request",
+            "Median entry": "median is a maths word",
+            ">Per seat<": "SaaS jargon for per person",
+            ">Flat<": "means one price for everyone",
+            ">Billing<": "vague; the column says how you are charged",
+        }
+        found = [f"{t} ({why})" for t, why in banned.items() if t in blob]
+        check("no jargon column headings survive", not found, "; ".join(found))
+
+        idx = (out / "index.html").read_text(encoding="utf-8")
+        # "Charged" is deliberately no longer a column: as the last cell in a
+        # row of prices, "one price" read as a price. It moved beside the
+        # vendor name instead.
+        check("how a vendor charges is not a money column",
+              ">Charged</th>" not in idx,
+              "it read like a price at the end of a price row")
+        check("but it is still stated, next to the name",
+              'class="how"' in idx)
+        for wanted in ("Cheapest paid", "Dearest published", "Free plan"):
+            check(f"the plain heading '{wanted}' is used", wanted in idx)
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
+def test_tracking_starts_on_the_vendor_page():
+    """Asking for an email on the homepage asks a stranger to commit before
+    they know what the site is. Asking on a vendor page asks someone who has
+    already found what they came for."""
+    print("\nTrack a single tool")
+
+    saved = sitemod.SIGNUP_URL
+    try:
+        sitemod.SIGNUP_URL = ""
+        check("nothing is offered when there is nowhere to send it",
+              sitemod.track_block("Zendesk") == "")
+
+        sitemod.SIGNUP_URL = "https://buttondown.com/api/emails/embed-subscribe/x"
+        b = sitemod.track_block("Zendesk")
+        check("the offer names the actual tool",
+              "Track Zendesk" in b and "when Zendesk changes" in b)
+        check("the vendor is sent as a tag",
+              'name="tag" value="zendesk"' in b)
+        check("Buttondown's embed flag is set",
+              'name="embed" value="1"' in b)
+        check("still one field for the reader to fill",
+              b.count('type="email"') == 1)
+        check("the field is labelled for screen readers", 'class="vh"' in b)
+        check("the one-tool limit is stated in the copy",
+              "One tool is free" in b)
+        check("the reader is not navigated away",
+              'target="_blank"' in b and 'rel="noopener"' in b)
+
+        # A vendor with an awkward name must still produce a usable tag.
+        odd = sitemod.track_block("Customer.io")
+        check("an awkward name still slugs cleanly",
+              'name="tag" value="customer-io"' in odd,
+              re.search(r'name="tag" value="([^"]*)"', odd).group(1))
+        check("and the name is escaped in the visible copy",
+              "<script" not in sitemod.track_block("<script>x</script>"))
+    finally:
+        sitemod.SIGNUP_URL = saved
+
+
+def test_every_page_is_one_click_from_the_homepage():
+    """Search Console showed 56 pages "Discovered - currently not indexed":
+    Google knew they existed and had not crawled them.
+
+    The homepage linked to 36 pages and not one was a comparison. All 38
+    comparisons sat two clicks away, and the ~31 pages that WERE indexed
+    matched the depth 0-1 set almost exactly. A crawler follows links from the
+    page it visits most; anything it has to take a second hop to reach waits.
+    """
+    print("\nCrawl depth from the homepage")
+
+    import tempfile as _tf, shutil as _sh, yaml as _yaml
+    from collections import deque, Counter
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"; storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"; storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"; storage.SPEND = tmp / "spend.json"
+        storage.SINCE.parent.mkdir(parents=True, exist_ok=True)
+        storage.write_atomic(storage.SINCE, "2026-05-12")
+        cfg = _yaml.safe_load(
+            (Path(sitemod.__file__).parent.parent / "vendors.yaml")
+            .read_text(encoding="utf-8"))
+        for i, v in enumerate(cfg["vendors"]):
+            storage.save_plans(storage.slugify(v["name"]), {
+                "currency": "USD", "pricing_is_public": True,
+                "extraction_notes": "",
+                "plans": [{"name": "Pro", "key": "pro", "monthly_price": 15 + i,
+                           "annual_price_per_month": 12, "is_free": False,
+                           "is_custom_pricing": False, "is_per_seat": True,
+                           "is_addon": False, "trial_days": 14, "limits": [],
+                           "features": ["sso"]}]})
+        out = tmp / "site"
+        sitemod.build(out)
+
+        def links(f: Path):
+            got = set()
+            for h in re.findall(r'href="([^"]+)"', f.read_text(encoding="utf-8")):
+                if h.startswith(("http", "#", "mailto")):
+                    continue
+                t = (f.parent / h.split("#")[0]).resolve()
+                if t.suffix == ".html" and t.exists():
+                    got.add(t)
+            return got
+
+        home = (out / "index.html").resolve()
+        depth = {home: 0}
+        q = deque([home])
+        while q:
+            cur = q.popleft()
+            for t in links(cur):
+                if t not in depth:
+                    depth[t] = depth[cur] + 1
+                    q.append(t)
+
+        pages = {f.resolve() for f in out.rglob("*.html")}
+        unreachable = [p.name for p in pages if p not in depth]
+        check("no page is unreachable from the homepage",
+              not unreachable, str(unreachable[:4]))
+
+        deep = [p.relative_to(out).as_posix() for p in pages
+                if depth.get(p, 99) > 1]
+        check("no page needs two hops to reach", not deep, str(deep[:5]))
+
+        comps = [p for p in pages if p.parent.name == "compare"]
+        check("the comparison pages were actually in this build",
+              len(comps) >= 5, f"{len(comps)}")
+        check("every comparison is linked from the homepage itself",
+              all(depth.get(p) == 1 for p in comps),
+              str(Counter(depth.get(p, 99) for p in comps)))
+
+        idx = (out / "index.html").read_text(encoding="utf-8")
+        check("there is a visible section for them",
+              "Compare any two" in idx)
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
+def test_the_signup_form_matches_the_service():
+    """Buttondown reads an input called "email"; Kit reads "email_address".
+
+    Post the wrong one and the service accepts the request, finds no address,
+    and stores nothing. The reader sees a success page and is never
+    subscribed. Nothing errors and nothing logs -- you find out months later
+    when the list is empty. This is the single most expensive silent failure
+    available here, so it gets a test.
+    """
+    print("\nSignup field names")
+
+    f = sitemod.signup_fields
+    check("Buttondown gets 'email'",
+          f("https://buttondown.com/api/emails/embed-subscribe/x") == ("email", True))
+    check("Kit gets 'email_address'",
+          f("https://app.kit.com/forms/2056450/subscriptions")[0] == "email_address")
+    check("the old convertkit domain is recognised too",
+          f("https://app.convertkit.com/forms/1/subscriptions")[0] == "email_address")
+    check("Kit does not get a hidden tag it would ignore",
+          f("https://app.kit.com/forms/1/subscriptions")[1] is False)
+    check("anything unknown defaults to the common shape",
+          f("https://example.com/subscribe") == ("email", True))
+    check("an empty setting does not crash", f("")[0] == "email")
+
+    saved = sitemod.SIGNUP_URL
+    try:
+        sitemod.SIGNUP_URL = "https://app.kit.com/forms/123/subscriptions"
+        b = sitemod.track_block("Zendesk")
+        check("a Kit form posts email_address", 'name="email_address"' in b)
+        check("and carries no tag input", 'name="tag"' not in b)
+        check("it is still exactly one field to fill",
+              b.count('type="email"') == 1)
+
+        sitemod.SIGNUP_URL = "https://buttondown.com/api/emails/embed-subscribe/x"
+        b2 = sitemod.track_block("Zendesk")
+        check("a Buttondown form posts email", 'name="email"' in b2)
+        check("and does carry the vendor tag",
+              'name="tag" value="zendesk"' in b2)
+    finally:
+        sitemod.SIGNUP_URL = saved
+
+
 if __name__ == "__main__":
     print("=" * 62)
     print("PriceTrail pipeline tests")
@@ -2426,6 +2656,7 @@ if __name__ == "__main__":
     test_no_section_appears_twice()
     test_sitemap_urls_match_their_canonical()
     test_no_page_is_a_dead_end()
+    test_every_page_is_one_click_from_the_homepage()
     test_vendor_pages_say_something()
     test_an_unreadable_page_cannot_erase_a_vendor()
     test_nothing_renders_as_a_code_name()
@@ -2438,6 +2669,9 @@ if __name__ == "__main__":
     test_a_vendor_with_no_readable_prices_says_so()
     test_the_account_menu_and_legal_pages()
     test_the_hero_leads_with_real_data()
+    test_the_site_avoids_jargon()
+    test_tracking_starts_on_the_vendor_page()
+    test_the_signup_form_matches_the_service()
     test_stale_prices_are_declared()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")

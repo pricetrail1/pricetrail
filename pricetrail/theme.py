@@ -26,13 +26,14 @@ percentage is monospace so columns align and digits are comparable at a glance.
 TOKENS = {
     "paper": "#FFFFFF",   # white. the page is a document, not a dashboard
     "panel": "#FFFFFF",
-    "ink": "#0A0A0A",     # neutral near-black, no blue cast
-    "muted": "#737373",
-    "rule": "#E4E4E4",
+    "ink": "#0F1E3D",     # deep navy. 16.5:1 on white, so body text is easy
+    "muted": "#5B6B82",   # blue-grey, same family as the ink
+    "rule": "#D3DCE8",
     "rise": "#C2261B",    # a price went up
     "fall": "#12693F",    # a price came down
-    "link": "#0A0A0A",    # links are ink; weight and underline carry them
+    "link": "#0F1E3D",    # links are ink; weight and underline carry them
     "act": "#1B4B8F",     # 8.6:1 on white. used ONLY on the signup button
+    "head": "#12657D",    # darker cyan, 6.6:1 on white. headlines only
 }
 
 CSS = """
@@ -45,14 +46,15 @@ ul, ol { list-style: none; }
 :root {
   --paper: #FFFFFF;
   --panel: #FFFFFF;
-  --ink: #0A0A0A;
-  --muted: #737373;
-  --rule: #E4E4E4;
-  --rule-soft: #EFEFEF;
+  --ink: #0F1E3D;
+  --muted: #5B6B82;
+  --rule: #D3DCE8;
+  --rule-soft: #E7ECF3;
   --rise: #C2261B;
   --fall: #12693F;
-  --link: #0A0A0A;
+  --link: #0F1E3D;
   --act: #1B4B8F;
+  --head: #12657D;
 
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -86,7 +88,7 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
 /* ---- masthead ---- */
 .masthead {
   border-bottom: 1px solid var(--ink);
-  background: #0A0A0A;
+  background: #0F1E3D;
   position: sticky; top: 0; z-index: 10;
 }
 .masthead .wrap {
@@ -102,7 +104,7 @@ a:hover { text-decoration: underline; text-underline-offset: 2px; }
 .masthead nav { display: flex; gap: 1.1rem; margin-left: auto; }
 .masthead nav a {
   font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em;
-  text-transform: uppercase; color: #8A8A8A;
+  text-transform: uppercase; color: #93A6C0;
 }
 .masthead nav a:hover { color: #FFFFFF; }
 .masthead .wordmark span { color: #FFFFFF; }
@@ -206,7 +208,7 @@ td {
   border-bottom: 1px solid var(--rule-soft); vertical-align: baseline;
 }
 tbody tr:last-child td { border-bottom: none; }
-tbody tr:hover td { background: #FAFAFA; }
+tbody tr:hover td { background: #F5F8FC; }
 td.num, th.num { font-family: var(--mono); text-align: right; padding-right: 0; }
 tr:last-child td { border-bottom: none; }
 .plan-name { font-weight: 600; }
@@ -496,7 +498,7 @@ CSS += """
 .masthead nav.primary { display: flex; gap: 1.4rem; margin-left: 0.5rem; }
 .masthead nav.primary a {
   font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em;
-  text-transform: uppercase; color: #8A8A8A;
+  text-transform: uppercase; color: #93A6C0;
 }
 .masthead nav.primary a:hover { color: #FFFFFF; }
 
@@ -509,13 +511,13 @@ CSS += """
 .acct .avatar {
   display: grid; place-items: center;
   width: 2rem; height: 2rem; border-radius: 50%;
-  background: #22262B; color: #9AA3AC;
-  border: 1px solid #33383E;
+  background: #1E3358; color: #A9BDD8;
+  border: 1px solid #2C4570;
   transition: background 0.12s ease, color 0.12s ease;
 }
 .acct .avatar svg { width: 1.05rem; height: 1.05rem; display: block; }
-.acct summary:hover .avatar { background: #2C3138; color: #FFFFFF; }
-.acct[open] .avatar { background: #FFFFFF; color: #0A0A0A; }
+.acct summary:hover .avatar { background: #27436F; color: #FFFFFF; }
+.acct[open] .avatar { background: #FFFFFF; color: #0F1E3D; }
 .acct summary:focus-visible { outline: 2px solid #FFFFFF; }
 
 .acct-menu {
@@ -523,13 +525,13 @@ CSS += """
   min-width: 15.5rem; padding: 0.5rem 0;
   background: var(--panel);
   border: 1px solid var(--ink);
-  box-shadow: 0 18px 40px -18px rgba(10,10,10,0.45);
+  box-shadow: 0 18px 40px -18px rgba(15,30,61,0.38);
 }
 .acct-menu a {
   display: block; padding: 0.44rem 1rem;
   font-size: 0.92rem; color: var(--ink);
 }
-.acct-menu a:hover { background: #F4F4F4; }
+.acct-menu a:hover { background: #F2F6FB; }
 .acct-head {
   padding: 0.55rem 1rem 0.3rem;
   font-family: var(--mono); font-size: 0.63rem; font-weight: 600;
@@ -573,4 +575,59 @@ CSS += """
 .proof-line .arrow { color: var(--muted); padding: 0 0.15em; }
 .proof-line .up { color: var(--rise); font-weight: 600; }
 .proof-line .down { color: var(--fall); font-weight: 600; }
+"""
+
+CSS += """
+/* How a vendor charges belongs with its name, not in the money columns.
+   As a column at the end of a row of prices, "one price" read as a price. */
+.how {
+  display: block; margin-top: 0.15rem;
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.04em;
+  color: var(--muted); font-weight: 400;
+}
+"""
+
+
+CSS += """
+/* ---- headline colour, and a signup that reads as one thing ---- */
+.hero h1 { color: var(--head); }
+
+/* The submit button was a pale block leaning against the field and could be
+   missed entirely. It now sits flush against the input as one control, with
+   a solid fill and enough weight to look pressable. */
+.signup { gap: 0; align-items: stretch; }
+.signup input {
+  border-right: none;
+  border-radius: 2px 0 0 2px;
+}
+.signup input:focus-visible {
+  outline: 2px solid var(--act); outline-offset: -2px; position: relative;
+  z-index: 1;
+}
+.signup button {
+  border-radius: 0 2px 2px 0;
+  padding: 0.8rem 1.6rem;
+  font-weight: 700; letter-spacing: 0.01em;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.18);
+}
+.signup button:hover { background: #16386B; border-color: #16386B; }
+.signup button:active { box-shadow: inset 0 2px 4px rgba(0,0,0,0.22); }
+@media (max-width: 40rem) {
+  .signup input { border-right: 1px solid var(--ink); border-radius: 2px; }
+  .signup button { border-radius: 2px; margin-top: 0.5rem; }
+}
+
+/* ---- track one tool, from its own page ---- */
+.track {
+  margin: 1.5rem 0; padding: 1.15rem 1.25rem;
+  background: var(--panel); border: 1px solid var(--rule);
+  border-left: 3px solid var(--act);
+}
+.track h2 {
+  font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
+}
+.track p { font-size: 0.88rem; color: var(--muted); max-width: 52ch; }
+.track .signup { margin-top: 0.85rem; }
+.track .signup-note { margin-top: 0.6rem; }
 """
