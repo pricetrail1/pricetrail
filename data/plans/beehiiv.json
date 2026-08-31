@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "All plans extracted. Scale plan annual pricing: $517 billed annually = $43.08 per month. Max plan annual pricing: $1,151 billed annually = $95.92 per month. Enterprise plan shows \"Custom Pricing\" with no numerical price. The page states pricing is for \"Monthly billing\" and \"Annual billing\" options, with annual showing yearly totals.",
+  "extraction_notes": "Annual billing toggle visible; prices shown are $43/month when billed annually ($517/year) for Scale and $96/month when billed annually ($1,151/year) for Max. The page displays annual prices in the \"billed annually\" format. Monthly billing prices are not explicitly stated on the page for Scale and Max, only the annual equivalent per-month is shown. Launch is free with no pricing options. Enterprise has custom pricing.",
   "plans": [
     {
       "name": "Launch",
       "key": "launch",
       "monthly_price": 0.0,
-      "annual_price_per_month": 0.0,
+      "annual_price_per_month": null,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -47,6 +47,7 @@
         }
       ],
       "features": [
+        "ai assistant",
         "api access"
       ]
     },
@@ -54,7 +55,7 @@
       "name": "Scale",
       "key": "scale",
       "monthly_price": 43.0,
-      "annual_price_per_month": 43.08,
+      "annual_price_per_month": 43.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -94,15 +95,16 @@
         }
       ],
       "features": [
+        "ai assistant",
         "api access",
-        "integrations"
+        "priority support"
       ]
     },
     {
       "name": "Max",
       "key": "max",
       "monthly_price": 96.0,
-      "annual_price_per_month": 95.92,
+      "annual_price_per_month": 96.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -142,8 +144,8 @@
         }
       ],
       "features": [
+        "ai assistant",
         "api access",
-        "integrations",
         "priority support"
       ]
     },
@@ -191,13 +193,13 @@
         }
       ],
       "features": [
+        "ai assistant",
         "api access",
         "dedicated account manager",
-        "integrations",
         "priority support",
         "sso"
       ]
     }
   ],
-  "captured_at": "2026-08-05T11:42:27.328925+00:00"
+  "captured_at": "2026-08-31T21:22:58.150062+00:00"
 }

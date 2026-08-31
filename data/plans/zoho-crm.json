@@ -1,7 +1,7 @@
 {
-  "currency": "INR",
+  "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows pricing in INR (₹). Both monthly and annual billing are mentioned as available options (\"Monthly\" and \"Annually\" tabs visible), but specific annual per-month prices are not displayed on this page - only monthly prices are shown. There are two product tiers shown: Zoho CRM and Bigin by Zoho CRM, with separate plan structures. The \"Free\" tier is also included. Some plans reference \"Everything in Standard +\" or \"Everything in Professional +\" which indicates feature stacking, but specific feature lists are provided for each plan.",
+  "extraction_notes": "Currency shown as INR (₹) on the page with prices in rupees. Converted to USD equivalent based on page context showing \"Zoho CRM Plus Starts at $20/user/month\". Only monthly prices are displayed for the main plans (Standard, Professional, Enterprise, Bigin Express); no annual pricing shown. Free plan supports up to 3 users. All paid plans are per-user/month pricing. Trial available for paid plans (indicated by \"FREE TRIAL\" buttons). The page shows INR prices but also references USD for Zoho CRM Plus; extracted figures are in the currency context of the page. Note: The page displays primarily INR pricing (₹800, ₹1400, ₹2400) for Standard, Professional, and Enterprise, with Bigin Express at ₹2400, and Zoho CRM Plus at $20/user/month. No annual billing option explicitly shown on this page.",
   "plans": [
     {
       "name": "Free",
@@ -23,102 +23,27 @@
       ],
       "features": [
         "api access",
-        "basic workflows"
-      ]
-    },
-    {
-      "name": "Enterprise (Zoho Desk)",
-      "key": "enterprisezohodesk",
-      "monthly_price": 420.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "blueprints per org",
-          "value": 100.0,
-          "unit": null
-        },
-        {
-          "metric": "brands",
-          "value": 1.0,
-          "unit": null
-        },
-        {
-          "metric": "customer service channels",
-          "value": 10.0,
-          "unit": null
-        },
-        {
-          "metric": "data storage",
-          "value": 10.0,
-          "unit": "GB"
-        },
-        {
-          "metric": "file storage",
-          "value": 5.0,
-          "unit": "GB"
-        },
-        {
-          "metric": "website visitors tracked per month",
-          "value": 200000.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "advanced workflows",
-        "ai chatbot",
-        "custom reporting",
-        "integrations"
-      ]
-    },
-    {
-      "name": "Starter (Zoho Desk)",
-      "key": "starterzohodesk",
-      "monthly_price": 420.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "chatbot sessions per month",
-          "value": 25000.0,
-          "unit": null
-        },
-        {
-          "metric": "crm marketplace extensions",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "customer support channels",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "website visitors per month",
-          "value": 50000.0,
-          "unit": null
-        },
-        {
-          "metric": "workflow rules",
-          "value": 2500.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "ai chatbot",
         "basic workflows",
-        "integrations"
+        "contact management",
+        "mobile apps",
+        "standard reports",
+        "tasks, meetings & calls",
+        "workflow automation"
       ]
+    },
+    {
+      "name": "Zoho CRM Plus",
+      "key": "zohocrmplus",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
     },
     {
       "name": "Standard",
@@ -133,10 +58,12 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "ai chatbot",
-        "basic workflows",
-        "integrations",
-        "reports"
+        "advanced workflows",
+        "calendar integration",
+        "custom modules",
+        "email integration",
+        "hipaa",
+        "integrations"
       ]
     },
     {
@@ -154,7 +81,9 @@
       "features": [
         "advanced workflows",
         "ai assistant",
+        "custom branding",
         "custom reporting",
+        "hipaa",
         "integrations"
       ]
     },
@@ -171,6 +100,8 @@
       "trial_days": null,
       "limits": [],
       "features": [
+        "basic workflows",
+        "custom branding",
         "integrations"
       ]
     },
@@ -188,32 +119,15 @@
       "limits": [],
       "features": [
         "advanced workflows",
-        "ai assistant",
+        "audit log",
+        "custom branding",
         "custom reporting",
+        "hipaa",
         "integrations",
-        "role permissions"
-      ]
-    },
-    {
-      "name": "Ultimate",
-      "key": "ultimate",
-      "monthly_price": 2600.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "advanced workflows",
-        "ai assistant",
-        "custom reporting",
-        "integrations",
-        "role permissions"
+        "role permissions",
+        "sandbox"
       ]
     }
   ],
-  "captured_at": "2026-08-10T10:43:00.853067+00:00"
+  "captured_at": "2026-08-31T21:23:01.370568+00:00"
 }

@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Hacker plan has 15-day free trial mentioned at top of page. Startups, Business, and Enterprise are billed annually (no monthly pricing shown). Prices are per agent/seat. Captain AI is an add-on priced at $20 per 1,000 credits. Dedicated account manager available for subscriptions with 20+ agents (Enterprise minimum). SSO/SAML labeled differently but both included in Enterprise plan.",
+  "extraction_notes": "Prices shown are per agent/month when billed annually. Hacker plan is free for up to 2 agents. Captain AI is an add-on priced at $20 per 1,000 credits. Free plans (Startups for open source/nonprofits) mentioned in FAQ but not as separate pricing tiers. 15-day free trial mentioned in header. Page shows only annual pricing; no monthly-only pricing is displayed.",
   "plans": [
     {
       "name": "Hacker",
@@ -13,7 +13,7 @@
       "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": 15,
+      "trial_days": null,
       "limits": [
         {
           "metric": "agents",
@@ -21,9 +21,9 @@
           "unit": null
         },
         {
-          "metric": "conversations",
+          "metric": "conversations per month",
           "value": 500.0,
-          "unit": "month"
+          "unit": null
         },
         {
           "metric": "data retention",
@@ -48,12 +48,7 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "captain ai credits",
-          "value": 500.0,
-          "unit": "month"
-        },
-        {
-          "metric": "conversations",
+          "metric": "conversations per month",
           "value": -1.0,
           "unit": null
         },
@@ -65,9 +60,10 @@
       ],
       "features": [
         "advanced workflows",
-        "api access",
+        "custom reporting",
         "integrations",
         "live chat",
+        "priority support",
         "sla policies",
         "whatsapp"
       ]
@@ -85,13 +81,14 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "credits",
-          "value": 1000.0,
+          "metric": "credits per 1000",
+          "value": 20.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant"
+        "ai assistant",
+        "ai chatbot"
       ]
     },
     {
@@ -103,16 +100,11 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": 20,
+      "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "captain ai credits",
-          "value": 800.0,
-          "unit": "month"
-        },
-        {
-          "metric": "conversations",
+          "metric": "conversations per month",
           "value": -1.0,
           "unit": null
         },
@@ -124,11 +116,12 @@
       ],
       "features": [
         "advanced workflows",
-        "api access",
         "audit log",
         "custom branding",
+        "custom reporting",
         "integrations",
         "live chat",
+        "priority support",
         "saml",
         "sla policies",
         "sso",
@@ -148,28 +141,24 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "captain ai credits",
-          "value": 300.0,
-          "unit": "month"
-        },
-        {
-          "metric": "conversations",
+          "metric": "conversations per month",
           "value": -1.0,
           "unit": null
         },
         {
           "metric": "data retention",
           "value": 1.0,
-          "unit": "year"
+          "unit": "years"
         }
       ],
       "features": [
-        "api access",
+        "custom reporting",
         "integrations",
         "live chat",
+        "priority support",
         "whatsapp"
       ]
     }
   ],
-  "captured_at": "2026-08-05T00:12:49.860886+00:00"
+  "captured_at": "2026-08-31T21:22:44.916416+00:00"
 }

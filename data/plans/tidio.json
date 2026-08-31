@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "The page shows a usage-based pricing model where customers select their billable conversation, Lyro AI conversation, and Flows visitor limits independently. Starter and Growth show \"Starts at\" pricing with minimum limits. Plus shows a base price of $300/mo plus monthly usage charges. Premium is custom pricing (Contact for pricing). Lyro AI Agent and Flows are add-on products sold separately. The annual pricing toggle on the page indicates \"(2 months free)\" but no explicit annual prices are shown in the plan cards - monthly prices are repeated in both toggle states. Starter shows annual_price_per_month of 24.17 and Growth 49.17 assuming the display is identical for both billing modes. Trial is 7 days for applicable plans.",
+  "extraction_notes": "Page shows a toggle for Monthly/Annually billing with \"2 months free\" promotion for annual billing. The prices displayed ($24.17, $49.17) appear to be monthly billing prices based on the standard presentation. Only monthly prices are recorded as the page does not clearly show separate annual pricing figures - it shows a promotional discount for annual but not the effective monthly rate. Prices at stated minimums extracted from plan cards. Plus plan shows \"Starts at $300/mo. + monthly usage\" indicating usage-based pricing on top. Premium plan is custom pricing only. Lyro AI Agent and Flows are standalone add-ons that can be purchased separately, marked is_addon: true. Free trial is 7 days for applicable paid plans. Seats listed as 10 for self-serve plans, custom for Plus/Premium.",
   "plans": [
     {
       "name": "Free",
@@ -18,12 +18,12 @@
         {
           "metric": "billable conversations",
           "value": 50.0,
-          "unit": "per month"
+          "unit": null
         },
         {
           "metric": "lyro ai conversations",
           "value": 50.0,
-          "unit": "per month"
+          "unit": null
         },
         {
           "metric": "seats",
@@ -33,12 +33,11 @@
         {
           "metric": "visitors reached via flows",
           "value": 100.0,
-          "unit": "per month"
+          "unit": null
         }
       ],
       "features": [
         "basic workflows",
-        "integrations",
         "live chat",
         "ticketing"
       ]
@@ -58,7 +57,7 @@
         {
           "metric": "visitors reached via flows",
           "value": 2000.0,
-          "unit": "per month"
+          "unit": null
         }
       ],
       "features": [
@@ -69,7 +68,7 @@
       "name": "Starter",
       "key": "starter",
       "monthly_price": 24.17,
-      "annual_price_per_month": 24.17,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -80,22 +79,16 @@
         {
           "metric": "billable conversations",
           "value": 100.0,
-          "unit": "per month"
+          "unit": null
         },
         {
-          "metric": "lyro ai conversations",
-          "value": 50.0,
-          "unit": "per month"
-        },
-        {
-          "metric": "visitors reached via flows",
-          "value": 100.0,
-          "unit": "per month"
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
         }
       ],
       "features": [
         "basic workflows",
-        "integrations",
         "live chat",
         "ticketing"
       ]
@@ -115,7 +108,7 @@
         {
           "metric": "lyro ai conversations",
           "value": 50.0,
-          "unit": "per month"
+          "unit": null
         }
       ],
       "features": [
@@ -126,7 +119,7 @@
       "name": "Growth",
       "key": "growth",
       "monthly_price": 49.17,
-      "annual_price_per_month": 49.17,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -136,16 +129,19 @@
       "limits": [
         {
           "metric": "billable conversations",
-          "value": 2000.0,
-          "unit": "per month"
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "basic workflows",
-        "integrations",
         "live chat",
-        "role permissions",
         "ticketing"
       ]
     },
@@ -164,22 +160,12 @@
         {
           "metric": "billable conversations",
           "value": -1.0,
-          "unit": "per month"
-        },
-        {
-          "metric": "lyro ai conversations",
-          "value": -1.0,
-          "unit": "per month"
+          "unit": null
         },
         {
           "metric": "seats",
           "value": -1.0,
           "unit": null
-        },
-        {
-          "metric": "visitors reached via flows",
-          "value": 100000.0,
-          "unit": "per month"
         }
       ],
       "features": [
@@ -187,11 +173,8 @@
         "api access",
         "basic workflows",
         "custom branding",
-        "custom reporting",
-        "integrations",
         "live chat",
         "priority support",
-        "role permissions",
         "ticketing"
       ]
     },
@@ -208,26 +191,27 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "billable conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "lyro ai conversations",
           "value": 3000.0,
-          "unit": "per month"
+          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
         "api access",
         "basic workflows",
         "custom branding",
-        "custom reporting",
-        "integrations",
         "live chat",
         "priority support",
-        "role permissions",
         "sso",
         "ticketing"
       ]
     }
   ],
-  "captured_at": "2026-08-05T00:12:29.055558+00:00"
+  "captured_at": "2026-08-31T21:22:43.705010+00:00"
 }

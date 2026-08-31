@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "The page shows \"Save 10% by paying yearly\" but does not display the actual annual prices anywhere. Comfort plan shows starting at $12/month and Power at starting at $25/month. The Free plan explicitly mentions 2,500 monthly emails and 2 user seats. Comfort shows 3 user seats and 50 active automations. Power shows unlimited monthly emails, unlimited user seats, and unlimited automations. Enterprise requires contacting sales with custom pricing for businesses over 200K subscribers. Trial is 14 days for all paid plans.",
+  "extraction_notes": "Page shows monthly pricing only (\"starting $12/month\" and \"starting $25/month\" for Comfort and Power). No annual pricing figures are displayed on the page. Free plan has 14-day trial of premium features. Comfort and Power plans offer 14-day trial. The page mentions a \"Billed yearly - Save 10%\" toggle exists but no specific annual pricing amounts are shown on this extraction. The extraction captures the visible monthly prices only.",
   "plans": [
     {
       "name": "Free",
@@ -16,8 +16,18 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "automations",
+          "value": 3.0,
+          "unit": null
+        },
+        {
           "metric": "monthly emails",
           "value": 2500.0,
+          "unit": null
+        },
+        {
+          "metric": "signup forms",
+          "value": 3.0,
           "unit": null
         },
         {
@@ -48,8 +58,13 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "active automations",
+          "metric": "automations",
           "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "signup forms",
+          "value": 10.0,
           "unit": null
         },
         {
@@ -59,7 +74,7 @@
         }
       ],
       "features": [
-        "ai assistant"
+        "basic workflows"
       ]
     },
     {
@@ -75,7 +90,7 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "active automations",
+          "metric": "automations",
           "value": -1.0,
           "unit": null
         },
@@ -91,8 +106,7 @@
         }
       ],
       "features": [
-        "api access",
-        "live chat"
+        "basic workflows"
       ]
     },
     {
@@ -110,7 +124,7 @@
         {
           "metric": "subscribers",
           "value": 200000.0,
-          "unit": "minimum"
+          "unit": null
         }
       ],
       "features": [
@@ -119,5 +133,5 @@
       ]
     }
   ],
-  "captured_at": "2026-08-05T08:43:40.598778+00:00"
+  "captured_at": "2026-08-31T21:22:57.295572+00:00"
 }

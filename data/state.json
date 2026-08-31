@@ -73,8 +73,8 @@
     "consecutive_failures": 0,
     "last_checked": "2026-08-31",
     "status": "ok",
-    "hash_changes": 31,
-    "hash": "36ba133534a95b452bc255c7bd62cf2d46b545809b487113c702c9f2e8ceb56c"
+    "hash_changes": 32,
+    "hash": "d90002ff5dbfac9859942e69b2009d3839b45378e7dbb771c9dd62625564a6e3"
   },
   "brevo": {
     "consecutive_failures": 0,
@@ -84,7 +84,7 @@
     "hash": "d00c23711ea19cd2058fde94da44680d1907dbce621aa22a0915c09d2011ec07"
   },
   "kit": {
-    "consecutive_failures": 29,
+    "consecutive_failures": 30,
     "last_checked": "2026-08-05",
     "status": "error",
     "hash_changes": 1,

@@ -1,13 +1,13 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "Page shows \"Sales Essentials\" and \"Sales Advanced\" labels with per-month pricing indicators but no actual numerical values visible for Starter, Standard, or Professional plans. Enterprise plan shows \"Custom price\" with no number. Free plan states \"From 5,000 emails per month\" for Starter but no explicit cap for Free plan listed. The page layout suggests pricing tiers but the actual prices are not displayed in the provided text. Adjusted features to match only those from the allowed list.",
+  "pricing_is_public": false,
+  "extraction_notes": "The page shows pricing toggle for Monthly/Yearly (-10%) but no actual numeric prices are visible in the provided HTML. All plan prices appear to be missing from this extract. Starter, Standard, and Professional show placeholder text \"per month\" without numbers. Professional is noted as \"per month/user\" indicating per-seat pricing. Enterprise shows \"Custom price\" and routes to sales. The Free plan shows \"Free forever, no credit card needed\". Unable to record actual pricing figures as they are not present in the page content provided.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": 0.0,
+      "annual_price_per_month": null,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -21,11 +21,7 @@
           "unit": null
         }
       ],
-      "features": [
-        "audit log",
-        "basic workflows",
-        "email & sms"
-      ]
+      "features": []
     },
     {
       "name": "Enterprise",
@@ -43,7 +39,6 @@
         "dedicated account manager",
         "onboarding support",
         "phone support",
-        "priority support",
         "saml",
         "sso"
       ]
@@ -73,9 +68,7 @@
       ],
       "features": [
         "advanced workflows",
-        "email & sms",
-        "phone support",
-        "priority support"
+        "phone support"
       ]
     },
     {
@@ -92,10 +85,7 @@
       "limits": [],
       "features": [
         "advanced workflows",
-        "basic reporting",
-        "basic workflows",
-        "email & sms",
-        "email support"
+        "basic workflows"
       ]
     },
     {
@@ -116,13 +106,8 @@
           "unit": null
         }
       ],
-      "features": [
-        "basic reporting",
-        "basic workflows",
-        "email & sms",
-        "email support"
-      ]
+      "features": []
     }
   ],
-  "captured_at": "2026-08-05T00:13:03.082760+00:00"
+  "captured_at": "2026-08-31T21:22:56.753103+00:00"
 }

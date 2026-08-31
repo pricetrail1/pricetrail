@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Essentials and Premium show explicit starting prices. Enterprise is custom pricing (contact sales). Feature table spans all tiers. Limits extracted from the main feature table and plan cards. Add-ons for additional profiles, emails, and AI credits are listed separately. Premium yearly billing shown at $1,000/month (annual), but monthly price not explicitly stated for Premium; extracted what is shown.",
+  "extraction_notes": "Premium plan shows \"$1,000 per month / billed yearly\", which is the annual per-month price. Essentials shows \"$100 per month / billed monthly\" indicating monthly billing. Enterprise is contact-sales with no pricing shown. Add-ons for additional profiles and emails are not included as separate plans but are listed in Usage + Billing section. Support packages are mentioned as available for Premium and Enterprise but specific tiers are not detailed on this page.",
   "plans": [
     {
       "name": "Essentials",
@@ -35,7 +35,8 @@
         "ai assistant",
         "basic data integrations",
         "basic workflows",
-        "email and community support"
+        "email support",
+        "live chat"
       ]
     },
     {
@@ -54,10 +55,10 @@
         "advanced workflows",
         "ai assistant",
         "audit log",
-        "custom reporting",
+        "custom branding",
         "dedicated account manager",
         "hipaa",
-        "integrations",
+        "onboarding support",
         "priority support"
       ]
     },
@@ -74,22 +75,32 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "object types",
           "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles (people + objects)",
+          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "ai assistant",
-        "audit log",
-        "custom reporting",
+        "custom branding",
+        "email support",
         "hipaa",
-        "integrations",
+        "live chat",
         "onboarding support",
-        "priority support"
+        "premium data integrations"
       ]
     }
   ],
-  "captured_at": "2026-08-05T00:13:35.302359+00:00"
+  "captured_at": "2026-08-31T21:22:58.580051+00:00"
 }

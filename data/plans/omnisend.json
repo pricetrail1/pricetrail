@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Annual pricing calculated from 30% discount on 3-month upfront payment shown on page (Standard: $11.20 → $33.60 for 3 months = $7.84/mo effective annual; Pro: $41.30 → $123.90 for 3 months = $28.91/mo effective annual). SMS is an add-on charged separately per SMS (starting at $0.007/SMS in US) and not included in core plan pricing. Account expert service available from $400/mo but presented as optional add-on. Custom plan for businesses with 150,001+ contacts shown as \"Let's talk\" / \"Request more info\".",
+  "extraction_notes": "Page shows promotional pricing: \"-30%\" discount with struck-through original prices displayed. The monthly prices recorded ($11.20 for Standard, $41.30 for Pro) appear to be the regular/standard prices (not discounted). Page also mentions a separate SMS pricing model starting at $0.007 per SMS. Only monthly billing periods are shown for Standard and Pro plans; no annual pricing options are visible. The page shows a \"Pay 3 months upfront (save 30%)\" offer but does not display the annual price per month equivalent. Custom plan is text-based with no specific pricing shown.",
   "plans": [
     {
       "name": "Free",
@@ -32,17 +32,14 @@
         }
       ],
       "features": [
-        "ai assistant",
-        "api access",
-        "onboarding support",
-        "priority support"
+        "api access"
       ]
     },
     {
       "name": "Standard",
       "key": "standard",
       "monthly_price": 11.2,
-      "annual_price_per_month": 7.84,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -67,17 +64,14 @@
         }
       ],
       "features": [
-        "ai assistant",
-        "api access",
-        "onboarding support",
-        "priority support"
+        "api access"
       ]
     },
     {
       "name": "Pro",
       "key": "pro",
       "monthly_price": 41.3,
-      "annual_price_per_month": 28.91,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -103,9 +97,7 @@
       ],
       "features": [
         "ai assistant",
-        "api access",
-        "onboarding support",
-        "priority support"
+        "api access"
       ]
     },
     {
@@ -138,11 +130,9 @@
       ],
       "features": [
         "ai assistant",
-        "api access",
-        "onboarding support",
-        "priority support"
+        "api access"
       ]
     }
   ],
-  "captured_at": "2026-08-05T00:13:43.188378+00:00"
+  "captured_at": "2026-08-31T21:22:59.419459+00:00"
 }

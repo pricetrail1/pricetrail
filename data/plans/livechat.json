@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "ChatBot.com is listed as an add-on integrated with LiveChat. Monthly billing price not shown for ChatBot.com. All core plans (Starter, Team, Business) are per-seat pricing. Enterprise plan pricing is custom/contact sales. Free 14-day trial mentioned at top of page applies to all plans.",
+  "extraction_notes": "Free 14-day trial mentioned for Starter plan. All three standard plans are per-seat pricing. Pricing shows both monthly and annual billing options. Monthly prices are $25, $59, $89 for Starter, Team, and Business respectively. Annual billed prices shown are $19, $49, $79 per person per month. ChatBot.com is an add-on shown at $52/mo billed annually with a free trial available. Enterprise plan requires contacting sales. Features listed on Enterprise plan card include: \"Single Sign-on (SSO)\", \"HIPAA Compliance\", and references to \"Alternative payment terms\", \"Professional services\", \"Service level agreements (SLAs)\", and \"Software engineer support\", \"White label chat widget\", \"Support from Product Expert\", \"Dedicated onboarding\". The page shows extensive feature comparison table but only key features clearly stated in plan cards are recorded per instructions.",
   "plans": [
     {
       "name": "Starter",
@@ -16,14 +16,14 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "chat history",
-          "value": 60.0,
-          "unit": "days"
-        },
-        {
-          "metric": "recurring campaigns",
+          "metric": "campaigns",
           "value": 1.0,
           "unit": null
+        },
+        {
+          "metric": "chat history retention",
+          "value": 60.0,
+          "unit": "days"
         },
         {
           "metric": "users",
@@ -38,6 +38,8 @@
       ],
       "features": [
         "ai assistant",
+        "custom branding",
+        "integrations",
         "live chat"
       ]
     },
@@ -59,7 +61,7 @@
           "unit": null
         },
         {
-          "metric": "chat history",
+          "metric": "chat history retention",
           "value": -1.0,
           "unit": null
         },
@@ -76,6 +78,8 @@
       ],
       "features": [
         "ai assistant",
+        "custom branding",
+        "integrations",
         "live chat"
       ]
     },
@@ -99,6 +103,8 @@
       ],
       "features": [
         "ai assistant",
+        "custom branding",
+        "integrations",
         "live chat",
         "sms",
         "whatsapp"
@@ -131,25 +137,23 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "visitors tracked",
-          "value": -1.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
         "ai assistant",
+        "api access",
         "audit log",
         "custom branding",
+        "dedicated account manager",
         "hipaa",
+        "integrations",
         "live chat",
+        "onboarding support",
+        "saml",
         "single sign-on",
         "sla policies",
-        "sms",
-        "whatsapp"
+        "sso"
       ]
     }
   ],
-  "captured_at": "2026-08-05T00:12:36.191285+00:00"
+  "captured_at": "2026-08-31T21:22:44.491996+00:00"
 }
