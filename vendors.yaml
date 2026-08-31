@@ -127,10 +127,14 @@ vendors:
     category: crm
     crawl_tier: weekly
 
-  - name: Freshsales
-    pricing_url: https://www.freshworks.com/crm/sales/pricing/
-    category: crm
-    crawl_tier: weekly
+  # Freshsales: parked Aug 2026. The page fetches fine but carries no readable
+  # prices -- same JS-rendered problem as Zoho Desk below. It failed every day
+  # for three weeks and never produced a single figure, so it is out until
+  # someone finds a URL that serves prices in the HTML. Un-comment to retry.
+  # - name: Freshsales
+  #   pricing_url: https://www.freshworks.com/crm/sales/pricing/
+  #   category: crm
+  #   crawl_tier: weekly
 
   - name: Attio
     pricing_url: https://attio.com/pricing

@@ -1711,14 +1711,14 @@ def test_an_unreadable_page_cannot_erase_a_vendor():
     check("it is flagged for a human, not swallowed",
           "extraction_lost_all_plans" in src)
 
-    guard = src.index("extraction_lost_all_plans")
-    save = src.index("changes = diff_pricing(name, baseline, extracted)")
-    check("the guard runs before the overwrite", guard < save)
-
-    # The guard must not block a vendor legitimately going quote-only, nor a
-    # genuine price change.
+    check("the guard runs before every overwrite",
+          all(src.index("extraction_lost_all_plans", 0, m) >= 0
+              for m in [src.index("changes = diff_pricing(name, baseline, extracted)")]))
     check("a first-ever reading is unaffected",
-          "if baseline is None:" in src and src.index("if baseline is None:") < guard)
+          "if baseline is None:" in src)
+    check("the forced path is protected too",
+          src.count("extraction_lost_all_plans") >= 3,
+          "normal path, unchanged path and forced path each need the guard")
 
     # And the site must still refuse to build a page from an empty record --
     # that half is correct, it is the overwrite that was wrong.
@@ -1922,9 +1922,15 @@ def test_the_whole_crawl_cycle():
                                         ("Enterprise", 99)], 1)
         ) + "<p>All prices in USD. Contact sales for enterprise.</p></body></html>"
 
+        def page_for(pro):
+            return page.replace("$49", f"${pro}")
+
+        state = {"page": page}
+
         class F:
             def __init__(s, *a, **k): pass
-            def get(s, url, **k): return FetchResult(url=url, status=200, html=page)
+            def get(s, url, **k):
+                return FetchResult(url=url, status=200, html=state["page"])
             def allowed(s, url, **k): return True
             def __enter__(s): return s
             def __exit__(s, *a): return False
@@ -1943,12 +1949,17 @@ def test_the_whole_crawl_cycle():
         runmod.Fetcher = F
         runmod.estimate_cost_usd = lambda *a, **k: 0.01
 
-        def crawl(pro, empty=False):
+        def crawl(pro, empty=False, force=False):
+            # NOT forced by default. The old version forced every run, which
+            # bypassed the content hash -- and that is precisely why it never
+            # noticed that held changes were never being confirmed.
+            state["page"] = page_for(pro)
             payload = ({"currency": "USD", "pricing_is_public": False,
                         "extraction_notes": "blocked", "plans": []}
                        if empty else plans(pro))
             runmod.extract_pricing = lambda *a, **k: _json.loads(_json.dumps(payload))
-            sys.argv = ["run", "--only", "Zendesk", "--budget", "1.0", "--force"]
+            sys.argv = ["run", "--only", "Zendesk", "--budget", "1.0"] + (
+                ["--force"] if force else [])
             buf = io.StringIO()
             try:
                 with contextlib.redirect_stdout(buf):
@@ -1959,8 +1970,9 @@ def test_the_whole_crawl_cycle():
 
         check("a first reading is captured as a baseline",
               "baseline captured" in crawl(49))
-        check("an identical page is dismissed as noise",
-              "pricing did not" in crawl(49))
+        out = crawl(49)
+        check("an identical page costs nothing to re-read",
+              "same" in out or "pricing did not" in out, out[-160:])
         check("a price rise waits for a second opinion",
               "waiting for a second" in crawl(55))
         out = crawl(55)
@@ -1981,10 +1993,10 @@ def test_the_whole_crawl_cycle():
                   or r.get("field") in ("monthly_price", "annual_price_per_month")
                   for r in rows))
 
-        crawl(0, empty=True)
-        out = crawl(0, empty=True)
-        check("an unreadable page twice running does NOT delete the vendor",
-              "read no plans twice" in out, out[-260:])
+        crawl(0, empty=True, force=True)
+        out = crawl(0, empty=True, force=True)
+        check("an unreadable page does NOT delete the vendor",
+              "no plans" in out and "keeping the" in out, out[-260:])
         rec = storage.load_plans("zendesk")
         check("the old figures are still on file",
               bool(rec and rec.get("plans")), "record was wiped")
@@ -2618,6 +2630,128 @@ def test_the_signup_form_matches_the_service():
         sitemod.SIGNUP_URL = saved
 
 
+def test_a_held_change_is_actually_published():
+    """The deadlock that stopped the entire product working.
+
+    The content hash is saved when a change is first seen. The next day the
+    page looks unchanged, so the crawler skips it -- and the reading held for
+    confirmation waits forever. On the live site 15 of 23 vendors were sat in
+    that queue, which is why the change log was empty after three weeks. The
+    crawler was finding price changes and burying every one.
+
+    An identical page IS the second reading: same bytes, so the same
+    extraction, so the held reading stands.
+    """
+    print("\nHeld changes get published")
+
+    import io, json as _json, contextlib, shutil as _sh, tempfile as _tf
+    from pricetrail import run as runmod
+    from pricetrail.fetch import FetchResult
+
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND)
+    real = (runmod.Fetcher, runmod.extract_pricing, runmod.estimate_cost_usd)
+    argv = sys.argv[:]
+    try:
+        storage.DATA = tmp
+        storage.SNAPSHOTS = tmp / "snapshots"; storage.PLANS = tmp / "plans"
+        storage.PENDING = tmp / "pending"; storage.CHANGES = tmp / "changes.jsonl"
+        storage.SINCE = tmp / "recording-since.txt"
+        storage.STATE = tmp / "state.json"; storage.SPEND = tmp / "spend.json"
+
+        def page(rows):
+            return "<html><body><h1>Pricing plans</h1>" + "".join(
+                f"<section><h2>{n}</h2><p>${p} per seat per month billed "
+                f"annually</p><p>Includes unlimited conversations, email "
+                f"support, reporting dashboards, integrations and a 14 day "
+                f"free trial. Compare plans for your team size.</p>"
+                f"<ul><li>Up to {i*10} seats</li><li>SSO</li></ul></section>"
+                for i, (n, p) in enumerate(rows, 1)) + "</body></html>"
+
+        state = {"html": page([("Essential", 39)])}
+
+        class F:
+            def __init__(s, *a, **k): pass
+            def get(s, url, **k):
+                return FetchResult(url=url, status=200, html=state["html"])
+            def allowed(s, url, **k): return True
+            def __enter__(s): return s
+            def __exit__(s, *a): return False
+
+        runmod.Fetcher = F
+        runmod.estimate_cost_usd = lambda *a, **k: 0.01
+
+        def plans(monthly):
+            return {"currency": "USD", "pricing_is_public": True,
+                    "extraction_notes": "",
+                    "plans": [{"name": "Essential", "key": "essential",
+                               "monthly_price": monthly,
+                               "annual_price_per_month": monthly - 10,
+                               "is_free": False, "is_custom_pricing": False,
+                               "is_per_seat": True, "is_addon": False,
+                               "trial_days": 14, "limits": [], "features": []}]}
+
+        def day(monthly, html=None, force=False):
+            if html:
+                state["html"] = html
+            runmod.extract_pricing = lambda *a, **k: _json.loads(
+                _json.dumps(plans(monthly)))
+            sys.argv = ["run", "--only", "Intercom", "--budget", "1.0"] + (
+                ["--force"] if force else [])
+            buf = io.StringIO()
+            try:
+                with contextlib.redirect_stdout(buf):
+                    runmod.main()
+            except SystemExit:
+                pass
+            return buf.getvalue()
+
+        def logged():
+            if not storage.CHANGES.exists():
+                return []
+            return [_json.loads(l) for l in
+                    storage.CHANGES.read_text(encoding="utf-8").splitlines()
+                    if l.strip()]
+
+        day(39)                                        # baseline
+        day(39)                                        # quiet day
+        out = day(49, html=page([("Essential", 49)]))  # a real rise
+        check("a rise is held for a second reading",
+              "waiting for a second" in out)
+        check("and nothing is published yet", not logged())
+
+        out = day(49)   # identical page the next day
+        check("an identical page confirms the held reading",
+              "PRICE" in out, out[-200:])
+        rows = logged()
+        check("the change reaches the log",
+              any(r["field"] == "monthly_price" and r["old_value"] == 39
+                  and r["new_value"] == 49 for r in rows), str(rows[:2]))
+        check("the stored record is updated too",
+              storage.load_plans("intercom")["plans"][0]["monthly_price"] == 49)
+
+        before = len(logged())
+        day(49)
+        check("a quiet day afterwards publishes nothing more",
+              len(logged()) == before)
+
+        # A forced re-read must still correct data WITHOUT inventing a rise.
+        out = day(59, force=True)
+        check("a forced re-read re-baselines in one run",
+              "re-baselined" in out, out[-160:])
+        check("and logs no change, because we corrected ourselves",
+              len(logged()) == before, f"{len(logged())} vs {before}")
+        check("while still fixing the stored figure",
+              storage.load_plans("intercom")["plans"][0]["monthly_price"] == 59)
+    finally:
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND) = saved
+        runmod.Fetcher, runmod.extract_pricing, runmod.estimate_cost_usd = real
+        sys.argv = argv
+        _sh.rmtree(tmp, ignore_errors=True)
+
+
 if __name__ == "__main__":
     print("=" * 62)
     print("PriceTrail pipeline tests")
@@ -2663,6 +2797,7 @@ if __name__ == "__main__":
     test_both_describers_cover_every_change_type()
     test_all_three_describers_stay_in_step()
     test_the_whole_crawl_cycle()
+    test_a_held_change_is_actually_published()
     test_the_build_is_deterministic()
     test_signup_setup_is_one_word()
     test_a_crossed_price_pair_is_never_published()

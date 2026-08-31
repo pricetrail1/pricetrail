@@ -246,6 +246,48 @@ link in every email and a plain statement of what you do with the address. The
 form already promises both, so make sure your service delivers them -- all the
 ones above do.
 
+## Adding a vendor
+
+One file, four lines, no code.
+
+1. On GitHub, open `vendors.yaml` and click the pencil icon.
+2. Add this at the end of the `vendors:` list, keeping the indentation:
+
+```
+  - name: Notion
+    pricing_url: https://www.notion.com/pricing
+    category: productivity
+    crawl_tier: weekly
+```
+
+3. `crawl_tier` is `daily` for the big names you care most about, `weekly` for
+   the rest. Weekly is the right default -- pricing pages change a few times a
+   year, not a few times a week.
+4. `category` groups it on the site. Reuse an existing one (`helpdesk`,
+   `email-marketing`, `crm`) or invent a new one; a new category page is
+   created automatically.
+5. Commit. The next crawl reads it, and the vendor page, its comparisons and
+   its category all appear on their own.
+
+**Pick a URL whose prices are in the page itself.** Some vendors load their
+figures with JavaScript after the page arrives -- the crawler sees an empty
+shell and reports "not a pricing page" every day forever. Zoho Desk and
+Freshsales are both parked at the bottom of `vendors.yaml` for exactly this.
+If a vendor fails for more than a few days running, that is usually why.
+
+**Removing one** is the same file: delete the four lines, or put a `#` in
+front of each to park it. Its recorded history stays in `data/` either way,
+so nothing is lost and un-parking it later picks up where it left off.
+
+## Re-reading every page
+
+The crawler skips extraction when a page has not changed, which keeps the cost
+near zero. The side effect is that a fix to the extraction prompt does NOT
+reach pages that have stayed still -- they keep the record they already had.
+
+After any change to how extraction works: **Actions > crawl > Run workflow >
+tick `force`**. That re-reads all pages regardless. It costs roughly 20p.
+
 ## Keeping the archive safe
 
 The data folder is the whole business. Everything else is re-runnable code.

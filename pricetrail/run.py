@@ -166,6 +166,44 @@ def run(dry_run: bool = False, only: list[str] | None = None,
         entry["status"] = "ok"
 
         if entry.get("hash") == new_hash and not force:
+            # An identical page IS the second reading.
+            #
+            # This was a deadlock, and it stopped the whole product working.
+            # The hash is saved when a change is first seen, so the next day
+            # the page looks unchanged and gets skipped -- and the reading
+            # held for confirmation waits forever. 15 of 23 vendors were sat
+            # in that queue, which is why nothing had ever reached the change
+            # log. The crawler was finding price changes and silently burying
+            # every one.
+            #
+            # A page whose bytes are identical to yesterday's would extract
+            # identically, so re-reading it would cost money to learn nothing.
+            # The held reading is confirmed here instead: same page, second
+            # day, so it stands.
+            pending = storage.load_pending(slug)
+            baseline = storage.load_plans(slug)
+            if pending is not None and baseline is not None:
+                if not pending.get("plans") and baseline.get("plans"):
+                    entry["status"] = "extraction_lost_all_plans"
+                    storage.clear_pending(slug)
+                    stats["kept_old"] = stats.get("kept_old", 0) + 1
+                    print(f"  KEEP  {name}: held reading had no plans at all "
+                          f"-- keeping the old figures, flagged for review")
+                    continue
+                confirmed = diff_pricing(name, baseline, pending)
+                storage.save_plans(slug, pending)
+                storage.clear_pending(slug)
+                publishable = [c for c in confirmed if c.publishable]
+                if publishable:
+                    storage.append_changes(publishable)
+                    stats["changes"] += len(publishable)
+                    for c in publishable:
+                        print(f"  PRICE {c.headline()}")
+                else:
+                    stats["noisy"] += 1
+                    print(f"  noise {name}: held reading confirmed, "
+                          f"nothing worth publishing")
+                continue
             stats["unchanged"] += 1
             print(f"  same  {name}")
             continue
@@ -253,6 +291,39 @@ def run(dry_run: bool = False, only: list[str] | None = None,
             print(f"  noise {name}: page changed, pricing did not")
             continue
 
+        # A forced run means the way we READ pages changed, not the prices.
+        # Every difference it turns up is us correcting ourselves, so logging
+        # them as price changes would be a lie: fixing Intercom's figures
+        # produced "price_increase 29 -> 39, +34.5%" when Intercom had not
+        # touched a thing. Across 23 vendors that is dozens of invented rises
+        # on the change log, in the hero panel and in the newsletter.
+        #
+        # This sits ABOVE the confirmation hold on purpose. Waiting for a
+        # second reading exists to catch a vendor's page wobbling; it has
+        # nothing to say about us correcting our own extraction, and making
+        # someone run a forced crawl twice to get their data fixed is just a
+        # trap.
+        if force:
+            # The same protection the normal path has: a forced re-read that
+            # comes back with no plans is an unreadable page, not a company
+            # that deleted its pricing. Without this, one bad forced run wipes
+            # a vendor off the site and 404s a URL Google had indexed.
+            if not extracted.get("plans") and baseline.get("plans"):
+                entry["status"] = "extraction_lost_all_plans"
+                storage.clear_pending(slug)
+                stats["kept_old"] = stats.get("kept_old", 0) + 1
+                print(f"  KEEP  {name}: forced re-read found no plans, but "
+                      f"{len(baseline['plans'])} were on record -- keeping the "
+                      f"old figures and flagging for review")
+                continue
+            storage.save_plans(slug, extracted)
+            storage.clear_pending(slug)
+            entry["status"] = "ok"
+            stats["rebaselined"] = stats.get("rebaselined", 0) + 1
+            print(f"  RESET {name}: re-read and re-baselined "
+                  f"({len(extracted['plans'])} plans, no change logged)")
+            continue
+
         pending = storage.load_pending(slug)
         if pending is None or fingerprint(pending) != now_print:
             storage.save_pending(slug, extracted)
@@ -330,6 +401,10 @@ def run(dry_run: bool = False, only: list[str] | None = None,
     print(f"changes published {stats['changes']} | "
           f"awaiting confirmation {stats['awaiting']} | "
           f"queued for review {stats['queued']} | failed {stats['failed']}")
+    if stats.get("rebaselined"):
+        print(f"re-baselined {stats['rebaselined']} vendor(s) from a forced "
+              f"re-read. No changes were logged: a forced run corrects how we "
+              f"read pages, it does not mean prices moved.")
     if stats.get("kept_old"):
         print(f"kept old figures for {stats['kept_old']} vendor(s) whose page "
               f"could not be read -- see the status page")
