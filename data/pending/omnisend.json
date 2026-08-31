@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Only monthly pricing shown for Standard and Pro plans (displayed as \"Billed monthly\" on page). A 30% discount is shown for 3-month upfront payment, but this is promotional and not the standard price. SMS is priced separately as an add-on starting at $0.007/SMS and is not included in base plan pricing. The page shows multiple SMS credit tiers as add-ons but these are usage-based extras, not subscription plans. Account expert is available from $400/month but is a separate feature, not a plan tier.",
+  "extraction_notes": "Page shows promotional pricing: \"-30%\" discount with struck-through original prices displayed. The monthly prices recorded ($11.20 for Standard, $41.30 for Pro) appear to be the regular/standard prices (not discounted). Page also mentions a separate SMS pricing model starting at $0.007 per SMS. Only monthly billing periods are shown for Standard and Pro plans; no annual pricing options are visible. The page shows a \"Pay 3 months upfront (save 30%)\" offer but does not display the annual price per month equivalent. Custom plan is text-based with no specific pricing shown.",
   "plans": [
     {
       "name": "Free",
@@ -32,7 +32,7 @@
         }
       ],
       "features": [
-        "ai assistant"
+        "api access"
       ]
     },
     {
@@ -56,10 +56,15 @@
           "metric": "monthly emails",
           "value": 6000.0,
           "unit": null
+        },
+        {
+          "metric": "web push notifications",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
-        "ai assistant"
+        "api access"
       ]
     },
     {
@@ -83,10 +88,16 @@
           "metric": "monthly emails",
           "value": -1.0,
           "unit": null
+        },
+        {
+          "metric": "web push notifications",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
-        "ai assistant"
+        "ai assistant",
+        "api access"
       ]
     },
     {
@@ -110,10 +121,16 @@
           "metric": "monthly emails",
           "value": -1.0,
           "unit": null
+        },
+        {
+          "metric": "web push notifications",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
-        "ai assistant"
+        "ai assistant",
+        "api access"
       ]
     }
   ]
