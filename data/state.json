@@ -1,35 +1,35 @@
 {
   "intercom": {
     "consecutive_failures": 0,
-    "last_checked": "2026-08-31",
+    "last_checked": "2026-09-01",
     "status": "ok",
     "hash_changes": 11,
     "hash": "33928290f3ee625a8ae16aaf104ed3363a5c5ae8c016d03bc310501c02670166"
   },
   "zendesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-08-31",
+    "last_checked": "2026-09-01",
     "status": "ok",
-    "hash_changes": 2,
-    "hash": "a362a6bf74a2f15716790abe6132163484c3759b615d8340ab127e4162891f49"
+    "hash_changes": 3,
+    "hash": "d5de7cebf468c9414905a06358632c32a10ca1ddababd2628016b74ae55f86d6"
   },
   "freshdesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-08-31",
+    "last_checked": "2026-09-01",
     "status": "ok",
     "hash_changes": 3,
     "hash": "df0ce9825efaed658c39e5b9d0b5aa4c838aa0db3ef4e21fa6ac31585e1e6321"
   },
   "help-scout": {
     "consecutive_failures": 0,
-    "last_checked": "2026-08-31",
+    "last_checked": "2026-09-01",
     "status": "ok",
     "hash_changes": 1,
     "hash": "4f11dad0526f7df5bd2542ba4af921e11ff23ed733a04e72c2f1c9d347bf4c9a"
   },
   "front": {
     "consecutive_failures": 0,
-    "last_checked": "2026-08-31",
+    "last_checked": "2026-09-01",
     "status": "ok",
     "hash_changes": 4,
     "hash": "bda527cb766c685a54a2da57384641185c5961857eb996cfa472b153e8dda312"
@@ -71,14 +71,14 @@
   },
   "mailchimp": {
     "consecutive_failures": 0,
-    "last_checked": "2026-08-31",
+    "last_checked": "2026-09-01",
     "status": "ok",
-    "hash_changes": 32,
-    "hash": "d90002ff5dbfac9859942e69b2009d3839b45378e7dbb771c9dd62625564a6e3"
+    "hash_changes": 33,
+    "hash": "36ba133534a95b452bc255c7bd62cf2d46b545809b487113c702c9f2e8ceb56c"
   },
   "brevo": {
     "consecutive_failures": 0,
-    "last_checked": "2026-08-31",
+    "last_checked": "2026-09-01",
     "status": "ok",
     "hash_changes": 11,
     "hash": "d00c23711ea19cd2058fde94da44680d1907dbce621aa22a0915c09d2011ec07"
@@ -121,14 +121,14 @@
   },
   "pipedrive": {
     "consecutive_failures": 0,
-    "last_checked": "2026-08-31",
+    "last_checked": "2026-09-01",
     "status": "ok",
     "hash_changes": 1,
     "hash": "47bc7e29838cc2ed95d164443c7d5ccda89d1199d8588d8aa4123b5c1700d9c1"
   },
   "close": {
     "consecutive_failures": 0,
-    "last_checked": "2026-08-31",
+    "last_checked": "2026-09-01",
     "status": "ok",
     "hash_changes": 1,
     "hash": "31c9822fe86f3104c41f9697916dc7487a6c62318ac89b49281875e818884b0d"

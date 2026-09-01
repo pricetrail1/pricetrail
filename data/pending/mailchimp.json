@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Pricing page shows no numerical prices. All plan cards display placeholder text like \"Then, starts at [blank] per month\" and \"Save 15% on 10,000+ contacts per month for 12 months\" without actual dollar amounts filled in. The page contains a currency selector dropdown (AUD, BRL, CAD, CHF, DKK, EUR, GBP, HKD, INR, JPY, MXN, NZD, SEK, SGD, USD, ZAR) but no prices are visible for any tier. Premium, Standard, and Essentials all route to \"Contact sales\" or \"Buy Now\" without showing specific monthly or annual prices. The Free plan clearly states $0/month and 250 contact limit. Standard and Essentials offer 14-day free trials. A 15% promotional discount for 10,000+ contacts on first 12 months is mentioned but the base price before discount is not shown. Pay As You Go email credits are mentioned as an alternative offering but no pricing structure is provided on this page.",
+  "pricing_is_public": true,
+  "extraction_notes": "The page displays a currency selector with multiple options (USD, GBP, EUR, etc.). Pricing is shown in USD context. For Essentials and Standard plans, exact monthly pricing is not fully visible in the provided text—only \"starts at $20/month\" for Standard with a 14-day free trial, and Essentials appears to be free for 14 days then starts at some price not explicitly stated in readable form. Premium shows discounted pricing (\"Save 15% on 10,000+ contacts per month for 12 months\") but no base price is visible—this is marked as custom pricing/contact sales. The page indicates \"15% off\" is a promotional offer and notes \"Then, starts at per month\" without the actual figure for several plans. Contact limits vary by tier (0-500, 501-1,500, etc.), but specific pricing per tier is not fully legible in the extracted text. Features are derived from the comparison table shown. Overages apply if limits are exceeded. Annual plans are mentioned as available but pricing is not shown; contact sales is required.",
   "plans": [
     {
       "name": "Free",
@@ -26,8 +26,49 @@
           "unit": null
         }
       ],
+      "features": []
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
       "features": [
-        "basic workflows"
+        "advanced workflows",
+        "audit log",
+        "basic workflows",
+        "custom branding",
+        "custom reporting",
+        "integrations",
+        "onboarding support"
       ]
     },
     {
@@ -53,28 +94,20 @@
           "unit": null
         },
         {
-          "metric": "marketing automation flows",
-          "value": 4.0,
-          "unit": null
-        },
-        {
           "metric": "monthly email sends",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "roles",
-          "value": 2.0,
-          "unit": null
-        },
-        {
-          "metric": "seats",
+          "metric": "users",
           "value": 3.0,
           "unit": null
         }
       ],
       "features": [
-        "basic workflows"
+        "basic workflows",
+        "custom branding",
+        "integrations"
       ]
     },
     {
@@ -83,7 +116,7 @@
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
-      "is_custom_pricing": false,
+      "is_custom_pricing": true,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
@@ -98,16 +131,11 @@
           "metric": "monthly email sends",
           "value": 150000.0,
           "unit": null
-        },
-        {
-          "metric": "seats",
-          "value": -1.0,
-          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
+        "audit log",
         "custom branding",
         "custom reporting",
         "dedicated account manager",
@@ -115,58 +143,6 @@
         "onboarding support",
         "phone support",
         "priority support"
-      ]
-    },
-    {
-      "name": "Standard",
-      "key": "standard",
-      "monthly_price": null,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "marketing automation flows",
-          "value": 200.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "roles",
-          "value": 4.0,
-          "unit": null
-        },
-        {
-          "metric": "seats",
-          "value": 5.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "advanced workflows",
-        "ai assistant",
-        "custom branding",
-        "custom reporting",
-        "integrations",
-        "onboarding support"
       ]
     }
   ]
