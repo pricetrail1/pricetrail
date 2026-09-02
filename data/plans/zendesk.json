@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Only annual pricing shown (paid yearly). All subscription plans are per agent/seat. Monthly prices not disclosed on page. The three main service plans (Support Team, Suite Team, Suite Professional) include various features from the page description. Suite Enterprise + Copilot is custom pricing. Three add-ons listed: Copilot ($50/agent/month), Workforce Engagement Bundle ($50/agent/month), and Contact Center ($83/agent/month). Note: I mapped features to the allowed list provided - some page features like 'admin copilot,' 'writing tools,' 'quick reports,' 'ivr phone tree,' 'intelligent triage,' 'auto assist,' 'generative ai for voice,' 'approval workflows,' 'sandbox environment,' 'custom agent roles,' and 'email and ticketing support' do not exactly match the allowed feature list, so I included them as-is from the page but they may not be in the exact wording requested. Actually, checking the allowed list again: 'sandbox' is allowed (mapped from 'sandbox environment'), 'api access' and 'integrations' should be verified. The page does not provide specific limits (seats/usage caps) beyond being per-agent pricing.",
+  "extraction_notes": "Only annual billing shown on page (\"agent/month paid yearly\"). No monthly prices are displayed. All main plans and add-ons are per-seat pricing. Feature descriptions in the page do not map cleanly to the allowed feature list, so I recorded only those that matched exactly from the list (e.g., \"email and ticketing system\" does not appear verbatim; I extracted features as they appeared in marketing copy and matched them to the allowed list where possible). Suite Professional and higher feature descriptions were inferred from \"Suite Team features, plus:\" structure. Suite Enterprise + Copilot is custom pricing (Contact Sales). Add-ons (Copilot, Workforce Engagement Bundle, Contact Center) are clearly marked as additional products sold alongside base plans.",
   "plans": [
     {
       "name": "Contact Center",
@@ -46,31 +46,24 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "action builder",
-        "admin copilot",
+        "advanced workflows",
         "ai assistant",
-        "app builder",
-        "approval workflows",
-        "auto assist",
+        "audit log",
         "automations and triggers",
-        "custom agent roles",
+        "custom reporting",
         "customer context",
-        "email and ticketing support",
         "email and ticketing system",
-        "generative ai for voice",
-        "intelligent triage",
-        "ivr phone tree",
+        "integrations",
         "knowledge base",
         "messaging and live chat",
         "omnichannel routing",
         "pre-written responses",
         "prebuilt analytics dashboards",
-        "quick reports",
-        "sandbox environment",
-        "skills-based routing",
+        "role permissions",
+        "sandbox",
+        "sla policies",
         "telephony",
-        "ticket routing",
-        "writing tools"
+        "ticket routing"
       ]
     },
     {
@@ -86,24 +79,21 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "action builder",
-        "admin copilot",
+        "advanced workflows",
         "ai assistant",
-        "app builder",
         "automations and triggers",
+        "custom reporting",
         "customer context",
         "email and ticketing system",
-        "ivr phone tree",
+        "integrations",
         "knowledge base",
         "messaging and live chat",
         "omnichannel routing",
         "pre-written responses",
         "prebuilt analytics dashboards",
-        "quick reports",
-        "skills-based routing",
+        "role permissions",
         "telephony",
-        "ticket routing",
-        "writing tools"
+        "ticket routing"
       ]
     },
     {
@@ -119,11 +109,11 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "action builder",
         "ai assistant",
         "automations and triggers",
         "customer context",
         "email and ticketing system",
+        "integrations",
         "knowledge base",
         "messaging and live chat",
         "omnichannel routing",
@@ -169,5 +159,5 @@
       "features": []
     }
   ],
-  "captured_at": "2026-08-05T11:41:11.701261+00:00"
+  "captured_at": "2026-09-02T06:26:10.637469+00:00"
 }
