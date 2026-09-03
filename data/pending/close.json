@@ -1,0 +1,189 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows both monthly and annual billing. Annual prices are marked \"SAVE UP TO 50%\" and are the discounted standard prices. All plans are per-seat pricing. The page explicitly states \"14 Days\" free trial available.",
+  "plans": [
+    {
+      "name": "Solo",
+      "key": "solo",
+      "monthly_price": 19.0,
+      "annual_price_per_month": 9.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per user per month",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "custom activity instances per month",
+          "value": 50000.0,
+          "unit": null
+        },
+        {
+          "metric": "custom fields",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": 10000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 49.0,
+      "annual_price_per_month": 35.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per user per month",
+          "value": 1000.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts and leads",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "custom activities",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "custom fields",
+          "value": 250.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Additional organizations",
+      "key": "additionalorganizations",
+      "monthly_price": 50.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Call Assistant",
+      "key": "callassistant",
+      "monthly_price": 50.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": 109.0,
+      "annual_price_per_month": 99.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per user per month",
+          "value": 1500.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts and leads",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "custom activities",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "custom fields",
+          "value": 250.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Scale",
+      "key": "scale",
+      "monthly_price": 149.0,
+      "annual_price_per_month": 139.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per user per month",
+          "value": 2000.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts and leads",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "custom activities",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "custom fields",
+          "value": 250.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "integrations",
+        "role permissions"
+      ]
+    }
+  ]
+}
