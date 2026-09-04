@@ -25,3 +25,5 @@
 {"vendor": "Nutshell", "change_type": "plan_removed", "plan": "Quotes & Invoices", "field": null, "old_value": 79.0, "new_value": null, "confidence": 0.8, "detected_at": "2026-08-31T21:23:03.028855+00:00", "note": ""}
 {"vendor": "Nutshell", "change_type": "plan_removed", "plan": "Email Marketing", "field": null, "old_value": 5.0, "new_value": null, "confidence": 0.8, "detected_at": "2026-08-31T21:23:03.028857+00:00", "note": ""}
 {"vendor": "Mailchimp", "change_type": "pricing_hidden", "plan": null, "field": null, "old_value": true, "new_value": false, "confidence": 0.8, "detected_at": "2026-09-03T06:22:50.908153+00:00", "note": "page no longer shows any public prices"}
+{"vendor": "Close", "change_type": "plan_added", "plan": "Additional organizations", "field": null, "old_value": null, "new_value": 50.0, "confidence": 0.8, "detected_at": "2026-09-04T06:21:33.021413+00:00", "note": ""}
+{"vendor": "Close", "change_type": "plan_added", "plan": "Call Assistant", "field": null, "old_value": null, "new_value": 50.0, "confidence": 0.8, "detected_at": "2026-09-04T06:21:33.021428+00:00", "note": ""}

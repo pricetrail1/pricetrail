@@ -1,0 +1,461 @@
+IT service
+Customer service
+CRM
+Plans for
+Freshdesk
+Save 20%
+Annually
+Monthly
+$19
+/agent/month, billed annually
+Launch AI-powered service over email
+Growth
+Best suits teams that want:
+Freddy AI Agent (first 500 sessions included)
+Ticketing & shared inbox
+Customer portal & knowledge base
+Out-of-the-box analytics & reporting
+Threads & tasks
+Roles & permissions
+Available add-ons
+Additional AI Agent sessions
+$49
+/100 sessions
+Day passes at
+$2
+/pass
+Connector app tasks at
+$80
+/5000 tasks
+Try it free
+$55
+/agent/month, billed annually
+Scale AI-powered service across your business
+Pro
+Most popular
+Access to more AI and helpdesk features:
+Freddy AI Agent (first 500 sessions included)
+Multilingual helpdesk
+Custom dashboards & reporting
+Intelligent routing
+Multiple SLA policies
+External collaborators
+Available add-ons
+Freddy AI Copilot
+$29
+/agent/month
+Additional AI Agent sessions
+$49
+/100 sessions
+Day passes at
+$7
+/pass
+Connector app tasks at
+$80
+/5000 tasks
+Try it free
+$89
+/agent/month, billed annually
+Deliver enterprise-grade, AI-powered service
+Enterprise
+Access to all AI and helpdesk features:
+Freddy AI Agent (first 500 sessions included)
+Freddy AI Insights
+Skill-based routing
+Sandbox
+Audit logs
+Allowed domains & IP whitelisting
+Available add-ons
+Freddy AI Copilot
+$29
+/agent/month
+Additional AI Agent sessions
+$49
+/100 sessions
+Day passes at
+$12
+/pass
+Connector app tasks at
+$80
+/5000 tasks
+Try it free
+Trusted by <COUNT> Businesses Worldwide
+View all features
+Compare features
+Growth
+$19 /agent/month, billed annually
+Try it free
+Pro
+$55 /agent/month, billed annually
+Try it free
+Enterprise
+$89 /agent/month, billed annually
+Try it free
+Help Desk and Ticketing
+Ticketing
+Handle customer escalations with our award-winning ticketing system that enables intelligent prioritization, assignment, and tracking of tickets.
+✓
+Shared inbox
+Boost team collaboration and simplify communications with a shared inbox for your support team to collaborate and respond to incoming emails.
+✓
+Threads and tasks
+Drive collaboration by enabling internal conversation threads related to a customer ticket without polluting the main conversation. Create tasks that are linked to a ticket so everyone understands what needs to get done.
+✓
+Customer portal
+Create a place for customers to submit tickets and self-serve information, powered by a robust knowledge base.
+✓
+Multilingual Help Desk
+Configure your helpdesk to work in multiple languages, so you can provide support in the languages your customers and agents speak.
+✓
+Collaborators
+Invite external agents and third parties to help your full-time support agents resolve complex customer issues.
+5,000 collaborators included
+Freddy AI Agent
+AI Agent Studio
+All-in-one hub to build, test, deploy, and monitor AI Agents.
+✓
+Email AI Agent
+Email AI Agent that engages in back-and-forth replies, responds with the right resolution, and captures feedback.
+✓
+Improve performance
+Get actionable guidance to continuously improve AI resolutions.
+✓
+*
+First 500 sessions included.
+$49
+per 100 sessions
+Freddy AI Copilot
+Sentiment analysis
+Get a prioritized list of conversations based on customer sentiment to respond with empathy and avoid escalations.
+✓
+Response assistant
+Draft clear, on-brand replies so agents never have to start from scratch. Includes generating text, quality coach, suggesting replies, enhancing tone, and more.
+✓
+Live translation
+Translate customer conversations and your responses in real-time, in 60+ languages.
+✓
+Summarization assistant
+Catch up on long conversations in seconds with contextual summaries to respond with confidence.
+✓
+Resolution assistant
+Drive faster resolutions with similar ticket suggestor and solution article suggester.
+✓
+*
+$29
+/agent/month billed
+annually
+Freddy AI Insights
+Proactive Insights with Root Cause Analysis
+Get proactive alerts on key metrics across every channel with root cause analysis so you can fix issues early.
+✓
+Conversational Insights
+Ask any question and get instant, visual insights. Create new reports or update existing ones in one click.
+✓
+*
+Service Limits Policy applies. View limits and
+details
+.
+Analytics
+Out-of-the-box analytics and reporting
+Stay on top of your support operations by identifying bottlenecks and gaps. Generate comprehensive reports on trends to ensure continuous improvement.
+✓
+Standard reports and real-time dashboards
+Create powerful reports and dashboards unique to your business and draw deeper insights from your helpdesk data. Get a quick overview of the most important helpdesk metrics and easily identify bottlenecks.
+✓
+Benchmark Insights
+A monthly personalized scorecard to identify hidden operational bottlenecks and get actionable, step-by-step guidance to fix them with your Freshdesk from day one.
+✓
+Custom real-time dashboards
+Create and customize dashboards for each team, group or goal. Track only the relevant metrics in each dashboard and provide better feedback to agents. Set performance limits for each metric and watch color change if your team does not meet expectations.
+✓
+Agent availability dashboard
+Optimize your support operations with a centralized view of your team's availability across your support channels.
+✓
+Custom object analysis
+Get insights into the custom objects that you create, and the native objects available out-of-the-box to assess trends and track KPIs.
+✓
+Self Service
+Knowledge base
+Create knowledge base articles to help your customers find answers to their inquiries independently. Help your agents to readily share solution articles to complex problems.
+✓
+Multilingual translations
+Translate customer communication and knowledge base articles to make sure every customer gets the help they need in their native tongue. Supports unified conversations across email, messaging, and web widget.
+✓
+Portal customization
+Customize your customer portal to suit your company's brand like adding your logo, and brand colors.
+✓
+Community forums
+Help customers help each other by creating a community forum and letting customers share ideas and raise issues.
+✓
+Article versioning
+Create and manage versions of your knowledge base articles with ease. Get the entire timeline of every single change on an article for complete visibility.
+✓
+Ticket templates
+Create templates with pre-filled information like subject, description and ticket properties and use them to quickly create tickets and/or send emails.
+✓
+Advanced custom fields
+Collect customer information unique to your business by creating custom fields for these details.
+✓
+Approval workflow
+Create an approval workflow to review content before it gets published to your knowledge base. Track the status of each approval and notify approvers when content is ready for review.
+✓
+Flexible knowledge base hierarchy
+Organize and structure knowledge in folders based on product lines, services, regions, or user journey. Make it easy for your customer to understand your content struture and navigating knowledge to find their answers quickly. Create categories for knowledge with up to five nested folders per category.
+✓
+Routing and SLA
+Ticket dispatch
+Categorize, prioritze, and route tickets to the rights teams by creating your own business rules.
+✓
+Automations
+Save time and effort by automating repetitive and important tasks like follow-ups, escalations, and other tasks. Use specific time and event-based triggers to perform any action of your choice.
+✓
+Multiple SLA policies
+Create multiple SLA policies to accomodate the expectations of different kind of customers and different agent shifts, products etc.
+✓
+Round robin, and load balanced assignment
+Define the number of tickets an agent can handle at any given time through routing mechanisms.
+✓
+Skill-based ticket assignment
+Automatically prioritize and route tickets to the right agent based on their skills and experience.
+✓
+Administration and Security
+Role-based access control
+Create special privileges and profiles that specify what an agent can see and do within your Suite account.
+✓
+Single sign-on
+Configure and provide SAML Single Sign On for your agents so they do not have to provide separate login credentials.
+✓
+Business hours - global, multiple, group specific
+Define the working hours of different groups of your support team.
+✓
+Agent shifts and out of office scheduler
+Keep track of different shifts, automate workflows, and ensure that you provide great support round the clock.
+✓
+JWT authentication
+Verify users engaging with your brand securely through JWT authentication.
+✓
+Audit logs
+Having multiple admins makes administration easier but there's always a risk of losing visibility over the changes made and who made them. Audit Log in Freshdesk serves as a one-stop for Admins to changes made to Automations, Agent profiles and more.
+✓
+Allowed domains and IP whitelisting
+Control who can create tickets and access your self service portal by allowlisting domains. Increase helpdesk security by controlling who can log into the portal using their IP addresses.
+✓
+Sandbox
+Manage configuration changes without impacting customers or agents.
+✓
+Extend the power of Freshdesk
+Day passes (per agent per day)
+Day passes provide occasional agents with temporary access for a day instead of purchasing a full license. Use passes to manage a sudden spike in support traffic or to bring in a specialist to do a particular task.
+$2
+/pass
+$7
+/pass
+$12
+/pass
+Connector app tasks
+Build, automate, and streamline workflows end-to-end between your account and third-party integrations.
+$80
+per 5,000 tasks
+$80
+per 5,000 tasks
+$80
+per 5,000 tasks
+Growth
+Pro
+Enterprise
+Help Desk and Ticketing
+Ticketing
+Handle customer escalations with our award-winning ticketing system that enables intelligent prioritization, assignment, and tracking of tickets.
+✓
+Shared inbox
+Boost team collaboration and simplify communications with a shared inbox for your support team to collaborate and respond to incoming emails.
+✓
+Threads and tasks
+Drive collaboration by enabling internal conversation threads related to a customer ticket without polluting the main conversation. Create tasks that are linked to a ticket so everyone understands what needs to get done.
+✓
+Customer portal
+Create a place for customers to submit tickets and self-serve information, powered by a robust knowledge base.
+✓
+Multilingual Help Desk
+Configure your helpdesk to work in multiple languages, so you can provide support in the languages your customers and agents speak.
+✓
+Collaborators
+Invite external agents and third parties to help your full-time support agents resolve complex customer issues.
+5,000 collaborators included
+Freddy AI Agent
+AI Agent Studio
+All-in-one hub to build, test, deploy, and monitor AI Agents.
+✓
+Email AI Agent
+Email AI Agent that engages in back-and-forth replies, responds with the right resolution, and captures feedback.
+✓
+Improve performance
+Get actionable guidance to continuously improve AI resolutions.
+✓
+*
+First 500 sessions included.
+$49
+per 100 sessions
+Freddy AI Copilot
+Sentiment analysis
+Get a prioritized list of conversations based on customer sentiment to respond with empathy and avoid escalations.
+✓
+Response assistant
+Draft clear, on-brand replies so agents never have to start from scratch. Includes generating text, quality coach, suggesting replies, enhancing tone, and more.
+✓
+Live translation
+Translate customer conversations and your responses in real-time, in 60+ languages.
+✓
+Summarization assistant
+Catch up on long conversations in seconds with contextual summaries to respond with confidence.
+✓
+Resolution assistant
+Drive faster resolutions with similar ticket suggestor and solution article suggester.
+✓
+*
+$29
+/agent/month billed
+annually
+Freddy AI Insights
+Proactive Insights with Root Cause Analysis
+Get proactive alerts on key metrics across every channel with root cause analysis so you can fix issues early.
+✓
+Conversational Insights
+Ask any question and get instant, visual insights. Create new reports or update existing ones in one click.
+✓
+*
+Service Limits Policy applies. View limits and
+details
+.
+Analytics
+Out-of-the-box analytics and reporting
+Stay on top of your support operations by identifying bottlenecks and gaps. Generate comprehensive reports on trends to ensure continuous improvement.
+✓
+Standard reports and real-time dashboards
+Create powerful reports and dashboards unique to your business and draw deeper insights from your helpdesk data. Get a quick overview of the most important helpdesk metrics and easily identify bottlenecks.
+✓
+Benchmark Insights
+A monthly personalized scorecard to identify hidden operational bottlenecks and get actionable, step-by-step guidance to fix them with your Freshdesk from day one.
+✓
+Custom real-time dashboards
+Create and customize dashboards for each team, group or goal. Track only the relevant metrics in each dashboard and provide better feedback to agents. Set performance limits for each metric and watch color change if your team does not meet expectations.
+✓
+Agent availability dashboard
+Optimize your support operations with a centralized view of your team's availability across your support channels.
+✓
+Custom object analysis
+Get insights into the custom objects that you create, and the native objects available out-of-the-box to assess trends and track KPIs.
+✓
+Self Service
+Knowledge base
+Create knowledge base articles to help your customers find answers to their inquiries independently. Help your agents to readily share solution articles to complex problems.
+✓
+Multilingual translations
+Translate customer communication and knowledge base articles to make sure every customer gets the help they need in their native tongue. Supports unified conversations across email, messaging, and web widget.
+✓
+Portal customization
+Customize your customer portal to suit your company's brand like adding your logo, and brand colors.
+✓
+Community forums
+Help customers help each other by creating a community forum and letting customers share ideas and raise issues.
+✓
+Article versioning
+Create and manage versions of your knowledge base articles with ease. Get the entire timeline of every single change on an article for complete visibility.
+✓
+Ticket templates
+Create templates with pre-filled information like subject, description and ticket properties and use them to quickly create tickets and/or send emails.
+✓
+Advanced custom fields
+Collect customer information unique to your business by creating custom fields for these details.
+✓
+Approval workflow
+Create an approval workflow to review content before it gets published to your knowledge base. Track the status of each approval and notify approvers when content is ready for review.
+✓
+Flexible knowledge base hierarchy
+Organize and structure knowledge in folders based on product lines, services, regions, or user journey. Make it easy for your customer to understand your content struture and navigating knowledge to find their answers quickly. Create categories for knowledge with up to five nested folders per category.
+✓
+Routing and SLA
+Ticket dispatch
+Categorize, prioritze, and route tickets to the rights teams by creating your own business rules.
+✓
+Automations
+Save time and effort by automating repetitive and important tasks like follow-ups, escalations, and other tasks. Use specific time and event-based triggers to perform any action of your choice.
+✓
+Multiple SLA policies
+Create multiple SLA policies to accomodate the expectations of different kind of customers and different agent shifts, products etc.
+✓
+Round robin, and load balanced assignment
+Define the number of tickets an agent can handle at any given time through routing mechanisms.
+✓
+Skill-based ticket assignment
+Automatically prioritize and route tickets to the right agent based on their skills and experience.
+✓
+Administration and Security
+Role-based access control
+Create special privileges and profiles that specify what an agent can see and do within your Suite account.
+✓
+Single sign-on
+Configure and provide SAML Single Sign On for your agents so they do not have to provide separate login credentials.
+✓
+Business hours - global, multiple, group specific
+Define the working hours of different groups of your support team.
+✓
+Agent shifts and out of office scheduler
+Keep track of different shifts, automate workflows, and ensure that you provide great support round the clock.
+✓
+JWT authentication
+Verify users engaging with your brand securely through JWT authentication.
+✓
+Audit logs
+Having multiple admins makes administration easier but there's always a risk of losing visibility over the changes made and who made them. Audit Log in Freshdesk serves as a one-stop for Admins to changes made to Automations, Agent profiles and more.
+✓
+Allowed domains and IP whitelisting
+Control who can create tickets and access your self service portal by allowlisting domains. Increase helpdesk security by controlling who can log into the portal using their IP addresses.
+✓
+Sandbox
+Manage configuration changes without impacting customers or agents.
+✓
+Extend the power of Freshdesk
+Day passes (per agent per day)
+Day passes provide occasional agents with temporary access for a day instead of purchasing a full license. Use passes to manage a sudden spike in support traffic or to bring in a specialist to do a particular task.
+$2
+/pass
+$7
+/pass
+$12
+/pass
+Connector app tasks
+Build, automate, and streamline workflows end-to-end between your account and third-party integrations.
+$80
+per 5,000 tasks
+$80
+per 5,000 tasks
+$80
+per 5,000 tasks
+Hide all features
+Frequently Asked Questions
+How does the 14-day free trial work?
+When you sign up, you instantly get access to our Enterprise plan for 14 days. We will alert you before your trial expires. You can then select a plan and pay by credit card to continue using the product. If you choose not to continue, your account will be suspended.
+Can I upgrade or downgrade my subscription?
+Yes, you can choose to upgrade your subscription instantly. If you wish to downgrade or cancel your subscription, you can do so at the end of your term. Click on ‘Billing’ in your Freshdesk account to modify your subscription details.
+Do you have any cancellation fees?
+No. Freshdesk is a pay-as-you-go service. We do not have any cancellation fees. You can cancel whenever you want, but your cancellation will come into effect only after the end of your term.
+What types of payment do you accept?
+We accept Visa, Mastercard, Discover, and American Express. We do not accept PayPal. We will not be able to accept purchase orders over the phone. All of our offline payments follow USD pricing.
+What is a session in Freddy AI Agent?
+A session is a unique interaction between an end-user and an AI Agent.
+In Freddy AI Agent Studio, an Email AI Agent session is defined as a 72-hour window starting from the customer’s first email. All AI responses within that window count as a single session, regardless of the number of replies.
+How can I buy additional Freddy AI Agent sessions?
+You can purchase any number of AI agent session packs. The validity corresponds to your payment cycle. For example, if you choose to pay quarterly, your sessions will also expire quarterly.
+Do I need to purchase Freddy AI Copilot for all agents?
+No, Freddy AI Copilot can be purchased and assigned to any number of agents of your choice.
+Do I get free Freddy AI Agent sessions on any plan?
+We offer 500 free sessions on the Growth, Pro, and Enterprise plans to try out Freddy AI Agent. This is limited to once per account. Once exhausted, you need to buy additional sessions based on your needs.
+Are day passes available for Freddy AI Copilot?
+No, day passes are not available for Freddy AI Copilot.
+What are connector app tasks?
+We offer pre-built connectors to make data sync and workflow automation with any external application simple. Here’s a list of connector apps that we offer. You will consume tasks when any of these connector apps are used.
+View more
+Explore Freshdesk to deliver AI-powered customer service
+Book a demo
+Try it free
