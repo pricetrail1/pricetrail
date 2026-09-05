@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "Page shows pricing for 4 main plans (Free, Essentials, Standard, Premium) with contact-based tiering. The page displays a currency selector and prices in USD. Prices shown are starting prices for specific contact tiers (0-500 range). A \"Save 15%\" promotional offer is mentioned for 10,000+ contacts for 12 months - this is recorded in extraction_notes as a promotion, not the base price. The page indicates there are contact tier brackets (0-500, 501-1500, etc.) with varying prices, but only the 0-500 tier prices are visible on the page. Exact prices for higher contact tiers are not fully visible in the provided text. The page mentions 14-day free trial for Standard and Essentials, and notes about annual plans available via contact sales. No clear monthly vs annual toggle state is visible for the displayed prices, so recording pricing as shown (appears to be standard non-promotional rates). Essentials and Standard show \"Then, starts at\" language suggesting the shown price is promotional or trial price.",
+  "pricing_is_public": false,
+  "extraction_notes": "Page shows pricing structure but NO ACTUAL PRICES are visible for Essentials, Standard, or Premium plans. The page displays contact tier ranges (0-500, 501-1,500, etc.) with placeholder text indicating prices vary by tier, but specific dollar amounts are not shown. Prices are only visible when a user selects their contact tier on an interactive element, which is not captured in static HTML. A 15% discount promotion is mentioned for 10,000+ contacts for 12 months (\"Save 15% on 10,000+ contacts per month for 12 months\"), but base prices are not shown to calculate the discounted amount. Standard and Essentials both offer 14-day free trials. Currency shown as USD in dropdown, but other currencies available (AUD, BRL, CAD, CHF, DKK, EUR, GBP, HKD, INR, JPY, MXN, NZD, SEK, SGD, ZAR). Free plan: up to 250 contacts and max 500 emails/month (or 250/day). Annual plans available for Premium and Standard 10,000+ contact tiers, but pricing not disclosed on this page. Premium has unlimited contacts but displays 150,000 email sends as a monthly limit. Specific features like \"AI features\", \"SMS add-on\", \"Popup Forms\", and \"Custom-coded Templates\" are mentioned but mapping to exact plans is unclear from the static content.",
   "plans": [
     {
       "name": "Free",
@@ -23,61 +23,10 @@
         {
           "metric": "monthly email sends",
           "value": 500.0,
-          "unit": "max per month or 250 per day"
+          "unit": null
         }
       ],
-      "features": [
-        "basic workflows",
-        "integrations"
-      ]
-    },
-    {
-      "name": "Standard",
-      "key": "standard",
-      "monthly_price": 20.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "marketing automation flows",
-          "value": 200.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends",
-          "value": -1.0,
-          "unit": "15X contacts"
-        },
-        {
-          "metric": "users",
-          "value": 5.0,
-          "unit": "seats"
-        }
-      ],
-      "features": [
-        "advanced workflows",
-        "basic workflows",
-        "custom branding",
-        "custom reporting",
-        "integrations",
-        "onboarding support",
-        "priority support"
-      ]
+      "features": []
     },
     {
       "name": "Essentials",
@@ -104,22 +53,26 @@
         {
           "metric": "marketing automation flows",
           "value": 4.0,
-          "unit": "flow steps"
+          "unit": null
         },
         {
           "metric": "monthly email sends",
           "value": -1.0,
-          "unit": "12X contacts"
+          "unit": null
         },
         {
-          "metric": "users",
+          "metric": "roles",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
           "value": 3.0,
-          "unit": "seats"
+          "unit": null
         }
       ],
       "features": [
         "basic workflows",
-        "custom reporting",
         "email scheduling",
         "integrations"
       ]
@@ -130,7 +83,7 @@
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
-      "is_custom_pricing": true,
+      "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
@@ -149,12 +102,66 @@
       ],
       "features": [
         "advanced workflows",
-        "custom branding",
+        "ai assistant",
         "custom reporting",
+        "dedicated account manager",
         "integrations",
         "onboarding support",
         "phone support",
-        "priority support"
+        "priority support",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "roles",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "basic workflows",
+        "custom reporting",
+        "integrations",
+        "role permissions"
       ]
     }
   ]

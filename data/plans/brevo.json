@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "The page shows pricing toggle for Monthly/Yearly (-10%) but no actual numeric prices are visible in the provided HTML. All plan prices appear to be missing from this extract. Starter, Standard, and Professional show placeholder text \"per month\" without numbers. Professional is noted as \"per month/user\" indicating per-seat pricing. Enterprise shows \"Custom price\" and routes to sales. The Free plan shows \"Free forever, no credit card needed\". Unable to record actual pricing figures as they are not present in the page content provided.",
+  "extraction_notes": "Page shows pricing toggle between Monthly and Yearly (-10%), but no actual prices are visible on the page—only placeholders like \"per month\" without numbers. The Professional plan shows \"per month/user\" (per-seat pricing). Currency is inferred as USD based on standard Brevo pricing, but no currency symbol appears on this page. Enterprise plan explicitly states \"Custom price\".",
   "plans": [
     {
       "name": "Free",
@@ -17,11 +17,14 @@
       "limits": [
         {
           "metric": "emails per month",
-          "value": 300.0,
+          "value": 5000.0,
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "basic workflows",
+        "email"
+      ]
     },
     {
       "name": "Enterprise",
@@ -37,7 +40,6 @@
       "limits": [],
       "features": [
         "dedicated account manager",
-        "onboarding support",
         "phone support",
         "saml",
         "sso"
@@ -84,8 +86,7 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "basic workflows"
+        "advanced workflows"
       ]
     },
     {
@@ -106,8 +107,10 @@
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "basic workflows"
+      ]
     }
   ],
-  "captured_at": "2026-08-31T21:22:56.753103+00:00"
+  "captured_at": "2026-09-05T10:25:38.899618+00:00"
 }
