@@ -1,0 +1,285 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows a toggle for Annual/Monthly billing. Plus and Pro plans show \"Save 20%\" with annual billing. The discounted annual prices are the standard annual rates (the undiscounted figure is not shown, so 20% savings language indicates annual is the discount but annual_price_per_month is the standard annual rate to use). Pro plan includes a 14-day trial. Enterprise plan is custom pricing. Four workspace credit add-ons are listed with both monthly and annual pricing (shown as struck-through in the promotional presentation but presented as standard pricing options). The Free plan is also per-seat pricing but costs $0.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": 0.0,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "email limits",
+          "value": 200.0,
+          "unit": "emails/mo"
+        },
+        {
+          "metric": "file storage",
+          "value": 50.0,
+          "unit": "GB"
+        },
+        {
+          "metric": "objects",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 50000.0,
+          "unit": null
+        },
+        {
+          "metric": "reports",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Plus",
+      "key": "plus",
+      "monthly_price": 44.0,
+      "annual_price_per_month": 35.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "email limits",
+          "value": 1000.0,
+          "unit": "emails/mo"
+        },
+        {
+          "metric": "file storage",
+          "value": 50.0,
+          "unit": "GB"
+        },
+        {
+          "metric": "objects",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 250000.0,
+          "unit": null
+        },
+        {
+          "metric": "reports",
+          "value": 15.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Add workspace credits + 5,000/month",
+      "key": "addworkspacecredits5000month",
+      "monthly_price": 85.0,
+      "annual_price_per_month": 70.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "workspace credits",
+          "value": 5000.0,
+          "unit": "/month"
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 99.0,
+      "annual_price_per_month": 79.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "email limits",
+          "value": -1.0,
+          "unit": "emails/mo"
+        },
+        {
+          "metric": "file storage",
+          "value": -1.0,
+          "unit": "GB"
+        },
+        {
+          "metric": "objects",
+          "value": 12.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 1000000.0,
+          "unit": null
+        },
+        {
+          "metric": "reports",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Add workspace credits + 10,000/month",
+      "key": "addworkspacecredits10000month",
+      "monthly_price": 150.0,
+      "annual_price_per_month": 120.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "workspace credits",
+          "value": 10000.0,
+          "unit": "/month"
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Add workspace credits + 25,000/month",
+      "key": "addworkspacecredits25000month",
+      "monthly_price": 330.0,
+      "annual_price_per_month": 260.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "workspace credits",
+          "value": 25000.0,
+          "unit": "/month"
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Add workspace credits + 50,000/month",
+      "key": "addworkspacecredits50000month",
+      "monthly_price": 595.0,
+      "annual_price_per_month": 475.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "workspace credits",
+          "value": 50000.0,
+          "unit": "/month"
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "email limits",
+          "value": -1.0,
+          "unit": "emails/mo"
+        },
+        {
+          "metric": "file storage",
+          "value": -1.0,
+          "unit": "GB"
+        },
+        {
+          "metric": "objects",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "reports",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations",
+        "saml",
+        "sso"
+      ]
+    }
+  ]
+}

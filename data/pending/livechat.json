@@ -1,0 +1,132 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows both monthly and annual billing options. Prices listed as \"per person billed annually\" for $19, $49, $79 (annual rates) and \"per person\" for $25, $59, $89 (monthly rates). All plans marked as per-seat pricing. All three public plans offer 14-day free trial. Enterprise plan is custom pricing with contact sales. Features extracted from comparison table rows visible on page - only those from the approved list were recorded. The page shows extensive feature tables but many features listed (like channels, automations, customization options) are not on the approved features list, so were omitted. Text Intelligence is mentioned as included in all plans but is not on the approved features list.",
+  "plans": [
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": 25.0,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "chat history",
+          "value": 60.0,
+          "unit": "days"
+        },
+        {
+          "metric": "recurring campaigns",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "visitors tracked",
+          "value": 100.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Team",
+      "key": "team",
+      "monthly_price": 59.0,
+      "annual_price_per_month": 49.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "campaigns",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "chat history",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "visitors tracked",
+          "value": 400.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Business",
+      "key": "business",
+      "monthly_price": 89.0,
+      "annual_price_per_month": 79.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "visitors tracked",
+          "value": 1000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "hipaa",
+        "integrations",
+        "single sign-on",
+        "sla policies",
+        "sso"
+      ]
+    }
+  ]
+}
