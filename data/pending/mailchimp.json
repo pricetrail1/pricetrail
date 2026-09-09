@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "Page shows currency selector and mentions 14+ currencies available, but displays prices only as numbers without currency symbols in the visible content. Default currency appears to be USD based on pricing context. \n\nSpecific pricing issues encountered:\n- Standard plan: Shows $20/month after 14-day free trial, with a 15% discount offer for 10,000+ contacts over 12 months. The discounted price is not stated, only the percentage savings. Recorded the standard $20/month.\n- Essentials plan: Pricing numbers are not visible on the page. Shows \"Then, starts at $0 per month\" which appears to be placeholder text or incomplete rendering.\n- Premium plan: Pricing numbers are not visible on the page. Shows \"Then, starts at\" with no price amount. A 15% discount offer is mentioned for 10,000+ contacts but the base price is not provided.\n- Free plan: Clearly stated as $0/month with 250 contact limit.\n\nThe page contains multiple currency selectors but does not show the actual prices in those currencies—only the currency symbol options. Monthly vs. annual pricing: Page mentions \"annual plans are available\" but no annual prices are displayed for any plan. Only monthly pricing (where visible) has been recorded. Trial information: Standard and Essentials offer 14-day free trials. Premium eligibility for a 1-month free trial mentioned as \"For qualified new customers\" with requirement to contact sales.\n\nFeatures recorded only where explicitly listed in the \"Key Plan Features\" table. The table shows inclusion/variation of features like Marketing Automation Flows, SMS add-on, custom-coded templates, and support tiers. Some feature names on the page differ from the standardized list (e.g., \"Marketing Automation Flows\" instead of \"advanced workflows\" but recorded as closest match).\n\nContact limits for paid plans are variable by tier and not hard-capped in the plan definition; they scale with contact count selected. Maximum email sends are described as \"15X contacts\" for Premium, \"12X contacts\" for Standard, and \"10X contacts\" for Essentials, meaning they scale with the number of contacts managed, not fixed caps. Recorded as unlimited (-1) because no absolute cap is stated.",
+  "pricing_is_public": false,
+  "extraction_notes": "Pricing page is heavily interactive with contact-tier-based pricing tables. Actual dollar amounts are not displayed in the provided HTML. The page shows a dropdown menu to select currency (AUD, BRL, CAD, CHF, DKK, EUR, GBP, HKD, INR, JPY, MXN, NZD, SEK, SGD, USD, ZAR) and contact tier ranges (0-500, 501-1500, etc.), but the corresponding prices are not rendered in the text provided. The page describes 4 main plans (Free, Essentials, Standard, Premium) with features and contact/email limits, but without the actual per-month or per-year dollar figures. There is a 15% promotional discount mentioned for 10,000+ contacts for 12 months (\"Save 15% on 10,000+ contacts per month for 12 months\"), but the base prices to which this applies are not visible. A 14-day free trial is offered for Standard and Essentials plans. Features mentioned include AI, automation flows, SMS add-on, custom templates, phone support, popup forms, and more. Without visible pricing numbers, I cannot accurately record monthly_price or annual_price_per_month fields.",
   "plans": [
     {
       "name": "Free",
@@ -22,43 +22,12 @@
         },
         {
           "metric": "monthly email sends",
-          "value": 2500.0,
-          "unit": null
-        }
-      ],
-      "features": []
-    },
-    {
-      "name": "Standard",
-      "key": "standard",
-      "monthly_price": 20.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "users",
-          "value": 5.0,
-          "unit": null
+          "value": 500.0,
+          "unit": "per month or 250 per day max"
         }
       ],
       "features": [
-        "advanced workflows",
-        "custom branding"
+        "integrations"
       ]
     },
     {
@@ -74,23 +43,30 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "contacts",
-          "value": -1.0,
+          "metric": "audiences",
+          "value": 3.0,
           "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 4.0,
+          "unit": "flow steps"
         },
         {
           "metric": "monthly email sends",
           "value": -1.0,
-          "unit": null
+          "unit": "10x contacts"
         },
         {
-          "metric": "users",
+          "metric": "users/seats",
           "value": 3.0,
           "unit": null
         }
       ],
       "features": [
-        "basic workflows"
+        "basic workflows",
+        "email scheduling",
+        "role permissions"
       ]
     },
     {
@@ -106,27 +82,76 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "contacts",
+          "metric": "audiences",
           "value": -1.0,
           "unit": null
         },
         {
           "metric": "monthly email sends",
-          "value": -1.0,
+          "value": 150000.0,
           "unit": null
         },
         {
-          "metric": "users",
+          "metric": "users/seats",
           "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
+        "ai assistant",
         "custom branding",
         "custom reporting",
+        "dedicated account manager",
+        "integrations",
+        "onboarding support",
         "phone support",
-        "priority support"
+        "priority support",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "users/seats",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom branding",
+        "custom reporting",
+        "integrations",
+        "onboarding support",
+        "priority support",
+        "role permissions"
       ]
     }
   ]
