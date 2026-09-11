@@ -27,3 +27,7 @@
 {"vendor": "Mailchimp", "change_type": "pricing_hidden", "plan": null, "field": null, "old_value": true, "new_value": false, "confidence": 0.8, "detected_at": "2026-09-03T06:22:50.908153+00:00", "note": "page no longer shows any public prices"}
 {"vendor": "Close", "change_type": "plan_added", "plan": "Additional organizations", "field": null, "old_value": null, "new_value": 50.0, "confidence": 0.8, "detected_at": "2026-09-04T06:21:33.021413+00:00", "note": ""}
 {"vendor": "Close", "change_type": "plan_added", "plan": "Call Assistant", "field": null, "old_value": null, "new_value": 50.0, "confidence": 0.8, "detected_at": "2026-09-04T06:21:33.021428+00:00", "note": ""}
+{"vendor": "Mailchimp", "change_type": "pricing_published", "plan": null, "field": null, "old_value": false, "new_value": true, "confidence": 0.8, "detected_at": "2026-09-11T11:03:43.034126+00:00", "note": ""}
+{"vendor": "Mailchimp", "change_type": "plan_added", "plan": "SMS add-on", "field": null, "old_value": null, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-11T11:03:43.034147+00:00", "note": ""}
+{"vendor": "Mailchimp", "change_type": "plan_added", "plan": "Email credits (Pay As You Go)", "field": null, "old_value": null, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-11T11:03:43.034152+00:00", "note": ""}
+{"vendor": "Mailchimp", "change_type": "custom_pricing_changed", "plan": "Premium", "field": "is_custom_pricing", "old_value": false, "new_value": true, "confidence": 0.8, "detected_at": "2026-09-11T11:03:43.034162+00:00", "note": ""}
