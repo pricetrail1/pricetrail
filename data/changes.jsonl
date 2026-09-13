@@ -31,3 +31,7 @@
 {"vendor": "Mailchimp", "change_type": "plan_added", "plan": "SMS add-on", "field": null, "old_value": null, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-11T11:03:43.034147+00:00", "note": ""}
 {"vendor": "Mailchimp", "change_type": "plan_added", "plan": "Email credits (Pay As You Go)", "field": null, "old_value": null, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-11T11:03:43.034152+00:00", "note": ""}
 {"vendor": "Mailchimp", "change_type": "custom_pricing_changed", "plan": "Premium", "field": "is_custom_pricing", "old_value": false, "new_value": true, "confidence": 0.8, "detected_at": "2026-09-11T11:03:43.034162+00:00", "note": ""}
+{"vendor": "Freshdesk", "change_type": "plan_added", "plan": "MCP actions", "field": null, "old_value": null, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-13T11:35:42.090541+00:00", "note": ""}
+{"vendor": "Mailchimp", "change_type": "pricing_hidden", "plan": null, "field": null, "old_value": true, "new_value": false, "confidence": 0.8, "detected_at": "2026-09-13T11:35:43.139320+00:00", "note": "page no longer shows any public prices"}
+{"vendor": "Mailchimp", "change_type": "plan_removed", "plan": "SMS add-on", "field": null, "old_value": null, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-13T11:35:43.139337+00:00", "note": ""}
+{"vendor": "Mailchimp", "change_type": "plan_removed", "plan": "Email credits (Pay As You Go)", "field": null, "old_value": null, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-13T11:35:43.139340+00:00", "note": ""}
