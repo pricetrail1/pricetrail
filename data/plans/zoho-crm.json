@@ -1,7 +1,7 @@
 {
-  "currency": "USD",
+  "currency": "INR",
   "pricing_is_public": true,
-  "extraction_notes": "Currency shown as INR (₹) on the page with prices in rupees. Converted to USD equivalent based on page context showing \"Zoho CRM Plus Starts at $20/user/month\". Only monthly prices are displayed for the main plans (Standard, Professional, Enterprise, Bigin Express); no annual pricing shown. Free plan supports up to 3 users. All paid plans are per-user/month pricing. Trial available for paid plans (indicated by \"FREE TRIAL\" buttons). The page shows INR prices but also references USD for Zoho CRM Plus; extracted figures are in the currency context of the page. Note: The page displays primarily INR pricing (₹800, ₹1400, ₹2400) for Standard, Professional, and Enterprise, with Bigin Express at ₹2400, and Zoho CRM Plus at $20/user/month. No annual billing option explicitly shown on this page.",
+  "extraction_notes": "Page shows monthly billing mode. Currency toggle shows INR selected. Prices are displayed as ₹ (Indian Rupees). All paid plans are per-user/month. Free plan supports up to 3 users. Trial availability indicated but trial length not specified. Bigin Express appears to be an alternative product tier, not a Zoho CRM plan variant. Zoho CRM Plus is mentioned with \"Starts at $20/user/month\" in USD but page currency context is INR—recorded as shown. Features were limited to those directly stated on each plan card only; many features listed are not mapped to the limited reference list provided.",
   "plans": [
     {
       "name": "Free",
@@ -16,15 +16,27 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "api calls",
+          "value": 5000.0,
+          "unit": "per day"
+        },
+        {
+          "metric": "data exports",
+          "value": 10.0,
+          "unit": null
+        },
+        {
           "metric": "users",
           "value": 3.0,
           "unit": null
         }
       ],
       "features": [
-        "api access",
-        "basic workflows",
+        "apis",
         "contact management",
+        "custom email templates",
+        "data import and export",
+        "follow-up reminders",
         "mobile apps",
         "standard reports",
         "tasks, meetings & calls",
@@ -58,12 +70,11 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "calendar integration",
-        "custom modules",
+        "api access",
+        "basic workflows",
         "email integration",
-        "hipaa",
-        "integrations"
+        "integrations",
+        "onboarding support"
       ]
     },
     {
@@ -81,10 +92,10 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "custom branding",
+        "api access",
         "custom reporting",
-        "hipaa",
-        "integrations"
+        "integrations",
+        "onboarding support"
       ]
     },
     {
@@ -101,7 +112,7 @@
       "limits": [],
       "features": [
         "basic workflows",
-        "custom branding",
+        "email integration",
         "integrations"
       ]
     },
@@ -119,15 +130,14 @@
       "limits": [],
       "features": [
         "advanced workflows",
-        "audit log",
-        "custom branding",
+        "api access",
         "custom reporting",
-        "hipaa",
         "integrations",
+        "onboarding support",
         "role permissions",
         "sandbox"
       ]
     }
   ],
-  "captured_at": "2026-08-31T21:23:01.370568+00:00"
+  "captured_at": "2026-09-14T12:29:54.909758+00:00"
 }

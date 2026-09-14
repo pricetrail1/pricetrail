@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Free 14-day trial mentioned for Starter plan. All three standard plans are per-seat pricing. Pricing shows both monthly and annual billing options. Monthly prices are $25, $59, $89 for Starter, Team, and Business respectively. Annual billed prices shown are $19, $49, $79 per person per month. ChatBot.com is an add-on shown at $52/mo billed annually with a free trial available. Enterprise plan requires contacting sales. Features listed on Enterprise plan card include: \"Single Sign-on (SSO)\", \"HIPAA Compliance\", and references to \"Alternative payment terms\", \"Professional services\", \"Service level agreements (SLAs)\", and \"Software engineer support\", \"White label chat widget\", \"Support from Product Expert\", \"Dedicated onboarding\". The page shows extensive feature comparison table but only key features clearly stated in plan cards are recorded per instructions.",
+  "extraction_notes": "Page shows both monthly and annual billing options. Prices listed as \"per person billed annually\" for $19, $49, $79 (annual rates) and \"per person\" for $25, $59, $89 (monthly rates). All plans marked as per-seat pricing. All three public plans offer 14-day free trial. Enterprise plan is custom pricing with contact sales. Features extracted from comparison table rows visible on page - only those from the approved list were recorded. The page shows extensive feature tables but many features listed (like channels, automations, customization options) are not on the approved features list, so were omitted. Text Intelligence is mentioned as included in all plans but is not on the approved features list.",
   "plans": [
     {
       "name": "Starter",
@@ -16,14 +16,14 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "campaigns",
-          "value": 1.0,
-          "unit": null
-        },
-        {
-          "metric": "chat history retention",
+          "metric": "chat history",
           "value": 60.0,
           "unit": "days"
+        },
+        {
+          "metric": "recurring campaigns",
+          "value": 1.0,
+          "unit": null
         },
         {
           "metric": "users",
@@ -38,9 +38,8 @@
       ],
       "features": [
         "ai assistant",
-        "custom branding",
-        "integrations",
-        "live chat"
+        "api access",
+        "integrations"
       ]
     },
     {
@@ -53,7 +52,7 @@
       "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
           "metric": "campaigns",
@@ -61,7 +60,7 @@
           "unit": null
         },
         {
-          "metric": "chat history retention",
+          "metric": "chat history",
           "value": -1.0,
           "unit": null
         },
@@ -78,9 +77,8 @@
       ],
       "features": [
         "ai assistant",
-        "custom branding",
-        "integrations",
-        "live chat"
+        "api access",
+        "integrations"
       ]
     },
     {
@@ -93,7 +91,7 @@
       "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
           "metric": "visitors tracked",
@@ -103,27 +101,8 @@
       ],
       "features": [
         "ai assistant",
-        "custom branding",
-        "integrations",
-        "live chat",
-        "sms",
-        "whatsapp"
-      ]
-    },
-    {
-      "name": "ChatBot.com",
-      "key": "chatbotcom",
-      "monthly_price": null,
-      "annual_price_per_month": 52.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "ai chatbot"
+        "api access",
+        "integrations"
       ]
     },
     {
@@ -141,19 +120,14 @@
       "features": [
         "ai assistant",
         "api access",
-        "audit log",
         "custom branding",
-        "dedicated account manager",
         "hipaa",
         "integrations",
-        "live chat",
-        "onboarding support",
-        "saml",
         "single sign-on",
         "sla policies",
         "sso"
       ]
     }
   ],
-  "captured_at": "2026-08-31T21:22:44.491996+00:00"
+  "captured_at": "2026-09-14T12:29:27.991064+00:00"
 }

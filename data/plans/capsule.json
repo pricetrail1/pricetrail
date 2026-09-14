@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Page shows \"Pay Annually\" and \"Pay Monthly\" toggle but no actual prices are displayed for any paid plan. All paid plans (Starter, Growth, Advanced, Ultimate) show \"Try Free\" with 14-day trial but no pricing figures. Ultimate is custom pricing (\"Sales team will be in touch\"). Marketing add-on shows \"$11 per month\" and is listed separately as an add-on available within the account. Currency appears to be USD based on $ symbol. Page states \"Save up to 14%\" for annual vs monthly but specific prices are not provided, making this a contact-sales model for paid tiers.",
+  "pricing_is_public": true,
+  "extraction_notes": "Toggle visible at top showing \"Pay Annually (Save up to 14%)\" vs \"Pay Monthly\". Prices shown are in annual billing mode (per-user per month when billed annually). Monthly prices not displayed on page. Starter, Growth, and Advanced are per-seat plans. Free trial is 14 days for paid plans. Ultimate plan shows no price and routes to sales contact. Marketing add-on shown at bottom starting from $11/month.",
   "plans": [
     {
       "name": "Free",
@@ -37,7 +37,7 @@
         }
       ],
       "features": [
-        "integrations"
+        "custom reporting"
       ]
     },
     {
@@ -58,7 +58,7 @@
       "name": "Advanced",
       "key": "advanced",
       "monthly_price": null,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 65.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -93,7 +93,7 @@
       "name": "Growth",
       "key": "growth",
       "monthly_price": null,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 45.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -118,7 +118,7 @@
       "name": "Starter",
       "key": "starter",
       "monthly_price": null,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 25.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -135,6 +135,7 @@
       "features": [
         "ai assistant",
         "basic workflows",
+        "custom reporting",
         "integrations"
       ]
     },
@@ -145,7 +146,7 @@
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": true,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": 14,
@@ -159,5 +160,5 @@
       ]
     }
   ],
-  "captured_at": "2026-08-10T10:43:27.979994+00:00"
+  "captured_at": "2026-09-14T12:29:55.797389+00:00"
 }

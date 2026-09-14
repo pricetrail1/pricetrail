@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows monthly pricing only (\"starting $12/month\" and \"starting $25/month\" for Comfort and Power). No annual pricing figures are displayed on the page. Free plan has 14-day trial of premium features. Comfort and Power plans offer 14-day trial. The page mentions a \"Billed yearly - Save 10%\" toggle exists but no specific annual pricing amounts are shown on this extraction. The extraction captures the visible monthly prices only.",
+  "extraction_notes": "Page shows pricing toggle for \"Billed yearly\" with \"Save 10%\" and \"Billed monthly\". The exact annual prices and monthly prices for Comfort and Power are not clearly displayed in the provided page text. The page states \"Comfort plan (starting $12/month)\" and \"Power plan (starting $25/month)\" in the FAQ, which appear to be the monthly prices. The toggle indicates a 10% discount for annual billing, but exact annual figures are not provided in the extracted text. Trial period of 14 days applies to premium features on all paid plans. Features listed are those explicitly mentioned in each plan's description.",
   "plans": [
     {
       "name": "Free",
@@ -13,11 +13,16 @@
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
           "metric": "automations",
           "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "landing pages",
+          "value": 1.0,
           "unit": null
         },
         {
@@ -63,6 +68,11 @@
           "unit": null
         },
         {
+          "metric": "landing pages",
+          "value": 10.0,
+          "unit": null
+        },
+        {
           "metric": "signup forms",
           "value": 10.0,
           "unit": null
@@ -74,6 +84,7 @@
         }
       ],
       "features": [
+        "ai assistant",
         "basic workflows"
       ]
     },
@@ -95,7 +106,17 @@
           "unit": null
         },
         {
+          "metric": "landing pages",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "monthly emails",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "signup forms",
           "value": -1.0,
           "unit": null
         },
@@ -106,7 +127,9 @@
         }
       ],
       "features": [
-        "basic workflows"
+        "ai assistant",
+        "basic workflows",
+        "live chat"
       ]
     },
     {
@@ -125,13 +148,19 @@
           "metric": "subscribers",
           "value": 200000.0,
           "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
         "dedicated account manager",
+        "onboarding support",
         "priority support"
       ]
     }
   ],
-  "captured_at": "2026-08-31T21:22:57.295572+00:00"
+  "captured_at": "2026-09-14T12:29:36.277911+00:00"
 }

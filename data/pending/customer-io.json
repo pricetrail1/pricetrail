@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows three main plans: Essentials (monthly billing at $100), Premium (annual billing at $1,000/month), and Enterprise (custom pricing, contact sales). Essentials explicitly states \"billed monthly\". Premium states \"$1,000 per month / billed yearly\", indicating annual pricing. The page includes a detailed feature matrix showing many capabilities, but I recorded only the features from the specified list. Add-on pricing is shown separately (additional profiles, emails, AI credits) but these are not recorded as separate plans since they are usage-based add-ons, not subscription tiers. The Startup Program offers 12 months free for early-stage companies but this is not recorded as a separate plan tier.",
+  "extraction_notes": "Premium plan shows \"$1,000 per month / billed yearly\", which is the effective annual per-month price. Essentials shows \"$100 per month / billed monthly\" - this is monthly billing. Enterprise is custom pricing (Talk to sales). The page includes a detailed feature comparison table; I extracted the most material limits and features for each plan. Features like \"AI translator\", \"email content analysis\", etc. were not included as they don't match the specified feature list. Custom execution skills, routine tasks, and channels for AI Agent are customizable per plan but listed as specific numbers (3/10, 1/5 weekly/daily) in the comparison table - these vary and are handled as custom/elevated tiers within plans rather than separate limits. The page mentions support packages are \"available for Premium and Enterprise Plans\" and includes add-ons for additional profiles and emails, but these are usage-based charges, not separate subscription plans.",
   "plans": [
     {
       "name": "Essentials",
@@ -16,7 +16,7 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "emails per month",
+          "metric": "monthly emails",
           "value": 1000000.0,
           "unit": null
         },
@@ -33,9 +33,9 @@
       ],
       "features": [
         "ai assistant",
-        "basic data integrations",
         "basic workflows",
-        "email"
+        "integrations",
+        "onboarding support"
       ]
     },
     {
@@ -49,25 +49,15 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "email volume",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "profile volume",
-          "value": -1.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
         "advanced workflows",
         "ai assistant",
         "audit log",
-        "custom branding",
         "dedicated account manager",
         "hipaa",
+        "integrations",
+        "phone support",
         "priority support"
       ]
     },
@@ -84,18 +74,8 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "email volume",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "object types",
           "value": 10.0,
-          "unit": null
-        },
-        {
-          "metric": "profile volume",
-          "value": -1.0,
           "unit": null
         }
       ],
@@ -103,8 +83,9 @@
         "advanced workflows",
         "ai assistant",
         "hipaa",
+        "integrations",
         "onboarding support",
-        "premium data integrations",
+        "phone support",
         "priority support"
       ]
     }
