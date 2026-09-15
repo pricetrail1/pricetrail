@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Page shows pricing toggle between Monthly and Yearly (-10%), but no actual prices are visible on the page—only placeholders like \"per month\" without numbers. The Professional plan shows \"per month/user\" (per-seat pricing). Currency is inferred as USD based on standard Brevo pricing, but no currency symbol appears on this page. Enterprise plan explicitly states \"Custom price\".",
+  "extraction_notes": "Page shows \"Loading content...\" where prices should appear, indicating prices are not loaded or hidden. The page header shows a Monthly/Yearly toggle with \"-10%\" discount for annual billing, but no actual prices are visible. Starter plan shows \"per month\" twice but no figures. Standard shows \"per month\" but no figures. Professional shows \"per month/user\" but no figures. All specific prices are missing from the page content provided. The feature list at the bottom is generic and applies across plans, so I have only extracted features explicitly mentioned in each plan's card.",
   "plans": [
     {
       "name": "Free",
@@ -17,14 +17,11 @@
       "limits": [
         {
           "metric": "emails per month",
-          "value": 5000.0,
+          "value": 300.0,
           "unit": null
         }
       ],
-      "features": [
-        "basic workflows",
-        "email"
-      ]
+      "features": []
     },
     {
       "name": "Enterprise",
@@ -38,12 +35,7 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": [
-        "dedicated account manager",
-        "phone support",
-        "saml",
-        "sso"
-      ]
+      "features": []
     },
     {
       "name": "Professional",
@@ -69,8 +61,8 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "phone support"
+        "role permissions",
+        "whatsapp"
       ]
     },
     {
@@ -86,7 +78,7 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows"
+        "custom reporting"
       ]
     },
     {
@@ -108,9 +100,9 @@
         }
       ],
       "features": [
-        "basic workflows"
+        "custom branding"
       ]
     }
   ],
-  "captured_at": "2026-09-05T10:25:38.899618+00:00"
+  "captured_at": "2026-09-15T11:33:17.045491+00:00"
 }

@@ -1,0 +1,118 @@
+{
+  "currency": "USD",
+  "pricing_is_public": false,
+  "extraction_notes": "The page contains a pricing toggle for multiple currencies but no actual numerical prices are visible in the HTML provided. Pricing appears to be dynamic/contact-tier-based: the page shows \"Then, starts at\" followed by empty values for Essentials and Standard plans. Premium plan explicitly routes to sales (\"Contact sales\"). The page mentions \"Save 15% on 10,000+ contacts per month for 12 months\" as a promotional offer struck through/superseded. A 14-day free trial is available for Standard and Essentials. The Free plan is limited to 250 contacts with \"Max of 500/mo or 250/day\" email sends. The feature list comes from the comparison table showing what each plan includes. Essentials and Standard prices vary by contact tier but exact amounts are not provided in this extract.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 2500.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 150000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "custom reporting",
+        "dedicated account manager",
+        "phone support",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "custom reporting"
+      ]
+    }
+  ]
+}
