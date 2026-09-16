@@ -1,0 +1,136 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows pricing with Annual toggle selected by default. All prices are labeled \"agent/month paid yearly\". Only annual billing is displayed; no monthly-only pricing is shown. Features list is extracted from plan descriptions but the page does not use the standard feature terminology from the allowed list (e.g., it says \"Email and ticketing system\" rather than \"sso\" or standard feature names). Mapped features to the allowed list where applicable; many of the specific Zendesk features (Admin Copilot, App Builder, Writing Tools, etc.) do not match the standard feature list and were omitted. Suite Enterprise + Copilot has no price shown (\"Talk to Sales\"). Copilot, Workforce Engagement Bundle, and Contact Center are listed as \"Featured add-ons\" and are add-on products sold on top of base plans rather than subscription tiers.",
+  "plans": [
+    {
+      "name": "Contact Center",
+      "key": "contactcenter",
+      "monthly_price": null,
+      "annual_price_per_month": 83.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": null,
+      "annual_price_per_month": 50.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Suite Enterprise + Copilot",
+      "key": "suiteenterprisecopilot",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "audit log",
+        "custom reporting",
+        "integrations",
+        "role permissions",
+        "saml",
+        "sandbox",
+        "sso"
+      ]
+    },
+    {
+      "name": "Suite Professional",
+      "key": "suiteprofessional",
+      "monthly_price": null,
+      "annual_price_per_month": 115.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom reporting",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Suite Team",
+      "key": "suiteteam",
+      "monthly_price": null,
+      "annual_price_per_month": 55.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai agent",
+        "api access",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Support Team",
+      "key": "supportteam",
+      "monthly_price": null,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "automations and triggers",
+        "customer context",
+        "email and ticketing system",
+        "pre-written responses",
+        "prebuilt analytics dashboards",
+        "ticket routing"
+      ]
+    },
+    {
+      "name": "Workforce Engagement Bundle",
+      "key": "workforceengagementbundle",
+      "monthly_price": null,
+      "annual_price_per_month": 50.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    }
+  ]
+}
