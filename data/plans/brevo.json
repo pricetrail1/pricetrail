@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Page shows \"Loading content...\" where prices should appear, indicating prices are not loaded or hidden. The page header shows a Monthly/Yearly toggle with \"-10%\" discount for annual billing, but no actual prices are visible. Starter plan shows \"per month\" twice but no figures. Standard shows \"per month\" but no figures. Professional shows \"per month/user\" but no figures. All specific prices are missing from the page content provided. The feature list at the bottom is generic and applies across plans, so I have only extracted features explicitly mentioned in each plan's card.",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows pricing toggle for monthly/yearly but actual prices are not displayed—only \"per month\" labels appear. The Free plan limit (300 emails) is stated at top of page. Starter shows \"From 5,000 emails per month\" but no actual price shown. Standard and Professional also show no numeric prices. A \"-10%\" discount label appears on the Yearly toggle option but no base prices are visible to apply it to. Professional is marked \"per month/user\" indicating per-seat pricing. Enterprise shows \"Custom price\" and requires sales contact. All numeric prices are missing from this page.",
   "plans": [
     {
       "name": "Free",
@@ -34,8 +34,25 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
-      "features": []
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 1000000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "basic workflows",
+        "dedicated account manager",
+        "integrations",
+        "onboarding support",
+        "phone support",
+        "saml",
+        "sso",
+        "whatsapp"
+      ]
     },
     {
       "name": "Professional",
@@ -61,7 +78,11 @@
         }
       ],
       "features": [
-        "role permissions",
+        "advanced workflows",
+        "ai assistant",
+        "basic workflows",
+        "integrations",
+        "phone support",
         "whatsapp"
       ]
     },
@@ -78,7 +99,8 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "custom reporting"
+        "advanced workflows",
+        "basic workflows"
       ]
     },
     {
@@ -100,9 +122,9 @@
         }
       ],
       "features": [
-        "custom branding"
+        "basic workflows"
       ]
     }
   ],
-  "captured_at": "2026-09-15T11:33:17.045491+00:00"
+  "captured_at": "2026-09-17T11:27:24.501876+00:00"
 }

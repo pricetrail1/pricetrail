@@ -41,3 +41,7 @@
 {"vendor": "Attio", "change_type": "plan_added", "plan": "Add workspace credits + 50,000/month", "field": null, "old_value": null, "new_value": 595.0, "confidence": 0.8, "detected_at": "2026-09-14T12:29:55.323753+00:00", "note": ""}
 {"vendor": "Attio", "change_type": "plan_added", "plan": "Add workspace credits + 5,000/month", "field": null, "old_value": null, "new_value": 85.0, "confidence": 0.8, "detected_at": "2026-09-14T12:29:55.323756+00:00", "note": ""}
 {"vendor": "Capsule", "change_type": "pricing_published", "plan": null, "field": null, "old_value": false, "new_value": true, "confidence": 0.8, "detected_at": "2026-09-14T12:29:55.797260+00:00", "note": ""}
+{"vendor": "Brevo", "change_type": "pricing_published", "plan": null, "field": null, "old_value": false, "new_value": true, "confidence": 0.8, "detected_at": "2026-09-17T11:27:24.501722+00:00", "note": ""}
+{"vendor": "Pipedrive", "change_type": "plan_removed", "plan": "Smart Docs add-on", "field": null, "old_value": 32.5, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-17T11:27:24.721457+00:00", "note": ""}
+{"vendor": "Pipedrive", "change_type": "plan_removed", "plan": "Web Visitors add-on", "field": null, "old_value": 41.0, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-17T11:27:24.721466+00:00", "note": ""}
+{"vendor": "Pipedrive", "change_type": "plan_removed", "plan": "Campaigns add-on", "field": null, "old_value": 13.33, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-17T11:27:24.721470+00:00", "note": ""}
