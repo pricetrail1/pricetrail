@@ -45,3 +45,4 @@
 {"vendor": "Pipedrive", "change_type": "plan_removed", "plan": "Smart Docs add-on", "field": null, "old_value": 32.5, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-17T11:27:24.721457+00:00", "note": ""}
 {"vendor": "Pipedrive", "change_type": "plan_removed", "plan": "Web Visitors add-on", "field": null, "old_value": 41.0, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-17T11:27:24.721466+00:00", "note": ""}
 {"vendor": "Pipedrive", "change_type": "plan_removed", "plan": "Campaigns add-on", "field": null, "old_value": 13.33, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-17T11:27:24.721470+00:00", "note": ""}
+{"vendor": "Brevo", "change_type": "pricing_hidden", "plan": null, "field": null, "old_value": true, "new_value": false, "confidence": 0.8, "detected_at": "2026-09-19T10:44:38.905477+00:00", "note": "page no longer shows any public prices"}
