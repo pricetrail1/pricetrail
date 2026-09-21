@@ -1,0 +1,226 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows monthly prices prominently with a toggle to annual pricing. Annual savings stated on each plan: Foundation saves $6/month ($13 × 12 = $156 monthly vs $132 annual ≈ $11), Growth saves $7/month ($25 × 12 = $300 vs $216 annual ≈ $18—note: page says save $7 which would be $25 - $7 = $18, matching 216/12), Pro saves $7/month ($42 × 12 = $504 vs $423 annual), Business saves $8/month ($59 × 12 = $708 vs $696 annual), Enterprise saves $10/month ($79 × 12 = $948 vs $798 annual). Calculated annual_price_per_month from stated savings. Main CRM plans are per-seat/user. Add-ons listed separately below main plans: Marketing ($49/month, not per-seat), Engagement ($16 per user/month), Email Campaign Builder ($5/month), SMS ($15/month), Prospector ($37/month), and Quotes & Contracts ($79/month). Page shows 14-day free trial with no credit card required. All plans include foundation features like webchat, AI chatbot, form builder, landing pages, email marketing, and attribution reporting.",
+  "plans": [
+    {
+      "name": "Email Campaign Builder",
+      "key": "emailcampaignbuilder",
+      "monthly_price": 5.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Foundation",
+      "key": "foundation",
+      "monthly_price": 13.0,
+      "annual_price_per_month": 11.05,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai outcomes",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access"
+      ]
+    },
+    {
+      "name": "SMS",
+      "key": "sms",
+      "monthly_price": 15.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Engagement",
+      "key": "engagement",
+      "monthly_price": 16.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": 25.0,
+      "annual_price_per_month": 21.25,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai outcomes",
+          "value": 20.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access"
+      ]
+    },
+    {
+      "name": "Prospector",
+      "key": "prospector",
+      "monthly_price": 37.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 42.0,
+      "annual_price_per_month": 35.75,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai outcomes",
+          "value": 40.0,
+          "unit": null
+        },
+        {
+          "metric": "custom pipelines",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access"
+      ]
+    },
+    {
+      "name": "Marketing",
+      "key": "marketing",
+      "monthly_price": 49.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Business",
+      "key": "business",
+      "monthly_price": 59.0,
+      "annual_price_per_month": 50.25,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai outcomes",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "custom pipelines",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": 79.0,
+      "annual_price_per_month": 67.05,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai outcomes",
+          "value": 150.0,
+          "unit": null
+        },
+        {
+          "metric": "custom pipelines",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "audit log",
+        "phone support",
+        "sso"
+      ]
+    },
+    {
+      "name": "Quotes & Contracts",
+      "key": "quotescontracts",
+      "monthly_price": 79.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    }
+  ]
+}

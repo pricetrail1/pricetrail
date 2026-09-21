@@ -1,0 +1,169 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page displays tiered pricing based on contact volume. Prices shown are for contact tiers 0-500; higher tiers have higher prices. A promotional \"Save 15%\" offer is mentioned for 10,000+ contacts on first 12 months—this is a discount, so standard prices are recorded. Only monthly prices are explicitly shown on the page; the page mentions annual plans are available but requires contacting sales for pricing details. Free trial is 14 days for Standard and Essentials paid plans. Email send limits are tiered: Standard up to 6,000/month, Essentials up to some amount (not explicitly stated per plan in pricing cards), Premium up to 150,000/month. The \"Monthly Email Sends\" row shows multipliers (15X contacts for Premium, 12X for Standard, 10X for Essentials, max 500/mo or 250/day for Free).",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
+          "value": 500.0,
+          "unit": "monthly max or 250/day"
+        }
+      ],
+      "features": [
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
+          "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "basic workflows",
+        "custom branding",
+        "custom reporting",
+        "dynamic content",
+        "integrations",
+        "onboarding support",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "custom reporting",
+        "email scheduling",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "email sends per month",
+          "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "custom branding",
+        "custom reporting",
+        "dedicated account manager",
+        "dynamic content",
+        "integrations",
+        "onboarding support",
+        "phone support",
+        "priority support",
+        "role permissions"
+      ]
+    }
+  ]
+}

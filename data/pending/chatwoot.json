@@ -1,0 +1,158 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "All base plans are per-agent/month pricing. Only monthly pricing shown; no annual billing option displayed. Hacker plan is free but has the messaging \"Get started free\" rather than being listed in a trials section. Captain AI is an add-on billed at $20 per 1,000 credits; pricing shown as per-usage rather than a subscription. Features extracted from the comparison table; channels like Email, WhatsApp, SMS, Telegram, LINE, Facebook, Instagram, TikTok are grouped under \"channels\" feature availability rather than individual feature items. The page mentions a 15-day free trial in the header but it applies to all plans, so trial_days not recorded per-plan. SSO/SAML and Audit logs appear in the comparison table and are listed as included only in Enterprise; these were mapped to the standard feature list.",
+  "plans": [
+    {
+      "name": "Hacker",
+      "key": "hacker",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "agents",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "conversations",
+          "value": 500.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "data retention",
+          "value": 30.0,
+          "unit": "days"
+        }
+      ],
+      "features": [
+        "live chat"
+      ]
+    },
+    {
+      "name": "Startups",
+      "key": "startups",
+      "monthly_price": 19.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 1.0,
+          "unit": "year"
+        }
+      ],
+      "features": [
+        "api access",
+        "live chat",
+        "priority support",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Business",
+      "key": "business",
+      "monthly_price": 39.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 2.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "custom branding",
+        "live chat",
+        "priority support",
+        "role permissions",
+        "sla policies",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": 99.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 3.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "audit log",
+        "custom branding",
+        "dedicated account manager",
+        "live chat",
+        "priority support",
+        "role permissions",
+        "saml",
+        "sla policies",
+        "sso",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Captain AI",
+      "key": "captainai",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant",
+        "ai chatbot"
+      ]
+    }
+  ]
+}

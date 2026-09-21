@@ -1,0 +1,160 @@
+{
+  "currency": "USD",
+  "pricing_is_public": false,
+  "extraction_notes": "Page shows pricing toggle for \"Pay Annually (Save up to 14%)\" vs \"Pay Monthly\", but no actual prices are displayed for Starter, Growth, Advanced plans. These are marked as per-user, per-month billed annually, but numeric prices are not shown on the page. Ultimate is custom pricing (contact sales). Marketing add-on shows \"Starting from $11 per month\" but no annual pricing provided. Free plan includes 250 contacts, 2 users max, 1 sales pipeline, 5 custom fields. Paid plans include 14-day free trial.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "custom fields",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "sales pipelines",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 2.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Marketing add-on",
+      "key": "marketingaddon",
+      "monthly_price": 11.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Advanced",
+      "key": "advanced",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 120000.0,
+          "unit": null
+        },
+        {
+          "metric": "project boards",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "sales pipelines",
+          "value": 50.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 60000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 30000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "custom reporting",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Ultimate",
+      "key": "ultimate",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "dedicated account manager",
+        "integrations"
+      ]
+    }
+  ]
+}

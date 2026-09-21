@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows promotional pricing: Standard and Pro both display a 30% discount \"today\" ($33.60 and $123.90 respectively) with strikethrough original prices ($48.00 and $177.00). Recorded the standard monthly prices as stated ($11.20 and $41.30). Only monthly billing is visible on this page; no annual pricing toggle or annual rates are shown. SMS is available as an add-on at variable rates starting at $0.007/SMS depending on country and volume. The page indicates SMS pricing varies by country, so the per-SMS rate was not recorded as a plan limit. Features list is limited to those explicitly matching the allowed features list (integrations and ai chatbot were the only ones clearly attributable across all paid plans from the provided content).",
+  "extraction_notes": "Page shows promotional pricing: Standard plan displays \"$11.20/mo\" with a total of \"$48.00\" crossed out and \"$33.60 today -30%\" offer. Pro plan displays \"$41.30/mo\" with total \"$177.00\" crossed out and \"$123.90 today -30%\" offer. These are promotional first-3-months prices. The standard recurring monthly prices are $11.20 for Standard and $41.30 for Pro (after promotional period). Page mentions \"Pay 3 months upfront (save 30%)\" as an option but does not clearly display distinct annual pricing separate from monthly. Only monthly prices are recorded. The page includes SMS as an add-on at variable rates starting at $0.007/SMS. Features extracted are limited to those in the allowlist; most features mentioned on the page are not on the required list (e.g., email automation, SMS automation, segmentation, custom domains, etc.) so they are not included. Custom plan is for businesses with 150,000+ contacts.",
   "plans": [
     {
       "name": "Free",
@@ -32,8 +32,8 @@
         }
       ],
       "features": [
-        "ai chatbot",
-        "integrations"
+        "ai assistant",
+        "ai chatbot"
       ]
     },
     {
@@ -57,11 +57,16 @@
           "metric": "monthly emails",
           "value": 6000.0,
           "unit": null
+        },
+        {
+          "metric": "web push notifications",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
-        "ai chatbot",
-        "integrations"
+        "ai assistant",
+        "ai chatbot"
       ]
     },
     {
@@ -80,11 +85,21 @@
           "metric": "contacts",
           "value": 2500.0,
           "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
-        "ai chatbot",
-        "integrations"
+        "ai assistant",
+        "ai chatbot"
       ]
     },
     {
@@ -99,7 +114,10 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": []
+      "features": [
+        "ai assistant",
+        "ai chatbot"
+      ]
     }
   ]
 }
