@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "Page displays tiered pricing based on contact volume. Prices shown are for contact tiers 0-500; higher tiers have higher prices. A promotional \"Save 15%\" offer is mentioned for 10,000+ contacts on first 12 months—this is a discount, so standard prices are recorded. Only monthly prices are explicitly shown on the page; the page mentions annual plans are available but requires contacting sales for pricing details. Free trial is 14 days for Standard and Essentials paid plans. Email send limits are tiered: Standard up to 6,000/month, Essentials up to some amount (not explicitly stated per plan in pricing cards), Premium up to 150,000/month. The \"Monthly Email Sends\" row shows multipliers (15X contacts for Premium, 12X for Standard, 10X for Essentials, max 500/mo or 250/day for Free).",
+  "pricing_is_public": false,
+  "extraction_notes": "Pricing page does not display actual numbers. The page shows placeholder text like \"per month\" and \"per month for 12 months\" with blank fields where prices should appear. Contact tier pricing (0-500 contacts, 501-1,500, etc.) is displayed in a table structure but no numerical prices are visible. A currency selector dropdown (USD, GBP, EUR, etc.) is present but no amounts are shown. The page indicates \"Save 15% on 10,000+ contacts for 12 months\" as a promotion, but the base and discounted prices are not displayed. Standard and Essentials plans offer 14-day free trials (trial_days recorded). All paid plans appear to be contact-tier based with variable pricing not shown. Premium plan shows unlimited contacts. Email send limits are shown: Standard up to 6,000/month on free trial, Premium up to 150,000/month. Feature details extracted from the Key Plan Features comparison table. Users/seats limits per table: Free 1 seat, Essentials 3 seats, Standard 5 seats, Premium unlimited.",
   "plans": [
     {
       "name": "Free",
@@ -21,63 +21,12 @@
           "unit": null
         },
         {
-          "metric": "email sends per month",
-          "value": 500.0,
-          "unit": "monthly max or 250/day"
-        }
-      ],
-      "features": [
-        "basic workflows"
-      ]
-    },
-    {
-      "name": "Standard",
-      "key": "standard",
-      "monthly_price": 20.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "email sends per month",
-          "value": 6000.0,
-          "unit": null
-        },
-        {
-          "metric": "marketing automation flows",
-          "value": 200.0,
-          "unit": null
-        },
-        {
-          "metric": "users",
-          "value": 5.0,
+          "metric": "monthly email sends",
+          "value": 2500.0,
           "unit": null
         }
       ],
-      "features": [
-        "advanced workflows",
-        "basic workflows",
-        "custom branding",
-        "custom reporting",
-        "dynamic content",
-        "integrations",
-        "onboarding support",
-        "role permissions"
-      ]
+      "features": []
     },
     {
       "name": "Essentials",
@@ -98,17 +47,17 @@
         },
         {
           "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "email sends per month",
-          "value": -1.0,
+          "value": null,
           "unit": null
         },
         {
           "metric": "marketing automation flows",
           "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": null,
           "unit": null
         },
         {
@@ -119,8 +68,6 @@
       ],
       "features": [
         "basic workflows",
-        "custom reporting",
-        "email scheduling",
         "role permissions"
       ]
     },
@@ -130,7 +77,7 @@
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
-      "is_custom_pricing": true,
+      "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
@@ -142,26 +89,63 @@
           "unit": null
         },
         {
-          "metric": "email sends per month",
+          "metric": "monthly email sends",
           "value": 150000.0,
-          "unit": null
-        },
-        {
-          "metric": "users",
-          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "custom branding",
         "custom reporting",
         "dedicated account manager",
-        "dynamic content",
         "integrations",
-        "onboarding support",
         "phone support",
         "priority support",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": null,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": null,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "custom reporting",
+        "integrations",
         "role permissions"
       ]
     }
