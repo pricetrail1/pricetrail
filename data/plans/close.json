@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows both monthly and annual billing. Annual prices are marked \"SAVE UP TO 50%\" and are the discounted standard prices. All plans are per-seat pricing. The page explicitly states \"14 Days\" free trial available.",
+  "extraction_notes": "Page shows monthly and annual billing toggle. Monthly prices recorded from left column, annual prices (per-month effective rate) from right column showing discounts up to 50%. Page states \"SAVE UP TO 50%\" on annual billing. Four main subscription tiers (Solo, Essentials, Growth, Scale) are per-seat plans with 14-day free trial. Call Assistant add-on is $50/mo per organization plus $0.02/minute usage fee—monthly price recorded, usage fee noted separately. Additional organizations add-on costs $50/month, with 1 free secondary org for Growth and Scale customers. AI credits are included per plan and refreshed monthly with no rollover. Calling and SMS usage is usage-based (passed through at cost, ~$0.02/minute for calls).",
   "plans": [
     {
       "name": "Solo",
@@ -21,6 +21,11 @@
           "unit": null
         },
         {
+          "metric": "connected email accounts",
+          "value": 3.0,
+          "unit": null
+        },
+        {
           "metric": "custom activity instances per month",
           "value": 50000.0,
           "unit": null
@@ -37,7 +42,12 @@
         }
       ],
       "features": [
-        "ai assistant"
+        "ai assistant",
+        "api access",
+        "custom activities",
+        "integrations",
+        "live chat",
+        "whatsapp"
       ]
     },
     {
@@ -58,31 +68,41 @@
           "unit": null
         },
         {
-          "metric": "contacts and leads",
-          "value": -1.0,
+          "metric": "connected email accounts",
+          "value": 10.0,
           "unit": null
         },
         {
-          "metric": "custom activities",
-          "value": 250.0,
+          "metric": "custom activity instances per month",
+          "value": -1.0,
           "unit": null
         },
         {
           "metric": "custom fields",
           "value": 250.0,
           "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
         "ai assistant",
-        "integrations"
+        "api access",
+        "basic workflows",
+        "custom activities",
+        "integrations",
+        "live chat",
+        "whatsapp"
       ]
     },
     {
       "name": "Additional organizations",
       "key": "additionalorganizations",
       "monthly_price": 50.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 50.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -104,7 +124,9 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": []
+      "features": [
+        "ai assistant"
+      ]
     },
     {
       "name": "Growth",
@@ -124,25 +146,30 @@
           "unit": null
         },
         {
-          "metric": "contacts and leads",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "custom activities",
-          "value": 250.0,
+          "metric": "connected email accounts",
+          "value": 10.0,
           "unit": null
         },
         {
           "metric": "custom fields",
           "value": 250.0,
           "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "ai assistant",
-        "integrations"
+        "api access",
+        "custom activities",
+        "integrations",
+        "live chat",
+        "role permissions",
+        "whatsapp"
       ]
     },
     {
@@ -163,28 +190,32 @@
           "unit": null
         },
         {
-          "metric": "contacts and leads",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "custom activities",
-          "value": 250.0,
+          "metric": "connected email accounts",
+          "value": 10.0,
           "unit": null
         },
         {
           "metric": "custom fields",
           "value": 250.0,
           "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "ai assistant",
+        "api access",
+        "custom activities",
         "integrations",
-        "role permissions"
+        "live chat",
+        "role permissions",
+        "whatsapp"
       ]
     }
   ],
-  "captured_at": "2026-09-04T06:21:33.021533+00:00"
+  "captured_at": "2026-09-23T11:19:09.012971+00:00"
 }

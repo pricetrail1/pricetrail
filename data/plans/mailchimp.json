@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "This is a Mailchimp pricing page. No actual prices are displayed for any paid plans (Standard, Essentials, or Premium)—only \"per month\" text appears without numbers. The page shows a currency selector at the top (USD, EUR, GBP, AUD, etc.) but no pricing figures. A 15% promotional discount is mentioned for 10,000+ contacts for 12 months (\"Save 15%\"), but no base price is shown to discount from. Standard and Essentials have 14-day free trials; Premium trial availability is unclear (\"For qualified new customers\"). The features listed are based on the comparison table shown (Key Plan Features). Email send limits are stated as \"15X contacts\" (Standard), \"12X contacts\" (Essentials), \"10X contacts\" (Free max 500/mo), meaning they scale by contact count—these cannot be expressed as fixed numbers. Seats and audience limits are also from the comparison table.",
+  "extraction_notes": "Pricing page does not display actual numbers. The page shows placeholder text like \"per month\" and \"per month for 12 months\" with blank fields where prices should appear. Contact tier pricing (0-500 contacts, 501-1,500, etc.) is displayed in a table structure but no numerical prices are visible. A currency selector dropdown (USD, GBP, EUR, etc.) is present but no amounts are shown. The page indicates \"Save 15% on 10,000+ contacts for 12 months\" as a promotion, but the base and discounted prices are not displayed. Standard and Essentials plans offer 14-day free trials (trial_days recorded). All paid plans appear to be contact-tier based with variable pricing not shown. Premium plan shows unlimited contacts. Email send limits are shown: Standard up to 6,000/month on free trial, Premium up to 150,000/month. Feature details extracted from the Key Plan Features comparison table. Users/seats limits per table: Free 1 seat, Essentials 3 seats, Standard 5 seats, Premium unlimited.",
   "plans": [
     {
       "name": "Free",
@@ -22,7 +22,7 @@
         },
         {
           "metric": "monthly email sends",
-          "value": 500.0,
+          "value": 2500.0,
           "unit": null
         }
       ],
@@ -41,25 +41,34 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": null,
+          "unit": null
+        },
+        {
           "metric": "marketing automation flows",
           "value": 4.0,
           "unit": null
         },
         {
           "metric": "monthly email sends",
-          "value": 12.0,
+          "value": null,
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "users",
           "value": 3.0,
           "unit": null
         }
       ],
       "features": [
         "basic workflows",
-        "custom branding",
-        "integrations"
+        "role permissions"
       ]
     },
     {
@@ -81,19 +90,18 @@
         },
         {
           "metric": "monthly email sends",
-          "value": -1.0,
+          "value": 150000.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
-        "custom branding",
         "custom reporting",
         "dedicated account manager",
         "integrations",
         "phone support",
-        "priority support"
+        "priority support",
+        "role permissions"
       ]
     },
     {
@@ -109,30 +117,38 @@
       "trial_days": 14,
       "limits": [
         {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": null,
+          "unit": null
+        },
+        {
           "metric": "marketing automation flows",
           "value": 200.0,
           "unit": null
         },
         {
           "metric": "monthly email sends",
-          "value": 15.0,
+          "value": null,
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "users",
           "value": 5.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
         "basic workflows",
-        "custom branding",
         "custom reporting",
-        "integrations"
+        "integrations",
+        "role permissions"
       ]
     }
   ],
-  "captured_at": "2026-09-20T11:06:59.169424+00:00"
+  "captured_at": "2026-09-23T11:19:08.080006+00:00"
 }
