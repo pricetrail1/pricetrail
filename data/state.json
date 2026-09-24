@@ -1,38 +1,38 @@
 {
   "intercom": {
     "consecutive_failures": 0,
-    "last_checked": "2026-09-23",
+    "last_checked": "2026-09-24",
     "status": "ok",
     "hash_changes": 12,
     "hash": "81dc6037b62cf271c5bdaf6303d663076e388f80c8ae24275a514f9c9ea4e31a"
   },
   "zendesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-09-23",
+    "last_checked": "2026-09-24",
     "status": "ok",
     "hash_changes": 4,
     "hash": "9c93d0b75770448e29dad35f6dfa96070ab07c4373588524d3c931400033e701"
   },
   "freshdesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-09-23",
+    "last_checked": "2026-09-24",
     "status": "ok",
     "hash_changes": 7,
     "hash": "871e0c47534bce5d12aeba11801f6c53adfd39d942150ebba6fdd3f53847a812"
   },
   "help-scout": {
     "consecutive_failures": 0,
-    "last_checked": "2026-09-23",
+    "last_checked": "2026-09-24",
     "status": "ok",
     "hash_changes": 2,
     "hash": "839d58e8dc90fd6c075f2eac5237e75bb6cd18dd060c2d924f2049564bd006c9"
   },
   "front": {
     "consecutive_failures": 0,
-    "last_checked": "2026-09-23",
+    "last_checked": "2026-09-24",
     "status": "ok",
-    "hash_changes": 4,
-    "hash": "bda527cb766c685a54a2da57384641185c5961857eb996cfa472b153e8dda312"
+    "hash_changes": 5,
+    "hash": "61eeced18fd4d32cfcd0341891d6c952b3eeb7620c4be2613c41c829c2b6ff00"
   },
   "crisp": {
     "consecutive_failures": 0,
@@ -71,14 +71,14 @@
   },
   "mailchimp": {
     "consecutive_failures": 0,
-    "last_checked": "2026-09-23",
+    "last_checked": "2026-09-24",
     "status": "ok",
     "hash_changes": 46,
     "hash": "d90002ff5dbfac9859942e69b2009d3839b45378e7dbb771c9dd62625564a6e3"
   },
   "brevo": {
     "consecutive_failures": 0,
-    "last_checked": "2026-09-23",
+    "last_checked": "2026-09-24",
     "status": "ok",
     "hash_changes": 16,
     "hash": "152ec3fb191c73a0619c890c9e53e9528b5dad43e18885c2fef82d567baa08cf"
@@ -121,14 +121,14 @@
   },
   "pipedrive": {
     "consecutive_failures": 0,
-    "last_checked": "2026-09-23",
+    "last_checked": "2026-09-24",
     "status": "ok",
     "hash_changes": 2,
     "hash": "41a446bbdda9c8f350d19507a9770e1e26a4278da4723590c5431ad392b07db5"
   },
   "close": {
     "consecutive_failures": 0,
-    "last_checked": "2026-09-23",
+    "last_checked": "2026-09-24",
     "status": "ok",
     "hash_changes": 3,
     "hash": "31096f66002cd431c98961ba4c841238d4b9f3fa582d9ee7b85cb4391d554275"
