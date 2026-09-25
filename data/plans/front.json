@@ -1,26 +1,20 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows \"Billed Annually\" with \"Save 24%\" badge, indicating all prices shown are annual billing. Only annual_price_per_month is recorded; monthly_price is null. All main plans (Starter, Professional, Enterprise) are per-seat with seat limits. Trial is 14 days for Starter and Professional based on FAQ. Add-ons are tracked separately with is_addon true. Copilot and Smart QA are $20/seat/month as add-ons but included in Enterprise. Smart CSAT is $10/seat/month as add-on. Autopilot is $0.05/conversation. Native WhatsApp Channel pricing is \"Meta-billed WhatsApp costs + 20% admin fee\" (custom). API Rate Limit Increase is $200 per 100 API requests/min per month. Features extracted only from the allowed list; plan names preserved exactly.",
+  "extraction_notes": "Pricing page shows \"Billed Annually\" toggle active with \"Save 24%\" label. All prices shown are annual billing (per-month equivalent when billed annually). No monthly billing option displayed on this view. Autopilot add-on priced at $0.05/conversation (usage-based, not per-seat, so annual_price_per_month left null). Native WhatsApp Channel pricing is \"Meta-billed WhatsApp costs + 20% admin fee\" - variable pricing, not fixed. API Rate Limit Increase is $200 per 100 API requests/min per month - usage/capacity-based pricing. Professional plan includes 14-day free trial. Enterprise plan described as \"most popular\" but no trial days mentioned. Starter plan shows \"Try for Free\" button; Professional shows \"Request a Demo\". The page's feature comparison table lists AI features (Copilot, Smart QA, Smart CSAT) as add-ons for Starter and Professional, but included in Enterprise. Features recorded based on stated plan inclusions and the official feature list provided in instructions.",
   "plans": [
     {
       "name": "API Rate Limit Increase",
       "key": "apiratelimitincrease",
       "monthly_price": null,
-      "annual_price_per_month": 200.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "api rate limit",
-          "value": 100.0,
-          "unit": "requests/min"
-        }
-      ],
+      "limits": [],
       "features": [
         "api access"
       ]
@@ -36,13 +30,7 @@
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "price per conversation",
-          "value": 0.05,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
         "ai chatbot"
       ]
@@ -81,8 +69,8 @@
           "unit": null
         },
         {
-          "metric": "channel types",
-          "value": -1.0,
+          "metric": "channels per seat",
+          "value": 50.0,
           "unit": null
         },
         {
@@ -94,9 +82,10 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "ai copilot",
         "custom reporting",
+        "integrations",
         "role permissions",
+        "saml",
         "sso"
       ]
     },
@@ -134,8 +123,8 @@
           "unit": null
         },
         {
-          "metric": "channel types",
-          "value": -1.0,
+          "metric": "channels per seat",
+          "value": 30.0,
           "unit": null
         },
         {
@@ -151,6 +140,9 @@
       ],
       "features": [
         "advanced workflows",
+        "custom reporting",
+        "integrations",
+        "saml",
         "sso"
       ]
     },
@@ -194,9 +186,7 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": [
-        "custom reporting"
-      ]
+      "features": []
     },
     {
       "name": "Starter",
@@ -216,8 +206,8 @@
           "unit": null
         },
         {
-          "metric": "channel types",
-          "value": 1.0,
+          "metric": "channels per seat",
+          "value": 10.0,
           "unit": null
         },
         {
@@ -232,9 +222,11 @@
         }
       ],
       "features": [
-        "basic workflows"
+        "basic analytics",
+        "basic workflows",
+        "shared inbox and ticketing"
       ]
     }
   ],
-  "captured_at": "2026-08-31T21:22:42.492845+00:00"
+  "captured_at": "2026-09-25T11:38:31.593152+00:00"
 }

@@ -1,0 +1,131 @@
+{
+  "currency": "USD",
+  "pricing_is_public": false,
+  "extraction_notes": "Page shows \"Loading content...\" where pricing numbers should appear, indicating prices are not loaded. Only plan names and features lists are visible. Monthly/Yearly toggle is shown but no actual prices are displayed. Currency assumed to be USD based on typical Brevo pricing, but cannot be confirmed from page. All prices recorded as null. The Free plan explicitly states \"no credit card needed\" and is identified as a free tier. Professional plan shows \"per month/user\" suggesting per-seat pricing but actual price not visible. Enterprise is marked as custom pricing (\"Talk to sales\").",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "api access",
+        "basic workflows",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "custom branding",
+        "dedicated account manager",
+        "integrations",
+        "phone support",
+        "role permissions",
+        "saml",
+        "sso"
+      ]
+    },
+    {
+      "name": "Professional",
+      "key": "professional",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "custom branding",
+        "integrations",
+        "phone support",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "custom branding",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "api access",
+        "basic workflows",
+        "custom branding",
+        "integrations"
+      ]
+    }
+  ]
+}
