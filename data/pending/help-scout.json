@@ -1,0 +1,228 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows monthly pricing with a toggle for Annual/Monthly billing. Only monthly prices are displayed ($25, $45, $75 per user/mo). The page header shows \"Monthly/Annual\" toggle but no annual pricing figures are shown on the plan cards themselves, so only monthly_price is recorded. AI Answers is priced at $0.75 per resolution and includes a 3-month free trial. Free plan limit note states \"Up to 5\" users, \"1\" Inbox, \"1\" Docs site, and 100/mo contacts.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 100.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "docs sites",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "inboxes",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "saved replies",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "tags",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 25.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 15,
+      "limits": [
+        {
+          "metric": "basic workflows",
+          "value": 150.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "docs sites",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "inboxes",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "saved replies",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 25.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "basic workflows",
+        "integrations",
+        "live chat",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Plus",
+      "key": "plus",
+      "monthly_price": 45.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 15,
+      "limits": [
+        {
+          "metric": "advanced workflows",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "docs sites",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "inboxes",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "light users",
+          "value": 25.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 50.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "integrations",
+        "live chat",
+        "sla policies",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 75.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "advanced workflows",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "docs sites",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "inboxes",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "light users",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": "minimum 10"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "dedicated account manager",
+        "hipaa",
+        "integrations",
+        "live chat",
+        "onboarding support",
+        "saml",
+        "sla policies",
+        "sso",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "AI Answers",
+      "key": "aianswers",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": 90,
+      "limits": [
+        {
+          "metric": "resolution",
+          "value": 0.75,
+          "unit": "price per resolution"
+        }
+      ],
+      "features": [
+        "ai chatbot"
+      ]
+    }
+  ]
+}
