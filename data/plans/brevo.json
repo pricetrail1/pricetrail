@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "No prices visible on page. Page shows plan structure and features but no numerical pricing - all pricing is hidden behind \"Talk to sales\" or \"Sign up\" buttons without disclosure. Currency not explicitly stated; assumed USD as this appears to be Brevo's standard US pricing page. Monthly/Yearly toggle mentioned (\"Yearly (-10%)\") but no actual prices shown to extract. Free plan does not require credit card. Professional plan shows \"per month/user\" but no price. Features mapped to the allowed list; several plan-specific features (marketing automation, A/B testing, landing pages, AI features, etc.) not on the allowed features list were excluded.",
+  "pricing_is_public": true,
+  "extraction_notes": "No specific prices visible on the page—only \"per month\" labels without numbers. The page has a Monthly/Yearly toggle with a \"-10%\" label for yearly, but no actual prices are shown. Free plan limit of 300 emails inferred from \"Free forever\" section context. Professional is marked per user/seat (\"Sales Advanced per month/user\"). Enterprise is custom pricing (\"Talk to sales\"). Currency assumed USD as typical for Brevo's primary market.",
   "plans": [
     {
       "name": "Free",
@@ -17,13 +17,11 @@
       "limits": [
         {
           "metric": "emails per month",
-          "value": 5000.0,
+          "value": 300.0,
           "unit": null
         }
       ],
-      "features": [
-        "email support"
-      ]
+      "features": []
     },
     {
       "name": "Enterprise",
@@ -44,11 +42,11 @@
         }
       ],
       "features": [
-        "custom reporting",
+        "ai assistant",
+        "custom branding",
         "dedicated account manager",
         "integrations",
         "onboarding support",
-        "phone support",
         "saml",
         "sso"
       ]
@@ -78,11 +76,12 @@
       ],
       "features": [
         "advanced workflows",
-        "custom reporting",
+        "ai assistant",
+        "custom branding",
         "integrations",
         "phone support",
-        "priority support",
-        "sso"
+        "role permissions",
+        "whatsapp"
       ]
     },
     {
@@ -98,9 +97,14 @@
       "trial_days": null,
       "limits": [],
       "features": [
+        "a/b testing",
+        "advanced reporting",
         "advanced workflows",
-        "custom reporting",
-        "email support"
+        "ai assistant",
+        "custom branding",
+        "email support",
+        "landing pages",
+        "web & event tracking"
       ]
     },
     {
@@ -122,11 +126,16 @@
         }
       ],
       "features": [
-        "basic workflows",
+        "advanced workflows",
+        "ai assistant",
+        "basic reporting",
+        "drag & drop email editor",
+        "email & sms",
         "email support",
-        "integrations"
+        "email templates",
+        "forms"
       ]
     }
   ],
-  "captured_at": "2026-09-19T10:44:38.905654+00:00"
+  "captured_at": "2026-09-27T11:51:00.902662+00:00"
 }

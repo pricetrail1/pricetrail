@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing page does not display actual numbers. The page shows placeholder text like \"per month\" and \"per month for 12 months\" with blank fields where prices should appear. Contact tier pricing (0-500 contacts, 501-1,500, etc.) is displayed in a table structure but no numerical prices are visible. A currency selector dropdown (USD, GBP, EUR, etc.) is present but no amounts are shown. The page indicates \"Save 15% on 10,000+ contacts for 12 months\" as a promotion, but the base and discounted prices are not displayed. Standard and Essentials plans offer 14-day free trials (trial_days recorded). All paid plans appear to be contact-tier based with variable pricing not shown. Premium plan shows unlimited contacts. Email send limits are shown: Standard up to 6,000/month on free trial, Premium up to 150,000/month. Feature details extracted from the Key Plan Features comparison table. Users/seats limits per table: Free 1 seat, Essentials 3 seats, Standard 5 seats, Premium unlimited.",
+  "extraction_notes": "Pricing page shows a contact-based tiering system (0-500 contacts through 1,000,000+ contacts) but specific prices are not displayed on the page. Users must interact with the pricing selector to see prices for their chosen contact tier. The page references promotional pricing (15% off for 10,000+ contacts for 12 months) but no actual dollar amounts are visible in the provided HTML. Annual plans are mentioned as available for Premium and Standard 10,000+ contact tiers but require contacting sales. A \"Pay As You Go\" plan is mentioned but no pricing details provided. Four main plans are identified: Free, Essentials, Standard, and Premium.",
   "plans": [
     {
       "name": "Free",
@@ -21,9 +21,9 @@
           "unit": null
         },
         {
-          "metric": "monthly email sends",
-          "value": 2500.0,
-          "unit": null
+          "metric": "monthly_email_sends",
+          "value": 500.0,
+          "unit": "max of 500/mo or 250/day"
         }
       ],
       "features": []
@@ -41,35 +41,28 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "audiences",
-          "value": 3.0,
-          "unit": null
-        },
-        {
-          "metric": "contacts",
-          "value": null,
-          "unit": null
-        },
-        {
-          "metric": "marketing automation flows",
-          "value": 4.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends",
-          "value": null,
-          "unit": null
-        },
-        {
-          "metric": "users",
-          "value": 3.0,
+          "metric": "monthly_email_sends",
+          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
-        "basic workflows",
-        "role permissions"
+        "basic workflows"
       ]
+    },
+    {
+      "name": "Pay As You Go",
+      "key": "payasyougo",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
     },
     {
       "name": "Premium",
@@ -84,12 +77,7 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends",
+          "metric": "monthly_email_sends",
           "value": 150000.0,
           "unit": null
         }
@@ -97,11 +85,8 @@
       "features": [
         "advanced workflows",
         "custom reporting",
-        "dedicated account manager",
-        "integrations",
         "phone support",
-        "priority support",
-        "role permissions"
+        "priority support"
       ]
     },
     {
@@ -117,38 +102,16 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "contacts",
-          "value": null,
-          "unit": null
-        },
-        {
-          "metric": "marketing automation flows",
-          "value": 200.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends",
-          "value": null,
-          "unit": null
-        },
-        {
-          "metric": "users",
-          "value": 5.0,
+          "metric": "monthly_email_sends",
+          "value": 6000.0,
           "unit": null
         }
       ],
       "features": [
-        "basic workflows",
-        "custom reporting",
-        "integrations",
-        "role permissions"
+        "advanced workflows",
+        "basic workflows"
       ]
     }
   ],
-  "captured_at": "2026-09-23T11:19:08.080006+00:00"
+  "captured_at": "2026-09-27T11:50:59.834186+00:00"
 }

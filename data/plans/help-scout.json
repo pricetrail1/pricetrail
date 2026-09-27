@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "The page displays a Monthly/Annual toggle at the top, defaulting to Monthly view. All prices shown ($25, $45, $75) are monthly prices per user. The page does not show annual pricing figures (the discount for annual billing is not displayed). The AI Answers add-on is priced at $0.75 per resolution with a 3-month free trial. The Free plan is limited to 5 users, 1 Inbox, and 1 Docs site. Pro plan requires minimum 10 users.",
+  "extraction_notes": "Page shows monthly pricing with a toggle for Annual/Monthly billing. Only monthly prices are displayed ($25, $45, $75 per user/mo). The page header shows \"Monthly/Annual\" toggle but no annual pricing figures are shown on the plan cards themselves, so only monthly_price is recorded. AI Answers is priced at $0.75 per resolution and includes a 3-month free trial. Free plan limit note states \"Up to 5\" users, \"1\" Inbox, \"1\" Docs site, and 100/mo contacts.",
   "plans": [
     {
       "name": "Free",
@@ -16,9 +16,9 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "contacts per month",
+          "metric": "contacts",
           "value": 100.0,
-          "unit": null
+          "unit": "per month"
         },
         {
           "metric": "docs sites",
@@ -48,10 +48,7 @@
       ],
       "features": [
         "ai assistant",
-        "basic workflows",
-        "integrations",
-        "live chat",
-        "whatsapp"
+        "basic workflows"
       ]
     },
     {
@@ -67,7 +64,12 @@
       "trial_days": 15,
       "limits": [
         {
-          "metric": "contacts per month",
+          "metric": "basic workflows",
+          "value": 150.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
           "value": -1.0,
           "unit": null
         },
@@ -78,16 +80,11 @@
         },
         {
           "metric": "inboxes",
-          "value": 20.0,
+          "value": 2.0,
           "unit": null
         },
         {
           "metric": "saved replies",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "tags",
           "value": -1.0,
           "unit": null
         },
@@ -102,7 +99,6 @@
         "basic workflows",
         "integrations",
         "live chat",
-        "sla policies",
         "whatsapp"
       ]
     },
@@ -119,13 +115,18 @@
       "trial_days": 15,
       "limits": [
         {
+          "metric": "advanced workflows",
+          "value": 500.0,
+          "unit": null
+        },
+        {
           "metric": "docs sites",
           "value": 3.0,
           "unit": null
         },
         {
           "metric": "inboxes",
-          "value": 50.0,
+          "value": 5.0,
           "unit": null
         },
         {
@@ -161,6 +162,11 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "advanced workflows",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "docs sites",
           "value": 5.0,
           "unit": null
@@ -179,16 +185,12 @@
           "metric": "users",
           "value": -1.0,
           "unit": "minimum 10"
-        },
-        {
-          "metric": "workflows",
-          "value": -1.0,
-          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "ai assistant",
+        "api access",
         "dedicated account manager",
         "hipaa",
         "integrations",
@@ -214,8 +216,8 @@
       "limits": [
         {
           "metric": "resolution",
-          "value": null,
-          "unit": "pay-per-resolution at $0.75 each"
+          "value": 0.75,
+          "unit": "price per resolution"
         }
       ],
       "features": [
@@ -223,5 +225,5 @@
       ]
     }
   ],
-  "captured_at": "2026-09-09T11:08:34.212741+00:00"
+  "captured_at": "2026-09-27T11:50:59.085148+00:00"
 }
