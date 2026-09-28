@@ -1,0 +1,134 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows both monthly and annual billing. Prices stated as \"per person\" and marked \"billed annually\" or \"billed monthly\". Features list extracted from comparison table and plan cards. Trial period explicitly stated as 14 days, no credit card required. Limits for visitors extracted from \"Traffic tracking\" section. Monthly prices: Starter $25, Team $59, Business $89. Annual prices: Starter $19, Team $49, Business $79 per person per month. For Enterprise, custom pricing only (\"Let's talk\" CTA), no numbers shown.",
+  "plans": [
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": 25.0,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "chat history",
+          "value": 60.0,
+          "unit": "days"
+        },
+        {
+          "metric": "recurring campaigns",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "visitors",
+          "value": 100.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "api access",
+        "custom branding",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Team",
+      "key": "team",
+      "monthly_price": 59.0,
+      "annual_price_per_month": 49.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "campaigns",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "chat history",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "visitors",
+          "value": 400.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "api access",
+        "custom branding",
+        "custom reporting",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Business",
+      "key": "business",
+      "monthly_price": 89.0,
+      "annual_price_per_month": 79.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "visitors",
+          "value": 1000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "api access",
+        "custom branding",
+        "custom reporting",
+        "live chat",
+        "sla policies",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "api access",
+        "custom branding",
+        "custom reporting",
+        "hipaa",
+        "live chat",
+        "onboarding support",
+        "priority support",
+        "single sign-on",
+        "sla policies",
+        "sso",
+        "whatsapp"
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows promotional pricing: Standard plan displays \"$11.20/mo\" with a total of \"$48.00\" crossed out and \"$33.60 today -30%\" offer. Pro plan displays \"$41.30/mo\" with total \"$177.00\" crossed out and \"$123.90 today -30%\" offer. These are promotional first-3-months prices. The standard recurring monthly prices are $11.20 for Standard and $41.30 for Pro (after promotional period). Page mentions \"Pay 3 months upfront (save 30%)\" as an option but does not clearly display distinct annual pricing separate from monthly. Only monthly prices are recorded. The page includes SMS as an add-on at variable rates starting at $0.007/SMS. Features extracted are limited to those in the allowlist; most features mentioned on the page are not on the required list (e.g., email automation, SMS automation, segmentation, custom domains, etc.) so they are not included. Custom plan is for businesses with 150,000+ contacts.",
+  "extraction_notes": "Page shows promotional pricing: Standard plan displays \"$11.20/mo Billed monthly\" but also shows \"Total of: $48.00 $33.60 today -30%\" indicating a 30% new customer discount. The standard monthly price is $11.20 (shown as the regular rate after 3 months). Pro plan shows \"$41.30/mo Billed monthly\" with similar -30% promotion (\"Total of: $177.00 $123.90 today\"). The promotional prices ($33.60 and $123.90) are NOT recorded; only the standard rates are. SMS is available as an add-on at $0.007 per SMS for Pro plan. Only monthly billing is clearly shown on this page; no annual billing toggle or annual pricing is visible. Account experts cost from $400/month and are included free for anyone paying at least $400/month. Features listed (like \"advanced reporting\", \"dynamic content\", etc.) are common across multiple plans, so only core differentiating features with clear pricing tier association were recorded.",
   "plans": [
     {
       "name": "Free",
@@ -26,14 +26,14 @@
           "unit": null
         },
         {
-          "metric": "web push notifications",
+          "metric": "web push notifications per month",
           "value": 500.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
-        "ai chatbot"
+        "api access",
+        "integrations"
       ]
     },
     {
@@ -59,14 +59,15 @@
           "unit": null
         },
         {
-          "metric": "web push notifications",
+          "metric": "web push notifications per month",
           "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "ai assistant",
-        "ai chatbot"
+        "api access",
+        "integrations"
       ]
     },
     {
@@ -92,14 +93,15 @@
           "unit": null
         },
         {
-          "metric": "web push notifications",
+          "metric": "web push notifications per month",
           "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "ai assistant",
-        "ai chatbot"
+        "api access",
+        "integrations"
       ]
     },
     {
@@ -113,10 +115,18 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
       "features": [
         "ai assistant",
-        "ai chatbot"
+        "api access",
+        "custom reporting",
+        "integrations"
       ]
     }
   ]

@@ -1,0 +1,235 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page displays monthly pricing. Toggle shows \"Monthly\" and \"Annually\" options at top, but only monthly prices are shown on the plan cards. The page states \"2 months free\" as a promotional offer for annual billing, but specific annual pricing figures are not displayed on the plan cards themselves. Starter shows $24.17/mo, Growth shows $49.17/mo as starting prices. Plus plan shows $300/mo + monthly usage (usage-based component). Premium is custom pricing with \"Contact for pricing\". Lyro AI Agent and Flows are sold as standalone add-on products with their own pricing. Free plan has limits: 50 billable conversations, 50 Lyro AI conversations (lifetime), 100 Flows visitors, 10 seats. The page notes that Plus and Premium allow custom quotas beyond standard limits.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "billable conversations",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "flows visitors reached",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "lyro ai agent conversations",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "live chat",
+        "ticketing"
+      ]
+    },
+    {
+      "name": "Flows",
+      "key": "flows",
+      "monthly_price": 24.17,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": 7,
+      "limits": [
+        {
+          "metric": "flows visitors reached",
+          "value": 2000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": 24.17,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 7,
+      "limits": [
+        {
+          "metric": "billable conversations",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "flows visitors reached",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "lyro ai agent conversations",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "live chat",
+        "ticketing"
+      ]
+    },
+    {
+      "name": "Lyro AI Agent",
+      "key": "lyroaiagent",
+      "monthly_price": 32.5,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": 7,
+      "limits": [
+        {
+          "metric": "lyro ai agent conversations",
+          "value": 50.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai chatbot"
+      ]
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": 49.17,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 7,
+      "limits": [
+        {
+          "metric": "billable conversations",
+          "value": 2000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "live chat",
+        "role permissions",
+        "ticketing"
+      ]
+    },
+    {
+      "name": "Plus",
+      "key": "plus",
+      "monthly_price": 300.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "billable conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "flows visitors reached",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "lyro ai agent conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "custom branding",
+        "custom reporting",
+        "dedicated account manager",
+        "live chat",
+        "priority support",
+        "role permissions",
+        "ticketing"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "lyro ai agent conversations",
+          "value": 3000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "custom branding",
+        "custom reporting",
+        "dedicated account manager",
+        "live chat",
+        "priority support",
+        "role permissions",
+        "sso",
+        "ticketing"
+      ]
+    }
+  ]
+}

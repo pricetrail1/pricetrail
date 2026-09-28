@@ -1,0 +1,172 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "All plans show monthly pricing only. The page states \"Per month, per workspace\" for Mini, Essentials, and Plus. The Free plan includes a 14-day trial for new accounts to access all features. Enterprise plan has custom pricing and requires contacting sales. Additional agents cost $10/month per seat (applicable to all paid plans). The page does not display annual pricing or a billing toggle showing annual discounts.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "customer profiles",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "sub-inboxes",
+          "value": 0.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Mini",
+      "key": "mini",
+      "monthly_price": 45.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "customer profiles",
+          "value": 5000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "sub-inboxes",
+          "value": 2.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "ai chatbot",
+        "api access",
+        "custom branding",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 95.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "customer profiles",
+          "value": 50000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "sub-inboxes",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "ai chatbot",
+        "api access",
+        "custom branding",
+        "integrations",
+        "live chat",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Plus",
+      "key": "plus",
+      "monthly_price": 295.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "customer profiles",
+          "value": 200000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 20.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "ai chatbot",
+        "api access",
+        "custom branding",
+        "integrations",
+        "live chat",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "api access",
+        "custom branding",
+        "dedicated account manager",
+        "integrations",
+        "priority support",
+        "sla policies"
+      ]
+    }
+  ]
+}

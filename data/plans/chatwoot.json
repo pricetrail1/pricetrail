@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Prices shown are per agent/month when billed annually. Hacker plan is free for up to 2 agents. Captain AI is an add-on priced at $20 per 1,000 credits. Free plans (Startups for open source/nonprofits) mentioned in FAQ but not as separate pricing tiers. 15-day free trial mentioned in header. Page shows only annual pricing; no monthly-only pricing is displayed.",
+  "extraction_notes": "All base plans are per-agent/month pricing. Only monthly pricing shown; no annual billing option displayed. Hacker plan is free but has the messaging \"Get started free\" rather than being listed in a trials section. Captain AI is an add-on billed at $20 per 1,000 credits; pricing shown as per-usage rather than a subscription. Features extracted from the comparison table; channels like Email, WhatsApp, SMS, Telegram, LINE, Facebook, Instagram, TikTok are grouped under \"channels\" feature availability rather than individual feature items. The page mentions a 15-day free trial in the header but it applies to all plans, so trial_days not recorded per-plan. SSO/SAML and Audit logs appear in the comparison table and are listed as included only in Enterprise; these were mapped to the standard feature list.",
   "plans": [
     {
       "name": "Hacker",
@@ -21,9 +21,9 @@
           "unit": null
         },
         {
-          "metric": "conversations per month",
+          "metric": "conversations",
           "value": 500.0,
-          "unit": null
+          "unit": "per month"
         },
         {
           "metric": "data retention",
@@ -36,10 +36,10 @@
       ]
     },
     {
-      "name": "Business",
-      "key": "business",
-      "monthly_price": null,
-      "annual_price_per_month": 39.0,
+      "name": "Startups",
+      "key": "startups",
+      "monthly_price": 19.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -48,7 +48,37 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "conversations per month",
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 1.0,
+          "unit": "year"
+        }
+      ],
+      "features": [
+        "api access",
+        "live chat",
+        "priority support",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Business",
+      "key": "business",
+      "monthly_price": 39.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "conversations",
           "value": -1.0,
           "unit": null
         },
@@ -60,11 +90,50 @@
       ],
       "features": [
         "advanced workflows",
-        "custom reporting",
-        "integrations",
+        "api access",
+        "custom branding",
         "live chat",
         "priority support",
+        "role permissions",
         "sla policies",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": 99.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 3.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "audit log",
+        "custom branding",
+        "dedicated account manager",
+        "live chat",
+        "priority support",
+        "role permissions",
+        "saml",
+        "sla policies",
+        "sso",
         "whatsapp"
       ]
     },
@@ -79,86 +148,12 @@
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "credits per 1000",
-          "value": 20.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
         "ai assistant",
         "ai chatbot"
       ]
-    },
-    {
-      "name": "Enterprise",
-      "key": "enterprise",
-      "monthly_price": null,
-      "annual_price_per_month": 99.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "conversations per month",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "data retention",
-          "value": 3.0,
-          "unit": "years"
-        }
-      ],
-      "features": [
-        "advanced workflows",
-        "audit log",
-        "custom branding",
-        "custom reporting",
-        "integrations",
-        "live chat",
-        "priority support",
-        "saml",
-        "sla policies",
-        "sso",
-        "whatsapp"
-      ]
-    },
-    {
-      "name": "Startups",
-      "key": "startups",
-      "monthly_price": null,
-      "annual_price_per_month": 19.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "conversations per month",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "data retention",
-          "value": 1.0,
-          "unit": "years"
-        }
-      ],
-      "features": [
-        "custom reporting",
-        "integrations",
-        "live chat",
-        "priority support",
-        "whatsapp"
-      ]
     }
   ],
-  "captured_at": "2026-08-31T21:22:44.916416+00:00"
+  "captured_at": "2026-09-28T13:36:30.903171+00:00"
 }

@@ -1,0 +1,163 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Promotional pricing present: 15% discount on Standard and Premium plans for contacts 10,000+ for first 12 months is noted as a limited offer. Standard prices (non-promotional) recorded. Page shows contact-based pricing tiers with starting prices visible; exact prices for different contact tiers not fully extracted due to page complexity, but representative base prices captured. Only monthly pricing clearly stated on main plan cards; annual plans mentioned but specific annual pricing not displayed on the page. Trial information: Standard and Essentials offer 14-day free trial with credit card required; Free plan is perpetually free up to 250 contacts. Features extracted from the comparison table showing what is included in each plan.",
+  "plans": [
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 4.0,
+          "unit": "flow steps"
+        },
+        {
+          "metric": "monthly email sends",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "email scheduling",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 500.0,
+          "unit": "max"
+        }
+      ],
+      "features": [
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom branding",
+        "custom reporting",
+        "email scheduling",
+        "integrations",
+        "onboarding support",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom branding",
+        "custom reporting",
+        "dedicated account manager",
+        "integrations",
+        "onboarding support",
+        "phone support",
+        "priority support",
+        "role permissions"
+      ]
+    }
+  ]
+}
