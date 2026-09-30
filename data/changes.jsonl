@@ -66,3 +66,5 @@
 {"vendor": "Nutshell", "change_type": "price_decrease", "plan": "Business", "field": "annual_price_per_month", "old_value": 51.0, "new_value": 50.25, "confidence": 0.8, "detected_at": "2026-09-28T13:37:23.448909+00:00", "note": "-1.5%"}
 {"vendor": "Nutshell", "change_type": "price_increase", "plan": "Pro", "field": "annual_price_per_month", "old_value": 35.0, "new_value": 35.75, "confidence": 0.8, "detected_at": "2026-09-28T13:37:23.448927+00:00", "note": "+2.1%"}
 {"vendor": "Nutshell", "change_type": "price_increase", "plan": "Growth", "field": "annual_price_per_month", "old_value": 18.0, "new_value": 21.25, "confidence": 0.8, "detected_at": "2026-09-28T13:37:23.448945+00:00", "note": "+18.1%"}
+{"vendor": "Mailchimp", "change_type": "plan_removed", "plan": "Pay As You Go", "field": null, "old_value": null, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-30T12:21:56.432539+00:00", "note": ""}
+{"vendor": "Mailchimp", "change_type": "custom_pricing_changed", "plan": "Premium", "field": "is_custom_pricing", "old_value": false, "new_value": true, "confidence": 0.8, "detected_at": "2026-09-30T12:21:56.432553+00:00", "note": ""}

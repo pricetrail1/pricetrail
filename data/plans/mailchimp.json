@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing page shows a contact-based tiering system (0-500 contacts through 1,000,000+ contacts) but specific prices are not displayed on the page. Users must interact with the pricing selector to see prices for their chosen contact tier. The page references promotional pricing (15% off for 10,000+ contacts for 12 months) but no actual dollar amounts are visible in the provided HTML. Annual plans are mentioned as available for Premium and Standard 10,000+ contact tiers but require contacting sales. A \"Pay As You Go\" plan is mentioned but no pricing details provided. Four main plans are identified: Free, Essentials, Standard, and Premium.",
+  "extraction_notes": "This page shows 4 main plans (Free, Essentials, Standard, Premium) but actual prices are not displayed. The page contains placeholder pricing areas (\"Then, starts at ___ per month†\") with no numerical values filled in. Users must select a contact tier from a dropdown to see pricing, but the page provided does not show the resulting price values. Multiple currency options are available (USD, EUR, GBP, AUD, CAD, etc.) but no prices are shown. There is a 15% promotional offer mentioned for 10,000+ contacts for 12 months, but no base prices are visible to calculate discounted prices. Premium plan pricing requires contacting sales for custom plans with 200,000+ contacts.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 0.0,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -21,12 +21,14 @@
           "unit": null
         },
         {
-          "metric": "monthly_email_sends",
+          "metric": "monthly email sends",
           "value": 500.0,
-          "unit": "max of 500/mo or 250/day"
+          "unit": "per month max or 250/day"
         }
       ],
-      "features": []
+      "features": [
+        "basic workflows"
+      ]
     },
     {
       "name": "Essentials",
@@ -41,28 +43,41 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "monthly_email_sends",
+          "metric": "audiences",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
           "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends multiplier",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "role-based access roles",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "users/seats",
+          "value": 3.0,
           "unit": null
         }
       ],
       "features": [
-        "basic workflows"
+        "basic workflows",
+        "email scheduling",
+        "role permissions"
       ]
-    },
-    {
-      "name": "Pay As You Go",
-      "key": "payasyougo",
-      "monthly_price": null,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
     },
     {
       "name": "Premium",
@@ -70,23 +85,37 @@
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
-      "is_custom_pricing": false,
+      "is_custom_pricing": true,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "monthly_email_sends",
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
           "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "users/seats",
+          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
+        "ai assistant",
+        "custom branding",
         "custom reporting",
+        "onboarding support",
         "phone support",
-        "priority support"
+        "priority support",
+        "role permissions"
       ]
     },
     {
@@ -102,16 +131,46 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "monthly_email_sends",
-          "value": 6000.0,
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends multiplier",
+          "value": 12.0,
+          "unit": null
+        },
+        {
+          "metric": "role-based access roles",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "users/seats",
+          "value": 5.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "basic workflows"
+        "ai assistant",
+        "basic workflows",
+        "custom branding",
+        "custom reporting",
+        "email scheduling",
+        "role permissions"
       ]
     }
   ],
-  "captured_at": "2026-09-27T11:50:59.834186+00:00"
+  "captured_at": "2026-09-30T12:21:56.432738+00:00"
 }
