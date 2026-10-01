@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing page has no visible prices. The page displays plan names, descriptions, and features, but actual prices are indicated only as \"Sales Essentials per month\" and \"Sales Advanced per month\" placeholders without dollar amounts. There is a Monthly/Yearly toggle mentioned (-10%) but no actual prices are shown for any plan. The Free plan appears to have a 300 email/month limit (standard free email limit), though this is not explicitly stated on the page. No currency is shown. This appears to be a pricing page with pricing intentionally hidden behind sign-up or sales contact flows.",
+  "extraction_notes": "Pricing page with Monthly/Yearly toggle shown, but no actual prices are visible on the page—all numeric price fields show \"Loading content...\" or are blank. Plan cards show feature descriptions and email/seat limits but no pricing figures. The page indicates a -10% discount for yearly billing, but the base prices are not displayed. Currency assumed to be USD based on typical Brevo pricing regions, but not explicitly stated on page. Unable to record accurate monthly_price or annual_price_per_month for any paid tier.",
   "plans": [
     {
       "name": "Free",
@@ -22,7 +22,9 @@
         }
       ],
       "features": [
-        "email support"
+        "basic workflows",
+        "custom branding",
+        "email"
       ]
     },
     {
@@ -38,6 +40,7 @@
       "trial_days": null,
       "limits": [],
       "features": [
+        "advanced workflows",
         "saml",
         "sso"
       ]
@@ -49,7 +52,7 @@
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
@@ -58,10 +61,17 @@
           "metric": "emails per month",
           "value": 150000.0,
           "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
         }
       ],
       "features": [
-        "phone support"
+        "advanced workflows",
+        "saml",
+        "sso"
       ]
     },
     {
@@ -76,7 +86,11 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": []
+      "features": [
+        "advanced workflows",
+        "basic workflows",
+        "custom reporting"
+      ]
     },
     {
       "name": "Starter",
@@ -97,7 +111,8 @@
         }
       ],
       "features": [
-        "email support"
+        "basic workflows",
+        "custom branding"
       ]
     }
   ]
