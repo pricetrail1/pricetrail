@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Currency assumed USD based on standard Zendesk pricing. The page shows both monthly and annual pricing with a toggle; the figures shown are annual-billed (per agent/month paid yearly) and monthly-billed (per agent/month) options. All plans are per-agent seat-based pricing. Support Team, Suite Team, and Suite Professional have public pricing; Suite Enterprise + Copilot shows \"Talk to Sales\" indicating custom pricing. Three add-ons are listed: Copilot ($50/agent/month paid yearly), Workforce Engagement Bundle ($50/agent/month paid yearly), and Contact Center ($83/agent/month paid yearly). Feature mapping was limited by the page's marketing language; many features described in long-form text are not in the official feature list provided, so only clear matches were included. The Support Team features description did not explicitly list items matching the official feature list, so features were inferred from the main plan card descriptions and comparison table visibility.",
+  "extraction_notes": "Monthly prices shown in comparison table at bottom of page. Annual prices shown prominently in plan cards. All prices are per agent/seat per month. Suite Enterprise + Copilot routes to \"Talk to Sales\" with no pricing shown. Three add-ons listed under \"Featured add-ons\": Copilot, Workforce Engagement Bundle, and Contact Center - all billed per agent/month. Features list is limited due to page marketing descriptions being generic or duplicative; only the most distinctive features per plan were recorded from the actual feature descriptions available on the page.",
   "plans": [
     {
       "name": "Support Team",
@@ -18,7 +18,7 @@
       "features": [
         "automations and triggers",
         "customer context",
-        "email and ticketing system",
+        "email and ticketing",
         "pre-written responses",
         "prebuilt analytics dashboards",
         "ticket routing"
@@ -39,16 +39,10 @@
       "features": [
         "ai assistant",
         "api access",
-        "automations and triggers",
-        "custom branding",
-        "customer context",
-        "email and ticketing system",
         "integrations",
-        "live chat",
-        "pre-written responses",
-        "prebuilt analytics dashboards",
-        "ticket routing",
-        "whatsapp"
+        "knowledge base",
+        "messaging and live chat",
+        "omnichannel routing"
       ]
     },
     {
@@ -67,18 +61,9 @@
         "advanced workflows",
         "ai assistant",
         "api access",
-        "audit log",
-        "automations and triggers",
-        "custom branding",
         "custom reporting",
-        "customer context",
-        "email and ticketing system",
-        "integrations",
-        "live chat",
-        "pre-written responses",
-        "prebuilt analytics dashboards",
-        "ticket routing",
-        "whatsapp"
+        "omnichannel routing",
+        "role permissions"
       ]
     },
     {
@@ -127,25 +112,9 @@
         "advanced workflows",
         "ai assistant",
         "api access",
-        "audit log",
-        "automations and triggers",
-        "custom branding",
         "custom reporting",
-        "customer context",
-        "dedicated account manager",
-        "email and ticketing system",
-        "integrations",
-        "live chat",
-        "phone support",
-        "pre-written responses",
-        "prebuilt analytics dashboards",
-        "priority support",
         "role permissions",
-        "saml",
-        "sandbox",
-        "sso",
-        "ticket routing",
-        "whatsapp"
+        "sandbox"
       ]
     },
     {

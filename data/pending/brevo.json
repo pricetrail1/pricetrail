@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing page with Monthly/Yearly toggle shown, but no actual prices are visible on the page—all numeric price fields show \"Loading content...\" or are blank. Plan cards show feature descriptions and email/seat limits but no pricing figures. The page indicates a -10% discount for yearly billing, but the base prices are not displayed. Currency assumed to be USD based on typical Brevo pricing regions, but not explicitly stated on page. Unable to record accurate monthly_price or annual_price_per_month for any paid tier.",
+  "extraction_notes": "Pricing page found but no actual numerical prices are shown. The page displays \"Sales Essentials per month\" and \"Sales Advanced per month/user\" placeholders where prices should appear, but the actual dollar amounts are missing. A toggle for monthly/yearly billing is shown (-10% for yearly on some plans), but without the base prices, the effective costs cannot be determined. The page routes most tiers to sales contact. Limit on Free plan (300 emails) inferred from typical Brevo offering but not explicitly stated on this page excerpt—only visible limits are 5,000 (Starter) and 150,000 (Professional). Features extracted from description text; some plans may include more features not fully listed in this excerpt.",
   "plans": [
     {
       "name": "Free",
@@ -22,9 +22,14 @@
         }
       ],
       "features": [
-        "basic workflows",
-        "custom branding",
-        "email"
+        "advanced segmentation",
+        "ai content generator",
+        "basic reporting & analytics",
+        "drag & drop email editor",
+        "email & sms",
+        "email support",
+        "email templates",
+        "forms"
       ]
     },
     {
@@ -41,6 +46,11 @@
       "limits": [],
       "features": [
         "advanced workflows",
+        "custom branding",
+        "email & sms",
+        "onboarding support",
+        "phone support",
+        "priority support",
         "saml",
         "sso"
       ]
@@ -52,7 +62,7 @@
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": false,
+      "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
@@ -63,13 +73,16 @@
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "seats included",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
+        "email & sms",
+        "phone support",
+        "priority support",
         "saml",
         "sso"
       ]
@@ -88,8 +101,9 @@
       "limits": [],
       "features": [
         "advanced workflows",
+        "ai assistant",
         "basic workflows",
-        "custom reporting"
+        "email & sms"
       ]
     },
     {
@@ -111,8 +125,14 @@
         }
       ],
       "features": [
-        "basic workflows",
-        "custom branding"
+        "advanced segmentation",
+        "ai content generator",
+        "basic reporting & analytics",
+        "drag & drop email editor",
+        "email & sms",
+        "email support",
+        "email templates",
+        "forms"
       ]
     }
   ]
