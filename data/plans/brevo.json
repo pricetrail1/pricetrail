@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "No specific prices visible on the page—only \"per month\" labels without numbers. The page has a Monthly/Yearly toggle with a \"-10%\" label for yearly, but no actual prices are shown. Free plan limit of 300 emails inferred from \"Free forever\" section context. Professional is marked per user/seat (\"Sales Advanced per month/user\"). Enterprise is custom pricing (\"Talk to sales\"). Currency assumed USD as typical for Brevo's primary market.",
+  "pricing_is_public": false,
+  "extraction_notes": "Pricing page found but no actual numerical prices are shown. The page displays \"Sales Essentials per month\" and \"Sales Advanced per month/user\" placeholders where prices should appear, but the actual dollar amounts are missing. A toggle for monthly/yearly billing is shown (-10% for yearly on some plans), but without the base prices, the effective costs cannot be determined. The page routes most tiers to sales contact. Limit on Free plan (300 emails) inferred from typical Brevo offering but not explicitly stated on this page excerpt—only visible limits are 5,000 (Starter) and 150,000 (Professional). Features extracted from description text; some plans may include more features not fully listed in this excerpt.",
   "plans": [
     {
       "name": "Free",
@@ -21,7 +21,16 @@
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "advanced segmentation",
+        "ai content generator",
+        "basic reporting & analytics",
+        "drag & drop email editor",
+        "email & sms",
+        "email support",
+        "email templates",
+        "forms"
+      ]
     },
     {
       "name": "Enterprise",
@@ -34,19 +43,14 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "contacts",
-          "value": 1000000.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "ai assistant",
+        "advanced workflows",
         "custom branding",
-        "dedicated account manager",
-        "integrations",
+        "email & sms",
         "onboarding support",
+        "phone support",
+        "priority support",
         "saml",
         "sso"
       ]
@@ -69,19 +73,18 @@
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "seats included",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
-        "custom branding",
-        "integrations",
+        "email & sms",
         "phone support",
-        "role permissions",
-        "whatsapp"
+        "priority support",
+        "saml",
+        "sso"
       ]
     },
     {
@@ -97,14 +100,10 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "a/b testing",
-        "advanced reporting",
         "advanced workflows",
         "ai assistant",
-        "custom branding",
-        "email support",
-        "landing pages",
-        "web & event tracking"
+        "basic workflows",
+        "email & sms"
       ]
     },
     {
@@ -126,9 +125,9 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "basic reporting",
+        "advanced segmentation",
+        "ai content generator",
+        "basic reporting & analytics",
         "drag & drop email editor",
         "email & sms",
         "email support",
@@ -137,5 +136,5 @@
       ]
     }
   ],
-  "captured_at": "2026-09-27T11:51:00.902662+00:00"
+  "captured_at": "2026-10-03T11:29:27.358291+00:00"
 }

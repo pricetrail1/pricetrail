@@ -1,8 +1,71 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows pricing with Annual toggle selected by default. All prices are labeled \"agent/month paid yearly\". Only annual billing is displayed; no monthly-only pricing is shown. Features list is extracted from plan descriptions but the page does not use the standard feature terminology from the allowed list (e.g., it says \"Email and ticketing system\" rather than \"sso\" or standard feature names). Mapped features to the allowed list where applicable; many of the specific Zendesk features (Admin Copilot, App Builder, Writing Tools, etc.) do not match the standard feature list and were omitted. Suite Enterprise + Copilot has no price shown (\"Talk to Sales\"). Copilot, Workforce Engagement Bundle, and Contact Center are listed as \"Featured add-ons\" and are add-on products sold on top of base plans rather than subscription tiers.",
+  "extraction_notes": "Monthly prices shown in comparison table at bottom of page. Annual prices shown prominently in plan cards. All prices are per agent/seat per month. Suite Enterprise + Copilot routes to \"Talk to Sales\" with no pricing shown. Three add-ons listed under \"Featured add-ons\": Copilot, Workforce Engagement Bundle, and Contact Center - all billed per agent/month. Features list is limited due to page marketing descriptions being generic or duplicative; only the most distinctive features per plan were recorded from the actual feature descriptions available on the page.",
   "plans": [
+    {
+      "name": "Support Team",
+      "key": "supportteam",
+      "monthly_price": 25.0,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "automations and triggers",
+        "customer context",
+        "email and ticketing",
+        "pre-written responses",
+        "prebuilt analytics dashboards",
+        "ticket routing"
+      ]
+    },
+    {
+      "name": "Suite Team",
+      "key": "suiteteam",
+      "monthly_price": 69.0,
+      "annual_price_per_month": 55.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations",
+        "knowledge base",
+        "messaging and live chat",
+        "omnichannel routing"
+      ]
+    },
+    {
+      "name": "Suite Professional",
+      "key": "suiteprofessional",
+      "monthly_price": 149.0,
+      "annual_price_per_month": 115.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom reporting",
+        "omnichannel routing",
+        "role permissions"
+      ]
+    },
     {
       "name": "Contact Center",
       "key": "contactcenter",
@@ -49,73 +112,9 @@
         "advanced workflows",
         "ai assistant",
         "api access",
-        "audit log",
         "custom reporting",
-        "integrations",
         "role permissions",
-        "saml",
-        "sandbox",
-        "sso"
-      ]
-    },
-    {
-      "name": "Suite Professional",
-      "key": "suiteprofessional",
-      "monthly_price": null,
-      "annual_price_per_month": 115.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "advanced workflows",
-        "ai assistant",
-        "api access",
-        "custom reporting",
-        "integrations"
-      ]
-    },
-    {
-      "name": "Suite Team",
-      "key": "suiteteam",
-      "monthly_price": null,
-      "annual_price_per_month": 55.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "ai agent",
-        "api access",
-        "integrations",
-        "live chat"
-      ]
-    },
-    {
-      "name": "Support Team",
-      "key": "supportteam",
-      "monthly_price": null,
-      "annual_price_per_month": 19.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "automations and triggers",
-        "customer context",
-        "email and ticketing system",
-        "pre-written responses",
-        "prebuilt analytics dashboards",
-        "ticket routing"
+        "sandbox"
       ]
     },
     {
@@ -133,5 +132,5 @@
       "features": []
     }
   ],
-  "captured_at": "2026-09-17T11:27:22.298163+00:00"
+  "captured_at": "2026-10-03T11:29:16.998048+00:00"
 }
