@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": true,
-  "extraction_notes": "Page shows USD currency selector and multiple currency options. Pricing figures for most tiers are obscured or cut off in the HTML—only Standard at $20/month is visible. Essentials, Premium, and other tiers show \"Save 15% on 10,000+ contacts\" promotional messaging with placeholder text where prices should appear. The page indicates a 14-day free trial for Standard and Essentials. Premium shows contact sales for pricing. Free plan clearly shows 250 contact limit and $0/month. Monthly email send limits derived from stated maximums: Free \"Max of 500/mo or 250/day\" (used 2500 as monthly equivalent for easier comparison), Standard \"Send up to 6,000 emails each month\", Premium \"Send up to 150,000 emails each month\". The 15% discount offer is mentioned but the base prices it applies to are not visible, so only the undiscounted standard price ($20 for Standard) is recorded. Annual pricing information is mentioned as available but not displayed on this page. SMS is listed as an add-on, not a core plan feature.",
+  "pricing_is_public": false,
+  "extraction_notes": "Pricing page does not display actual dollar amounts. All plan prices are hidden behind a contact selector dropdown and currency picker without showing numbers. The page states prices vary based on contact tier (0-500 contacts up to 1,000,000+ contacts) but no specific numbers are visible. All monthly_price and annual_price_per_month values are null. Standard and Essentials offer a 14-day free trial. Premium has promotional messaging but trial eligibility unclear. All prices show \"Save 15% on 10,000+ contacts for 12 months\" - this is a promotional offer so no standard price is recorded. The page references a Pay As You Go plan and SMS add-on but these are alternatives/add-ons rather than main subscription tiers. Email send limits from \"Monthly Email Sends\" comparison table are: Free max 500/mo or 250/day; Essentials 10X contacts; Standard 12X contacts; Premium 15X contacts (converted to absolute limits for Free and Premium from text).",
   "plans": [
     {
       "name": "Free",
@@ -22,51 +22,11 @@
         },
         {
           "metric": "monthly email sends",
-          "value": 2500.0,
+          "value": 500.0,
           "unit": null
         }
       ],
       "features": []
-    },
-    {
-      "name": "Standard",
-      "key": "standard",
-      "monthly_price": 20.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends",
-          "value": 6000.0,
-          "unit": null
-        },
-        {
-          "metric": "users",
-          "value": 5.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "advanced workflows",
-        "basic workflows",
-        "custom branding",
-        "custom reporting"
-      ]
     },
     {
       "name": "Essentials",
@@ -81,11 +41,6 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "audiences",
-          "value": 3.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
           "value": -1.0,
           "unit": null
@@ -93,11 +48,6 @@
         {
           "metric": "monthly email sends",
           "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "users",
-          "value": 3.0,
           "unit": null
         }
       ],
@@ -118,11 +68,6 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "audiences",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "contacts",
           "value": -1.0,
           "unit": null
@@ -131,21 +76,45 @@
           "metric": "monthly email sends",
           "value": 150000.0,
           "unit": null
-        },
-        {
-          "metric": "users",
-          "value": -1.0,
-          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "custom branding",
         "custom reporting",
-        "dedicated account manager",
         "phone support",
         "priority support"
       ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 6000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "custom branding",
+        "custom reporting"
+      ]
     }
-  ]
+  ],
+  "_first_seen": "2026-10-03"
 }
