@@ -217,6 +217,12 @@ class Fetcher:
                 time.sleep(min(wait, 120))
                 continue
 
+            # A 500/502/504 is usually a vendor's server having a bad moment,
+            # not a moved page. Try again shortly before calling it a failure.
+            if resp.status_code in (500, 502, 504) and attempt < retries:
+                time.sleep(2 ** (attempt + 1))
+                continue
+
             if resp.status_code != 200:
                 return FetchResult(url, resp.status_code, None,
                                    error=f"HTTP {resp.status_code}")

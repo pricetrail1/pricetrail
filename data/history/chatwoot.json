@@ -1,0 +1,122 @@
+{
+ "vendor": "chatwoot",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:12:49.860886+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Business",
+     "key": "business",
+     "m": null,
+     "a": 39.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": 99.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Hacker",
+     "key": "hacker",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Startups",
+     "key": "startups",
+     "m": null,
+     "a": 19.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Captain AI",
+     "key": "captainai",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-28T13:36:30.903171+00:00",
+   "date": "2026-09-28",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Business",
+     "key": "business",
+     "m": 39.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Hacker",
+     "key": "hacker",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Startups",
+     "key": "startups",
+     "m": 19.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Captain AI",
+     "key": "captainai",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

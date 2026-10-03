@@ -45,6 +45,10 @@ class Change:
         default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )
     note: str = ""
+    # Whether the plan involved is an add-on rather than a subscription tier.
+    # Lets the site separate "Intercom changed a plan" from "Intercom changed
+    # the price of an extra" without guessing from the name.
+    is_addon: bool = False
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -126,15 +130,55 @@ def fingerprint(record: dict) -> str:
     return hashlib.sha256("||".join(parts).encode()).hexdigest()
 
 
+# Words that decorate a plan name without changing which plan it is. Nutshell
+# relabelled six add-ons from "Engagement" to "Engagement Add-on" and back
+# again a month later; with the suffix counted as part of the identity that
+# was logged as 12 removals and 12 additions of plans that never went anywhere.
+_NAME_SUFFIXES = (" plan", " tier", " package", " edition", " add-on",
+                  " add on", " addon", " add-ons", " addons")
+
+
+def plan_key(name: str) -> str:
+    """Loose identity for a plan name. Shared with extract.py."""
+    key = (name or "").lower().strip()
+    changed = True
+    while changed:
+        changed = False
+        for suffix in _NAME_SUFFIXES:
+            if key.endswith(suffix) and len(key) > len(suffix):
+                key = key[: -len(suffix)].rstrip(" -:")
+                changed = True
+    return "".join(ch for ch in key if ch.isalnum())
+
+
 def _key_of(plan: dict) -> str:
-    """Plan identity, derived if the stored record predates the key field."""
-    if plan.get("key"):
-        return plan["key"]
-    name = (plan.get("name") or "").lower().strip()
-    for suffix in (" plan", " tier", " package", " edition"):
-        if name.endswith(suffix):
-            name = name[: -len(suffix)]
-    return "".join(ch for ch in name if ch.isalnum())
+    """Plan identity, always derived from the name.
+
+    Records written by older versions carry a stored "key" computed with an
+    older rule. Deriving it fresh on both sides of every comparison means an
+    improved rule can never make an unchanged plan look removed and re-added.
+    """
+    derived = plan_key(plan.get("name") or "")
+    return derived or str(plan.get("key") or "")
+
+
+def _keyed(plans: list[dict]) -> dict[str, dict]:
+    """Plans by identity, without letting two real plans collapse into one.
+
+    If the loose key would merge two plans on the same page (a vendor selling
+    both "Engagement" and "Engagement Add-on"), the colliding ones fall back to
+    their full names so neither disappears from the comparison.
+    """
+    counts: dict[str, int] = {}
+    for p in plans:
+        counts[_key_of(p)] = counts.get(_key_of(p), 0) + 1
+    out: dict[str, dict] = {}
+    for p in plans:
+        k = _key_of(p)
+        if counts[k] > 1:
+            k = "".join(ch for ch in (p.get("name") or "").lower() if ch.isalnum())
+        out.setdefault(k, p)
+    return out
 
 
 def diff_pricing(vendor: str, old: dict | None, new: dict) -> list[Change]:
@@ -179,28 +223,77 @@ def diff_pricing(vendor: str, old: dict | None, new: dict) -> list[Change]:
 
     # Be forgiving about records written by older versions or by hand: derive
     # a missing key rather than crashing on someone's archive.
-    old_plans = {_key_of(p): p for p in old.get("plans", [])}
-    new_plans = {_key_of(p): p for p in new.get("plans", [])}
+    old_plans = _keyed(old.get("plans", []))
+    new_plans = _keyed(new.get("plans", []))
 
     # --- plans appearing and disappearing ---------------------------------
 
-    for key in new_plans.keys() - old_plans.keys():
-        changes.append(Change(vendor, "plan_added", new_plans[key]["name"],
-                              None, None, new_plans[key]["monthly_price"],
-                              base))
+    added = sorted(new_plans.keys() - old_plans.keys())
+    removed = sorted(old_plans.keys() - new_plans.keys())
 
-    for key in old_plans.keys() - new_plans.keys():
+    # A plan that vanishes and a plan that appears on the same reading, at the
+    # same price, is one plan with a new name -- not a withdrawal and a launch.
+    for o_key, n_key in _renames(old_plans, new_plans, removed, added):
+        removed.remove(o_key)
+        added.remove(n_key)
+        changes.append(Change(vendor, "plan_renamed", new_plans[n_key]["name"],
+                              "name", old_plans[o_key]["name"],
+                              new_plans[n_key]["name"], base * 0.9,
+                              is_addon=bool(new_plans[n_key].get("is_addon")),
+                              note="same price, new name"))
+
+    for key in added:
+        changes.append(Change(vendor, "plan_added", new_plans[key]["name"],
+                              None, None, new_plans[key].get("monthly_price"),
+                              base,
+                              is_addon=bool(new_plans[key].get("is_addon"))))
+
+    for key in removed:
         changes.append(Change(vendor, "plan_removed", old_plans[key]["name"],
-                              None, old_plans[key]["monthly_price"], None,
-                              base))
+                              None, old_plans[key].get("monthly_price"), None,
+                              base,
+                              is_addon=bool(old_plans[key].get("is_addon"))))
 
     # --- plans that persisted ---------------------------------------------
 
-    for key in old_plans.keys() & new_plans.keys():
+    for key in sorted(old_plans.keys() & new_plans.keys()):
         changes.extend(_diff_plan(vendor, old_plans[key], new_plans[key], base,
                                   compare_prices=not currency_flipped))
 
     return changes
+
+
+def _price_of(plan: dict):
+    for f in ("monthly_price", "annual_price_per_month"):
+        v = plan.get(f)
+        if isinstance(v, (int, float)) and v > 0:
+            return (f, round(float(v), 2))
+    return None
+
+
+def _renames(old_plans: dict, new_plans: dict, removed: list[str],
+             added: list[str]) -> list[tuple[str, str]]:
+    """Pair removed and added plans that share an exact, unique price.
+
+    Only an unambiguous match counts: if two removed plans both cost $79 we
+    cannot tell which one the new $79 plan replaced, so neither is paired and
+    both are reported as they are.
+    """
+    def by_price(keys, plans):
+        out: dict = {}
+        for k in keys:
+            price = _price_of(plans[k])
+            if price is not None:
+                out.setdefault((price, bool(plans[k].get("is_addon"))), []).append(k)
+        return out
+
+    gone, came = by_price(removed, old_plans), by_price(added, new_plans)
+    pairs = []
+    for price, olds in gone.items():
+        news = came.get(price, [])
+        if len(olds) == 1 and len(news) == 1:
+            pairs.append((olds[0], news[0]))
+    return pairs
 
 
 def _diff_plan(vendor: str, old: dict, new: dict, base: float,
@@ -209,8 +302,12 @@ def _diff_plan(vendor: str, old: dict, new: dict, base: float,
     name = new["name"]
 
     if old["name"] != new["name"]:
+        # Same identity, different label: "Pro" became "Pro plan", or
+        # "Engagement" became "Engagement Add-on". Cosmetic, so it goes to the
+        # review queue rather than the public log.
         out.append(Change(vendor, "plan_renamed", name, "name",
-                          old["name"], new["name"], base))
+                          old["name"], new["name"], base * 0.5,
+                          note="cosmetic rename"))
 
     for pfield in ("monthly_price", "annual_price_per_month") if compare_prices else ():
         o, n = old.get(pfield), new.get(pfield)
@@ -262,6 +359,8 @@ def _diff_plan(vendor: str, old: dict, new: dict, base: float,
         out.append(Change(vendor, "feature_moved_out", name, "features",
                           feature, None, base * 0.6))
 
+    for change in out:
+        change.is_addon = bool(new.get("is_addon"))
     return out
 
 

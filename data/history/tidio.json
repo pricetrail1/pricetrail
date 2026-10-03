@@ -1,0 +1,162 @@
+{
+ "vendor": "tidio",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:12:29.055558+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 49.17,
+     "a": 49.17,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 300.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": 24.17,
+     "a": 24.17,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Flows",
+     "key": "flows",
+     "m": 24.17,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Lyro AI Agent",
+     "key": "lyroaiagent",
+     "m": 32.5,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-31T21:22:43.705010+00:00",
+   "date": "2026-08-31",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 49.17,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 300.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": 24.17,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Flows",
+     "key": "flows",
+     "m": 24.17,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Lyro AI Agent",
+     "key": "lyroaiagent",
+     "m": 32.5,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

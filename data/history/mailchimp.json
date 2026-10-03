@@ -1,0 +1,516 @@
+{
+ "vendor": "mailchimp",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:12:56.930035+00:00",
+   "date": "2026-08-05",
+   "currency": "GBP",
+   "public": true,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-05T08:43:33.705517+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-05T09:01:28.317984+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": false,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-05T11:41:23.769753+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-03T06:22:50.908362+00:00",
+   "date": "2026-09-03",
+   "currency": "USD",
+   "public": false,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-11T11:03:43.034280+00:00",
+   "date": "2026-09-11",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": 20.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Email credits (Pay As You Go)",
+     "key": "emailcreditspayasyougo",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "SMS add-on",
+     "key": "sms",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-13T11:35:43.139446+00:00",
+   "date": "2026-09-13",
+   "currency": "USD",
+   "public": false,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-20T11:06:59.169424+00:00",
+   "date": "2026-09-20",
+   "currency": "USD",
+   "public": false,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-27T11:50:59.834186+00:00",
+   "date": "2026-09-27",
+   "currency": "USD",
+   "public": false,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Pay As You Go",
+     "key": "payasyougo",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-30T12:21:56.432738+00:00",
+   "date": "2026-09-30",
+   "currency": "USD",
+   "public": false,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

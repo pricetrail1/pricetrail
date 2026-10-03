@@ -1,0 +1,210 @@
+{
+ "vendor": "capsule",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-10T10:43:27.979994+00:00",
+   "date": "2026-08-10",
+   "currency": "USD",
+   "public": false,
+   "plans": [
+    {
+     "name": "Advanced",
+     "key": "advanced",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Ultimate",
+     "key": "ultimate",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Marketing add-on",
+     "key": "marketing",
+     "m": 11.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-14T12:29:55.797389+00:00",
+   "date": "2026-09-14",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Advanced",
+     "key": "advanced",
+     "m": null,
+     "a": 65.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": null,
+     "a": 45.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": null,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Ultimate",
+     "key": "ultimate",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Marketing add-on",
+     "key": "marketing",
+     "m": 11.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-28T13:37:22.296714+00:00",
+   "date": "2026-09-28",
+   "currency": "USD",
+   "public": false,
+   "plans": [
+    {
+     "name": "Advanced",
+     "key": "advanced",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Ultimate",
+     "key": "ultimate",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Marketing add-on",
+     "key": "marketing",
+     "m": 11.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

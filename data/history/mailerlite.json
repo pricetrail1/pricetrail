@@ -1,0 +1,102 @@
+{
+ "vendor": "mailerlite",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:13:16.991933+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Comfort",
+     "key": "comfort",
+     "m": 12.0,
+     "a": 10.8,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Power",
+     "key": "power",
+     "m": 25.0,
+     "a": 22.5,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-05T08:43:40.598778+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Comfort",
+     "key": "comfort",
+     "m": 12.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Power",
+     "key": "power",
+     "m": 25.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

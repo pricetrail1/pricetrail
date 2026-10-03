@@ -1,0 +1,64 @@
+{
+ "vendor": "crisp",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:12:17.662732+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": 95.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Mini",
+     "key": "mini",
+     "m": 45.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 295.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

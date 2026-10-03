@@ -47,6 +47,11 @@ def gather() -> dict:
         "suspicious_extraction": "fewer than 2 plans found",
         "extraction_lost_all_plans":
             "read no plans at all -- old figures kept, check the live page",
+        "prices_not_in_page":
+            "page loaded without its prices -- old figures kept, retrying daily",
+        "holding_for_stability":
+            "a large change is being held for a few days before publishing",
+        "internal_error": None,
     }
     # state.json is appended to and never pruned, so a vendor removed from
     # vendors.yaml leaves its entry behind forever. zoho-desk was sitting in
@@ -69,6 +74,15 @@ def gather() -> dict:
         if tracked and slug not in tracked:
             continue
         status = entry.get("status", "")
+        rec = records.get(slug)
+        if (not status or status == "ok") and rec is not None \
+                and not rec.get("plans"):
+            # Read fine, but nothing usable came out of it, so the company
+            # has no page on the site. Healthy-looking but invisible.
+            failing.append((slug, "page reads, but no plans could be "
+                                  "extracted -- not shown on the site"))
+            entry["_display"] = "no_plans_on_record"
+            continue
         if not status or status == "ok":
             continue
         why = WHY.get(status, status.replace("_", " "))
@@ -76,7 +90,12 @@ def gather() -> dict:
 
     # A vendor nobody has read in a fortnight is quietly broken.
     cutoff = (datetime.now(timezone.utc) - timedelta(days=14)).strftime("%Y-%m-%d")
+    failing_slugs = {s for s, _ in failing}
     for slug, entry in state.items():
+        if tracked and slug not in tracked:
+            continue
+        if slug in failing_slugs:
+            continue  # already listed with its specific reason
         last = entry.get("last_checked", "")
         if last and last < cutoff:
             stale.append((slug, last))
@@ -111,111 +130,169 @@ def gather() -> dict:
     }
 
 
+LABELS = {
+    "ok": "Healthy",
+    "error": "Fetch failed",
+    "extraction_error": "Reading failed",
+    "not_a_pricing_page": "Not a pricing page",
+    "robots_disallowed": "Blocked by robots.txt",
+    "suspicious_extraction": "Too few plans read",
+    "extraction_lost_all_plans": "No plans read — old figures kept",
+    "prices_not_in_page": "Prices missing from page — old figures kept",
+    "holding_for_stability": "Large change on hold",
+    "internal_error": "Unexpected error — skipped",
+    "no_plans_on_record": "No plans extracted — not on site",
+}
+
+# Statuses where the site is still showing correct, confirmed figures and the
+# crawler is simply being careful. Amber, not red.
+CAUTION = {"prices_not_in_page", "holding_for_stability",
+           "extraction_lost_all_plans", "suspicious_extraction",
+           "no_plans_on_record"}
+
+
 def render(esc, page, back_link, pretty_date, SITE_NAME) -> str:
     """Build the page. Helpers are passed in to avoid a circular import."""
     d = gather()
-
+    runs = storage.read_runs(30)
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    def _st(slug):
+        e = d["state"].get(slug, {})
+        return e.get("_display") or e.get("status")
+    failing_hard = [(s, w) for s, w in d["failing"] if _st(s) not in CAUTION]
+    caution = [(s, w) for s, w in d["failing"] if _st(s) in CAUTION]
+
     if not d["last_checked"]:
-        health, note = "unknown", "No crawl has run yet."
-    elif d["failing"]:
-        health = "problems"
-        note = (f"{len(d['failing'])} vendor(s) are failing. Everything else "
-                f"is running normally.")
-    elif d["last_checked"] < today:
-        health = "ok"
-        note = (f"Last crawled {pretty_date(d['last_checked'])}. Runs daily at "
-                f"06:00 UTC.")
+        health, tone, note = "No data yet", "warn", "No crawl has run yet."
+    elif d["last_checked"] < (datetime.now(timezone.utc)
+                              - timedelta(hours=36)).strftime("%Y-%m-%d"):
+        health, tone = "Crawler may have stopped", "bad"
+        note = (f"Nothing has been checked since {pretty_date(d['last_checked'])}. "
+                f"GitHub pauses scheduled jobs in quiet repositories; any commit "
+                f"wakes it.")
+    elif failing_hard:
+        health, tone = "Running, with problems", "warn"
+        note = (f"{len(failing_hard)} compan{'ies' if len(failing_hard) != 1 else 'y'} "
+                f"could not be read on the last attempt. Everything else is "
+                f"normal, and the site keeps showing their last confirmed figures.")
     else:
-        health, note = "ok", "Crawled today. Everything is running normally."
+        health, tone = "All systems normal", "ok"
+        note = (f"Last checked {pretty_date(d['last_checked'])}. Runs every day "
+                f"at about 06:00 UTC.")
+    dot = {"ok": "", "warn": " warn", "bad": " bad"}[tone]
 
     rows = []
     for slug, entry in sorted(d["state"].items()):
         if d.get("tracked") and slug not in d["tracked"]:
             continue
-        status = entry.get("status", "unknown")
-        # Unknown statuses fall back to their own name with underscores
-        # removed, so a new one reads as English rather than as code.
-        label = {"ok": "OK", "error": "Fetch failed",
-                 "extraction_error": "Extraction failed",
-                 "not_a_pricing_page": "Not a pricing page",
-                 "robots_disallowed": "Blocked by robots.txt",
-                 "suspicious_extraction": "Too few plans",
-                 "extraction_lost_all_plans": "No plans read \u2014 old figures kept",
-                 }.get(status, status.replace("_", " ").capitalize())
-        good = status == "ok"
+        st = entry.get("_display") or entry.get("status", "unknown")
+        label = LABELS.get(st, st.replace("_", " ").capitalize())
+        cls = "ok" if st == "ok" else ("warn" if st in CAUTION else "up")
+        if st in CAUTION:
+            err = ""
+        err = entry.get("last_error", "") if st not in ("ok",) else ""
         rows.append(f"""
       <tr>
-        <td data-l="Vendor">{esc(slug)}</td>
-        <td data-l="Status">{'' if good else '<strong>'}{esc(label)}{'' if good else '</strong>'}</td>
-        <td data-l="Last read">{esc(pretty_date(entry.get('last_checked')))}</td>
-        <td class="num" data-l="Page edits">{entry.get('hash_changes', 0)}</td>
+        <td class="name">{esc(slug)}</td>
+        <td data-l="Status"><span class="badge {cls}">{esc(label)}</span></td>
+        <td data-l="Last good check" data-v="{esc(entry.get('last_checked', ''))}"><time>{esc(pretty_date(entry.get('last_checked')))}</time></td>
+        <td class="num" data-l="Failures in a row">{entry.get('consecutive_failures', 0)}</td>
+        <td class="num" data-l="Page edits seen">{entry.get('hash_changes', 0)}</td>
+        <td data-l="Detail"><span class="small muted">{esc(err[:140])}</span></td>
       </tr>""")
 
+    run_rows, bars = [], []
+    for r in runs[:14]:
+        bad = r.get("failed", 0)
+        cls = "bad" if r.get("checked") and bad / max(r["checked"], 1) > 0.5 \
+            else ("warn" if bad else "")
+        run_rows.append(f"""
+      <tr>
+        <td class="mono">{esc(str(r.get('at', ''))[:16].replace('T', ' '))}</td>
+        <td class="num" data-l="Checked">{r.get('checked', 0)}</td>
+        <td class="num" data-l="Unchanged">{r.get('unchanged', 0)}</td>
+        <td class="num" data-l="Re-read">{r.get('extracted', 0)}</td>
+        <td class="num" data-l="Published">{r.get('changes', 0)}</td>
+        <td class="num" data-l="Held">{r.get('awaiting', 0) + r.get('kept_old', 0)}</td>
+        <td class="num" data-l="Failed">{bad}</td>
+        <td class="num" data-l="Cost">${r.get('spent_usd', 0):.2f}</td>
+      </tr>""")
+    for r in reversed(runs[:30]):
+        bad = r.get("failed", 0)
+        cls = "bad" if r.get("checked") and bad / max(r["checked"], 1) > 0.5 \
+            else ("warn" if bad else "")
+        h = 100 if not r.get("checked") else max(25, 100 - bad * 8)
+        bars.append(f'<i class="{cls}" style="height:{h}%" '
+                    f'title="{esc(str(r.get("at", ""))[:10])}: {bad} failed"></i>')
+
     problems = ""
-    if d["failing"] or d["stale"]:
-        items = "".join(
-            f"<li>{esc(slug)} \u2014 {esc(why)}</li>"
-            for slug, why in d["failing"]
-        ) + "".join(
-            f"<li>{esc(slug)} \u2014 not read since {esc(pretty_date(when))}</li>"
-            for slug, when in d["stale"]
-        )
+    if failing_hard or caution or d["stale"]:
+        items = "".join(f"<li><strong>{esc(s)}</strong> — {esc(w)}</li>"
+                        for s, w in failing_hard + caution)
+        items += "".join(f"<li><strong>{esc(s)}</strong> — not read since "
+                         f"{esc(pretty_date(w))}</li>" for s, w in d["stale"])
         problems = f"""
-  <section class="section">
-    <div class="section-head"><h2>Needs a look</h2></div>
+  <section class="card card-pad" style="margin-top:1.25rem">
+    <h2 style="font-size:1.05rem;margin-bottom:.6rem">Needs a look</h2>
     <ul class="provenance">{items}</ul>
-    <p class="note" style="margin-top:1rem">Diagnose any of these with
-      <code>py -m pricetrail.diagnose &lt;name&gt;</code>. If a vendor prices
-      with a slider there is nothing in the HTML to read, and the right move is
-      to remove it rather than leave a broken row on the site.</p>
+    <p class="provenance" style="margin-top:.75rem">Amber entries need no
+      action: the site keeps showing confirmed figures and the crawler retries
+      every day. A company that stays red for a week usually means its pricing
+      page moved or now calculates prices in the browser — diagnose with
+      <code>py -m pricetrail.diagnose &lt;name&gt;</code>.</p>
+  </section>"""
+
+    runs_block = ""
+    if run_rows:
+        runs_block = f"""
+  <section class="card" style="margin-top:1.25rem">
+    <div class="card-pad" style="padding-bottom:.5rem"><h2 style="font-size:1.05rem">Recent runs</h2>
+      <div class="bars" style="margin-top:.75rem" aria-hidden="true">{''.join(bars)}</div></div>
+    <div class="tbl-scroll"><table class="stack">
+      <caption class="vh">Recent crawler runs</caption>
+      <thead><tr><th scope="col">Started (UTC)</th><th class="num" scope="col">Checked</th>
+        <th class="num" scope="col">Unchanged</th><th class="num" scope="col">Re-read</th>
+        <th class="num" scope="col">Published</th><th class="num" scope="col">Held</th>
+        <th class="num" scope="col">Failed</th><th class="num" scope="col">Cost</th></tr></thead>
+      <tbody>{''.join(run_rows)}</tbody></table></div>
   </section>"""
 
     body = f"""
 <div class="wrap">
-  <section class="section">
+  <header class="page-head">
     {back_link()}
-    <div class="section-head"><h1>System status</h1>
-      <span class="aside">{esc(health)}</span></div>
-    <p class="note" style="margin-bottom:1.5rem">{esc(note)}</p>
-
-    <div class="grid grid-3">
-      <div class="cell"><span class="stat">{d['vendors_ok']}</span>
-        <p>Vendors with current pricing</p></div>
-      <div class="cell"><span class="stat">{len(d['failing'])}</span>
-        <p>Vendors failing</p></div>
-      <div class="cell"><span class="stat">{d['snapshots']}</span>
-        <p>Page versions archived</p></div>
-      <div class="cell"><span class="stat">{d['changes']}</span>
-        <p>Changes published</p></div>
-      <div class="cell"><span class="stat">{d['pending']}</span>
-        <p>Awaiting a second reading</p></div>
-      <div class="cell"><span class="stat">{d['review']}</span>
-        <p>In the review queue</p></div>
-      <div class="cell"><span class="stat">${d['spend_mtd']:.2f}</span>
-        <p>API spend this month</p></div>
-      <div class="cell"><span class="stat">{esc(pretty_date(d['since']))}</span>
-        <p>Recording since</p></div>
-    </div>
-  </section>
+    <h1>System status</h1>
+    <p class="lede">Is the crawler running, what did the last runs do, and
+      which companies need attention. Rebuilt after every daily check.</p>
+  </header>
+  <div class="card health"><i class="dot{dot}" aria-hidden="true"></i>
+    <div><h2>{esc(health)}</h2><p>{esc(note)}</p></div></div>
+  <div style="margin-top:1.25rem">
+  <div class="stats" style="--n:4">
+    <div class="stat"><span class="v">{d['vendors_ok']}</span><span class="l">Companies with current pricing</span></div>
+    <div class="stat"><span class="v">{len(failing_hard)}</span><span class="l">Failing on last attempt</span></div>
+    <div class="stat"><span class="v">{d['pending']}</span><span class="l">Awaiting a second reading</span></div>
+    <div class="stat"><span class="v">{d['review']}</span><span class="l">Held for review</span></div>
+    <div class="stat"><span class="v">{d['changes']}</span><span class="l">Changes published</span></div>
+    <div class="stat"><span class="v">{d['snapshots']}</span><span class="l">Page versions archived</span></div>
+    <div class="stat"><span class="v">${d['spend_mtd']:.2f}</span><span class="l">Reading cost this month</span></div>
+    <div class="stat"><span class="v">{esc(pretty_date(d['since']))}</span><span class="l">Recording since</span></div>
+  </div></div>
   {problems}
-  <section class="section">
-    <div class="section-head"><h2>Every vendor</h2>
-      <span class="aside">{d['vendors_known']} tracked</span></div>
-    <div class="tbl-scroll"><table class="stack">
-      <thead><tr><th>Vendor</th><th>Status</th><th>Last read</th>
-        <th class="num">Page edits</th></tr></thead>
-      <tbody>{''.join(rows)}</tbody>
-    </table></div>
-    <p class="provenance" style="margin-top:1.5rem">
-      "Page edits" counts how often the page markup changed, which is almost
-      always more often than the pricing did. A high number with no recorded
-      changes means the page churns its HTML, not its prices \u2014 that is
-      the hash gate earning its keep.
-    </p>
+  {runs_block}
+  <section class="card" style="margin-top:1.25rem">
+    <div class="card-pad" style="padding-bottom:.5rem"><h2 style="font-size:1.05rem">Every company</h2>
+      <p class="provenance">{d['vendors_known']} tracked. “Page edits seen” counts how often a
+        page's text changed — almost always more often than its prices did.</p></div>
+    <div class="tbl-scroll"><table class="stack" data-sortable>
+      <caption class="vh">Crawler status for every company</caption>
+      <thead><tr><th data-sort="text" scope="col">Company</th><th data-sort="text" scope="col">Status</th>
+        <th data-sort="text" scope="col">Last good check</th><th class="num" data-sort="num" scope="col">Failures in a row</th>
+        <th class="num" data-sort="num" scope="col">Page edits seen</th><th data-sort="off" scope="col">Detail</th></tr></thead>
+      <tbody>{''.join(rows)}</tbody></table></div>
   </section>
 </div>"""
-
-    return page(f"System status \u2014 {SITE_NAME}",
-                "Crawler health, archive size and API spend.",
+    return page(f"System status — {SITE_NAME}",
+                "Crawler health, recent runs and per-company status for the "
+                "PriceTrail pricing archive.",
                 body, "status.html")

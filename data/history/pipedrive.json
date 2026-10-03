@@ -1,0 +1,172 @@
+{
+ "vendor": "pipedrive",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-07T20:51:18.815825+00:00",
+   "date": "2026-08-07",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 39.0,
+     "a": 39.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Lite",
+     "key": "lite",
+     "m": 14.0,
+     "a": 14.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": 59.0,
+     "a": 59.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Ultimate",
+     "key": "ultimate",
+     "m": 79.0,
+     "a": 79.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Campaigns add-on",
+     "key": "campaigns",
+     "m": 13.33,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "LeadBooster add-on",
+     "key": "leadbooster",
+     "m": 32.5,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Projects add-on",
+     "key": "projects",
+     "m": 16.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Smart Docs add-on",
+     "key": "smartdocs",
+     "m": 32.5,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Web Visitors add-on",
+     "key": "webvisitors",
+     "m": 41.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-17T11:27:24.721645+00:00",
+   "date": "2026-09-17",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": null,
+     "a": 39.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Lite",
+     "key": "lite",
+     "m": null,
+     "a": 14.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": 59.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Ultimate",
+     "key": "ultimate",
+     "m": null,
+     "a": 79.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "LeadBooster add-on",
+     "key": "leadbooster",
+     "m": null,
+     "a": 32.5,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Projects add-on",
+     "key": "projects",
+     "m": null,
+     "a": 16.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

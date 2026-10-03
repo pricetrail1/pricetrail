@@ -7,6 +7,48 @@ actually changed, and records the change permanently. Over months and years
 that becomes a dataset nobody else has — because the only way to get it is to
 have been recording the whole time.
 
+
+## What changed in V2 (October 2026)
+
+A makeover of the live product, built on the two months of data it had
+already recorded. Nothing in `data/` was rewritten, and every V1 address
+still works.
+
+- **Price history is now part of the archive.** `pricetrail/history.py`
+  rebuilds every past version of every vendor's prices from git history into
+  `data/history/`. The daily run does this automatically (the workflow now
+  fetches full history). Vendor pages chart it; the downloads include it.
+- **The change log is interpreted, not edited.** `pricetrail/insights.py`
+  folds same-day renames into one entry, marks entries that undid themselves
+  within three weeks as "reversed", and marks page events on pages that load
+  inconsistently as "unconfirmed". The raw `data/changes.jsonl` is untouched.
+  Headlines, the RSS feed and the digest use confirmed entries only.
+- **Explicit corrections.** `corrections.yaml` is where a person records that
+  a logged entry was wrong, and why. The site shows the correction beside the
+  original. Nothing is deleted.
+- **Crawler safeguards.** One vendor can no longer crash the run. A page that
+  loads without its prices keeps the old figures (and only becomes a change if
+  it stays that way for 14 days). A reading that would remove most of a
+  vendor's prices waits 3 days. "X Add-on" vs "X" is no longer churn. The API
+  and vendor sites get short retries. Every run is logged to
+  `data/runs.jsonl` for the status page. A push that collides with an upload
+  rebases and retries instead of losing the day.
+- **The website.** New design system, homepage led by the latest confirmed
+  change and real stats, a filterable/sortable change log, vendor pages with
+  a price-history chart, change timeline with before/after, every recorded
+  version and data provenance, site-wide search (`/` to focus), a data page
+  with CSV/JSON downloads, a real status page, a 404 page, mobile layouts
+  built for phones, dark mode, and an accessibility pass (axe: no violations).
+  Freshness is now taken from when a page was last *read*, so a price that has
+  simply held is no longer called "out of date".
+
+**settings.yaml** holds the few things you might change without code:
+`licence_url` (a checkout link from any payment provider -- turns on the "Buy a
+licence" button on /pricing.html), `licence_price` (default "£19 a month")
+and `contact_url` (where "Report an error" goes; empty means this repo's
+GitHub issues). A repository variable with the same name in capitals overrides
+the file. `SIGNUP_URL` still turns on the email form.
+
 ---
 
 ## Start here
@@ -44,7 +86,7 @@ crawl data exists, so it cannot overwrite your archive.
 python3 tests/test_pipeline.py
 ```
 
-Should print `32 passed, 0 failed`. This needs no internet and no API key.
+Should print `444 passed, 0 failed` (or more). This needs no internet and no API key.
 
 ### 2. Do a dry run
 
@@ -377,9 +419,11 @@ You do not need to build any of these -- they are in:
 
 ## Deliberately not built
 
-- **A search box.** With 25 vendors the category pages are the navigation.
-  Worth adding past ~100 vendors, not before, and it would mean adding
-  JavaScript to a site that deliberately has none.
+- **Accounts, logins and payments.** The site is static and free to read.
+  Nothing pretends otherwise: there is no account icon, no sign-in button and
+  no paywall until there is a real reason for one.
+- **A live query API.** The data page offers daily static CSV/JSON files at
+  fixed addresses, which is honest about what this is.
 - **A headless browser.** Needed for slider-priced vendors (Klaviyo, Loops,
   ActiveCampaign, Groove). Costs real money and complexity -- worth it when a
   paying customer asks for those specific vendors.

@@ -1,0 +1,44 @@
+{
+ "vendor": "customer-io",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:13:35.302359+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": 100.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": 1000.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

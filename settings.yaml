@@ -1,0 +1,15 @@
+# PriceTrail settings you can change without touching any code.
+# After changing this file the site updates on the next run (or straight away
+# if you upload it, because an upload starts a run).
+
+# The checkout link from your payment provider (Lemon Squeezy, Stripe, ...).
+# Leave empty and the Pricing page says "Ask about a licence" instead of
+# showing a Buy button. Must start with https://
+licence_url: ""
+
+# The price shown on the Pricing page. Make it match the checkout.
+licence_price: "\u00a319 a month"
+
+# Where "Report an error" and "Ask about a licence" go. Empty means the
+# repository's GitHub issues page. Can be a mailto: link.
+contact_url: ""

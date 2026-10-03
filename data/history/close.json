@@ -1,0 +1,190 @@
+{
+ "vendor": "close",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-07T20:51:26.149324+00:00",
+   "date": "2026-08-07",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": 49.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 109.0,
+     "a": 99.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Scale",
+     "key": "scale",
+     "m": 149.0,
+     "a": 139.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Solo",
+     "key": "solo",
+     "m": 19.0,
+     "a": 9.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-09-04T06:21:33.021533+00:00",
+   "date": "2026-09-04",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": 49.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 109.0,
+     "a": 99.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Scale",
+     "key": "scale",
+     "m": 149.0,
+     "a": 139.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Solo",
+     "key": "solo",
+     "m": 19.0,
+     "a": 9.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Additional organizations",
+     "key": "additionalorganizations",
+     "m": 50.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Call Assistant",
+     "key": "callassistant",
+     "m": 50.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-23T11:19:09.012971+00:00",
+   "date": "2026-09-23",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": 49.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 109.0,
+     "a": 99.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Scale",
+     "key": "scale",
+     "m": 149.0,
+     "a": 139.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Solo",
+     "key": "solo",
+     "m": 19.0,
+     "a": 9.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Additional organizations",
+     "key": "additionalorganizations",
+     "m": 50.0,
+     "a": 50.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Call Assistant",
+     "key": "callassistant",
+     "m": 50.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

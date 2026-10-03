@@ -30,6 +30,18 @@ CHANGES = DATA / "changes.jsonl"
 REVIEW = DATA / "review_queue.jsonl"
 STATE = DATA / "state.json"
 SPEND = DATA / "spend.json"
+RUNS = DATA / "runs.jsonl"          # see runs_file()
+HISTORY = DATA / "history"          # see history_dir()
+
+
+def runs_file() -> Path:
+    """Resolved at call time, so a redirected DATA (the test sandbox) is
+    always honoured and nothing can reach the real archive by accident."""
+    return DATA / "runs.jsonl"
+
+
+def history_dir() -> Path:
+    return DATA / "history"
 
 
 def write_atomic(path: Path, text: str) -> None:
@@ -287,3 +299,38 @@ def month_to_date_spend() -> float:
     except json.JSONDecodeError:
         return 0.0
     return data.get(datetime.now(timezone.utc).strftime("%Y-%m"), 0.0)
+
+
+# ---------- run log ----------
+
+RUNS_KEPT = 400
+
+
+def append_run(summary: dict) -> None:
+    """One line per crawl, newest last. Kept to the most recent RUNS_KEPT."""
+    _ensure()
+    runs = runs_file()
+    lines = []
+    if runs.exists():
+        lines = [ln for ln in runs.read_text(encoding="utf-8",
+                                             errors="replace").splitlines()
+                 if ln.strip()]
+    lines.append(json.dumps(summary, ensure_ascii=False))
+    write_atomic(runs, "\n".join(lines[-RUNS_KEPT:]) + "\n")
+
+
+def read_runs(limit: int | None = None) -> list[dict]:
+    """Recent crawl summaries, newest first. Bad lines are skipped."""
+    runs = runs_file()
+    if not runs.exists():
+        return []
+    rows = []
+    for ln in runs.read_text(encoding="utf-8", errors="replace").splitlines():
+        try:
+            row = json.loads(ln)
+        except (json.JSONDecodeError, ValueError):
+            continue
+        if isinstance(row, dict):
+            rows.append(row)
+    rows.reverse()
+    return rows[:limit] if limit else rows

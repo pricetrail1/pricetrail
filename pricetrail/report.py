@@ -33,37 +33,53 @@ def _vendor_categories() -> dict[str, str]:
 
 
 def digest(days: int = 7) -> str:
-    """Weekly summary, grouped by category. This is your newsletter."""
+    """Weekly summary, grouped by category. This is your newsletter.
+
+    Built from the interpreted change log (insights.py): renames are shown as
+    renames, and readings that were reversed or are unconfirmed are left out
+    of the list and counted in a footnote instead of being sent as news.
+    """
+    from . import insights
+
     cutoff = datetime.now(timezone.utc) - timedelta(days=days)
     cats = _vendor_categories()
-
-    recent = [
-        c for c in storage.read_changes()
-        if _parse(c.get("detected_at")) and _parse(c["detected_at"]) >= cutoff
-    ]
+    vendors = {n: {"category": c} for n, c in cats.items()}
+    events = insights.build_events(storage.read_changes(), vendors)
+    window = [e for e in events
+              if _parse(e["detected_at"]) and _parse(e["detected_at"]) >= cutoff]
+    recent = [e for e in window if e["status"] in ("confirmed", "corrected")]
+    held = len(window) - len(recent)
 
     if not recent:
+        note = (f"\n{held} reading(s) were reversed or unconfirmed and are not "
+                f"listed.\n" if held else "")
         return (f"# Pricing changes, last {days} days\n\n"
                 "Nothing moved. That is a real finding, not a failure -- most "
                 "weeks are quiet, and knowing a category is stable is worth "
-                "something to a buyer.\n")
+                "something to a buyer.\n" + note)
 
     grouped: dict[str, list[dict]] = defaultdict(list)
-    for c in recent:
-        grouped[cats.get(c["vendor"], "uncategorised")].append(c)
+    for e in recent:
+        grouped[cats.get(e["vendor"], "uncategorised")].append(e)
 
     lines = [f"# Pricing changes, last {days} days", ""]
-    lines.append(f"{len(recent)} verified changes across "
-                 f"{len({c['vendor'] for c in recent})} vendors.")
+    lines.append(f"{len(recent)} confirmed changes across "
+                 f"{len({e['vendor'] for e in recent})} vendors.")
     lines.append("")
-
     for category in sorted(grouped):
         lines.append(f"## {category.replace('-', ' ').title()}")
         lines.append("")
-        for c in sorted(grouped[category], key=lambda r: r["vendor"]):
-            lines.append(f"- {_line(c)}")
+        for e in sorted(grouped[category], key=lambda r: r["vendor"]):
+            if e["kind"] == "renamed":
+                lines.append(f"- **{e['vendor']}** renamed '{e['old']}' to "
+                             f"'{e['new']}'")
+            else:
+                lines.append(f"- {_line(e['raw'])}")
         lines.append("")
-
+    if held:
+        lines.append(f"_{held} reading(s) this week were reversed or "
+                     f"unconfirmed and are not listed._")
+        lines.append("")
     return "\n".join(lines)
 
 

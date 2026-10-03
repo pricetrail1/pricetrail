@@ -1,0 +1,162 @@
+{
+ "vendor": "zendesk",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:11:46.333041+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Suite Enterprise + Copilot",
+     "key": "suiteenterprisecopilot",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Suite Professional",
+     "key": "suiteprofessional",
+     "m": null,
+     "a": 115.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Suite Team",
+     "key": "suiteteam",
+     "m": null,
+     "a": 55.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Support Team",
+     "key": "supportteam",
+     "m": null,
+     "a": 19.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Contact Center",
+     "key": "contactcenter",
+     "m": null,
+     "a": 83.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": null,
+     "a": 50.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Workforce Engagement Bundle",
+     "key": "workforceengagementbundle",
+     "m": null,
+     "a": 50.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-10-03T11:29:16.998048+00:00",
+   "date": "2026-10-03",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Suite Enterprise + Copilot",
+     "key": "suiteenterprisecopilot",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Suite Professional",
+     "key": "suiteprofessional",
+     "m": 149.0,
+     "a": 115.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Suite Team",
+     "key": "suiteteam",
+     "m": 69.0,
+     "a": 55.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Support Team",
+     "key": "supportteam",
+     "m": 25.0,
+     "a": 19.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Contact Center",
+     "key": "contactcenter",
+     "m": null,
+     "a": 83.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": null,
+     "a": 50.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Workforce Engagement Bundle",
+     "key": "workforceengagementbundle",
+     "m": null,
+     "a": 50.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    }
+   ]
+  }
+ ]
+}

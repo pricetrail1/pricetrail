@@ -1,0 +1,360 @@
+{
+ "vendor": "nutshell",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-10T10:43:37.691618+00:00",
+   "date": "2026-08-10",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Business",
+     "key": "business",
+     "m": 59.0,
+     "a": 51.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 79.0,
+     "a": 69.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Foundation",
+     "key": "foundation",
+     "m": 13.0,
+     "a": 11.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 25.0,
+     "a": 18.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 42.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Email Marketing",
+     "key": "emailmarketing",
+     "m": 5.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Engagement",
+     "key": "engagement",
+     "m": 16.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Marketing",
+     "key": "marketing",
+     "m": 49.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Prospector",
+     "key": "prospector",
+     "m": 37.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Quotes & Invoices",
+     "key": "quotesinvoices",
+     "m": 79.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "SMS Marketing",
+     "key": "smsmarketing",
+     "m": 15.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-31T21:23:03.028955+00:00",
+   "date": "2026-08-31",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Business",
+     "key": "business",
+     "m": 59.0,
+     "a": 51.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 79.0,
+     "a": 69.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Foundation",
+     "key": "foundation",
+     "m": 13.0,
+     "a": 11.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 25.0,
+     "a": 18.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 42.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Email Marketing Add-on",
+     "key": "emailmarketing",
+     "m": 5.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Engagement Add-on",
+     "key": "engagement",
+     "m": 16.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Marketing Add-on",
+     "key": "marketing",
+     "m": 49.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Prospector Add-on",
+     "key": "prospector",
+     "m": 37.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Quotes & Invoices Add-on",
+     "key": "quotesinvoices",
+     "m": 79.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "SMS Add-on",
+     "key": "sms",
+     "m": 15.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-28T13:37:23.449010+00:00",
+   "date": "2026-09-28",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Business",
+     "key": "business",
+     "m": 59.0,
+     "a": 50.25,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 79.0,
+     "a": 67.05,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Foundation",
+     "key": "foundation",
+     "m": 13.0,
+     "a": 11.05,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 25.0,
+     "a": 21.25,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 42.0,
+     "a": 35.75,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Email Campaign Builder",
+     "key": "emailcampaignbuilder",
+     "m": 5.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Engagement",
+     "key": "engagement",
+     "m": 16.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Marketing",
+     "key": "marketing",
+     "m": 49.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Prospector",
+     "key": "prospector",
+     "m": 37.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Quotes & Contracts",
+     "key": "quotescontracts",
+     "m": 79.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "SMS",
+     "key": "sms",
+     "m": 15.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

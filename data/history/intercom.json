@@ -1,0 +1,396 @@
+{
+ "vendor": "intercom",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:11:36.742403+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Advanced",
+     "key": "advanced",
+     "m": 85.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Essential",
+     "key": "essential",
+     "m": 29.0,
+     "a": 19.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Expert",
+     "key": "expert",
+     "m": 132.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Fin AI Agent",
+     "key": "finaiagent",
+     "m": 0.99,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": 35.0,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Proactive Support Plus",
+     "key": "proactivesupportplus",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-05T09:11:46.568808+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Advanced",
+     "key": "advanced",
+     "m": 85.0,
+     "a": 85.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Essential",
+     "key": "essential",
+     "m": 29.0,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Expert",
+     "key": "expert",
+     "m": 132.0,
+     "a": 132.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Fin AI Agent",
+     "key": "finaiagent",
+     "m": 0.99,
+     "a": 0.99,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": 35.0,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Proactive Support Plus",
+     "key": "proactivesupportplus",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-05T11:42:13.852834+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Advanced",
+     "key": "advanced",
+     "m": 85.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Essential",
+     "key": "essential",
+     "m": 29.0,
+     "a": 19.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Expert",
+     "key": "expert",
+     "m": 132.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Fin AI Agent",
+     "key": "finaiagent",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": 35.0,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Proactive Support Plus",
+     "key": "proactivesupportplus",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-31T21:22:40.672332+00:00",
+   "date": "2026-08-31",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Advanced",
+     "key": "advanced",
+     "m": 85.0,
+     "a": 85.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Essential",
+     "key": "essential",
+     "m": 29.0,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Expert",
+     "key": "expert",
+     "m": 132.0,
+     "a": 132.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Fin AI Agent",
+     "key": "finaiagent",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": 35.0,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 99.0,
+     "a": 99.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Proactive Support Plus",
+     "key": "proactivesupportplus",
+     "m": 99.0,
+     "a": 99.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-10T11:04:55.657732+00:00",
+   "date": "2026-09-10",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Advanced",
+     "key": "advanced",
+     "m": null,
+     "a": 85.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Essential",
+     "key": "essential",
+     "m": null,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Expert",
+     "key": "expert",
+     "m": null,
+     "a": 132.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Fin AI Agent",
+     "key": "finaiagent",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": 35.0,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Proactive Support Plus",
+     "key": "proactivesupportplus",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

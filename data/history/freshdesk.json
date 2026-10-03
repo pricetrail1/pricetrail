@@ -1,0 +1,288 @@
+{
+ "vendor": "freshdesk",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:11:50.256383+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": 89.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": null,
+     "a": 19.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": null,
+     "a": 55.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-08-31T21:22:41.439331+00:00",
+   "date": "2026-08-31",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": 89.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": null,
+     "a": 19.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": null,
+     "a": 55.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Additional AI Agent sessions",
+     "key": "additionalaiagentsessions",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Connector app tasks",
+     "key": "connectorapptasks",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Day passes",
+     "key": "daypasses",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Freddy AI Copilot",
+     "key": "freddyaicopilot",
+     "m": null,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-09-05T10:25:25.549609+00:00",
+   "date": "2026-09-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": 89.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": null,
+     "a": 19.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": null,
+     "a": 55.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Additional AI Agent sessions",
+     "key": "additionalaiagentsessions",
+     "m": 49.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Connector app tasks",
+     "key": "connectorapptasks",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Day passes",
+     "key": "daypasses",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Freddy AI Copilot",
+     "key": "freddyaicopilot",
+     "m": null,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-09-13T11:35:42.090684+00:00",
+   "date": "2026-09-13",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": 89.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": null,
+     "a": 19.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": null,
+     "a": 55.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Additional AI Agent sessions",
+     "key": "additionalaiagentsessions",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Connector app tasks",
+     "key": "connectorapptasks",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Day passes",
+     "key": "daypasses",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Freddy AI Copilot",
+     "key": "freddyaicopilot",
+     "m": null,
+     "a": 29.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "MCP actions",
+     "key": "mcpactions",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

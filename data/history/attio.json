@@ -1,0 +1,230 @@
+{
+ "vendor": "attio",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-10T10:43:19.921987+00:00",
+   "date": "2026-08-10",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Add workspace credits: +10,000/month",
+     "key": "addworkspacecredits10000month",
+     "m": 150.0,
+     "a": 120.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Add workspace credits: +25,000/month",
+     "key": "addworkspacecredits25000month",
+     "m": 330.0,
+     "a": 260.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Add workspace credits: +50,000/month",
+     "key": "addworkspacecredits50000month",
+     "m": 595.0,
+     "a": 475.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Add workspace credits: +5,000/month",
+     "key": "addworkspacecredits5000month",
+     "m": 85.0,
+     "a": 70.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 44.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 99.0,
+     "a": 79.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-08-31T21:23:02.027072+00:00",
+   "date": "2026-08-31",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 44.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 99.0,
+     "a": 79.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-09-14T12:29:55.323893+00:00",
+   "date": "2026-09-14",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 44.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 99.0,
+     "a": 79.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Add workspace credits + 10,000/month",
+     "key": "addworkspacecredits10000month",
+     "m": 150.0,
+     "a": 120.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Add workspace credits + 25,000/month",
+     "key": "addworkspacecredits25000month",
+     "m": 330.0,
+     "a": 260.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Add workspace credits + 50,000/month",
+     "key": "addworkspacecredits50000month",
+     "m": 595.0,
+     "a": 475.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Add workspace credits + 5,000/month",
+     "key": "addworkspacecredits5000month",
+     "m": 85.0,
+     "a": 70.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+# Manual corrections to the public change log.
+#
+# The raw log (data/changes.jsonl) is never edited. When an entry on it is
+# wrong, add a correction here instead. The website then shows the entry with
+# the status and note you give, next to the original, so the record stays
+# honest about what was logged and what was later found to be wrong.
+#
+# Most problems never need this: renames, reversals ("hidden" then "shown"
+# again) and pages that load inconsistently are labelled automatically.
+#
+# Each correction matches entries by company name (not case-sensitive), and
+# optionally by date (YYYY-MM-DD), change type and plan name.
+#
+# status can be:
+#   corrected    -- shown, labelled "Corrected", with your note
+#   unconfirmed  -- shown, labelled "Unconfirmed", left out of headlines
+#   reversed     -- shown, labelled "Reversed", left out of headlines
+#   hidden       -- withdrawn from the website entirely (kept in the raw log
+#                   and in the downloads, where its status says "hidden")
+#   confirmed    -- force an entry back to confirmed
+#
+# Example (remove the # signs to use it):
+#
+#  - vendor: Nutshell
+#    date: 2026-09-28
+#    change_type: price_increase
+#    plan: Pro
+#    status: corrected
+#    note: "Checked by hand: the annual price did move from $35 to $35.75."
+
+corrections: []

@@ -1,0 +1,230 @@
+{
+ "vendor": "zoho-crm",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-10T10:43:00.853067+00:00",
+   "date": "2026-08-10",
+   "currency": "INR",
+   "public": true,
+   "plans": [
+    {
+     "name": "Bigin Express",
+     "key": "biginexpress",
+     "m": 2400.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 2400.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise (Zoho Desk)",
+     "key": "enterprisezohodesk",
+     "m": 420.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Professional",
+     "key": "professional",
+     "m": 1400.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": 800.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Starter (Zoho Desk)",
+     "key": "starterzohodesk",
+     "m": 420.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Ultimate",
+     "key": "ultimate",
+     "m": 2600.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-08-31T21:23:01.370568+00:00",
+   "date": "2026-08-31",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Bigin Express",
+     "key": "biginexpress",
+     "m": 2400.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 2400.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Professional",
+     "key": "professional",
+     "m": 1400.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": 800.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Zoho CRM Plus",
+     "key": "zohocrmplus",
+     "m": 20.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-09-14T12:29:54.909758+00:00",
+   "date": "2026-09-14",
+   "currency": "INR",
+   "public": true,
+   "plans": [
+    {
+     "name": "Bigin Express",
+     "key": "biginexpress",
+     "m": 2400.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 2400.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Professional",
+     "key": "professional",
+     "m": 1400.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": 800.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Zoho CRM Plus",
+     "key": "zohocrmplus",
+     "m": 20.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    }
+   ]
+  }
+ ]
+}

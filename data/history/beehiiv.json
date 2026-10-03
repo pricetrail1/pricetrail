@@ -1,0 +1,150 @@
+{
+ "vendor": "beehiiv",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:13:29.625304+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Launch",
+     "key": "launch",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Max",
+     "key": "max",
+     "m": 96.0,
+     "a": 96.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Scale",
+     "key": "scale",
+     "m": 43.0,
+     "a": 43.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-05T11:42:27.328925+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Launch",
+     "key": "launch",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Max",
+     "key": "max",
+     "m": 96.0,
+     "a": 95.92,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Scale",
+     "key": "scale",
+     "m": 43.0,
+     "a": 43.08,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-08-31T21:22:58.150062+00:00",
+   "date": "2026-08-31",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Launch",
+     "key": "launch",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Max",
+     "key": "max",
+     "m": 96.0,
+     "a": 96.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Scale",
+     "key": "scale",
+     "m": 43.0,
+     "a": 43.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "vendor": "zoho-desk",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:12:41.813339+00:00",
+   "date": "2026-08-05",
+   "currency": "INR",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": 2400.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Express",
+     "key": "express",
+     "m": null,
+     "a": 420.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Professional",
+     "key": "professional",
+     "m": null,
+     "a": 1400.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": 800.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Zoho Desk Free Edition",
+     "key": "zohodeskfree",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

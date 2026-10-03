@@ -1,0 +1,122 @@
+{
+ "vendor": "help-scout",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:11:59.216229+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 45.0,
+     "a": 37.8,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 75.0,
+     "a": 63.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": 25.0,
+     "a": 21.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "AI Answers",
+     "key": "aianswers",
+     "m": 0.75,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  },
+  {
+   "at": "2026-09-09T11:08:34.212741+00:00",
+   "date": "2026-09-09",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 45.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 75.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": 25.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "AI Answers",
+     "key": "aianswers",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
+  }
+ ]
+}

@@ -180,6 +180,16 @@ class ExtractionError(RuntimeError):
     pass
 
 
+RETRIES = 2
+RETRY_WAIT = 10          # seconds; doubled on the second retry
+RETRY_STATUSES = (429, 500, 502, 503, 504, 529)
+
+
+def _sleep(seconds: float) -> None:
+    import time
+    time.sleep(seconds)
+
+
 def extract_pricing(cleaned_text: str, vendor_name: str,
                     api_key: str | None = None,
                     model: str = MODEL) -> dict:
@@ -213,22 +223,37 @@ def extract_pricing(cleaned_text: str, vendor_name: str,
         }],
     }
 
-    try:
-        resp = requests.post(
-            API_URL,
-            headers={
-                "x-api-key": api_key,
-                "anthropic-version": "2023-06-01",
-                "content-type": "application/json",
-            },
-            json=payload,
-            timeout=90,
-        )
-    except requests.RequestException as exc:
-        raise ExtractionError(f"request failed: {exc}") from exc
+    # The API has bad minutes like any service: rate limits (429), overload
+    # (529) and the odd 5xx. One of those used to fail the vendor for the whole
+    # day. A short, bounded retry rides them out; a real fault (bad key, bad
+    # request) is not retried, because waiting will not fix it.
+    resp = None
+    for attempt in range(RETRIES + 1):
+        try:
+            resp = requests.post(
+                API_URL,
+                headers={
+                    "x-api-key": api_key,
+                    "anthropic-version": "2023-06-01",
+                    "content-type": "application/json",
+                },
+                json=payload,
+                timeout=90,
+            )
+        except requests.RequestException as exc:
+            if attempt == RETRIES:
+                raise ExtractionError(f"request failed: {exc}") from exc
+            _sleep(RETRY_WAIT * (attempt + 1))
+            continue
+        if resp.status_code in RETRY_STATUSES and attempt < RETRIES:
+            _sleep(RETRY_WAIT * (attempt + 1))
+            continue
+        break
 
-    if resp.status_code != 200:
-        raise ExtractionError(f"API {resp.status_code}: {resp.text[:300]}")
+    if resp is None or resp.status_code != 200:
+        code = resp.status_code if resp is not None else "no response"
+        text = resp.text[:300] if resp is not None else ""
+        raise ExtractionError(f"API {code}: {text}")
 
     body = resp.json()
     for block in body.get("content", []):
@@ -322,12 +347,13 @@ def normalise(data: dict) -> dict:
 
 
 def _plan_key(name: str) -> str:
-    """Loose identity for a plan, so cosmetic renames don't look like churn."""
-    key = name.lower().strip()
-    for suffix in (" plan", " tier", " package", " edition"):
-        if key.endswith(suffix):
-            key = key[: -len(suffix)]
-    return "".join(ch for ch in key if ch.isalnum())
+    """Loose identity for a plan, so cosmetic renames don't look like churn.
+
+    One rule for the whole project, kept in diff.py: two copies of it drifted
+    apart once already.
+    """
+    from .diff import plan_key
+    return plan_key(name)
 
 
 def _num(value):

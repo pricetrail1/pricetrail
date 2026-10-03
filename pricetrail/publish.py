@@ -21,7 +21,7 @@ import sys
 import webbrowser
 from functools import partial
 
-from . import demo, site, storage
+from . import demo, history, site, storage
 from .run import run as run_crawler
 
 
@@ -93,6 +93,17 @@ def main() -> int:
         if code != 0:
             return code
         print()
+
+    # Bring the price history up to date from git before building. Never
+    # allowed to stop a build: if git is missing or anything goes wrong, the
+    # site is built from the history already on disk.
+    if not args.demo:
+        try:
+            h = history.sync()
+            print(f"  History: {h['points']} price lists on record"
+                  f"{'' if h['git'] else ' (git not available; kept what was on disk)'}")
+        except Exception as exc:  # noqa: BLE001
+            print(f"  History sync skipped: {type(exc).__name__}: {exc}")
 
     result = site.build()
 

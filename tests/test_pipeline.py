@@ -1039,7 +1039,7 @@ def test_addons_are_not_shown_as_plans():
     # names the add-ons.
     # Slice the plans table itself. Anchoring on the h1 also swept up the
     # written summary, which legitimately names the add-ons.
-    plans_table = re.search(r"<thead><tr><th>Plan</th>.*?</table>",
+    plans_table = re.search(r'<thead><tr><th scope="col">Plan</th>.*?</table>',
                             html, re.S).group(0)
 
     check("add-ons are lifted out of the plans table",
@@ -1066,8 +1066,8 @@ def test_addons_are_not_shown_as_plans():
                 versions={"help-scout": 3})
     plain = sitemod.render_vendor("help-scout", "Help Scout", ctx2)
     check("no add-ons means no add-on section", "add-ons" not in plain)
-    check("and the original title is kept",
-          "current plans and history" in plain)
+    check("and the plain title is kept",
+          "current plans and price history" in plain)
 
 
 def test_every_page_has_exactly_one_h1():
@@ -1344,21 +1344,25 @@ def test_visitors_can_find_a_price():
     """
     print("\nFind and sort")
 
-    from pricetrail.interact import FILTER_JS, FILTER_CSS
+    from pricetrail.interact import FILTER_JS
+    from pricetrail.theme import CSS
 
     check("the script never calls out to anything",
           not re.search(r"fetch\(|XMLHttpRequest|import\s|require\(", FILTER_JS))
     check("no eval anywhere", "eval(" not in FILTER_JS)
     check("the styles ship with the stylesheet",
-          ".findbar" in FILTER_CSS and "th.sortable" in FILTER_CSS)
+          ".findbar" in CSS and "th.sortable" in CSS and ".search-pop" in CSS)
     check("an empty result explains itself rather than going blank",
-          "find-empty" in FILTER_JS and "clear the box" in FILTER_JS)
+          "find-empty" in FILTER_JS and "clear the box" in FILTER_JS
+          and "No company or page matches" in FILTER_JS)
     check("a missing price sorts last, never first",
           "blanks last" in FILTER_JS)
-    check("the box is keyboard-clearable",
-          "Escape" in FILTER_JS)
+    check("the boxes are keyboard-clearable", "Escape" in FILTER_JS)
     check("headings are reachable by keyboard",
           "tabIndex" in FILTER_JS and "aria-sort" in FILTER_JS)
+    check("search results are keyboard navigable",
+          "ArrowDown" in FILTER_JS and "aria-activedescendant" in FILTER_JS)
+    check("one-letter typos still find a company", "function near(" in FILTER_JS)
 
     import tempfile as _tf, shutil as _sh, yaml as _yaml
     tmp = Path(_tf.mkdtemp())
@@ -1397,9 +1401,14 @@ def test_visitors_can_find_a_price():
         check("the box sits with the tables it controls",
               'id="find"' in index and 'id="prices"' in index)
         check("the script is served and linked",
-              (out / "assets" / "find.js").exists() and "find.js" in index)
-        check("only the page with the tables loads it",
-              "find.js" not in (out / "about.html").read_text(encoding="utf-8"))
+              (out / "assets" / "app.js").exists() and "app.js" in index)
+        check("the search index is served and linked",
+              (out / "assets" / "search-index.js").exists()
+              and "search-index.js" in index)
+        check("search works from every page, not just the homepage",
+              'id="site-search"' in (out / "about.html").read_text(encoding="utf-8"))
+        check("the search page exists for the no-script fallback",
+              (out / "search.html").exists())
         check("category blocks can be hidden when filtered out",
               index.count("data-block") >= 1)
         check("the box is hidden until the script enables it",
@@ -1594,7 +1603,7 @@ def test_no_page_is_a_dead_end():
                     inbound[t] += 1
 
         counts = {p.relative_to(out).as_posix(): inbound.get(p.resolve(), 0)
-                  for p in pages}
+                  for p in pages if p.name != "404.html"}
         worst = min(counts.values())
         check("no page is left on a single inbound link", worst >= 3,
               f"worst={worst} ({min(counts, key=counts.get)})")
@@ -2188,7 +2197,23 @@ def test_stale_prices_are_declared():
 
     real = sitemod.staleness_warning(aged(21), "Kit", weekly)
     check("the real Kit case warns", "21 days old" in real)
-    check("it names the last good date", "Aug" in real or "aug" in real)
+    expected = sitemod.pretty_date((today - _td(days=21)).isoformat())
+    check("it names the last good date", expected in real, real[:160])
+
+    # V2: staleness is about when the page was last READ, not when its prices
+    # last changed. A page read this morning whose prices have held for a
+    # month is current -- V1 called it "30 days old ... not readable".
+    held = {"captured_at": (today - _td(days=30)).isoformat()}
+    read_today = {"vendors": {"Kit": {"crawl_tier": "daily"}},
+                  "state": {"kit": {"last_checked": today.isoformat(),
+                                    "status": "ok"}}}
+    check("a price that has simply held is not called stale",
+          sitemod.staleness_warning(held, "Kit", read_today) == "")
+    failing = {"vendors": {"Kit": {"crawl_tier": "daily"}},
+               "state": {"kit": {"last_checked": (today - _td(days=9)).isoformat(),
+                                 "status": "error"}}}
+    check("a page that has stopped being read is",
+          "9 days old" in sitemod.staleness_warning(held, "Kit", failing))
     check("it tells the reader what to do instead",
           "own page" in real)
 
@@ -2288,15 +2313,15 @@ def test_the_account_menu_and_legal_pages():
         pages = list(out.rglob("*.html"))
         idx = (out / "index.html").read_text(encoding="utf-8")
 
-        check("the avatar menu is on the page", 'class="avatar"' in idx)
-        check("it works without JavaScript",
-              "<details" in idx and "acct-menu" in idx)
-        check("it is labelled for screen readers", "aria-label" in idx)
+        # V2 removed the avatar menu: an account icon on a site with no
+        # accounts is a control that promises something that does not exist.
+        check("no account icon promising accounts that do not exist",
+              'class="avatar"' not in idx and "acct-menu" not in idx)
         check("no dead sign-in button is shipped",
               "Sign in" not in idx and "Log in" not in idx,
               "a button that goes nowhere makes the site look unfinished")
-        check("it says plainly that accounts are not open",
-              "not open yet" in idx)
+        check("the header is labelled for screen readers",
+              'aria-label="Main"' in idx and "Skip to content" in idx)
 
         check("the privacy page exists", (out / "privacy.html").exists())
         check("the terms page exists", (out / "terms.html").exists())
@@ -2309,23 +2334,28 @@ def test_the_account_menu_and_legal_pages():
         check("terms state the site is independent and unsponsored",
               "not affiliated" in terms and "sponsored" in terms)
 
-        # Every menu link must resolve, on every page, at every depth.
+        # Every header and footer link must resolve, on every page, at every
+        # depth -- the footer now carries what the old menu did.
         dead = []
         for f in pages:
             src = f.read_text(encoding="utf-8")
-            menu = re.search(r'<div class="acct-menu".*?</div>', src, re.S)
-            if not menu:
-                dead.append((f.name, "no menu")); continue
-            for href in re.findall(r'href="([^"]+)"', menu.group(0)):
-                if href.startswith(("http", "mailto")):
+            chrome = "".join(re.findall(r'<header class="site-header">.*?</header>'
+                                        r'|<footer class="site-footer">.*?</footer>',
+                                        src, re.S))
+            if not chrome:
+                dead.append((f.name, "no header/footer")); continue
+            for href in re.findall(r'href="([^"]+)"', chrome):
+                if href.startswith(("http", "mailto", "/")):
                     continue
                 target = (f.parent / href.split("#")[0]).resolve()
                 if not target.exists():
                     dead.append((f.relative_to(out).as_posix(), href))
-        check("every menu link resolves from every page",
+        check("every header and footer link resolves from every page",
               not dead, str(dead[:4]))
-        check("the menu is on all pages, not just the homepage",
-              all("acct-menu" in f.read_text(encoding="utf-8") for f in pages))
+        check("legal pages are linked from every page",
+              all("privacy.html" in f.read_text(encoding="utf-8")
+                  and "terms.html" in f.read_text(encoding="utf-8")
+                  for f in pages))
     finally:
         (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
          storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND) = saved
@@ -2392,7 +2422,8 @@ def test_the_hero_leads_with_real_data():
         fig = re.search(r'<figure class="proof">.*?</figure>', withc, re.S).group(0)
         check("with a change it shows both figures and the date",
               "$20" in fig and "$25" in fig and "Aug 2026" in fig, fig[:140])
-        check("a rise is marked as a rise", 'class="up"' in fig)
+        check("a rise is marked as a rise",
+              re.search(r'class="[^"]*\bup\b', fig) is not None)
         check("nothing leaks a raw None", "None" not in re.sub(r"<[^>]+>", "", fig))
     finally:
         (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
@@ -2456,8 +2487,9 @@ def test_the_site_avoids_jargon():
               ">Charged</th>" not in idx,
               "it read like a price at the end of a price row")
         check("but it is still stated, next to the name",
-              'class="how"' in idx)
-        for wanted in ("Cheapest paid", "Dearest published", "Free plan"):
+              '<span class="sub">per user</span>' in idx
+              or '<span class="sub">flat price</span>' in idx)
+        for wanted in ("From", "Top published", "Free plan"):
             check(f"the plain heading '{wanted}' is used", wanted in idx)
     finally:
         (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
@@ -2563,7 +2595,9 @@ def test_every_page_is_one_click_from_the_homepage():
                     depth[t] = depth[cur] + 1
                     q.append(t)
 
-        pages = {f.resolve() for f in out.rglob("*.html")}
+        # 404.html is GitHub's error page: served for missing addresses, never
+        # linked to on purpose.
+        pages = {f.resolve() for f in out.rglob("*.html") if f.name != "404.html"}
         unreachable = [p.name for p in pages if p not in depth]
         check("no page is unreachable from the homepage",
               not unreachable, str(unreachable[:4]))
@@ -2581,7 +2615,7 @@ def test_every_page_is_one_click_from_the_homepage():
 
         idx = (out / "index.html").read_text(encoding="utf-8")
         check("there is a visible section for them",
-              "Compare any two" in idx)
+              "Compare side by side" in idx)
     finally:
         (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
          storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND) = saved
@@ -2752,6 +2786,368 @@ def test_a_held_change_is_actually_published():
         _sh.rmtree(tmp, ignore_errors=True)
 
 
+
+# --------------------------------------------------------------------------
+# V2
+# --------------------------------------------------------------------------
+
+def _sandbox():
+    """Point every storage path at a fresh temp folder; returns (tmp, restore)."""
+    import tempfile as _tf, shutil as _sh
+    tmp = Path(_tf.mkdtemp())
+    saved = (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+             storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND,
+             storage.REVIEW)
+    storage.DATA = tmp
+    storage.SNAPSHOTS = tmp / "snapshots"; storage.PLANS = tmp / "plans"
+    storage.PENDING = tmp / "pending"; storage.CHANGES = tmp / "changes.jsonl"
+    storage.SINCE = tmp / "recording-since.txt"
+    storage.STATE = tmp / "state.json"; storage.SPEND = tmp / "spend.json"
+    storage.REVIEW = tmp / "review_queue.jsonl"
+    storage.SINCE.parent.mkdir(parents=True, exist_ok=True)
+    storage.write_atomic(storage.SINCE, "2026-08-05")
+
+    def restore():
+        (storage.DATA, storage.SNAPSHOTS, storage.PLANS, storage.PENDING,
+         storage.CHANGES, storage.SINCE, storage.STATE, storage.SPEND,
+         storage.REVIEW) = saved
+        _sh.rmtree(tmp, ignore_errors=True)
+    return tmp, restore
+
+
+def _plan(name, m=None, a=None, addon=False, free=False, custom=False):
+    return {"name": name, "key": name.lower(), "monthly_price": m,
+            "annual_price_per_month": a, "is_free": free,
+            "is_custom_pricing": custom, "is_per_seat": True,
+            "is_addon": addon, "trial_days": None, "limits": [], "features": []}
+
+
+def test_v2_history_is_kept_and_never_invented():
+    print("\nV2: price history")
+    from pricetrail import history as hist
+    rec = {"currency": "USD", "captured_at": "2026-08-05T06:00:00+00:00",
+           "pricing_is_public": True, "plans": [_plan("Pro", 49)]}
+    check("a demo record never becomes history",
+          hist.point_from_record(dict(rec, demo=True)) is None)
+    check("an empty record never becomes history",
+          hist.point_from_record(dict(rec, plans=[])) is None)
+    p1 = hist.point_from_record(rec)
+    p2 = hist.point_from_record(dict(rec, captured_at="2026-08-20T06:00:00+00:00"))
+    p3 = hist.point_from_record(dict(rec, captured_at="2026-09-01T06:00:00+00:00",
+                                     plans=[_plan("Pro", 59)]))
+    merged = hist.merge([p3, p1, p2, p1])
+    check("identical consecutive price lists collapse into one period",
+          [p["date"] for p in merged] == ["2026-08-05", "2026-09-01"],
+          str([p["date"] for p in merged]))
+    check("history is ordered oldest first",
+          merged[0]["at"] < merged[-1]["at"])
+
+    tmp, restore = _sandbox()
+    real_git = hist.points_from_git
+    try:
+        hist.points_from_git = lambda: {}
+        storage.save_plans("acme", {"currency": "USD", "pricing_is_public": True,
+                                    "plans": [_plan("Pro", 49)]})
+        r = hist.sync()
+        check("without git, history still starts from the current record",
+              r["points"] == 1 and hist.load("acme"))
+        check("history lives inside the (sandboxed) archive folder",
+              (tmp / "history" / "acme.json").exists())
+        again = hist.sync()
+        check("syncing twice changes nothing", again["updated"] == 0)
+        check("the last priced point is found",
+              hist.last_priced_point(hist.load("acme"))["plans"][0]["m"] == 49)
+    finally:
+        hist.points_from_git = real_git
+        restore()
+
+
+def test_v2_change_log_is_interpreted_not_rewritten():
+    print("\nV2: interpreting the change log")
+    from pricetrail import insights
+
+    def ch(day, vendor, ctype, plan=None, old=None, new=None, field=None):
+        return {"vendor": vendor, "change_type": ctype, "plan": plan,
+                "field": field, "old_value": old, "new_value": new,
+                "confidence": 0.9, "detected_at": f"{day}T07:00:00+00:00"}
+
+    raw = [
+        ch("2026-08-31", "Acme", "plan_removed", "Engagement", 16, None),
+        ch("2026-08-31", "Acme", "plan_added", "Engagement Add-on", None, 16),
+        ch("2026-08-31", "Acme", "plan_removed", "Quotes", 79, None),
+        ch("2026-08-31", "Acme", "plan_added", "Quotes & Contracts", None, 79),
+        ch("2026-08-31", "Brev", "pricing_hidden", None, True, False),
+        ch("2026-09-10", "Brev", "pricing_published", None, False, True),
+        ch("2026-09-12", "Brev", "pricing_hidden", None, True, False),
+        ch("2026-09-15", "Brev", "pricing_published", None, False, True),
+        ch("2026-09-20", "Brev", "pricing_hidden", None, True, False),
+        ch("2026-09-01", "Intr", "price_increase", "Essential", 19, 29,
+           "annual_price_per_month"),
+        ch("2026-09-05", "Old", "plan_removed", "Credits", 50, None),
+        ch("2026-12-30", "Old", "plan_added", "Credits", None, 50),
+    ]
+    snapshot = [dict(r) for r in raw]
+    ev = insights.build_events(raw, {}, corrections=[])
+    kinds = [(e["vendor"], e["kind"], e["status"]) for e in ev]
+    check("the raw entries are not modified", raw == snapshot)
+    check("a suffix-only relabel is one rename, not a removal and a launch",
+          ("Acme", "renamed", "confirmed") in kinds
+          and not any(v == "Acme" and k in ("added", "removed") for v, k, _ in kinds),
+          str(kinds))
+    check("two pairs of hide/show are marked reversed",
+          sum(1 for v, k, s in kinds if v == "Brev" and s == "reversed") == 4)
+    check("the last hide on an unstable page is unconfirmed, not news",
+          ("Brev", "pricing_hidden", "unconfirmed") in kinds)
+    check("a real price rise stays confirmed",
+          ("Intr", "rise", "confirmed") in kinds)
+    check("a re-add months later is not called a reversal",
+          sum(1 for v, k, s in kinds if v == "Old" and s == "confirmed") == 2)
+    head = insights.headline(ev)
+    check("headlines carry no reversed or unconfirmed entries",
+          all(e["status"] == "confirmed" for e in head))
+    rise = [e for e in ev if e["kind"] == "rise"][0]
+    check("percentages are computed, not copied", rise["pct"] == 52.6)
+
+    fixed = insights.build_events(raw, {}, corrections=[
+        {"vendor": "intr", "date": "2026-09-01", "change_type": "price_increase",
+         "status": "corrected", "note": "Annual figure misread."}])
+    fe = [e for e in fixed if e["vendor"] == "Intr"][0]
+    check("a manual correction is applied with its reason",
+          fe["status"] == "corrected" and "misread" in fe["status_note"])
+    check("and leaves the raw entry alone", raw == snapshot)
+
+
+def test_v2_diff_does_not_churn_on_relabels():
+    print("\nV2: plan identity")
+    from pricetrail.diff import diff_pricing, plan_key
+    check("'X Add-on' and 'X' are the same plan",
+          plan_key("Engagement Add-on") == plan_key("Engagement"))
+    old = {"currency": "USD", "pricing_is_public": True,
+           "plans": [_plan("Starter", 10), _plan("SMS", 15, addon=True),
+                     _plan("Quotes", 79, addon=True)]}
+    new = {"currency": "USD", "pricing_is_public": True,
+           "plans": [_plan("Starter", 10), _plan("SMS Add-on", 15, addon=True),
+                     _plan("Quotes & Contracts", 79, addon=True)]}
+    out = diff_pricing("Acme", old, new)
+    types = sorted(c.change_type for c in out)
+    check("relabels produce no removals or additions",
+          "plan_added" not in types and "plan_removed" not in types, str(types))
+    check("a same-price new name is recorded as a rename",
+          any(c.change_type == "plan_renamed" and c.old_value == "Quotes"
+              for c in out))
+    check("a cosmetic relabel stays out of the public log",
+          all(not c.publishable for c in out
+              if c.change_type == "plan_renamed" and c.old_value == "SMS"))
+    check("add-on changes say they are add-ons",
+          all(c.is_addon for c in out))
+    ambiguous = diff_pricing("Acme",
+        {"currency": "USD", "plans": [_plan("A", 79), _plan("B", 79)]},
+        {"currency": "USD", "plans": [_plan("C", 79)]})
+    check("an ambiguous price match is not guessed at",
+          not any(c.change_type == "plan_renamed" for c in ambiguous))
+
+
+def test_v2_crawler_safeguards():
+    print("\nV2: crawler safeguards")
+    import io, contextlib, json as _json
+    from pricetrail import run as runmod
+    from pricetrail.fetch import FetchResult
+
+    tmp, restore = _sandbox()
+    real = (runmod.Fetcher, runmod.extract_pricing, runmod.estimate_cost_usd,
+            runmod.load_vendors)
+    try:
+        pages = {"https://a.test/pricing": "", "https://b.test/pricing": ""}
+        body = "<html><body><h1>Pricing plans</h1>" + "".join(
+            f"<section><h2>{n}</h2><p>${p} per user per month</p><p>Billed "
+            f"annually. Includes unlimited tickets, email support, reporting "
+            f"dashboards, integrations and a 14 day free trial. Compare plans "
+            f"and choose the tier for your team.</p><ul><li>Up to {i*10} "
+            f"agents</li><li>SSO</li><li>API access</li></ul></section>"
+            for i, (n, p) in enumerate([("Starter", 19), ("Pro", 49),
+                                        ("Enterprise", 99)], 1)
+        ) + "<p>All prices in USD. Contact sales for enterprise.</p>"
+
+        class F:
+            def __init__(s, *a, **k): pass
+            def get(s, url, **k):
+                return FetchResult(url=url, status=200, html=pages[url])
+            def worth_recovering(s, r): return False
+
+        runmod.Fetcher = F
+        runmod.estimate_cost_usd = lambda *a, **k: 0.001
+        runmod.load_vendors = lambda: [
+            {"name": "Alpha", "slug": "alpha", "pricing_url": "https://a.test/pricing",
+             "category": "x", "crawl_tier": "daily"},
+            {"name": "Beta", "slug": "beta", "pricing_url": "https://b.test/pricing",
+             "category": "x", "crawl_tier": "daily"}]
+        readings = {}
+
+        def extract(text, name, **k):
+            r = readings[name]
+            if isinstance(r, Exception):
+                raise r
+            return _json.loads(_json.dumps(r))
+        runmod.extract_pricing = extract
+
+        def go(tag):
+            for u in pages:
+                pages[u] = body + f"<p>Updated {tag}</p></body></html>"
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                code = runmod.run(budget_usd=1.0)
+            return buf.getvalue(), code
+
+        priced = {"currency": "USD", "pricing_is_public": True, "extraction_notes": "",
+                  "plans": [_plan("Starter", 19), _plan("Pro", 49)]}
+        blank = {"currency": "USD", "pricing_is_public": False, "extraction_notes": "",
+                 "plans": [_plan("Starter"), _plan("Pro")]}
+        readings.update(Alpha=priced, Beta=priced)
+        go("1")
+
+        # Alpha's page loads without prices; Beta has a bug-triggering reading.
+        readings.update(Alpha=blank, Beta=KeyError("boom"))
+        out, code = go("2")
+        st = _json.loads(storage.STATE.read_text())
+        check("a page without its prices keeps the old figures",
+              storage.load_plans("alpha")["plans"][0]["monthly_price"] == 19)
+        check("and is flagged, not published", st["alpha"]["status"] == "prices_not_in_page"
+              and not storage.CHANGES.exists())
+        check("an unexpected error in one vendor does not stop the run",
+              "unexpected error" in out and st["beta"]["status"] == "internal_error")
+        out, code = go("3")
+        check("still nothing published on the next day either",
+              not storage.CHANGES.exists())
+
+        # A huge but genuine-looking drop is held for days, not two runs.
+        readings.update(Alpha={"currency": "USD", "pricing_is_public": True,
+                               "extraction_notes": "",
+                               "plans": [_plan("Starter", 19), _plan("Pro", 49),
+                                         _plan("Team", 99), _plan("Biz", 199)]},
+                        Beta=priced)
+        go("4")
+        go("5")
+        readings.update(Alpha={"currency": "USD", "pricing_is_public": True,
+                               "extraction_notes": "",
+                               "plans": [_plan("Starter", 19)]})
+        go("6")
+        out, _ = go("7")
+        check("a reading that wipes out most plans is held, not confirmed",
+              "large change" in out
+              and len(storage.load_plans("alpha")["plans"]) == 4, out[-300:])
+        check("every run is logged for the status page",
+              len(storage.read_runs()) >= 6
+              and (tmp / "runs.jsonl").exists())
+    finally:
+        (runmod.Fetcher, runmod.extract_pricing, runmod.estimate_cost_usd,
+         runmod.load_vendors) = real
+        restore()
+
+
+def test_v2_site_pages_and_downloads():
+    print("\nV2: pages, downloads and SEO")
+    import yaml as _yaml, json as _json
+    tmp, restore = _sandbox()
+    try:
+        cfg = _yaml.safe_load((Path(sitemod.__file__).parent.parent / "vendors.yaml")
+                              .read_text(encoding="utf-8"))
+        names = [v["name"] for v in cfg["vendors"][:4]]
+        for i, n in enumerate(names):
+            storage.save_plans(storage.slugify(n), {
+                "currency": "USD", "pricing_is_public": True, "extraction_notes": "",
+                "plans": [_plan("Pro", 20 + i), _plan("=HYPERLINK(\"x\")", 5, addon=True)]})
+        storage.save_plans("retired-co", {"currency": "USD", "pricing_is_public": True,
+                                          "plans": [_plan("Pro", 9)]})
+        with open(storage.CHANGES, "w", encoding="utf-8") as fh:
+            fh.write(_json.dumps({"vendor": names[0], "plan": "Pro",
+                                  "field": "monthly_price", "old_value": 18,
+                                  "new_value": 20, "change_type": "price_increase",
+                                  "confidence": 0.95,
+                                  "detected_at": "2026-09-01T07:00:00+00:00"}) + "\n")
+        out = tmp / "site"
+        sitemod.build(out)
+        slug = storage.slugify(names[0])
+        vend = (out / "v" / f"{slug}.html").read_text(encoding="utf-8")
+        events = __import__("pricetrail.insights", fromlist=["x"]).build_events(
+            storage.read_changes(), {}, corrections=[])
+        check("every change has an anchor on its vendor page",
+              f'id="c-{events[0]["id"]}"' in vend)
+        check("the change log links to that anchor",
+              f'#c-{events[0]["id"]}' in (out / "changes.html").read_text(encoding="utf-8"))
+        check("a vendor with prices gets a history chart",
+              'class="chart chart-lg"' in vend and 'role="img"' in vend)
+        check("the chart describes itself in words", "went from $18 to $20" in vend)
+        check("the source page is linked", "pricing page" in vend and 'rel="nofollow noopener"' in vend)
+        for f in ("prices.csv", "changes.csv", "history.csv", "pricetrail.json"):
+            check(f"download {f} is built", (out / "downloads" / f).exists())
+        prices_csv = (out / "downloads" / "prices.csv").read_text(encoding="utf-8")
+        check("a cell that would run as a spreadsheet formula is neutralised",
+              ",'=HYPERLINK" in prices_csv or "\"'=HYPERLINK" in prices_csv)
+        _json.loads((out / "downloads" / "pricetrail.json").read_text(encoding="utf-8"))
+        check("the JSON download parses", True)
+        data = (out / "data.html").read_text(encoding="utf-8")
+        check("the data page declares a Dataset with downloads",
+              '"Dataset"' in data and '"DataDownload"' in data)
+        e404 = (out / "404.html").read_text(encoding="utf-8")
+        check("a 404 page exists and is not indexed",
+              "noindex" in e404 and 'href="/"' in e404)
+        sm = (out / "sitemap.xml").read_text(encoding="utf-8")
+        check("search and error pages stay out of the sitemap",
+              "search.html" not in sm and "404.html" not in sm and "data.html" in sm)
+        check("the search page is not indexed",
+              "noindex" in (out / "search.html").read_text(encoding="utf-8"))
+        idx_js = (out / "assets" / "search-index.js").read_text(encoding="utf-8")
+        check("the search index covers companies", names[0] in idx_js)
+        check("the search index cannot break out of its script",
+              "</script" not in idx_js.lower())
+        ret = (out / "v" / "retired-co.html").read_text(encoding="utf-8")
+        check("a company no longer tracked says so", "no longer tracked" in ret)
+        check("and has no broken category link", 'href="../c/.html"' not in ret)
+        idx = (out / "index.html").read_text(encoding="utf-8")
+        check("the homepage counts only companies still tracked",
+              f">{len(names)}</span><span class=\"l\">Companies tracked" in idx)
+        feed = (out / "feed.xml").read_text(encoding="utf-8")
+        check("the feed uses RFC 822 dates", "+0000</pubDate>" in feed)
+        check("every page has one main landmark and a skip link",
+              all(p.read_text(encoding="utf-8").count('<main id="main">') == 1
+                  and "Skip to content" in p.read_text(encoding="utf-8")
+                  for p in out.rglob("*.html")))
+    finally:
+        restore()
+
+
+def test_v2_pricing_page_is_honest():
+    print("\nV2: pricing and licence")
+    saved = (sitemod.LICENCE_URL, sitemod.LICENCE_PRICE)
+    try:
+        sitemod.LICENCE_URL = ""
+        off = sitemod.render_pricing({"records": {}, "changes": []})
+        check("with no checkout link there is no buy button",
+              "Buy a licence" not in off and "Ask about a licence" in off)
+        check("the free tier is stated plainly", "free to read" in off.lower())
+        check("refunds and cancelling are explained",
+              "14 days" in off and "cancel" in off.lower())
+        sitemod.LICENCE_URL = "https://pricetrail.lemonsqueezy.com/buy/abc?x=1&y=2"
+        sitemod.LICENCE_PRICE = "£19 a month"
+        on = sitemod.render_pricing({"records": {}, "changes": []})
+        check("with a link, the button goes to checkout",
+              "Buy a licence" in on and "lemonsqueezy.com/buy/abc?x=1&amp;y=2" in on)
+        check("the price shown comes from the setting", "£19 a month" in on)
+        check("only https links are accepted",
+              sitemod._https_only("javascript:alert(1)") == ""
+              and sitemod._https_only("http://x.test") == "")
+        terms = sitemod.render_terms()
+        check("the terms define commercial use and the refund window",
+              "Commercial use" in terms and "14 days" in terms)
+    finally:
+        sitemod.LICENCE_URL, sitemod.LICENCE_PRICE = saved
+
+
+def test_zz_no_check_failed():
+    """Under pytest, check() only records; this makes any failure fail the run."""
+    assert not FAILED, FAILED
+
+
 if __name__ == "__main__":
     print("=" * 62)
     print("PriceTrail pipeline tests")
@@ -2808,6 +3204,12 @@ if __name__ == "__main__":
     test_tracking_starts_on_the_vendor_page()
     test_the_signup_form_matches_the_service()
     test_stale_prices_are_declared()
+    test_v2_history_is_kept_and_never_invented()
+    test_v2_change_log_is_interpreted_not_rewritten()
+    test_v2_diff_does_not_churn_on_relabels()
+    test_v2_crawler_safeguards()
+    test_v2_site_pages_and_downloads()
+    test_v2_pricing_page_is_honest()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")
     if FAILED:

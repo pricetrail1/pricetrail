@@ -1,0 +1,330 @@
+{
+ "vendor": "front",
+ "note": "Every distinct published price list, oldest first. Generated from git history of data/plans.",
+ "points": [
+  {
+   "at": "2026-08-05T00:12:09.673213+00:00",
+   "date": "2026-08-05",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 105.0,
+     "a": 105.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Professional",
+     "key": "professional",
+     "m": 65.0,
+     "a": 65.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": 25.0,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "API Rate Limit Increase",
+     "key": "apiratelimitincrease",
+     "m": 200.0,
+     "a": 200.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Autopilot",
+     "key": "autopilot",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": 20.0,
+     "a": 20.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Native WhatsApp Channel",
+     "key": "nativewhatsappchannel",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Smart CSAT",
+     "key": "smartcsat",
+     "m": 10.0,
+     "a": 10.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Smart QA",
+     "key": "smartqa",
+     "m": 20.0,
+     "a": 20.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Smart QA + Smart CSAT bundle",
+     "key": "smartqasmartcsatbundle",
+     "m": 25.0,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-08-31T21:22:42.492845+00:00",
+   "date": "2026-08-31",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": 105.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Professional",
+     "key": "professional",
+     "m": null,
+     "a": 65.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": null,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "API Rate Limit Increase",
+     "key": "apiratelimitincrease",
+     "m": null,
+     "a": 200.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Autopilot",
+     "key": "autopilot",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": null,
+     "a": 20.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Native WhatsApp Channel",
+     "key": "nativewhatsappchannel",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Smart CSAT",
+     "key": "smartcsat",
+     "m": null,
+     "a": 10.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Smart QA",
+     "key": "smartqa",
+     "m": null,
+     "a": 20.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Smart QA + Smart CSAT bundle",
+     "key": "smartqasmartcsatbundle",
+     "m": null,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    }
+   ]
+  },
+  {
+   "at": "2026-09-25T11:38:31.593152+00:00",
+   "date": "2026-09-25",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": 105.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Professional",
+     "key": "professional",
+     "m": null,
+     "a": 65.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": null,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "API Rate Limit Increase",
+     "key": "apiratelimitincrease",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Autopilot",
+     "key": "autopilot",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": null,
+     "a": 20.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Native WhatsApp Channel",
+     "key": "nativewhatsappchannel",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Smart CSAT",
+     "key": "smartcsat",
+     "m": null,
+     "a": 10.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Smart QA",
+     "key": "smartqa",
+     "m": null,
+     "a": 20.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Smart QA + Smart CSAT bundle",
+     "key": "smartqasmartcsatbundle",
+     "m": null,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    }
+   ]
+  }
+ ]
+}
