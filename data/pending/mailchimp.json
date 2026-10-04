@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Page shows pricing tiers but all specific dollar amounts are missing from the HTML provided. The page displays a contact tier pricing table (0-500 contacts, 501-1500, etc.) with placeholders like \"Then, starts at ___ per month†\" and \"per month for 12 months\" with blank values. Currency selector shows multiple currencies available (USD, GBP, EUR, AUD, etc.) but no actual prices are visible. The page structure indicates plans exist (Free, Essentials, Standard, Premium) with 14-day free trials and 15% discount promotions mentioned, but the actual monthly/annual prices cannot be extracted. Contact sales required for larger contact lists (200,000+). SMS is add-on pricing (varies). Pay As You Go email credits available but pricing not specified.",
+  "pricing_is_public": true,
+  "extraction_notes": "Page contains multiple currency selectors but prices are not displayed numerically for Standard and Premium. Prices appear to be dynamic based on contact tier selection. Only the Free plan shows a clear $0 price. The page indicates \"Then, starts at $20 per month\" for Standard and shows discount offer language \"Save 15%\" but actual discounted prices are not numerically specified. Contact tier pricing table structure suggests prices vary by contact volume (0-500, 501-1500, etc.) but specific prices for each tier are not shown in the extracted text. Premium shows \"Contact sales\" indicating custom pricing for higher tiers. The $0 monthly free trial mentioned for Standard/Essentials appears to be temporary trial pricing, not the standard monthly price.",
   "plans": [
     {
       "name": "Free",
@@ -26,8 +26,54 @@
           "unit": null
         }
       ],
+      "features": []
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "role-based roles",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
       "features": [
-        "basic workflows"
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "custom reporting",
+        "integrations",
+        "onboarding support"
       ]
     },
     {
@@ -53,7 +99,7 @@
           "unit": null
         },
         {
-          "metric": "roles",
+          "metric": "role-based roles",
           "value": 2.0,
           "unit": null
         },
@@ -65,22 +111,9 @@
       ],
       "features": [
         "basic workflows",
-        "email scheduling"
+        "live chat",
+        "onboarding support"
       ]
-    },
-    {
-      "name": "Pay As You Go",
-      "key": "payasyougo",
-      "monthly_price": null,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
     },
     {
       "name": "Premium",
@@ -88,25 +121,15 @@
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
-      "is_custom_pricing": false,
+      "is_custom_pricing": true,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "audiences",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "monthly email sends",
           "value": 150000.0,
-          "unit": null
-        },
-        {
-          "metric": "roles",
-          "value": 5.0,
           "unit": null
         },
         {
@@ -121,77 +144,12 @@
         "custom branding",
         "custom reporting",
         "dedicated account manager",
-        "email scheduling",
         "integrations",
         "onboarding support",
         "phone support",
         "priority support"
       ]
-    },
-    {
-      "name": "SMS Marketing",
-      "key": "smsmarketing",
-      "monthly_price": null,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
-    },
-    {
-      "name": "Standard",
-      "key": "standard",
-      "monthly_price": null,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "marketing automation flows",
-          "value": 200.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends",
-          "value": 6000.0,
-          "unit": null
-        },
-        {
-          "metric": "roles",
-          "value": 4.0,
-          "unit": null
-        },
-        {
-          "metric": "users",
-          "value": 5.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "advanced workflows",
-        "ai assistant",
-        "basic workflows",
-        "custom branding",
-        "custom reporting",
-        "email scheduling",
-        "integrations",
-        "onboarding support",
-        "priority support"
-      ]
     }
   ],
-  "_first_seen": "2026-10-03"
+  "_first_seen": "2026-10-04"
 }
