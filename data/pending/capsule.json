@@ -1,0 +1,150 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Pricing page shows toggle between \"Pay Annually\" and \"Pay Monthly\" but no actual prices are visible on the page. The page states Starter, Growth, and Advanced are \"Per user, per month. Billed Annually.\" but the actual dollar amounts are not displayed. Ultimate is a custom pricing tier (\"Try Free\" with note about sales team contact). Free plan has no pricing. Marketing add-on shows \"Starting from $11 per month\" but no annual equivalent is provided. Unable to extract monthly_price or annual_price_per_month for Starter, Growth, and Advanced plans as the numbers are not shown on this page.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "custom fields",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "sales pipelines",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 2.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Marketing add-on",
+      "key": "marketing",
+      "monthly_price": 11.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Advanced",
+      "key": "advanced",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 120000.0,
+          "unit": null
+        },
+        {
+          "metric": "project boards",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "sales pipelines",
+          "value": 50.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 60000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 30000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "Ultimate",
+      "key": "ultimate",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "dedicated account manager",
+        "integrations"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-05"
+}

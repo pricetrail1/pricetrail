@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows promotional pricing: Standard plan displays \"$11.20/mo Billed monthly\" but also shows \"Total of: $48.00 $33.60 today -30%\" indicating a 30% new customer discount. The standard monthly price is $11.20 (shown as the regular rate after 3 months). Pro plan shows \"$41.30/mo Billed monthly\" with similar -30% promotion (\"Total of: $177.00 $123.90 today\"). The promotional prices ($33.60 and $123.90) are NOT recorded; only the standard rates are. SMS is available as an add-on at $0.007 per SMS for Pro plan. Only monthly billing is clearly shown on this page; no annual billing toggle or annual pricing is visible. Account experts cost from $400/month and are included free for anyone paying at least $400/month. Features listed (like \"advanced reporting\", \"dynamic content\", etc.) are common across multiple plans, so only core differentiating features with clear pricing tier association were recorded.",
+  "extraction_notes": "Page shows promotional pricing: Standard is listed as $11.20/mo with \"-30%\" and \"Total of: $48.00 $33.60 today\" indicated. The standard monthly price is $11.20 per the page text. Pro similarly shows $41.30/mo with \"-30%\" offer. Both appear to be showing the post-promotion price as the displayed rate, but the page indicates \"After 3 months, you will be billed monthly\" suggesting these are promotional/introductory prices for the first 3 months. Recorded the displayed monthly prices as shown. The page mentions billing is in USD. Only monthly pricing is visible on the main plan cards; no annual billing option is shown for Standard or Pro plans. The Custom plan states \"Best for businesses with custom needs, large amount of contacts or email volume\" with \"Let's talk\" CTA. SMS is available as an add-on starting at $0.007/SMS but is not a main subscription tier. Features listed are limited to what could be definitively extracted from the plan descriptions; many features are shared across all plans.",
   "plans": [
     {
       "name": "Free",
@@ -26,14 +26,13 @@
           "unit": null
         },
         {
-          "metric": "web push notifications per month",
+          "metric": "web push notifications",
           "value": 500.0,
           "unit": null
         }
       ],
       "features": [
-        "api access",
-        "integrations"
+        "ai assistant"
       ]
     },
     {
@@ -54,20 +53,13 @@
           "unit": null
         },
         {
-          "metric": "monthly emails",
+          "metric": "emails per month",
           "value": 6000.0,
-          "unit": null
-        },
-        {
-          "metric": "web push notifications per month",
-          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
-        "api access",
-        "integrations"
+        "ai assistant"
       ]
     },
     {
@@ -91,17 +83,10 @@
           "metric": "monthly emails",
           "value": -1.0,
           "unit": null
-        },
-        {
-          "metric": "web push notifications per month",
-          "value": -1.0,
-          "unit": null
         }
       ],
       "features": [
-        "ai assistant",
-        "api access",
-        "integrations"
+        "ai assistant"
       ]
     },
     {
@@ -120,14 +105,17 @@
           "metric": "contacts",
           "value": -1.0,
           "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
-        "ai assistant",
-        "api access",
-        "custom reporting",
-        "integrations"
+        "ai assistant"
       ]
     }
-  ]
+  ],
+  "_first_seen": "2026-10-05"
 }

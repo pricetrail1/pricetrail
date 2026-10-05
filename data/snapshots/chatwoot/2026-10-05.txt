@@ -1,0 +1,206 @@
+Pricing
+Flexible plans for growing teams
+Chatwoot helps 15,000+ organizations worldwide to manage their customer support workflows. Sign up for your 15-day free trial, and experience the full power of Chatwoot.
+Looking for self-hosted plans? Click here
+Hacker
+$0
+/agent/month
+Up to 2 agents
+Get started free
+Conversations
+500/month
+Channels
+Live chat
+Voice
+Not included in Hacker
+Captain AI
+Not included in Hacker
+Help center
+Not included in Hacker
+Teams
+Not included in Hacker
+Automation rules
+Not included in Hacker
+SSO / SAML
+Not included in Hacker
+Audit logs
+Not included in Hacker
+Data retention
+30 days
+Startups
+$19
+/agent/month
+Buy Startups
+Conversations
+Unlimited *
+Channels
+Voice
+Not included in Startups
+Captain AI
+300 credits
+Help center
+Included in Startups
+Teams
+Not included in Startups
+Automation rules
+Not included in Startups
+SSO / SAML
+Not included in Startups
+Audit logs
+Not included in Startups
+Data retention
+1 year
+Business
+$39
+/agent/month
+Buy Business
+Conversations
+Unlimited *
+Channels
+Voice
+Included in Business
+Captain AI
+500 credits
+Help center
+Included in Business
+Teams
+Included in Business
+Automation rules
+Included in Business
+SSO / SAML
+Not included in Business
+Audit logs
+Not included in Business
+Data retention
+2 years
+Enterprise
+$99
+/agent/month
+Buy Enterprise
+Conversations
+Unlimited *
+Channels
+Voice
+Included in Enterprise
+Captain AI
+800 credits
+Help center
+Included in Enterprise
+Teams
+Included in Enterprise
+Automation rules
+Included in Enterprise
+SSO / SAML
+Included in Enterprise
+Audit logs
+Included in Enterprise
+Data retention
+3 years
+Hacker
+$0
+/agent/month
+Up to 2 agents
+Get started free
+Conversations
+500/month
+Channels
+Live chat
+Voice
+Captain AI
+Help center
+Teams
+Automation rules
+SSO / SAML
+Audit logs
+Data retention
+30 days
+Startups
+$19
+/agent/month
+Buy Startups
+Conversations
+Unlimited *
+Channels
+Voice
+Captain AI
+300 credits
+Help center
+Teams
+Automation rules
+SSO / SAML
+Audit logs
+Data retention
+1 year
+Business
+$39
+/agent/month
+Buy Business
+Conversations
+Unlimited *
+Channels
+Voice
+Captain AI
+500 credits
+Help center
+Teams
+Automation rules
+SSO / SAML
+Audit logs
+Data retention
+2 years
+Enterprise
+$99
+/agent/month
+Buy Enterprise
+Conversations
+Unlimited *
+Channels
+Voice
+Captain AI
+800 credits
+Help center
+Teams
+Automation rules
+SSO / SAML
+Audit logs
+Data retention
+3 years
+Compare all features
+* Unlimited usage is subject to the
+fair use policy
+.
+Included with paid plans
+Captain AI
+Your AI teammate that helps agents respond faster and keeps customers happy even when you're not around.
+For additional credits
+$20
+/ 1,000 credits
+Explore Captain
+Learn how credits work
+Assistant
+A chatbot that answers customer questions around the clock
+Copilot
+Shows agents what to say while they're in a conversation
+Memories
+Auto-generated notes about each customer from past chats
+Reply suggestions
+Drafts replies for agents so they can send with one click
+Summarization
+Turns long conversations into a quick summary for agents
+Content gap
+Finds questions your help center doesn't answer yet
+Monitors
+Tracks the themes customers raise, described in plain words
+Triage
+Sets priority, labels and team on every new conversation
+Scenarios
+Follows the steps your team writes for each kind of case
+Questions?
+Need help deciding?
+Talk to us
+Every paid plan comes with free Captain AI credits each month: 300 for Startups, 500 for Business, and 800 for Enterprise. These credits cover features like reply suggestions, message summarization, and knowledge base answers. If you need more, additional credits are billed at $20 per 1,000. You can track your usage anytime in your billing dashboard.
+Yes, we offer refunds for all Cloud plans. The refund amount is calculated based on your cancellation date and unused time. Note that Captain AI credits are non-refundable since they're usage-based. If you're not happy with Chatwoot for any reason, just reach out to us at sales@chatwoot.com.
+You can upgrade anytime from your dashboard. Head to Settings → Billing, and you'll see all available plans along with what's included in each. You can also view your past invoices and update your payment method from the same page.
+Chatwoot Cloud runs on AWS with servers located in the United States. If you have specific data residency requirements or compliance questions (like GDPR or SOC 2), feel free to reach out to us at hello@chatwoot.com and we'll be happy to help.
+We do! We believe in supporting the community, so we offer the Startups plan free of charge for open source projects. If you're working on an open source project or a nonprofit, send us an email at hello@chatwoot.com with some details about what you're building, and we'll get you set up.
+Yes, your data belongs to you. You can use our API to export your conversations, contacts, and other data anytime. If you need help, reach out to hello@chatwoot.com.

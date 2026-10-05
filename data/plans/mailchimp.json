@@ -1,13 +1,13 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "This page shows 4 main plans (Free, Essentials, Standard, Premium) but actual prices are not displayed. The page contains placeholder pricing areas (\"Then, starts at ___ per month†\") with no numerical values filled in. Users must select a contact tier from a dropdown to see pricing, but the page provided does not show the resulting price values. Multiple currency options are available (USD, EUR, GBP, AUD, CAD, etc.) but no prices are shown. There is a 15% promotional offer mentioned for 10,000+ contacts for 12 months, but no base prices are visible to calculate discounted prices. Premium plan pricing requires contacting sales for custom plans with 200,000+ contacts.",
+  "pricing_is_public": true,
+  "extraction_notes": "Page contains multiple currency selectors but prices are not displayed numerically for Standard and Premium. Prices appear to be dynamic based on contact tier selection. Only the Free plan shows a clear $0 price. The page indicates \"Then, starts at $20 per month\" for Standard and shows discount offer language \"Save 15%\" but actual discounted prices are not numerically specified. Contact tier pricing table structure suggests prices vary by contact volume (0-500, 501-1500, etc.) but specific prices for each tier are not shown in the extracted text. Premium shows \"Contact sales\" indicating custom pricing for higher tiers. The $0 monthly free trial mentioned for Standard/Essentials appears to be temporary trial pricing, not the standard monthly price.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": 0.0,
+      "annual_price_per_month": null,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -23,11 +23,57 @@
         {
           "metric": "monthly email sends",
           "value": 500.0,
-          "unit": "per month max or 250/day"
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "role-based roles",
+          "value": 4.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
+          "unit": null
         }
       ],
       "features": [
-        "basic workflows"
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "custom reporting",
+        "integrations",
+        "onboarding support"
       ]
     },
     {
@@ -48,35 +94,25 @@
           "unit": null
         },
         {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "marketing automation flows",
           "value": 4.0,
           "unit": null
         },
         {
-          "metric": "monthly email sends multiplier",
-          "value": 10.0,
-          "unit": null
-        },
-        {
-          "metric": "role-based access roles",
+          "metric": "role-based roles",
           "value": 2.0,
           "unit": null
         },
         {
-          "metric": "users/seats",
+          "metric": "users",
           "value": 3.0,
           "unit": null
         }
       ],
       "features": [
         "basic workflows",
-        "email scheduling",
-        "role permissions"
+        "live chat",
+        "onboarding support"
       ]
     },
     {
@@ -92,17 +128,12 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "monthly email sends",
           "value": 150000.0,
           "unit": null
         },
         {
-          "metric": "users/seats",
+          "metric": "users",
           "value": -1.0,
           "unit": null
         }
@@ -112,65 +143,13 @@
         "ai assistant",
         "custom branding",
         "custom reporting",
+        "dedicated account manager",
+        "integrations",
         "onboarding support",
         "phone support",
-        "priority support",
-        "role permissions"
-      ]
-    },
-    {
-      "name": "Standard",
-      "key": "standard",
-      "monthly_price": null,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "audiences",
-          "value": 5.0,
-          "unit": null
-        },
-        {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "marketing automation flows",
-          "value": 200.0,
-          "unit": null
-        },
-        {
-          "metric": "monthly email sends multiplier",
-          "value": 12.0,
-          "unit": null
-        },
-        {
-          "metric": "role-based access roles",
-          "value": 4.0,
-          "unit": null
-        },
-        {
-          "metric": "users/seats",
-          "value": 5.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "advanced workflows",
-        "ai assistant",
-        "basic workflows",
-        "custom branding",
-        "custom reporting",
-        "email scheduling",
-        "role permissions"
+        "priority support"
       ]
     }
   ],
-  "captured_at": "2026-09-30T12:21:56.432738+00:00"
+  "captured_at": "2026-10-05T13:46:56.918145+00:00"
 }

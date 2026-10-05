@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows a toggle for Monthly/Annually billing with \"2 months free\" promotion for annual billing. The prices displayed ($24.17, $49.17) appear to be monthly billing prices based on the standard presentation. Only monthly prices are recorded as the page does not clearly show separate annual pricing figures - it shows a promotional discount for annual but not the effective monthly rate. Prices at stated minimums extracted from plan cards. Plus plan shows \"Starts at $300/mo. + monthly usage\" indicating usage-based pricing on top. Premium plan is custom pricing only. Lyro AI Agent and Flows are standalone add-ons that can be purchased separately, marked is_addon: true. Free trial is 7 days for applicable paid plans. Seats listed as 10 for self-serve plans, custom for Plus/Premium.",
+  "extraction_notes": "Page displays monthly pricing. Toggle shows \"Monthly\" and \"Annually\" options at top, but only monthly prices are shown on the plan cards. The page states \"2 months free\" as a promotional offer for annual billing, but specific annual pricing figures are not displayed on the plan cards themselves. Starter shows $24.17/mo, Growth shows $49.17/mo as starting prices. Plus plan shows $300/mo + monthly usage (usage-based component). Premium is custom pricing with \"Contact for pricing\". Lyro AI Agent and Flows are sold as standalone add-on products with their own pricing. Free plan has limits: 50 billable conversations, 50 Lyro AI conversations (lifetime), 100 Flows visitors, 10 seats. The page notes that Plus and Premium allow custom quotas beyond standard limits.",
   "plans": [
     {
       "name": "Free",
@@ -21,18 +21,18 @@
           "unit": null
         },
         {
-          "metric": "lyro ai conversations",
+          "metric": "flows visitors reached",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "lyro ai agent conversations",
           "value": 50.0,
           "unit": null
         },
         {
           "metric": "seats",
           "value": 10.0,
-          "unit": null
-        },
-        {
-          "metric": "visitors reached via flows",
-          "value": 100.0,
           "unit": null
         }
       ],
@@ -55,7 +55,7 @@
       "trial_days": 7,
       "limits": [
         {
-          "metric": "visitors reached via flows",
+          "metric": "flows visitors reached",
           "value": 2000.0,
           "unit": null
         }
@@ -79,6 +79,16 @@
         {
           "metric": "billable conversations",
           "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "flows visitors reached",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "lyro ai agent conversations",
+          "value": 50.0,
           "unit": null
         },
         {
@@ -106,13 +116,13 @@
       "trial_days": 7,
       "limits": [
         {
-          "metric": "lyro ai conversations",
+          "metric": "lyro ai agent conversations",
           "value": 50.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant"
+        "ai chatbot"
       ]
     },
     {
@@ -129,7 +139,7 @@
       "limits": [
         {
           "metric": "billable conversations",
-          "value": 250.0,
+          "value": 2000.0,
           "unit": null
         },
         {
@@ -140,8 +150,8 @@
       ],
       "features": [
         "advanced workflows",
-        "basic workflows",
         "live chat",
+        "role permissions",
         "ticketing"
       ]
     },
@@ -163,6 +173,16 @@
           "unit": null
         },
         {
+          "metric": "flows visitors reached",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "lyro ai agent conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "seats",
           "value": -1.0,
           "unit": null
@@ -171,10 +191,12 @@
       "features": [
         "advanced workflows",
         "api access",
-        "basic workflows",
         "custom branding",
+        "custom reporting",
+        "dedicated account manager",
         "live chat",
         "priority support",
+        "role permissions",
         "ticketing"
       ]
     },
@@ -191,12 +213,7 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "billable conversations",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "lyro ai conversations",
+          "metric": "lyro ai agent conversations",
           "value": 3000.0,
           "unit": null
         }
@@ -204,14 +221,16 @@
       "features": [
         "advanced workflows",
         "api access",
-        "basic workflows",
         "custom branding",
+        "custom reporting",
+        "dedicated account manager",
         "live chat",
         "priority support",
+        "role permissions",
         "sso",
         "ticketing"
       ]
     }
   ],
-  "captured_at": "2026-08-31T21:22:43.705010+00:00"
+  "captured_at": "2026-10-05T13:46:46.669216+00:00"
 }

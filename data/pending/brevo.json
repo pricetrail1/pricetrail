@@ -1,0 +1,119 @@
+{
+  "currency": "USD",
+  "pricing_is_public": false,
+  "extraction_notes": "Pricing page shows plan names and features but no actual numeric prices are displayed. All pricing tiers route to \"Sign up\" or \"Talk to sales\" without showing rates. Currency not specified on page; assumed USD based on common Brevo pricing region. A toggle between Monthly and Yearly (-10%) is visible at top, indicating annual discounts exist, but no actual prices are shown to apply the toggle to. Free plan limit (300 emails) inferred from common Brevo free tier specifications, as it appears in the page but text may be partially cut off. Professional plan appears to be per-user (\"per month/user\" text visible). Enterprise plan explicitly requires sales contact. Several features listed are descriptive marketing phrases (\"Everything in Standard, plus:\") rather than specific feature names from the required list; only features matching the standardized list were recorded.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 300.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 1000000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "dedicated account manager",
+        "onboarding support",
+        "saml",
+        "sso"
+      ]
+    },
+    {
+      "name": "Professional",
+      "key": "professional",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "phone support"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "email support"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-05"
+}

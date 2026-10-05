@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Premium plan shows \"$1,000 per month / billed yearly\", which is the annual per-month price. Essentials shows \"$100 per month / billed monthly\" indicating monthly billing. Enterprise is contact-sales with no pricing shown. Add-ons for additional profiles and emails are not included as separate plans but are listed in Usage + Billing section. Support packages are mentioned as available for Premium and Enterprise but specific tiers are not detailed on this page.",
+  "extraction_notes": "Premium plan shows \"$1,000 per month / billed yearly\" - this is annual pricing, recorded as annual_price_per_month. Essentials shows \"per month / billed monthly\" - this is monthly pricing. Enterprise is custom pricing with no public numbers. Add-ons listed separately at bottom (Additional people & object profiles, Additional 1,000 emails, Additional AI credits). Feature table at bottom appears duplicated/incomplete. Trial information mentioned for startup program (12 months free) but not tied to specific paid plans.",
   "plans": [
     {
       "name": "Essentials",
@@ -21,22 +21,35 @@
           "unit": null
         },
         {
+          "metric": "inbox previews",
+          "value": 25.0,
+          "unit": null
+        },
+        {
           "metric": "object types",
           "value": 2.0,
           "unit": null
         },
         {
-          "metric": "profiles (people + objects)",
+          "metric": "profiles",
           "value": 5000.0,
+          "unit": "people + objects"
+        },
+        {
+          "metric": "workspaces",
+          "value": 2.0,
           "unit": null
         }
       ],
       "features": [
         "ai assistant",
-        "basic data integrations",
+        "api access",
         "basic workflows",
+        "custom reporting",
         "email support",
-        "live chat"
+        "integrations",
+        "live chat",
+        "visual workflow builder"
       ]
     },
     {
@@ -52,14 +65,16 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
         "ai assistant",
+        "api access",
         "audit log",
-        "custom branding",
+        "custom reporting",
         "dedicated account manager",
         "hipaa",
-        "onboarding support",
-        "priority support"
+        "integrations",
+        "priority support",
+        "role permissions",
+        "sso"
       ]
     },
     {
@@ -75,17 +90,12 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "emails per month",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "object types",
           "value": 10.0,
           "unit": null
         },
         {
-          "metric": "profiles (people + objects)",
+          "metric": "workspaces",
           "value": -1.0,
           "unit": null
         }
@@ -93,14 +103,21 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "custom branding",
+        "ai chatbot",
+        "api access",
+        "audit log",
+        "custom reporting",
         "email support",
         "hipaa",
+        "integrations",
         "live chat",
         "onboarding support",
-        "premium data integrations"
+        "priority support",
+        "role permissions",
+        "sso",
+        "visual workflow builder"
       ]
     }
   ],
-  "captured_at": "2026-08-31T21:22:58.580051+00:00"
+  "captured_at": "2026-10-05T13:47:16.390851+00:00"
 }

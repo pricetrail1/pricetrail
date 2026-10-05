@@ -1,0 +1,144 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "All prices are per agent/month. Billing period not specified on page; only monthly pricing shown. Trial period mentioned in intro (15 days) but not explicitly tied to specific plans. Captain AI is not a separate plan but a feature with credits included in paid plans; additional credits available as add-on at $20 per 1,000 credits (recorded as separate feature). Channels feature includes Live chat and Voice depending on plan; Voice is included starting from Business tier. Automation rules shown as \"Automation rules\" on page, mapped to \"advanced workflows\". Teams feature shown as included starting from Business tier. The page shows duplicate plan sections with slightly different feature presentations but identical pricing and core features.",
+  "plans": [
+    {
+      "name": "Hacker",
+      "key": "hacker",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "agents",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "conversations",
+          "value": 500.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "data retention",
+          "value": 30.0,
+          "unit": "days"
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Startups",
+      "key": "startups",
+      "monthly_price": 19.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "captain ai credits",
+          "value": 300.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 1.0,
+          "unit": "year"
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "help center"
+      ]
+    },
+    {
+      "name": "Business",
+      "key": "business",
+      "monthly_price": 39.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "captain ai credits",
+          "value": 500.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 2.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "help center",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": 99.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "captain ai credits",
+          "value": 800.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "data retention",
+          "value": 3.0,
+          "unit": "years"
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "audit log",
+        "help center",
+        "role permissions",
+        "saml",
+        "sso"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-05"
+}

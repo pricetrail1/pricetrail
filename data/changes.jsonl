@@ -69,3 +69,4 @@
 {"vendor": "Mailchimp", "change_type": "plan_removed", "plan": "Pay As You Go", "field": null, "old_value": null, "new_value": null, "confidence": 0.8, "detected_at": "2026-09-30T12:21:56.432539+00:00", "note": ""}
 {"vendor": "Mailchimp", "change_type": "custom_pricing_changed", "plan": "Premium", "field": "is_custom_pricing", "old_value": false, "new_value": true, "confidence": 0.8, "detected_at": "2026-09-30T12:21:56.432553+00:00", "note": ""}
 {"vendor": "Brevo", "change_type": "pricing_hidden", "plan": null, "field": null, "old_value": true, "new_value": false, "confidence": 0.8, "detected_at": "2026-10-03T11:29:27.358085+00:00", "note": "page no longer shows any public prices"}
+{"vendor": "Mailchimp", "change_type": "pricing_published", "plan": null, "field": null, "old_value": false, "new_value": true, "confidence": 0.8, "detected_at": "2026-10-05T13:46:56.917965+00:00", "note": "", "is_addon": false}

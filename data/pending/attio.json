@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Plus and Pro plans show 20% discount with annual billing. The discount is noted as \"Save 20%\" next to the annual price (e.g., $44 monthly becomes $35/month when billed annually). Free plan is per-user pricing with a $0 cost. Enterprise plan is custom pricing, billed annually only. All workspace credit add-ons show both monthly ($X/mo) and annual ($Y/mo) pricing displayed on the page. Pro plan includes a 14-day trial. Sanity check: monthly prices are higher than annual prices per month for Plus, Pro, and all add-ons, confirming the annual discount structure.",
+  "extraction_notes": "Extracted Free, Plus, Pro, and Enterprise as main plans. Plus and Pro show 20% discount with annual billing (e.g., $44 monthly becomes $35/month when billed annually). The four workspace credit add-ons are marked as is_addon: true as they are optional usage-based extras sold alongside the main plans. Free plan includes a 14-day trial of the Pro plan mentioned in the FAQ. The page uses \"per user/month\" for all paid plans, confirming is_per_seat: true.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 0.0,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -16,14 +16,14 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "email limit per month",
+          "metric": "emails per month",
           "value": 200.0,
           "unit": null
         },
         {
-          "metric": "file storage (gb)",
+          "metric": "file storage",
           "value": 50.0,
-          "unit": null
+          "unit": "GB"
         },
         {
           "metric": "objects",
@@ -36,8 +36,8 @@
           "unit": null
         },
         {
-          "metric": "reports",
-          "value": 3.0,
+          "metric": "seat credits per user per month",
+          "value": 100.0,
           "unit": null
         },
         {
@@ -47,10 +47,9 @@
         }
       ],
       "features": [
-        "ai assistant",
         "api access",
-        "integrations",
-        "role permissions"
+        "basic workflows",
+        "integrations"
       ]
     },
     {
@@ -66,14 +65,14 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "email limit per month",
+          "metric": "emails per month",
           "value": 1000.0,
           "unit": null
         },
         {
-          "metric": "file storage (gb)",
+          "metric": "file storage",
           "value": 50.0,
-          "unit": null
+          "unit": "GB"
         },
         {
           "metric": "objects",
@@ -86,8 +85,8 @@
           "unit": null
         },
         {
-          "metric": "reports",
-          "value": 15.0,
+          "metric": "seat credits per user per month",
+          "value": 500.0,
           "unit": null
         },
         {
@@ -97,10 +96,9 @@
         }
       ],
       "features": [
-        "ai assistant",
         "api access",
-        "integrations",
-        "role permissions"
+        "basic workflows",
+        "integrations"
       ]
     },
     {
@@ -111,12 +109,12 @@
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
-      "is_addon": true,
+      "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "workspace credits",
+          "metric": "workspace credits per month",
           "value": 5000.0,
           "unit": null
         }
@@ -136,14 +134,14 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "email limit per month",
+          "metric": "emails per month",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "file storage (gb)",
+          "metric": "file storage",
           "value": -1.0,
-          "unit": null
+          "unit": "GB"
         },
         {
           "metric": "objects",
@@ -156,8 +154,8 @@
           "unit": null
         },
         {
-          "metric": "reports",
-          "value": 100.0,
+          "metric": "seat credits per user per month",
+          "value": 1000.0,
           "unit": null
         },
         {
@@ -167,11 +165,10 @@
         }
       ],
       "features": [
-        "ai assistant",
+        "advanced workflows",
         "api access",
-        "integrations",
-        "role permissions",
-        "single sign-on"
+        "custom reporting",
+        "integrations"
       ]
     },
     {
@@ -182,12 +179,12 @@
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
-      "is_addon": true,
+      "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "workspace credits",
+          "metric": "workspace credits per month",
           "value": 10000.0,
           "unit": null
         }
@@ -202,12 +199,12 @@
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
-      "is_addon": true,
+      "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "workspace credits",
+          "metric": "workspace credits per month",
           "value": 25000.0,
           "unit": null
         }
@@ -222,12 +219,12 @@
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
-      "is_addon": true,
+      "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "workspace credits",
+          "metric": "workspace credits per month",
           "value": 50000.0,
           "unit": null
         }
@@ -241,18 +238,18 @@
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": true,
-      "is_per_seat": false,
+      "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "email limit per month",
+          "metric": "emails per month",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "file storage (gb)",
+          "metric": "file storage",
           "value": -1.0,
           "unit": null
         },
@@ -267,24 +264,25 @@
           "unit": null
         },
         {
-          "metric": "seats",
-          "value": -1.0,
+          "metric": "seat credits per user per month",
+          "value": 2500.0,
           "unit": null
         },
         {
-          "metric": "teams",
+          "metric": "seats",
           "value": -1.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
+        "advanced workflows",
         "api access",
+        "custom reporting",
         "integrations",
         "role permissions",
-        "saml",
-        "single sign-on"
+        "saml"
       ]
     }
-  ]
+  ],
+  "_first_seen": "2026-10-05"
 }

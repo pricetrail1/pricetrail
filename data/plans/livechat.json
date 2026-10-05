@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows both monthly and annual billing options. Prices listed as \"per person billed annually\" for $19, $49, $79 (annual rates) and \"per person\" for $25, $59, $89 (monthly rates). All plans marked as per-seat pricing. All three public plans offer 14-day free trial. Enterprise plan is custom pricing with contact sales. Features extracted from comparison table rows visible on page - only those from the approved list were recorded. The page shows extensive feature tables but many features listed (like channels, automations, customization options) are not on the approved features list, so were omitted. Text Intelligence is mentioned as included in all plans but is not on the approved features list.",
+  "extraction_notes": "Page shows both monthly and annual billing. Prices stated as \"per person\" and marked \"billed annually\" or \"billed monthly\". Features list extracted from comparison table and plan cards. Trial period explicitly stated as 14 days, no credit card required. Limits for visitors extracted from \"Traffic tracking\" section. Monthly prices: Starter $25, Team $59, Business $89. Annual prices: Starter $19, Team $49, Business $79 per person per month. For Enterprise, custom pricing only (\"Let's talk\" CTA), no numbers shown.",
   "plans": [
     {
       "name": "Starter",
@@ -31,15 +31,15 @@
           "unit": null
         },
         {
-          "metric": "visitors tracked",
+          "metric": "visitors",
           "value": 100.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
         "api access",
-        "integrations"
+        "custom branding",
+        "live chat"
       ]
     },
     {
@@ -65,20 +65,16 @@
           "unit": null
         },
         {
-          "metric": "users",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "visitors tracked",
+          "metric": "visitors",
           "value": 400.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
         "api access",
-        "integrations"
+        "custom branding",
+        "custom reporting",
+        "live chat"
       ]
     },
     {
@@ -94,15 +90,18 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "visitors tracked",
+          "metric": "visitors",
           "value": 1000.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
         "api access",
-        "integrations"
+        "custom branding",
+        "custom reporting",
+        "live chat",
+        "sla policies",
+        "whatsapp"
       ]
     },
     {
@@ -115,19 +114,22 @@
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [],
       "features": [
-        "ai assistant",
         "api access",
         "custom branding",
+        "custom reporting",
         "hipaa",
-        "integrations",
+        "live chat",
+        "onboarding support",
+        "priority support",
         "single sign-on",
         "sla policies",
-        "sso"
+        "sso",
+        "whatsapp"
       ]
     }
   ],
-  "captured_at": "2026-09-14T12:29:27.991064+00:00"
+  "captured_at": "2026-10-05T13:46:47.457703+00:00"
 }
