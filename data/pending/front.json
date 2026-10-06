@@ -1,0 +1,185 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows \"Billed Annually\" with \"Save 24%\" indicated. All prices are /seat/mo billed annually. Starter and Professional have seat limits (up to 10 and up to 50 respectively), while Enterprise has no stated seat limit but is also per-seat pricing. Multiple AI add-ons are available separately. The Free Trial offers Professional plan features for 14 days.",
+  "plans": [
+    {
+      "name": "API Rate Limit Increase",
+      "key": "apiratelimitincrease",
+      "monthly_price": null,
+      "annual_price_per_month": 200.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "api requests per minute",
+          "value": 100.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "api access"
+      ]
+    },
+    {
+      "name": "Autopilot",
+      "key": "autopilot",
+      "monthly_price": null,
+      "annual_price_per_month": 0.05,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai chatbot"
+      ]
+    },
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": null,
+      "annual_price_per_month": 20.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": 105.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "automation rules",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "custom reporting",
+        "integrations",
+        "role permissions",
+        "saml",
+        "sso"
+      ]
+    },
+    {
+      "name": "Native WhatsApp Channel",
+      "key": "nativewhatsappchannel",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "Professional",
+      "key": "professional",
+      "monthly_price": null,
+      "annual_price_per_month": 65.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "automation rules",
+          "value": 20.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "basic workflows",
+        "integrations",
+        "saml",
+        "sso"
+      ]
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": null,
+      "annual_price_per_month": 25.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "automation rules",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "channel types",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": 1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows",
+        "single sign-on"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-06"
+}

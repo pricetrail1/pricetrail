@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing page shows plan names and features but no actual numeric prices are displayed. All pricing tiers route to \"Sign up\" or \"Talk to sales\" without showing rates. Currency not specified on page; assumed USD based on common Brevo pricing region. A toggle between Monthly and Yearly (-10%) is visible at top, indicating annual discounts exist, but no actual prices are shown to apply the toggle to. Free plan limit (300 emails) inferred from common Brevo free tier specifications, as it appears in the page but text may be partially cut off. Professional plan appears to be per-user (\"per month/user\" text visible). Enterprise plan explicitly requires sales contact. Several features listed are descriptive marketing phrases (\"Everything in Standard, plus:\") rather than specific feature names from the required list; only features matching the standardized list were recorded.",
+  "extraction_notes": "No prices shown on this page. There are placeholders for pricing (e.g., \"Loading content...\", \"per month\", \"per month/user\") but no actual numbers are visible. The page shows Monthly/Yearly toggle with -10% discount notation for annual billing, but the actual prices have not loaded. Plan features extracted based on stated inclusions on the page; many additional features are listed in the feature section but assigned conservatively to the plans where they are explicitly mentioned.",
   "plans": [
     {
       "name": "Free",
@@ -21,7 +21,11 @@
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "basic reporting",
+        "basic workflows",
+        "email"
+      ]
     },
     {
       "name": "Enterprise",
@@ -34,16 +38,9 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "contacts",
-          "value": 1000000.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
         "dedicated account manager",
-        "onboarding support",
         "saml",
         "sso"
       ]
@@ -66,14 +63,15 @@
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "seats included",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
-        "phone support"
+        "priority support",
+        "role permissions",
+        "whatsapp"
       ]
     },
     {
@@ -89,7 +87,8 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "basic workflows"
+        "advanced workflows",
+        "custom reporting"
       ]
     },
     {
@@ -111,9 +110,11 @@
         }
       ],
       "features": [
-        "email support"
+        "api access",
+        "custom branding",
+        "integrations"
       ]
     }
   ],
-  "_first_seen": "2026-10-05"
+  "_first_seen": "2026-10-06"
 }
