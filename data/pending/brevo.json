@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "No prices shown on this page. There are placeholders for pricing (e.g., \"Loading content...\", \"per month\", \"per month/user\") but no actual numbers are visible. The page shows Monthly/Yearly toggle with -10% discount notation for annual billing, but the actual prices have not loaded. Plan features extracted based on stated inclusions on the page; many additional features are listed in the feature section but assigned conservatively to the plans where they are explicitly mentioned.",
+  "extraction_notes": "Pricing page shows a Monthly/Yearly toggle (-10% annual discount), but no actual prices are displayed on the page—only plan names, descriptions, and features. The \"Sales Essentials\" and \"Sales Advanced\" pricing labels appear but no numerical values are visible. Free plan limit (300 emails/month) is not explicitly stated on this page but is the standard Brevo free tier. Page routes to \"Sign up\" or \"Talk to sales\" without showing numbers, indicating pricing_is_public is false.",
   "plans": [
     {
       "name": "Free",
@@ -22,9 +22,8 @@
         }
       ],
       "features": [
-        "basic reporting",
-        "basic workflows",
-        "email"
+        "email",
+        "sms"
       ]
     },
     {
@@ -40,9 +39,17 @@
       "trial_days": null,
       "limits": [],
       "features": [
+        "advanced workflows",
+        "ai assistant",
         "dedicated account manager",
+        "email",
+        "integrations",
+        "onboarding support",
+        "phone support",
         "saml",
-        "sso"
+        "sms",
+        "sso",
+        "whatsapp"
       ]
     },
     {
@@ -63,14 +70,18 @@
           "unit": null
         },
         {
-          "metric": "seats included",
+          "metric": "seats",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "priority support",
-        "role permissions",
+        "advanced workflows",
+        "ai assistant",
+        "email",
+        "integrations",
+        "phone support",
+        "sms",
         "whatsapp"
       ]
     },
@@ -88,7 +99,10 @@
       "limits": [],
       "features": [
         "advanced workflows",
-        "custom reporting"
+        "ai assistant",
+        "email",
+        "integrations",
+        "sms"
       ]
     },
     {
@@ -110,11 +124,13 @@
         }
       ],
       "features": [
-        "api access",
-        "custom branding",
-        "integrations"
+        "ai assistant",
+        "basic workflows",
+        "email",
+        "integrations",
+        "sms"
       ]
     }
   ],
-  "_first_seen": "2026-10-06"
+  "_first_seen": "2026-10-07"
 }
