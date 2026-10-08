@@ -325,6 +325,84 @@
      "seat": true
     }
    ]
+  },
+  {
+   "at": "2026-10-08T12:55:06.829821+00:00",
+   "date": "2026-10-08",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": 105.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Professional",
+     "key": "professional",
+     "m": null,
+     "a": 65.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": null,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "API Rate Limit Increase",
+     "key": "apiratelimitincrease",
+     "m": 200.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Autopilot",
+     "key": "autopilot",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Copilot",
+     "key": "copilot",
+     "m": 20.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Native WhatsApp Channel",
+     "key": "nativewhatsappchannel",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
   }
  ]
 }
