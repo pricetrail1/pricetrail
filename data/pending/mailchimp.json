@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Pricing displayed is contact-tiered. Standard, Essentials, and Premium plans have 14-day free trials. A 15% promotional discount is offered for 10,000+ contacts for 12 months (promotional, not standard price). Specific monthly prices per contact tier are not fully readable in the HTML provided—only the starting prices are mentioned: Standard \"starts at $20\", Essentials \"starts at $0\", Premium \"starts at...\" (amount cut off). The page contains a currency selector showing USD is available. SMS is an add-on. Email send limits are tied to contact count (15X contacts for Premium, 12X for Standard, 10X for Essentials, 500/mo or 250/day for Free). Annual plans are mentioned as available for Premium and Standard 10,000+ contact tiers but require contacting sales. Without complete pricing data for each contact tier, only the starting prices and free plan details can be reliably recorded.",
+  "extraction_notes": "Page shows currency selector but all prices displayed are in USD. Standard plan shows $20/month after 14-day free trial. Essentials and Premium pricing not fully visible on the page - only trial periods and discount offers shown (15% off first 12 months for 10,000+ contacts). Pricing appears to be contact-based tiering but specific monthly prices for Essentials and Premium tiers at different contact levels are not clearly displayed in the extracted text. Standard plan has 14-day free trial, then starts at $20/month. Page mentions annual plans are available for Standard and Premium but specific annual pricing not shown. The 15% discount mentioned is a promotional offer, not the standard price. Essentials and Premium show \"Save 15% on 10,000+ contacts per month for 12 months\" but the base prices are not visible in the extracted content.",
   "plans": [
     {
       "name": "Free",
@@ -21,13 +21,13 @@
           "unit": null
         },
         {
-          "metric": "email sends per month",
+          "metric": "monthly email sends",
           "value": 500.0,
-          "unit": null
+          "unit": "per month or 250/day max"
         }
       ],
       "features": [
-        "basic workflows"
+        "integrations"
       ]
     },
     {
@@ -43,15 +43,26 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "email sends per month",
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
           "value": 6000.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
         "basic workflows",
-        "custom reporting",
+        "custom branding",
+        "email scheduling",
+        "integrations",
         "role permissions"
       ]
     },
@@ -73,14 +84,14 @@
           "unit": null
         },
         {
-          "metric": "email sends per month",
-          "value": -1.0,
-          "unit": null
+          "metric": "monthly email sends multiplier",
+          "value": 10.0,
+          "unit": "10x contacts"
         }
       ],
       "features": [
-        "basic workflows",
-        "custom reporting"
+        "email scheduling",
+        "integrations"
       ]
     },
     {
@@ -96,7 +107,12 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "email sends per month",
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
           "value": 150000.0,
           "unit": null
         }
@@ -104,12 +120,13 @@
       "features": [
         "advanced workflows",
         "custom reporting",
-        "onboarding support",
+        "integrations",
         "phone support",
         "priority support",
-        "role permissions"
+        "role permissions",
+        "single sign-on"
       ]
     }
   ],
-  "_first_seen": "2026-10-08"
+  "_first_seen": "2026-10-09"
 }
