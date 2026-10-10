@@ -1,35 +1,35 @@
 {
   "intercom": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-09",
+    "last_checked": "2026-10-10",
     "status": "ok",
     "hash_changes": 13,
     "hash": "4bdfede7cb6e2a4ea640281fa02fbf1db0f683fb8d5568177640210fcfc082f6"
   },
   "zendesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-09",
+    "last_checked": "2026-10-10",
     "status": "ok",
     "hash_changes": 6,
     "hash": "112ebe48fb8dfd928988f354b24e426d2d40ce853f46b16e4da293d804891817"
   },
   "freshdesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-09",
+    "last_checked": "2026-10-10",
     "status": "ok",
     "hash_changes": 7,
     "hash": "871e0c47534bce5d12aeba11801f6c53adfd39d942150ebba6fdd3f53847a812"
   },
   "help-scout": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-09",
+    "last_checked": "2026-10-10",
     "status": "ok",
     "hash_changes": 3,
     "hash": "aea1fd44a0e682b4bfea46d4369b9bf3a979a5bb8621e467aa1f8438d9df25c5"
   },
   "front": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-09",
+    "last_checked": "2026-10-10",
     "status": "ok",
     "hash_changes": 7,
     "hash": "c2df0be1b261fba3a670ff349416e3333a11c46b752dfc3bea09ce39c58514f3"
@@ -71,17 +71,17 @@
   },
   "mailchimp": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-09",
+    "last_checked": "2026-10-10",
     "status": "ok",
-    "hash_changes": 58,
-    "hash": "a5b45df80f4afe130848a0156fcd66e4d3912ea2a7fbb5b92328d63865fa6b07"
+    "hash_changes": 59,
+    "hash": "4a83953e1a13b83b2ff3ba6f138b790bdf0d6dcd564f50423c534375d2060daf"
   },
   "brevo": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-09",
-    "status": "ok",
-    "hash_changes": 25,
-    "hash": "264bfd670021ab2d0f4c445f40ae8e080e2bf2e6650266b981fecda05a4128a2"
+    "last_checked": "2026-10-10",
+    "status": "suspicious_extraction",
+    "hash_changes": 26,
+    "hash": "28b1580d788eb932b47d0fe7630ef5438f09bfa97dd6a58dc2de5e99d6866358"
   },
   "kit": {
     "consecutive_failures": 35,
@@ -122,14 +122,14 @@
   },
   "pipedrive": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-09",
+    "last_checked": "2026-10-10",
     "status": "ok",
     "hash_changes": 2,
     "hash": "41a446bbdda9c8f350d19507a9770e1e26a4278da4723590c5431ad392b07db5"
   },
   "close": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-09",
+    "last_checked": "2026-10-10",
     "status": "ok",
     "hash_changes": 3,
     "hash": "31096f66002cd431c98961ba4c841238d4b9f3fa582d9ee7b85cb4391d554275"
