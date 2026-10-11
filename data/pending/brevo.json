@@ -1,7 +1,0 @@
-{
-  "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "This is a Brevo pricing page, but no prices are visible on the page content provided. The page shows plan names (Free, Starter, Standard, Professional, Enterprise) and features, but all price fields display as blank placeholders (shown as \"per month\" text without actual numbers). The Professional plan shows \"per month/user\" and Enterprise shows \"Sales Advanced\" without numbers. Without numerical pricing data, I cannot record any pricing information. The page appears to require interaction or JavaScript to load the actual prices.",
-  "plans": [],
-  "_first_seen": "2026-10-10"
-}

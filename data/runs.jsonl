@@ -8,3 +8,4 @@
 {"at": "2026-10-08T12:55:04+00:00", "seconds": 14, "checked": 9, "unchanged": 5, "extracted": 1, "changes": 4, "awaiting": 1, "queued": 67, "kept_old": 0, "failed": 0, "failed_vendors": [], "spent_usd": 0.0094, "forced": false}
 {"at": "2026-10-09T12:40:58+00:00", "seconds": 22, "checked": 9, "unchanged": 7, "extracted": 2, "changes": 0, "awaiting": 2, "queued": 0, "kept_old": 0, "failed": 0, "failed_vendors": [], "spent_usd": 0.0152, "forced": false}
 {"at": "2026-10-10T12:00:02+00:00", "seconds": 19, "checked": 9, "unchanged": 7, "extracted": 2, "changes": 0, "awaiting": 2, "queued": 0, "kept_old": 0, "failed": 0, "failed_vendors": [], "spent_usd": 0.0152, "forced": false}
+{"at": "2026-10-11T12:12:42+00:00", "seconds": 14, "checked": 9, "unchanged": 7, "extracted": 1, "changes": 0, "awaiting": 0, "queued": 0, "kept_old": 2, "failed": 0, "failed_vendors": [], "spent_usd": 0.0094, "forced": false}
