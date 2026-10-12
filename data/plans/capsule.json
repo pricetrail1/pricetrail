@@ -1,7 +1,7 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Page shows pricing toggle for \"Pay Annually (Save up to 14%)\" vs \"Pay Monthly\", but no actual prices are displayed for Starter, Growth, Advanced plans. These are marked as per-user, per-month billed annually, but numeric prices are not shown on the page. Ultimate is custom pricing (contact sales). Marketing add-on shows \"Starting from $11 per month\" but no annual pricing provided. Free plan includes 250 contacts, 2 users max, 1 sales pipeline, 5 custom fields. Paid plans include 14-day free trial.",
+  "pricing_is_public": true,
+  "extraction_notes": "Pricing page shows toggle between \"Pay Annually\" and \"Pay Monthly\" but no actual prices are visible on the page. The page states Starter, Growth, and Advanced are \"Per user, per month. Billed Annually.\" but the actual dollar amounts are not displayed. Ultimate is a custom pricing tier (\"Try Free\" with note about sales team contact). Free plan has no pricing. Marketing add-on shows \"Starting from $11 per month\" but no annual equivalent is provided. Unable to extract monthly_price or annual_price_per_month for Starter, Growth, and Advanced plans as the numbers are not shown on this page.",
   "plans": [
     {
       "name": "Free",
@@ -40,7 +40,7 @@
     },
     {
       "name": "Marketing add-on",
-      "key": "marketingaddon",
+      "key": "marketing",
       "monthly_price": 11.0,
       "annual_price_per_month": null,
       "is_free": false,
@@ -81,9 +81,6 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "custom reporting",
         "integrations"
       ]
     },
@@ -106,9 +103,6 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "custom reporting",
         "integrations"
       ]
     },
@@ -131,8 +125,6 @@
         }
       ],
       "features": [
-        "basic workflows",
-        "custom reporting",
         "integrations"
       ]
     },
@@ -143,19 +135,16 @@
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": true,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": 14,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "custom reporting",
         "dedicated account manager",
         "integrations"
       ]
     }
   ],
-  "captured_at": "2026-09-28T13:37:22.296714+00:00"
+  "captured_at": "2026-10-12T14:36:11.487680+00:00"
 }

@@ -1,11 +1,11 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "All CRM plans are per-seat pricing. Page clearly shows a monthly/annual toggle with savings amounts (e.g., \"Save $6/month with annual billing\"). Annual prices were calculated by subtracting the stated savings from monthly prices. The page toggle defaults to Monthly view showing the higher prices. Add-ons (Marketing, Engagement, Email Marketing, SMS Marketing, Prospector, Quotes & Invoices) are sold alongside the main CRM tiers and only show monthly pricing on the page. The contact limits shown in the comparison table are for email marketing add-on tiers, not CRM plan limits. Foundation mentions a \"100 open leads\" limit in the FAQ. Trial is 14 days, no credit card required.",
+  "extraction_notes": "Toggle present with Annual selected by default. All prices are per-user per-month billed annually. Monthly prices calculated by adding the \"save\" amounts: Foundation $13 + $6 = $19/month; Growth $25 + $7 = $32/month; Pro $42 + $7 = $49/month; Business $59 + $8 = $67/month; Enterprise $79 + $10 = $89/month. Add-ons (Marketing, Engagement, Prospector, Proposals, SMS) are sold on top of plans and recorded separately as add-ons. Email marketing add-on has tiered pricing by contact count (shown in dropdown). SMS add-on has tiered pricing by message count. Email marketing base tier priced at $5/month for up to 250 messages; SMS base tier priced at $15/month for up to 100 credits. Prospector priced at $37/month (unlimited). Proposals priced at $79/month (unlimited).",
   "plans": [
     {
-      "name": "Email Marketing",
-      "key": "emailmarketing",
+      "name": "Email Marketing (Basic)",
+      "key": "emailmarketingbasic",
       "monthly_price": 5.0,
       "annual_price_per_month": null,
       "is_free": false,
@@ -16,7 +16,7 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "messages",
+          "metric": "email sends per month",
           "value": 250.0,
           "unit": null
         }
@@ -24,41 +24,8 @@
       "features": []
     },
     {
-      "name": "Foundation",
-      "key": "foundation",
-      "monthly_price": 13.0,
-      "annual_price_per_month": 11.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "ai outcomes",
-          "value": 10.0,
-          "unit": null
-        },
-        {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "open leads",
-          "value": 100.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "ai chatbot",
-        "basic workflows"
-      ]
-    },
-    {
-      "name": "SMS Marketing",
-      "key": "smsmarketing",
+      "name": "SMS",
+      "key": "sms",
       "monthly_price": 15.0,
       "annual_price_per_month": null,
       "is_free": false,
@@ -69,12 +36,14 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "credits",
+          "metric": "sms credits",
           "value": 100.0,
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "whatsapp"
+      ]
     },
     {
       "name": "Engagement",
@@ -89,14 +58,44 @@
       "trial_days": null,
       "limits": [],
       "features": [
+        "integrations",
         "whatsapp"
+      ]
+    },
+    {
+      "name": "Foundation",
+      "key": "foundation",
+      "monthly_price": 19.0,
+      "annual_price_per_month": 13.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai outcomes",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "open leads",
+          "value": 100.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "ai chatbot",
+        "integrations"
       ]
     },
     {
       "name": "Growth",
       "key": "growth",
-      "monthly_price": 25.0,
-      "annual_price_per_month": 21.0,
+      "monthly_price": 32.0,
+      "annual_price_per_month": 25.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -108,16 +107,12 @@
           "metric": "ai outcomes",
           "value": 20.0,
           "unit": null
-        },
-        {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
         }
       ],
       "features": [
+        "ai assistant",
         "ai chatbot",
-        "basic workflows"
+        "integrations"
       ]
     },
     {
@@ -131,14 +126,20 @@
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "lead lookups",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
       "features": []
     },
     {
       "name": "Pro",
       "key": "pro",
-      "monthly_price": 42.0,
-      "annual_price_per_month": 35.0,
+      "monthly_price": 49.0,
+      "annual_price_per_month": 42.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -152,40 +153,23 @@
           "unit": null
         },
         {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "custom pipelines",
           "value": 5.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai chatbot"
+        "ai assistant",
+        "ai chatbot",
+        "audit log",
+        "integrations"
       ]
-    },
-    {
-      "name": "Marketing",
-      "key": "marketing",
-      "monthly_price": 49.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
     },
     {
       "name": "Business",
       "key": "business",
-      "monthly_price": 59.0,
-      "annual_price_per_month": 51.0,
+      "monthly_price": 67.0,
+      "annual_price_per_month": 59.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -199,27 +183,43 @@
           "unit": null
         },
         {
-          "metric": "contacts",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "custom pipelines",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
+        "ai assistant",
         "ai chatbot",
-        "audit log"
+        "audit log",
+        "integrations"
       ]
+    },
+    {
+      "name": "Proposals",
+      "key": "proposals",
+      "monthly_price": 79.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "quotes, invoices, and contracts",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": []
     },
     {
       "name": "Enterprise",
       "key": "enterprise",
-      "monthly_price": 79.0,
-      "annual_price_per_month": 69.0,
+      "monthly_price": 89.0,
+      "annual_price_per_month": 79.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -233,7 +233,7 @@
           "unit": null
         },
         {
-          "metric": "contacts",
+          "metric": "custom fields",
           "value": -1.0,
           "unit": null
         },
@@ -244,17 +244,18 @@
         }
       ],
       "features": [
-        "advanced workflows",
+        "ai assistant",
         "ai chatbot",
         "audit log",
+        "integrations",
         "phone support",
         "sso"
       ]
     },
     {
-      "name": "Quotes & Invoices",
-      "key": "quotesinvoices",
-      "monthly_price": 79.0,
+      "name": "Marketing",
+      "key": "marketing",
+      "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
@@ -262,9 +263,17 @@
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
-      "features": []
+      "limits": [
+        {
+          "metric": "marketing contacts",
+          "value": 100.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "integrations"
+      ]
     }
   ],
-  "_first_seen": "2026-10-05"
+  "_first_seen": "2026-10-12"
 }

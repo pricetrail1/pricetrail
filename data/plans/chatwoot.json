@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "All base plans are per-agent/month pricing. Only monthly pricing shown; no annual billing option displayed. Hacker plan is free but has the messaging \"Get started free\" rather than being listed in a trials section. Captain AI is an add-on billed at $20 per 1,000 credits; pricing shown as per-usage rather than a subscription. Features extracted from the comparison table; channels like Email, WhatsApp, SMS, Telegram, LINE, Facebook, Instagram, TikTok are grouped under \"channels\" feature availability rather than individual feature items. The page mentions a 15-day free trial in the header but it applies to all plans, so trial_days not recorded per-plan. SSO/SAML and Audit logs appear in the comparison table and are listed as included only in Enterprise; these were mapped to the standard feature list.",
+  "extraction_notes": "All prices are per agent/month. Billing period not specified on page; only monthly pricing shown. Trial period mentioned in intro (15 days) but not explicitly tied to specific plans. Captain AI is not a separate plan but a feature with credits included in paid plans; additional credits available as add-on at $20 per 1,000 credits (recorded as separate feature). Channels feature includes Live chat and Voice depending on plan; Voice is included starting from Business tier. Automation rules shown as \"Automation rules\" on page, mapped to \"advanced workflows\". Teams feature shown as included starting from Business tier. The page shows duplicate plan sections with slightly different feature presentations but identical pricing and core features.",
   "plans": [
     {
       "name": "Hacker",
@@ -31,9 +31,7 @@
           "unit": "days"
         }
       ],
-      "features": [
-        "live chat"
-      ]
+      "features": []
     },
     {
       "name": "Startups",
@@ -48,6 +46,11 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "captain ai credits",
+          "value": 300.0,
+          "unit": "per month"
+        },
+        {
           "metric": "conversations",
           "value": -1.0,
           "unit": null
@@ -59,10 +62,8 @@
         }
       ],
       "features": [
-        "api access",
-        "live chat",
-        "priority support",
-        "whatsapp"
+        "ai assistant",
+        "help center"
       ]
     },
     {
@@ -78,6 +79,11 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "captain ai credits",
+          "value": 500.0,
+          "unit": "per month"
+        },
+        {
           "metric": "conversations",
           "value": -1.0,
           "unit": null
@@ -90,13 +96,9 @@
       ],
       "features": [
         "advanced workflows",
-        "api access",
-        "custom branding",
-        "live chat",
-        "priority support",
-        "role permissions",
-        "sla policies",
-        "whatsapp"
+        "ai assistant",
+        "help center",
+        "role permissions"
       ]
     },
     {
@@ -112,6 +114,11 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "captain ai credits",
+          "value": 800.0,
+          "unit": "per month"
+        },
+        {
           "metric": "conversations",
           "value": -1.0,
           "unit": null
@@ -124,36 +131,14 @@
       ],
       "features": [
         "advanced workflows",
-        "api access",
+        "ai assistant",
         "audit log",
-        "custom branding",
-        "dedicated account manager",
-        "live chat",
-        "priority support",
+        "help center",
         "role permissions",
         "saml",
-        "sla policies",
-        "sso",
-        "whatsapp"
-      ]
-    },
-    {
-      "name": "Captain AI",
-      "key": "captainai",
-      "monthly_price": null,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "ai assistant",
-        "ai chatbot"
+        "sso"
       ]
     }
   ],
-  "captured_at": "2026-09-28T13:36:30.903171+00:00"
+  "captured_at": "2026-10-12T14:35:58.141754+00:00"
 }

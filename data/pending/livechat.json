@@ -1,0 +1,129 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "All three plans are subscription tiers that customers choose between. Essential and Growth show both monthly and annual pricing; annual billing saves 24% on Essential and 20% on Growth. Enterprise is custom pricing only, requires contacting sales. The page indicates a 14-day free trial is available for Essential and Growth. Monthly price of $25 for Essential and $99 for Growth derived from the FAQ section stating these are the monthly billing rates. The page clearly indicates this is Text (not LiveChat), which is a new product from the LiveChat team. Two add-on products are available but not recorded as separate plans: extra AI resolutions packages (50 for $49.50) and extra API calls packages (100,000 for $29.50).",
+  "plans": [
+    {
+      "name": "Essential",
+      "key": "essential",
+      "monthly_price": 25.0,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai agents",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "ai resolutions",
+          "value": 10.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "api calls",
+          "value": 10000.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "custom skills",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "live visitors tracked",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "proactive campaigns",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "basic workflows",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": 99.0,
+      "annual_price_per_month": 79.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai agents",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "ai resolutions",
+          "value": 200.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "api calls",
+          "value": 20000.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "live visitors tracked",
+          "value": 400.0,
+          "unit": null
+        },
+        {
+          "metric": "proactive campaigns",
+          "value": 30.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "integrations",
+        "live chat",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "audit log",
+        "custom branding",
+        "dedicated account manager",
+        "priority support",
+        "sla policies",
+        "sso"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-12"
+}

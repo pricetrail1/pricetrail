@@ -1,11 +1,11 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Annual billing toggle visible; prices shown are $43/month when billed annually ($517/year) for Scale and $96/month when billed annually ($1,151/year) for Max. The page displays annual prices in the \"billed annually\" format. Monthly billing prices are not explicitly stated on the page for Scale and Max, only the annual equivalent per-month is shown. Launch is free with no pricing options. Enterprise has custom pricing.",
+  "extraction_notes": "Pricing shown is for monthly billing. Page states \"Yearly billing saves up to 20% compared with paying month to month\" but does not display actual annual prices on the pricing cards. Lite and Pro cards show \"$49/mo\" and \"$95/mo\" with \"Yearly billing\" label, but this label appears to be indicating the billing period option available, not confirming the prices are annual. Based on the context (\"Pricing for 1,000 subscribers\" with \"Yearly (and save)\" and \"Monthly\" toggle visible), these prices appear to be monthly billing rates. No actual annual prices per month are shown on the page, so annual_price_per_month is null for all paid plans. Enterprise shows \"Custom\" pricing. The page mentions \"Concierge VIP\" onboarding for Enterprise, which maps to onboarding support.",
   "plans": [
     {
-      "name": "Launch",
-      "key": "launch",
+      "name": "Free",
+      "key": "free",
       "monthly_price": 0.0,
       "annual_price_per_month": null,
       "is_free": true,
@@ -16,23 +16,18 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "ai credits per day",
-          "value": 10.0,
-          "unit": null
+          "metric": "analytics lookback window",
+          "value": 30.0,
+          "unit": "days"
         },
         {
-          "metric": "podcast episodes per month",
-          "value": 1.0,
-          "unit": null
-        },
-        {
-          "metric": "podcast shows",
+          "metric": "guest authors",
           "value": 1.0,
           "unit": null
         },
         {
           "metric": "publications",
-          "value": 3.0,
+          "value": 1.0,
           "unit": null
         },
         {
@@ -41,21 +36,21 @@
           "unit": null
         },
         {
-          "metric": "team members",
+          "metric": "team seats",
           "value": 1.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
-        "api access"
+        "api access",
+        "integrations"
       ]
     },
     {
-      "name": "Scale",
-      "key": "scale",
-      "monthly_price": 43.0,
-      "annual_price_per_month": 43.0,
+      "name": "Lite",
+      "key": "lite",
+      "monthly_price": 49.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -64,18 +59,13 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "ai credits per day",
-          "value": 25.0,
-          "unit": null
+          "metric": "analytics lookback window",
+          "value": 12.0,
+          "unit": "months"
         },
         {
-          "metric": "podcast episodes per month",
-          "value": 4.0,
-          "unit": null
-        },
-        {
-          "metric": "podcast shows",
-          "value": 1.0,
+          "metric": "guest authors",
+          "value": 3.0,
           "unit": null
         },
         {
@@ -89,22 +79,21 @@
           "unit": null
         },
         {
-          "metric": "team members",
-          "value": 3.0,
+          "metric": "team seats",
+          "value": 2.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
         "api access",
-        "priority support"
+        "integrations"
       ]
     },
     {
-      "name": "Max",
-      "key": "max",
-      "monthly_price": 96.0,
-      "annual_price_per_month": 96.0,
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 95.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -113,18 +102,13 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "ai credits per day",
-          "value": 50.0,
-          "unit": null
-        },
-        {
-          "metric": "podcast episodes per month",
+          "metric": "analytics lookback window",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "podcast shows",
-          "value": 3.0,
+          "metric": "guest authors",
+          "value": -1.0,
           "unit": null
         },
         {
@@ -134,18 +118,19 @@
         },
         {
           "metric": "subscribers",
-          "value": 100000.0,
+          "value": 250000.0,
           "unit": null
         },
         {
-          "metric": "team members",
-          "value": -1.0,
+          "metric": "team seats",
+          "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
         "api access",
+        "custom branding",
+        "integrations",
         "priority support"
       ]
     },
@@ -162,17 +147,12 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "ai credits per day",
-          "value": 100.0,
-          "unit": null
-        },
-        {
-          "metric": "podcast episodes per month",
+          "metric": "analytics lookback window",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "podcast shows",
+          "metric": "guest authors",
           "value": -1.0,
           "unit": null
         },
@@ -187,19 +167,21 @@
           "unit": null
         },
         {
-          "metric": "team members",
+          "metric": "team seats",
           "value": -1.0,
           "unit": null
         }
       ],
       "features": [
-        "ai assistant",
         "api access",
+        "custom branding",
         "dedicated account manager",
-        "priority support",
+        "integrations",
+        "onboarding support",
+        "saml",
         "sso"
       ]
     }
   ],
-  "captured_at": "2026-08-31T21:22:58.150062+00:00"
+  "captured_at": "2026-10-12T14:35:59.783130+00:00"
 }
