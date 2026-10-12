@@ -1,0 +1,7 @@
+{
+  "currency": "USD",
+  "pricing_is_public": false,
+  "extraction_notes": "This pricing page shows plan names, descriptions, and features, but does NOT display any actual prices. All pricing tiers (Starter, Standard, Professional, Enterprise) show \"per month\" or \"per month/user\" without numeric values. The page appears to be loading content dynamically (indicated by \"Loading content...\" text). Cannot extract prices because no numbers are visible on the page.",
+  "plans": [],
+  "_first_seen": "2026-10-12"
+}

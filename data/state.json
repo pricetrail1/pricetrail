@@ -72,20 +72,20 @@
   "mailchimp": {
     "consecutive_failures": 0,
     "last_checked": "2026-10-12",
-    "status": "ok",
-    "hash_changes": 60,
-    "hash": "8e683476d0f03e3e7c5e9f152169622a1140c92d59eb405a0dce7e37a0149425",
+    "status": "prices_not_in_page",
+    "hash_changes": 61,
+    "hash": "5de559ca648d16b0912b62ada8e0246af2264253cd48dd3413bfdb44905ff679",
     "no_prices_since": "2026-10-11"
   },
   "brevo": {
     "consecutive_failures": 0,
     "last_checked": "2026-10-12",
-    "status": "ok",
-    "hash_changes": 26,
-    "hash": "28b1580d788eb932b47d0fe7630ef5438f09bfa97dd6a58dc2de5e99d6866358"
+    "status": "suspicious_extraction",
+    "hash_changes": 27,
+    "hash": "264bfd670021ab2d0f4c445f40ae8e080e2bf2e6650266b981fecda05a4128a2"
   },
   "kit": {
-    "consecutive_failures": 36,
+    "consecutive_failures": 37,
     "last_checked": "2026-08-05",
     "status": "error",
     "hash_changes": 1,

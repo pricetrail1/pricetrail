@@ -355,6 +355,124 @@
      "seat": false
     }
    ]
+  },
+  {
+   "at": "2026-10-12T19:29:53.784077+00:00",
+   "date": "2026-10-12",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Business",
+     "key": "business",
+     "m": 67.0,
+     "a": 59.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 89.0,
+     "a": 79.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Foundation",
+     "key": "foundation",
+     "m": 19.0,
+     "a": 13.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 32.0,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 49.0,
+     "a": 42.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Email Marketing (Basic)",
+     "key": "emailmarketingbasic",
+     "m": 5.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Engagement",
+     "key": "engagement",
+     "m": 16.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": true
+    },
+    {
+     "name": "Marketing",
+     "key": "marketing",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Proposals",
+     "key": "proposals",
+     "m": 79.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Prospector",
+     "key": "prospector",
+     "m": 37.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "SMS",
+     "key": "sms",
+     "m": 15.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
   }
  ]
 }

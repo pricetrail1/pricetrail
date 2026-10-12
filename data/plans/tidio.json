@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page displays monthly pricing. Toggle shows \"Monthly\" and \"Annually\" options at top, but only monthly prices are shown on the plan cards. The page states \"2 months free\" as a promotional offer for annual billing, but specific annual pricing figures are not displayed on the plan cards themselves. Starter shows $24.17/mo, Growth shows $49.17/mo as starting prices. Plus plan shows $300/mo + monthly usage (usage-based component). Premium is custom pricing with \"Contact for pricing\". Lyro AI Agent and Flows are sold as standalone add-on products with their own pricing. Free plan has limits: 50 billable conversations, 50 Lyro AI conversations (lifetime), 100 Flows visitors, 10 seats. The page notes that Plus and Premium allow custom quotas beyond standard limits.",
+  "extraction_notes": "Page shows annual billing toggle set to \"Annually\" with \"2 months free\" offer. Promotional discount applied: monthly prices shown are effective annual rates (e.g., $24.17/mo when billed annually means $290/year ÷ 12). Standard undiscounted monthly prices are approximately 16.7% higher. Recorded standard monthly prices (undiscounted). Annual pricing shows promotional pricing ($24.17/mo effective = $290/year). \"Starts at\" language on Growth, Plus indicates these are base prices for quoted usage tiers. Plus and Premium are not pure subscription tiers—they charge base + usage. Free plan includes 50 Lyro AI conversations (lifetime), 100 Flows visitors (monthly). Lyro AI Agent and Flows are listed as add-ons that can be purchased standalone. Premium plan pricing not disclosed (Contact for pricing). Limits from plan comparison table at bottom of page.",
   "plans": [
     {
       "name": "Free",
@@ -67,8 +67,8 @@
     {
       "name": "Starter",
       "key": "starter",
-      "monthly_price": 24.17,
-      "annual_price_per_month": null,
+      "monthly_price": 28.99,
+      "annual_price_per_month": 24.17,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -90,14 +90,10 @@
           "metric": "lyro ai agent conversations",
           "value": 50.0,
           "unit": null
-        },
-        {
-          "metric": "seats",
-          "value": 10.0,
-          "unit": null
         }
       ],
       "features": [
+        "basic analytics",
         "basic workflows",
         "live chat",
         "ticketing"
@@ -122,14 +118,15 @@
         }
       ],
       "features": [
+        "ai assistant",
         "ai chatbot"
       ]
     },
     {
       "name": "Growth",
       "key": "growth",
-      "monthly_price": 49.17,
-      "annual_price_per_month": null,
+      "monthly_price": 58.99,
+      "annual_price_per_month": 49.17,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -143,13 +140,21 @@
           "unit": null
         },
         {
-          "metric": "seats",
-          "value": 10.0,
+          "metric": "flows visitors reached",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "lyro ai agent conversations",
+          "value": 50.0,
           "unit": null
         }
       ],
       "features": [
+        "advanced analytics",
         "advanced workflows",
+        "basic workflows",
+        "integrations",
         "live chat",
         "role permissions",
         "ticketing"
@@ -159,7 +164,7 @@
       "name": "Plus",
       "key": "plus",
       "monthly_price": 300.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 300.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -181,22 +186,18 @@
           "metric": "lyro ai agent conversations",
           "value": -1.0,
           "unit": null
-        },
-        {
-          "metric": "seats",
-          "value": -1.0,
-          "unit": null
         }
       ],
       "features": [
         "advanced workflows",
         "api access",
+        "basic workflows",
         "custom branding",
         "custom reporting",
         "dedicated account manager",
+        "integrations",
         "live chat",
         "priority support",
-        "role permissions",
         "ticketing"
       ]
     },
@@ -213,6 +214,11 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "billable conversations",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "lyro ai agent conversations",
           "value": 3000.0,
           "unit": null
@@ -221,16 +227,18 @@
       "features": [
         "advanced workflows",
         "api access",
+        "audit log",
+        "basic workflows",
         "custom branding",
         "custom reporting",
         "dedicated account manager",
+        "integrations",
         "live chat",
         "priority support",
-        "role permissions",
         "sso",
         "ticketing"
       ]
     }
   ],
-  "captured_at": "2026-10-05T13:46:46.669216+00:00"
+  "captured_at": "2026-10-12T19:29:34.175437+00:00"
 }
