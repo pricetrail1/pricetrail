@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing page shows a Monthly/Yearly toggle (-10% annual discount), but no actual prices are displayed on the page—only plan names, descriptions, and features. The \"Sales Essentials\" and \"Sales Advanced\" pricing labels appear but no numerical values are visible. Free plan limit (300 emails/month) is not explicitly stated on this page but is the standard Brevo free tier. Page routes to \"Sign up\" or \"Talk to sales\" without showing numbers, indicating pricing_is_public is false.",
+  "extraction_notes": "No pricing numbers visible on this page. The page shows plan names, features, and a toggle between \"Monthly\" and \"Yearly (-10%)\" billing options, but no actual prices are displayed. All paid plans (Starter, Standard, Professional) and Enterprise show \"per month\" or \"per month/user\" placeholders without values. The page appears to route pricing inquiries to sales for most plans.",
   "plans": [
     {
       "name": "Free",
@@ -22,8 +22,7 @@
         }
       ],
       "features": [
-        "email",
-        "sms"
+        "email support"
       ]
     },
     {
@@ -41,15 +40,13 @@
       "features": [
         "advanced workflows",
         "ai assistant",
+        "api access",
         "dedicated account manager",
-        "email",
         "integrations",
         "onboarding support",
         "phone support",
         "saml",
-        "sms",
-        "sso",
-        "whatsapp"
+        "sso"
       ]
     },
     {
@@ -78,11 +75,8 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "email",
         "integrations",
-        "phone support",
-        "sms",
-        "whatsapp"
+        "phone support"
       ]
     },
     {
@@ -100,9 +94,7 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "email",
-        "integrations",
-        "sms"
+        "email support"
       ]
     },
     {
@@ -126,11 +118,9 @@
       "features": [
         "ai assistant",
         "basic workflows",
-        "email",
-        "integrations",
-        "sms"
+        "email support"
       ]
     }
   ],
-  "captured_at": "2026-10-08T12:55:17.606512+00:00"
+  "captured_at": "2026-10-15T10:57:28.747308+00:00"
 }

@@ -1,0 +1,138 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Pricing displayed with toggle defaulting to Annual. Monthly prices extracted from comparison table at bottom of page. Zendesk Ticketing, Zendesk + Forethought, and Zendesk for Startups mentioned but not priced on this page. Support Team, Suite Team, and Suite Professional are main subscription tiers; Suite Enterprise + Copilot routes to sales. Copilot, Workforce Engagement Bundle, and Contact Center are listed as featured add-ons with annual pricing shown. Feature extraction limited to exact matches from required list; many features mentioned on page (e.g. ticket routing, omnichannel routing, customer context) are not on the allowed feature list and were omitted per rules.",
+  "plans": [
+    {
+      "name": "Support Team",
+      "key": "supportteam",
+      "monthly_price": 25.0,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "automations and triggers",
+        "customer context",
+        "email",
+        "pre-written responses",
+        "prebuilt analytics dashboards",
+        "ticketing"
+      ]
+    },
+    {
+      "name": "Suite Team",
+      "key": "suiteteam",
+      "monthly_price": 69.0,
+      "annual_price_per_month": 55.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "action builder",
+        "ai assistant",
+        "knowledge base",
+        "messaging and live chat",
+        "omnichannel routing",
+        "telephony"
+      ]
+    },
+    {
+      "name": "Suite Professional",
+      "key": "suiteprofessional",
+      "monthly_price": 149.0,
+      "annual_price_per_month": 115.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "admin copilot",
+        "app builder",
+        "ivr phone tree",
+        "quick reports",
+        "skills-based routing",
+        "writing tools"
+      ]
+    },
+    {
+      "name": "Contact Center",
+      "key": "contactcenter",
+      "monthly_price": null,
+      "annual_price_per_month": 83.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": null,
+      "annual_price_per_month": 50.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Suite Enterprise + Copilot",
+      "key": "suiteenterprisecopilot",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "approval workflows",
+        "auto assist",
+        "custom agent roles",
+        "custom branding",
+        "generative ai for voice",
+        "intelligent triage",
+        "sandbox",
+        "sla policies"
+      ]
+    },
+    {
+      "name": "Workforce Engagement Bundle",
+      "key": "workforceengagementbundle",
+      "monthly_price": null,
+      "annual_price_per_month": 50.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    }
+  ],
+  "_first_seen": "2026-10-15"
+}
