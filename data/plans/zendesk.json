@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Monthly prices shown in comparison table at bottom of page. Annual prices shown prominently in plan cards. All prices are per agent/seat per month. Suite Enterprise + Copilot routes to \"Talk to Sales\" with no pricing shown. Three add-ons listed under \"Featured add-ons\": Copilot, Workforce Engagement Bundle, and Contact Center - all billed per agent/month. Features list is limited due to page marketing descriptions being generic or duplicative; only the most distinctive features per plan were recorded from the actual feature descriptions available on the page.",
+  "extraction_notes": "Pricing displayed with toggle defaulting to Annual. Monthly prices extracted from comparison table at bottom of page. Zendesk Ticketing, Zendesk + Forethought, and Zendesk for Startups mentioned but not priced on this page. Support Team, Suite Team, and Suite Professional are main subscription tiers; Suite Enterprise + Copilot routes to sales. Copilot, Workforce Engagement Bundle, and Contact Center are listed as featured add-ons with annual pricing shown. Feature extraction limited to exact matches from required list; many features mentioned on page (e.g. ticket routing, omnichannel routing, customer context) are not on the allowed feature list and were omitted per rules.",
   "plans": [
     {
       "name": "Support Team",
@@ -18,10 +18,10 @@
       "features": [
         "automations and triggers",
         "customer context",
-        "email and ticketing",
+        "email",
         "pre-written responses",
         "prebuilt analytics dashboards",
-        "ticket routing"
+        "ticketing"
       ]
     },
     {
@@ -37,12 +37,12 @@
       "trial_days": null,
       "limits": [],
       "features": [
+        "action builder",
         "ai assistant",
-        "api access",
-        "integrations",
         "knowledge base",
         "messaging and live chat",
-        "omnichannel routing"
+        "omnichannel routing",
+        "telephony"
       ]
     },
     {
@@ -58,12 +58,12 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "api access",
-        "custom reporting",
-        "omnichannel routing",
-        "role permissions"
+        "admin copilot",
+        "app builder",
+        "ivr phone tree",
+        "quick reports",
+        "skills-based routing",
+        "writing tools"
       ]
     },
     {
@@ -109,12 +109,14 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "api access",
-        "custom reporting",
-        "role permissions",
-        "sandbox"
+        "approval workflows",
+        "auto assist",
+        "custom agent roles",
+        "custom branding",
+        "generative ai for voice",
+        "intelligent triage",
+        "sandbox",
+        "sla policies"
       ]
     },
     {
@@ -132,5 +134,5 @@
       "features": []
     }
   ],
-  "captured_at": "2026-10-03T11:29:16.998048+00:00"
+  "captured_at": "2026-10-16T10:50:01.084787+00:00"
 }

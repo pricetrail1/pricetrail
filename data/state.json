@@ -1,35 +1,35 @@
 {
   "intercom": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-15",
+    "last_checked": "2026-10-16",
     "status": "ok",
-    "hash_changes": 13,
-    "hash": "4bdfede7cb6e2a4ea640281fa02fbf1db0f683fb8d5568177640210fcfc082f6"
+    "hash_changes": 14,
+    "hash": "18ed8755309ebd6cf81cae821bd750b31f2ff102182ccb93a2b7282e37e37cc1"
   },
   "zendesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-15",
+    "last_checked": "2026-10-16",
     "status": "ok",
     "hash_changes": 7,
     "hash": "e8e78dcc0e334f40398b1169e8b702de41658bc396e541407a486e07ba1fcc8c"
   },
   "freshdesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-15",
+    "last_checked": "2026-10-16",
     "status": "ok",
     "hash_changes": 7,
     "hash": "871e0c47534bce5d12aeba11801f6c53adfd39d942150ebba6fdd3f53847a812"
   },
   "help-scout": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-15",
+    "last_checked": "2026-10-16",
     "status": "ok",
     "hash_changes": 3,
     "hash": "aea1fd44a0e682b4bfea46d4369b9bf3a979a5bb8621e467aa1f8438d9df25c5"
   },
   "front": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-15",
+    "last_checked": "2026-10-16",
     "status": "ok",
     "hash_changes": 7,
     "hash": "c2df0be1b261fba3a670ff349416e3333a11c46b752dfc3bea09ce39c58514f3"
@@ -71,15 +71,14 @@
   },
   "mailchimp": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-15",
+    "last_checked": "2026-10-16",
     "status": "ok",
-    "hash_changes": 62,
-    "hash": "8e683476d0f03e3e7c5e9f152169622a1140c92d59eb405a0dce7e37a0149425",
-    "no_prices_since": "2026-10-11"
+    "hash_changes": 63,
+    "hash": "a5b45df80f4afe130848a0156fcd66e4d3912ea2a7fbb5b92328d63865fa6b07"
   },
   "brevo": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-15",
+    "last_checked": "2026-10-16",
     "status": "ok",
     "hash_changes": 28,
     "hash": "28b1580d788eb932b47d0fe7630ef5438f09bfa97dd6a58dc2de5e99d6866358"
@@ -123,14 +122,14 @@
   },
   "pipedrive": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-15",
+    "last_checked": "2026-10-16",
     "status": "ok",
-    "hash_changes": 2,
-    "hash": "41a446bbdda9c8f350d19507a9770e1e26a4278da4723590c5431ad392b07db5"
+    "hash_changes": 3,
+    "hash": "0d9b686c2b78d82e1d4fbf23e84040f39355b6bd9ec216f54dfc49038d8de1d3"
   },
   "close": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-15",
+    "last_checked": "2026-10-16",
     "status": "ok",
     "hash_changes": 4,
     "hash": "ff935c92f752c95b876be5b000216d7f0a0aea4713dc0e817229236253e7f5ab"
