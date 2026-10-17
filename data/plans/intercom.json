@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows \"Billed annually\" at the top. Essential, Advanced, and Expert plans display prices with \"per seat/mo\" alongside \"From $0.99\" text (which refers to Fin AI Agent pricing, not the seat price). These three are per-seat subscription plans with annual billing shown. Fin AI Agent is a separate usage-based offering at $0.99 per outcome with a minimum monthly commitment mentioned in FAQs. Pro add-on is $100/month for 500 conversations/month and 6,000 credits/month. Copilot add-on shows $29 per agent/month billed annually and $35 per agent/month billed monthly (both prices confirmed in FAQs). Proactive Support Plus is $99/month with 500 messages included. All plans include a 14-day free trial. The page states Lite seats are free on Advanced/Expert plans but does not provide granular feature lists per plan beyond \"Every Essential feature, plus\" and \"Every Advanced feature, plus\" language. Features recorded conservatively based on what the page explicitly states is included.",
+  "extraction_notes": "Page shows \"Billed annually\" at the top. All per-seat/mo prices are annual rates. Fin AI Agent pricing of $0.99 per outcome is noted but is usage-based, not a subscription plan. Three main plans (Essential, Advanced, Expert) shown with annual pricing per seat. Add-ons (Pro, Copilot, Proactive Support Plus) are sold separately. Copilot FAQ states \"$29 per agent/month billed annually, or $35 per agent/month billed monthly\" - recorded the annual rate in annual_price_per_month as shown on pricing page ($29). Features listed in FAQs but not explicitly called out per plan on cards; recorded only what appears clearly stated for each plan tier.",
   "plans": [
     {
       "name": "Copilot",
@@ -16,9 +16,14 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "free conversations per agent/month",
-          "value": 20.0,
-          "unit": null
+          "metric": "free ai auto-translation conversations",
+          "value": 10.0,
+          "unit": "per agent per month"
+        },
+        {
+          "metric": "free copilot conversations",
+          "value": 10.0,
+          "unit": "per agent per month"
         }
       ],
       "features": [
@@ -38,9 +43,9 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "messages included",
+          "metric": "messages",
           "value": 500.0,
-          "unit": null
+          "unit": "per month included"
         }
       ],
       "features": []
@@ -60,12 +65,12 @@
         {
           "metric": "conversations analyzed",
           "value": 500.0,
-          "unit": null
+          "unit": "per month"
         },
         {
-          "metric": "credits",
+          "metric": "operator credits",
           "value": 6000.0,
-          "unit": null
+          "unit": "per month"
         }
       ],
       "features": [
@@ -85,7 +90,8 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "ai assistant"
+        "api access",
+        "live chat"
       ]
     },
     {
@@ -101,7 +107,8 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "ai assistant"
+        "api access",
+        "live chat"
       ]
     },
     {
@@ -117,7 +124,8 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "ai assistant"
+        "api access",
+        "live chat"
       ]
     },
     {
@@ -134,14 +142,12 @@
       "limits": [
         {
           "metric": "outcomes",
-          "value": 0.99,
-          "unit": "per outcome"
+          "value": -1.0,
+          "unit": "per outcome at $0.99"
         }
       ],
-      "features": [
-        "ai assistant"
-      ]
+      "features": []
     }
   ],
-  "captured_at": "2026-10-08T12:55:05.446518+00:00"
+  "captured_at": "2026-10-17T10:14:22.444788+00:00"
 }
