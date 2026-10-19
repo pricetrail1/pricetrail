@@ -1,0 +1,155 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Essentials is billed monthly at $100/month. Premium starts at $1,000 per month but the text says \"billed yearly\", indicating this is the annual per-month price. Enterprise is custom/contact sales with no pricing shown. Essentials also qualifies for a free 12-month offer through the Startup Program for early-stage companies, noted separately. The page shows a feature comparison table that aligns with the three main tiers described.",
+  "plans": [
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 100.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 1000000.0,
+          "unit": null
+        },
+        {
+          "metric": "object types",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles (people + objects)",
+          "value": 5000.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": 2.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "basic workflows",
+        "integrations",
+        "onboarding support"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "object types",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles (people + objects)",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "audit log",
+        "custom branding",
+        "dedicated account manager",
+        "hipaa",
+        "integrations",
+        "onboarding support",
+        "priority support",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": 1000.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "object types",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles (people + objects)",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "hipaa",
+        "integrations",
+        "onboarding support",
+        "role permissions"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-19"
+}

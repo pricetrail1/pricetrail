@@ -1,0 +1,155 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Only annual billing is shown on the page. All plan prices are per-seat and billed annually. The banner shows \"Save up to 42%\" referring to a promotion/discount offer. All four main plans include a 14-day free trial with no credit card required. Add-ons show \"Starting from\" pricing with the listed amounts; these are listed separately as add-ons rather than standalone plans. Feature descriptions on the page use marketing language; I've extracted the core feature names where possible, but many features are marketing phrases that don't appear on the restricted feature list and have been omitted. The page note indicates prices are VAT exclusive for EU customers.",
+  "plans": [
+    {
+      "name": "Campaigns add-on",
+      "key": "campaigns",
+      "monthly_price": null,
+      "annual_price_per_month": 13.33,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": null,
+      "annual_price_per_month": 39.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "automations and nurturing sequences",
+        "full email sync with tracking",
+        "meeting scheduler and contacts timeline",
+        "subscriptions and forecast reports"
+      ]
+    },
+    {
+      "name": "LeadBooster add-on",
+      "key": "leadbooster",
+      "monthly_price": null,
+      "annual_price_per_month": 32.5,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Lite",
+      "key": "lite",
+      "monthly_price": null,
+      "annual_price_per_month": 14.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "500+ integrations",
+        "ai-powered report creation",
+        "lead, calendar and pipeline management",
+        "meeting intelligence"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": 59.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "ai-powered multi-email tools",
+        "contracts and e-signatures",
+        "custom scoring and company data enrichment",
+        "enhanced customization for teams, reports and data fields",
+        "lead generation and routing"
+      ]
+    },
+    {
+      "name": "Projects add-on",
+      "key": "projects",
+      "monthly_price": null,
+      "annual_price_per_month": 16.66,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Smart Docs add-on",
+      "key": "smartdocs",
+      "monthly_price": null,
+      "annual_price_per_month": 32.5,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Ultimate",
+      "key": "ultimate",
+      "monthly_price": null,
+      "annual_price_per_month": 79.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "extended phone support",
+        "fortified account security with rules and alerts",
+        "phone and email data enrichment",
+        "sandbox testing account"
+      ]
+    },
+    {
+      "name": "Web Visitors add-on",
+      "key": "webvisitors",
+      "monthly_price": null,
+      "annual_price_per_month": 41.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    }
+  ],
+  "_first_seen": "2026-10-19"
+}
