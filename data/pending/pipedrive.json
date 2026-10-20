@@ -1,22 +1,8 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Only annual billing is shown on the page. All plan prices are per-seat and billed annually. The banner shows \"Save up to 42%\" referring to a promotion/discount offer. All four main plans include a 14-day free trial with no credit card required. Add-ons show \"Starting from\" pricing with the listed amounts; these are listed separately as add-ons rather than standalone plans. Feature descriptions on the page use marketing language; I've extracted the core feature names where possible, but many features are marketing phrases that don't appear on the restricted feature list and have been omitted. The page note indicates prices are VAT exclusive for EU customers.",
+  "extraction_notes": "Page shows annual billing only. Monthly prices not available on the page. All prices are per seat/month billed annually. Banner states \"Save up to 42%\" but this appears to be a general promotional claim, not applied to specific plans. Add-ons (LeadBooster, Projects, Campaigns, Web Visitors, Smart Docs) are listed separately and not included as plans. Features extracted from plan descriptions have been matched to the approved feature list where applicable.",
   "plans": [
-    {
-      "name": "Campaigns add-on",
-      "key": "campaigns",
-      "monthly_price": null,
-      "annual_price_per_month": 13.33,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
-    },
     {
       "name": "Growth",
       "key": "growth",
@@ -30,25 +16,15 @@
       "trial_days": 14,
       "limits": [],
       "features": [
+        "500+ integrations",
+        "ai-powered report creation",
         "automations and nurturing sequences",
         "full email sync with tracking",
+        "lead, calendar and pipeline management",
+        "meeting intelligence",
         "meeting scheduler and contacts timeline",
         "subscriptions and forecast reports"
       ]
-    },
-    {
-      "name": "LeadBooster add-on",
-      "key": "leadbooster",
-      "monthly_price": null,
-      "annual_price_per_month": 32.5,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
     },
     {
       "name": "Lite",
@@ -82,40 +58,20 @@
       "trial_days": 14,
       "limits": [],
       "features": [
+        "500+ integrations",
         "ai-powered multi-email tools",
+        "ai-powered report creation",
+        "automations and nurturing sequences",
         "contracts and e-signatures",
         "custom scoring and company data enrichment",
         "enhanced customization for teams, reports and data fields",
-        "lead generation and routing"
+        "full email sync with tracking",
+        "lead generation and routing",
+        "lead, calendar and pipeline management",
+        "meeting intelligence",
+        "meeting scheduler and contacts timeline",
+        "subscriptions and forecast reports"
       ]
-    },
-    {
-      "name": "Projects add-on",
-      "key": "projects",
-      "monthly_price": null,
-      "annual_price_per_month": 16.66,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
-    },
-    {
-      "name": "Smart Docs add-on",
-      "key": "smartdocs",
-      "monthly_price": null,
-      "annual_price_per_month": 32.5,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
     },
     {
       "name": "Ultimate",
@@ -130,26 +86,25 @@
       "trial_days": 14,
       "limits": [],
       "features": [
+        "500+ integrations",
+        "ai-powered multi-email tools",
+        "ai-powered report creation",
+        "automations and nurturing sequences",
+        "contracts and e-signatures",
+        "custom scoring and company data enrichment",
+        "enhanced customization for teams, reports and data fields",
         "extended phone support",
         "fortified account security with rules and alerts",
+        "full email sync with tracking",
+        "lead generation and routing",
+        "lead, calendar and pipeline management",
+        "meeting intelligence",
+        "meeting scheduler and contacts timeline",
         "phone and email data enrichment",
-        "sandbox testing account"
+        "sandbox",
+        "subscriptions and forecast reports"
       ]
-    },
-    {
-      "name": "Web Visitors add-on",
-      "key": "webvisitors",
-      "monthly_price": null,
-      "annual_price_per_month": 41.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
     }
   ],
-  "_first_seen": "2026-10-19"
+  "_first_seen": "2026-10-20"
 }
