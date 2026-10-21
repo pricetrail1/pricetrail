@@ -19,3 +19,4 @@
 {"at": "2026-10-18T10:29:58+00:00", "seconds": 12, "checked": 9, "unchanged": 8, "extracted": 1, "changes": 0, "awaiting": 0, "queued": 0, "kept_old": 1, "failed": 0, "failed_vendors": [], "spent_usd": 0.0093, "forced": false}
 {"at": "2026-10-19T12:19:03+00:00", "seconds": 46, "checked": 23, "unchanged": 18, "extracted": 4, "changes": 0, "awaiting": 4, "queued": 0, "kept_old": 0, "failed": 1, "failed_vendors": ["kit"], "spent_usd": 0.0256, "forced": false}
 {"at": "2026-10-20T10:59:49+00:00", "seconds": 10, "checked": 9, "unchanged": 8, "extracted": 1, "changes": 0, "awaiting": 1, "queued": 0, "kept_old": 0, "failed": 0, "failed_vendors": [], "spent_usd": 0.0058, "forced": false}
+{"at": "2026-10-21T11:17:06+00:00", "seconds": 4, "checked": 9, "unchanged": 8, "extracted": 0, "changes": 0, "awaiting": 0, "queued": 1, "kept_old": 0, "failed": 0, "failed_vendors": [], "spent_usd": 0.0, "forced": false}

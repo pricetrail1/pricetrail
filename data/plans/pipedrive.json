@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "All plans are per-seat, billed annually. No monthly-only pricing is shown on this page. The page header states \"Save up to 42%\" which is a promotional reference; standard annual pricing is recorded. Prices shown are annual prices divided by 12 to show per-month equivalent when billed annually. Add-ons (LeadBooster, Projects, Campaigns, Web Visitors, Smart Docs) are listed separately and not included as plans. Trial period is 14 days for all plans.",
+  "extraction_notes": "Page shows annual billing only. Monthly prices not available on the page. All prices are per seat/month billed annually. Banner states \"Save up to 42%\" but this appears to be a general promotional claim, not applied to specific plans. Add-ons (LeadBooster, Projects, Campaigns, Web Visitors, Smart Docs) are listed separately and not included as plans. Features extracted from plan descriptions have been matched to the approved feature list where applicable.",
   "plans": [
     {
       "name": "Growth",
@@ -100,12 +100,11 @@
         "lead, calendar and pipeline management",
         "meeting intelligence",
         "meeting scheduler and contacts timeline",
-        "partnership discounts",
         "phone and email data enrichment",
         "sandbox",
         "subscriptions and forecast reports"
       ]
     }
   ],
-  "captured_at": "2026-10-17T10:14:34.071898+00:00"
+  "captured_at": "2026-10-21T11:17:09.763924+00:00"
 }
