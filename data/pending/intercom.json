@@ -1,0 +1,155 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows annual billing is active (\"Billed annually\" stated at top). Essential plan shows struck-through $29 and $0.99 (per outcome for Fin), with $19 as the effective seat price when billed annually. Advanced shows $85/seat/mo (annual). Expert shows $132/seat/mo (annual). All main plans are per-seat pricing. Fin AI Agent standalone is $0.99 per outcome with minimum monthly commitment. Add-ons (Pro, Copilot, Proactive Support Plus) are sold alongside subscription tiers. Copilot has both annual ($29/agent/mo) and monthly ($35/agent/mo) options stated. Trial is 14 days. One full seat minimum to get started.",
+  "plans": [
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": 35.0,
+      "annual_price_per_month": 29.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai auto-translation conversations free",
+          "value": 10.0,
+          "unit": "per agent per month"
+        },
+        {
+          "metric": "copilot conversations free",
+          "value": 10.0,
+          "unit": "per agent per month"
+        }
+      ],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Proactive Support Plus",
+      "key": "proactivesupportplus",
+      "monthly_price": 99.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "messages included",
+          "value": 500.0,
+          "unit": "per month"
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 100.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "conversations analyzed",
+          "value": 500.0,
+          "unit": "per month"
+        },
+        {
+          "metric": "credits",
+          "value": 6000.0,
+          "unit": "per month"
+        }
+      ],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Advanced",
+      "key": "advanced",
+      "monthly_price": null,
+      "annual_price_per_month": 85.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": 1,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "api access",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Essential",
+      "key": "essential",
+      "monthly_price": null,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": 1,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "api access",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Expert",
+      "key": "expert",
+      "monthly_price": null,
+      "annual_price_per_month": 132.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": 1,
+      "trial_days": 14,
+      "limits": [],
+      "features": [
+        "api access",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Fin AI Agent",
+      "key": "finaiagent",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "outcomes",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-22"
+}
