@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows monthly pricing with a toggle for Annual/Monthly billing. Only monthly prices are displayed ($25, $45, $75 per user/mo). The page header shows \"Monthly/Annual\" toggle but no annual pricing figures are shown on the plan cards themselves, so only monthly_price is recorded. AI Answers is priced at $0.75 per resolution and includes a 3-month free trial. Free plan limit note states \"Up to 5\" users, \"1\" Inbox, \"1\" Docs site, and 100/mo contacts.",
+  "extraction_notes": "Page shows monthly pricing toggle; all plan prices displayed are per-user/month on a monthly billing basis. Annual pricing toggle option is shown but no annual prices are displayed on the page for Standard, Plus, or Pro plans. Only monthly_price is recorded. Free plan limits from comparison table. Envoy is an add-on priced at $0.75 per resolution with a 3-month free trial offered when creating a Help Scout account. Pro plan requires minimum 10 users. Trial days: Standard and Plus offer 15-day free trials; Pro requires booking a demo; Envoy includes 3-month free trial on account creation.",
   "plans": [
     {
       "name": "Free",
@@ -16,9 +16,9 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "contacts",
+          "metric": "contacts per month",
           "value": 100.0,
-          "unit": "per month"
+          "unit": null
         },
         {
           "metric": "docs sites",
@@ -48,7 +48,8 @@
       ],
       "features": [
         "ai assistant",
-        "basic workflows"
+        "basic workflows",
+        "live chat"
       ]
     },
     {
@@ -84,11 +85,6 @@
           "unit": null
         },
         {
-          "metric": "saved replies",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "users",
           "value": 25.0,
           "unit": null
@@ -99,6 +95,7 @@
         "basic workflows",
         "integrations",
         "live chat",
+        "sms",
         "whatsapp"
       ]
     },
@@ -117,6 +114,11 @@
         {
           "metric": "advanced workflows",
           "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
           "unit": null
         },
         {
@@ -143,9 +145,11 @@
       "features": [
         "advanced workflows",
         "ai assistant",
+        "custom branding",
         "integrations",
         "live chat",
         "sla policies",
+        "sms",
         "whatsapp"
       ]
     },
@@ -163,6 +167,11 @@
       "limits": [
         {
           "metric": "advanced workflows",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
           "value": -1.0,
           "unit": null
         },
@@ -190,7 +199,7 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "api access",
+        "custom branding",
         "dedicated account manager",
         "hipaa",
         "integrations",
@@ -198,13 +207,14 @@
         "onboarding support",
         "saml",
         "sla policies",
+        "sms",
         "sso",
         "whatsapp"
       ]
     },
     {
-      "name": "AI Answers",
-      "key": "aianswers",
+      "name": "Envoy",
+      "key": "envoy",
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
@@ -216,8 +226,8 @@
       "limits": [
         {
           "metric": "resolution",
-          "value": 0.75,
-          "unit": "price per resolution"
+          "value": -1.0,
+          "unit": "$0.75 per resolution"
         }
       ],
       "features": [
@@ -225,5 +235,5 @@
       ]
     }
   ],
-  "captured_at": "2026-09-27T11:50:59.085148+00:00"
+  "captured_at": "2026-10-23T11:07:06.247340+00:00"
 }

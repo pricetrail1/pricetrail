@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows \"Billed annually\" at the top. All per-seat/mo prices are annual rates. Fin AI Agent pricing of $0.99 per outcome is noted but is usage-based, not a subscription plan. Three main plans (Essential, Advanced, Expert) shown with annual pricing per seat. Add-ons (Pro, Copilot, Proactive Support Plus) are sold separately. Copilot FAQ states \"$29 per agent/month billed annually, or $35 per agent/month billed monthly\" - recorded the annual rate in annual_price_per_month as shown on pricing page ($29). Features listed in FAQs but not explicitly called out per plan on cards; recorded only what appears clearly stated for each plan tier.",
+  "extraction_notes": "Page shows annual billing is active (\"Billed annually\" stated at top). Essential plan shows struck-through $29 and $0.99 (per outcome for Fin), with $19 as the effective seat price when billed annually. Advanced shows $85/seat/mo (annual). Expert shows $132/seat/mo (annual). All main plans are per-seat pricing. Fin AI Agent standalone is $0.99 per outcome with minimum monthly commitment. Add-ons (Pro, Copilot, Proactive Support Plus) are sold alongside subscription tiers. Copilot has both annual ($29/agent/mo) and monthly ($35/agent/mo) options stated. Trial is 14 days. One full seat minimum to get started.",
   "plans": [
     {
       "name": "Copilot",
@@ -13,15 +13,15 @@
       "is_per_seat": true,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
-          "metric": "free ai auto-translation conversations",
+          "metric": "ai auto-translation conversations free",
           "value": 10.0,
           "unit": "per agent per month"
         },
         {
-          "metric": "free copilot conversations",
+          "metric": "copilot conversations free",
           "value": 10.0,
           "unit": "per agent per month"
         }
@@ -40,12 +40,12 @@
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
-          "metric": "messages",
+          "metric": "messages included",
           "value": 500.0,
-          "unit": "per month included"
+          "unit": "per month"
         }
       ],
       "features": []
@@ -60,7 +60,7 @@
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "conversations analyzed",
@@ -68,7 +68,7 @@
           "unit": "per month"
         },
         {
-          "metric": "operator credits",
+          "metric": "credits",
           "value": 6000.0,
           "unit": "per month"
         }
@@ -86,7 +86,7 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": null,
+      "min_seats": 1,
       "trial_days": 14,
       "limits": [],
       "features": [
@@ -98,12 +98,12 @@
       "name": "Essential",
       "key": "essential",
       "monthly_price": null,
-      "annual_price_per_month": 29.0,
+      "annual_price_per_month": 19.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": null,
+      "min_seats": 1,
       "trial_days": 14,
       "limits": [],
       "features": [
@@ -120,7 +120,7 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": null,
+      "min_seats": 1,
       "trial_days": 14,
       "limits": [],
       "features": [
@@ -143,11 +143,13 @@
         {
           "metric": "outcomes",
           "value": -1.0,
-          "unit": "per outcome at $0.99"
+          "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "ai assistant"
+      ]
     }
   ],
-  "captured_at": "2026-10-17T10:14:22.444788+00:00"
+  "captured_at": "2026-10-23T11:07:05.236869+00:00"
 }

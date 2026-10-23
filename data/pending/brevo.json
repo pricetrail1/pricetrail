@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "No prices visible on this page. All plan cards show \"Loading content...\" or omitted pricing details. Page has a Monthly/Yearly toggle but prices do not display. The Free plan is confirmed as no credit card needed. Professional plan shows \"per month/user\" but no actual price. Starter and Standard show \"Sales Essentials per month\" but no numeric values. Enterprise shows \"Sales Advanced per month/user\" with \"Talk to sales\" link indicating custom pricing. Feature list extracted based on stated inclusions in each plan's description and comparison features shown on page.",
+  "extraction_notes": "Page shows no numerical prices—all pricing tiers display \"per month\" or \"per month/user\" labels but the actual figures are hidden/blank. The page indicates \"Most Popular\" for Standard and shows a Monthly/Yearly (-10%) toggle at the top, but no prices are visible in the extraction. The Free plan mentions no credit card needed and the page indicates it's \"forever\". Professional plan shows 10 seats included and is marked per-user pricing. Enterprise is custom/talk to sales. Unable to extract actual pricing amounts as they do not appear in the provided page content.",
   "plans": [
     {
       "name": "Free",
@@ -21,9 +21,7 @@
           "unit": null
         }
       ],
-      "features": [
-        "email support"
-      ]
+      "features": []
     },
     {
       "name": "Enterprise",
@@ -36,20 +34,8 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "contacts",
-          "value": 1000000.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "custom branding",
-        "dedicated account manager",
-        "email support",
-        "onboarding support",
-        "phone support",
-        "role permissions",
         "saml",
         "sso"
       ]
@@ -61,7 +47,7 @@
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": false,
+      "is_per_seat": true,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
@@ -72,16 +58,13 @@
           "unit": null
         },
         {
-          "metric": "seats included",
+          "metric": "seats",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "custom branding",
-        "email support",
-        "phone support",
-        "role permissions"
+        "phone support"
       ]
     },
     {
@@ -95,18 +78,8 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "landing pages included",
-          "value": 1.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "custom branding",
-        "email support",
-        "phone support"
-      ]
+      "limits": [],
+      "features": []
     },
     {
       "name": "Starter",
@@ -126,11 +99,8 @@
           "unit": null
         }
       ],
-      "features": [
-        "custom branding",
-        "email support"
-      ]
+      "features": []
     }
   ],
-  "_first_seen": "2026-10-22"
+  "_first_seen": "2026-10-23"
 }
