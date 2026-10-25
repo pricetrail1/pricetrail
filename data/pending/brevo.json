@@ -1,7 +1,0 @@
-{
-  "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "Page structure indicates multiple plans (Free, Starter, Standard, Professional, Enterprise) but actual pricing numbers are not visible in the provided page content. The page shows plan names, features, and calls-to-action (Sign up, Talk to sales) but the specific monthly_price and annual_price_per_month values are missing or hidden (marked as \"per month\" placeholders without numbers). A monthly/yearly toggle is mentioned but prices for each are not shown. Without the actual numerical prices displayed, I cannot extract specific pricing data. The page appears to be a pricing page but lacks the numerical values needed for this extraction.",
-  "plans": [],
-  "_first_seen": "2026-10-24"
-}

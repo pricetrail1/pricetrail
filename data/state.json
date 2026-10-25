@@ -1,35 +1,35 @@
 {
   "intercom": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-24",
+    "last_checked": "2026-10-25",
     "status": "ok",
     "hash_changes": 15,
     "hash": "6f41efdfb7609a1dfd1704a003126a801f1a2ac2f52584dc0757e357e45264a0"
   },
   "zendesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-24",
+    "last_checked": "2026-10-25",
     "status": "ok",
     "hash_changes": 7,
     "hash": "e8e78dcc0e334f40398b1169e8b702de41658bc396e541407a486e07ba1fcc8c"
   },
   "freshdesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-24",
+    "last_checked": "2026-10-25",
     "status": "ok",
     "hash_changes": 7,
     "hash": "871e0c47534bce5d12aeba11801f6c53adfd39d942150ebba6fdd3f53847a812"
   },
   "help-scout": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-24",
+    "last_checked": "2026-10-25",
     "status": "ok",
     "hash_changes": 4,
     "hash": "cf9ab0acade2353371c9f1aa18ec531a273310d836daeabaf6bce00fbe95cab5"
   },
   "front": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-24",
+    "last_checked": "2026-10-25",
     "status": "ok",
     "hash_changes": 7,
     "hash": "c2df0be1b261fba3a670ff349416e3333a11c46b752dfc3bea09ce39c58514f3"
@@ -71,16 +71,16 @@
   },
   "mailchimp": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-24",
+    "last_checked": "2026-10-25",
     "status": "prices_not_in_page",
-    "hash_changes": 67,
-    "hash": "5de559ca648d16b0912b62ada8e0246af2264253cd48dd3413bfdb44905ff679",
+    "hash_changes": 68,
+    "hash": "8e683476d0f03e3e7c5e9f152169622a1140c92d59eb405a0dce7e37a0149425",
     "no_prices_since": "2026-10-24"
   },
   "brevo": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-24",
-    "status": "suspicious_extraction",
+    "last_checked": "2026-10-25",
+    "status": "extraction_lost_all_plans",
     "hash_changes": 31,
     "hash": "3d0b3a3a6abb8d363f5d7a4bd3089e7b875783130b2a70a44e7f9e87802311fb"
   },
@@ -123,14 +123,14 @@
   },
   "pipedrive": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-24",
+    "last_checked": "2026-10-25",
     "status": "ok",
     "hash_changes": 5,
     "hash": "beb0b5eb37f9380f2223e14c76488ab2fce098799fb9a3ef51857c4fcc247e23"
   },
   "close": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-24",
+    "last_checked": "2026-10-25",
     "status": "ok",
     "hash_changes": 4,
     "hash": "ff935c92f752c95b876be5b000216d7f0a0aea4713dc0e817229236253e7f5ab"
