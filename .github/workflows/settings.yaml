@@ -1,0 +1,25 @@
+# PriceTrail settings you can change without touching any code.
+# After changing this file the site updates on the next run (or straight away
+# if you upload it, because an upload starts a run).
+
+# PRICE ALERTS -- the main paid product, shown on the homepage.
+# The Stripe payment link for price alerts. Leave empty and the buttons say
+# "Ask about price alerts" instead. Must start with https://
+alerts_url: "https://buy.stripe.com/bJe5kE8XT4fz0brfLdffy01"
+
+# The price shown on the buttons. Make it match the checkout. VAT is added
+# by Stripe at checkout, and the site says "plus VAT" next to this.
+alerts_price: "£49 a month"
+
+# DATA LICENCE -- the smaller option on the Price alerts page.
+# The checkout link from your payment provider.
+# Leave empty and the Pricing page says "Ask about a licence" instead of
+# showing a Buy button. Must start with https://
+licence_url: "https://buy.stripe.com/28EbJ26PL8vP9M10Qjffy00"
+
+# The price shown on the Pricing page. Make it match the checkout.
+licence_price: "£19 a month + VAT"
+
+# Where "Report an error" and "Ask about a licence" go. Empty means the
+# repository's GitHub issues page. Can be a mailto: link.
+contact_url: ""
