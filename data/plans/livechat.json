@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "All three plans are subscription tiers that customers choose between. Essential and Growth show both monthly and annual pricing; annual billing saves 24% on Essential and 20% on Growth. Enterprise is custom pricing only, requires contacting sales. The page indicates a 14-day free trial is available for Essential and Growth. Monthly price of $25 for Essential and $99 for Growth derived from the FAQ section stating these are the monthly billing rates. The page clearly indicates this is Text (not LiveChat), which is a new product from the LiveChat team. Two add-on products are available but not recorded as separate plans: extra AI resolutions packages (50 for $49.50) and extra API calls packages (100,000 for $29.50).",
+  "extraction_notes": "This is a Text product pricing page (the successor to LiveChat). The page has a monthly/annual toggle defaulting to annual. Monthly prices extracted from the FAQ section. All prices are per user/seat except for the two add-on packages. Essential and Growth both include a 14-day free trial. Features list is limited to those matching the provided list; many features from the table are not on the approved list (e.g., chat and inbox, omnichannel, workflow automation details). Enterprise is custom pricing with contact sales required.",
   "plans": [
     {
       "name": "Essential",
@@ -47,12 +47,51 @@
         }
       ],
       "features": [
-        "ai assistant",
+        "ai chatbot",
         "api access",
         "basic workflows",
-        "integrations",
-        "live chat"
+        "integrations"
       ]
+    },
+    {
+      "name": "100,000 API calls package",
+      "key": "100000apicalls",
+      "monthly_price": 29.5,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "api calls",
+          "value": 100000.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Extra AI resolutions package",
+      "key": "extraairesolutions",
+      "monthly_price": 49.5,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai resolutions",
+          "value": 50.0,
+          "unit": null
+        }
+      ],
+      "features": []
     },
     {
       "name": "Growth",
@@ -94,11 +133,9 @@
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
+        "ai chatbot",
         "api access",
-        "integrations",
-        "live chat",
-        "priority support"
+        "integrations"
       ]
     },
     {
@@ -114,16 +151,14 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "ai assistant",
         "audit log",
         "custom branding",
         "dedicated account manager",
-        "priority support",
+        "onboarding support",
         "sla policies",
         "sso"
       ]
     }
   ],
-  "captured_at": "2026-10-12T19:29:35.020060+00:00"
+  "captured_at": "2026-10-26T13:27:34.617776+00:00"
 }

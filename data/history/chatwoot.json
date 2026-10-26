@@ -165,6 +165,64 @@
      "seat": true
     }
    ]
+  },
+  {
+   "at": "2026-10-26T13:27:34.964749+00:00",
+   "date": "2026-10-26",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Business",
+     "key": "business",
+     "m": 39.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 99.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Hacker",
+     "key": "hacker",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Startups",
+     "key": "startups",
+     "m": 19.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Captain AI credits",
+     "key": "captainaicredits",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
   }
  ]
 }

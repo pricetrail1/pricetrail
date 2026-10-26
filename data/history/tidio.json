@@ -235,6 +235,84 @@
      "seat": false
     }
    ]
+  },
+  {
+   "at": "2026-10-26T13:27:33.989134+00:00",
+   "date": "2026-10-26",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 49.17,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 300.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Premium",
+     "key": "premium",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Starter",
+     "key": "starter",
+     "m": 24.17,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Flows",
+     "key": "flows",
+     "m": 24.17,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    },
+    {
+     "name": "Lyro AI Agent",
+     "key": "lyroaiagent",
+     "m": 32.5,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
   }
  ]
 }

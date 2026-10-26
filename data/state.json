@@ -72,7 +72,7 @@
   "mailchimp": {
     "consecutive_failures": 0,
     "last_checked": "2026-10-26",
-    "status": "prices_not_in_page",
+    "status": "ok",
     "hash_changes": 69,
     "hash": "5de559ca648d16b0912b62ada8e0246af2264253cd48dd3413bfdb44905ff679",
     "no_prices_since": "2026-10-24"
@@ -85,7 +85,7 @@
     "hash": "3d0b3a3a6abb8d363f5d7a4bd3089e7b875783130b2a70a44e7f9e87802311fb"
   },
   "kit": {
-    "consecutive_failures": 39,
+    "consecutive_failures": 40,
     "last_checked": "2026-08-05",
     "status": "error",
     "hash_changes": 1,
@@ -117,9 +117,10 @@
   "omnisend": {
     "consecutive_failures": 0,
     "last_checked": "2026-10-26",
-    "status": "ok",
+    "status": "not_a_pricing_page",
     "hash_changes": 10,
-    "hash": "b700b13c8646f0c527cb052093be1c3a67c28dabcd7ce81081f5fac2db5cda2a"
+    "hash": "b700b13c8646f0c527cb052093be1c3a67c28dabcd7ce81081f5fac2db5cda2a",
+    "last_error_at": "2026-10-26"
   },
   "pipedrive": {
     "consecutive_failures": 0,

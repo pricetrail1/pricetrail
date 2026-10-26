@@ -97,6 +97,54 @@
      "seat": false
     }
    ]
+  },
+  {
+   "at": "2026-10-26T13:27:35.966220+00:00",
+   "date": "2026-10-26",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Comfort",
+     "key": "comfort",
+     "m": 13.33,
+     "a": 12.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": true,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Power",
+     "key": "power",
+     "m": 27.78,
+     "a": 25.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
   }
  ]
 }

@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows annual billing is active (\"Billed annually\" stated at top). Essential plan shows struck-through $29 and $0.99 (per outcome for Fin), with $19 as the effective seat price when billed annually. Advanced shows $85/seat/mo (annual). Expert shows $132/seat/mo (annual). All main plans are per-seat pricing. Fin AI Agent standalone is $0.99 per outcome with minimum monthly commitment. Add-ons (Pro, Copilot, Proactive Support Plus) are sold alongside subscription tiers. Copilot has both annual ($29/agent/mo) and monthly ($35/agent/mo) options stated. Trial is 14 days. One full seat minimum to get started.",
+  "extraction_notes": "Page indicates \"Billed annually\" at the top. All main plan prices (Essential, Advanced, Expert) are per-seat annual billing. Fin AI Agent outcome pricing ($0.99) is separate usage-based, not a seat plan. Add-ons (Pro, Copilot, Proactive Support Plus) are optional extras sold alongside main plans. Copilot shows both annual ($29/agent/mo billed annually) and monthly ($35/agent/mo billed monthly) pricing explicitly stated in FAQ. Pro stated as $100/month with 500 conversations/month included. Proactive Support Plus $99/mo with 500 messages included.",
   "plans": [
     {
       "name": "Copilot",
@@ -13,17 +13,17 @@
       "is_per_seat": true,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
-          "metric": "ai auto-translation conversations free",
+          "metric": "free ai auto-translation conversations per agent per month",
           "value": 10.0,
-          "unit": "per agent per month"
+          "unit": null
         },
         {
-          "metric": "copilot conversations free",
+          "metric": "free copilot conversations per agent per month",
           "value": 10.0,
-          "unit": "per agent per month"
+          "unit": null
         }
       ],
       "features": [
@@ -40,12 +40,12 @@
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
-          "metric": "messages included",
+          "metric": "messages included per month",
           "value": 500.0,
-          "unit": "per month"
+          "unit": null
         }
       ],
       "features": []
@@ -60,17 +60,17 @@
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
-          "metric": "conversations analyzed",
+          "metric": "conversations analyzed per month",
           "value": 500.0,
-          "unit": "per month"
+          "unit": null
         },
         {
-          "metric": "credits",
+          "metric": "credits per month",
           "value": 6000.0,
-          "unit": "per month"
+          "unit": null
         }
       ],
       "features": [
@@ -86,12 +86,12 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": 1,
+      "min_seats": null,
       "trial_days": 14,
       "limits": [],
       "features": [
-        "api access",
-        "live chat"
+        "live chat",
+        "whatsapp"
       ]
     },
     {
@@ -103,12 +103,12 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": 1,
+      "min_seats": null,
       "trial_days": 14,
       "limits": [],
       "features": [
-        "api access",
-        "live chat"
+        "live chat",
+        "whatsapp"
       ]
     },
     {
@@ -120,12 +120,12 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": 1,
+      "min_seats": null,
       "trial_days": 14,
       "limits": [],
       "features": [
-        "api access",
-        "live chat"
+        "live chat",
+        "whatsapp"
       ]
     },
     {
@@ -146,10 +146,8 @@
           "unit": null
         }
       ],
-      "features": [
-        "ai assistant"
-      ]
+      "features": []
     }
   ],
-  "captured_at": "2026-10-23T11:07:05.236869+00:00"
+  "captured_at": "2026-10-26T13:27:31.410395+00:00"
 }
