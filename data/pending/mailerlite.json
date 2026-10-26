@@ -1,13 +1,13 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page displays four plans: Free, Comfort, Power, and Enterprise. The page includes a toggle for monthly/annual billing. The prices shown are: Comfort $12/month (annual) and $13.33/month (monthly calculated from context showing Save 10% on annual); Power $25/month (annual) and $27.78/month (monthly, calculated from 10% annual discount). The annual prices ($12 and $25) are explicitly stated as the per-month rate when billed yearly with a \"Save 10%\" label, indicating the discount rate. Enterprise is custom pricing. All paid plans include a 14-day free trial of premium features. The Free plan includes 0 automations explicitly. Page notes that 10% discount applies to annual billing. Comfort and Power monthly prices calculated as annual_price / 0.9 to reflect the 10% discount. Limits for Comfort come from the plan card; Power shows unlimited for most metrics with a fair use policy noted.",
+  "extraction_notes": "Prices shown are annual billing with 10% discount applied. Monthly prices inferred from FAQ text: Comfort \"starting $12/month\", Power \"starting $25/month\". Toggle clearly shows \"Billed yearly\" as active with \"Save 10%\" discount, meaning the displayed prices are annual-equivalent per-month figures. Actual monthly prices would be approximately $13.33 for Comfort and $27.78 for Power, but only the starting prices from FAQ are confirmed ($12 and $25 for annual plans). Subscriber tier pricing uses tiered structure that escalates automatically. Power plan includes unlimited features for automations, forms, sites, digital products, and seats. Free plan includes 14-day trial access to premium features.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 0.0,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -17,7 +17,7 @@
       "limits": [
         {
           "metric": "automations",
-          "value": 0.0,
+          "value": 3.0,
           "unit": null
         },
         {
@@ -47,7 +47,7 @@
         }
       ],
       "features": [
-        "ai assistant",
+        "ai chatbot",
         "basic workflows",
         "integrations"
       ]
@@ -62,7 +62,7 @@
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "automations",
@@ -93,8 +93,8 @@
       "features": [
         "ai assistant",
         "api access",
+        "basic workflows",
         "custom branding",
-        "email support",
         "integrations",
         "live chat"
       ]
@@ -109,7 +109,7 @@
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "automations",
@@ -143,6 +143,7 @@
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant",
         "api access",
         "custom branding",
@@ -160,7 +161,7 @@
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "subscribers",
@@ -169,16 +170,16 @@
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant",
         "api access",
+        "audit log",
         "custom branding",
-        "dedicated account manager",
         "integrations",
         "onboarding support",
-        "phone support",
         "priority support"
       ]
     }
   ],
-  "_first_seen": "2026-10-19"
+  "_first_seen": "2026-10-26"
 }

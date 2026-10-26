@@ -225,6 +225,74 @@
      "seat": true
     }
    ]
+  },
+  {
+   "at": "2026-10-26T12:23:14.583665+00:00",
+   "date": "2026-10-26",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Bigin Express",
+     "key": "biginexpress",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": null,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Professional",
+     "key": "professional",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Standard",
+     "key": "standard",
+     "m": null,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Zoho CRM Plus",
+     "key": "zohocrmplus",
+     "m": 20.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    }
+   ]
   }
  ]
 }

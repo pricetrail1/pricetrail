@@ -1,7 +1,7 @@
 {
-  "currency": "INR",
+  "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows monthly billing mode. Currency toggle shows INR selected. Prices are displayed as ₹ (Indian Rupees). All paid plans are per-user/month. Free plan supports up to 3 users. Trial availability indicated but trial length not specified. Bigin Express appears to be an alternative product tier, not a Zoho CRM plan variant. Zoho CRM Plus is mentioned with \"Starts at $20/user/month\" in USD but page currency context is INR—recorded as shown. Features were limited to those directly stated on each plan card only; many features listed are not mapped to the limited reference list provided.",
+  "extraction_notes": "Page shows pricing in multiple currencies (USD, INR, EUR, GBP, JPY, SGD, AUD, AED, SAR, MXN, ZAR, NGN, KES, EGP, CAD) with a toggle for Monthly/Annually billing. However, no actual numerical prices are displayed for the Standard, Professional, Enterprise, or Bigin Express plans—only \"/user/month\" placeholder text and \"FREE TRIAL\" buttons. Only Zoho CRM Plus shows a price of $20/user/month. The page also mentions an Ultimate edition in the FAQ but no pricing or details are provided on this page. Feature lists were extracted from the visible plan cards and mapped to the allowed feature list.",
   "plans": [
     {
       "name": "Free",
@@ -16,29 +16,16 @@
       "trial_days": null,
       "limits": [
         {
-          "metric": "api calls",
-          "value": 5000.0,
-          "unit": "per day"
-        },
-        {
-          "metric": "data exports",
-          "value": 10.0,
-          "unit": null
-        },
-        {
           "metric": "users",
           "value": 3.0,
           "unit": null
         }
       ],
       "features": [
-        "apis",
+        "api access",
+        "basic workflows",
         "contact management",
-        "custom email templates",
-        "data import and export",
-        "follow-up reminders",
         "mobile apps",
-        "standard reports",
         "tasks, meetings & calls",
         "workflow automation"
       ]
@@ -58,9 +45,9 @@
       "features": []
     },
     {
-      "name": "Standard",
-      "key": "standard",
-      "monthly_price": 800.0,
+      "name": "Bigin Express",
+      "key": "biginexpress",
+      "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
@@ -70,17 +57,37 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "api access",
-        "basic workflows",
+        "built-in calling",
+        "calendar integration",
+        "custom fields",
         "email integration",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "approval process",
+        "audit log",
+        "custom buttons and functions",
         "integrations",
-        "onboarding support"
+        "sandbox"
       ]
     },
     {
       "name": "Professional",
       "key": "professional",
-      "monthly_price": 1400.0,
+      "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
@@ -92,16 +99,16 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "api access",
+        "custom portals",
         "custom reporting",
         "integrations",
-        "onboarding support"
+        "inventory management"
       ]
     },
     {
-      "name": "Bigin Express",
-      "key": "biginexpress",
-      "monthly_price": 2400.0,
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
@@ -111,33 +118,14 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "basic workflows",
+        "built-in calling",
+        "calendar integration",
+        "custom modules",
         "email integration",
+        "hipaa",
         "integrations"
-      ]
-    },
-    {
-      "name": "Enterprise",
-      "key": "enterprise",
-      "monthly_price": 2400.0,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "advanced workflows",
-        "api access",
-        "custom reporting",
-        "integrations",
-        "onboarding support",
-        "role permissions",
-        "sandbox"
       ]
     }
   ],
-  "captured_at": "2026-09-14T12:29:54.909758+00:00"
+  "captured_at": "2026-10-26T12:23:14.583665+00:00"
 }

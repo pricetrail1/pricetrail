@@ -1,0 +1,156 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "The page shows a promotional discount of 30% off the first 3 months for Standard and Pro plans, presented as \"Save 30%\" with struck-through original prices. Standard shows $16/mo monthly billing ($48 annually billed as 3 months = $16/mo), with promotion showing $11.20/mo (3-month total $33.60). Pro shows $59/mo monthly billing ($177 annually billed as 3 months = $59/mo), with promotion showing $41.30/mo (3-month total $123.90). The annual_price_per_month figures ($11.20 and $41.30) represent the first 3 months promotional rate, not standard annual pricing. These are promotional prices and should not be treated as the standard annual rate. The page does not show a clear standard annual billing option separate from the 3-month promotional billing. Standard monthly pricing $16 calculated from context (3 months at $11.20 after discount = $33.60, so base rate = $48/3 = $16). Pro monthly pricing $59 calculated similarly ($123.90 discounted / $177 base = 30% discount, $177/3 = $59). Agent Pro shows \"Contact sales\" / custom pricing with no specific numbers. SMS is available as an add-on starting at $0.007/SMS. The page indicates email sending limits are based on list size for Standard (12× list size) and Pro (unlimited, fair use up to 60× list).",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications per month",
+          "value": 500.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 16.0,
+      "annual_price_per_month": 11.2,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications per month",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "api access",
+        "custom branding",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 59.0,
+      "annual_price_per_month": 41.3,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 2500.0,
+          "unit": null
+        },
+        {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications per month",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Agent Pro",
+      "key": "agentpro",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "web push notifications per month",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced reporting",
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "dedicated account manager",
+        "integrations",
+        "live chat",
+        "priority support"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-26"
+}
