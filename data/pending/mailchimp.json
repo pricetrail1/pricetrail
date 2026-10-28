@@ -1,0 +1,151 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows a promotional offer of \"Save 15% on 10,000+ contacts for 12 months\" with struck-through pricing, so standard undiscounted pricing was not fully recorded. For Standard and Premium plans with 10,000+ contacts, the promotional discounted price is shown but actual standard pricing not clearly stated for all tiers. Standard plan starts at $20/month for 0-500 contacts (base price shown). Essentials and Premium pricing varies by contact tier but exact pricing figures are not legible/not shown for most tiers. Premium plan does not show a clear base price; contact sales is required for premium pricing. Page appears to be contact-tier-based pricing where costs increase based on contact count ranges (0-500, 501-1,500, etc.) but the actual dollar amounts per tier are not visible in the provided text. Free trial period is 14 days for Standard and Essentials. Annual plans mentioned as available but pricing not shown (\"Contact sales to learn about pricing\"). Onboarding sessions: Premium has 4 sessions, Standard has 1 session, Essentials has none shown. Personalized Onboarding Specialist only on Premium. Role-based access: Premium has 5 roles, Standard has 4, Essentials has 2. Currency selector shown but USD assumed as default.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 500.0,
+          "unit": "per month (max 250/day)"
+        }
+      ],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 6000.0,
+          "unit": null
+        },
+        {
+          "metric": "users/seats",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "custom reporting",
+        "integrations",
+        "onboarding support"
+      ]
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "marketing automation flows",
+          "value": 4.0,
+          "unit": "steps"
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 2500.0,
+          "unit": null
+        },
+        {
+          "metric": "users/seats",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "integrations",
+        "onboarding support"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "audiences",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "users/seats",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "custom reporting",
+        "dedicated account manager",
+        "integrations",
+        "onboarding support",
+        "phone support",
+        "priority support"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-28"
+}
