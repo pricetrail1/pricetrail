@@ -14,7 +14,8 @@
 # takes about twenty minutes.
 #
 # crawl_tier: daily = check every run, weekly = check on Mondays.
-# Put the big names on daily and the long tail on weekly to save money.
+# Everything is checked daily: customers of price alerts are promised a
+# daily check. Unchanged pages cost nothing to re-read.
 
 vendors:
   # ---------- customer support / helpdesk ----------
@@ -46,22 +47,22 @@ vendors:
   - name: Crisp
     pricing_url: https://crisp.chat/en/pricing/
     category: helpdesk
-    crawl_tier: weekly
+    crawl_tier: daily
 
   - name: Tidio
     pricing_url: https://www.tidio.com/pricing/
     category: helpdesk
-    crawl_tier: weekly
+    crawl_tier: daily
 
   - name: LiveChat
     pricing_url: https://www.livechat.com/pricing/
     category: helpdesk
-    crawl_tier: weekly
+    crawl_tier: daily
 
   - name: Chatwoot
     pricing_url: https://www.chatwoot.com/pricing
     category: helpdesk
-    crawl_tier: weekly
+    crawl_tier: daily
 
   # ---------- email marketing ----------
   - name: Mailchimp
@@ -77,22 +78,22 @@ vendors:
   - name: MailerLite
     pricing_url: https://www.mailerlite.com/pricing
     category: email-marketing
-    crawl_tier: weekly
+    crawl_tier: daily
 
   - name: beehiiv
     pricing_url: https://www.beehiiv.com/pricing
     category: email-marketing
-    crawl_tier: weekly
+    crawl_tier: daily
 
   - name: Customer.io
     pricing_url: https://customer.io/pricing
     category: email-marketing
-    crawl_tier: weekly
+    crawl_tier: daily
 
   - name: Omnisend
     pricing_url: https://www.omnisend.com/pricing/
     category: email-marketing
-    crawl_tier: weekly
+    crawl_tier: daily
 
   # Removed in Aug 2026 after repeated HTTP 403s, then put back: the block was
   # temporary and Kit recovered on its own. A one-off 403 is a bad afternoon on
@@ -102,7 +103,7 @@ vendors:
   - name: Kit
     pricing_url: https://kit.com/pricing
     category: email-marketing
-    crawl_tier: weekly
+    crawl_tier: daily
 
   # ---------- CRM ----------
   # Third category, added so the site has more comparison pages. Same buyer as
@@ -120,12 +121,12 @@ vendors:
   - name: Copper
     pricing_url: https://www.copper.com/pricing
     category: crm
-    crawl_tier: weekly
+    crawl_tier: daily
 
   - name: Zoho CRM
     pricing_url: https://www.zoho.com/crm/zohocrm-pricing.html
     category: crm
-    crawl_tier: weekly
+    crawl_tier: daily
 
   # Freshsales: parked Aug 2026. The page fetches fine but carries no readable
   # prices -- same JS-rendered problem as Zoho Desk below. It failed every day
@@ -134,22 +135,22 @@ vendors:
   # - name: Freshsales
   #   pricing_url: https://www.freshworks.com/crm/sales/pricing/
   #   category: crm
-  #   crawl_tier: weekly
+  #   crawl_tier: daily
 
   - name: Attio
     pricing_url: https://attio.com/pricing
     category: crm
-    crawl_tier: weekly
+    crawl_tier: daily
 
   - name: Capsule
     pricing_url: https://capsulecrm.com/pricing/
     category: crm
-    crawl_tier: weekly
+    crawl_tier: daily
 
   - name: Nutshell
     pricing_url: https://www.nutshell.com/pricing
     category: crm
-    crawl_tier: weekly
+    crawl_tier: daily
 
 # ---------- removed, revisit later ----------
 # These use interactive pricing (a slider where you pick a contact count and

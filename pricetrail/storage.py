@@ -107,6 +107,20 @@ def save_snapshot(slug: str, cleaned_text: str) -> Path:
     return path
 
 
+def previous_snapshot(slug: str) -> str | None:
+    """The most recent saved page text from before today, or None."""
+    folder = SNAPSHOTS / slug
+    if not folder.exists():
+        return None
+    older = sorted(f for f in folder.glob("*.txt") if f.stem < today())
+    if not older:
+        return None
+    try:
+        return older[-1].read_text(encoding="utf-8")
+    except OSError:
+        return None
+
+
 def prune_snapshots(slug: str, keep_recent: int = 60) -> int:
     """Keep every snapshot from the last ~2 months, then one per month.
 

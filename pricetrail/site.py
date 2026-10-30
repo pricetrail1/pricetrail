@@ -136,6 +136,16 @@ def _https_only(url: str) -> str:
 LICENCE_URL = _https_only(_setting("licence_url"))
 LICENCE_PRICE = (_setting("licence_price") or "\u00a319 a month")[:40]
 
+# Price alerts: the main paid product. alerts_url is its checkout link in
+# settings.yaml; with none set, the buttons ask people to get in touch.
+ALERTS_URL = _https_only(_setting("alerts_url"))
+ALERTS_PRICE = (_setting("alerts_price") or "\u00a349 a month")[:40]
+
+
+def alerts_href(prefix: str = "") -> str:
+    """Where every "Get price alerts" button goes."""
+    return ALERTS_URL or f"{prefix}pricing.html#alerts"
+
 SYMBOLS = {"USD": "$", "GBP": "£", "EUR": "€", "CAD": "CA$",
            "AUD": "A$", "INR": "₹"}
 
@@ -414,9 +424,7 @@ INFO_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" '
             'stroke="currentColor" stroke-width="2" stroke-linecap="round">'
             '<circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>')
 
-NAV = (("index.html", "Prices"), ("changes.html", "Changes"),
-       ("data.html", "Data"), ("about.html", "Method"),
-       ("pricing.html", "Pricing"))
+NAV = (("index.html", "Prices"), ("changes.html", "Changes"))
 
 
 def _rel(path: str) -> str:
@@ -443,6 +451,8 @@ def page(title: str, description: str, body: str, path: str,
     active = {p: ' aria-current="page"' for p, _ in NAV if p == path}
     nav = "".join(f'<a href="{rel}{p}"{active.get(p, "")}>{esc(label)}</a>'
                   for p, label in NAV)
+    here = ' aria-current="page"' if path == "pricing.html" else ""
+    nav += f'<a class="nav-cta" href="{rel}pricing.html"{here}>Price alerts</a>'
     og_image = f"{BASE_URL}/assets/og.png"
     return f"""<!DOCTYPE html>
 <html lang="en" data-root="{esc(rel if not absolute_links else '/')}">
@@ -509,7 +519,7 @@ def _footer(rel: str) -> str:
       <li><a href="{rel}search.html">Search</a></li></ul></div>
     <div><h2>Data</h2><ul>
       <li><a href="{rel}data.html">Downloads</a></li>
-      <li><a href="{rel}pricing.html">Pricing</a></li>
+      <li><a href="{rel}pricing.html">Price alerts</a></li>
       <li><a href="{BASE_URL}/feed.xml">RSS feed</a></li>
       <li><a href="{rel}about.html">Method</a></li>
       <li><a href="{rel}status.html">System status</a></li></ul></div>
@@ -584,6 +594,22 @@ def subscribe_block(prefix: str = "", compact: bool = False) -> str:
     {form}
   </div>
 </div></div></section>"""
+
+
+def alerts_steps() -> str:
+    """How price alerts work, in three plain steps."""
+    return """<div class="steps">
+    <div class="step"><span class="n">01</span><h3>Tell us who to watch</h3>
+      <p>At checkout, type the names of up to 10 competitors. Any software
+        company with a public pricing page, not just the ones listed here.</p></div>
+    <div class="step"><span class="n">02</span><h3>We check every day</h3>
+      <p>Their pricing pages are read every day. A change has to show up on
+        two separate readings before we send it, so you don't get false
+        alarms.</p></div>
+    <div class="step"><span class="n">03</span><h3>You get an email</h3>
+      <p>The old price, the new price and the date, with a link to the full
+        history. Plus a short summary every Monday.</p></div>
+  </div>"""
 
 
 def back_link(prefix: str = "", label: str = "All prices") -> str:
@@ -1304,9 +1330,10 @@ def _proof(ctx: dict) -> str:
     <a class="link-arrow" href="v/{esc(e['slug'])}.html#c-{esc(e['id'])}">See {esc(e['vendor'])}’s history</a>
   </figcaption>
 </figure>
-<p class="provenance" style="padding:0 1.25rem 1rem">{others} other confirmed
-  price change{'s' if others != 1 else ''} on record &middot;
-  <a href="changes.html?type=price">see them all</a></p>
+<p class="provenance" style="padding:0 1.25rem 1rem">{
+  f"{others} other confirmed price change{'s' if others != 1 else ''} on record"
+  if others else "The only confirmed price change on record so far"} &middot;
+  <a href="changes.html">see every change</a></p>
 </div>"""
     priced = sum(_priced_count(r) for r in records.values())
     return f"""
@@ -1332,44 +1359,34 @@ def render_index(ctx: dict) -> str:
             if any(storage.slugify(n) in records for n in by_cat[c])]
     cat_text = (", ".join(cats[:-1]) + " and " + cats[-1]) if len(cats) > 1 \
         else (cats[0] if cats else "software")
-    plans_priced = sum(_priced_count(r) for r in records.values())
-    days = max(_days_between(ctx["since_iso"], _today()), 0)
     checked = ctx.get("last_checked_iso", "")
 
+    alerts = esc(alerts_href())
     body = [f"""
 <section class="hero"><div class="wrap hero-grid">
   <div>
-    <p class="eyebrow">Software pricing, on the record</p>
-    <h1>See what software costs — and what it used to cost.</h1>
-    <p class="lede">PriceTrail reads the public pricing pages of {tracked}
-      {esc(cat_text.lower().replace('crm', 'CRM'))} tools every day, confirms
-      each change on two separate readings, and keeps the full history.
-      Free to browse. No sign-up.</p>
+    <p class="eyebrow">Competitor price alerts</p>
+    <h1>Know the day a competitor changes its prices.</h1>
+    <p class="lede">Tell us which software companies to watch. We check their
+      pricing pages every day and email you when a price, plan or add-on
+      changes.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="changes.html">Browse price changes</a>
-      <a class="btn btn-ghost" href="#prices">See every price</a>
+      <a class="btn btn-primary" href="{alerts}" rel="noopener">Get price alerts \u2014 {esc(ALERTS_PRICE)}</a>
+      <a class="btn btn-ghost" href="#prices">See the prices free</a>
     </div>
     <p class="fresh">
       <span><i class="dot" aria-hidden="true"></i>Last checked {esc(pretty_date(checked))}</span>
-      <span>Recording since {esc(ctx['tracking_since'])}</span>
-      <span>{tracked} companies</span>
+      <span>{tracked} companies tracked</span>
+      <span>Plus VAT \u00b7 cancel any time</span>
     </p>
   </div>
   {_proof(ctx)}
 </div></section>
 
 <section class="section-tight"><div class="wrap">
-  {stats_row([
-      (str(tracked), "Companies tracked"),
-      (str(plans_priced), "Plans priced"),
-      (str(summ['price']), "Confirmed price changes"),
-      (f"{days}", "Days of history"),
-      (str(ctx['snapshot_count']), "Page versions archived"),
-  ])}
+  {alerts_steps()}
 </div></section>
 """]
-
-    body.append(subscribe_block(compact=True))
 
     head = insights.headline(events)
     body.append(f"""
@@ -1442,28 +1459,6 @@ def render_index(ctx: dict) -> str:
   {''.join(blocks)}
 </div></section>""")
 
-    body.append(f"""
-<section class="section"><div class="wrap">
-  <div class="sec-head"><div><h2>How PriceTrail works</h2>
-    <p>Built to be believed. Every figure can be traced to the vendor's own
-      page and the day it was read.</p></div>
-    <a class="link-arrow" href="about.html">Read the method</a></div>
-  <div class="steps">
-    <div class="step"><span class="n">01</span><h3>Read every day</h3>
-      <p>A crawler visits each vendor's own public pricing page — daily for
-        the big names, weekly for the rest — and records every plan and
-        price.</p></div>
-    <div class="step"><span class="n">02</span><h3>Confirm before publishing</h3>
-      <p>A change must appear on two separate readings before it is published.
-        Large changes wait three days. Readings that undo themselves are
-        labelled, never presented as news.</p></div>
-    <div class="step"><span class="n">03</span><h3>Keep the history</h3>
-      <p>Every confirmed version is kept with its date, so you can see what a
-        tool cost before — and download the whole archive as CSV or
-        JSON.</p></div>
-  </div>
-</div></section>""")
-
     pairs_here = comparison_pairs(ctx)
     if pairs_here:
         groups = defaultdict(list)
@@ -1479,14 +1474,27 @@ def render_index(ctx: dict) -> str:
                          f'<p class="links-cloud">{links}</p></div>')
         body.append(f"""
 <section class="section"><div class="wrap">
-  <div class="sec-head"><div><h2>Compare side by side</h2>
-    <p>{len(pairs_here)} head-to-head pages for companies that publish
-      comparable prices.</p></div></div>
-  {''.join(parts)}
+  <details class="card card-pad">
+    <summary><strong>Compare side by side</strong>
+      <span class="muted">\u2014 {len(pairs_here)} head-to-head pages</span></summary>
+    {''.join(parts)}
+  </details>
 </div></section>""")
 
-    body.append(subscribe_block())
-    return page(f"{SITE_NAME} — SaaS pricing history and price changes",
+    body.append(f"""
+<section class="section"><div class="wrap"><div class="card cta">
+  <div>
+    <h2>Watch your competitors' prices</h2>
+    <p>Pick the companies. We check their pricing pages every day and email
+      you the moment something changes. {esc(ALERTS_PRICE)} plus VAT, cancel
+      any time.</p>
+  </div>
+  <div class="hero-actions" style="margin-top:0">
+    <a class="btn btn-primary" href="{alerts}" rel="noopener">Get price alerts</a>
+    <a class="btn btn-ghost" href="pricing.html">How it works</a>
+  </div>
+</div></div></section>""")
+    return page(f"{SITE_NAME} — competitor price alerts and SaaS pricing history",
                 f"Current prices and confirmed price changes for {tracked} "
                 f"{cat_text} tools, read daily since {ctx['tracking_since']}. "
                 f"See what software costs and what it used to cost.",
@@ -1798,7 +1806,7 @@ def _plan_rows(record: dict, plans: list[dict]) -> str:
 
 
 def _plans_table(record: dict, plans: list[dict], caption: str) -> str:
-    return f"""<div class="tbl-scroll"><table class="stack compact">
+    return f"""<div class="tbl-scroll"><table class="stack compact plans">
       <caption class="vh">{esc(caption)}</caption>
       <thead><tr><th scope="col">Plan</th><th class="num" scope="col">Monthly</th>
         <th class="num" scope="col">Annual, per month</th>
@@ -2590,7 +2598,7 @@ def render_data(ctx: dict, sizes: dict[str, int] | None = None) -> str:
         <ul class="provenance">
           <li>{ctx['active_count']} companies in {len([c for c in ctx['by_category'] if any(storage.slugify(n) in ctx['records'] for n in ctx['by_category'][c])])} categories</li>
           <li>Recording since {esc(ctx['tracking_since'])}</li>
-          <li>Daily or weekly checks per company</li>
+          <li>Every pricing page checked every day</li>
           <li>Prices in the vendor's own currency</li>
           <li>Every change with its confirmation status</li></ul></div>
       <div class="card card-pad"><h2 class="eyebrow" style="margin-bottom:.75rem">Read first</h2>
@@ -2718,11 +2726,15 @@ def render_privacy() -> str:
         "The site is served by GitHub Pages, and web fonts are loaded from "
         "Google Fonts. Like any web host, those services see the request your "
         "browser makes, including your IP address.",
-        "<strong>If you subscribe to price-change emails</strong> (when that is "
-        "offered), the only thing stored is the email address you typed. It is "
-        "held by the mailing service that sends the emails, used for nothing "
-        "except sending them, and never sold, rented or shared. Every email "
-        "carries a one-click unsubscribe link, and using it deletes the address.",
+        "<strong>If you buy price alerts</strong>, you give two things at "
+        "checkout: your email address and the list of competitors to watch. "
+        "Payment is handled by Stripe, which holds your payment details; "
+        f"{SITE_NAME} never sees your card. Your email address and list are "
+        "used for nothing except sending your alerts, through the email "
+        "service Resend, and are never sold, rented or shared. They are not "
+        "published anywhere on this site. To unsubscribe, cancel from the "
+        "link in your receipt, or reply to any alert and ask; the alerts stop "
+        "and your list is no longer used.",
         "You can ask what is held about you and ask for it to be deleted at any "
         "time.",
         "<strong>The pricing data itself is not personal information.</strong> "
@@ -2757,6 +2769,15 @@ def render_terms() -> str:
         "database. A licence is a monthly subscription: cancel at any time and "
         "it runs to the end of the month already paid. If you are not happy, "
         "ask within 14 days of your first payment for a full refund.",
+        "<strong>Price alerts.</strong> A monthly subscription, one per "
+        "organisation, covering up to 10 companies you choose. Alerts are "
+        "sent when a change has been confirmed on two separate readings, so "
+        "an email can follow a change by a day or more. Companies not yet "
+        "tracked are usually added within 2 working days; a page that cannot "
+        "be read reliably may not be possible to track, and you will be told "
+        "if so. Cancel at any time and alerts continue to the end of the "
+        "month already paid. If you are not happy, ask within 14 days of "
+        "your first payment for a full refund.",
         f"<strong>Company names</strong> and trademarks belong to their owners. "
         f"{SITE_NAME} is independent and is not affiliated with, endorsed by, "
         f"or paid by any vendor listed. Nothing here is sponsored, and no "
@@ -2787,80 +2808,116 @@ def render_bot() -> str:
 # ---------------------------------------------------------------- pricing
 
 def render_pricing(ctx: dict) -> str:
-    """Free vs commercial licence. Honest in both states: with no checkout
-    link configured, the licence is requested rather than bought."""
+    """The one page about paying: price alerts first, the data licence
+    second. Honest in every state: with no checkout link configured, the
+    product is asked about rather than bought."""
     ctx = _complete_ctx(ctx)
+    n = ctx["active_count"]
+    if ALERTS_URL:
+        alerts_btn = (f'<a class="btn btn-primary" href="{esc(ALERTS_URL)}" '
+                      f'rel="noopener">Get price alerts \u2014 {esc(ALERTS_PRICE)}</a>')
+        alerts_how = ("At checkout you type the competitors to watch. Payment "
+                      "is handled by our payment provider, which emails your "
+                      "receipt and lets you cancel at any time.")
+    else:
+        alerts_btn = (f'<a class="btn btn-primary" href="{esc(CONTACT_URL)}" '
+                      f'rel="noopener">Ask about price alerts</a>')
+        alerts_how = ("Online checkout for alerts is not open yet. Ask, and "
+                      "you will be set up directly.")
     if LICENCE_URL:
-        buy = (f'<a class="btn btn-primary" href="{esc(LICENCE_URL)}" '
+        buy = (f'<a class="btn btn-ghost" href="{esc(LICENCE_URL)}" '
                f'rel="noopener">Buy a licence \u2014 {esc(LICENCE_PRICE)}</a>')
         how = ("Checkout is handled by our payment provider, which emails your "
                "receipt and lets you cancel at any time.")
     else:
-        buy = (f'<a class="btn btn-primary" href="{esc(CONTACT_URL)}" '
+        buy = (f'<a class="btn btn-ghost" href="{esc(CONTACT_URL)}" '
                f'rel="noopener">Ask about a licence</a>')
         how = ("Online checkout is not open yet. Ask, and you will get a "
                "licence and an invoice directly.")
-    n = ctx["active_count"]
     body = f"""
 <div class="wrap">
   <header class="page-head">
-    {breadcrumb("", [("Prices", "index.html"), ("Pricing", None)])}
-    <h1>Pricing</h1>
-    <p class="lede">Everything on this site is free to read, for everyone.
-      A licence is only needed to use the data inside a business.</p>
+    {breadcrumb("", [("Prices", "index.html"), ("Price alerts", None)])}
+    <h1>Price alerts</h1>
+    <p class="lede">Get an email when your competitors change their prices.
+      Everything else on this site stays free to read, for everyone.</p>
   </header>
-  <div class="grid g2" style="align-items:stretch">
-    <section class="card card-pad" aria-labelledby="h-free">
-      <p class="eyebrow">Free</p>
-      <h2 id="h-free" style="font-size:1.6rem;margin:.35rem 0 .2rem">\u00a30</h2>
-      <p class="muted small">No account, no sign-up</p>
-      <ul class="provenance" style="margin:1rem 0 1.25rem">
-        <li>\u2713 Every price and every change on the site</li>
-        <li>\u2713 Price history for all {n} companies</li>
-        <li>\u2713 RSS feed of confirmed changes</li>
-        <li>\u2713 Downloads for personal use, study and journalism</li>
-        <li>\u2713 Checking prices before you buy a tool, at work too</li>
-      </ul>
-      <a class="btn btn-ghost" href="index.html">Browse prices</a>
-    </section>
-    <section class="card card-pad" aria-labelledby="h-lic" style="border-color:var(--accent)">
-      <p class="eyebrow" style="color:var(--accent)">Commercial licence</p>
-      <h2 id="h-lic" style="font-size:1.6rem;margin:.35rem 0 .2rem">{esc(LICENCE_PRICE)}</h2>
-      <p class="muted small">Per organisation \u00b7 cancel any time</p>
-      <ul class="provenance" style="margin:1rem 0 1.25rem">
-        <li>\u2713 Use the data in internal tools and dashboards</li>
-        <li>\u2713 Use it in reports and work for clients</li>
-        <li>\u2713 Use it in your own products and AI systems</li>
-        <li>\u2713 The same daily-updated CSV and JSON files</li>
-        <li>\u2713 Requests for new companies or categories go first</li>
-      </ul>
-      {buy}
-      <p class="provenance" style="margin-top:.75rem">{esc(how)}</p>
-    </section>
-  </div>
+
+  <section id="alerts" class="card card-pad" aria-labelledby="h-alerts"
+           style="border-color:var(--accent);max-width:44rem">
+    <p class="eyebrow" style="color:var(--accent)">Price alerts</p>
+    <h2 id="h-alerts" style="font-size:2rem;margin:.35rem 0 .2rem">{esc(ALERTS_PRICE)}</h2>
+    <p class="muted small">Plus VAT \u00b7 cancel any time</p>
+    <ul class="provenance" style="margin:1rem 0 1.25rem">
+      <li>\u2713 Watch up to 10 competitors \u2014 any software company</li>
+      <li>\u2713 Their pricing pages checked every day</li>
+      <li>\u2713 An email when a price, plan or add-on changes, with the old and new figures</li>
+      <li>\u2713 A short summary every Monday</li>
+      <li>\u2713 Companies we don't track yet are usually added within 2 working days</li>
+    </ul>
+    {alerts_btn}
+    <p class="provenance" style="margin-top:.75rem">{esc(alerts_how)}</p>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><h2>How it works</h2></div>
+    {alerts_steps()}
+  </section>
+
   <section class="section">
     <div class="sec-head"><h2>Questions</h2></div>
     <div class="grid g2">
-      <div class="card card-pad prose"><p><strong>Do I need a licence to look
-        up a price?</strong> No. Reading the site, at home or at work, is free.
-        The licence is for using the downloaded data inside a business.</p>
-        <p><strong>What is not allowed, even with a licence?</strong> Reselling
-        or republishing the dataset itself, or using it to build a competing
-        price-tracking service.</p></div>
-      <div class="card card-pad prose"><p><strong>How do I cancel?</strong> Any
-        time, from the link in your receipt. The licence runs to the end of the
-        month already paid.</p>
+      <div class="card card-pad prose">
+        <p><strong>Which companies can I watch?</strong> Any software company
+          with a public pricing page. {n} are already tracked, so alerts for
+          those start straight away.</p>
+        <p><strong>Can I change my list later?</strong> Yes. Reply to any alert
+          email with the changes.</p>
+        <p><strong>Is it accurate?</strong> Read <a href="about.html">how
+          prices are collected</a> \u2014 it is a careful record, not a
+          guarantee. Full terms: <a href="terms.html">terms of use</a>.</p></div>
+      <div class="card card-pad prose">
+        <p><strong>How do I cancel?</strong> Any time, from the link in your
+          receipt. You keep everything you paid for until the end of that
+          month.</p>
         <p><strong>Refunds?</strong> If you are not happy, ask within 14 days of
-        your first payment for a full refund.</p>
-        <p><strong>Is the data accurate?</strong> Read <a href="about.html">how
-        it is collected</a> first \u2014 it is a careful record, not a
-        guarantee. Full terms: <a href="terms.html">terms of use</a>.</p></div>
+          your first payment for a full refund.</p>
+        <p><strong>Do I need to pay to look up a price?</strong> No. Reading the
+          site, at home or at work, is free.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><h2>Other options</h2></div>
+    <div class="grid g2" style="align-items:stretch">
+      <section class="card card-pad" aria-labelledby="h-free">
+        <p class="eyebrow">Free</p>
+        <h3 id="h-free" style="font-size:1.4rem;margin:.35rem 0 .2rem">\u00a30</h3>
+        <p class="muted small">No account, no sign-up</p>
+        <ul class="provenance" style="margin:1rem 0 1.25rem">
+          <li>\u2713 Every price and change on the site, for {n} companies</li>
+          <li>\u2713 Downloads for personal use, study and journalism</li>
+        </ul>
+        <a class="btn btn-ghost" href="index.html">Browse prices</a>
+      </section>
+      <section class="card card-pad" aria-labelledby="h-lic">
+        <p class="eyebrow">Data licence</p>
+        <h3 id="h-lic" style="font-size:1.4rem;margin:.35rem 0 .2rem">{esc(LICENCE_PRICE)}</h3>
+        <p class="muted small">For using the downloaded data inside a business</p>
+        <ul class="provenance" style="margin:1rem 0 1.25rem">
+          <li>\u2713 Use the CSV and JSON files in tools, reports and products</li>
+          <li>\u2713 Not for reselling or republishing the dataset</li>
+        </ul>
+        {buy}
+        <p class="provenance" style="margin-top:.75rem">{esc(how)}</p>
+      </section>
     </div>
   </section>
 </div>"""
-    return page(f"Pricing \u2014 free to read, licence for business use \u2014 {SITE_NAME}",
-                f"PriceTrail is free to read. A commercial licence "
-                f"({LICENCE_PRICE}) covers using the pricing data in a business.",
+    return page(f"Price alerts \u2014 know when competitors change prices \u2014 {SITE_NAME}",
+                f"Get an email when your competitors change their prices. "
+                f"{ALERTS_PRICE} plus VAT, cancel any time. Everything else on "
+                f"{SITE_NAME} is free to read.",
                 body, "pricing.html")
 
 
@@ -2916,11 +2973,12 @@ def _rfc822(iso: str) -> str:
 
 
 def render_feed(ctx: dict) -> str:
-    """Confirmed changes only. Reversed and unconfirmed entries stay on the
-    site's change log, labelled, but are not pushed to subscribers as news."""
+    """Confirmed changes only. Reversed, unconfirmed and corrected entries
+    stay on the site's change log, labelled, but are not pushed to
+    subscribers as news."""
     ctx = _complete_ctx(ctx)
     items = []
-    events = [e for e in ctx.get("events", []) if e["status"] in ("confirmed", "corrected")]
+    events = [e for e in ctx.get("events", []) if e["status"] == "confirmed"]
     for e in events[:50]:
         title = event_sentence(e)
         items.append(f"""  <item>

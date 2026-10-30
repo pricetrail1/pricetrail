@@ -18,6 +18,7 @@ for the same output.
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from datetime import datetime, timezone
 
@@ -129,6 +130,24 @@ def _days_since(day: str | None) -> int:
     except ValueError:
         return 0
     return (datetime.now(timezone.utc) - then).days
+
+
+# Change types that are only about figures. If the page shows exactly the same
+# figures as before, a "change" of one of these kinds is the reader
+# interpreting an unchanged page differently, not the vendor repricing.
+_FIGURE_ONLY = {"price_increase", "price_decrease", "price_availability_changed"}
+
+_MONEY = re.compile(r"(?:[$\u00a3\u20ac\u20b9]\s?\d[\d,]*(?:\.\d+)?"
+                    r"|\d[\d,]*(?:\.\d+)?\s?(?:USD|GBP|EUR|INR)\b)")
+
+
+def _price_figures(text: str) -> list[str]:
+    """Every money figure on a page, normalised and sorted.
+
+    Two pages with the same list here show the same prices, whatever else
+    on them changed.
+    """
+    return sorted(re.sub(r"[\s,]", "", m) for m in _MONEY.findall(text or ""))
 
 
 def _clean_for_save(record: dict) -> dict:
@@ -505,6 +524,32 @@ def _check_vendor(vendor: dict, ctx: dict) -> str | None:
         stats["noisy"] += 1
         print(f"  noise {name}: page changed, pricing did not")
         return None
+
+    # ---- same figures, different reading ----
+    #
+    # Nutshell's pricing page showed exactly the same figures on 21 Sep,
+    # 5 Oct and 12 Oct. On 12 Oct something else on the page changed, the
+    # page was re-read, and this time the reader correctly took $13 as the
+    # annual-billing price instead of the monthly one -- which went on the
+    # public log as ten "price rises" that never happened.
+    #
+    # So before anything is logged: if every money figure on the page is
+    # identical to the last saved version, and the only differences found are
+    # in the figures themselves, the vendor did not reprice. The better
+    # reading replaces the old one quietly, exactly as a forced re-read does.
+    previous_text = storage.previous_snapshot(slug)
+    if previous_text is not None and \
+            _price_figures(previous_text) == _price_figures(cleaned):
+        preview = diff_pricing(name, baseline, extracted)
+        if preview and all(c.change_type in _FIGURE_ONLY for c in preview):
+            storage.save_plans(slug, extracted)
+            storage.clear_pending(slug)
+            entry["status"] = "ok"
+            stats["rebaselined"] = stats.get("rebaselined", 0) + 1
+            print(f"  RE-READ {name}: the page shows the same figures as "
+                  f"before, so this is a better reading, not a price change "
+                  f"-- record updated, nothing logged")
+            return None
 
     # A forced run means the way we READ pages changed, not the prices.
     # Every difference it turns up is us correcting ourselves, so logging

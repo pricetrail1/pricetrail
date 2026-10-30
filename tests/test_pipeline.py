@@ -12,6 +12,7 @@ collapses -- you would be paying for an extraction on every page every day.
 """
 
 import atexit
+import os
 import json
 import re
 import shutil
@@ -320,6 +321,34 @@ def test_confirmation_kills_flip_flops():
     rises = [e for e in published if e.change_type == "price_increase"]
     check("a real change publishes once confirmed", len(rises) == 1,
           f"got {[e.headline() for e in published]}")
+
+
+def test_same_figures_is_a_reread():
+    """Regression: Nutshell's and Tidio's pages showed exactly the same prices
+    for two months, but the crawler read them differently on different days
+    and logged 'price rises' that never happened. If the saved page text shows
+    the same figures as last time, a figure-only difference is a better
+    reading, not a price change."""
+    print("\nSame page figures are a re-read, not a change")
+    from pricetrail.run import _FIGURE_ONLY, _price_figures
+
+    page = "Growth $25 /mo billed monthly. $21.25 billed annually. Pro $42"
+    same = "Pro $42 Growth $21.25 billed annually, $25 billed monthly"
+    moved = "Growth $32 /mo billed monthly. $21.25 billed annually. Pro $42"
+    check("same figures in a different order match",
+          _price_figures(page) == _price_figures(same))
+    check("a real price move does not match",
+          _price_figures(page) != _price_figures(moved))
+    check("thousands separators and currencies are read",
+          _price_figures("\u00a31,200 or 24 USD") == ["24USD", "\u00a31200"])
+    check("no text reads as no figures", _price_figures(None) == [])
+    check("plan additions are never treated as re-reads",
+          "plan_added" not in _FIGURE_ONLY and "plan_removed" not in _FIGURE_ONLY)
+
+    from pricetrail import insights
+    fixes = insights.load_corrections()
+    check("the Nutshell, Tidio and Intercom misreads are corrected",
+          {f["vendor"] for f in fixes} >= {"Nutshell", "Tidio", "Intercom"})
 
 
 def test_fingerprint():
@@ -3105,7 +3134,7 @@ def test_v2_site_pages_and_downloads():
         check("and has no broken category link", 'href="../c/.html"' not in ret)
         idx = (out / "index.html").read_text(encoding="utf-8")
         check("the homepage counts only companies still tracked",
-              f">{len(names)}</span><span class=\"l\">Companies tracked" in idx)
+              f"{len(names)} companies tracked" in idx)
         feed = (out / "feed.xml").read_text(encoding="utf-8")
         check("the feed uses RFC 822 dates", "+0000</pubDate>" in feed)
         check("every page has one main landmark and a skip link",
@@ -3143,6 +3172,160 @@ def test_v2_pricing_page_is_honest():
         sitemod.LICENCE_URL, sitemod.LICENCE_PRICE = saved
 
 
+def test_price_alerts():
+    """Price alerts: the paid product. Customers and their lists live in
+    Stripe, never in this public repository; nothing personal is printed."""
+    print("\nPrice alerts")
+    import io, contextlib, tempfile as _tf
+    from datetime import datetime, timezone, timedelta
+    from pricetrail import alerts
+
+    vendors = [{"name": "Zendesk", "pricing_url": "https://www.zendesk.com/pricing/"},
+               {"name": "Help Scout", "pricing_url": "https://www.helpscout.com/pricing/"},
+               {"name": "Close", "pricing_url": "https://www.close.com/pricing"},
+               {"name": "Kit", "pricing_url": "https://kit.com/pricing"},
+               {"name": "Customer.io", "pricing_url": "https://customer.io/pricing"},
+               {"name": "Pipedrive", "pricing_url": "https://www.pipedrive.com/en/pricing"}]
+    found, unknown = alerts.match_companies(
+        "Zendesk, helpscout; close.com and Pipedrive CRM\nHubSpot, customer.io", vendors)
+    check("names, websites and longer forms are matched",
+          found == ["Zendesk", "Help Scout", "Close", "Pipedrive", "Customer.io"], found)
+    check("unknown companies are kept for the owner", unknown == ["HubSpot"], unknown)
+    f2, u2 = alerts.match_companies("Kitchen software, closet planner", vendors)
+    check("short names are not matched inside ordinary words", f2 == [], f2)
+    f3, _ = alerts.match_companies(", ".join(f"Co{i}" for i in range(30)), vendors)
+    check("an answer is capped at 10 companies",
+          len(alerts.match_companies(", ".join(f"Company {i}" for i in range(30)), vendors)[1]) <= 10)
+
+    tmp = Path(_tf.mkdtemp())
+    runs = tmp / "runs.jsonl"
+    runs.write_text(
+        json.dumps({"at": "2026-10-25T06:00:00+00:00", "seconds": 60}) + "\n" +
+        json.dumps({"at": "2026-10-26T06:00:00+00:00", "seconds": 120}) + "\n")
+    start, end = alerts.run_window(runs)
+    check("the window runs from the end of the last run to the end of this one",
+          start.isoformat().startswith("2026-10-25T06:01") and
+          end.isoformat().startswith("2026-10-26T06:02"), (start, end))
+
+    t_new = int(datetime(2026, 10, 26, 3, 0, tzinfo=timezone.utc).timestamp())
+    t_old = int(datetime(2026, 9, 1, tzinfo=timezone.utc).timestamp())
+    sessions = {"data": [
+        {"id": "cs_1", "created": t_new, "subscription": "sub_new",
+         "customer_details": {"email": "new@buyer.test"},
+         "custom_fields": [{"key": "whichcompetitors", "label": {"custom": "Which competitors should we watch?"},
+                            "text": {"value": "Zendesk, HubSpot"}}]},
+        {"id": "cs_2", "created": t_old, "subscription": "sub_old",
+         "customer_details": {"email": "old@buyer.test"},
+         "custom_fields": [{"key": "competitors", "label": {"custom": "Competitors"},
+                            "text": {"value": "Close, Kit"}}]},
+        {"id": "cs_3", "created": t_new, "subscription": "sub_gone",
+         "customer_details": {"email": "cancelled@buyer.test"},
+         "custom_fields": [{"key": "competitors", "label": {"custom": "Competitors"},
+                            "text": {"value": "Zendesk"}}]},
+        {"id": "cs_4", "created": t_new, "subscription": "sub_lic",
+         "customer_details": {"email": "licence@buyer.test"}, "custom_fields": []},
+    ], "has_more": False}
+    subs_active = {"data": [{"id": "sub_new"}, {"id": "sub_old"}, {"id": "sub_lic"}],
+                   "has_more": False}
+    sent = []
+
+    def fake_http(method, url, headers, body=None, timeout=30):
+        if "checkout/sessions" in url:
+            return sessions
+        if "subscriptions" in url:
+            return subs_active if "status=active" in url else {"data": [], "has_more": False}
+        if "resend" in url:
+            sent.append(json.loads(body.decode()))
+            return {"id": "em_1"}
+        raise AssertionError(url)
+
+    events = [
+        {"vendor": "Close", "date": "2026-10-26", "detected_at": "2026-10-26T06:01:30+00:00",
+         "text": "Close raised the Solo price from $19 to $25", "url": "u"},
+        {"vendor": "Zendesk", "date": "2026-10-20", "detected_at": "2026-10-20T06:01:30+00:00",
+         "text": "Zendesk old change", "url": "u"},
+        {"vendor": "Pipedrive", "date": "2026-10-26", "detected_at": "2026-10-26T06:01:40+00:00",
+         "text": "Pipedrive change nobody watches", "url": "u"},
+    ]
+    saved = (alerts._http, alerts._events, alerts.run_window, alerts.load_vendors,
+             alerts.overrides, dict(os.environ))
+    try:
+        alerts._http = fake_http
+        alerts._events = lambda: (events, {})
+        alerts.run_window = lambda runs_file=None: (start, end)
+        alerts.load_vendors = lambda: vendors
+        alerts.overrides = lambda: {}
+        for k in ("STRIPE_KEY", "RESEND_API_KEY", "OWNER_EMAIL"):
+            os.environ.pop(k, None)
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            res = alerts.run()
+        check("with no keys it does nothing", res == {"skipped": True} and not sent)
+
+        os.environ.update({"STRIPE_KEY": "rk_test", "RESEND_API_KEY": "re_test",
+                           "OWNER_EMAIL": "owner@pricetrail.test"})
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            res = alerts.run(now=datetime(2026, 10, 26, 7, 0, tzinfo=timezone.utc))
+        to = [(m["to"][0], m["subject"]) for m in sent]
+        check("a new customer gets a welcome email",
+              any(a == "new@buyer.test" and "watching 2 companies" in s for a, s in to), to)
+        check("the owner is told about the new customer",
+              any(a == "owner@pricetrail.test" for a, s in to))
+        owner_mail = next(m for m in sent if m["to"][0] == "owner@pricetrail.test")
+        check("and is told which companies still need adding",
+              "HubSpot" in owner_mail["html"] and "new@buyer.test" in owner_mail["html"])
+        check("a customer gets an alert for a change to a company they watch",
+              ("old@buyer.test", "Price change: Close") in to, to)
+        check("an old change is not sent again",
+              not any("Zendesk old change" in m["html"] for m in sent))
+        check("nobody is emailed about a company they don't watch",
+              not any("nobody watches" in m["html"] for m in sent))
+        check("cancelled customers and licence buyers get nothing",
+              not any(a in ("cancelled@buyer.test", "licence@buyer.test") for a, _ in to))
+        check("replies go to the owner", all(m.get("reply_to") == "owner@pricetrail.test" for m in sent))
+        log = out.getvalue()
+        check("the public log has counts but no addresses or company names",
+              "@" not in log and "HubSpot" not in log and "Close" not in log
+              and "sent 3" in log, log)
+
+        sent.clear()
+        with contextlib.redirect_stdout(io.StringIO()):
+            alerts.run(weekly=True, now=datetime(2026, 10, 26, 7, 0, tzinfo=timezone.utc))
+        weekly = [m for m in sent if "weekly price check" in m["subject"]]
+        check("on Mondays every customer gets a summary", len(weekly) == 2,
+              [m["subject"] for m in sent])
+        check("the summary lists companies still being added",
+              any("HubSpot" in m["html"] and "being added" in m["html"] for m in weekly))
+    finally:
+        (alerts._http, alerts._events, alerts.run_window, alerts.load_vendors,
+         alerts.overrides) = saved[:5]
+        os.environ.clear(); os.environ.update(saved[5])
+
+    # The site leads with the paid option.
+    saved_s = (sitemod.ALERTS_URL, sitemod.ALERTS_PRICE)
+    try:
+        sitemod.ALERTS_URL = ""
+        off = sitemod.render_pricing({"records": {}, "changes": []})
+        check("with no alerts link, people are asked to get in touch",
+              "Ask about price alerts" in off)
+        sitemod.ALERTS_URL = "https://buy.stripe.com/test_alerts"
+        sitemod.ALERTS_PRICE = "£49 a month"
+        on = sitemod.render_pricing({"records": {}, "changes": []})
+        check("with a link, the alerts button goes to checkout",
+              'href="https://buy.stripe.com/test_alerts"' in on and "Get price alerts" in on)
+        check("the alerts plan comes before the data licence",
+              on.index("h-alerts") < on.index("h-lic"))
+        frame = sitemod.page("t", "d", "<p>x</p>", "changes.html")
+        check("every page has a Price alerts button in the header",
+              'class="nav-cta"' in frame and "Price alerts" in frame)
+        check("the header is down to the essentials",
+              ">Data</a>" not in frame.split("</nav>")[0] and ">Method</a>" not in frame.split("</nav>")[0])
+    finally:
+        sitemod.ALERTS_URL, sitemod.ALERTS_PRICE = saved_s
+
+
+
 def test_zz_no_check_failed():
     """Under pytest, check() only records; this makes any failure fail the run."""
     assert not FAILED, FAILED
@@ -3159,6 +3342,7 @@ if __name__ == "__main__":
     test_survives_legacy_records()
     test_rounding_noise_ignored()
     test_confirmation_kills_flip_flops()
+    test_same_figures_is_a_reread()
     test_fingerprint()
     test_hostile_input()
     test_feed_renders_for_humans()
@@ -3210,6 +3394,7 @@ if __name__ == "__main__":
     test_v2_crawler_safeguards()
     test_v2_site_pages_and_downloads()
     test_v2_pricing_page_is_honest()
+    test_price_alerts()
     print("\n" + "=" * 62)
     print(f"{len(PASSED)} passed, {len(FAILED)} failed")
     if FAILED:

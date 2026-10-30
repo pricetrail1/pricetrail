@@ -134,6 +134,9 @@ ul,ol{margin:0;padding:0}
 .nav a{color:var(--ink-2);font-size:.92rem;font-weight:500;padding:.4rem .65rem;border-radius:6px}
 .nav a:hover{background:var(--surface-2);text-decoration:none;color:var(--ink)}
 .nav a[aria-current="page"]{color:var(--ink);background:var(--surface-2)}
+.nav a.nav-cta,.nav a.nav-cta[aria-current="page"]{background:var(--accent);color:#fff;font-weight:600;margin-left:.3rem;white-space:nowrap}
+.nav a.nav-cta:hover{background:var(--accent-ink);color:#fff}
+@media (prefers-color-scheme:dark){:root:where(:not([data-theme="light"])) .nav a.nav-cta{color:#0A0E15}}
 .hdr-search{margin-left:auto;position:relative;flex:0 1 320px}
 .search-box{display:flex;align-items:center;gap:.45rem;background:var(--surface-2);
   border:1px solid var(--line);border-radius:8px;padding:0 .6rem;height:38px}
@@ -317,6 +320,9 @@ td.c-mob{display:none}
   table.stack.compact td:nth-child(2){font-size:1rem;color:var(--ink);font-weight:600}
   table.stack.compact td[data-l]:not(:nth-child(2))::before{content:attr(data-l) ": "!important;display:inline;font-size:inherit}
   table.stack.compact td .sub{display:inline;margin-left:.3rem}
+  /* plan tables: the annual price and the "includes" text get a line each,
+     so long limits never run into the price beside them */
+  table.stack.compact.plans td:nth-child(n+3){grid-column:1/-1;text-align:left!important}
   table.stack.changes td:first-child{grid-column:1;grid-row:1}
   table.stack.changes td.c-date{grid-column:2;grid-row:1;text-align:right!important}
   table.stack.changes td.c-plan{grid-column:1;grid-row:2;color:var(--ink-2)}

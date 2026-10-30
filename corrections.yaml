@@ -28,4 +28,51 @@
 #    status: corrected
 #    note: "Checked by hand: the annual price did move from $35 to $35.75."
 
-corrections: []
+corrections:
+  - vendor: Nutshell
+    date: 2026-09-28
+    change_type: price_increase
+    status: corrected
+    note: "Checked against the saved page text: every price on Nutshell's page was the same before and after this date. The crawler read the same page differently. Not a price change."
+  - vendor: Nutshell
+    date: 2026-09-28
+    change_type: price_decrease
+    status: corrected
+    note: "Checked against the saved page text: every price on Nutshell's page was the same before and after this date. The crawler read the same page differently. Not a price change."
+  - vendor: Nutshell
+    date: 2026-10-12
+    change_type: price_increase
+    status: corrected
+    note: "Checked against the saved page text: every price on Nutshell's page was the same before and after this date. The crawler read the same page differently. Not a price change."
+  - vendor: Nutshell
+    date: 2026-10-12
+    change_type: price_decrease
+    status: corrected
+    note: "Checked against the saved page text: every price on Nutshell's page was the same before and after this date. The crawler read the same page differently. Not a price change."
+  - vendor: Tidio
+    date: 2026-10-12
+    change_type: price_increase
+    status: corrected
+    note: "Checked against the saved page text: every price on Tidio's page was the same before and after this date. The crawler read the same page differently. Not a price change."
+  - vendor: Intercom
+    date: 2026-08-31
+    change_type: price_increase
+    plan: Essential
+    status: corrected
+    note: "The $19 was Intercom's 35% new-customer offer, not its standard price. The standard Essential price stayed $29 a seat; it did not rise."
+  - vendor: Intercom
+    date: 2026-10-23
+    change_type: price_decrease
+    plan: Essential
+    status: corrected
+    note: "The $19 is Intercom's 35% new-customer offer, back on the page. The standard Essential price is still $29 a seat; it was not cut."
+  - vendor: Pipedrive
+    date: 2026-09-17
+    change_type: plan_removed
+    status: corrected
+    note: "Checked against the saved page text: this add-on is still listed on Pipedrive's pricing page. The crawler missed it on one reading. Not withdrawn."
+  - vendor: Pipedrive
+    date: 2026-10-17
+    change_type: plan_removed
+    status: corrected
+    note: "Checked against the saved page text: this add-on is still listed on Pipedrive's pricing page. The crawler missed it on one reading. Not withdrawn."
