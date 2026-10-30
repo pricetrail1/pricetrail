@@ -76,3 +76,33 @@ corrections:
     change_type: plan_removed
     status: corrected
     note: "Checked against the saved page text: this add-on is still listed on Pipedrive's pricing page. The crawler missed it on one reading. Not withdrawn."
+  - vendor: Nutshell
+    date: 2026-10-26
+    change_type: price_decrease
+    status: corrected
+    note: "Checked against the saved page text: every price on Nutshell's page was the same before and after this date. The crawler mixed up the monthly and yearly prices. Not a price cut."
+  - vendor: Nutshell
+    date: 2026-10-26
+    change_type: plan_removed
+    status: unconfirmed
+    note: "The page's wording changed but its prices did not. This may be a renamed add-on rather than a withdrawn one."
+  - vendor: Nutshell
+    date: 2026-10-26
+    change_type: plan_added
+    status: unconfirmed
+    note: "The page's wording changed but its prices did not. This may be a renamed add-on rather than a new one."
+  - vendor: MailerLite
+    date: 2026-10-26
+    change_type: price_increase
+    status: corrected
+    note: "Checked against the saved page text: MailerLite's page shows the same prices ($12 and $25) before and after this date. The crawler read the monthly price instead of the yearly one (yearly saves 10%). Not a price rise."
+  - vendor: LiveChat
+    date: 2026-10-26
+    change_type: plan_added
+    status: corrected
+    note: "Checked against the saved page text: this add-on was already on LiveChat's page before this date. The crawler only noticed it now. Not new."
+  - vendor: Chatwoot
+    date: 2026-10-26
+    change_type: plan_added
+    status: corrected
+    note: "Checked against the saved page text: this add-on was already on Chatwoot's page before this date. The crawler only noticed it now. Not new."
