@@ -1,8 +1,24 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Annual billing only. Page header shows \"Save 20% Annually\" which is a promotional discount; the prices shown are the standard annual rates ($19, $55, $89 per agent/month billed annually). No monthly prices are displayed on the page. All three main plans (Growth, Pro, Enterprise) include 14-day free trial. Day passes have three tiers ($2, $7, $12 per pass) depending on plan, but the core pricing is the same add-on in all cases. Freddy AI Agent includes 500 sessions free on all plans, then $49 per 100 additional sessions. Connector app tasks and MCP actions pricing is the same across all plans. Features listed are those explicitly stated as included in each plan from the feature comparison table.",
+  "extraction_notes": "Page shows \"Save 20% Annually\" banner at top with toggle between \"Monthly\" and \"Annually\" modes. All three plans display pricing in \"/agent/month, billed annually\" format. The toggle appears set to Annual view. 14-day free trial mentioned in FAQ applies to all plans (Enterprise plan access during trial). Monthly prices not shown on page.",
   "plans": [
+    {
+      "name": "Freddy AI Copilot",
+      "key": "freddyaicopilot",
+      "monthly_price": 29.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant"
+      ]
+    },
     {
       "name": "Additional AI Agent sessions",
       "key": "additionalaiagentsessions",
@@ -21,7 +37,9 @@
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "ai assistant"
+      ]
     },
     {
       "name": "Connector app tasks",
@@ -54,13 +72,7 @@
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "duration per pass",
-          "value": 1.0,
-          "unit": "day"
-        }
-      ],
+      "limits": [],
       "features": []
     },
     {
@@ -79,28 +91,8 @@
         "ai assistant",
         "audit log",
         "basic workflows",
-        "custom reporting",
-        "integrations",
         "role permissions",
-        "sandbox",
-        "single sign-on",
-        "sla policies"
-      ]
-    },
-    {
-      "name": "Freddy AI Copilot",
-      "key": "freddyaicopilot",
-      "monthly_price": null,
-      "annual_price_per_month": 29.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "ai assistant"
+        "sandbox"
       ]
     },
     {
@@ -116,13 +108,9 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "audit log",
+        "ai assistant",
         "basic workflows",
-        "integrations",
-        "role permissions",
-        "sandbox",
-        "single sign-on",
-        "sla policies"
+        "role permissions"
       ]
     },
     {
@@ -159,16 +147,12 @@
       "limits": [],
       "features": [
         "ai assistant",
-        "audit log",
         "basic workflows",
         "custom reporting",
-        "integrations",
         "role permissions",
-        "sandbox",
-        "single sign-on",
         "sla policies"
       ]
     }
   ],
-  "captured_at": "2026-09-20T11:06:57.855879+00:00"
+  "captured_at": "2026-10-30T12:15:09.928994+00:00"
 }
