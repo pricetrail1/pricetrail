@@ -1,0 +1,106 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows a 15% promotional discount for 10,000+ contacts on first 12 months for Standard and Premium; this is not recorded as the base price. Specific pricing not visible for Essentials (shows \"0\" in one place but marked as \"Free for 14 days Then, starts at $0 per month\" - unclear if this is display error or actual price; marked as null). Premium shows \"Contact sales\" and does not display a fixed price. Standard shows base price of $20/month after 14-day free trial. No annual pricing figures were clearly displayed for any plan. The page displays contact tier-based pricing (0-500, 501-1,500, etc.) but individual prices for each tier are not populated in the visible HTML. Feature list is minimal because most specific feature claims in the table are marketing phrases or plan comparisons rather than discrete features from the required list.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 500.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 20.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "marketing automation flows",
+          "value": 200.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly email sends",
+          "value": 6000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows"
+      ]
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "marketing automation flows",
+          "value": 4.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "basic workflows"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "monthly email sends",
+          "value": 150000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "phone support",
+        "priority support"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-30"
+}

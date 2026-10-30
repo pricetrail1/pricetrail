@@ -1,7 +1,0 @@
-{
-  "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "The pricing page shows plan names and descriptions (Free, Starter, Standard, Professional, Enterprise) but actual prices are not displayed. The page contains \"[Loading content...]\" placeholders where prices should appear. Additionally, specific pricing figures are obscured with \"per month\", \"per month/user\" without the actual numbers shown. The page is not extractable for pricing data in its current state.",
-  "plans": [],
-  "_first_seen": "2026-10-30"
-}
