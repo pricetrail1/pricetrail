@@ -95,6 +95,21 @@ jobs:
           done
           echo "Could not push after 3 attempts."; exit 1
 
+      # Email paying customers about their competitors' changes. Needs three
+      # repository secrets: STRIPE_KEY, RESEND_API_KEY and OWNER_EMAIL. Until
+      # they exist this step just says "not set up yet". It prints counts
+      # only, never an email address, because this log is public. A problem
+      # here never stops the website from updating.
+      - name: Send price alerts
+        continue-on-error: true
+        env:
+          STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          OWNER_EMAIL: ${{ secrets.OWNER_EMAIL }}
+          ALERTS_FROM: ${{ vars.ALERTS_FROM }}
+          ALERTS_WEEKLY: ${{ github.event_name == 'schedule' }}
+        run: python -m pricetrail.alerts
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
