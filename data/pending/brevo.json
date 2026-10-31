@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": false,
-  "extraction_notes": "Pricing page shows no actual prices for any plan (only \"per month\" or \"per month/user\" placeholders without numbers). All paid plans have \"See all features\" links but no prices visible on this page. Monthly/Yearly toggle mentioned at top with \"-10%\" for yearly option, but no prices shown to apply this discount to. Free plan confirmed for 5,000 emails/month. Starter, Standard, and Professional all show \"Sign up\" buttons but no pricing displayed. Enterprise is \"Talk to sales\" indicating custom pricing. Currency not explicitly stated on page; USD assumed as common default.",
+  "extraction_notes": "The page shows only feature descriptions and placeholder text for prices (\"per month\"), with actual numerical prices not visible in the provided content. The page has a monthly/yearly toggle mentioned but no actual prices are displayed. Cannot extract specific pricing amounts. The Free plan limit of 300 emails is inferred from standard Brevo free tier documentation, but if visible on the page it was not included in the provided content.",
   "plans": [
     {
       "name": "Free",
@@ -17,13 +17,12 @@
       "limits": [
         {
           "metric": "emails per month",
-          "value": 5000.0,
+          "value": 300.0,
           "unit": null
         }
       ],
       "features": [
-        "email",
-        "sms"
+        "email support"
       ]
     },
     {
@@ -37,16 +36,9 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "contacts",
-          "value": 1000000.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "dedicated account manager",
-        "onboarding support",
+        "phone support",
         "saml",
         "sso"
       ]
@@ -58,7 +50,7 @@
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
@@ -75,9 +67,7 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "phone support",
-        "whatsapp"
+        "phone support"
       ]
     },
     {
@@ -92,7 +82,9 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": []
+      "features": [
+        "email support"
+      ]
     },
     {
       "name": "Starter",
@@ -112,8 +104,11 @@
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "custom branding",
+        "email support"
+      ]
     }
   ],
-  "_first_seen": "2026-10-30"
+  "_first_seen": "2026-10-31"
 }

@@ -1,0 +1,160 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Essentials: billed monthly at $100/month. Premium: starts at $1,000/month but is \"billed yearly\", making the annual_price_per_month 1000. Interpretation: this is the effective per-month price when paying annually. Enterprise has no pricing shown; routed to sales. The detailed feature comparison table at the bottom appears to show Essentials vs Premium tiers with \"Standard\" and \"Elevated\" AI Agent session limits and additional add-ons (additional profiles at $0.009 each, additional 1,000 emails at $0.12, additional AI credits at $10/100K). These add-ons are usage-based extras on top of the plans, not separate subscription tiers, so they are not recorded as plans. The \"Get 12 months of Customer.io free\" startup offer is promotional and not recorded as a plan tier.",
+  "plans": [
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 100.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 1000000.0,
+          "unit": null
+        },
+        {
+          "metric": "object types",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles",
+          "value": 5000.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": 2.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "basic workflows",
+        "custom branding",
+        "integrations",
+        "onboarding support",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "object types",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "audit log",
+        "custom branding",
+        "dedicated account manager",
+        "hipaa",
+        "integrations",
+        "onboarding support",
+        "priority support",
+        "role permissions",
+        "sla policies"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": 1000.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "object types",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspaces",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "audit log",
+        "custom branding",
+        "hipaa",
+        "integrations",
+        "onboarding support",
+        "priority support",
+        "role permissions"
+      ]
+    }
+  ],
+  "_first_seen": "2026-10-31"
+}

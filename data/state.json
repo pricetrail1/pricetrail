@@ -1,56 +1,56 @@
 {
   "intercom": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 16,
     "hash": "965361377c06beb9ef3c61eb68063840a22a1f1a299f22b496fd4bef1941fd69"
   },
   "zendesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 7,
     "hash": "e8e78dcc0e334f40398b1169e8b702de41658bc396e541407a486e07ba1fcc8c"
   },
   "freshdesk": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 8,
     "hash": "1a8fe382a723b09f63645f73159d8089ddd01729fa0b2bd5f283616ae5fca20f"
   },
   "help-scout": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 4,
     "hash": "cf9ab0acade2353371c9f1aa18ec531a273310d836daeabaf6bce00fbe95cab5"
   },
   "front": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 8,
     "hash": "ee5f31b77e38c648c6db272e6aee8294bc657cf55397c72f1fe4bafd284e27ae"
   },
   "crisp": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 3,
     "hash": "482fb5aa046a29133024cc853f31ded61987ff8c858af4e72616960b6f12c4ad"
   },
   "tidio": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 6,
     "hash": "c73a85e224e8113d760c9fda45328f46566eb9d19f6e823a707009d6e9ecb6af"
   },
   "livechat": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 6,
     "hash": "6e226bc77b4d9dba8abc5a7f497d01bff660753e6f8cee047bd1fdd43d86353f"
@@ -64,55 +64,55 @@
   },
   "chatwoot": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 5,
     "hash": "bc6a0e4a45faade1382fc115d7a4b3c37c375a8bcd0ec6b1a56fa866ee56a98c"
   },
   "mailchimp": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
-    "status": "prices_not_in_page",
+    "last_checked": "2026-10-31",
+    "status": "ok",
     "hash_changes": 75,
     "hash": "5de559ca648d16b0912b62ada8e0246af2264253cd48dd3413bfdb44905ff679",
     "no_prices_since": "2026-10-30"
   },
   "brevo": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
-    "hash_changes": 33,
-    "hash": "3d0b3a3a6abb8d363f5d7a4bd3089e7b875783130b2a70a44e7f9e87802311fb"
+    "hash_changes": 34,
+    "hash": "f764614a660a18de7350e292b58b5d34951eb18c458b01b40e4ce17374cf4fd7"
   },
   "kit": {
-    "consecutive_failures": 44,
+    "consecutive_failures": 45,
     "last_checked": "2026-08-05",
     "status": "error",
     "hash_changes": 1,
     "hash": "3ec8b67adea7a3adc7882e2b2d2fba9df1b7aa3d6938c9880dbd38eca9f73ae9",
     "last_error": "HTTP 403",
-    "last_error_at": "2026-10-30"
+    "last_error_at": "2026-10-31"
   },
   "mailerlite": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 6,
     "hash": "b78a7f0e6b628e906d2ab36997985683e9e5e3f7adaef688e9021abdc9cf304a"
   },
   "beehiiv": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 11,
     "hash": "58e5a98e98fc4f084a7caf02f6bf861b85d429231a15aba311af6ce146501cef"
   },
   "customer-io": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
-    "hash_changes": 10,
-    "hash": "2a0edc0bb2de8be2bafb0717265e147b8b774224fc46417c96674b1fca0ae1db"
+    "hash_changes": 11,
+    "hash": "04122ab3ac8343b2edc1ca464958662227259d9d0ec4772eb054470f1225917a"
   },
   "omnisend": {
     "consecutive_failures": 0,
@@ -120,32 +120,32 @@
     "status": "not_a_pricing_page",
     "hash_changes": 10,
     "hash": "b700b13c8646f0c527cb052093be1c3a67c28dabcd7ce81081f5fac2db5cda2a",
-    "last_error_at": "2026-10-30"
+    "last_error_at": "2026-10-31"
   },
   "pipedrive": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 5,
     "hash": "beb0b5eb37f9380f2223e14c76488ab2fce098799fb9a3ef51857c4fcc247e23"
   },
   "close": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 4,
     "hash": "ff935c92f752c95b876be5b000216d7f0a0aea4713dc0e817229236253e7f5ab"
   },
   "copper": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 1,
     "hash": "7d578fbe9a1bd8a0ed95a35506bb3378726e03a9e42a920e47bf66a872e09cd0"
   },
   "zoho-crm": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 4,
     "hash": "15c79888ef5f577e2d504f1e8b067473c27b7b89f7a6b3c8cecbbf6138e24913"
@@ -157,21 +157,21 @@
   },
   "attio": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 5,
     "hash": "e03f280cd7b6f57ce698ef7c1cb805873672c99fc9f90a9cf1f5d2c3a5b2a651"
   },
   "capsule": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 4,
     "hash": "8db10dacd6645e80e3e9be84936e5f86b87db46a800994d8d33f4b6992cc877c"
   },
   "nutshell": {
     "consecutive_failures": 0,
-    "last_checked": "2026-10-30",
+    "last_checked": "2026-10-31",
     "status": "ok",
     "hash_changes": 6,
     "hash": "2c24575c2cd06fd060a8818a90c273da6a38e3c225099286ad94c4ac799a1d4e"
