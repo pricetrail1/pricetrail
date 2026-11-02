@@ -1,7 +1,0 @@
-{
-  "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "This is a Brevo pricing page, but actual numerical prices are not visible in the provided HTML. The page shows plan names (Free, Starter, Standard, Professional, Enterprise) and mentions billing toggle (Monthly/Yearly -10%), but all price values appear to be loaded dynamically via JavaScript (indicated by \"Loading content...\" at the bottom). Specific price figures, per-seat costs, and exact feature breakdowns by plan cannot be extracted from the static page content provided. To accurately extract pricing, the page would need to be loaded in a browser where JavaScript executes to populate the actual price values.",
-  "plans": [],
-  "_first_seen": "2026-11-01"
-}
