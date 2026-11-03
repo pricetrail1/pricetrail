@@ -1,35 +1,8 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page indicates \"Billed annually\" at the top. All main plan prices (Essential, Advanced, Expert) are per-seat annual billing. Fin AI Agent outcome pricing ($0.99) is separate usage-based, not a seat plan. Add-ons (Pro, Copilot, Proactive Support Plus) are optional extras sold alongside main plans. Copilot shows both annual ($29/agent/mo billed annually) and monthly ($35/agent/mo billed monthly) pricing explicitly stated in FAQ. Pro stated as $100/month with 500 conversations/month included. Proactive Support Plus $99/mo with 500 messages included.",
+  "extraction_notes": "Billing toggle shows \"Billed annually\". All per-seat plan prices shown are annual per-month figures (stated as \"per seat/mo\" on an annual billing page). Fin AI Agent is $0.99 per outcome (usage-based, separate from seat pricing). Struck-through price of $29 on Essential plan with discounted price of $19 - this appears to be showing a promotional offer; recorded the standard $29 figure. Trial is 14 days and includes add-ons. Copilot has both annual ($29/agent/mo) and monthly ($35/agent/mo) pricing stated in FAQ - recording the annual version on the pricing page. Pro add-on is $100/mo.",
   "plans": [
-    {
-      "name": "Copilot",
-      "key": "copilot",
-      "monthly_price": 35.0,
-      "annual_price_per_month": 29.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "free ai auto-translation conversations per agent per month",
-          "value": 10.0,
-          "unit": null
-        },
-        {
-          "metric": "free copilot conversations per agent per month",
-          "value": 10.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "ai assistant"
-      ]
-    },
     {
       "name": "Proactive Support Plus",
       "key": "proactivesupportplus",
@@ -40,7 +13,7 @@
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "messages included per month",
@@ -60,7 +33,7 @@
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "conversations analyzed per month",
@@ -74,6 +47,7 @@
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant"
       ]
     },
@@ -90,8 +64,36 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "live chat",
-        "whatsapp"
+        "advanced workflows",
+        "api access",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": null,
+      "annual_price_per_month": 29.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "free ai auto-translation conversations per agent per month",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "free copilot conversations per agent per month",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant"
       ]
     },
     {
@@ -107,8 +109,9 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "live chat",
-        "whatsapp"
+        "api access",
+        "basic workflows",
+        "live chat"
       ]
     },
     {
@@ -124,8 +127,10 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "live chat",
-        "whatsapp"
+        "advanced workflows",
+        "api access",
+        "custom branding",
+        "live chat"
       ]
     },
     {
@@ -142,12 +147,14 @@
       "limits": [
         {
           "metric": "outcomes",
-          "value": -1.0,
+          "value": null,
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "ai assistant"
+      ]
     }
   ],
-  "captured_at": "2026-10-26T13:27:31.410395+00:00"
+  "captured_at": "2026-11-03T13:43:03.455836+00:00"
 }
