@@ -1,11 +1,11 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "CRM plans are per-user/per-month pricing. Page shows monthly and annual options with a toggle; toggle is set to Annual showing \"Save 15%\" and \"Save X/month with annual billing\" callouts. Calculated annual_price_per_month by subtracting stated monthly savings from monthly prices: Foundation $13 - $6 = $7 annual savings, so $13/12 * 12 - $6 = $11.05; Growth $25 - $7 = $18.25/mo effective, so $21.25; Pro $42 - $7 = $35.75; Business $59 - $8 = $51/mo effective, so $50.25; Enterprise $79 - $10 = $69/mo effective, so $66.75. Add-ons (Email Marketing, Engagement, Simple Emails, SMS, Prospecting, Quotes & Invoices) are shown separately below the CRM tiers and are sold on top of a CRM subscription, not as standalone alternatives. Add-on annual pricing not shown on page. Engagement add-on is per user/month at $16; Email Marketing at $49/month but appears to be contact-based (no per-user stated); others are listed without clear per-user/per-contact indicators. Free trial is 14 days with no credit card required for all main CRM plans.",
+  "extraction_notes": "Page shows both monthly and annual pricing with a toggle. Monthly prices are displayed by default. Annual pricing is calculated by subtracting the monthly savings shown (e.g., \"Save $6/month with annual billing\" means annual price is $13 - $6 = $7/month effective rate). All CRM plans are per-seat pricing. Add-ons (Marketing, Engagement, Email Sends, SMS, Prospect, Invoices) are listed separately and priced differently - not as plan tiers. Marketing add-on is $49/month flat rate. Engagement add-on is $16/month per user. The email sends, SMS, prospect, and invoices add-ons are usage-based or per-contact based, not per-seat CRM plans. Including only the 5 main CRM subscription tiers: Foundation, Growth, Pro, Business, Enterprise. Trial is 14 days.",
   "plans": [
     {
-      "name": "Simple Emails",
-      "key": "simpleemails",
+      "name": "Email Sends",
+      "key": "emailsends",
       "monthly_price": 5.0,
       "annual_price_per_month": null,
       "is_free": false,
@@ -14,14 +14,20 @@
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "email sends",
+          "value": 250.0,
+          "unit": null
+        }
+      ],
       "features": []
     },
     {
       "name": "Foundation",
       "key": "foundation",
       "monthly_price": 13.0,
-      "annual_price_per_month": 11.05,
+      "annual_price_per_month": 7.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -42,6 +48,7 @@
       ],
       "features": [
         "ai assistant",
+        "email & calendar sync",
         "integrations"
       ]
     },
@@ -56,8 +63,16 @@
       "is_addon": true,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
-      "features": []
+      "limits": [
+        {
+          "metric": "sms credits",
+          "value": 100.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "whatsapp"
+      ]
     },
     {
       "name": "Engagement",
@@ -72,6 +87,7 @@
       "trial_days": null,
       "limits": [],
       "features": [
+        "integrations",
         "whatsapp"
       ]
     },
@@ -79,7 +95,7 @@
       "name": "Growth",
       "key": "growth",
       "monthly_price": 25.0,
-      "annual_price_per_month": 21.25,
+      "annual_price_per_month": 18.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -95,12 +111,14 @@
       ],
       "features": [
         "ai assistant",
+        "custom reporting",
+        "email & calendar sync",
         "integrations"
       ]
     },
     {
-      "name": "Prospecting",
-      "key": "prospecting",
+      "name": "Prospect",
+      "key": "prospect",
       "monthly_price": 37.0,
       "annual_price_per_month": null,
       "is_free": false,
@@ -116,7 +134,7 @@
       "name": "Pro",
       "key": "pro",
       "monthly_price": 42.0,
-      "annual_price_per_month": 35.75,
+      "annual_price_per_month": 35.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -136,13 +154,16 @@
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant",
+        "custom reporting",
+        "email & calendar sync",
         "integrations"
       ]
     },
     {
-      "name": "Email Marketing",
-      "key": "emailmarketing",
+      "name": "Marketing",
+      "key": "marketing",
       "monthly_price": 49.0,
       "annual_price_per_month": null,
       "is_free": false,
@@ -152,13 +173,15 @@
       "min_seats": null,
       "trial_days": null,
       "limits": [],
-      "features": []
+      "features": [
+        "integrations"
+      ]
     },
     {
       "name": "Business",
       "key": "business",
       "monthly_price": 59.0,
-      "annual_price_per_month": 50.25,
+      "annual_price_per_month": 51.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -178,7 +201,11 @@
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant",
+        "audit log",
+        "custom reporting",
+        "email & calendar sync",
         "integrations"
       ]
     },
@@ -186,7 +213,7 @@
       "name": "Enterprise",
       "key": "enterprise",
       "monthly_price": 79.0,
-      "annual_price_per_month": 66.75,
+      "annual_price_per_month": 69.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -206,16 +233,19 @@
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant",
-        "api access",
+        "audit log",
+        "custom reporting",
+        "email & calendar sync",
         "integrations",
         "phone support",
         "sso"
       ]
     },
     {
-      "name": "Quotes & Invoices",
-      "key": "quotesinvoices",
+      "name": "Invoices",
+      "key": "invoices",
       "monthly_price": 79.0,
       "annual_price_per_month": null,
       "is_free": false,
@@ -228,5 +258,5 @@
       "features": []
     }
   ],
-  "captured_at": "2026-10-26T13:27:40.609088+00:00"
+  "captured_at": "2026-11-04T13:52:22.089268+00:00"
 }
