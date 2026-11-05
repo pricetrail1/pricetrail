@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows pricing in multiple currencies (USD, INR, EUR, GBP, JPY, SGD, AUD, AED, SAR, MXN, ZAR, NGN, KES, EGP, CAD) with a toggle for Monthly/Annually billing. However, no actual numerical prices are displayed for the Standard, Professional, Enterprise, or Bigin Express plans—only \"/user/month\" placeholder text and \"FREE TRIAL\" buttons. Only Zoho CRM Plus shows a price of $20/user/month. The page also mentions an Ultimate edition in the FAQ but no pricing or details are provided on this page. Feature lists were extracted from the visible plan cards and mapped to the allowed feature list.",
+  "extraction_notes": "Page shows Monthly/Annually toggle but no actual prices are visible for Standard, Professional, Enterprise, and Bigin Express plans—only placeholder text like \"/user/month\" with \"FREE TRIAL\" buttons. The prices appear to be dynamically loaded or require interaction with the toggle/currency selector. Only Zoho One shows a specific price ($30/user/month). Free plan limits to 3 users as stated. Feature extraction is limited because many features listed are marketing descriptions not in the required features list; only included those that matched exactly.",
   "plans": [
     {
       "name": "Free",
@@ -25,15 +25,14 @@
         "api access",
         "basic workflows",
         "contact management",
-        "mobile apps",
-        "tasks, meetings & calls",
+        "custom reporting",
         "workflow automation"
       ]
     },
     {
-      "name": "Zoho CRM Plus",
-      "key": "zohocrmplus",
-      "monthly_price": 20.0,
+      "name": "Zoho One",
+      "key": "zohoone",
+      "monthly_price": 30.0,
       "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
@@ -57,10 +56,7 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "built-in calling",
-        "calendar integration",
-        "custom fields",
-        "email integration",
+        "api access",
         "integrations"
       ]
     },
@@ -77,9 +73,11 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "approval process",
-        "audit log",
-        "custom buttons and functions",
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "custom branding",
+        "custom reporting",
         "integrations",
         "sandbox"
       ]
@@ -99,10 +97,10 @@
       "features": [
         "advanced workflows",
         "ai assistant",
-        "custom portals",
+        "api access",
+        "custom branding",
         "custom reporting",
-        "integrations",
-        "inventory management"
+        "integrations"
       ]
     },
     {
@@ -118,14 +116,10 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "built-in calling",
-        "calendar integration",
-        "custom modules",
-        "email integration",
-        "hipaa",
+        "api access",
         "integrations"
       ]
     }
   ],
-  "captured_at": "2026-10-26T12:23:14.583665+00:00"
+  "captured_at": "2026-11-05T14:06:47.989560+00:00"
 }
