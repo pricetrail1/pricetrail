@@ -1,0 +1,101 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Essentials shows \"$100 per month / billed monthly\". Premium shows \"$1,000 per month / billed yearly\" - this is an annual price, so recorded as annual_price_per_month. Enterprise is custom pricing with \"Talk to sales\" only. AI Agent features and session limits table at bottom appears to be a feature comparison breakdown across plans, not separate purchasable plans, so not recorded as separate plans. The page also mentions \"Startup Program\" offering \"up to 12 months free\" for early-stage companies but this is a promotional program, not a standard plan tier.",
+  "plans": [
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 100.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 1000000.0,
+          "unit": null
+        },
+        {
+          "metric": "object types",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "basic workflows",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "audit log",
+        "dedicated account manager",
+        "hipaa",
+        "priority support"
+      ]
+    },
+    {
+      "name": "Premium",
+      "key": "premium",
+      "monthly_price": null,
+      "annual_price_per_month": 1000.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "object types",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "profiles",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "hipaa",
+        "integrations",
+        "live chat",
+        "onboarding support",
+        "priority support"
+      ]
+    }
+  ],
+  "_first_seen": "2026-11-06"
+}
