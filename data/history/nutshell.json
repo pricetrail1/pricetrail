@@ -709,6 +709,64 @@
      "seat": false
     }
    ]
+  },
+  {
+   "at": "2026-11-08T12:52:13.208734+00:00",
+   "date": "2026-11-08",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Business",
+     "key": "business",
+     "m": 59.0,
+     "a": 51.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Enterprise",
+     "key": "enterprise",
+     "m": 79.0,
+     "a": 69.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Foundation",
+     "key": "foundation",
+     "m": 13.0,
+     "a": 7.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 25.0,
+     "a": 18.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 42.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    }
+   ]
   }
  ]
 }
