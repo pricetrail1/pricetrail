@@ -1,0 +1,138 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page displays both monthly and annual billing options via toggle (defaulting to Annual). Monthly prices are shown separately. All per-agent/month pricing. Suite Enterprise + Copilot is custom pricing (Talk to Sales). Add-ons (Copilot, Workforce Engagement Bundle, Contact Center) are listed as optional features billed separately. The page mentions numerous features in descriptive text but specific feature inclusion for each plan is not always explicitly stated in plan cards; extracted features listed are those mentioned as included per the plan descriptions. Currency not explicitly stated but context indicates USD.",
+  "plans": [
+    {
+      "name": "Support Team",
+      "key": "supportteam",
+      "monthly_price": 25.0,
+      "annual_price_per_month": 19.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "automations and triggers",
+        "customer context",
+        "email",
+        "pre-written responses",
+        "prebuilt analytics dashboards",
+        "ticket routing",
+        "ticketing"
+      ]
+    },
+    {
+      "name": "Suite Team",
+      "key": "suiteteam",
+      "monthly_price": 69.0,
+      "annual_price_per_month": 55.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "knowledge base",
+        "live chat",
+        "messaging and live chat",
+        "omnichannel routing",
+        "sla policies"
+      ]
+    },
+    {
+      "name": "Suite Professional",
+      "key": "suiteprofessional",
+      "monthly_price": 149.0,
+      "annual_price_per_month": 115.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom reporting",
+        "sandbox",
+        "skills-based routing",
+        "sla policies"
+      ]
+    },
+    {
+      "name": "Contact Center",
+      "key": "contactcenter",
+      "monthly_price": null,
+      "annual_price_per_month": 83.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Copilot",
+      "key": "copilot",
+      "monthly_price": null,
+      "annual_price_per_month": 50.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant"
+      ]
+    },
+    {
+      "name": "Suite Enterprise + Copilot",
+      "key": "suiteenterprisecopilot",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant",
+        "audit log",
+        "custom branding",
+        "intelligent triage",
+        "role permissions",
+        "sandbox"
+      ]
+    },
+    {
+      "name": "Workforce Engagement Bundle",
+      "key": "workforceengagementbundle",
+      "monthly_price": null,
+      "annual_price_per_month": 50.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    }
+  ],
+  "_first_seen": "2026-11-10"
+}
