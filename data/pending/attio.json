@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Toggle visible on page defaulting to Annual. For Plus and Pro, monthly pricing shows higher rates ($40/$100) with annual discount of ~20% applied ($35/$79 per additional user on Plus; $32 and $80 per month when paid annually for base workspace pricing). Plus and Pro display base workspace pricing plus per-seat add-on pricing. Ultra is billed annually only with a minimum of 5 users. Pro includes a 14-day free trial. Additional workspace credits and records are sold as add-ons with pricing tiers shown ($70-$595/mo for credits, $240-$400/mo for additional records), but these are usage-based extras, not standalone plans. Governance add-on is $30 per user per month billed annually and is available for Pro; it is included with Ultra. The page header says \"Save 20% with annual billing\" confirming the annual discount.",
+  "extraction_notes": "Annual billing toggle is visible; Plus and Pro show $40/mo and $100/mo under \"Annual\" column at 20% discount. The page states \"Save 20% with annual billing\" for Plus and Pro. Ultra is billed annually only at $1,000/mo. Page shows 14-day free trial for Pro plan. Add-on workspace credits are available separately but not recorded as plans. Free plan has 14-day trial mentioned in FAQ but trial is primarily for Pro; Free plan itself has no stated trial period.",
   "plans": [
     {
       "name": "Free",
@@ -16,6 +16,11 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "ask attio credits",
+          "value": 100.0,
+          "unit": null
+        },
+        {
           "metric": "objects",
           "value": 3.0,
           "unit": null
@@ -26,13 +31,24 @@
           "unit": null
         },
         {
+          "metric": "reports",
+          "value": 3.0,
+          "unit": null
+        },
+        {
           "metric": "users",
           "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "workspace credits",
+          "value": 250.0,
           "unit": null
         }
       ],
       "features": [
         "ai assistant",
+        "api access",
         "basic workflows",
         "integrations"
       ]
@@ -46,12 +62,12 @@
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
-      "min_seats": 1,
+      "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "emails sent per user per month",
-          "value": 1000.0,
+          "metric": "ask attio credits",
+          "value": 500.0,
           "unit": null
         },
         {
@@ -65,17 +81,27 @@
           "unit": null
         },
         {
+          "metric": "reports",
+          "value": 15.0,
+          "unit": null
+        },
+        {
           "metric": "users",
           "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "workspace credits",
+          "value": 1500.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
         "ai assistant",
+        "api access",
         "basic workflows",
         "integrations",
-        "role permissions"
+        "live chat"
       ]
     },
     {
@@ -87,12 +113,12 @@
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
-      "min_seats": 1,
+      "min_seats": null,
       "trial_days": 14,
       "limits": [
         {
-          "metric": "emails sent per user per month",
-          "value": -1.0,
+          "metric": "ask attio credits",
+          "value": 1000.0,
           "unit": null
         },
         {
@@ -106,8 +132,18 @@
           "unit": null
         },
         {
+          "metric": "reports",
+          "value": 100.0,
+          "unit": null
+        },
+        {
           "metric": "users",
           "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspace credits",
+          "value": 10000.0,
           "unit": null
         }
       ],
@@ -116,27 +152,8 @@
         "ai assistant",
         "api access",
         "basic workflows",
-        "custom reporting",
         "integrations",
-        "role permissions"
-      ]
-    },
-    {
-      "name": "Governance add-on",
-      "key": "governance",
-      "monthly_price": null,
-      "annual_price_per_month": 30.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": [
-        "audit log",
-        "role permissions",
-        "single sign-on"
+        "live chat"
       ]
     },
     {
@@ -148,12 +165,12 @@
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
-      "min_seats": 5,
+      "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "emails sent per user per month",
-          "value": -1.0,
+          "metric": "ask attio credits",
+          "value": 2500.0,
           "unit": null
         },
         {
@@ -167,8 +184,18 @@
           "unit": null
         },
         {
+          "metric": "reports",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "users",
           "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspace credits",
+          "value": 20000.0,
           "unit": null
         }
       ],
@@ -178,12 +205,11 @@
         "api access",
         "audit log",
         "basic workflows",
-        "custom reporting",
         "integrations",
         "role permissions",
         "single sign-on"
       ]
     }
   ],
-  "_first_seen": "2026-11-11"
+  "_first_seen": "2026-11-12"
 }

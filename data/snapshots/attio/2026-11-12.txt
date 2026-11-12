@@ -1,0 +1,772 @@
+Revenue around the clock.
+Start for free with plans for every stage of growth, whether startup or enterprise.
+Annual
+Save 20%
+with annual billing
+For individuals to get started with Attio.
+$
+0
+Up to 3 users.
+Get started with:
+Ask Attio, your personal agent
+Self-builds from email and calendar
+Automatic enrichment
+Agents and workflows
+50,000 records and 3 objects
+For small teams building their first sales process.
+$
+40
+mo/workspace
+Includes 1 user.
+Add users for
+$44
+$35
+/mo each.
+Everything in Free, and:
+Email sharing and AI summaries
+Send 1,000 emails/mo
+Private lists
+Basic permissions
+250,000 records and 5 objects
+For growing teams turning sales into a repeatable engine.
+$
+100
+mo/workspace
+Includes 1 user.
+Add users for
+$99
+$79
+/mo each.
+Everything in Plus, and:
+Custom objects
+Call intelligence
+Sequences
+Team and user permissions
+Advanced reporting
+Track product usage and events
+Data rules for reps and agents
+1M records and 12 objects
+For teams and orgs running multiple GTM motions at scale.
+$
+1,000
+mo/workspace
+Includes 5 users, annual billing.
+Add users for
+$189
+/mo each.
+Everything in Pro, and:
+Unlimited objects
+Query in SQL with API or MCP
+Data connector
+Unlimited data rules by team
+Single sign-on (SSO)
+User provisioning (SCIM)
+Audit logs
+Advanced controls
+Forward-deployed onboarding
+Compare plans and features
+Compare plans
+Platform features
+Select preferred billing cycle
+Annual
+Free
+$
+0
+Up to 3 users.
+$
+0
+Up to 3 users.
+Plus
+$
+40
+/mo
+Includes 1 user.
+Add users for
+$44
+$35
+/mo each.
+$
+40
+/mo
+Includes 1 user.
+Pro
+Most popular
+$
+100
+/mo
+Includes 1 user.
+Add users for
+$99
+$79
+/mo each.
+$
+100
+/mo
+Includes 1 user.
+Ultra
+$
+1,000
+/mo
+Includes 5 users, annual billing.
+Add users for
+$189
+/mo each.
+$
+1,000
+/mo
+Includes 5 users, annual billing.
+Agents and AI
+Ask Attio
+AI agents
+Call intelligence
+—
+Ask Attio credits
+100
+500
+1,000
+2,500
+Workspace credits
+250
+1,500
+10,000
+20,000
+Additional workspace credits
+—
+Starting at
+$85
+$70
+/mo
+Starting at
+$85
+$70
+/mo
+Starting at
+$85
+$70
+/mo
+Automation
+Workflows
+Agent and integration blocks
+SQL in workflows
+—
+Sequences
+—
+Context and data model
+Records from email and calendar
+Records
+50,000
+250,000
+1,000,000
+3,000,000
+Additional records
+—
+$300
+$240
+/mo per 1M records
+$300
+$240
+/mo per 1M records
+Objects
+3
+5
+12, then
+$500
+$400
+/mo each
+Unlimited
+Custom objects and relationships
+—
+Formula attributes
+—
+Record templates
+—
+Record summaries
+—
+People enrichment
+File storage
+50 GB
+Unlimited
+Company enrichment
+Core profile
++ Headcount and ARR
++ Funding
+Communication intelligence
+Interactions and strength
++ Email and calendar
++ Next meeting
+Pipeline and activity
+Activity tracking (beta)
+Emails and meetings
+Manual logging
+Custom + integrations
+Rules
+—
+8 per object
+Unlimited
+Rules by team
+—
+Reports
+3
+15
+100
+Unlimited
+Report types
+Insights
++ Funnels and segments
++ Targets and trends
+Email and calendar
+Connected accounts per user
+1
+2
+3+
+Email sharing
+Subject lines and metadata
+Full, workspace-wide
+Full, by person or record
+Email privacy controls
+Personal blocklist
++ Workspace blocklist
+Emails sent per user
+200/mo
+1,000/mo
+Unlimited
+Bulk email sending
+10 at once
+50 at once
+Custom branding
+—
+Email summaries and labeling
+—
+Platform and developer
+API and webhooks
+MCP server
+App SDK
+Apps and integrations
+Mobile apps
+SQL access through the API and MCP
+—
+Data connectors
+—
+1 included
+Security and admin
+Users
+3
+10
+No limit
+Access permissions
+Everyone can view and edit
+Workspace-wide
++ Team or person
+Private lists
+—
+Teams
+—
+Up to 10
+Unlimited
+Single sign-on (SSO)
+—
+Governance add-on
+User provisioning (SCIM)
+—
+Governance add-on
+Audit logs
+—
+Governance add-on
+Admin-only exports
+—
+Governance add-on
+Session management
+—
+Pay by invoice
+—
+Support and services
+Help center
+Chat and email support
+Priority support
+—
+Migration services
+—
+Talk to sales
+Forward-deployed onboarding
+—
+Annual
+Ask Attio
+Free
+Plus
+Pro
+Ultra
+AI agents
+Free
+Plus
+Pro
+Ultra
+Call intelligence
+Free
+—
+Plus
+—
+Pro
+Ultra
+Ask Attio credits
+Free
+100
+Plus
+500
+Pro
+1,000
+Ultra
+2,500
+Workspace credits
+Free
+250
+Plus
+1,500
+Pro
+10,000
+Ultra
+20,000
+Additional workspace credits
+Free
+—
+Plus
+Starting at
+$85
+$70
+/mo
+Pro
+Starting at
+$85
+$70
+/mo
+Ultra
+Starting at
+$85
+$70
+/mo
+Workflows
+Free
+Plus
+Pro
+Ultra
+Agent and integration blocks
+Free
+Plus
+Pro
+Ultra
+SQL in workflows
+Free
+—
+Plus
+—
+Pro
+—
+Ultra
+Sequences
+Free
+—
+Plus
+—
+Pro
+Ultra
+Records from email and calendar
+Free
+Plus
+Pro
+Ultra
+Records
+Free
+50,000
+Plus
+250,000
+Pro
+1,000,000
+Ultra
+3,000,000
+Additional records
+Free
+—
+Plus
+—
+Pro
+$300
+$240
+/mo per 1M records
+Ultra
+$300
+$240
+/mo per 1M records
+Objects
+Free
+3
+Plus
+5
+Pro
+12, then
+$500
+$400
+/mo each
+Ultra
+Unlimited
+Custom objects and relationships
+Free
+—
+Plus
+—
+Pro
+Ultra
+Formula attributes
+Free
+—
+Plus
+—
+Pro
+Ultra
+Record templates
+Free
+—
+Plus
+—
+Pro
+Ultra
+Record summaries
+Free
+—
+Plus
+Pro
+Ultra
+People enrichment
+Free
+Plus
+Pro
+Ultra
+File storage
+Free
+50 GB
+Plus
+50 GB
+Pro
+Unlimited
+Ultra
+Unlimited
+Company enrichment
+Free
+Core profile
+Plus
++ Headcount and ARR
+Pro
++ Funding
+Ultra
++ Funding
+Communication intelligence
+Free
+Interactions and strength
+Plus
++ Email and calendar
+Pro
++ Next meeting
+Ultra
++ Next meeting
+Activity tracking (beta)
+Free
+Emails and meetings
+Plus
+Manual logging
+Pro
+Custom + integrations
+Ultra
+Custom + integrations
+Rules
+Free
+—
+Plus
+—
+Pro
+8 per object
+Ultra
+Unlimited
+Rules by team
+Free
+—
+Plus
+—
+Pro
+—
+Ultra
+Reports
+Free
+3
+Plus
+15
+Pro
+100
+Ultra
+Unlimited
+Report types
+Free
+Insights
+Plus
++ Funnels and segments
+Pro
++ Targets and trends
+Ultra
++ Targets and trends
+Connected accounts per user
+Free
+1
+Plus
+1
+Pro
+2
+Ultra
+3+
+Email sharing
+Free
+Subject lines and metadata
+Plus
+Full, workspace-wide
+Pro
+Full, by person or record
+Ultra
+Full, by person or record
+Email privacy controls
+Free
+Personal blocklist
+Plus
+Personal blocklist
+Pro
++ Workspace blocklist
+Ultra
++ Workspace blocklist
+Emails sent per user
+Free
+200/mo
+Plus
+1,000/mo
+Pro
+Unlimited
+Ultra
+Unlimited
+Bulk email sending
+Free
+10 at once
+Plus
+50 at once
+Pro
+50 at once
+Ultra
+50 at once
+Custom branding
+Free
+—
+Plus
+Pro
+Ultra
+Email summaries and labeling
+Free
+—
+Plus
+Pro
+Ultra
+API and webhooks
+Free
+Plus
+Pro
+Ultra
+MCP server
+Free
+Plus
+Pro
+Ultra
+App SDK
+Free
+Plus
+Pro
+Ultra
+Apps and integrations
+Free
+Plus
+Pro
+Ultra
+Mobile apps
+Free
+Plus
+Pro
+Ultra
+SQL access through the API and MCP
+Free
+—
+Plus
+—
+Pro
+—
+Ultra
+Data connectors
+Free
+—
+Plus
+—
+Pro
+—
+Ultra
+1 included
+Users
+Free
+3
+Plus
+10
+Pro
+No limit
+Ultra
+No limit
+Access permissions
+Free
+Everyone can view and edit
+Plus
+Workspace-wide
+Pro
++ Team or person
+Ultra
++ Team or person
+Private lists
+Free
+—
+Plus
+Pro
+Ultra
+Teams
+Free
+—
+Plus
+—
+Pro
+Up to 10
+Ultra
+Unlimited
+Single sign-on (SSO)
+Free
+—
+Plus
+—
+Pro
+Governance add-on
+Ultra
+User provisioning (SCIM)
+Free
+—
+Plus
+—
+Pro
+Governance add-on
+Ultra
+Audit logs
+Free
+—
+Plus
+—
+Pro
+Governance add-on
+Ultra
+Admin-only exports
+Free
+—
+Plus
+—
+Pro
+Governance add-on
+Ultra
+Session management
+Free
+—
+Plus
+—
+Pro
+—
+Ultra
+Pay by invoice
+Free
+—
+Plus
+—
+Pro
+Ultra
+Help center
+Free
+Plus
+Pro
+Ultra
+Chat and email support
+Free
+Plus
+Pro
+Ultra
+Priority support
+Free
+—
+Plus
+—
+Pro
+Ultra
+Migration services
+Free
+—
+Plus
+Talk to sales
+Pro
+Talk to sales
+Ultra
+Talk to sales
+Forward-deployed onboarding
+Free
+—
+Plus
+—
+Pro
+—
+Ultra
+“When
+I
+first
+opened
+Attio,
+I
+instantly
+got
+the
+feeling
+this
+was
+the
+next
+generation
+of
+CRM.”
+Margaret Shen
+Head of Business Operations · Modal
+Frequently asked
+questions
+Yes. The Free plan costs nothing for up to three users. It includes Ask Attio, automatic enrichment, workflows, and email and calendar sync, with up to 50,000 records and three objects.
+Yes. Every new Attio workspace starts with a 14-day free trial of the Pro plan, with access to all Pro features. When the trial ends, admins can choose any plan, including Free.
+Yes. On Plus and Pro, paying annually costs about 20% less than paying monthly. Ultra is billed annually only.
+Free: For individuals getting started.
+Plus: For small teams of up to 10 users building their first sales process.
+Pro: For growing teams turning sales into a repeatable engine with advanced features like custom objects to model their business and activity tracking.
+Ultra: For teams and enterprises running complex GTM motions with people and agents, that need scale, controls, and governance.
+Yes. Pro teams can add SSO, SCIM, audit logs, and advanced data controls with the Governance add-on for $30 per user a month, billed annually. Governance is included with Ultra.
+No. Ultra is available for purchase on your own. Talk to sales if you want help with a migration or a security review.
+Yes. Admins can change plans at any time in workspace settings. Upgrades apply right away and are prorated, and downgrades take effect at the next renewal. If you cancel, your team keeps access until the end of the current billing period.
+Each user gets a monthly allowance of Ask Attio credits. Each workspace also gets a shared pool of workspace credits for workflows and AI features. When a user runs out of Ask Attio credits, Ask Attio can draw on workspace credits unless an admin sets a limit. With paid plans you can buy more workspace credits at any time.
+For more details on how credits work, check out
+our guide
+.
+Paid plans can add workspace credits in monthly packs, and larger packs cost less per credit.
+Prices per month:
+5,000 credits: $70 billed annually, or $85 billed monthly
+10,000 credits: $120 billed annually, or $150 billed monthly
+25,000 credits: $260 billed annually, or $330 billed monthly
+50,000 credits: $475 billed annually, or $595 billed monthly
+All payments can be made via credit card. For our Pro and Ultra plans, we can issue invoices and will accept PO, ACH, check or wire.
+Yes. Venture-backed startups with up to 10 users get 80% off the annual Pro plan and credits for the first year, and 30% off the second year. Apply within 90 days of creating your workspace.
+Yes. Every plan includes the Attio MCP server, which connects AI tools that support the Model Context Protocol, such as Claude and ChatGPT, to your workspace. Ultra adds SQL access through MCP for exact answers across your data.
+Yes. On paid plans, talk to sales for migration help. Ultra also includes onboarding with a forward-deployed engineer (FDE).
+Expand all
+Agentic revenue runs on Attio.
