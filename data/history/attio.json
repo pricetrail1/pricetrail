@@ -313,6 +313,54 @@
      "seat": true
     }
    ]
+  },
+  {
+   "at": "2026-11-13T14:01:03.735336+00:00",
+   "date": "2026-11-13",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Free",
+     "key": "free",
+     "m": 0.0,
+     "a": 0.0,
+     "free": true,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Plus",
+     "key": "plus",
+     "m": 40.0,
+     "a": 32.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Pro",
+     "key": "pro",
+     "m": 100.0,
+     "a": 80.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "Ultra",
+     "key": "ultra",
+     "m": null,
+     "a": 1000.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
   }
  ]
 }

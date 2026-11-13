@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Extracted Free, Plus, Pro, and Enterprise as main plans. Plus and Pro show 20% discount with annual billing (e.g., $44 monthly becomes $35/month when billed annually). The four workspace credit add-ons are marked as is_addon: true as they are optional usage-based extras sold alongside the main plans. Free plan includes a 14-day trial of the Pro plan mentioned in the FAQ. The page uses \"per user/month\" for all paid plans, confirming is_per_seat: true.",
+  "extraction_notes": "Annual billing toggle is visible; Plus and Pro show $40/mo and $100/mo under \"Annual\" column at 20% discount. The page states \"Save 20% with annual billing\" for Plus and Pro. Ultra is billed annually only at $1,000/mo. Page shows 14-day free trial for Pro plan. Add-on workspace credits are available separately but not recorded as plans. Free plan has 14-day trial mentioned in FAQ but trial is primarily for Pro; Free plan itself has no stated trial period.",
   "plans": [
     {
       "name": "Free",
@@ -10,20 +10,15 @@
       "annual_price_per_month": 0.0,
       "is_free": true,
       "is_custom_pricing": false,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "emails per month",
-          "value": 200.0,
+          "metric": "ask attio credits",
+          "value": 100.0,
           "unit": null
-        },
-        {
-          "metric": "file storage",
-          "value": 50.0,
-          "unit": "GB"
         },
         {
           "metric": "objects",
@@ -36,17 +31,23 @@
           "unit": null
         },
         {
-          "metric": "seat credits per user per month",
-          "value": 100.0,
+          "metric": "reports",
+          "value": 3.0,
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "users",
           "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "workspace credits",
+          "value": 250.0,
           "unit": null
         }
       ],
       "features": [
+        "ai assistant",
         "api access",
         "basic workflows",
         "integrations"
@@ -55,24 +56,19 @@
     {
       "name": "Plus",
       "key": "plus",
-      "monthly_price": 44.0,
-      "annual_price_per_month": 35.0,
+      "monthly_price": 40.0,
+      "annual_price_per_month": 32.0,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "emails per month",
-          "value": 1000.0,
+          "metric": "ask attio credits",
+          "value": 500.0,
           "unit": null
-        },
-        {
-          "metric": "file storage",
-          "value": 50.0,
-          "unit": "GB"
         },
         {
           "metric": "objects",
@@ -85,63 +81,45 @@
           "unit": null
         },
         {
-          "metric": "seat credits per user per month",
-          "value": 500.0,
+          "metric": "reports",
+          "value": 15.0,
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "users",
           "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "workspace credits",
+          "value": 1500.0,
           "unit": null
         }
       ],
       "features": [
+        "ai assistant",
         "api access",
         "basic workflows",
-        "integrations"
+        "integrations",
+        "live chat"
       ]
     },
     {
-      "name": "Add workspace credits + 5,000/month",
-      "key": "addworkspacecredits5000month",
-      "monthly_price": 85.0,
-      "annual_price_per_month": 70.0,
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 100.0,
+      "annual_price_per_month": 80.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "workspace credits per month",
-          "value": 5000.0,
-          "unit": null
-        }
-      ],
-      "features": []
-    },
-    {
-      "name": "Pro",
-      "key": "pro",
-      "monthly_price": 99.0,
-      "annual_price_per_month": 79.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": true,
-      "is_addon": false,
-      "min_seats": null,
       "trial_days": 14,
       "limits": [
         {
-          "metric": "emails per month",
-          "value": -1.0,
+          "metric": "ask attio credits",
+          "value": 1000.0,
           "unit": null
-        },
-        {
-          "metric": "file storage",
-          "value": -1.0,
-          "unit": "GB"
         },
         {
           "metric": "objects",
@@ -154,103 +132,45 @@
           "unit": null
         },
         {
-          "metric": "seat credits per user per month",
-          "value": 1000.0,
+          "metric": "reports",
+          "value": 100.0,
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "users",
           "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "workspace credits",
+          "value": 10000.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
+        "ai assistant",
         "api access",
-        "custom reporting",
-        "integrations"
+        "basic workflows",
+        "integrations",
+        "live chat"
       ]
     },
     {
-      "name": "Add workspace credits + 10,000/month",
-      "key": "addworkspacecredits10000month",
-      "monthly_price": 150.0,
-      "annual_price_per_month": 120.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "workspace credits per month",
-          "value": 10000.0,
-          "unit": null
-        }
-      ],
-      "features": []
-    },
-    {
-      "name": "Add workspace credits + 25,000/month",
-      "key": "addworkspacecredits25000month",
-      "monthly_price": 330.0,
-      "annual_price_per_month": 260.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "workspace credits per month",
-          "value": 25000.0,
-          "unit": null
-        }
-      ],
-      "features": []
-    },
-    {
-      "name": "Add workspace credits + 50,000/month",
-      "key": "addworkspacecredits50000month",
-      "monthly_price": 595.0,
-      "annual_price_per_month": 475.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "workspace credits per month",
-          "value": 50000.0,
-          "unit": null
-        }
-      ],
-      "features": []
-    },
-    {
-      "name": "Enterprise",
-      "key": "enterprise",
+      "name": "Ultra",
+      "key": "ultra",
       "monthly_price": null,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 1000.0,
       "is_free": false,
-      "is_custom_pricing": true,
-      "is_per_seat": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [
         {
-          "metric": "emails per month",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "file storage",
-          "value": -1.0,
+          "metric": "ask attio credits",
+          "value": 2500.0,
           "unit": null
         },
         {
@@ -260,29 +180,36 @@
         },
         {
           "metric": "records",
+          "value": 3000000.0,
+          "unit": null
+        },
+        {
+          "metric": "reports",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "seat credits per user per month",
-          "value": 2500.0,
+          "metric": "users",
+          "value": -1.0,
           "unit": null
         },
         {
-          "metric": "seats",
-          "value": -1.0,
+          "metric": "workspace credits",
+          "value": 20000.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
+        "ai assistant",
         "api access",
-        "custom reporting",
+        "audit log",
+        "basic workflows",
         "integrations",
         "role permissions",
-        "saml"
+        "single sign-on"
       ]
     }
   ],
-  "captured_at": "2026-10-12T14:36:11.298948+00:00"
+  "captured_at": "2026-11-13T14:01:03.735336+00:00"
 }

@@ -1,0 +1,113 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Free plan limit of 300 emails/month inferred from common Brevo offerings but not explicitly stated on this page. Annual pricing calculated from stated annual totals: Starter $97/year = $8.08/month; Standard $194/year = $16.17/month; Professional $5389/year = $449.08/month. Page displays \"-10%\" discount label for yearly billing. Features listed are those matching the provided controlled vocabulary only. Most features shown on page (email editor, templates, automation, etc.) do not appear in the controlled vocabulary list and are therefore omitted. SSO and SAML explicitly mentioned only for Professional and Enterprise tiers.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 300.0,
+          "unit": null
+        }
+      ],
+      "features": []
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": 9.0,
+      "annual_price_per_month": 8.08,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 5000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "custom branding"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 18.0,
+      "annual_price_per_month": 16.17,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "custom branding"
+      ]
+    },
+    {
+      "name": "Professional",
+      "key": "professional",
+      "monthly_price": 499.0,
+      "annual_price_per_month": 449.08,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 150000.0,
+          "unit": null
+        },
+        {
+          "metric": "seats",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "saml",
+        "sso",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": true,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "saml",
+        "sso",
+        "whatsapp"
+      ]
+    }
+  ],
+  "_first_seen": "2026-11-13"
+}

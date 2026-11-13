@@ -1,0 +1,169 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "The page shows a monthly/annual toggle with \"SAVE UP TO 50%\" promotion on the annual option. The four main plans (Solo, Essentials, Growth, Scale) show both monthly and annual pricing. Monthly price is listed first on the toggle; annual price is the discounted per-month rate when billed annually. All standard plans are per-seat pricing. Trial is 14 days with no credit card required. Features were extracted from the comparison table and plan descriptions. Only features from the permitted list were included. Call Assistant is an add-on priced at $50/month per organization plus usage fees ($0.02/min). Additional organizations can be purchased at $50/month per org (Growth and Scale get 1 free secondary org). Both monthly and annual options shown for Solo, Essentials, Growth, and Scale; only monthly shown for add-ons.",
+  "plans": [
+    {
+      "name": "Solo",
+      "key": "solo",
+      "monthly_price": 19.0,
+      "annual_price_per_month": 9.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per month",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": 10000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "audit log",
+        "basic workflows",
+        "custom branding",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 49.0,
+      "annual_price_per_month": 35.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per month per user",
+          "value": 1000.0,
+          "unit": null
+        },
+        {
+          "metric": "max ai credits per month",
+          "value": 10000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "audit log",
+        "basic workflows",
+        "custom branding",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Additional organizations",
+      "key": "additionalorganizations",
+      "monthly_price": 50.0,
+      "annual_price_per_month": 50.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Call Assistant",
+      "key": "callassistant",
+      "monthly_price": 50.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": 109.0,
+      "annual_price_per_month": 99.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per month per user",
+          "value": 1500.0,
+          "unit": null
+        },
+        {
+          "metric": "max ai credits per month",
+          "value": 15000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "ai chatbot",
+        "api access",
+        "audit log",
+        "custom branding",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Scale",
+      "key": "scale",
+      "monthly_price": 149.0,
+      "annual_price_per_month": 139.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per month per user",
+          "value": 2000.0,
+          "unit": null
+        },
+        {
+          "metric": "max ai credits per month",
+          "value": 20000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "ai chatbot",
+        "api access",
+        "audit log",
+        "custom branding",
+        "integrations",
+        "role permissions"
+      ]
+    }
+  ],
+  "_first_seen": "2026-11-13"
+}
