@@ -1,14 +1,28 @@
 {
   "currency": "USD",
-  "pricing_is_public": false,
-  "extraction_notes": "No pricing numbers visible on this page. The page shows plan names, features, and a toggle between \"Monthly\" and \"Yearly (-10%)\" billing options, but no actual prices are displayed. All paid plans (Starter, Standard, Professional) and Enterprise show \"per month\" or \"per month/user\" placeholders without values. The page appears to route pricing inquiries to sales for most plans.",
+  "pricing_is_public": true,
+  "extraction_notes": "Free plan has no stated limits or features on this page. Starter plan: $9/month or $97/year; calculated annual per-month as $97/12 = 8.08. Standard plan: $18/month or $194/year; calculated annual per-month as $194/12 = 16.17. Professional plan: $499/month or $5,389/year; calculated annual per-month as $5,389/12 = 449.08. Enterprise: Contact sales, no pricing shown. Page indicates annual billing shows 10% discount. Features extracted are limited to those matching the specified list (sso, saml, api access, priority support, phone support, dedicated account manager, custom reporting, advanced workflows, basic workflows, live chat, whatsapp, sla policies, audit log, hipaa, custom branding, integrations, ai assistant, ai chatbot, onboarding support, sandbox, role permissions, single sign-on). The page mentions many features not on this list (e.g., \"Email & SMS\", \"Drag & Drop email editor\", \"Contact scoring\", \"AI segmentation\") which were omitted per instructions.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": null,
+      "annual_price_per_month": 0.0,
       "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": 9.0,
+      "annual_price_per_month": 8.08,
+      "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
@@ -17,21 +31,21 @@
       "limits": [
         {
           "metric": "emails per month",
-          "value": 300.0,
+          "value": 5000.0,
           "unit": null
         }
       ],
       "features": [
-        "email support"
+        "email"
       ]
     },
     {
-      "name": "Enterprise",
-      "key": "enterprise",
-      "monthly_price": null,
-      "annual_price_per_month": null,
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 18.0,
+      "annual_price_per_month": 16.17,
       "is_free": false,
-      "is_custom_pricing": true,
+      "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
@@ -39,24 +53,17 @@
       "limits": [],
       "features": [
         "advanced workflows",
-        "ai assistant",
-        "api access",
-        "dedicated account manager",
-        "integrations",
-        "onboarding support",
-        "phone support",
-        "saml",
-        "sso"
+        "basic workflows"
       ]
     },
     {
       "name": "Professional",
       "key": "professional",
-      "monthly_price": null,
-      "annual_price_per_month": null,
+      "monthly_price": 499.0,
+      "annual_price_per_month": 449.08,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
@@ -74,53 +81,32 @@
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
+        "basic workflows",
         "integrations",
-        "phone support"
+        "phone support",
+        "role permissions"
       ]
     },
     {
-      "name": "Standard",
-      "key": "standard",
+      "name": "Enterprise",
+      "key": "enterprise",
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
-      "is_custom_pricing": false,
+      "is_custom_pricing": true,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "email support"
-      ]
-    },
-    {
-      "name": "Starter",
-      "key": "starter",
-      "monthly_price": null,
-      "annual_price_per_month": null,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": false,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [
-        {
-          "metric": "emails per month",
-          "value": 5000.0,
-          "unit": null
-        }
-      ],
-      "features": [
-        "ai assistant",
-        "basic workflows",
-        "email support"
+        "integrations",
+        "onboarding support",
+        "role permissions",
+        "saml",
+        "sso"
       ]
     }
   ],
-  "captured_at": "2026-10-15T10:57:28.747308+00:00"
+  "captured_at": "2026-11-15T13:31:11.071593+00:00"
 }

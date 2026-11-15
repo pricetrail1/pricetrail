@@ -185,6 +185,64 @@
      "seat": false
     }
    ]
+  },
+  {
+   "at": "2026-11-15T13:31:13.147848+00:00",
+   "date": "2026-11-15",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": 49.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 109.0,
+     "a": 99.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Scale",
+     "key": "scale",
+     "m": 149.0,
+     "a": 139.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Solo",
+     "key": "solo",
+     "m": 19.0,
+     "a": 9.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    },
+    {
+     "name": "AI Call Assistant",
+     "key": "aicallassistant",
+     "m": 50.0,
+     "a": null,
+     "free": false,
+     "custom": false,
+     "addon": true,
+     "seat": false
+    }
+   ]
   }
  ]
 }

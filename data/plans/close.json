@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows a monthly/annual toggle with \"SAVE UP TO 50%\" banner for annual billing. All prices are per-user/per-seat. The toggle appears to default to Annual view based on the lower prices shown on the main plan cards. Monthly prices ($19, $49, $109, $149) are higher than their annual equivalents ($9, $35, $99, $139), confirming correct assignment. Call Assistant add-on specifies $50/month per organization plus $0.02/min usage fee. Additional organizations add-on costs $50/org/month with 1 free for Growth/Scale customers. 14-day free trial offered on all plans with no credit card required.",
+  "extraction_notes": "Toggle visible; prices shown are for annual billing (left side) and monthly billing (right side). Solo is 1-user only and not per-seat. Essentials, Growth, and Scale are per-seat. Annual prices are lower than monthly as expected. AI Call Assistant add-on: $50/month per account plus $0.02 per recorded minute usage fee. Trial is 14 days, no credit card required. Money-back guarantee offered within 30 days.",
   "plans": [
     {
       "name": "Solo",
@@ -10,7 +10,7 @@
       "annual_price_per_month": 9.0,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": 14,
@@ -21,19 +21,28 @@
           "unit": null
         },
         {
+          "metric": "custom fields",
+          "value": 250.0,
+          "unit": null
+        },
+        {
           "metric": "leads",
           "value": 10000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 1.0,
           "unit": null
         }
       ],
       "features": [
         "ai assistant",
+        "ai chatbot",
         "api access",
-        "audit log",
+        "basic workflows",
         "custom branding",
-        "integrations",
-        "role permissions",
-        "single sign-on"
+        "integrations"
       ]
     },
     {
@@ -54,39 +63,35 @@
           "unit": null
         },
         {
-          "metric": "contacts",
+          "metric": "connected email accounts",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
           "value": -1.0,
           "unit": null
         }
       ],
       "features": [
+        "advanced workflows",
         "ai assistant",
+        "ai chatbot",
         "api access",
-        "audit log",
+        "basic workflows",
         "custom branding",
-        "integrations",
-        "live chat",
-        "role permissions",
-        "single sign-on"
+        "custom reporting",
+        "integrations"
       ]
     },
     {
-      "name": "Additional organizations",
-      "key": "additionalorganizations",
-      "monthly_price": 50.0,
-      "annual_price_per_month": 50.0,
-      "is_free": false,
-      "is_custom_pricing": false,
-      "is_per_seat": false,
-      "is_addon": true,
-      "min_seats": null,
-      "trial_days": null,
-      "limits": [],
-      "features": []
-    },
-    {
-      "name": "Call Assistant",
-      "key": "callassistant",
+      "name": "AI Call Assistant",
+      "key": "aicallassistant",
       "monthly_price": 50.0,
       "annual_price_per_month": null,
       "is_free": false,
@@ -116,7 +121,17 @@
           "unit": null
         },
         {
-          "metric": "contacts",
+          "metric": "call recording retention",
+          "value": 90.0,
+          "unit": "days"
+        },
+        {
+          "metric": "leads",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
           "value": -1.0,
           "unit": null
         }
@@ -124,13 +139,11 @@
       "features": [
         "advanced workflows",
         "ai assistant",
+        "ai chatbot",
         "api access",
-        "audit log",
         "custom branding",
-        "integrations",
-        "live chat",
-        "role permissions",
-        "single sign-on"
+        "custom reporting",
+        "integrations"
       ]
     },
     {
@@ -151,7 +164,22 @@
           "unit": null
         },
         {
-          "metric": "contacts",
+          "metric": "call recording retention",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "custom activities",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
           "value": -1.0,
           "unit": null
         }
@@ -159,15 +187,14 @@
       "features": [
         "advanced workflows",
         "ai assistant",
+        "ai chatbot",
         "api access",
-        "audit log",
         "custom branding",
+        "custom reporting",
         "integrations",
-        "live chat",
-        "role permissions",
-        "single sign-on"
+        "role permissions"
       ]
     }
   ],
-  "captured_at": "2026-10-15T10:57:29.519342+00:00"
+  "captured_at": "2026-11-15T13:31:13.147848+00:00"
 }
