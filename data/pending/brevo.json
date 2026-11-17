@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Annual pricing calculated from stated annual costs: Starter $97/year = $8.08/month, Standard $194/year = $16.17/month, Professional $5389/year = $449.08/month. All monthly prices are higher than annual-equivalent, confirming correct assignment. Free plan has no features listed on the page. Standard plan features not explicitly detailed but indicated as \"Everything in Starter, plus:\" additional items. Professional includes whatsapp mentioned in the multi-channel list. Enterprise is custom pricing with \"Talk to sales\" only.",
+  "extraction_notes": "Page shows monthly/yearly toggle defaulting to yearly (-10% discount stated). Starter: $9/month or $97/year (annual: $97÷12 = $8.08/month). Standard: $18/month or $194/year (annual: $194÷12 = $16.17/month). Professional: $499/month or $5389/year (annual: $5389÷12 = $449.08/month). Free plan does not state email limit explicitly on card, but FAQ context suggests limit exists (not extracted from main plan card). Enterprise shows \"Talk to sales\" with no pricing and states \"1M+ contacts\" in description, treated as custom. Features extracted conservatively using only the specified list terminology; many marketing features mentioned on page were omitted as they don't match list items exactly (e.g., \"drag & drop editor\", \"AI content generator\", \"landing pages\" etc.). Professional includes \"10 seats included\" and phone support noted. Standard and Starter mention \"basic\" and \"advanced\" workflows/automation features mapped to available terms.",
   "plans": [
     {
       "name": "Free",
@@ -14,7 +14,13 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 300.0,
+          "unit": null
+        }
+      ],
       "features": []
     },
     {
@@ -36,7 +42,8 @@
         }
       ],
       "features": [
-        "custom branding"
+        "email",
+        "sms"
       ]
     },
     {
@@ -52,7 +59,8 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "custom reporting"
+        "advanced workflows",
+        "basic workflows"
       ]
     },
     {
@@ -73,15 +81,17 @@
           "unit": null
         },
         {
-          "metric": "included seats",
+          "metric": "seats included",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "phone support",
-        "role permissions",
-        "whatsapp"
+        "api access",
+        "audit log",
+        "custom branding",
+        "dedicated account manager",
+        "phone support"
       ]
     },
     {
@@ -95,9 +105,20 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
-      "features": []
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 1000000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "dedicated account manager",
+        "onboarding support",
+        "saml",
+        "sso"
+      ]
     }
   ],
-  "_first_seen": "2026-11-16"
+  "_first_seen": "2026-11-17"
 }
