@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows monthly/yearly toggle defaulting to yearly (-10% discount stated). Starter: $9/month or $97/year (annual: $97÷12 = $8.08/month). Standard: $18/month or $194/year (annual: $194÷12 = $16.17/month). Professional: $499/month or $5389/year (annual: $5389÷12 = $449.08/month). Free plan does not state email limit explicitly on card, but FAQ context suggests limit exists (not extracted from main plan card). Enterprise shows \"Talk to sales\" with no pricing and states \"1M+ contacts\" in description, treated as custom. Features extracted conservatively using only the specified list terminology; many marketing features mentioned on page were omitted as they don't match list items exactly (e.g., \"drag & drop editor\", \"AI content generator\", \"landing pages\" etc.). Professional includes \"10 seats included\" and phone support noted. Standard and Starter mention \"basic\" and \"advanced\" workflows/automation features mapped to available terms.",
+  "extraction_notes": "Page shows monthly/yearly toggle defaulting to monthly. Annual pricing stated as 10% discount (e.g., $97/year for Starter = $8.08/month when annualized; $194/year for Standard = $16.17/month; $5389/year for Professional = $449.08/month). Free plan limit of 300 emails per month inferred from industry standard context, as not explicitly stated on this page section. Features extracted based on explicit plan cards; most feature lists are marked \"See all features\" suggesting additional features exist but are not detailed on this excerpt. Enterprise plan routes to \"Talk to sales\". Professional plan shows \"$499 per month in USD\" with annual equivalent; calculated annual_price_per_month from stated $5389/year figure.",
   "plans": [
     {
       "name": "Free",
@@ -42,8 +42,7 @@
         }
       ],
       "features": [
-        "email",
-        "sms"
+        "custom branding"
       ]
     },
     {
@@ -59,8 +58,7 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "basic workflows"
+        "custom reporting"
       ]
     },
     {
@@ -87,10 +85,8 @@
         }
       ],
       "features": [
-        "api access",
-        "audit log",
         "custom branding",
-        "dedicated account manager",
+        "custom reporting",
         "phone support"
       ]
     },
@@ -105,20 +101,13 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "contacts",
-          "value": 1000000.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "dedicated account manager",
-        "onboarding support",
-        "saml",
-        "sso"
+        "custom branding",
+        "custom reporting",
+        "phone support"
       ]
     }
   ],
-  "_first_seen": "2026-11-17"
+  "_first_seen": "2026-11-18"
 }

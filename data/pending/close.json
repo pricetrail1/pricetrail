@@ -1,0 +1,212 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page shows monthly/annual toggle with annual pricing displayed prominently. The annual price is the effective per-month cost when billed annually (e.g., $9/mo for Solo is annual, $19/mo is monthly). Call Assistant is listed as a paid add-on ($50/month + $0.02/min) and is not included as a plan. Additional organizations ($50/mo) is also listed as an add-on. The page states \"14-day free trial\" and \"30-day money-back guarantee\" but the trial_days field captures the free trial period. All plans except Solo are per-seat pricing. Features recorded are from the allowed feature list provided; many capabilities listed on the page (like calling, dialing, email tracking, etc.) are not on the allowed features list so are omitted.",
+  "plans": [
+    {
+      "name": "Solo",
+      "key": "solo",
+      "monthly_price": 19.0,
+      "annual_price_per_month": 9.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per user per month",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "call recording retention",
+          "value": 30.0,
+          "unit": "days"
+        },
+        {
+          "metric": "connected email accounts",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": 10000.0,
+          "unit": null
+        },
+        {
+          "metric": "shared ai credit limit per month",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "ai chatbot",
+        "api access",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Essentials",
+      "key": "essentials",
+      "monthly_price": 49.0,
+      "annual_price_per_month": 35.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per user per month",
+          "value": 1000.0,
+          "unit": null
+        },
+        {
+          "metric": "call recording retention",
+          "value": 90.0,
+          "unit": "days"
+        },
+        {
+          "metric": "connected email accounts",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "shared ai credit limit per month",
+          "value": 10000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "ai chatbot",
+        "api access",
+        "basic workflows",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Growth",
+      "key": "growth",
+      "monthly_price": 109.0,
+      "annual_price_per_month": 99.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per user per month",
+          "value": 1500.0,
+          "unit": null
+        },
+        {
+          "metric": "call recording retention",
+          "value": -1.0,
+          "unit": "days"
+        },
+        {
+          "metric": "custom fields",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "shared ai credit limit per month",
+          "value": 15000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "ai chatbot",
+        "api access",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Scale",
+      "key": "scale",
+      "monthly_price": 149.0,
+      "annual_price_per_month": 139.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "ai credits per user per month",
+          "value": 2000.0,
+          "unit": null
+        },
+        {
+          "metric": "custom fields",
+          "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "leads",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "required fields",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "shared ai credit limit per month",
+          "value": 20000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "ai chatbot",
+        "api access",
+        "integrations",
+        "role permissions"
+      ]
+    }
+  ],
+  "_first_seen": "2026-11-18"
+}
