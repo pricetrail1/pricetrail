@@ -1,0 +1,428 @@
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+USD
+INR
+EUR
+GBP
+JPY
+SGD
+AUD
+AED
+SAR
+MXN
+ZAR
+NGN
+KES
+EGP
+CAD
+Billing
+Annually
+Monthly
+Save up to
+34
+% with yearly plans
+Zoho CRM
+Manage leads, deals, and customer relationships in one place, with automation and AI that help your sales team close faster.
+Manage leads, deals, and customers in one place.
+Standard
+/user/month
+FREE TRIAL
+Standard
+Features List
+Small team, getting started
+Email integration & mass emails
+Send emails via Gmail, Outlook, Zoho Mail, and other popular email services, directly from Zoho CRM.
+Built-in calling
+Make, receive, and log sales calls directly inside Zoho CRM.
+Multiple sales pipelines
+Track multiple sales operations with different stages without any clutter.
+Calendar integration
+Schedule and book meetings from within Zoho CRM.
+Data capture via forms
+Generate leads from anywhere with built-in forms.
+Sales forecasting
+Set your team for long-term success with achievable goals and keep track of business performance.
+Data enrichment
+Enrich your records to get more context about your leads like company size, industry, revenue, and more.
+Custom modules
+Build custom modules to hold data unique to your business.
+HIPAA compliance
+Store and manage patient or health-related data in Zoho CRM without risking regulatory violations.
+Gmail and Outlook integration
+Integrate Gmail, Outlook, Zoho Mail, and other popular email service providers with Zoho CRM.
+Slack, Zoom, Teams integration
+Integrate popular video conferencing and collaboration tools with Zoho CRM.
+Professional
+/user/month
+FREE TRIAL
+Professional
+Features List
+Growing team, needs automation
+AI agents
+Build and deploy AI agents that execute tasks on your behalf for any business use case.
+Process management
+Standardize and automate your sales processes.
+Inventory management
+Manage all your invoices, sales and purchase orders, products, and vendors.
+Predictive intelligence
+Predict the likelihood of a lead converting, a deal closing, or a customer churning.
+Unlimited reports
+Stay informed about your business performance with unlimited reports.
+Configure, Price, Quote (CPQ)
+Match products to customer requirements and streamline quote management with built-in price rules.
+Custom portals
+Use portals to grant customers, partners, and vendors access to relevant information in your CRM.
+Customer journeys
+Build end-to-end, dynamic customer journeys that give your customers a memorable experience.
+Web-to-case forms
+Resolve customer issues with web-to-case forms that convert problems into support tickets that your reps can follow.
+Customer portals
+Extend Zoho CRM to your contacts, vendors, or partners with portals.
+Google Ads integration
+Manage Google Ads campaigns from within Zoho CRM.
+Most Popular
+Enterprise
+/user/month
+FREE TRIAL
+Enterprise
+Features List
+Running a mature sales org
+Multi-team management
+Manage multiple sales teams across territories.
+Reporting hierarchy
+Give every manager a real-time view of only their team's pipeline and performance.
+Custom buttons and functions
+Create custom buttons and functions to extend the capabilities of Zoho CRM.
+Extended field types
+Capture the exact data your business needs. Move beyond standard forms. Add file uploads, checkboxes, date ranges, and more.
+Sequential data collection
+Walk your sales team through a structured, step-by-step process so every deal gets worked the same way and nothing falls through the cracks.
+Approval process
+Ensure deals move on only after the right person approves it.
+Account Based Marketing
+Segment your accounts to identify up-sell and cross-sell opportunities.
+Developer sandbox
+Securely test the changes without affecting production data in a sandbox environment.
+Field-level encryption
+Protect sensitive customer data at a field-level.
+Extended AI capabilities
+Gain insights, predictions, and recommendations from Zia.
+QuickBooks integration
+Sync QuickBook records with Zoho CRM and create quotes and invoices easily.
+Free
+No credit card required
+Start Now
+Free
+Features List
+Forever free, for 3 users
+Contact management
+Manage all contacts important to your business in one place. No more scattered business cards.
+Follow-up reminders
+Stay on track with timely reminders to follow-up on a lead.
+Workflow automation
+Automate repetitive tasks with workflows. From routing leads to the right rep to updating fields when a deal is closed.
+Custom email templates
+Personalize emails to fit the tone of your business. Get up to 10 custom emai templates for free.
+Tasks, meetings & calls
+Track all sales activities in Zoho CRM. Get reminders so don't miss.
+Data import and export
+Import data from spreadsheets for free. Export data from Zoho CRM for up to 10 times for free.
+Standard reports
+View your business performance in one place with powerful reports.
+APIs
+Connect Zoho CRM to any app and perform actions with 5000 API calls/day.
+Mobile apps
+Sell more on the go with Zoho CRM's mobile app.
+Bigin
+Simple CRM for small businesses moving from spreadsheets to manage their sales pipeline.
+Simple pipeline CRM for small businesses.
+Express
+/user/month
+START FREE TRIAL
+Everything in
+Free
+Edition
++
+Team Pipelines (3)
+Convert customer-facing processes into easily trackable pipelines with customizable stages. You can purchase add-ons if you need more pipelines.
+50,000 Records
+Each row of data you enter across Pipelines, Contacts, Activities and Notes are called Records in Bigin. You can purchase add-ons if you need to store more records.
+Email & WhatsApp Business Integration
+Connect Bigin with Email clients such as Outlook, Gmail, Zoho Mail and streamline customer interactions on WhatsApp.
+Automations (30)
+Create workflows that automatically trigger specific actions instantly. You can automate more actions by buying add-ons.
+Mass emails with email insights
+Send emails to multiple customers with a single click and use insights to capture the exact status of each email.
+Customizable dashboards with charts and KPIs
+Customize your dashboards according to your needs and analyze your business performance with charts and KPIs.
+10 custom fields/module
+Create custom fields that suit your business needs.
+Zoho Books, Zoho Invoice and Zoho Meeting Integration
+Seamlessly integrate Bigin with other third party apps.
+Google Workspace, Microsoft Outlook, Teams, Zoom Meeting, Mailchimp and X integration
+Easily integrate with Zoho apps and other third-party apps.
+Facebook, Instagram, LinkedIn, Tik Tok Leads Ads Integration
+Streamline incoming leads from ads across popular social media applications with LeadChain topping for Bigin.
+Booking and appointment scheduling (1)
+Build and share your availability through an online page, allowing clients and prospects to book meetings or appointments with you. You can purchase additional booking pages if needed.
+Streamlined document signing and management with Zoho Sign
+Get business documents and attachments digitally signed by contacts directly from your Bigin dashboard.
+QuickBooks integration
+Integrate Bigin and QuickBooks to enjoy seamless collaboration between your financial and customer-facing teams.
+Payment Links
+Easily collect payments from customers via payment gateways such as Stripe, PayPal, Razorpay and Paytm.
+Most Popular
+Premier
+/user/month
+START FREE TRIAL
+Everything in
+Express
+Edition
++
+Team Pipelines (5)
+Convert customer-facing processes into easily trackable pipelines with customizable stages. You can purchase add-ons if you need more pipelines.
+100,000 Records
+Each row of data you enter across Pipelines, Contacts, Activities and Notes are called Records in Bigin. You can purchase add-ons if you need to store more records.
+Advanced field types
+Use additional advanced field types such as Lookup fields, formula fields, and user fields.
+Advanced Automation (50)
+Create advanced workflows that automatically trigger specific actions at specific dates. You can automate more actions by buying add-ons.
+Stage Transition Rules
+Set up rules for moving deals in your pipeline; create checkpoints to ensure deals properly transition between stages.
+Global selling with multiple currencies
+Run operations in more than just your local currency. Bigin takes care of all exchange rates and conversions.
+Customizable Dashboards - Target Meter
+Create new fields and establish connections between records within different modules for your own context.
+25 custom fields per module
+Create custom fields that suit your business needs.
+Cleanup Duplicates
+Manage and clean up duplicate records in your CRM more effectively.
+Booking and appointment scheduling (1)
+Build and share your availability through an online page, allowing clients and prospects to book meetings or appointments with you. You can purchase additional booking pages if needed.
+Data enrichment
+Enrich contact and company data from various sources, ensuring you have all the vital information about your prospects and customers.
+AI
+Writing Assistant
+Helps users draft emails using AI based on context and intent, saving time and improving communication quality.
+Record Summary
+Automatically generates a quick summary of a record so users can understand key information without reading the full details.
+Email Reply Assistant
+Suggests contextual replies for incoming emails to help users respond faster.
+CrossSell Genie
+Identifies potential cross-sell opportunities based on customer data and past interactions.
+Churn Analyzer
+Analyzes customer signals and highlights possible churn risks so businesses can take proactive action.
+1000 AI credits/month
+Extra AI credits can be purchased. Credit consumption varies based on the AI feature used. Usage cannot be directly mapped to a fixed number of actions.
+Bigin 360
+/user/month
+START FREE TRIAL
+Get A Demo
+Everything in
+Premier
+Edition
++
+Team Pipelines (15)
+Convert customer-facing processes into easily trackable pipelines with customizable stages.
+1 Million Records
+Each row of data you enter across Pipelines, Contacts, Activities and Notes are called Records in Bigin. You can purchase add-ons if you need to store more records.
+Email-In pre-installed with 5 aliases
+Email-in automatically creates a record in your pipeline whenever you receive any incoming email in your group emails aliases. Manage tickets, requests, inquiries, etc. all in one place.
+Advanced Automation Rules (100)
+Create advanced workflows that automatically trigger specific actions at specific dates.
+File Cabinet pre-installed with 5 GB storage
+Create unique links to collect, manage and store files from customers with ease.
+50 custom fields/module
+Create custom fields that suit your business needs.
+1000 mass mails/day
+Send up to 1000 mass emails per day per organization. You can also purchase add-ons for sending additional mass emails.
+Highest limits for features
+Bigin 360 will offer the highest out of the box limits for all our features. Certain feature limits can be further extended through add-ons.
+Booking and appointment scheduling (100)
+Build and share your availability through an online page, allowing clients and prospects to book meetings or appointments with you.
+3000 AI credits/month
+Additional AI credits can be purchased if needed. Credit consumption varies based on the AI feature used and the complexity of the request, so usage cannot be directly mapped to a fixed number of actions.
+Free
+Single user
+GET FREE CRM
+Key Features
+Single Pipeline
+Convert any customer-facing process into an easily trackable pipeline with customizable stages.
+500 Records
+Each row of data you enter across Pipelines, Contacts, Activities and Notes are called Records in Bigin.
+Contacts, Products & Activities Management
+Manage contacts, companies, products and activities such as calls, tasks and events.
+Automations (3)
+Create workflows that automatically trigger specific actions instantly.
+Built-in Phone
+Make and receive phone calls, record them, set up automated voice responses, and use call routingâdirectly in Bigin.
+Third-party Phone Integration
+Connect with 100+ third-party telephony providers from our marketplace
+Standard Dashboard - Charts & KPIs
+Analyze your business performance with built-in charts and KPIs
+Developer APIs
+Highly secure developer APIs that help you connect Bigin to any third-party app of your choice.
+Zapier, Zoho Desk, Zoho Campaigns, and Zoho Forms Integration
+Connect Bigin with popular third party applications
+Apps for iOS, iPadOS, Android and macOS
+Highly rated apps for mobile devices and macOS to manage customer information even while on the go.
+Booking and appointment scheduling (1)
+Build and share your availability through an online page, allowing clients and prospects to book meetings or appointments with you. You can purchase additional booking pages if needed.
+No-code form for contacts & pipelines
+Deploy Bigin webforms on your website easily to collect information from your website visitors.
+Business Card Scanner
+Scan a business card and the app will populate the details into the appropriate fields in the 'Add Contact' form.
+MCP (Model Context Protocol) support
+Bigin now supports MCP, letting businesses securely connect their CRM data with AI tools and external integrations without compromising access control.
+Zoho One
+Run your entire business on one integrated suite of apps for sales, marketing, finance, HR, and operations.
+Your entire business on one suite of apps.
+All Employee Pricing
+Must purchase license for ALL employees*
+â¹1800
+US$37
+/employee/month
+First year only
+TRY NOW
+Flexible User Pricing
+Purchase license for any no. of users
+US$90
+/user/month
+TRY NOW
+What you get
+Centralized administrative control
+Mobile device management
+Platform capabilities to build, customize, and extend
+50+ unified business apps
+Industry-standard features
+Many apps, one simple invoice for your organization
+*Your business will have to commit to purchase Zoho One licenses for ALL employees on payroll.
+View plan details
+Zoho CRM Plus
+Zoho CRM Plus brings everything your sales, marketing, customer service, and every customer-facing team needs onto one platform.
+One platform for every customer-facing team.
+Starter
+/user/month
+START FREE TRIAL
+Starter
+Features List
+Key Features
+CRM
+A single record for leads, deals, contacts, and accounts.
+AI across the platform
+Zia works inside every app: predicting deal outcomes, reading customer sentiment, suggesting the best time to reach out, and answering questions for all teams.
+Customer support & help desk
+Multichannel ticketing (email, phone, chat, social) with each ticket carrying full sales and marketing context.
+Live chat & visitor tracking
+See who's on your site in real time and engage instantly.
+Email marketing
+Build email campaigns, nurture leads, and trigger automated journeys.
+Social media management
+Publish, schedule, and monitor across social networks from one place.
+Customer surveys & feedback
+Capture feedback at any touchpoint (post-sale, post-ticket, NPS) and route insights to the right teams.
+Project & work management
+Plan, assign, and track tasks, and project milestones.
+Analytics & reporting
+Cross-functional dashboards that blend sales, marketing, service, and operations data into one view.
+Enterprise
+/user/month
+START FREE TRIAL
+Enterprise
+Features List
+Everything in
+Starter
+Edition
++
+Marketing automation
+Multistep customer journeys, behavioral triggers, and lead scoring at scale.
+Website engagement & conversion optimization
+A/B testing, heatmaps, session recordings, and funnel analysis show where visitors drop off.
+Webinars
+Host webinars to generate and nurture demand.
+Event management
+Run virtual, in-person, and hybrid events end to end.
+Team collaboration
+Chat, channels, and shared customer context across sales, service, marketing, and back office.
+AI anomaly detection
+Zia automatically flags unusual dips or spikes in KPIs.
+Brand studio
+Ideate, execute, and manage your marketing campaigns from one centralized place.
+Landing pages
+Build and publish high-converting landing pages to capture leads straight into your CRM.
+Brand asset management
+A central, on-brand library of resources, templates, and brand assets.
+Local taxes (VAT, GST, etc.) will be charged in addition to the prices mentioned.
+Get your price estimate here
+Local taxes (VAT, GST, etc.) will be charged in addition to the prices mentioned.
+Compare Zoho CRM features
+across all editions
+Looking to switch CRMs?
+We'll help you.
+Migrate Now
+Need expert implementation service? Check out Zoho Jumpstart.
+ONBOARD NOW
+Join
+250,000+
+other businesses
+START FREE TRIAL NOW
+Buy Now
+Frequently Asked Questions
+Expand All
+Collapse All
+Can I get a demo of
+Zoho CRM?
+Yes, we would be happy to demonstrate
+Zoho CRM
+through a web-conference at your convenience. The demo is a one hour session. To schedule your personal session, please contact
+sales@zohocorp.com.
+Is my data safe?
+Weâre fervent about keeping your data safe and secure. Our facilities feature stringent 24/7/365 security with video monitoring, biometric access, and advanced fire, flood, and theft monitoring systems. Our network security system employs the latest encryption and intrusion detection and prevention technologies.
+Learn more about Zoho's data protection measures.
+What types of payment do you accept?
+We accept payment via Visa, MasterCard, American Express and PayPal. We also accept payment via bank transfer or check transfer for yearly subscriptions. For more details, please contact
+sales@zohocorp.com.
+Does
+Zoho CRM
+support multiple languages?
+Yes, we support 28 languages: Arabic, English (US), English (UK), Bulgarian, Bahasa Indonesian, Chinese (Simplified), Chinese (Traditional), Croatia (Hrvatski), Czech, Dutch (Nederland), Danish, French, German (Deutsch), Hungarian (Magyar), Hindi, Italiano (Italy), Japanese, Polish (Polish), Portuguese (Brazil), Portuguese (Portugal), Russian, Spanish (Espanol), Swedish(Svenska), Thai, Turkish, Vietnamese, Korean, Hebrew.
+How flexible are your contracts?
+You are not bound by any contracts or commitments.
+Zoho CRM
+is a pay-as-you-go service (monthly or yearly), so you can make changes to your plan whenever you need to.
+Can I switch plans?
+Of course you can! Log in to
+Zoho CRM,
+click the Upgrade link on the Home page, and follow the steps on the Subscription page to switch to a new plan.
+How do you support businesses signing up for
+Zoho CRM?
+For customers of our paid editions, you automatically have access to our Classic support. You also have the option to opt-in for one of our paid support plans that promises faster responses, round the clock support, dedicated on-boarding and more.
+Explore support plans
+Do you provide any assistance in getting
+Zoho CRM
+set up and running for our business?
+Yes, we do have end-to-end services that cover everything from requirement gathering to setup and onboarding. We have dedicated programs for SMEs and Enterprises, so that the different requirements and needs are addressed effectively.
+Explore Jumpstart
+Explore Zoho EBS
+Are there any other editions in Zoho CRM?
+Yes, Zoho CRM has an Ultimate edition tailored for large-scale, bespoke deployments with highest possible feature limits, consultation with experts, and migration assistance. Check out the feature comparison page to
+learn more.
+Does Zoho CRM have a free edition?
+Yes, Zoho CRM does have free edition that supports upto 3 users and comes with the essentials like leads, documents, and mobile apps, itâs a perfect fit for your home business.
+Get started here
+Have more questions?
+You can connect with us instantly through live chat (24x5) or by writing to us at
+sales@zohocorp.com.

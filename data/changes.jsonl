@@ -155,3 +155,4 @@
 {"vendor": "Close", "change_type": "plan_added", "plan": "AI Call Assistant", "field": null, "old_value": null, "new_value": 50.0, "confidence": 0.8, "detected_at": "2026-11-15T13:31:13.147698+00:00", "note": "", "is_addon": true}
 {"vendor": "Close", "change_type": "plan_removed", "plan": "Additional organizations", "field": null, "old_value": 50.0, "new_value": null, "confidence": 0.8, "detected_at": "2026-11-15T13:31:13.147707+00:00", "note": "", "is_addon": true}
 {"vendor": "Close", "change_type": "plan_removed", "plan": "Call Assistant", "field": null, "old_value": 50.0, "new_value": null, "confidence": 0.8, "detected_at": "2026-11-15T13:31:13.147711+00:00", "note": "", "is_addon": true}
+{"vendor": "Close", "change_type": "plan_removed", "plan": "AI Call Assistant", "field": null, "old_value": 50.0, "new_value": null, "confidence": 0.8, "detected_at": "2026-11-19T15:21:09.283789+00:00", "note": "", "is_addon": true}

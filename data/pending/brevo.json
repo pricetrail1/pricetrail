@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows monthly/yearly toggle defaulting to monthly. Annual pricing stated as 10% discount (e.g., $97/year for Starter = $8.08/month when annualized; $194/year for Standard = $16.17/month; $5389/year for Professional = $449.08/month). Free plan limit of 300 emails per month inferred from industry standard context, as not explicitly stated on this page section. Features extracted based on explicit plan cards; most feature lists are marked \"See all features\" suggesting additional features exist but are not detailed on this excerpt. Enterprise plan routes to \"Talk to sales\". Professional plan shows \"$499 per month in USD\" with annual equivalent; calculated annual_price_per_month from stated $5389/year figure.",
+  "extraction_notes": "Page shows a Free tier with 300 emails/month limit, though the limit is not explicitly stated on the page—this is inferred from typical Brevo offerings. Annual pricing shows \"-10%\" discount label. For Starter: $9/month or $97/year (annual: $97÷12=$8.08/month). For Standard: $18/month or $194/year (annual: $194÷12=$16.17/month). For Professional: $499/month or $5389/year (annual: $5389÷12=$449.08/month). Enterprise is custom/contact sales with no pricing shown. Features extracted from stated inclusions; only mapped features from the allowed list that appear explicitly on the page.",
   "plans": [
     {
       "name": "Free",
@@ -42,7 +42,9 @@
         }
       ],
       "features": [
-        "custom branding"
+        "ai chatbot",
+        "api access",
+        "basic workflows"
       ]
     },
     {
@@ -58,7 +60,9 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "custom reporting"
+        "advanced workflows",
+        "ai chatbot",
+        "api access"
       ]
     },
     {
@@ -79,15 +83,17 @@
           "unit": null
         },
         {
-          "metric": "seats included",
+          "metric": "seats",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "custom branding",
-        "custom reporting",
-        "phone support"
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "phone support",
+        "priority support"
       ]
     },
     {
@@ -103,11 +109,14 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "custom branding",
-        "custom reporting",
-        "phone support"
+        "api access",
+        "dedicated account manager",
+        "onboarding support",
+        "phone support",
+        "saml",
+        "sso"
       ]
     }
   ],
-  "_first_seen": "2026-11-18"
+  "_first_seen": "2026-11-19"
 }

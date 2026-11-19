@@ -243,6 +243,54 @@
      "seat": false
     }
    ]
+  },
+  {
+   "at": "2026-11-19T15:21:09.283919+00:00",
+   "date": "2026-11-19",
+   "currency": "USD",
+   "public": true,
+   "plans": [
+    {
+     "name": "Essentials",
+     "key": "essentials",
+     "m": 49.0,
+     "a": 35.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Growth",
+     "key": "growth",
+     "m": 109.0,
+     "a": 99.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Scale",
+     "key": "scale",
+     "m": 149.0,
+     "a": 139.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": true
+    },
+    {
+     "name": "Solo",
+     "key": "solo",
+     "m": 19.0,
+     "a": 9.0,
+     "free": false,
+     "custom": false,
+     "addon": false,
+     "seat": false
+    }
+   ]
   }
  ]
 }

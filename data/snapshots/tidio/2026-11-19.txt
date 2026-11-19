@@ -1,0 +1,478 @@
+EN
+Log in
+Customer service plans, with or without AI
+Every plan works both ways: your team answers every conversation, or Lyro AI Agent answers alongside them.
+Choose how you handle conversations
+With Lyro AI
+Human only
+Lyro answers customer questions on its own and hands off to your team when needed. Conversations handled by Lyro and your team count toward the same plan limit.
+Monthly
+Annually
+(
+2 months free
+)
+Not sure which plan to choose?
+Get recommendations
+Starter
+AI
+For small businesses starting with AI support. Lyro answers routine questions on chat and email and hands the rest to your team.
+$33
+/mo.
+Billed annually
+:
+$390
+/yr.
+50 AI + human conversations
+7-day free trial
+This plan includes
+Live chat, ticketing & social channels
+Live visitors list
+Operating hours
+Basic analytics
+100 Flows visitors reached per month
+Lyro for chat
+Lyro for emails
+Product recommendations
+Lyro custom name
+5 Lyro Guidance instructions
+3 Lyro Smart Actions + 3 MCP tools
+Growth
+AI
+For growing businesses with more conversations. Choose the monthly volume you need and let Lyro take on more of the work.
+Starts at
+$63
+/mo.
+Billed annually
+:
+$750
+/yr.
+100 AI + human conversations
+7-day free trial
+Everything in Starter, and
+Advanced analytics
+Automatic routing & ticketing workflows
+Quick replies with macros
+User permissions
+Native Shopify actions
+Live typing preview
+Viewed pages history
+Up to 1,000 conversations for Lyro and your team
+5 Lyro Smart Actions + 5 MCP tools
+For teams
+Plus
+AI
+For larger teams that need custom limits, a dedicated Success Manager, and AI that solves up to 70% of customer problems.
+Starts at
+$300
+/mo.
++ monthly usage
+Custom AI + human conversations
+Contact sales
+Everything in Growth, and
+Premium support
+Dedicated Success Manager
+Discounted usage rates
+Departments
+Multiproject
+OpenAPI
+Custom branding
+Larger attachments
+Live chat support
+Custom limits
+Custom number of seats
+Pay by wire transfer
+10 Lyro Guidance instructions
+10 Lyro Smart Actions + 10 MCP tools
+Real-time AI knowledge refresh
+Premium
+AI
+For high-volume businesses that need guaranteed AI deployment, custom analytics, SSO, and compliance.
+Contact for pricing
+Custom AI + human conversations
+Contact sales
+Everything in Plus, and
+Custom analytics
+SSO
+Super admin role
+Compliance
+Mobile SDK
+Dedicated services team
+Slack support
+Custom Lyro Guidance, Lyro Smart Actions, and MCP limits
+Lyro AI as a managed service
+From 3,000 Lyro AI conversations
+Guaranteed 50% Lyro AI resolution rate (by agreement)
+Pay-per-resolution billing (by agreement)
+AI insights & CSAT
+View all features
+Tailored solution
+Need a fully custom AI Agent?
+Work with our team to build an AI solution around your specific requirements. We handle the setup and implementation with you.
+Custom AI model training
+Unlimited AI Actions & Guidances
+Priority SLA
+Custom reporting
+SOC 2 & HIPAA compliance
+Custom integrations
+Contact sales
+Add-ons
+Customize your plan with flexible add-ons.
+Flows
+$24
+/mo.
+No-code automation flows that reach visitors before they ask.
+Read more
+Use website behavior to start a conversation
+Build rule-based workflows without any technical knowledge
+Boost sales with proactive engagement
+Automate most repetitive questions
+2,000 visitors reached
+Get started
+Inbox AI
+From
+$8
+/mo.
+AI tools your team uses to prepare replies inside the inbox.
+Read more
+Summarize conversations and translate messages
+Review suggested replies and improve drafts
+Get started
+Help Center
+$10
+/mo.
+A searchable knowledge base for fast, self-serve answers.
+Build and organize self-service articles
+Publish multilingual content to help customers around the world
+Keep your Help Center synced with Lyro
+Get started
+Voice
+$16
+/mo.
+Make and receive customer calls directly from your Tidio Inbox. Available in the US, Canada, Australia, and the UK.
+Add Voice as another channel your support team can handle from your inbox
+Route calls to the right team or agent
+Keep call history and customer context in one place
+Calls use their own ticket quota, not your plan's conversations
+20 voice conversations
+Contact us
+No Tidio branding
+$20
+/mo.
+Keep your customer experience focused on your brand by removing Tidio branding from customer-facing touchpoints.
+Remove "Powered by Tidio" from your chat widget
+Hide Tidio branding in your Help Center
+Remove Tidio branding from email footers
+Get started
+Trusted by <COUNT> businesses
+Global brands run their customer service on Tidio. See how they win at customer service to boost the customer experience and sales.
+Read all customer stories
+80%
+Lyro AI Agent resolution rate across 10,000 chats a month
+Visit case study
+Compare all features
+With Lyro AI
+Human only
+Growth
+AI
+Starts at
+$63
+/mo.
+Get started
+Plan essentials
+Monthly conversations
+100 to 1,000
+Seats
+10
+How to buy
+Self-service
+Pay by wire transfer
+Not included
+Lyro AI
+Lyro AI Agent conversations
+Within plan quota
+Lyro for chat
+Included
+Lyro for emails
+Included
+Lyro Smart Actions
+5
+Lyro Guidance instructions
+5
+Enabled MCP tools
+5
+Lyro product recommendations
+Included
+Lyro custom name
+Included
+Human handoff from Lyro
+Included
+Lyro analytics
+Included
+Lyro Connect
+Not included
+AI intents
+Included
+AI insights
+Not included
+AI CSAT
+Not included
+Lyro for sales
+Not included
+Lyro for product feedback
+Not included
+Knowledge & setup
+FAQ upload
+Included
+FAQ scraper
+Included
+Website scraper
+Included
+Import Zendesk articles
+Included
+Real-time AI knowledge refresh
+Not included
+Help desk & team workflows
+Live chat
+Included
+Ticketing
+Included
+Email management system
+Included
+Live video calls
+Included
+Ticketing automations
+Included
+Basic analytics
+Included
+Multilanguage
+Included
+Live visitors list
+Included
+Operating hours
+Included
+Chat page
+Included
+Advanced analytics
+Included
+Live typing
+Included
+Viewed pages history
+Included
+Visitors info
+Included
+Visitor notes
+Included
+Automatic response
+Included
+Automatic chat assignment
+Included
+Automated satisfaction survey
+Included
+Automated conversation solving
+Included
+Quick replies with macros
+Included
+Permissions
+Included
+Native Shopify actions
+Included
+Multiproject
+Not included
+Departments
+Not included
+Custom analytics
+Not included
+Super admin role
+Not included
+Channels & integrations
+OpenAPI
+Not included
+Custom channels
+Not included
+Mobile SDK
+Not included
+Messenger integration
+Included
+Instagram integration
+Included
+WhatsApp integration
+Included
+Email integration
+Included
+App integrations
+Included
+Desktop app
+Included
+Mobile app
+Included
+Flows
+Visitors reached via Flows
+Your first 100 visitors reached each month are free. Add more with the Flows add-on.
+Sales Flows templates
+Included
+FAQ Flows templates
+Included
+Visual automation builder
+Included
+Inbox AI (optional add-on)
+Inbox AI package
+Add-on
+Copilot
+Add-on
+Magic Wand reply assistant
+Add-on
+AI summary
+Add-on
+AI translations
+Add-on
+AI contact properties
+Add-on
+Help Center & Voice (optional add-ons)
+Help Center
+Add-on
+Voice
+Add-on
+Widget & branding
+Basic widget customization
+Included
+No Tidio branding
+Branding add-on
+Custom branding
+Not included
+Support & services
+Support over email
+Included
+Support over live chat (24/5)
+Not included
+Flows building and strategy assistance
+Not included
+Premium support
+Not included
+Dedicated Success Manager
+Not included
+Discounted usage rates
+Not included
+Training sessions
+Not included
+Account reviews
+Not included
+Priority Service + Premium Support
+Not included
+Slack support
+Not included
+Dedicated services team
+Not included
+Lyro AI as a managed service
+Not included
+Analysis & monitoring
+Not included
+Security & access
+Compliance
+Not included
+SSO
+Not included
+Premium Lyro terms (by agreement)
+Guaranteed 50% Lyro AI resolution rate
+Not included
+Pay-per-resolution billing
+Not included
+Included
+Not included
+Add-on: bought separately
+By agreement*: set in your contract
+Frequently Asked Questions
+Basics
+How does the pricing work?
+Tidio pricing is built around conversations. First, decide whether you want your conversations handled by Lyro AI (With Lyro AI) or by your team (Human only). That is the core choice. Then pick a conversation quota, the number of conversations you want to handle each month, and a plan (Starter or Growth) based on the features your team needs. On top of that, you can add optional add-ons such as Flows, Help Center, Voice, or Inbox AI.
+What is a conversation?
+A conversation is an interaction that includes at least one message from your team or Lyro AI Agent. If a visitor writes but neither your team nor Lyro replies, it does not count toward your quota. Spam conversations are not counted either.
+How is a conversation counted?
+A conversation counts toward your quota once your team or Lyro replies in it. The number of messages does not matter: one conversation always uses exactly one unit of your quota.
+What is the difference between Human only and With Lyro AI?
+With Human only, your team answers every conversation using live chat, helpdesk, and all features of your plan. With Lyro AI, Lyro answers incoming conversations first, resolves what it can, and hands over to your team when needed. Conversations handled by Lyro and your team count toward the same plan limit. You can switch between them at any time.
+What should I choose if I want to automate customer service?
+Choose With Lyro AI if you get many repetitive questions (order status, shipping, returns, product information) and want instant answers while your team focuses on complex cases.
+Is my data secure?
+Yes. Tidio has completed a SOC 2 examination, and we protect your data with encryption, access controls, and practices in line with GDPR and CCPA. You can find the details in our
+Trust Center
+.
+Plans and Billing
+What is the difference between Starter, Growth, and Premium?
+Starter covers the essentials: live chat, ticketing and social channels, operating hours, and basic analytics. Growth adds team features: roles and permissions, automated assignments, ticketing automations, and advanced analytics. Lyro Smart Actions are included in every plan with Lyro AI, and the number you can use grows with your plan. Premium is a custom plan with custom limits, done-for-you automation, and tailored optimization strategies. Contact us to discuss it.
+Which conversation quotas can I choose from?
+You can choose 50, 100, 200, 300, 500, 750, or 1,000 conversations per month. The same quotas are available whether you choose Human only or With Lyro AI. If you need more than 1,000, contact us about a Plus plan.
+How many conversations should I buy?
+Use our
+plan finder
+to estimate how many conversations you need each month. It is based on anonymized data from our customers across different industries.
+How many support agents can I add to my Tidio project?
+Starter and Growth plans support up to 10 agent seats. If you need more, contact us about a Plus plan with custom seat limits, dedicated support, and higher conversation quotas.
+Can I test out Lyro AI for free?
+Yes. Every account gets 50 free Lyro AI conversations. This is a one-time quota: it doesn't renew, and once you use it, it's gone. It's separate from any paid plan, so using it doesn't reduce the quota of a plan you buy later. It's there so you can see Lyro in action before choosing a paid plan with Lyro AI.
+Do you offer a free trial?
+Yes. All paid plans come with a 7-day free trial, no credit card required. The trial starts automatically when you create your account, and during the trial you get Growth features with Lyro AI. When the trial ends, your account moves to the Free plan unless you choose a paid plan, and paid features are no longer available. You are not charged unless you choose a paid plan.
+What does the Free plan consist of?
+The Free plan includes 50 human conversations and 100 Flows visitors. These limits renew every month (every 30 days for Shopify-billed accounts). It also includes a one-time quota of 50 Lyro AI conversations. Unlike the other limits, it doesn't renew.
+Can I pay by bank transfer?
+Yes, on Plus and Premium. Bank transfer isn't available on Starter and Growth. Contact us to discuss a Plus or Premium plan.
+Limits, Changes, and Existing Customers
+What happens when I reach my conversation limit?
+Your conversation limit renews every month (every 30 days for Shopify-billed accounts). Flows and Voice have their own limits, each with its own refresh date.
+At checkout you can turn on automatic upgrades. When you use 95% of a limit, it moves up to the next tier and you pay that tier's price from then on. This works for conversations and for the Flows and Voice add-ons. With automatic upgrades off, you can raise a limit yourself at any time.
+Can I change my subscription anytime I want?
+Yes. You can change your plan, your conversation quota, or switch between Human only and With Lyro AI at any time. Upgrades take effect immediately, and you only pay for the time left in your billing period.
+How am I charged if I change my plan in the middle of a billing period?
+You never pay twice for the same time. Only the time left until the end of your billing period counts:
+Upgrades
+(a higher plan, more seats, or a new add-on) take effect immediately. You pay only the difference for the rest of the period, with the unused part of your old plan deducted. You see the amount before you confirm.
+Downgrades
+(a lower plan, fewer seats, or removing an add-on) take effect from your next billing period. Until then you keep all features and limits you paid for. The current period is not refunded.
+Moving from a legacy plan to a new one
+is always prorated, even if the new plan is cheaper. Any overpayment stays as credit on your account and is deducted from your next invoices.
+Switching from monthly to annual billing
+: you pay the difference right away, minus the unused part of the current month.
+Billed through Shopify
+: you confirm every change in Shopify, and Shopify calculates any charge or credit and shows it on your Shopify bill.
+During the free trial
+, changing your plan costs nothing.
+What happens to my price when I turn AI on or off?
+Your conversation quota stays the same. Only the price changes: With Lyro AI costs more than Human only for the same quota.
+Is the quota per website?
+Each plan covers one project. Multiple projects are available on Plus.
+Can I pay annually?
+Yes. Annual billing gives you 2 months free on Starter, Growth, and the Flows, Inbox AI, and Voice add-ons.
+Channels
+In which channels can I use Tidio?
+Your team can answer customers in:
+Live chat on your website
+Email
+Messenger, Instagram, and WhatsApp
+All of these channels share one conversation quota, so you don't manage limits per channel. Phone calls are handled through the Voice add-on, which has its own quota.
+Which channels does Lyro AI work on?
+Lyro AI works in the same channels as your team: live chat on your website, email, Messenger, Instagram, and WhatsApp. When Lyro hands a conversation over, your team takes it over in the same conversation.
+Products and Add-ons
+What add-ons can I buy?
+You can add Flows, Inbox AI, Help Center, Voice, and No Tidio branding on top of your plan. Flows and Voice are priced by monthly volume, Inbox AI by the number of conversations in your plan, and Help Center has one flat monthly price.
+Inbox AI gives your human agents AI tools such as summaries, translation, suggested replies, and improving drafts. Help Center comes with a 7-day free trial. Voice doesn't have a free trial.
+Do add-ons have their own limits?
+Yes. Flows and Voice each have their own limit, separate from your conversation limit. Inbox AI has no limit of its own: its price depends on the number of conversations in your plan. Help Center has no limit on articles.
+What do Flows do and how are they priced?
+Flows are automated, scripted conversation paths that engage visitors on your website, for example collecting contact details, qualifying a request, or routing customers to the right team. Flows are priced by visitors reached, the number of visitors your Flows reach each month. This model is unchanged. The Free plan includes 100 visitors per month.
+What is the difference between Flows and Lyro AI?
+Flows follow a script you design: visitors move through predefined steps, which works well for lead capture, menus, and routing. Lyro AI is a conversational AI that understands questions and answers dynamically without a fixed script. Many customers combine both, using Flows to qualify or route and Lyro to resolve. Flows are also used to trigger Lyro proactively.
+Learn more about Proactive Lyro
+.
+How is Voice charged?
+Voice is a separate add-on with its own monthly quota. It is priced per conversation: one phone call is one conversation, regardless of how long the call lasts. Voice conversations do not use your chat quota. Availability: the US, Canada, Australia, and the UK. Contact us to enable Voice.
+What is Inbox AI and how is it charged?
+Inbox AI is an add-on for your human agents. It helps them in the inbox with summaries, translation, suggested replies, and improving drafts. It doesn't answer customers on its own, which is what Lyro AI does. Its price depends on the number of conversations in your plan, and it has no limit of its own.
+Do I need Help Center to use Lyro AI?
+No. Lyro AI works without Help Center. Lyro can learn from your website, your FAQ, your store's product catalog, and articles imported from Zendesk. Help Center gives you one place to write and update your support content: customers read the articles on their own, and Lyro uses the same articles to answer them. Update an article once, and both get the change. Help Center is a separate add-on for $10 per month, with no limit on articles.
+What's the difference between Help Center and Lyro?
+Help Center is a knowledge base where customers look up answers on their own. Lyro is an AI agent that answers customers in chat and email, using your support content. You can use the same Help Center for your customers and for Lyro, so it works for both sides and you only have to update one source.
+Does Tidio support MCP, and how does it work?
+Yes. MCP (Model Context Protocol) lets you connect Lyro to your own tools and systems. You can use it in two ways: through Lyro Smart Actions, or by connecting Lyro directly to MCP. The number of MCP tools you can connect depends on your plan:
+Starter: 3 MCP tools
+Growth: 5 MCP tools
+Plus: 10 MCP tools
+Premium: a custom number of MCP tools, agreed with you during setup

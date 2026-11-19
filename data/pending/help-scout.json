@@ -1,0 +1,240 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Page uses a toggle between Monthly and Annual billing views. Only monthly prices are displayed ($25, $45, $75 per user/month). No annual pricing shown on this view. Envoy is an add-on priced at $0.75 per resolution (usage-based, not seat-based). Page mentions a 3-month free trial for Envoy and 15-day trial for Standard/Plus. The page states Standard and Plus offer \"Try for Free\" but specifies trial details in FAQ as 15 days. Pro requires booking a demo and does not display a trial period. Comparison table shows additional details about limits and features; primary plan cards used for pricing and core feature extraction.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "contacts per month",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "docs sites",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "inboxes",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "saved replies",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "tags",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "basic workflows",
+        "live chat",
+        "multiple inboxes",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Standard",
+      "key": "standard",
+      "monthly_price": 25.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 15,
+      "limits": [
+        {
+          "metric": "basic workflows",
+          "value": 150.0,
+          "unit": null
+        },
+        {
+          "metric": "contacts",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "inboxes",
+          "value": 2.0,
+          "unit": null
+        },
+        {
+          "metric": "saved replies",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "tags",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 25.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "basic workflows",
+        "integrations",
+        "live chat",
+        "multiple inboxes",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Plus",
+      "key": "plus",
+      "monthly_price": 45.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 15,
+      "limits": [
+        {
+          "metric": "advanced workflows",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "beacons",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "docs sites",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "inboxes",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "light users",
+          "value": 25.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 50.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom branding",
+        "integrations",
+        "live chat",
+        "multiple inboxes",
+        "sla policies",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 75.0,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "docs sites",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "inboxes",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "light users",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "sla policies",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": "minimum 10"
+        },
+        {
+          "metric": "workflows",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "custom branding",
+        "dedicated account manager",
+        "hipaa",
+        "integrations",
+        "live chat",
+        "multiple inboxes",
+        "onboarding support",
+        "saml",
+        "sla policies",
+        "sso",
+        "whatsapp"
+      ]
+    },
+    {
+      "name": "Envoy",
+      "key": "envoy",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": true,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai chatbot"
+      ]
+    }
+  ],
+  "_first_seen": "2026-11-19"
+}
