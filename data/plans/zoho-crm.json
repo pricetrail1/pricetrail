@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows Monthly/Annually toggle but no actual prices are visible for Standard, Professional, Enterprise, and Bigin Express plans—only placeholder text like \"/user/month\" with \"FREE TRIAL\" buttons. The prices appear to be dynamically loaded or require interaction with the toggle/currency selector. Only Zoho One shows a specific price ($30/user/month). Free plan limits to 3 users as stated. Feature extraction is limited because many features listed are marketing descriptions not in the required features list; only included those that matched exactly.",
+  "extraction_notes": "Page shows 4 product suites: Zoho CRM, Bigin, Zoho One, and Zoho CRM Plus. Zoho CRM: Standard, Professional, and Enterprise plans show no prices in the visible text. Free tier is permanently free for 3 users. Bigin product: Free tier (single user, 500 records), Express, Premier, and Bigin 360 plans show no prices in the visible text. Zoho One: \"All Employee Pricing\" shows ₹1800 (first year only, with note about annual commitment) and $37/employee/month annual; \"Flexible User Pricing\" shows $90/user/month. Zoho CRM Plus: Starter and Enterprise plans show no prices in the visible text. The page indicates \"Save up to 34% with yearly plans\" and billing toggle exists (Annually/Monthly), but actual numeric prices for most tiers are not visible in the provided text. Only Zoho One pricing is fully visible.",
   "plans": [
     {
       "name": "Free",
@@ -16,6 +16,11 @@
       "trial_days": null,
       "limits": [
         {
+          "metric": "records",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "users",
           "value": 3.0,
           "unit": null
@@ -23,17 +28,51 @@
       ],
       "features": [
         "api access",
-        "basic workflows",
-        "contact management",
-        "custom reporting",
         "workflow automation"
       ]
     },
     {
-      "name": "Zoho One",
-      "key": "zohoone",
-      "monthly_price": 30.0,
+      "name": "Free (Bigin)",
+      "key": "freebigin",
+      "monthly_price": 0.0,
       "annual_price_per_month": null,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "automations",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "pipelines",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 500.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "All Employee Pricing",
+      "key": "allemployeepricing",
+      "monthly_price": null,
+      "annual_price_per_month": 37.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": true,
@@ -44,8 +83,8 @@
       "features": []
     },
     {
-      "name": "Bigin Express",
-      "key": "biginexpress",
+      "name": "Bigin 360",
+      "key": "bigin360",
       "monthly_price": null,
       "annual_price_per_month": null,
       "is_free": false,
@@ -54,10 +93,37 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "ai credits",
+          "value": 3000.0,
+          "unit": null
+        },
+        {
+          "metric": "automations",
+          "value": 100.0,
+          "unit": null
+        },
+        {
+          "metric": "pipelines",
+          "value": 15.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 1000000.0,
+          "unit": null
+        },
+        {
+          "metric": "storage",
+          "value": 5.0,
+          "unit": null
+        }
+      ],
       "features": [
-        "api access",
-        "integrations"
+        "ai assistant",
+        "integrations",
+        "workflow automation"
       ]
     },
     {
@@ -73,13 +139,116 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
         "ai assistant",
         "api access",
-        "custom branding",
-        "custom reporting",
+        "custom modules",
         "integrations",
         "sandbox"
+      ]
+    },
+    {
+      "name": "Enterprise",
+      "key": "enterprise",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations",
+        "live chat"
+      ]
+    },
+    {
+      "name": "Express",
+      "key": "express",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "automations",
+          "value": 30.0,
+          "unit": null
+        },
+        {
+          "metric": "pipelines",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 50000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "integrations",
+        "workflow automation"
+      ]
+    },
+    {
+      "name": "Flexible User Pricing",
+      "key": "flexibleuserpricing",
+      "monthly_price": null,
+      "annual_price_per_month": 90.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": []
+    },
+    {
+      "name": "Premier",
+      "key": "premier",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "ai credits",
+          "value": 1000.0,
+          "unit": null
+        },
+        {
+          "metric": "automations",
+          "value": 50.0,
+          "unit": null
+        },
+        {
+          "metric": "pipelines",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 100000.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "integrations",
+        "workflow automation"
       ]
     },
     {
@@ -95,12 +264,11 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
         "ai assistant",
         "api access",
-        "custom branding",
-        "custom reporting",
-        "integrations"
+        "custom modules",
+        "integrations",
+        "workflow automation"
       ]
     },
     {
@@ -117,9 +285,30 @@
       "limits": [],
       "features": [
         "api access",
-        "integrations"
+        "custom modules",
+        "email integration",
+        "hipaa"
+      ]
+    },
+    {
+      "name": "Starter",
+      "key": "starter",
+      "monthly_price": null,
+      "annual_price_per_month": null,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [],
+      "features": [
+        "ai assistant",
+        "api access",
+        "integrations",
+        "live chat"
       ]
     }
   ],
-  "captured_at": "2026-11-05T14:06:47.989560+00:00"
+  "captured_at": "2026-11-20T14:58:50.231017+00:00"
 }

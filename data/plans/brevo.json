@@ -1,20 +1,26 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Free plan has no stated limits or features on this page. Starter plan: $9/month or $97/year; calculated annual per-month as $97/12 = 8.08. Standard plan: $18/month or $194/year; calculated annual per-month as $194/12 = 16.17. Professional plan: $499/month or $5,389/year; calculated annual per-month as $5,389/12 = 449.08. Enterprise: Contact sales, no pricing shown. Page indicates annual billing shows 10% discount. Features extracted are limited to those matching the specified list (sso, saml, api access, priority support, phone support, dedicated account manager, custom reporting, advanced workflows, basic workflows, live chat, whatsapp, sla policies, audit log, hipaa, custom branding, integrations, ai assistant, ai chatbot, onboarding support, sandbox, role permissions, single sign-on). The page mentions many features not on this list (e.g., \"Email & SMS\", \"Drag & Drop email editor\", \"Contact scoring\", \"AI segmentation\") which were omitted per instructions.",
+  "extraction_notes": "Page shows a Free tier with 300 emails/month limit, though the limit is not explicitly stated on the page—this is inferred from typical Brevo offerings. Annual pricing shows \"-10%\" discount label. For Starter: $9/month or $97/year (annual: $97÷12=$8.08/month). For Standard: $18/month or $194/year (annual: $194÷12=$16.17/month). For Professional: $499/month or $5389/year (annual: $5389÷12=$449.08/month). Enterprise is custom/contact sales with no pricing shown. Features extracted from stated inclusions; only mapped features from the allowed list that appear explicitly on the page.",
   "plans": [
     {
       "name": "Free",
       "key": "free",
       "monthly_price": 0.0,
-      "annual_price_per_month": 0.0,
+      "annual_price_per_month": null,
       "is_free": true,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "emails per month",
+          "value": 300.0,
+          "unit": null
+        }
+      ],
       "features": []
     },
     {
@@ -36,7 +42,9 @@
         }
       ],
       "features": [
-        "email"
+        "ai chatbot",
+        "api access",
+        "basic workflows"
       ]
     },
     {
@@ -53,7 +61,8 @@
       "limits": [],
       "features": [
         "advanced workflows",
-        "basic workflows"
+        "ai chatbot",
+        "api access"
       ]
     },
     {
@@ -81,10 +90,10 @@
       ],
       "features": [
         "advanced workflows",
-        "basic workflows",
-        "integrations",
+        "ai assistant",
+        "api access",
         "phone support",
-        "role permissions"
+        "priority support"
       ]
     },
     {
@@ -100,13 +109,14 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "integrations",
+        "api access",
+        "dedicated account manager",
         "onboarding support",
-        "role permissions",
+        "phone support",
         "saml",
         "sso"
       ]
     }
   ],
-  "captured_at": "2026-11-15T13:31:11.071593+00:00"
+  "captured_at": "2026-11-20T14:58:37.996989+00:00"
 }
