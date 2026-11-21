@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows pricing with a monthly/annual toggle. The figures shown (e.g., Comfort and Power) are marked \"Save 10%\" when \"Billed yearly\" is displayed, indicating annual pricing. Standard undiscounted monthly prices are stated in the FAQ: Comfort starts at $12/month, Power starts at $25/month. Annual effective per-month prices calculated from the 10% discount: Comfort ~$10.80/month, Power ~$22.50/month. However, the exact annual prices are not shown as clear numbers on the pricing cards themselves—only the 10% discount label and monthly comparison are visible. The page does not display explicit annual prices in dollars; it only shows relative discount percentages. Recording based on stated FAQ monthly minimums and the 10% annual discount mentioned. Enterprise is custom pricing. Free plan has 14-day trial mentioned but it's a genuinely free tier. Limits for each plan extracted from comparison table and plan descriptions.",
+  "extraction_notes": "Page shows a toggle between \"Billed yearly\" (with \"Save 10%\" label) and \"Billed monthly\". The displayed prices ($12/month for Comfort and $25/month for Power) are annual-equivalent (after 10% discount). Calculated monthly equivalents: Comfort $13.33 (12÷0.9), Power $27.78 (25÷0.9). Trial is 14 days for all paid plans. Free plan pricing is null (genuinely free, no charge). Features extracted conservatively using only exact list matches and information clearly stated in plan cards. Limits sourced from comparison table and plan descriptions. Enterprise plan is custom pricing and details indicate 200k+ subscriber minimum but actual pricing is custom.",
   "plans": [
     {
       "name": "Free",
@@ -13,29 +13,53 @@
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
+        {
+          "metric": "automations",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "digital products",
+          "value": 1.0,
+          "unit": null
+        },
+        {
+          "metric": "forms",
+          "value": 1.0,
+          "unit": null
+        },
         {
           "metric": "monthly emails",
           "value": 2500.0,
           "unit": null
         },
         {
+          "metric": "sites",
+          "value": 1.0,
+          "unit": null
+        },
+        {
           "metric": "subscribers",
           "value": 250.0,
+          "unit": null
+        },
+        {
+          "metric": "user seats",
+          "value": 2.0,
           "unit": null
         }
       ],
       "features": [
-        "api access",
-        "integrations"
+        "basic workflows"
       ]
     },
     {
       "name": "Comfort",
       "key": "comfort",
-      "monthly_price": 12.0,
-      "annual_price_per_month": 10.8,
+      "monthly_price": 13.33,
+      "annual_price_per_month": 12.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -44,7 +68,7 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "active automations",
+          "metric": "automations",
           "value": 50.0,
           "unit": null
         },
@@ -55,6 +79,11 @@
         },
         {
           "metric": "forms",
+          "value": 10.0,
+          "unit": null
+        },
+        {
+          "metric": "monthly emails per subscriber tier",
           "value": 10.0,
           "unit": null
         },
@@ -70,17 +99,15 @@
         }
       ],
       "features": [
-        "ai assistant",
         "api access",
-        "integrations",
         "live chat"
       ]
     },
     {
       "name": "Power",
       "key": "power",
-      "monthly_price": 25.0,
-      "annual_price_per_month": 22.5,
+      "monthly_price": 27.78,
+      "annual_price_per_month": 25.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -89,41 +116,25 @@
       "trial_days": 14,
       "limits": [
         {
-          "metric": "active automations",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "digital products",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "forms",
-          "value": -1.0,
-          "unit": null
-        },
-        {
           "metric": "monthly emails",
           "value": -1.0,
           "unit": null
         },
         {
-          "metric": "sites",
-          "value": -1.0,
-          "unit": null
-        },
-        {
-          "metric": "user seats",
-          "value": -1.0,
+          "metric": "subscribers",
+          "value": 200000.0,
           "unit": null
         }
       ],
       "features": [
         "ai assistant",
         "api access",
-        "integrations",
-        "live chat"
+        "live chat",
+        "unlimited automations",
+        "unlimited digital products",
+        "unlimited forms",
+        "unlimited sites",
+        "unlimited user seats"
       ]
     },
     {
@@ -136,22 +147,27 @@
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": null,
+      "trial_days": 14,
       "limits": [
         {
           "metric": "subscribers",
-          "value": 200000.0,
-          "unit": "minimum"
+          "value": -1.0,
+          "unit": null
         }
       ],
       "features": [
         "ai assistant",
         "api access",
         "dedicated account manager",
-        "integrations",
-        "priority support"
+        "onboarding support",
+        "priority support",
+        "unlimited automations",
+        "unlimited digital products",
+        "unlimited forms",
+        "unlimited sites",
+        "unlimited user seats"
       ]
     }
   ],
-  "captured_at": "2026-11-11T13:40:04.480943+00:00"
+  "captured_at": "2026-11-21T14:17:56.665412+00:00"
 }

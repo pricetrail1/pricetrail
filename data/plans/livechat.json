@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "This is a Text product pricing page (the successor to LiveChat). The page has a monthly/annual toggle defaulting to annual. Monthly prices extracted from the FAQ section. All prices are per user/seat except for the two add-on packages. Essential and Growth both include a 14-day free trial. Features list is limited to those matching the provided list; many features from the table are not on the approved list (e.g., chat and inbox, omnichannel, workflow automation details). Enterprise is custom pricing with contact sales required.",
+  "extraction_notes": "Page shows two billing toggles: \"Billed yearly\" and \"Billed monthly\". Prices are per user/seat. Essential: $19/month billed annually (annual toggle selected), or $25 billed monthly. Growth: $79/month billed annually, or $99 billed monthly. Enterprise: custom pricing, requires contacting sales. The 14-day free trial applies to both Essential and Growth plans (stated as \"Try the full Growth plan free for 14 days\" but they share the same trial). Two add-on products also listed: extra AI resolutions (50 pack at $49.50) and extra API calls (100,000 pack at $29.50), both sold on top of the base plans. Page clearly distinguishes features across plans in the comparison table. Features recorded are limited to those in the provided list; plan-specific wording like \"Everything in Essential, plus\" was not included as those are marketing phrases.",
   "plans": [
     {
       "name": "Essential",
@@ -31,9 +31,9 @@
           "unit": "per month"
         },
         {
-          "metric": "custom skills",
-          "value": 10.0,
-          "unit": null
+          "metric": "conversation history",
+          "value": 60.0,
+          "unit": "days"
         },
         {
           "metric": "live visitors tracked",
@@ -49,13 +49,14 @@
       "features": [
         "ai chatbot",
         "api access",
+        "audit log",
         "basic workflows",
-        "integrations"
+        "custom branding"
       ]
     },
     {
-      "name": "100,000 API calls package",
-      "key": "100000apicalls",
+      "name": "Extra API calls package (100,000)",
+      "key": "extraapicallspackage100000",
       "monthly_price": 29.5,
       "annual_price_per_month": null,
       "is_free": false,
@@ -74,8 +75,8 @@
       "features": []
     },
     {
-      "name": "Extra AI resolutions package",
-      "key": "extraairesolutions",
+      "name": "Extra AI resolutions package (50)",
+      "key": "extraairesolutionspackage50",
       "monthly_price": 49.5,
       "annual_price_per_month": null,
       "is_free": false,
@@ -121,6 +122,11 @@
           "unit": "per month"
         },
         {
+          "metric": "conversation history",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "live visitors tracked",
           "value": 400.0,
           "unit": null
@@ -135,7 +141,10 @@
         "advanced workflows",
         "ai chatbot",
         "api access",
-        "integrations"
+        "audit log",
+        "basic workflows",
+        "custom branding",
+        "priority support"
       ]
     },
     {
@@ -149,16 +158,44 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "ai agents",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "ai resolutions",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "api calls",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "live visitors tracked",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "proactive campaigns",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
       "features": [
+        "advanced workflows",
+        "ai chatbot",
+        "api access",
         "audit log",
         "custom branding",
         "dedicated account manager",
-        "onboarding support",
-        "sla policies",
+        "priority support",
         "sso"
       ]
     }
   ],
-  "captured_at": "2026-10-26T13:27:34.617776+00:00"
+  "captured_at": "2026-11-21T14:17:55.533239+00:00"
 }
