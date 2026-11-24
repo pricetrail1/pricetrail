@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows monthly/yearly toggle defaulting to yearly. Prices extracted as follows: Free plan limit not explicitly stated (omitted). Starter: $9/month or $97/year (annual = $8.08/month). Standard: $18/month or $194/year (annual = $16.17/month). Professional: $499/month or $5389/year (annual = $449.08/month). The Professional plan includes 10 seats but is not marked as per-seat pricing. Features extracted based on what appears explicitly in each plan card; \"Everything in X\" phrases were avoided per rules. Enterprise is contact-sales/custom pricing with no published price. Yearly option shows \"up to -30%\" discount banner.",
+  "extraction_notes": "The page shows \"Free forever, no credit card needed\" tier at the top but does not explicitly state the email limit for the Free plan. The pricing page includes a toggle between \"Monthly\" and \"Yearly (up to -30%)\" which indicates annual billing discount. Annual prices converted to per-month: Starter $97/year = $8.08/month; Standard $194/year = $16.17/month; Professional $5389/year = $449.08/month. The page states these are promotional annual rates with up to -30% discount. Professional plan pricing shows \"Starting from $499 per month\", indicating this may be a base price. Enterprise pricing requires contacting sales. The plan features listed include items like \"Sales Essentials\" and \"Sales Advanced\" which appear to be tiers within the platform but are not standard feature names from the specified list, so they were not included. Features like \"custom branding\" (no Brevo logo), \"api access\", \"phone support\", \"dedicated account manager\", and \"onboarding support\" were extracted where clearly stated.",
   "plans": [
     {
       "name": "Free",
@@ -42,9 +42,7 @@
         }
       ],
       "features": [
-        "ai assistant",
-        "basic workflows",
-        "custom branding"
+        "basic workflows"
       ]
     },
     {
@@ -60,9 +58,8 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "custom branding"
+        "basic workflows",
+        "custom reporting"
       ]
     },
     {
@@ -83,19 +80,22 @@
           "unit": null
         },
         {
-          "metric": "seats",
+          "metric": "included seats",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
         "advanced workflows",
-        "ai assistant",
         "api access",
-        "custom branding",
-        "integrations",
+        "basic workflows",
+        "custom reporting",
+        "dedicated account manager",
+        "multi sign-on",
+        "onboarding support",
         "phone support",
-        "priority support"
+        "saml",
+        "sso"
       ]
     },
     {
@@ -109,13 +109,20 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 1000000.0,
+          "unit": null
+        }
+      ],
       "features": [
-        "ai assistant",
+        "advanced workflows",
         "api access",
-        "custom branding",
+        "basic workflows",
+        "custom reporting",
         "dedicated account manager",
-        "integrations",
+        "multi sign-on",
         "onboarding support",
         "phone support",
         "saml",
@@ -123,5 +130,5 @@
       ]
     }
   ],
-  "_first_seen": "2026-11-23"
+  "_first_seen": "2026-11-24"
 }

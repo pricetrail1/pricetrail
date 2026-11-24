@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows monthly and annual pricing with toggle set to \"Billed annually\". Essential plan shows three price points on the card: a crossed-through $0.99 (minimum), $29 (monthly), and $19 (annual per month). Advanced and Expert show only annual pricing ($85 and $132 respectively, with crossed-through $0.99 minimum). Fin AI Agent is standalone, priced at $0.99 per outcome with minimum monthly commitment. Add-ons: Pro ($100/mo), Copilot ($29/mo annual or $35/mo monthly), and Proactive Support Plus ($99/mo with 500 included messages). Page states 14-day free trial for all. Features are limited because the page shows very few specific feature details in the plan cards themselves; most information is in FAQs rather than feature lists on the cards.",
+  "extraction_notes": "Page shows \"Billed annually\" at the top. Essential plan shows struck-through $29, then $19 per seat/mo - the $19 is the annual price per month. Advanced and Expert show only one price ($85 and $132) with no annual breakdown visible on the main cards, so recorded as shown. Fin AI Agent priced at $0.99 per outcome (usage-based). Copilot has both billing options stated: $29/mo billed annually, $35/mo billed monthly. Pro add-on is $100/mo (monthly only shown). Proactive Support Plus is $99/mo with 500 messages included. All main plans (Essential, Advanced, Expert, Fin AI Agent) include 14-day free trial. Features listed are limited to those explicitly mentioned and matching the allowed feature list; many marketing phrases and feature details omitted per rules.",
   "plans": [
     {
       "name": "Fin AI Agent",
@@ -21,7 +21,9 @@
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "ai chatbot"
+      ]
     },
     {
       "name": "Essential",
@@ -36,8 +38,7 @@
       "trial_days": 14,
       "limits": [],
       "features": [
-        "api access",
-        "basic workflows",
+        "ai chatbot",
         "live chat"
       ]
     },
@@ -51,19 +52,8 @@
       "is_per_seat": true,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
-      "limits": [
-        {
-          "metric": "free ai auto-translation conversations per agent",
-          "value": 10.0,
-          "unit": "per month"
-        },
-        {
-          "metric": "free copilot conversations per agent",
-          "value": 10.0,
-          "unit": "per month"
-        }
-      ],
+      "trial_days": null,
+      "limits": [],
       "features": [
         "ai assistant"
       ]
@@ -82,7 +72,7 @@
       "limits": [],
       "features": [
         "advanced workflows",
-        "api access",
+        "ai chatbot",
         "live chat"
       ]
     },
@@ -90,13 +80,13 @@
       "name": "Proactive Support Plus",
       "key": "proactivesupportplus",
       "monthly_price": 99.0,
-      "annual_price_per_month": 99.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
           "metric": "included messages",
@@ -110,26 +100,29 @@
       "name": "Pro",
       "key": "pro",
       "monthly_price": 100.0,
-      "annual_price_per_month": 100.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
       "is_addon": true,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
-          "metric": "conversations analyzed",
+          "metric": "conversations per month",
           "value": 500.0,
           "unit": null
         },
         {
-          "metric": "credits",
+          "metric": "credits per month",
           "value": 6000.0,
           "unit": null
         }
       ],
-      "features": []
+      "features": [
+        "ai assistant",
+        "custom reporting"
+      ]
     },
     {
       "name": "Expert",
@@ -145,13 +138,10 @@
       "limits": [],
       "features": [
         "advanced workflows",
-        "api access",
-        "custom branding",
-        "live chat",
-        "saml",
-        "sso"
+        "ai chatbot",
+        "live chat"
       ]
     }
   ],
-  "captured_at": "2026-11-19T15:20:27.844080+00:00"
+  "captured_at": "2026-11-24T17:02:30.720656+00:00"
 }
