@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows both monthly and annual billing options via toggle. All prices are per agent/seat per month. Support Team, Suite Team, and Suite Professional are core subscription plans with published pricing. Suite Enterprise + Copilot routes to 'Talk to Sales' with no pricing shown. Three add-ons are listed: Copilot, Workforce Engagement Bundle, and Contact Center, all with annual pricing only shown at $50, $50, and $83 per agent/month respectively. The page indicates these are add-ons sold alongside base plans. Features list is incomplete for most plans as the page contains feature descriptions but not comprehensive feature matrices for each plan tier. Plan names preserved exactly as shown on page.",
+  "extraction_notes": "Page shows Monthly/Annual toggle; all displayed prices are annual unless otherwise noted. Prices shown are per agent/month. The \"Support Team\" features list is reconstructed from the main plan card (\"Email and ticketing system\", \"Ticket routing\", etc.); the full feature comparison table does not list feature names clearly enough to extract without ambiguity. Suite Team and Professional features are inferred from \"Support Team features, plus:\" language and the comparison table rows marked with checkmarks; exact wording from the allowed feature list was used where it matched (e.g., \"api access\" instead of \"flexible APIs\", \"audit log\", \"integrations\"). Suite Enterprise + Copilot is custom pricing (\"Talk to Sales\"). Copilot ($50/agent/month paid yearly), Workforce Engagement Bundle ($50/agent/month paid yearly), and Contact Center ($83/agent/month paid yearly) are add-ons sold alongside base plans. Only annual pricing is shown for add-ons on the page. No monthly price available for Suite Enterprise or add-ons.",
   "plans": [
     {
       "name": "Support Team",
@@ -16,11 +16,12 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "analytics",
-        "automations",
-        "email",
-        "ticket routing",
-        "ticketing"
+        "automations and triggers",
+        "customer context",
+        "email and ticketing system",
+        "pre-written responses",
+        "prebuilt analytics dashboards",
+        "ticket routing"
       ]
     },
     {
@@ -36,12 +37,15 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "action builder",
-        "ai chatbot",
-        "knowledge management",
-        "messaging and live chat",
-        "omnichannel routing",
-        "phone support"
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "audit log",
+        "basic workflows",
+        "integrations",
+        "live chat",
+        "sso",
+        "whatsapp"
       ]
     },
     {
@@ -57,11 +61,16 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "admin copilot",
-        "app builder",
-        "phone support",
-        "skills-based routing",
-        "writing tools"
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "audit log",
+        "basic workflows",
+        "custom reporting",
+        "integrations",
+        "live chat",
+        "priority support",
+        "whatsapp"
       ]
     },
     {
@@ -107,12 +116,16 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "approval workflows",
-        "auto assist",
-        "intelligent triage",
-        "phone support",
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "audit log",
+        "custom reporting",
+        "integrations",
+        "priority support",
         "role permissions",
-        "sandbox"
+        "sandbox",
+        "sla policies"
       ]
     },
     {
@@ -130,5 +143,5 @@
       "features": []
     }
   ],
-  "_first_seen": "2026-11-24"
+  "_first_seen": "2026-11-25"
 }
