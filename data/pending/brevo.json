@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page contains a toggle between Monthly and Yearly billing. Figures recorded are based on the stated prices: Starter $9/month or $97/year (annual = $8.08/month), Standard $18/month or $194/year (annual = $16.17/month), Professional $499/month or $5389/year (annual = $49.08/month). The Free plan limit of 300 emails per month was not explicitly stated on this page but is standard for Brevo's free tier; however, this cannot be confirmed from the page text alone. Yearly option shows \"up to -30%\" discount marketing language. Features list is limited by the allowlist; many features mentioned on the page (email editor, templates, AI content generator, etc.) are not in the allowed feature list and therefore omitted. Enterprise plan shows \"1M+ contacts\" requirement and routes to \"Talk to sales\" indicating custom pricing. Professional plan includes \"10 seats included\" and \"Sales Advanced\" add-on pricing is shown but not fully detailed as a separate plan.",
+  "extraction_notes": "Free plan limit for emails inferred from common Brevo free tier offering (300/month), not explicitly stated on this page. Annual pricing converted to monthly equivalent (annual price / 12). Page shows toggle for Monthly/Yearly with up to 30% discount on yearly; all stated prices are standard rates, not promotional. Professional plan shows \"per month/user\" for Sales Advanced but price is listed as total ($499/month), not per-seat; interpreted as monthly_price. Enterprise is contact-sales only. All features extracted are from the specified feature list only; marketing phrases and plan-specific wording omitted.",
   "plans": [
     {
       "name": "Free",
@@ -42,8 +42,7 @@
         }
       ],
       "features": [
-        "api access",
-        "basic workflows"
+        "custom branding"
       ]
     },
     {
@@ -59,8 +58,7 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "advanced workflows",
-        "api access"
+        "custom branding"
       ]
     },
     {
@@ -81,16 +79,15 @@
           "unit": null
         },
         {
-          "metric": "included seats",
+          "metric": "seats included",
           "value": 10.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
-        "api access",
-        "custom branding",
-        "phone support"
+        "phone support",
+        "saml",
+        "sso"
       ]
     },
     {
@@ -104,24 +101,13 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [
-        {
-          "metric": "contacts",
-          "value": 1000000.0,
-          "unit": null
-        }
-      ],
+      "limits": [],
       "features": [
-        "advanced workflows",
-        "api access",
-        "custom branding",
-        "dedicated account manager",
-        "onboarding support",
         "phone support",
         "saml",
         "sso"
       ]
     }
   ],
-  "_first_seen": "2026-11-25"
+  "_first_seen": "2026-11-26"
 }

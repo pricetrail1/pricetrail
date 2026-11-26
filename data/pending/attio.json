@@ -1,0 +1,171 @@
+{
+  "currency": "USD",
+  "pricing_is_public": true,
+  "extraction_notes": "Annual billing shows 20% discount. Pro plan includes 14-day free trial. Ultra is annual-only billing ($1000/mo when billed annually). Plus and Pro prices shown in main cards are monthly ($40 and $100); annual equivalent calculated from \"20% less\" discount statement. Per-seat pricing: Plus base includes 1 user ($40/mo), additional users $44/mo monthly or $35/mo annually. Pro base includes 1 user ($100/mo), additional users $99/mo monthly or $79/mo annually. Ultra includes 5 users base, additional users $189/mo (annual only). Governance add-on ($30/user/mo annual) available for Pro but tracked as add-on, not included in core plan features. Additional records and workspace credits are add-ons sold per usage, not core plan limits.",
+  "plans": [
+    {
+      "name": "Free",
+      "key": "free",
+      "monthly_price": 0.0,
+      "annual_price_per_month": 0.0,
+      "is_free": true,
+      "is_custom_pricing": false,
+      "is_per_seat": false,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "objects",
+          "value": 3.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 50000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 3.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "basic workflows",
+        "integrations"
+      ]
+    },
+    {
+      "name": "Plus",
+      "key": "plus",
+      "monthly_price": 40.0,
+      "annual_price_per_month": 32.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per user per month",
+          "value": 1000.0,
+          "unit": null
+        },
+        {
+          "metric": "objects",
+          "value": 5.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 250000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": 10.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "ai assistant",
+        "api access",
+        "basic workflows",
+        "integrations",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Pro",
+      "key": "pro",
+      "monthly_price": 100.0,
+      "annual_price_per_month": 80.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": 14,
+      "limits": [
+        {
+          "metric": "emails per user per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "objects",
+          "value": 12.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 1000000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "audit log",
+        "custom reporting",
+        "integrations",
+        "role permissions"
+      ]
+    },
+    {
+      "name": "Ultra",
+      "key": "ultra",
+      "monthly_price": null,
+      "annual_price_per_month": 1000.0,
+      "is_free": false,
+      "is_custom_pricing": false,
+      "is_per_seat": true,
+      "is_addon": false,
+      "min_seats": null,
+      "trial_days": null,
+      "limits": [
+        {
+          "metric": "emails per user per month",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "objects",
+          "value": -1.0,
+          "unit": null
+        },
+        {
+          "metric": "records",
+          "value": 3000000.0,
+          "unit": null
+        },
+        {
+          "metric": "users",
+          "value": -1.0,
+          "unit": null
+        }
+      ],
+      "features": [
+        "advanced workflows",
+        "ai assistant",
+        "api access",
+        "audit log",
+        "custom reporting",
+        "integrations",
+        "onboarding support",
+        "role permissions",
+        "sso"
+      ]
+    }
+  ],
+  "_first_seen": "2026-11-26"
+}

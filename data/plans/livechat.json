@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows two billing toggles: \"Billed yearly\" and \"Billed monthly\". Prices are per user/seat. Essential: $19/month billed annually (annual toggle selected), or $25 billed monthly. Growth: $79/month billed annually, or $99 billed monthly. Enterprise: custom pricing, requires contacting sales. The 14-day free trial applies to both Essential and Growth plans (stated as \"Try the full Growth plan free for 14 days\" but they share the same trial). Two add-on products also listed: extra AI resolutions (50 pack at $49.50) and extra API calls (100,000 pack at $29.50), both sold on top of the base plans. Page clearly distinguishes features across plans in the comparison table. Features recorded are limited to those in the provided list; plan-specific wording like \"Everything in Essential, plus\" was not included as those are marketing phrases.",
+  "extraction_notes": "Page shows both monthly and annual billing. Toggle at top defaults to annual. Per pricing FAQ: Essential is $19/month billed annually or $25 billed monthly; Growth is $79/month billed annually or $99 billed monthly. This is a Text pricing page (not LiveChat); the page explains Text is the successor product. 14-day free trial applies to Growth plan. Add-ons (extra AI resolutions and API calls) are priced as one-time purchases that renew at each billing cycle. Enterprise plan is custom pricing with no fixed price shown.",
   "plans": [
     {
       "name": "Essential",
@@ -21,19 +21,19 @@
           "unit": null
         },
         {
-          "metric": "ai resolutions",
+          "metric": "ai resolutions per month",
           "value": 10.0,
-          "unit": "per month"
+          "unit": null
         },
         {
-          "metric": "api calls",
+          "metric": "api calls per month",
           "value": 10000.0,
-          "unit": "per month"
+          "unit": null
         },
         {
-          "metric": "conversation history",
+          "metric": "conversation history days",
           "value": 60.0,
-          "unit": "days"
+          "unit": null
         },
         {
           "metric": "live visitors tracked",
@@ -47,16 +47,17 @@
         }
       ],
       "features": [
-        "ai chatbot",
+        "ai assistant",
         "api access",
-        "audit log",
         "basic workflows",
-        "custom branding"
+        "integrations",
+        "live chat",
+        "whatsapp"
       ]
     },
     {
-      "name": "Extra API calls package (100,000)",
-      "key": "extraapicallspackage100000",
+      "name": "Extra API calls package",
+      "key": "extraapicalls",
       "monthly_price": 29.5,
       "annual_price_per_month": null,
       "is_free": false,
@@ -75,8 +76,8 @@
       "features": []
     },
     {
-      "name": "Extra AI resolutions package (50)",
-      "key": "extraairesolutionspackage50",
+      "name": "Extra AI resolutions package",
+      "key": "extraairesolutions",
       "monthly_price": 49.5,
       "annual_price_per_month": null,
       "is_free": false,
@@ -112,17 +113,17 @@
           "unit": null
         },
         {
-          "metric": "ai resolutions",
+          "metric": "ai resolutions per month",
           "value": 200.0,
-          "unit": "per month"
+          "unit": null
         },
         {
-          "metric": "api calls",
+          "metric": "api calls per month",
           "value": 20000.0,
-          "unit": "per month"
+          "unit": null
         },
         {
-          "metric": "conversation history",
+          "metric": "conversation history days",
           "value": -1.0,
           "unit": null
         },
@@ -139,12 +140,14 @@
       ],
       "features": [
         "advanced workflows",
-        "ai chatbot",
+        "ai assistant",
         "api access",
         "audit log",
-        "basic workflows",
-        "custom branding",
-        "priority support"
+        "integrations",
+        "live chat",
+        "priority support",
+        "role permissions",
+        "whatsapp"
       ]
     },
     {
@@ -175,6 +178,11 @@
           "unit": null
         },
         {
+          "metric": "conversation history",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "live visitors tracked",
           "value": -1.0,
           "unit": null
@@ -187,15 +195,21 @@
       ],
       "features": [
         "advanced workflows",
-        "ai chatbot",
+        "ai assistant",
         "api access",
         "audit log",
         "custom branding",
         "dedicated account manager",
+        "integrations",
+        "live chat",
+        "phone support",
         "priority support",
-        "sso"
+        "role permissions",
+        "single sign-on",
+        "sla policies",
+        "whatsapp"
       ]
     }
   ],
-  "captured_at": "2026-11-21T14:17:55.533239+00:00"
+  "captured_at": "2026-11-26T16:30:03.855016+00:00"
 }

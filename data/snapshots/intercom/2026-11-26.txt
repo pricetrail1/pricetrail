@@ -1,0 +1,224 @@
+Intercom helpdesk plans with Fin AI Agent built in
+A complete human and AI support system with simple, transparent pricing.
+14-day cardless free trial
+Intercom helpdesk
+Fin AI Agent
+Save up to 35%
+Essential
+Customer support for individuals, startups, and small businesses.
+Intercom helpdesk
+$29
+$19
+per seat/mo
+Fin AI Agent
+$0.99
+per outcome
+Key features include:
+Advanced
+Powerful automation and assignment tools for growing support teams.
+Intercom helpdesk
+$85
+per seat/mo
+Fin AI Agent
+$0.99
+per outcome
+Every Essential feature, plus:
+Startups save 93% with Early Stage
+Under $10M raised and 15 employees or fewer?
+Apply now
+.
+Expert
+Collaboration and security features for large support teams.
+Intercom helpdesk
+$132
+per seat/mo
+Fin AI Agent
+$0.99
+per outcome
+Every Advanced feature, plus:
+Startups get 93% off
+.
+Under $10M raised and 15 employees or fewer?
+Apply now
+.
+Compare all plan features
+Fin AI Agent
+Use Fin with an existing helpdesk such as Salesforce, Hubspot, or Freshdesk.
+Intercom helpdesk
+Not included
+Fin AI Agent
+$0.99
+per outcome
+Key features include:
+Over 2,000 five-star reviews on
+Get a quick cost estimate
+Your support setup
+Your team’s helpdesk
+Intercom helpdesk
+Conversation volume
+/mo
+Fin AI Agent resolution rate
+%
+Your estimate
+91 conversations resolved by Fin AI Agent
+$90.09
+/mo
+29 conversations resolved by your team
+$19.00
+/mo
+1
+Essential
+seat
+Why Essential?
+At this volume, a shared inbox and ticketing system are usually sufficient.
+Total
+$109.09
+/mo
+With
+this would be just $65/mo.
+Apply now
+.
+Start a 14-day Essential trial
+No credit card required. Change plan anytime.
+Build a full cost estimate
+Calculate your Fin AI Agent ROI
+Fin AI Agent on all plans for
+$0.99 per outcome
+Never pay if Fin can't answer
+If Fin can't answer or fails to perform an action, or if at any point the customer asks to speak to a human, you pay nothing.
+One outcome per conversation, max
+You're only charged at most once per conversation, even if Fin takes multiple actions or answers multiple questions. If the conversation is later reopened, the outcome is refunded.
+Control your spending
+Spending limits and alerts keep your costs predictable.
+Looking for AI voice support?
+Fin Voice is available at $1.99 per voice outcome.
+Learn more
+.
+Add-ons
+Add-ons for every plan
+Included with every trial. Add or remove anytime.
+Pro
+Includes Operator
+Advanced AI features to analyze performance, monitor quality, and improve Fin, plus Operator, an agent for your customer operations.
+From
+$100
+per workspace/mo
+Includes analysis of 500 conversations.
+Copilot
+Increase agent efficiency with a personal AI assistant in the inbox. Free to use in 10 Copilot and 10 AI Auto-translation conversations per agent/mo.
+$29
+per teammate/mo
+Unlimited usage
+Proactive Support Plus
+Advanced in-app and outbound support features including Posts, Checklists, Product Tours, Surveys, and Series campaign builder.
+From
+$99
+per workspace/mo
+Includes 500 messages sent/mo
+Thousands of businesses
+have already seen transformational results
+We’ve been seeing around 560,000 resolutions a month with Fin, at about a
+79% resolution rate,
+which is incredible when you think of all the conversations that are not funneling to our human team.
+”
+Isabel Larrow
+Head of AI Support at Anthropic
+What really stood out to me was how easy Fin was to use, how quick I could get it up and running. The UX was fantastic. It was a very fresh build, easy to understand and use, and
+it just fit well into our current tech stack.
+”
+Kat Crichton
+Manager of Technical Support at Glean
+One of the biggest benefits of moving to Intercom was having a single support platform. Instead of stitching together multiple tools,
+we now have one connected system for both AI and human support.
+”
+Eunice Dunmade
+Product Lead at Neo Financial
+FAQs
+Intercom pricing has two components:
+Seats:
+You pay per teammate based on your plan (Essential, Advanced, Expert)
+Usage:
+You pay for what you use (e.g. Fin outcomes, messaging channels)
+All plans include access to Intercom and Fin AI Agent. Want a tailored estimate?
+Use the pricing calculator
+.
+Fin is priced at
+$0.99 per outcome
+.
+An outcome is counted when:
+A customer confirms their issue is resolved, or
+They don’t ask for more help after Fin responds, or
+Fin completes a workflow (Procedure), including handoffs
+You’re only charged once per conversation, even if multiple questions are answered.
+Yes. Fin can be used with tools like Salesforce and others.
+Pricing:
+$0.99 per outcome
+Minimum monthly commitment applies (e.g. 50 outcomes)
+No seat costs
+No setup, integration, or platform fees
+Intercom offers three plans:
+Essential
+Advanced
+Expert
+Your plan determines:
+Seat price
+Feature access
+Included capabilities (e.g. Lite seats on higher tiers)
+Full seat:
+Paid. Required for teammates who interact with customers and use core features.
+Lite seat:
+Free (on Advanced/Expert). Limited access for internal collaboration.
+Only Full seats can send messages or fully use features like outbound content.
+Yes. Beyond seats, pricing is usage-based for certain features:
+Fin AI Agent:
+$0.99 per outcome
+WhatsApp:
+Charged per message sent
+SMS:
+Charged per message (varies by region)
+Email campaigns:
+Charged per bulk email sent
+Phone:
+Usage-based (varies)
+Inbound support (e.g. responding to customer emails) is included.
+An optional add-on for outbound engagement.
+$99/month includes 500 messages
+Covers: Product Tours, Surveys, In-app messages, Mobile Push, Carousels
+Additional messages are charged per unit
+Copilot is an optional add-on at
+$29 per agent/month billed annually
+, or $35 per agent/month billed monthly, for unlimited usage.
+Copilot is a personal AI assistant in the Inbox that helps your team resolve conversations faster. Every agent also gets 10 Copilot and 10 AI Auto-translation conversations free each month.
+Pro is an optional add-on at
+$100/month
+, which includes analysis of 500 conversations/month and 6,000 credits per month.
+Pro is a set of advanced AI features for managing and improving your support operation. It includes Operator, an agent for customer operations, plus features that help you analyze performance, monitor quality, identify trends, and continuously improve Fin.
+Credits are the unit used to measure and charge for Operator usage. Every Pro workspace receives monthly credits, and on contracted plans the number of credits included scales with conversation volume. If you use more credits than what’s included in Pro, you can buy additional credits at $0.01 per credit. Simple actions use fewer credits, while more complex work, like analyzing large sets of conversations, building automation, or testing changes, uses more. You can track usage, set alerts, and use hard limits to control spend.
+No.
+Monthly or annual self-serve plans are available (Essential, Advanced)
+Contracts are optional and required for:
+Enterprise needs
+Premier Support / onboarding
+Custom terms
+1 Full seat minimum
+No required platform fees beyond that
+Usage (e.g. Fin, messaging) is pay-as-you-go
+This makes it easy to start small and scale.
+Yes.
+14-day free trial
+No credit card required
+Includes all features, Fin, and add-ons
+You only pay once you choose a plan and add payment details.
+You can:
+Upgrade/downgrade plans
+Add/remove seats
+Add or remove add-ons
+Handled directly in your workspace (or via Sales if under contract). Downgrades typically take effect at renewal.
+Yes.
+Startups:
+Up to 93% off + 1 year of Fin free
+(via
+Early Stage program
+)
+Enterprise discounts may be available via Sales
+Perfect customer experiences, powered by Intercom
