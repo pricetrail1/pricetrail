@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Free plan limit for emails inferred from common Brevo free tier offering (300/month), not explicitly stated on this page. Annual pricing converted to monthly equivalent (annual price / 12). Page shows toggle for Monthly/Yearly with up to 30% discount on yearly; all stated prices are standard rates, not promotional. Professional plan shows \"per month/user\" for Sales Advanced but price is listed as total ($499/month), not per-seat; interpreted as monthly_price. Enterprise is contact-sales only. All features extracted are from the specified feature list only; marketing phrases and plan-specific wording omitted.",
+  "extraction_notes": "Extracted 5 plans total (Free, Starter, Standard, Professional, Enterprise). Free plan limit inferred from common Brevo free tier (300 emails/month) as the page shows \"From 5,000 emails per month\" for Starter but no explicit cap for Free. Annual pricing calculated: Starter $97/year ÷ 12 = $8.08/month; Standard $194/year ÷ 12 = $16.17/month; Professional $5389/year ÷ 12 = $449.08/month. Features listed are limited to those explicitly matching the allowed feature set; many features mentioned on the page (like drag & drop editor, templates, AI content generator, MCP, forms, landing pages, etc.) are not in the standard feature list provided. Email support for Starter and basic reporting are common but not in the allowed feature set.",
   "plans": [
     {
       "name": "Free",
@@ -42,7 +42,7 @@
         }
       ],
       "features": [
-        "custom branding"
+        "basic workflows"
       ]
     },
     {
@@ -58,7 +58,8 @@
       "trial_days": null,
       "limits": [],
       "features": [
-        "custom branding"
+        "advanced workflows",
+        "basic workflows"
       ]
     },
     {
@@ -85,9 +86,10 @@
         }
       ],
       "features": [
+        "advanced workflows",
+        "audit log",
         "phone support",
-        "saml",
-        "sso"
+        "priority support"
       ]
     },
     {
@@ -101,13 +103,25 @@
       "is_addon": false,
       "min_seats": null,
       "trial_days": null,
-      "limits": [],
+      "limits": [
+        {
+          "metric": "contacts",
+          "value": 1000000.0,
+          "unit": null
+        }
+      ],
       "features": [
+        "api access",
+        "audit log",
+        "dedicated account manager",
+        "integrations",
+        "onboarding support",
         "phone support",
+        "priority support",
         "saml",
         "sso"
       ]
     }
   ],
-  "_first_seen": "2026-11-26"
+  "_first_seen": "2026-11-27"
 }

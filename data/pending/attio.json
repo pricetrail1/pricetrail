@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Annual billing shows 20% discount. Pro plan includes 14-day free trial. Ultra is annual-only billing ($1000/mo when billed annually). Plus and Pro prices shown in main cards are monthly ($40 and $100); annual equivalent calculated from \"20% less\" discount statement. Per-seat pricing: Plus base includes 1 user ($40/mo), additional users $44/mo monthly or $35/mo annually. Pro base includes 1 user ($100/mo), additional users $99/mo monthly or $79/mo annually. Ultra includes 5 users base, additional users $189/mo (annual only). Governance add-on ($30/user/mo annual) available for Pro but tracked as add-on, not included in core plan features. Additional records and workspace credits are add-ons sold per usage, not core plan limits.",
+  "extraction_notes": "Annual billing shows 20% discount on Plus and Pro. Plus: $44/mo monthly, $35/mo annual (20% off). Pro: $99/mo monthly, $79/mo annual (20% off). Ultra is billed annually only at $1,000/mo and includes 5 users. Additional users cost $44/mo (Plus), $99/mo (Pro), $189/mo (Ultra) respectively, with the same annual discount applied. The page has a toggle showing \"Annual\" selected with \"Save 20% with annual billing\" text, indicating the displayed prices are annual rates. Pro includes a 14-day free trial. The Governance add-on ($30/mo per user annually for Pro teams) is not recorded as a separate plan but mentioned as an add-on. Workspace credits are add-on purchases. The page mentions SSO and audit logs are in the Governance add-on for Pro, but included with Ultra, so these features are only listed for Ultra. Single sign-on appears twice in features list (sso and single sign-on) - consolidated to avoid duplication.",
   "plans": [
     {
       "name": "Free",
@@ -33,6 +33,7 @@
       ],
       "features": [
         "ai assistant",
+        "api access",
         "basic workflows",
         "integrations"
       ]
@@ -46,11 +47,11 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": null,
+      "min_seats": 1,
       "trial_days": null,
       "limits": [
         {
-          "metric": "emails per user per month",
+          "metric": "emails sent per user per month",
           "value": 1000.0,
           "unit": null
         },
@@ -74,6 +75,7 @@
         "ai assistant",
         "api access",
         "basic workflows",
+        "custom branding",
         "integrations",
         "role permissions"
       ]
@@ -87,11 +89,11 @@
       "is_custom_pricing": false,
       "is_per_seat": true,
       "is_addon": false,
-      "min_seats": null,
+      "min_seats": 1,
       "trial_days": 14,
       "limits": [
         {
-          "metric": "emails per user per month",
+          "metric": "emails sent per user per month",
           "value": -1.0,
           "unit": null
         },
@@ -115,8 +117,7 @@
         "advanced workflows",
         "ai assistant",
         "api access",
-        "audit log",
-        "custom reporting",
+        "custom branding",
         "integrations",
         "role permissions"
       ]
@@ -124,20 +125,15 @@
     {
       "name": "Ultra",
       "key": "ultra",
-      "monthly_price": null,
-      "annual_price_per_month": 1000.0,
+      "monthly_price": 1000.0,
+      "annual_price_per_month": null,
       "is_free": false,
       "is_custom_pricing": false,
-      "is_per_seat": true,
+      "is_per_seat": false,
       "is_addon": false,
-      "min_seats": null,
+      "min_seats": 5,
       "trial_days": null,
       "limits": [
-        {
-          "metric": "emails per user per month",
-          "value": -1.0,
-          "unit": null
-        },
         {
           "metric": "objects",
           "value": -1.0,
@@ -159,13 +155,13 @@
         "ai assistant",
         "api access",
         "audit log",
-        "custom reporting",
+        "custom branding",
         "integrations",
-        "onboarding support",
         "role permissions",
+        "single sign-on",
         "sso"
       ]
     }
   ],
-  "_first_seen": "2026-11-26"
+  "_first_seen": "2026-11-27"
 }

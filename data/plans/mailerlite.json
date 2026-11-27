@@ -1,7 +1,7 @@
 {
   "currency": "USD",
   "pricing_is_public": true,
-  "extraction_notes": "Page shows a toggle between monthly and annual billing. Comfort and Power plans show \"/month\" with \"billed yearly\" label and \"Save 10%\" discount badge. The displayed prices ($12 and $25) are annual billing (10% discount applied). I calculated monthly prices: Comfort $13.33/month (from $12 × 12 ÷ 10.8), Power $27.78/month (from $25 × 12 ÷ 10.8). All paid plans include 14-day free trial. Free plan is a permanent offer. Enterprise plan limits show 200K+ subscribers requirement. Features list preserved from page content matching the allowed feature set.",
+  "extraction_notes": "Page shows monthly and annual pricing with a 10% discount for annual billing. Comfort plan starts at $20/month or $18/month billed yearly. Power plan starts at $35/month or $30/month billed yearly. These are listed as \"starting\" prices and appear to be base tiers. The page mentions that pricing is based on subscriber count, with multiple subscriber tiers available (slider shown but specific prices not all listed). The free plan includes a 14-day trial of paid features before moving to the permanent Free plan. Enterprise plan requires contacting sales. The page indicates the Power plan supports up to 200,000 subscribers with unlimited sending subject to fair use policy. For Comfort, monthly emails are based on 10x the subscriber tier limit.",
   "plans": [
     {
       "name": "Free",
@@ -47,15 +47,14 @@
         }
       ],
       "features": [
-        "basic workflows",
         "integrations"
       ]
     },
     {
       "name": "Comfort",
       "key": "comfort",
-      "monthly_price": 13.33,
-      "annual_price_per_month": 12.0,
+      "monthly_price": 20.0,
+      "annual_price_per_month": 18.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -69,23 +68,23 @@
           "unit": null
         },
         {
+          "metric": "digital products",
+          "value": 5.0,
+          "unit": null
+        },
+        {
           "metric": "forms",
           "value": 10.0,
           "unit": null
         },
         {
-          "metric": "monthly emails",
-          "value": -1.0,
+          "metric": "monthly emails multiplier",
+          "value": 10.0,
           "unit": null
         },
         {
           "metric": "sites",
           "value": 10.0,
-          "unit": null
-        },
-        {
-          "metric": "subscribers",
-          "value": -1.0,
           "unit": null
         },
         {
@@ -95,18 +94,14 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "api access",
-        "custom branding",
-        "integrations",
-        "live chat"
+        "integrations"
       ]
     },
     {
       "name": "Power",
       "key": "power",
-      "monthly_price": 27.78,
-      "annual_price_per_month": 25.0,
+      "monthly_price": 35.0,
+      "annual_price_per_month": 30.0,
       "is_free": false,
       "is_custom_pricing": false,
       "is_per_seat": false,
@@ -146,13 +141,7 @@
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "api access",
-        "custom branding",
-        "integrations",
-        "live chat",
-        "priority support"
+        "integrations"
       ]
     },
     {
@@ -165,25 +154,25 @@
       "is_per_seat": false,
       "is_addon": false,
       "min_seats": null,
-      "trial_days": 14,
+      "trial_days": null,
       "limits": [
         {
+          "metric": "monthly emails",
+          "value": -1.0,
+          "unit": null
+        },
+        {
           "metric": "subscribers",
-          "value": 200000.0,
+          "value": -1.0,
           "unit": null
         }
       ],
       "features": [
-        "advanced workflows",
-        "ai assistant",
-        "api access",
-        "custom branding",
-        "dedicated account manager",
         "integrations",
         "onboarding support",
         "priority support"
       ]
     }
   ],
-  "captured_at": "2026-11-25T16:53:05.276020+00:00"
+  "captured_at": "2026-11-27T16:15:59.162606+00:00"
 }
